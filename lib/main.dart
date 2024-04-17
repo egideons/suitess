@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: "Shop Point",
+      title: "Kribb",
       color: kPrimaryColor,
       navigatorKey: Get.key,
       defaultTransition: Transition.leftToRight,

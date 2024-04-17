@@ -1,6 +1,6 @@
 class Assets {
   //App Icon
-  static const appLogo = "assets/icons/app_icon.png";
+  static const appLogo = "assets/icons/app_icon_light.png";
 
 //Empty
   static const emptyImage = "assets/icons/empty.png";
