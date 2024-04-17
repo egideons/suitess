@@ -16,6 +16,9 @@ class StartupSplashscreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var media = MediaQuery.of(context).size;
 
+    //Initialize controller
+    Get.put(AuthController());
+
     if (Platform.isIOS) {
       return GetBuilder<AuthController>(
         init: AuthController(),
