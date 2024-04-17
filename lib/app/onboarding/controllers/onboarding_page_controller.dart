@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kribb/app/onboarding/model/onboard_content.dart';
 
 class OnboardingController extends GetxController {
   static OnboardingController get instance {
@@ -14,4 +15,5 @@ class OnboardingController extends GetxController {
 
   var scrollController = ScrollController().obs;
   var pageController = PageController().obs;
+  var onboardController = OnboardContent().obs;
 }
