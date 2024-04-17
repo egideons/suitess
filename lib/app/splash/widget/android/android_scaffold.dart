@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../page_content.dart';
+import '../../../splash/widget/content/page_content.dart';
 
 class AndroidScaffold extends StatelessWidget {
   const AndroidScaffold({

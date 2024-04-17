@@ -3,7 +3,10 @@ import 'dart:convert';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+
+import '../../theme/colors.dart';
 
 const kDefaultPadding = 20.0;
 
@@ -13,6 +16,36 @@ const kWidthSizedBox = SizedBox(width: kDefaultPadding);
 const kHalfSizedBox = SizedBox(height: kDefaultPadding / 2);
 
 const kHalfWidthSizedBox = SizedBox(width: kDefaultPadding / 2);
+
+defaultTextStyle({
+  color,
+  background,
+  backgroundColor,
+  decoration,
+  decorationColor,
+  decorationStyle,
+  decorationThickness,
+  debugLabel,
+  fontFamily,
+  fontSize,
+  fontStyle,
+  fontWeight,
+}) =>
+    TextStyle(
+      color: color ?? Get.isDarkMode ? kTextWhiteColor : kTextBlackColor,
+      background: background,
+      backgroundColor: backgroundColor,
+      decoration: decoration ?? TextDecoration.none,
+      decorationColor: decorationColor,
+      decorationStyle: decorationStyle,
+      decorationThickness: decorationThickness,
+      debugLabel: debugLabel,
+      fontFamily: fontFamily,
+      fontSize: fontSize ?? 14.0,
+      fontStyle: fontStyle ?? FontStyle.normal,
+      fontWeight: fontWeight ?? FontWeight.w600,
+      letterSpacing: .60,
+    );
 
 String nA = "N/A";
 

@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../src/controllers/auth_controller.dart';
-import '../widgets/android/android_scaffold.dart';
-import '../widgets/ios/cupertino_page_scaffold.dart';
+import '../widget/android/android_scaffold.dart';
+import '../widget/ios/cupertino_page_scaffold.dart';
 
 class StartupSplashscreen extends StatelessWidget {
   const StartupSplashscreen({super.key});

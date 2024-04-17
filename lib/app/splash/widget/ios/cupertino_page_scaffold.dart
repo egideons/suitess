@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-import '../page_content.dart';
+import '../../../splash/widget/content/page_content.dart';
 
 class IOSScaffold extends StatelessWidget {
   const IOSScaffold({

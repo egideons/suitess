@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
-import '../../../src/constants/assets.dart';
-import '../../../src/constants/consts.dart';
-import '../../../theme/colors.dart';
+import '../../../../src/constants/assets.dart';
+import '../../../../src/constants/consts.dart';
+import '../../../../theme/colors.dart';
 
 Widget pageContent(media) {
   return Container(
@@ -12,7 +12,7 @@ Widget pageContent(media) {
     decoration: BoxDecoration(
       color: kDarkBackgroundColor,
       image: const DecorationImage(
-        image: AssetImage(Assets.darkBackgroundImage),
+        image: AssetImage(Assets.darkBackground),
         fit: BoxFit.cover,
       ),
     ),
