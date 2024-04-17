@@ -8,6 +8,9 @@ class Assets {
 //Background
   static const darkBackgroundImage = "assets/images/background.png";
 
+  //Test Image
+  static const testImage = "assets/images/image.png";
+
 //Placeholder Image
   static const placeholderImage = "assets/images/placeholder_image.png";
   static const userPlaceholderImage =

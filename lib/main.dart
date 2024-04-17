@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
       title: "Kribb",
       color: kPrimaryColor,
       navigatorKey: Get.key,
-      defaultTransition: Transition.downToUp,
+      defaultTransition: Transition.native,
       debugShowCheckedModeBanner: false,
       highContrastTheme: androidLightTheme,
       highContrastDarkTheme: androidDarkTheme,
