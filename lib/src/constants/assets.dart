@@ -6,7 +6,7 @@ class Assets {
   static const emptyImage = "assets/icons/empty.png";
 
 //Background
-  static const backgroundImage = "assets/images/background.png";
+  static const darkBackgroundImage = "assets/images/background.png";
 
 //Placeholder Image
   static const placeholderImage = "assets/images/placeholder_image.png";

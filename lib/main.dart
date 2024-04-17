@@ -3,8 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'app/splash_screen/screen/startup_splash_screen.dart';
 import 'src/controllers/settings_controller.dart';
+import 'src/routes/routes.dart';
 import 'theme/app_theme.dart';
 import 'theme/colors.dart';
 
@@ -37,11 +37,14 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       highContrastTheme: androidLightTheme,
       highContrastDarkTheme: androidDarkTheme,
+      locale: Get.deviceLocale,
+      initialRoute: '/',
+      getPages: Routes.getPages,
       theme: androidLightTheme,
       darkTheme: androidDarkTheme,
       themeMode: SettingsController.instance.themeMode.value,
       //This is the home route
-      home: const StartupSplashscreen(),
+      // home: const (),
     );
   }
 }
