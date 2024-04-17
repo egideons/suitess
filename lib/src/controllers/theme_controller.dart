@@ -3,9 +3,9 @@ import 'package:get/get.dart';
 
 import '../../main.dart';
 
-class SettingsController extends GetxController {
-  static SettingsController get instance {
-    return Get.find<SettingsController>();
+class ThemeController extends GetxController {
+  static ThemeController get instance {
+    return Get.find<ThemeController>();
   }
 
   var themeMode = ThemeMode.system.obs; // Default to system theme mode

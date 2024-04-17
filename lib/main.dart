@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'src/controllers/settings_controller.dart';
+import 'src/controllers/theme_controller.dart';
 import 'src/routes/routes.dart';
 import 'theme/app_theme.dart';
 import 'theme/colors.dart';
@@ -18,7 +18,7 @@ void main() async {
 
   prefs = await SharedPreferences.getInstance();
 
-  Get.put(SettingsController());
+  Get.put(ThemeController());
 
   runApp(const MyApp());
 }
@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
       getPages: Routes.getPages,
       theme: androidLightTheme,
       darkTheme: androidDarkTheme,
-      themeMode: SettingsController.instance.themeMode.value,
+      themeMode: ThemeController.instance.themeMode.value,
       //This is the home route
       // home: const (),
     );
