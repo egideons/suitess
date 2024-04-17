@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class OnboardingPageController extends GetxController {
-  static OnboardingPageController get instance {
-    return Get.find<OnboardingPageController>();
+class OnboardingController extends GetxController {
+  static OnboardingController get instance {
+    return Get.find<OnboardingController>();
   }
 
   var isLoading = false.obs;

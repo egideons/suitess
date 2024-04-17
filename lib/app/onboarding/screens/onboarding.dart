@@ -13,11 +13,11 @@ class Onboarding extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //Initialize the page controller
-    var onboardingPageController = Get.put(OnboardingPageController());
+    var onboardingController = Get.put(OnboardingController());
 
     if (Platform.isIOS) {
       return CupertinoOnboardingScaffold(
-        pageController: onboardingPageController.pageController.value,
+        pageController: onboardingController.pageController.value,
       );
     }
     return const AndroidOnboardingScaffold();
