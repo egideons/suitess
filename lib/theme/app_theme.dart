@@ -7,7 +7,7 @@ import 'colors.dart';
 CupertinoThemeData? iOSLightTheme = CupertinoThemeData(
   brightness: Brightness.light,
   applyThemeToAll: true,
-  scaffoldBackgroundColor: kWhiteBackgroundColor,
+  scaffoldBackgroundColor: kLightBackgroundColor,
 );
 
 //IOS Dark Theme
@@ -90,7 +90,7 @@ ThemeData androidLightTheme = ThemeData(
   ),
   // textTheme: GoogleFonts.montserratAlternatesTextTheme(Typography.dense2021),
   colorScheme: ColorScheme.light(
-    background: kWhiteBackgroundColor,
+    background: kLightBackgroundColor,
     primary: Colors.grey.shade800,
     inversePrimary: kDarkBackgroundColor,
     secondary: Colors.grey.shade700,

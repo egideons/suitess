@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-Color kWhiteBackgroundColor = Colors.white;
+Color kLightBackgroundColor = Colors.white;
 Color kDarkBackgroundColor = Colors.black;
 
 Color kPrimaryColor = const Color(0x00363537);
 Color kInversePrimaryColor = const Color.fromARGB(255, 255, 255, 255);
-Color kAccentColor = const Color.fromARGB(255, 207, 173, 20);
+Color kAccentColor = const Color(0xFFFFBA02);
 
 Color kTextBlackColor = Colors.black;
 Color kTextWhiteColor = Colors.white;

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:get/route_manager.dart';
+import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'app/splash_screen/screen/startup_splash_screen.dart';
+import 'src/controllers/settings_controller.dart';
 import 'theme/app_theme.dart';
 import 'theme/colors.dart';
 
@@ -16,6 +17,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   prefs = await SharedPreferences.getInstance();
+
+  Get.put(SettingsController());
 
   runApp(const MyApp());
 }
@@ -30,13 +33,13 @@ class MyApp extends StatelessWidget {
       title: "Kribb",
       color: kPrimaryColor,
       navigatorKey: Get.key,
-      defaultTransition: Transition.leftToRight,
+      defaultTransition: Transition.downToUp,
       debugShowCheckedModeBanner: false,
       highContrastTheme: androidLightTheme,
       highContrastDarkTheme: androidDarkTheme,
       theme: androidLightTheme,
       darkTheme: androidDarkTheme,
-      // themeMode: SettingsController.instance.themeMode.value,
+      themeMode: SettingsController.instance.themeMode.value,
       //This is the home route
       home: const StartupSplashscreen(),
     );

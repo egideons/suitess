@@ -1,9 +1,12 @@
 class Assets {
   //App Icon
-  static const appLogo = "assets/icons/app_icon_light.png";
+  static const appLogo = "assets/images/app_logo.png";
 
 //Empty
   static const emptyImage = "assets/icons/empty.png";
+
+//Background
+  static const backgroundImage = "assets/images/background.png";
 
 //Placeholder Image
   static const placeholderImage = "assets/images/placeholder_image.png";
