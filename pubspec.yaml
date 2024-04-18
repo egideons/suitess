@@ -42,9 +42,9 @@ dev_dependencies:
   flutter_native_splash: ^2.3.2
 
 flutter_native_splash:
-  image: assets/images/app_logo.png
+  image: assets/images/dark_app_logo.png
   color: "#f9f9f9"
-  image_dark: assets/images/app_logo.png
+  image_dark: assets/images/light_app_logo.png
   color_dark: "#000000"
 
 flutter_launcher_icons:
