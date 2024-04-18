@@ -3,10 +3,7 @@ import 'dart:convert';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-
-import '../../theme/colors.dart';
 
 const kDefaultPadding = 20.0;
 
@@ -32,7 +29,7 @@ defaultTextStyle({
   fontWeight,
 }) =>
     TextStyle(
-      color: color ?? Get.isDarkMode ? kTextWhiteColor : kTextBlackColor,
+      // color: color ?? Get.isDarkMode ? kTextWhiteColor : kTextBlackColor,
       background: background,
       backgroundColor: backgroundColor,
       decoration: decoration ?? TextDecoration.none,

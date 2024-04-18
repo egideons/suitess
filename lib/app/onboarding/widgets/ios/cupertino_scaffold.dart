@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:kribb/app/onboarding/controllers/onboarding_page_controller.dart';
-
-import '../../../../src/constants/assets.dart';
+import 'package:kribb/src/constants/consts.dart';
+import 'package:kribb/theme/colors.dart';
 
 class CupertinoOnboardingScaffold extends StatelessWidget {
   final OnboardingController controller;
@@ -34,8 +35,9 @@ class CupertinoOnboardingScaffold extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(50),
                     ),
-                    image: const DecorationImage(
-                      image: AssetImage(Assets.testImage),
+                    image: DecorationImage(
+                      image: AssetImage(controller
+                          .onboardController.value.items[index].image),
                       fit: BoxFit.cover,
                       filterQuality: FilterQuality.high,
                       opacity: 0.4,
@@ -53,8 +55,10 @@ class CupertinoOnboardingScaffold extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(50),
                     ),
-                    image: const DecorationImage(
-                      image: AssetImage(Assets.testImage),
+                    image: DecorationImage(
+                      image: AssetImage(
+                        controller.onboardController.value.items[index].image,
+                      ),
                       fit: BoxFit.cover,
                       opacity: 0.4,
                     ),
@@ -71,8 +75,9 @@ class CupertinoOnboardingScaffold extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(50),
                     ),
-                    image: const DecorationImage(
-                      image: AssetImage(Assets.testImage),
+                    image: DecorationImage(
+                      image: AssetImage(controller
+                          .onboardController.value.items[index].image),
                       fit: BoxFit.cover,
                       opacity: 0.3,
                     ),
@@ -89,8 +94,10 @@ class CupertinoOnboardingScaffold extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(50),
                     ),
-                    image: const DecorationImage(
-                      image: AssetImage(Assets.testImage),
+                    image: DecorationImage(
+                      image: AssetImage(
+                        controller.onboardController.value.items[index].image,
+                      ),
                       fit: BoxFit.cover,
                       opacity: 0.4,
                     ),
@@ -107,8 +114,10 @@ class CupertinoOnboardingScaffold extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(50),
                     ),
-                    image: const DecorationImage(
-                      image: AssetImage(Assets.testImage),
+                    image: DecorationImage(
+                      image: AssetImage(
+                        controller.onboardController.value.items[index].image,
+                      ),
                       fit: BoxFit.cover,
                       opacity: 0.3,
                     ),
@@ -125,8 +134,10 @@ class CupertinoOnboardingScaffold extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(50),
                     ),
-                    image: const DecorationImage(
-                      image: AssetImage(Assets.testImage),
+                    image: DecorationImage(
+                      image: AssetImage(
+                        controller.onboardController.value.items[index].image,
+                      ),
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -141,23 +152,57 @@ class CupertinoOnboardingScaffold extends StatelessWidget {
                     color: colorScheme.background,
                     shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(50),
-                        topRight: Radius.circular(50),
+                        topLeft: Radius.circular(24),
+                        topRight: Radius.circular(24),
                       ),
                     ),
                   ),
-                  // child: Column(
-                  //   mainAxisAlignment: MainAxisAlignment.start,
-                  //   children: [
-                  //     Align(
-                  //       alignment: Alignment.topRight,
-                  //       child: TextButton(
-                  //         onPressed: () {},
-                  //         child: const Text("Skip"),
-                  //       ),
-                  //     )
-                  //   ],
-                  // ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(20.0),
+                        decoration: const ShapeDecoration(
+                          // color: colorScheme.background,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(24),
+                              topRight: Radius.circular(24),
+                            ),
+                          ),
+                        ),
+                        child: Align(
+                          alignment: Alignment.topRight,
+                          child: TextButton(
+                            onPressed: () {},
+                            style: TextButton.styleFrom(
+                              backgroundColor: kLightGreyColor,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "Skip",
+                                  style: defaultTextStyle(
+                                    fontSize: 14.0,
+                                  ),
+                                ),
+                                kHalfWidthSizedBox,
+                                const FaIcon(
+                                  FontAwesomeIcons.chevronRight,
+                                  size: 10,
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               )
             ],
