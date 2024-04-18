@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: "Kribb",
-
+      color: kPrimaryColor,
       navigatorKey: Get.key,
       defaultTransition: Transition.native,
       debugShowCheckedModeBanner: false,

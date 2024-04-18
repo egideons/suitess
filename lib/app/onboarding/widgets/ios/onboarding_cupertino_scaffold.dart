@@ -3,10 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:kribb/app/onboarding/controllers/onboarding_page_controller.dart';
 import 'package:kribb/src/constants/consts.dart';
+import 'package:kribb/src/utils/buttons/my_elevatedbutton.dart';
+import 'package:kribb/theme/colors.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class CupertinoOnboardingScaffold extends StatelessWidget {
+class OnboardingCupertinoScaffold extends StatelessWidget {
   final OnboardingController controller;
-  const CupertinoOnboardingScaffold({
+  const OnboardingCupertinoScaffold({
     super.key,
     required this.controller,
   });
@@ -20,7 +23,7 @@ class CupertinoOnboardingScaffold extends StatelessWidget {
       child: PageView.builder(
         controller: controller.pageController.value,
         itemCount: controller.onboardController.value.items.length,
-        physics: const NeverScrollableScrollPhysics(),
+        physics: const PageScrollPhysics(),
         itemBuilder: (context, index) {
           return Stack(
             children: [
@@ -158,6 +161,7 @@ class CupertinoOnboardingScaffold extends StatelessWidget {
                   ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
                     children: [
                       Container(
                         padding: const EdgeInsets.all(20.0),
@@ -173,7 +177,15 @@ class CupertinoOnboardingScaffold extends StatelessWidget {
                         child: Align(
                           alignment: Alignment.topRight,
                           child: TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              controller.pageController.value.animateToPage(
+                                controller
+                                        .onboardController.value.items.length -
+                                    1,
+                                duration: const Duration(milliseconds: 300),
+                                curve: Curves.easeIn,
+                              );
+                            },
                             style: TextButton.styleFrom(
                               backgroundColor: colorScheme.inversePrimary,
                               shape: RoundedRectangleBorder(
@@ -203,9 +215,10 @@ class CupertinoOnboardingScaffold extends StatelessWidget {
                         ),
                       ),
                       SizedBox(
-                        width: media.width - 150,
+                        width: media.width - 100,
                         child: Text(
                           controller.onboardController.value.items[index].title,
+                          textAlign: TextAlign.center,
                           style: defaultTextStyle(
                             color: colorScheme.primary,
                             fontSize: 24.0,
@@ -219,13 +232,49 @@ class CupertinoOnboardingScaffold extends StatelessWidget {
                           controller
                               .onboardController.value.items[index].description,
                           overflow: TextOverflow.ellipsis,
+                          textAlign: TextAlign.center,
                           maxLines: 4,
                           style: defaultTextStyle(
                             color: colorScheme.inversePrimary,
                             fontSize: 14.0,
+                            fontWeight: FontWeight.w500,
                           ),
                         ),
                       ),
+                      kSizedBox,
+                      SmoothPageIndicator(
+                        controller: controller.pageController.value,
+                        count: controller.onboardController.value.items.length,
+                        onDotClicked: (index) =>
+                            controller.pageController.value.animateToPage(
+                          index,
+                          duration: const Duration(milliseconds: 300),
+                          curve: Curves.easeIn,
+                        ),
+                        effect: WormEffect(
+                          spacing: 4.0,
+                          radius: 10.0,
+                          dotWidth: 40.0,
+                          dotHeight: 5.0,
+                          paintStyle: PaintingStyle.fill,
+                          strokeWidth: 1.0,
+                          dotColor: colorScheme.inversePrimary,
+                          activeDotColor: kAccentColor,
+                        ),
+                      ),
+                      kSizedBox,
+                      SizedBox(
+                        width: media.width - 100,
+                        child: MyElevatedButton(
+                          title: "Next",
+                          onPressed: () {
+                            controller.pageController.value.nextPage(
+                              duration: const Duration(milliseconds: 300),
+                              curve: Curves.easeIn,
+                            );
+                          },
+                        ),
+                      )
                     ],
                   ),
                 ),

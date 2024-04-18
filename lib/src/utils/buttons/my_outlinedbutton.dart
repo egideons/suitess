@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:kribb/src/constants/consts.dart';
 
 import '../../../../theme/colors.dart';
 
@@ -50,7 +51,7 @@ class MyOutlinedButton extends StatelessWidget {
         backgroundColor: colorScheme.background,
         side: BorderSide(color: borderColor ?? colorScheme.primary),
         elevation: buttonElevation ?? 0,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
         minimumSize: Size(media.width, 60),
       ),
       child: isLoading
@@ -68,7 +69,7 @@ class MyOutlinedButton extends StatelessWidget {
                         Text(
                           title,
                           textAlign: TextAlign.center,
-                          style: TextStyle(
+                          style: defaultTextStyle(
                             color: colorScheme.inversePrimary,
                             fontSize: fontSize ?? 18,
                             fontFamily: fontFamily,
@@ -84,7 +85,7 @@ class MyOutlinedButton extends StatelessWidget {
                         Text(
                           title,
                           textAlign: TextAlign.center,
-                          style: TextStyle(
+                          style: defaultTextStyle(
                             color: colorScheme.inversePrimary,
                             fontSize: fontSize ?? 18,
                             fontFamily: fontFamily,
@@ -102,9 +103,9 @@ class MyOutlinedButton extends StatelessWidget {
               : Text(
                   title,
                   textAlign: TextAlign.center,
-                  style: TextStyle(
+                  style: defaultTextStyle(
                     color: colorScheme.inversePrimary,
-                    fontSize: fontSize ?? 18,
+                    fontSize: fontSize ?? 16,
                     fontFamily: fontFamily,
                     fontWeight: FontWeight.w900,
                     letterSpacing: -0.40,

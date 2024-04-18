@@ -16,4 +16,10 @@ class OnboardingController extends GetxController {
   var scrollController = ScrollController().obs;
   var pageController = PageController().obs;
   var onboardController = OnboardContent().obs;
+
+  RxBool isLastPage = false.obs;
+
+  setIsLastPage() {
+    isLastPage.value = !isLastPage.value;
+  }
 }

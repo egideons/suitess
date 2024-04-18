@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:kribb/src/constants/consts.dart';
 
 import '../../../../theme/colors.dart';
 
@@ -45,14 +46,14 @@ class MyElevatedButton extends StatelessWidget {
               : onPressed,
       onLongPress: null,
       style: ElevatedButton.styleFrom(
-        disabledBackgroundColor: kPrimaryColor.withOpacity(0.5),
-        backgroundColor: kPrimaryColor,
+        disabledBackgroundColor: kAccentColor.withOpacity(0.5),
+        backgroundColor: kAccentColor,
         elevation: buttonElevation ?? 0,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
         minimumSize: Size(media.width, 60),
       ),
       child: isLoading
-          ? CircularProgressIndicator(color: kAccentColor)
+          ? CircularProgressIndicator(color: kLightBackgroundColor)
           : isRowVisible == true
               ? isSwitched == true
                   ? Row(
@@ -66,12 +67,11 @@ class MyElevatedButton extends StatelessWidget {
                         Text(
                           title,
                           textAlign: TextAlign.center,
-                          style: TextStyle(
+                          style: defaultTextStyle(
                             color: kTextWhiteColor,
-                            fontSize: fontSize ?? 18,
+                            fontSize: fontSize ?? 18.0,
                             fontFamily: fontFamily,
                             fontWeight: FontWeight.w900,
-                            letterSpacing: -0.40,
                           ),
                         ),
                       ],
@@ -82,12 +82,11 @@ class MyElevatedButton extends StatelessWidget {
                         Text(
                           title,
                           textAlign: TextAlign.center,
-                          style: TextStyle(
+                          style: defaultTextStyle(
                             color: kTextWhiteColor,
-                            fontSize: fontSize ?? 18,
+                            fontSize: fontSize ?? 18.0,
                             fontFamily: fontFamily,
                             fontWeight: FontWeight.w900,
-                            letterSpacing: -0.40,
                           ),
                         ),
                         FaIcon(
@@ -100,12 +99,11 @@ class MyElevatedButton extends StatelessWidget {
               : Text(
                   title,
                   textAlign: TextAlign.center,
-                  style: TextStyle(
+                  style: defaultTextStyle(
                     color: kTextWhiteColor,
-                    fontSize: fontSize ?? 18,
+                    fontSize: fontSize ?? 16.0,
                     fontFamily: fontFamily,
                     fontWeight: FontWeight.w900,
-                    letterSpacing: -0.40,
                   ),
                 ),
     );
