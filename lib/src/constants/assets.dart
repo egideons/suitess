@@ -1,11 +1,13 @@
 class Assets {
   //App Icon
-  static const appLogo = "assets/images/app_logo.png";
+  static const lightAppLogo = "assets/images/light_app_logo.png";
+  static const darkAppLogo = "assets/images/dark_app_logo.png";
 
 //Empty
   static const emptyImage = "assets/icons/empty.png";
 
 //Background
+  static const lightBackground = "assets/images/light_background.png";
   static const darkBackground = "assets/images/dark_background.png";
 
   //Test Image

@@ -6,16 +6,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../src/controllers/auth_controller.dart';
-import '../widget/android/android_scaffold.dart';
-import '../widget/ios/cupertino_page_scaffold.dart';
+import '../widget/android/splash_android_scaffold.dart';
+import '../widget/ios/splash_cupertino_scaffold.dart';
 
 class StartupSplashscreen extends StatelessWidget {
   const StartupSplashscreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    var media = MediaQuery.of(context).size;
-
     //Initialize controller
     Get.put(AuthController());
 
@@ -23,14 +21,14 @@ class StartupSplashscreen extends StatelessWidget {
       return GetBuilder<AuthController>(
         init: AuthController(),
         builder: (controller) {
-          return IOSScaffold(media: media);
+          return const SplashCupertinoScaffold();
         },
       );
     }
     return GetBuilder<AuthController>(
       init: AuthController(),
       builder: (controller) {
-        return AndroidScaffold(media: media);
+        return const SplashAndroidScaffold();
       },
     );
   }

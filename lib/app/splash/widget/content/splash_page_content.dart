@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 import '../../../../src/constants/assets.dart';
 import '../../../../src/constants/consts.dart';
-import '../../../../theme/colors.dart';
 
-Widget pageContent(media) {
+Widget splashPageContent({media, colorScheme}) {
   return Container(
     height: media.height,
     width: media.width,
     decoration: BoxDecoration(
-      color: kDarkBackgroundColor,
-      image: const DecorationImage(
-        image: AssetImage(Assets.darkBackground),
+      color: colorScheme.background,
+      image: DecorationImage(
+        image: AssetImage(
+          Get.isDarkMode ? Assets.darkBackground : Assets.lightBackground,
+        ),
         fit: BoxFit.cover,
       ),
     ),
@@ -22,15 +24,17 @@ Widget pageContent(media) {
         Container(
           height: media.height / 4,
           width: media.width / 2,
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage(Assets.appLogo),
+              image: AssetImage(
+                Get.isDarkMode ? Assets.lightAppLogo : Assets.darkAppLogo,
+              ),
             ),
           ),
         ),
         const SizedBox(height: kDefaultPadding * 2),
         LoadingAnimationWidget.staggeredDotsWave(
-          color: kInversePrimaryColor,
+          color: colorScheme.primary,
           size: 50,
         ),
       ],
