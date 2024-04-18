@@ -18,17 +18,20 @@ class AuthController extends GetxController {
 
   @override
   void onInit() {
-    Timer(const Duration(seconds: 2), () async {
-      await Get.offAll(
-        () => const Onboarding(),
-        routeName: "onboarding",
-        fullscreenDialog: true,
-        curve: Curves.easeInOut,
-        predicate: (routes) => false,
-        popGesture: false,
-        transition: Get.defaultTransition,
-      );
-    });
+    Timer(
+      const Duration(seconds: 2),
+      () async {
+        await Get.offAll(
+          () => const Onboarding(),
+          routeName: "onboarding",
+          fullscreenDialog: true,
+          curve: Curves.easeInOut,
+          predicate: (routes) => false,
+          popGesture: false,
+          transition: Get.defaultTransition,
+        );
+      },
+    );
     super.onInit();
   }
 }

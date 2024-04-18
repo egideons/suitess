@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:kribb/app/auth/signup/screen/signup.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../../../src/constants/consts.dart';
@@ -318,7 +319,17 @@ Widget onboardingPageContent({controller, colorScheme, media}) {
                               width: media.width - 100,
                               child: MyElevatedButton(
                                 title: "Get Started",
-                                onPressed: () {},
+                                onPressed: () async {
+                                  await Get.offAll(
+                                    () => const Signup(),
+                                    routeName: "/signup",
+                                    fullscreenDialog: true,
+                                    curve: Curves.easeInOut,
+                                    predicate: (routes) => false,
+                                    popGesture: false,
+                                    transition: Get.defaultTransition,
+                                  );
+                                },
                               ),
                             )
                           : SizedBox(
