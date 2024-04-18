@@ -5,7 +5,7 @@ import 'package:loading_animation_widget/loading_animation_widget.dart';
 import '../../../../src/constants/assets.dart';
 import '../../../../src/constants/consts.dart';
 
-Widget splashPageContent({media, colorScheme}) {
+Widget startupSplashScreen({media, colorScheme}) {
   return Container(
     height: media.height,
     width: media.width,

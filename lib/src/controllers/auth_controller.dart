@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../app/onboarding/screens/onboarding.dart';
+import '../../app/onboarding/screen/onboarding.dart';
 
 class AuthController extends GetxController {
   static AuthController get instance {

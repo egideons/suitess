@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:kribb/app/onboarding/screens/onboarding.dart';
+import 'package:kribb/app/onboarding/screen/onboarding.dart';
 import 'package:kribb/app/splash/screens/startup_splash.dart';
 
 class Routes {

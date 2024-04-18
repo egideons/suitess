@@ -15,7 +15,7 @@ class SplashAndroidScaffold extends StatelessWidget {
         child: ListView(
           physics: const NeverScrollableScrollPhysics(),
           children: [
-            splashPageContent(media: media, colorScheme: colorScheme),
+            startupSplashScreen(media: media, colorScheme: colorScheme),
           ],
         ),
       ),

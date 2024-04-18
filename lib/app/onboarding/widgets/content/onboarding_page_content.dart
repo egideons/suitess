@@ -306,7 +306,7 @@ Widget onboardingPageContent({controller, colorScheme, media}) {
                           radius: 10.0,
                           dotWidth: 40.0,
                           dotHeight: 5.0,
-                          paintStyle: PaintingStyle.fill,
+                          paintStyle: PaintingStyle.stroke,
                           strokeWidth: 1.0,
                           dotColor: colorScheme.inversePrimary,
                           activeDotColor: kAccentColor,
