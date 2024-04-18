@@ -26,7 +26,6 @@ class AuthController extends GetxController {
         curve: Curves.easeInOut,
         predicate: (routes) => false,
         popGesture: false,
-        duration: const Duration(milliseconds: 500),
         transition: Get.defaultTransition,
       );
     });

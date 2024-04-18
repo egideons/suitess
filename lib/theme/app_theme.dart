@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:kribb/src/constants/consts.dart';
 
 import 'colors.dart';
 
@@ -8,6 +9,10 @@ CupertinoThemeData? iOSLightTheme = CupertinoThemeData(
   brightness: Brightness.light,
   applyThemeToAll: true,
   scaffoldBackgroundColor: kLightBackgroundColor,
+  barBackgroundColor: kLightBackgroundColor,
+  textTheme: CupertinoTextThemeData(
+    textStyle: defaultTextStyle(),
+  ),
 );
 
 //IOS Dark Theme
@@ -15,6 +20,10 @@ CupertinoThemeData? iOSDarkTheme = CupertinoThemeData(
   brightness: Brightness.dark,
   applyThemeToAll: true,
   scaffoldBackgroundColor: kDarkBackgroundColor,
+  barBackgroundColor: kDarkBackgroundColor,
+  textTheme: CupertinoTextThemeData(
+    textStyle: defaultTextStyle(),
+  ),
 );
 
 //Android Light Theme
@@ -91,9 +100,9 @@ ThemeData androidLightTheme = ThemeData(
   // textTheme: GoogleFonts.montserratAlternatesTextTheme(Typography.dense2021),
   colorScheme: ColorScheme.light(
     background: kLightBackgroundColor,
-    primary: Colors.grey.shade800,
-    inversePrimary: kDarkBackgroundColor,
-    secondary: Colors.grey.shade700,
+    primary: kDarkBackgroundColor,
+    inversePrimary: Colors.grey.shade200,
+    secondary: kAccentColor,
     brightness: Brightness.light,
     error: kErrorColor,
   ),
@@ -171,9 +180,9 @@ ThemeData androidDarkTheme = ThemeData(
   // textTheme: GoogleFonts.montserratAlternatesTextTheme(Typography.dense2021),
   colorScheme: ColorScheme.dark(
     background: kDarkBackgroundColor,
-    primary: Colors.grey.shade400,
-    inversePrimary: Colors.grey.shade300,
-    secondary: Colors.grey.shade200,
+    primary: kLightBackgroundColor,
+    inversePrimary: Colors.grey.shade800,
+    secondary: kAccentColor,
     brightness: Brightness.dark,
     error: kErrorColor,
   ),
