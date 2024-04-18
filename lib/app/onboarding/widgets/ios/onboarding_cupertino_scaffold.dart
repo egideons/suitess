@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kribb/app/onboarding/controllers/onboarding_page_controller.dart';
-import 'package:kribb/app/onboarding/widgets/content/page_content.dart';
+import 'package:kribb/app/onboarding/widgets/content/onboarding_page_content.dart';
 
 class OnboardingCupertinoScaffold extends StatelessWidget {
   const OnboardingCupertinoScaffold({super.key});
