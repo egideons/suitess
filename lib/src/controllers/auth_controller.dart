@@ -18,7 +18,7 @@ class AuthController extends GetxController {
 
   @override
   void onInit() {
-    Timer(const Duration(days: 2), () async {
+    Timer(const Duration(seconds: 2), () async {
       await Get.offAll(
         () => const Onboarding(),
         routeName: "onboarding",

@@ -165,50 +165,103 @@ Widget onboardingPageContent({controller, colorScheme, media}) {
                             ),
                           ),
                         ),
-                        child: Align(
-                          alignment: Alignment.topRight,
-                          child: TextButton(
-                            onPressed: controller.isLastPage.value
-                                ? null
-                                : () {
-                                    controller.pageController.value
-                                        .animateToPage(
-                                      controller.onboardController.value.items
-                                              .length -
-                                          1,
-                                      duration:
-                                          const Duration(milliseconds: 300),
-                                      curve: Curves.easeIn,
-                                    );
-                                  },
-                            style: TextButton.styleFrom(
-                              backgroundColor: controller.isLastPage.value
-                                  ? colorScheme.background
-                                  : colorScheme.inversePrimary,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                            ),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Text(
-                                  controller.isLastPage.value ? "" : "Skip",
-                                  style: defaultTextStyle(
-                                    color: colorScheme.background,
-                                    fontSize: 14.0,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Align(
+                              alignment: Alignment.topRight,
+                              child: TextButton(
+                                onPressed: !controller.isLastPage.value
+                                    ? null
+                                    : () {
+                                        controller.pageController.value
+                                            .animateToPage(
+                                          controller.onboardController.value
+                                                  .items.length -
+                                              3,
+                                          duration:
+                                              const Duration(milliseconds: 300),
+                                          curve: Curves.easeIn,
+                                        );
+                                      },
+                                style: TextButton.styleFrom(
+                                  backgroundColor: !controller.isLastPage.value
+                                      ? colorScheme.background
+                                      : colorScheme.inversePrimary,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10),
                                   ),
                                 ),
-                                kHalfWidthSizedBox,
-                                FaIcon(
-                                  FontAwesomeIcons.chevronRight,
-                                  color: colorScheme.background,
-                                  size: 10,
-                                )
-                              ],
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    FaIcon(
+                                      FontAwesomeIcons.chevronLeft,
+                                      color: colorScheme.background,
+                                      size: 10,
+                                    ),
+                                    kHalfWidthSizedBox,
+                                    Text(
+                                      !controller.isLastPage.value
+                                          ? ""
+                                          : "Back",
+                                      style: defaultTextStyle(
+                                        color: colorScheme.background,
+                                        fontSize: 14.0,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
                             ),
-                          ),
+                            Align(
+                              alignment: Alignment.topRight,
+                              child: TextButton(
+                                onPressed: controller.isLastPage.value
+                                    ? null
+                                    : () {
+                                        controller.pageController.value
+                                            .animateToPage(
+                                          controller.onboardController.value
+                                                  .items.length -
+                                              1,
+                                          duration:
+                                              const Duration(milliseconds: 300),
+                                          curve: Curves.easeIn,
+                                        );
+                                      },
+                                style: TextButton.styleFrom(
+                                  backgroundColor: controller.isLastPage.value
+                                      ? colorScheme.background
+                                      : colorScheme.inversePrimary,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                ),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      controller.isLastPage.value ? "" : "Skip",
+                                      style: defaultTextStyle(
+                                        color: colorScheme.background,
+                                        fontSize: 14.0,
+                                      ),
+                                    ),
+                                    kHalfWidthSizedBox,
+                                    FaIcon(
+                                      FontAwesomeIcons.chevronRight,
+                                      color: colorScheme.background,
+                                      size: 10,
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                       SizedBox(

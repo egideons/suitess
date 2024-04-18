@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kribb/app/onboarding/model/onboard_content.dart';
@@ -23,7 +21,5 @@ class OnboardingController extends GetxController {
 
   setIsLastPage(index) {
     isLastPage.value = onboardController.value.items.length - 1 == index;
-
-    log("This is the last page: $isLastPage");
   }
 }
