@@ -101,7 +101,7 @@ ThemeData androidLightTheme = ThemeData(
   colorScheme: ColorScheme.light(
     background: kLightBackgroundColor,
     primary: kDarkBackgroundColor,
-    inversePrimary: Colors.grey.shade300,
+    inversePrimary: Colors.grey.shade400,
     secondary: kAccentColor,
     brightness: Brightness.light,
     error: kErrorColor,

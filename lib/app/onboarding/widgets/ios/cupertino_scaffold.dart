@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:kribb/app/onboarding/controllers/onboarding_page_controller.dart';
 import 'package:kribb/src/constants/consts.dart';
-import 'package:kribb/theme/colors.dart';
 
 class CupertinoOnboardingScaffold extends StatelessWidget {
   final OnboardingController controller;
@@ -176,7 +175,7 @@ class CupertinoOnboardingScaffold extends StatelessWidget {
                           child: TextButton(
                             onPressed: () {},
                             style: TextButton.styleFrom(
-                              backgroundColor: kLightGreyColor,
+                              backgroundColor: colorScheme.inversePrimary,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10),
                               ),
@@ -188,19 +187,45 @@ class CupertinoOnboardingScaffold extends StatelessWidget {
                                 Text(
                                   "Skip",
                                   style: defaultTextStyle(
+                                    color: colorScheme.background,
                                     fontSize: 14.0,
                                   ),
                                 ),
                                 kHalfWidthSizedBox,
-                                const FaIcon(
+                                FaIcon(
                                   FontAwesomeIcons.chevronRight,
+                                  color: colorScheme.background,
                                   size: 10,
                                 )
                               ],
                             ),
                           ),
                         ),
-                      )
+                      ),
+                      SizedBox(
+                        width: media.width - 150,
+                        child: Text(
+                          controller.onboardController.value.items[index].title,
+                          style: defaultTextStyle(
+                            color: colorScheme.primary,
+                            fontSize: 24.0,
+                          ),
+                        ),
+                      ),
+                      kSizedBox,
+                      SizedBox(
+                        width: media.width - 100,
+                        child: Text(
+                          controller
+                              .onboardController.value.items[index].description,
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 4,
+                          style: defaultTextStyle(
+                            color: colorScheme.inversePrimary,
+                            fontSize: 14.0,
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),

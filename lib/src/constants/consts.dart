@@ -29,7 +29,7 @@ defaultTextStyle({
   fontWeight,
 }) =>
     TextStyle(
-      // color: color ?? Get.isDarkMode ? kTextWhiteColor : kTextBlackColor,
+      color: color,
       background: background,
       backgroundColor: backgroundColor,
       decoration: decoration ?? TextDecoration.none,
