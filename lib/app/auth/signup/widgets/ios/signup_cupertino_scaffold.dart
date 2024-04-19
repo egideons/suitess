@@ -121,6 +121,7 @@ class SignupCupertinoScaffold extends StatelessWidget {
             ),
             const SizedBox(height: kDefaultPadding * 4),
             CupertinoElevatedButton(
+              disable: true,
               title: "Continue",
               onPressed: () {},
             ),
