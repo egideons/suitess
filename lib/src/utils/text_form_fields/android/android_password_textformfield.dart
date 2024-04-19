@@ -87,7 +87,7 @@ class AndroidPasswordTextFormField extends StatelessWidget {
       maxLines: 1,
       style: TextStyle(
         fontSize: 16,
-        color: colorScheme.secondary,
+        color: colorScheme.primary,
         fontWeight: FontWeight.w900,
         letterSpacing: -0.40,
       ),
@@ -113,13 +113,13 @@ class AndroidPasswordTextFormField extends StatelessWidget {
         focusColor: const Color(0xFFF6F6F7),
         labelStyle: TextStyle(
           fontSize: 16,
-          color: colorScheme.secondary,
+          color: colorScheme.primary,
           fontWeight: FontWeight.w900,
           letterSpacing: -0.40,
         ),
         hintStyle: TextStyle(
           fontSize: 16,
-          color: colorScheme.secondary,
+          color: colorScheme.primary,
           fontWeight: FontWeight.w900,
           letterSpacing: -0.40,
         ),
@@ -128,13 +128,13 @@ class AndroidPasswordTextFormField extends StatelessWidget {
         // enabledBorder: OutlineInputBorder(
         //   borderRadius: BorderRadius.circular(10.0),
         //   borderSide: BorderSide(
-        //     color: colorScheme.secondary,
+        //     color: colorScheme.primary,
         //   ),
         // ),
         // focusedBorder: OutlineInputBorder(
         //   borderRadius: BorderRadius.circular(10.0),
         //   borderSide: BorderSide(
-        //     color: colorScheme.secondary,
+        //     color: colorScheme.primary,
         //   ),
         // ),
       ),

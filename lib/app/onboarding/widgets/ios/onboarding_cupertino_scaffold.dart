@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../src/controllers/onboarding_page_controller.dart';
+import '../../../../src/controllers/onboarding_controller.dart';
 import '../content/onboarding_page_content.dart';
 
 class OnboardingCupertinoScaffold extends StatelessWidget {

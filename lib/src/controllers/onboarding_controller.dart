@@ -7,12 +7,6 @@ class OnboardingController extends GetxController {
     return Get.find<OnboardingController>();
   }
 
-  var isLoading = false.obs;
-  var isResendingOTP = false.obs;
-
-  var responseStatus = 0.obs;
-  var responseMessage = "".obs;
-
   var scrollController = ScrollController().obs;
   var pageController = PageController().obs;
   var onboardController = OnboardContent().obs;

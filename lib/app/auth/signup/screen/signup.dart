@@ -1,6 +1,8 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:kribb/src/controllers/signup_controller.dart';
 
 import '../widgets/ios/signup_cupertino_scaffold.dart';
 
@@ -9,9 +11,18 @@ class Signup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //Initialize signup controller
+    Get.put(SignupController());
+
     if (Platform.isIOS) {
-      return const SignupCupertinoScaffold();
+      return GestureDetector(
+        onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
+        child: const SignupCupertinoScaffold(),
+      );
     }
-    return const Scaffold();
+    return GestureDetector(
+      onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
+      child: const Scaffold(),
+    );
   }
 }
