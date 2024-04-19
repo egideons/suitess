@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:kribb/src/constants/consts.dart';
 
-import '../../../../theme/colors.dart';
+import '../../../../../theme/colors.dart';
 
-class MyOutlinedButton extends StatelessWidget {
+class AndroidElevatedButton extends StatelessWidget {
   final String title;
   final Function()? onPressed;
   final bool isLoading;
@@ -15,47 +15,45 @@ class MyOutlinedButton extends StatelessWidget {
   final double? buttonElevation, fontSize;
   final bool? isRowVisible, isSwitched;
   final IconData? buttonIcon;
-  final Color? buttonIconColor, borderColor;
+  final Color? buttonIconColor;
   final double? buttonIconSize;
 
-  const MyOutlinedButton({
+  const AndroidElevatedButton({
     super.key,
     required this.title,
     required this.onPressed,
     this.isLoading = false,
     this.disable = false,
-    this.fontSize,
     this.fontFamily,
+    this.fontSize,
     this.buttonElevation,
-    this.isRowVisible,
+    this.isRowVisible = false,
     this.buttonIcon,
     this.buttonIconColor,
     this.buttonIconSize,
-    this.isSwitched = false,
-    this.borderColor,
+    this.isSwitched,
   });
 
   @override
   Widget build(BuildContext context) {
     var media = MediaQuery.of(context).size;
-    var colorScheme = Theme.of(context).colorScheme;
-    return OutlinedButton(
+
+    return ElevatedButton(
       onPressed: disable
           ? null
           : isLoading
               ? null
               : onPressed,
       onLongPress: null,
-      style: OutlinedButton.styleFrom(
-        disabledBackgroundColor: colorScheme.primary.withOpacity(0.2),
-        backgroundColor: colorScheme.background,
-        side: BorderSide(color: borderColor ?? colorScheme.primary),
+      style: ElevatedButton.styleFrom(
+        disabledBackgroundColor: kAccentColor.withOpacity(0.5),
+        backgroundColor: kAccentColor,
         elevation: buttonElevation ?? 0,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
         minimumSize: Size(media.width, 60),
       ),
       child: isLoading
-          ? CircularProgressIndicator(color: kAccentColor)
+          ? CircularProgressIndicator(color: kLightBackgroundColor)
           : isRowVisible == true
               ? isSwitched == true
                   ? Row(
@@ -70,11 +68,10 @@ class MyOutlinedButton extends StatelessWidget {
                           title,
                           textAlign: TextAlign.center,
                           style: defaultTextStyle(
-                            color: colorScheme.inversePrimary,
-                            fontSize: fontSize ?? 18,
+                            color: kTextWhiteColor,
+                            fontSize: fontSize ?? 18.0,
                             fontFamily: fontFamily,
                             fontWeight: FontWeight.w900,
-                            letterSpacing: -0.40,
                           ),
                         ),
                       ],
@@ -86,11 +83,10 @@ class MyOutlinedButton extends StatelessWidget {
                           title,
                           textAlign: TextAlign.center,
                           style: defaultTextStyle(
-                            color: colorScheme.inversePrimary,
-                            fontSize: fontSize ?? 18,
+                            color: kTextWhiteColor,
+                            fontSize: fontSize ?? 18.0,
                             fontFamily: fontFamily,
                             fontWeight: FontWeight.w900,
-                            letterSpacing: -0.40,
                           ),
                         ),
                         FaIcon(
@@ -104,11 +100,10 @@ class MyOutlinedButton extends StatelessWidget {
                   title,
                   textAlign: TextAlign.center,
                   style: defaultTextStyle(
-                    color: colorScheme.inversePrimary,
-                    fontSize: fontSize ?? 16,
+                    color: kTextWhiteColor,
+                    fontSize: fontSize ?? 16.0,
                     fontFamily: fontFamily,
                     fontWeight: FontWeight.w900,
-                    letterSpacing: -0.40,
                   ),
                 ),
     );

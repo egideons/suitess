@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:kribb/src/constants/consts.dart';
 
-import '../../../../theme/colors.dart';
+import '../../../../../theme/colors.dart';
 
-class MyElevatedButton extends StatelessWidget {
+class AndroidOutlinedButton extends StatelessWidget {
   final String title;
   final Function()? onPressed;
   final bool isLoading;
@@ -15,45 +15,47 @@ class MyElevatedButton extends StatelessWidget {
   final double? buttonElevation, fontSize;
   final bool? isRowVisible, isSwitched;
   final IconData? buttonIcon;
-  final Color? buttonIconColor;
+  final Color? buttonIconColor, borderColor;
   final double? buttonIconSize;
 
-  const MyElevatedButton({
+  const AndroidOutlinedButton({
     super.key,
     required this.title,
     required this.onPressed,
     this.isLoading = false,
     this.disable = false,
-    this.fontFamily,
     this.fontSize,
+    this.fontFamily,
     this.buttonElevation,
-    this.isRowVisible = false,
+    this.isRowVisible,
     this.buttonIcon,
     this.buttonIconColor,
     this.buttonIconSize,
-    this.isSwitched,
+    this.isSwitched = false,
+    this.borderColor,
   });
 
   @override
   Widget build(BuildContext context) {
     var media = MediaQuery.of(context).size;
-
-    return ElevatedButton(
+    var colorScheme = Theme.of(context).colorScheme;
+    return OutlinedButton(
       onPressed: disable
           ? null
           : isLoading
               ? null
               : onPressed,
       onLongPress: null,
-      style: ElevatedButton.styleFrom(
-        disabledBackgroundColor: kAccentColor.withOpacity(0.5),
-        backgroundColor: kAccentColor,
+      style: OutlinedButton.styleFrom(
+        disabledBackgroundColor: colorScheme.primary.withOpacity(0.2),
+        backgroundColor: colorScheme.background,
+        side: BorderSide(color: borderColor ?? colorScheme.primary),
         elevation: buttonElevation ?? 0,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
         minimumSize: Size(media.width, 60),
       ),
       child: isLoading
-          ? CircularProgressIndicator(color: kLightBackgroundColor)
+          ? CircularProgressIndicator(color: kAccentColor)
           : isRowVisible == true
               ? isSwitched == true
                   ? Row(
@@ -68,10 +70,11 @@ class MyElevatedButton extends StatelessWidget {
                           title,
                           textAlign: TextAlign.center,
                           style: defaultTextStyle(
-                            color: kTextWhiteColor,
-                            fontSize: fontSize ?? 18.0,
+                            color: colorScheme.inversePrimary,
+                            fontSize: fontSize ?? 18,
                             fontFamily: fontFamily,
                             fontWeight: FontWeight.w900,
+                            letterSpacing: -0.40,
                           ),
                         ),
                       ],
@@ -83,10 +86,11 @@ class MyElevatedButton extends StatelessWidget {
                           title,
                           textAlign: TextAlign.center,
                           style: defaultTextStyle(
-                            color: kTextWhiteColor,
-                            fontSize: fontSize ?? 18.0,
+                            color: colorScheme.inversePrimary,
+                            fontSize: fontSize ?? 18,
                             fontFamily: fontFamily,
                             fontWeight: FontWeight.w900,
+                            letterSpacing: -0.40,
                           ),
                         ),
                         FaIcon(
@@ -100,10 +104,11 @@ class MyElevatedButton extends StatelessWidget {
                   title,
                   textAlign: TextAlign.center,
                   style: defaultTextStyle(
-                    color: kTextWhiteColor,
-                    fontSize: fontSize ?? 16.0,
+                    color: colorScheme.inversePrimary,
+                    fontSize: fontSize ?? 16,
                     fontFamily: fontFamily,
                     fontWeight: FontWeight.w900,
+                    letterSpacing: -0.40,
                   ),
                 ),
     );

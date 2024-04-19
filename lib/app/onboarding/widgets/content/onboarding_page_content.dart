@@ -5,7 +5,7 @@ import 'package:kribb/app/auth/signup/screen/signup.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../../../src/constants/consts.dart';
-import '../../../../src/utils/buttons/my_elevatedbutton.dart';
+import '../../../../src/utils/buttons/ios/cupertino_elevated_button.dart';
 import '../../../../theme/colors.dart';
 
 Widget onboardingPageContent({controller, colorScheme, media}) {
@@ -317,7 +317,7 @@ Widget onboardingPageContent({controller, colorScheme, media}) {
                       controller.isLastPage.value
                           ? SizedBox(
                               width: media.width - 100,
-                              child: MyElevatedButton(
+                              child: CupertinoElevatedButton(
                                 title: "Get Started",
                                 onPressed: () async {
                                   await Get.offAll(
@@ -334,7 +334,7 @@ Widget onboardingPageContent({controller, colorScheme, media}) {
                             )
                           : SizedBox(
                               width: media.width - 100,
-                              child: MyElevatedButton(
+                              child: CupertinoElevatedButton(
                                 title: "Next",
                                 onPressed: () {
                                   controller.pageController.value.nextPage(

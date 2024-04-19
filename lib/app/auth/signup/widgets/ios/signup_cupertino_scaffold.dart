@@ -4,6 +4,7 @@ import 'package:kribb/app/auth/signup/content/signup_cupertino_nav_bar.dart';
 import 'package:kribb/app/auth/signup/content/signup_page_header.dart';
 import 'package:kribb/src/constants/consts.dart';
 import 'package:kribb/src/controllers/signup_controller.dart';
+import 'package:kribb/src/utils/buttons/ios/cupertino_elevated_button.dart';
 
 import '../../../../../src/utils/text_form_fields/ios/cupertino_text_field.dart';
 
@@ -40,7 +41,7 @@ class SignupCupertinoScaffold extends StatelessWidget {
           padding: const EdgeInsets.all(10),
           children: [
             signupPageHeader(colorScheme: colorScheme, media: media),
-            const SizedBox(height: kDefaultPadding * 2),
+            const SizedBox(height: kDefaultPadding * 4),
             Form(
               key: formKey,
               child: Column(
@@ -57,7 +58,7 @@ class SignupCupertinoScaffold extends StatelessWidget {
                     validator: (value) {
                       return null;
                     },
-                    onSubmitted: (value) {},
+                    onChanged: (value) {},
                   ),
                   kSizedBox,
                   MyCupertinoTextField(
@@ -106,7 +107,7 @@ class SignupCupertinoScaffold extends StatelessWidget {
                     enabled: true,
                     controller: passwordEC,
                     focusNode: passwordFN,
-                    textInputAction: TextInputAction.next,
+                    textInputAction: TextInputAction.done,
                     textCapitalization: TextCapitalization.none,
                     keyboardType: TextInputType.visiblePassword,
                     placeholder: "Password",
@@ -117,6 +118,11 @@ class SignupCupertinoScaffold extends StatelessWidget {
                   ),
                 ],
               ),
+            ),
+            const SizedBox(height: kDefaultPadding * 4),
+            CupertinoElevatedButton(
+              title: "Continue",
+              onPressed: () {},
             ),
           ],
         ),

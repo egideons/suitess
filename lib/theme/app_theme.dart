@@ -31,7 +31,6 @@ ThemeData androidLightTheme = ThemeData(
   brightness: Brightness.light,
   useMaterial3: true,
   applyElevationOverlayColor: false,
-
   textTheme: const TextTheme(
     titleLarge: TextStyle(
       fontFamily: "Sk-Modernist",
@@ -112,6 +111,7 @@ ThemeData androidLightTheme = ThemeData(
 ThemeData androidDarkTheme = ThemeData(
   brightness: Brightness.dark,
   useMaterial3: true,
+  applyElevationOverlayColor: false,
   textTheme: const TextTheme(
     titleLarge: TextStyle(
       fontFamily: "Sk-Modernist",
