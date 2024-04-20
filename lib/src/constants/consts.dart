@@ -59,7 +59,8 @@ const String zipCodePattern = r"^\d{6}(?:-\d{4})?$";
 const String userNamePattern = r'^.{3,}$'; //Min. of 3 characters
 
 //password pattern
-const String passwordPattern = r'^.{8,}$';
+const String passwordPattern =
+    r'^(?=.*[A-Za-z0-9])(?=.*[^A-Za-z0-9])(?=.*\d).{8,}$';
 
 //referral Code pattern
 const String referralCodePattern = r'^.{6}$';

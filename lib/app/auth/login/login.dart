@@ -23,7 +23,7 @@ class Login extends StatelessWidget {
       return GestureDetector(
         onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
         child: Container(
-          color: kLightBackgroundColor,
+          color: colorScheme.background,
           child: Align(
             alignment: Alignment.center,
             child: Text.rich(

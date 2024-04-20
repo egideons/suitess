@@ -23,6 +23,8 @@ class MyCupertinoTextField extends StatelessWidget {
   final MaxLengthEnforcement? maxLengthEnforcement;
   final String? obscuringCharacter;
 
+  final Color? borderColor;
+
   const MyCupertinoTextField({
     super.key,
     required this.controller,
@@ -48,6 +50,7 @@ class MyCupertinoTextField extends StatelessWidget {
     this.suffixMode,
     this.clearButtonMode,
     this.onEditingComplete,
+    this.borderColor,
   });
 
   @override
@@ -73,7 +76,7 @@ class MyCupertinoTextField extends StatelessWidget {
       onChanged: onChanged,
       textInputAction: textInputAction,
       textAlign: TextAlign.start,
-      cursorColor: colorScheme.primary,
+      cursorColor: colorScheme.inversePrimary,
       autocorrect: true,
       enableSuggestions: true,
       minLines: 1,
@@ -87,16 +90,16 @@ class MyCupertinoTextField extends StatelessWidget {
       prefix: prefix,
       placeholderStyle: defaultTextStyle(
         fontSize: 16.0,
-        color: colorScheme.primary,
+        color: colorScheme.inversePrimary,
         fontWeight: FontWeight.w800,
       ),
       style: defaultTextStyle(
         fontSize: 16.0,
-        color: colorScheme.primary,
+        color: colorScheme.inversePrimary,
         fontWeight: FontWeight.w800,
       ),
       decoration: BoxDecoration(
-        border: Border.all(color: colorScheme.inversePrimary),
+        border: Border.all(color: borderColor ?? colorScheme.inversePrimary),
         borderRadius: BorderRadius.circular(16),
       ),
     );
