@@ -3,6 +3,8 @@ import 'package:kribb/app/auth/signup/screen/signup.dart';
 import 'package:kribb/app/onboarding/screen/onboarding.dart';
 import 'package:kribb/app/splash/screens/startup_splash.dart';
 
+import '../../app/auth/login/login.dart';
+
 class Routes {
   //Splash screens
   static const startupSplashscreen = "/";
@@ -22,5 +24,6 @@ class Routes {
     GetPage(name: startupSplashscreen, page: () => const StartupSplashscreen()),
     GetPage(name: onboarding, page: () => const Onboarding()),
     GetPage(name: signup, page: () => const Signup()),
+    GetPage(name: login, page: () => const Login()),
   ];
 }
