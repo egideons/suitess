@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:kribb/app/auth/signup/content/signup_cupertino_nav_bar.dart';
+import 'package:kribb/app/auth/signup/content/auth_cupertino_nav_bar.dart';
 import 'package:kribb/app/auth/signup/content/signup_page_header.dart';
 import 'package:kribb/src/constants/consts.dart';
 import 'package:kribb/src/controllers/signup_controller.dart';
@@ -39,8 +39,11 @@ class SignupCupertinoScaffold extends StatelessWidget {
     final passwordFN = FocusNode();
 
     return CupertinoPageScaffold(
-      navigationBar:
-          authCupertinoNavBar(colorScheme: colorScheme, media: media),
+      navigationBar: authCupertinoNavBar(
+        colorScheme: colorScheme,
+        media: media,
+        title: "Create account",
+      ),
       child: SafeArea(
         child: ListView(
           padding: const EdgeInsets.all(10),

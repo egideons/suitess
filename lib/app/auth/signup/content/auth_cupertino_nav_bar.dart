@@ -8,6 +8,7 @@ import '../../../../theme/colors.dart';
 ObstructingPreferredSizeWidget authCupertinoNavBar({
   colorScheme,
   media,
+  title,
 }) {
   return CupertinoNavigationBar(
     transitionBetweenRoutes: true,
@@ -36,7 +37,7 @@ ObstructingPreferredSizeWidget authCupertinoNavBar({
             ),
             kHalfWidthSizedBox,
             Text(
-              "Create account",
+              title ?? "",
               style: defaultTextStyle(color: kSuccessColor),
             ),
           ],
