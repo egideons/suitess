@@ -13,9 +13,12 @@ class CupertinoElevatedButton extends StatelessWidget {
   final String? fontFamily;
   final double? fontSize;
   final bool? isRowVisible, isSwitched;
+  final MainAxisAlignment? mainAxisAlignment;
   final IconData? buttonIcon;
-  final Color? color, buttonIconColor;
+  final Color? buttonColor, indicatorColor, textColor, buttonIconColor;
   final double? buttonIconSize;
+  final Widget? buttonIconWidget;
+  final FontWeight? fontWeight;
 
   const CupertinoElevatedButton({
     super.key,
@@ -30,7 +33,12 @@ class CupertinoElevatedButton extends StatelessWidget {
     this.buttonIcon,
     this.buttonIconColor,
     this.buttonIconSize,
-    this.color,
+    this.buttonColor,
+    this.buttonIconWidget,
+    this.indicatorColor,
+    this.textColor,
+    this.mainAxisAlignment,
+    this.fontWeight,
   });
 
   @override
@@ -39,7 +47,7 @@ class CupertinoElevatedButton extends StatelessWidget {
     return CupertinoButton(
       borderRadius: BorderRadius.circular(24),
       minSize: 60,
-      color: color ?? kAccentColor,
+      color: buttonColor ?? kAccentColor,
       disabledColor: colorScheme.inversePrimary,
       onPressed: disable
           ? null
@@ -51,53 +59,63 @@ class CupertinoElevatedButton extends StatelessWidget {
           : isRowVisible == true
               ? isSwitched == true
                   ? Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment:
+                          mainAxisAlignment ?? MainAxisAlignment.spaceBetween,
                       children: [
-                        FaIcon(
-                          buttonIcon,
-                          color: buttonIconColor,
-                          size: buttonIconSize ?? 16,
-                        ),
+                        buttonIconWidget ??
+                            FaIcon(
+                              buttonIcon,
+                              color: buttonIconColor,
+                              size: buttonIconSize ?? 14,
+                            ),
+                        mainAxisAlignment == null
+                            ? const SizedBox()
+                            : kHalfWidthSizedBox,
                         Text(
                           title,
                           textAlign: TextAlign.center,
                           style: defaultTextStyle(
-                            color: kTextWhiteColor,
-                            fontSize: fontSize ?? 18.0,
+                            color: textColor ?? kTextWhiteColor,
+                            fontSize: fontSize ?? 14.0,
                             fontFamily: fontFamily,
-                            fontWeight: FontWeight.w900,
+                            fontWeight: fontWeight ?? FontWeight.w600,
                           ),
                         ),
                       ],
                     )
                   : Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment:
+                          mainAxisAlignment ?? MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
                           title,
                           textAlign: TextAlign.center,
                           style: defaultTextStyle(
-                            color: kTextWhiteColor,
-                            fontSize: fontSize ?? 18.0,
+                            color: textColor ?? kTextWhiteColor,
+                            fontSize: fontSize ?? 14.0,
                             fontFamily: fontFamily,
-                            fontWeight: FontWeight.w900,
+                            fontWeight: fontWeight ?? FontWeight.w600,
                           ),
                         ),
-                        FaIcon(
-                          buttonIcon,
-                          color: buttonIconColor,
-                          size: buttonIconSize ?? 16,
-                        ),
+                        mainAxisAlignment == null
+                            ? const SizedBox()
+                            : kHalfWidthSizedBox,
+                        buttonIconWidget ??
+                            FaIcon(
+                              buttonIcon,
+                              color: buttonIconColor,
+                              size: buttonIconSize ?? 14,
+                            ),
                       ],
                     )
               : Text(
                   title,
                   textAlign: TextAlign.center,
                   style: defaultTextStyle(
-                    color: kTextWhiteColor,
-                    fontSize: fontSize ?? 16.0,
+                    color: textColor ?? kTextWhiteColor,
+                    fontSize: fontSize ?? 14.0,
                     fontFamily: fontFamily,
-                    fontWeight: FontWeight.w900,
+                    fontWeight: fontWeight ?? FontWeight.w600,
                   ),
                 ),
     );

@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import '../../../../src/constants/consts.dart';
 import '../../../../theme/colors.dart';
 
-ObstructingPreferredSizeWidget signupCupertinoNavBar({
+ObstructingPreferredSizeWidget authCupertinoNavBar({
   colorScheme,
   media,
 }) {

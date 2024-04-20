@@ -6,12 +6,10 @@ Widget textFormFieldContainer(colorScheme, media,
     width: containerWidth ?? media.width,
     height: containerHeight ?? media.height * 0.06,
     decoration: ShapeDecoration(
-      color: colorScheme.background,
+      color: colorScheme.inversePrimary.withOpacity(0.2),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16),
-        side: BorderSide(
-          color: colorScheme.inversePrimary,
-        ),
+        side: BorderSide(color: colorScheme.inversePrimary, width: 0.2),
       ),
 
       // shadows: [

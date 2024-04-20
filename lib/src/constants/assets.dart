@@ -3,8 +3,9 @@ class Assets {
   static const lightAppLogo = "assets/images/light_app_logo.png";
   static const darkAppLogo = "assets/images/dark_app_logo.png";
 
-//Empty
+//Icons
   static const emptyImage = "assets/icons/empty.png";
+  static const googleIcon = "assets/icons/google_icon.png";
 
 //Background
   static const lightBackground = "assets/images/light_background.png";
