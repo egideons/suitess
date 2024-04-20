@@ -55,7 +55,7 @@ class CupertinoElevatedButton extends StatelessWidget {
               ? null
               : onPressed,
       child: isLoading
-          ? CupertinoActivityIndicator(color: colorScheme.inversePrimary)
+          ? CupertinoActivityIndicator(color: colorScheme.primary)
           : isRowVisible == true
               ? isSwitched == true
                   ? Row(

@@ -44,7 +44,6 @@ class SignupCupertinoScaffold extends StatelessWidget {
                 return Form(
                   key: signupController.formKey,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
-                  onChanged: signupController.setFormIsValid,
                   child: Column(
                     children: [
                       textFormFieldContainer(
@@ -56,7 +55,7 @@ class SignupCupertinoScaffold extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             SizedBox(
-                              width: media.width - 50,
+                              width: media.width - 60,
                               child: MyCupertinoTextField(
                                 enabled: signupController.isLoading.value
                                     ? false
@@ -99,7 +98,7 @@ class SignupCupertinoScaffold extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             SizedBox(
-                              width: media.width - 50,
+                              width: media.width - 60,
                               child: MyCupertinoTextField(
                                 enabled: signupController.isLoading.value
                                     ? false
@@ -142,7 +141,7 @@ class SignupCupertinoScaffold extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             SizedBox(
-                              width: media.width - 50,
+                              width: media.width - 60,
                               child: MyCupertinoTextField(
                                 enabled: signupController.isLoading.value
                                     ? false
@@ -185,11 +184,18 @@ class SignupCupertinoScaffold extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             SizedBox(
-                              width: media.width - 50,
+                              width: media.width - 60,
                               child: MyCupertinoTextField(
                                 enabled: signupController.isLoading.value
                                     ? false
                                     : true,
+                                // prefix: Padding(
+                                //   padding: const EdgeInsets.only(left: 10.0),
+                                //   child: Text(
+                                //     signupController.ngnDialCode.value,
+                                //     style: defaultTextStyle(),
+                                //   ),
+                                // ), 
                                 controller: signupController.phoneNumberEC,
                                 focusNode: signupController.phoneNumberFN,
                                 placeholder: "Phone number",
@@ -247,9 +253,7 @@ class SignupCupertinoScaffold extends StatelessWidget {
                                     signupController.passwordIsHidden.value,
                                 placeholder: "Password",
                                 onChanged: signupController.passwordOnChanged,
-                                onSubmitted: (value) {
-                                  signupController.signup;
-                                },
+                                onSubmitted: signupController.onSubmitted,
                                 validator: (value) {
                                   return null;
                                 },
@@ -271,7 +275,7 @@ class SignupCupertinoScaffold extends StatelessWidget {
                                             ? "Show password"
                                             : "Hide password",
                                     icon: FaIcon(
-                                      color: kAccentColor,
+                                      color: colorScheme.inversePrimary,
                                       size: 18,
                                       signupController.passwordIsHidden.value
                                           ? FontAwesomeIcons.solidEye
@@ -293,17 +297,36 @@ class SignupCupertinoScaffold extends StatelessWidget {
                           ],
                         ),
                       ),
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: Text(
+                          signupController.isPasswordValid.value
+                              ? "Password meets the requirements"
+                              : "Password must contain 8 characters, a number and a special character",
+                          textAlign: TextAlign.end,
+                          style: defaultTextStyle(
+                            color: signupController.isPasswordValid.value
+                                ? kSuccessColor
+                                : kErrorColor,
+                            fontSize: 12.0,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                      kHalfSizedBox,
                     ],
                   ),
                 );
               },
             ),
             const SizedBox(height: kDefaultPadding * 2),
-            Obx(
-              () {
+            GetBuilder<SignupController>(
+              init: SignupController(),
+              builder: (context) {
                 return CupertinoElevatedButton(
-                  disable: signupController.formIsValid.isTrue ? false : true,
                   title: "Continue",
+                  disable: signupController.formIsValid.isTrue ? false : true,
+                  isLoading: signupController.isLoading.value,
                   onPressed: signupController.signup,
                 );
               },
@@ -371,7 +394,7 @@ class SignupCupertinoScaffold extends StatelessWidget {
                       text: "Login",
                       mouseCursor: SystemMouseCursors.click,
                       recognizer: TapGestureRecognizer()
-                        ..onTap = signupController.navigateToLogin,
+                        ..onTap =  signupController.navigateToLogin,
                       style: defaultTextStyle(
                         color: kAccentColor,
                         fontSize: 16.0,

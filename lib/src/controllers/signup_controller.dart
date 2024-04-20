@@ -38,6 +38,7 @@ class SignupController extends GetxController {
 
   var responseStatus = 0.obs;
   var responseMessage = "".obs;
+  var ngnDialCode = "+234".obs;
 
   //=========== onChanged String Functions ===========\\
   firstNameOnChanged(value) {
@@ -47,56 +48,84 @@ class SignupController extends GetxController {
     } else {
       isFirstNameValid.value = true;
     }
+    update();
   }
 
   lastNameOnChanged(value) {
     var userNameRegExp = RegExp(userNamePattern);
-    if (!userNameRegExp.hasMatch(lastNameEC.text)) {
-      isLastNameValid.value = false;
+    if (isFirstNameValid.isTrue) {
+      if (!userNameRegExp.hasMatch(lastNameEC.text)) {
+        isLastNameValid.value = false;
+      } else {
+        isLastNameValid.value = true;
+      }
     } else {
-      isLastNameValid.value = true;
+      isLastNameValid.value = false;
     }
+    update();
   }
 
   emailOnChanged(value) {
     var emailRegExp = RegExp(emailPattern);
-    if (!emailRegExp.hasMatch(emailEC.text)) {
-      isEmailValid.value = false;
+    if (isLastNameValid.isTrue) {
+      if (!emailRegExp.hasMatch(emailEC.text)) {
+        isEmailValid.value = false;
+      } else {
+        isEmailValid.value = true;
+      }
     } else {
-      isEmailValid.value = true;
+      isEmailValid.value = false;
     }
+    update();
   }
 
   phoneNumberOnChanged(value) {
-    var phoneNumberRegExp = RegExp(phoneNumberPattern);
-    if (!phoneNumberRegExp.hasMatch(emailEC.text)) {
-      isPhoneNumberValid.value = false;
+    var phoneNumberRegExp = RegExp(mobilePattern);
+    if (isEmailValid.isTrue) {
+      if (!phoneNumberRegExp.hasMatch(phoneNumberEC.text)) {
+        isPhoneNumberValid.value = false;
+      } else {
+        isPhoneNumberValid.value = true;
+      }
     } else {
-      isPhoneNumberValid.value = true;
+      isPhoneNumberValid.value = false;
     }
+    update();
   }
 
   passwordOnChanged(value) {
     var passwordRegExp = RegExp(passwordPattern);
-    if (!passwordRegExp.hasMatch(passwordEC.text)) {
-      isPasswordValid.value = false;
+    if (isPhoneNumberValid.isTrue) {
+      if (!passwordRegExp.hasMatch(passwordEC.text)) {
+        isPasswordValid.value = false;
+        setFormIsInvalid();
+      } else {
+        isPasswordValid.value = true;
+        setFormIsValid();
+        update();
+      }
     } else {
-      isPasswordValid.value = true;
+      isPasswordValid.value = false;
+      setFormIsInvalid();
     }
+    update();
   }
 
   setFormIsValid() {
-    if (isFirstNameValid.isTrue &&
-        isLastNameValid.isTrue &&
-        isEmailValid.isTrue &&
-        isPhoneNumberValid.isTrue &&
-        isPasswordValid.isTrue) {
-      formIsValid.value = true;
-    }
+    formIsValid.value = true;
+  }
+
+  setFormIsInvalid() {
     formIsValid.value = false;
   }
 
   //=========== Signup Methods ===========\\
+  onSubmitted(value) {
+    if (formIsValid.isTrue) {
+      signup();
+    }
+  }
+
   Future<void> signup() async {
     isLoading.value = true;
     update();
