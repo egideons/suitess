@@ -4,6 +4,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:kribb/theme/colors.dart';
 
 const kDefaultPadding = 20.0;
 
@@ -30,7 +31,7 @@ defaultTextStyle({
   letterSpacing,
 }) =>
     TextStyle(
-      color: color,
+      color: color ?? kTextBlackColor,
       background: background,
       backgroundColor: backgroundColor,
       decoration: decoration ?? TextDecoration.none,

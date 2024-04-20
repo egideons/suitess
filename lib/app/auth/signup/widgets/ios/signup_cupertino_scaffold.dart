@@ -1,17 +1,21 @@
 import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:kribb/app/auth/signup/content/auth_cupertino_nav_bar.dart';
 import 'package:kribb/app/auth/signup/content/signup_page_header.dart';
 import 'package:kribb/src/constants/consts.dart';
 import 'package:kribb/src/controllers/signup_controller.dart';
 import 'package:kribb/src/utils/buttons/ios/cupertino_elevated_button.dart';
+import 'package:kribb/theme/colors.dart';
 
 import '../../../../../src/constants/assets.dart';
 import '../../../../../src/utils/containers/text_form_field_container.dart';
 import '../../../../../src/utils/text_form_fields/ios/cupertino_text_field.dart';
+import '../../../login/login.dart';
 
 class SignupCupertinoScaffold extends StatelessWidget {
   const SignupCupertinoScaffold({super.key});
@@ -200,6 +204,42 @@ class SignupCupertinoScaffold extends StatelessWidget {
               buttonColor: colorScheme.primary,
               textColor: colorScheme.background,
               onPressed: () {},
+            ),
+            kSizedBox,
+            Align(
+              alignment: Alignment.center,
+              child: Text.rich(
+                TextSpan(
+                  text: "Already have an account? ",
+                  style: defaultTextStyle(
+                    color: colorScheme.primary,
+                    fontSize: 16.0,
+                  ),
+                  children: [
+                    TextSpan(
+                      text: "Login",
+                      mouseCursor: SystemMouseCursors.click,
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () {
+                          // Navigate to Home() screen
+                          Get.offAll(
+                            () => const Login(),
+                            routeName: "/login",
+                            fullscreenDialog: true,
+                            curve: Curves.easeInOut,
+                            predicate: (routes) => false,
+                            popGesture: false,
+                            transition: Get.defaultTransition,
+                          );
+                        },
+                      style: defaultTextStyle(
+                        color: kAccentColor,
+                        fontSize: 16.0,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
           ],
         ),
