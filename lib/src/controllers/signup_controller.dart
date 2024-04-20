@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../app/auth/login/login.dart';
+import '../../app/auth/login/screen/login.dart';
 import '../constants/consts.dart';
 
 class SignupController extends GetxController {
@@ -40,7 +40,7 @@ class SignupController extends GetxController {
   var responseMessage = "".obs;
   var ngnDialCode = "+234".obs;
 
-  //=========== onChanged String Functions ===========\\
+  //=========== onChanged Functions ===========\\
   firstNameOnChanged(value) {
     var userNameRegExp = RegExp(userNamePattern);
     if (!userNameRegExp.hasMatch(firstNameEC.text)) {

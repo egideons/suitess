@@ -7,8 +7,6 @@ Widget signupPageHeader({colorScheme, media}) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.center,
     children: [
-      kSizedBox,
-      kSizedBox,
       Container(
         alignment: Alignment.center,
         child: RichText(

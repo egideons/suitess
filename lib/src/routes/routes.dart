@@ -3,7 +3,7 @@ import 'package:kribb/app/auth/signup/screen/signup.dart';
 import 'package:kribb/app/onboarding/screen/onboarding.dart';
 import 'package:kribb/app/splash/screens/startup_splash.dart';
 
-import '../../app/auth/login/login.dart';
+import '../../app/auth/login/screen/login.dart';
 
 class Routes {
   //Splash screens

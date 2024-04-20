@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:kribb/src/constants/consts.dart';
+import 'package:kribb/theme/colors.dart';
 
 class MyCupertinoTextField extends StatelessWidget {
   final String? placeholder;
@@ -99,6 +100,7 @@ class MyCupertinoTextField extends StatelessWidget {
         fontWeight: FontWeight.w600,
       ),
       decoration: BoxDecoration(
+        color: kTransparentColor,
         border: Border.all(color: borderColor ?? colorScheme.inversePrimary),
         borderRadius: BorderRadius.circular(16),
       ),
