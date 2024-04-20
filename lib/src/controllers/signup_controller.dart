@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../app/auth/login/screen/login.dart';
+import '../../app/auth/otp/screen/otp.dart';
 import '../constants/consts.dart';
 
 class SignupController extends GetxController {
@@ -131,8 +132,8 @@ class SignupController extends GetxController {
     update();
 
     Get.offAll(
-      () => const Login(),
-      routeName: "/login",
+      () => const OTP(),
+      routeName: "/otp",
       fullscreenDialog: true,
       curve: Curves.easeInOut,
       predicate: (routes) => false,

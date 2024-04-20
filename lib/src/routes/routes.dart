@@ -4,6 +4,7 @@ import 'package:kribb/app/onboarding/screen/onboarding.dart';
 import 'package:kribb/app/splash/screens/startup_splash.dart';
 
 import '../../app/auth/login/screen/login.dart';
+import '../../app/auth/otp/screen/otp.dart';
 
 class Routes {
   //Splash screens
@@ -25,5 +26,6 @@ class Routes {
     GetPage(name: onboarding, page: () => const Onboarding()),
     GetPage(name: signup, page: () => const Signup()),
     GetPage(name: login, page: () => const Login()),
+    GetPage(name: otp, page: () => const OTP()),
   ];
 }

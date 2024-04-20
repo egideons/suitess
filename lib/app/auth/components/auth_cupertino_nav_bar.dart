@@ -28,7 +28,8 @@ ObstructingPreferredSizeWidget authCupertinoNavBar({
       child: Center(
         child: Row(
           mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             FaIcon(
               FontAwesomeIcons.key,
