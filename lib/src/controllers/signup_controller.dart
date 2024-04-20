@@ -129,6 +129,18 @@ class SignupController extends GetxController {
   Future<void> signup() async {
     isLoading.value = true;
     update();
+
+    Get.offAll(
+      () => const Login(),
+      routeName: "/login",
+      fullscreenDialog: true,
+      curve: Curves.easeInOut,
+      predicate: (routes) => false,
+      popGesture: false,
+      transition: Get.defaultTransition,
+    );
+    isLoading.value = false;
+    update();
   }
 
   Future<void> signupWithGoogle() async {}
