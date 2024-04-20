@@ -68,6 +68,8 @@ const String referralCodePattern = r'^.{6}$';
 //validation for mobile
 const String mobilePattern = r'(^(?:[+0]9)?[0-9]{10,12}$)'; //Must be integers
 
+String phoneNumberPattern = r'^\(\d{3}\) \d{3}-\d{4}$';
+
 //validation for mobile
 const String nigerianPhoneMobilePattern =
     r'^(\+?234|0)?[789]\d{9}$'; //Must be integers

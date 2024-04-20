@@ -91,12 +91,12 @@ class MyCupertinoTextField extends StatelessWidget {
       placeholderStyle: defaultTextStyle(
         fontSize: 16.0,
         color: colorScheme.inversePrimary,
-        fontWeight: FontWeight.w800,
+        fontWeight: FontWeight.w600,
       ),
       style: defaultTextStyle(
         fontSize: 16.0,
-        color: colorScheme.inversePrimary,
-        fontWeight: FontWeight.w800,
+        color: colorScheme.primary,
+        fontWeight: FontWeight.w600,
       ),
       decoration: BoxDecoration(
         border: Border.all(color: borderColor ?? colorScheme.inversePrimary),

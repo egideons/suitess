@@ -16,7 +16,6 @@ import 'package:kribb/theme/colors.dart';
 import '../../../../../src/constants/assets.dart';
 import '../../../../../src/utils/containers/text_form_field_container.dart';
 import '../../../../../src/utils/text_form_fields/ios/cupertino_text_field.dart';
-import '../../../login/login.dart';
 
 class SignupCupertinoScaffold extends StatelessWidget {
   const SignupCupertinoScaffold({super.key});
@@ -25,23 +24,8 @@ class SignupCupertinoScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     var media = MediaQuery.of(context).size;
     var colorScheme = Theme.of(context).colorScheme;
-    final formKey = GlobalKey<FormState>();
 
-    //=========== Controllers ===========\\
     final signupController = SignupController.instance;
-
-    final firstNameEC = TextEditingController();
-    final lastNameEC = TextEditingController();
-    final emailEC = TextEditingController();
-    final phoneNumberEC = TextEditingController();
-    final passwordEC = TextEditingController();
-
-    //=========== Focus nodes ===========\\
-    final firstNameFN = FocusNode();
-    final lastNameFN = FocusNode();
-    final emailFN = FocusNode();
-    final phoneNumberFN = FocusNode();
-    final passwordFN = FocusNode();
 
     return CupertinoPageScaffold(
       navigationBar: authCupertinoNavBar(
@@ -55,235 +39,274 @@ class SignupCupertinoScaffold extends StatelessWidget {
           children: [
             signupPageHeader(colorScheme: colorScheme, media: media),
             const SizedBox(height: kDefaultPadding * 2),
-            Form(
-              key: formKey,
-              child: Column(
-                children: [
-                  textFormFieldContainer(
-                    colorScheme,
-                    media,
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        SizedBox(
-                          width: media.width - 50,
-                          child: MyCupertinoTextField(
-                            enabled: true,
-                            controller: firstNameEC,
-                            focusNode: firstNameFN,
-                            textInputAction: TextInputAction.next,
-                            keyboardType: TextInputType.name,
-                            textCapitalization: TextCapitalization.words,
-                            borderColor: kTransparentColor,
-                            placeholder: "First Name",
-                            validator: (value) {
-                              return null;
-                            },
-                            onChanged: (value) {},
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 5),
-                          child: signupController.isFirstNameValid.isTrue
-                              ? FaIcon(
-                                  FontAwesomeIcons.solidCircleCheck,
-                                  color: kSuccessColor,
-                                )
-                              : signupController.isFirstNameValid.isFalse
+            Obx(
+              () {
+                return Form(
+                  key: signupController.formKey,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  onChanged: signupController.setFormIsValid,
+                  child: Column(
+                    children: [
+                      textFormFieldContainer(
+                        colorScheme,
+                        media,
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            SizedBox(
+                              width: media.width - 50,
+                              child: MyCupertinoTextField(
+                                enabled: signupController.isLoading.value
+                                    ? false
+                                    : true,
+                                controller: signupController.firstNameEC,
+                                focusNode: signupController.firstNameFN,
+                                textInputAction: TextInputAction.next,
+                                keyboardType: TextInputType.name,
+                                textCapitalization: TextCapitalization.words,
+                                borderColor: kTransparentColor,
+                                placeholder: "First Name",
+                                onChanged: signupController.firstNameOnChanged,
+                                validator: (value) {
+                                  return null;
+                                },
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(right: 5),
+                              child: signupController.isFirstNameValid.value
                                   ? FaIcon(
+                                      FontAwesomeIcons.solidCircleCheck,
+                                      color: kSuccessColor,
+                                    )
+                                  : FaIcon(
                                       FontAwesomeIcons.solidCircleXmark,
                                       color: kErrorColor,
-                                    )
-                                  : const SizedBox(),
+                                    ),
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
-                  ),
-                  kSizedBox,
-                  textFormFieldContainer(
-                    colorScheme,
-                    media,
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        SizedBox(
-                          width: media.width - 50,
-                          child: MyCupertinoTextField(
-                            enabled: true,
-                            controller: lastNameEC,
-                            focusNode: lastNameFN,
-                            textInputAction: TextInputAction.next,
-                            textCapitalization: TextCapitalization.words,
-                            borderColor: kTransparentColor,
-                            keyboardType: TextInputType.name,
-                            placeholder: "Last Name",
-                            validator: (value) {
-                              return null;
-                            },
-                            onSubmitted: (value) {},
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 5),
-                          child: signupController.isLastNameValid.isTrue
-                              ? FaIcon(
-                                  FontAwesomeIcons.solidCircleCheck,
-                                  color: kSuccessColor,
-                                )
-                              : signupController.isLastNameValid.isFalse
+                      ),
+                      kSizedBox,
+                      textFormFieldContainer(
+                        colorScheme,
+                        media,
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            SizedBox(
+                              width: media.width - 50,
+                              child: MyCupertinoTextField(
+                                enabled: signupController.isLoading.value
+                                    ? false
+                                    : true,
+                                placeholder: "Last Name",
+                                controller: signupController.lastNameEC,
+                                focusNode: signupController.lastNameFN,
+                                textInputAction: TextInputAction.next,
+                                textCapitalization: TextCapitalization.words,
+                                borderColor: kTransparentColor,
+                                keyboardType: TextInputType.name,
+                                onChanged: signupController.lastNameOnChanged,
+                                validator: (value) {
+                                  return null;
+                                },
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(right: 5),
+                              child: signupController.isLastNameValid.value
                                   ? FaIcon(
+                                      FontAwesomeIcons.solidCircleCheck,
+                                      color: kSuccessColor,
+                                    )
+                                  : FaIcon(
                                       FontAwesomeIcons.solidCircleXmark,
                                       color: kErrorColor,
-                                    )
-                                  : const SizedBox(),
+                                    ),
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
-                  ),
-                  kSizedBox,
-                  textFormFieldContainer(
-                    colorScheme,
-                    media,
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        SizedBox(
-                          width: media.width - 50,
-                          child: MyCupertinoTextField(
-                            enabled: true,
-                            controller: emailEC,
-                            focusNode: emailFN,
-                            textInputAction: TextInputAction.next,
-                            textCapitalization: TextCapitalization.none,
-                            keyboardType: TextInputType.emailAddress,
-                            borderColor: kTransparentColor,
-                            placeholder: "Email",
-                            validator: (value) {
-                              return null;
-                            },
-                            onSubmitted: (value) {},
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 5),
-                          child: signupController.isEmailValid.isTrue
-                              ? FaIcon(
-                                  FontAwesomeIcons.solidCircleCheck,
-                                  color: kSuccessColor,
-                                )
-                              : signupController.isEmailValid.isFalse
+                      ),
+                      kSizedBox,
+                      textFormFieldContainer(
+                        colorScheme,
+                        media,
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            SizedBox(
+                              width: media.width - 50,
+                              child: MyCupertinoTextField(
+                                enabled: signupController.isLoading.value
+                                    ? false
+                                    : true,
+                                controller: signupController.emailEC,
+                                focusNode: signupController.emailFN,
+                                textInputAction: TextInputAction.next,
+                                textCapitalization: TextCapitalization.none,
+                                keyboardType: TextInputType.emailAddress,
+                                borderColor: kTransparentColor,
+                                placeholder: "Email",
+                                onChanged: signupController.emailOnChanged,
+                                validator: (value) {
+                                  return null;
+                                },
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(right: 5),
+                              child: signupController.isEmailValid.value
                                   ? FaIcon(
+                                      FontAwesomeIcons.solidCircleCheck,
+                                      color: kSuccessColor,
+                                    )
+                                  : FaIcon(
                                       FontAwesomeIcons.solidCircleXmark,
                                       color: kErrorColor,
-                                    )
-                                  : const SizedBox(),
+                                    ),
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
-                  ),
-                  kSizedBox,
-                  textFormFieldContainer(
-                    colorScheme,
-                    media,
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        SizedBox(
-                          width: media.width - 50,
-                          child: MyCupertinoTextField(
-                            enabled: true,
-                            controller: phoneNumberEC,
-                            focusNode: phoneNumberFN,
-                            placeholder: "Phone number",
-                            textInputAction: TextInputAction.next,
-                            textCapitalization: TextCapitalization.none,
-                            keyboardType: TextInputType.phone,
-                            inputFormatters: [
-                              FilteringTextInputFormatter.digitsOnly
-                            ],
-                            borderColor: kTransparentColor,
-                            validator: (value) {
-                              return null;
-                            },
-                            onSubmitted: (value) {},
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 5),
-                          child: signupController.isPhoneNumberValid.isTrue
-                              ? FaIcon(
-                                  FontAwesomeIcons.solidCircleCheck,
-                                  color: kSuccessColor,
-                                )
-                              : signupController.isPhoneNumberValid.isFalse
+                      ),
+                      kSizedBox,
+                      textFormFieldContainer(
+                        colorScheme,
+                        media,
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            SizedBox(
+                              width: media.width - 50,
+                              child: MyCupertinoTextField(
+                                enabled: signupController.isLoading.value
+                                    ? false
+                                    : true,
+                                controller: signupController.phoneNumberEC,
+                                focusNode: signupController.phoneNumberFN,
+                                placeholder: "Phone number",
+                                textInputAction: TextInputAction.next,
+                                textCapitalization: TextCapitalization.none,
+                                keyboardType: TextInputType.phone,
+                                inputFormatters: [
+                                  FilteringTextInputFormatter.digitsOnly
+                                ],
+                                borderColor: kTransparentColor,
+                                onChanged:
+                                    signupController.phoneNumberOnChanged,
+                                validator: (value) {
+                                  return null;
+                                },
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(right: 5),
+                              child: signupController.isPhoneNumberValid.value
                                   ? FaIcon(
+                                      FontAwesomeIcons.solidCircleCheck,
+                                      color: kSuccessColor,
+                                    )
+                                  : FaIcon(
                                       FontAwesomeIcons.solidCircleXmark,
                                       color: kErrorColor,
-                                    )
-                                  : const SizedBox(),
+                                    ),
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
+                      ),
+                      kSizedBox,
+                      textFormFieldContainer(
+                        colorScheme,
+                        media,
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            SizedBox(
+                              width: media.width - 100,
+                              child: MyCupertinoTextField(
+                                enabled: signupController.isLoading.value
+                                    ? false
+                                    : true,
+                                controller: signupController.passwordEC,
+                                focusNode: signupController.passwordFN,
+                                textInputAction: TextInputAction.done,
+                                textCapitalization: TextCapitalization.none,
+                                keyboardType: TextInputType.visiblePassword,
+                                borderColor: kTransparentColor,
+                                obscureText:
+                                    signupController.passwordIsHidden.value,
+                                placeholder: "Password",
+                                onChanged: signupController.passwordOnChanged,
+                                onSubmitted: (value) {
+                                  signupController.signup;
+                                },
+                                validator: (value) {
+                                  return null;
+                                },
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(right: 5),
+                              child: Row(
+                                children: [
+                                  IconButton(
+                                    onPressed: () {
+                                      signupController.passwordIsHidden.value =
+                                          !signupController
+                                              .passwordIsHidden.value;
+                                    },
+                                    mouseCursor: SystemMouseCursors.click,
+                                    tooltip:
+                                        !signupController.passwordIsHidden.value
+                                            ? "Show password"
+                                            : "Hide password",
+                                    icon: FaIcon(
+                                      color: kAccentColor,
+                                      size: 18,
+                                      signupController.passwordIsHidden.value
+                                          ? FontAwesomeIcons.solidEye
+                                          : FontAwesomeIcons.solidEyeSlash,
+                                    ),
+                                  ),
+                                  signupController.isPasswordValid.value
+                                      ? FaIcon(
+                                          FontAwesomeIcons.solidCircleCheck,
+                                          color: kSuccessColor,
+                                        )
+                                      : FaIcon(
+                                          FontAwesomeIcons.solidCircleXmark,
+                                          color: kErrorColor,
+                                        ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
-                  kSizedBox,
-                  textFormFieldContainer(
-                    colorScheme,
-                    media,
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        SizedBox(
-                          width: media.width - 50,
-                          child: MyCupertinoTextField(
-                            enabled: true,
-                            controller: passwordEC,
-                            focusNode: passwordFN,
-                            textInputAction: TextInputAction.done,
-                            textCapitalization: TextCapitalization.none,
-                            keyboardType: TextInputType.visiblePassword,
-                            borderColor: kTransparentColor,
-                            placeholder: "Password",
-                            validator: (value) {
-                              return null;
-                            },
-                            onSubmitted: (value) {},
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 5),
-                          child: signupController.isPasswordValid.isTrue
-                              ? FaIcon(
-                                  FontAwesomeIcons.solidCircleCheck,
-                                  color: kSuccessColor,
-                                )
-                              : signupController.isPasswordValid.isFalse
-                                  ? FaIcon(
-                                      FontAwesomeIcons.solidCircleXmark,
-                                      color: kErrorColor,
-                                    )
-                                  : const SizedBox(),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
+                );
+              },
             ),
             const SizedBox(height: kDefaultPadding * 2),
-            CupertinoElevatedButton(
-              disable: signupController.isPasswordValid.value ? false : true,
-              title: "Continue",
-              onPressed: () {},
+            Obx(
+              () {
+                return CupertinoElevatedButton(
+                  disable: signupController.formIsValid.isTrue ? false : true,
+                  title: "Continue",
+                  onPressed: signupController.signup,
+                );
+              },
             ),
             kSizedBox,
             Container(
@@ -331,7 +354,7 @@ class SignupCupertinoScaffold extends StatelessWidget {
               ),
               buttonColor: colorScheme.primary,
               textColor: colorScheme.background,
-              onPressed: () {},
+              onPressed: signupController.signupWithGoogle,
             ),
             kSizedBox,
             Align(
@@ -348,18 +371,7 @@ class SignupCupertinoScaffold extends StatelessWidget {
                       text: "Login",
                       mouseCursor: SystemMouseCursors.click,
                       recognizer: TapGestureRecognizer()
-                        ..onTap = () {
-                          // Navigate to Home() screen
-                          Get.offAll(
-                            () => const Login(),
-                            routeName: "/login",
-                            fullscreenDialog: true,
-                            curve: Curves.easeInOut,
-                            predicate: (routes) => false,
-                            popGesture: false,
-                            transition: Get.defaultTransition,
-                          );
-                        },
+                        ..onTap = signupController.navigateToLogin,
                       style: defaultTextStyle(
                         color: kAccentColor,
                         fontSize: 16.0,
