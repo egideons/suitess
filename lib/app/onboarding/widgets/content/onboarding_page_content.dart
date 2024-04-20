@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:kribb/app/auth/signup/screen/signup.dart';
+import 'package:kribb/main.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../../../src/constants/consts.dart';
@@ -320,6 +321,9 @@ Widget onboardingPageContent({controller, colorScheme, media}) {
                               child: CupertinoElevatedButton(
                                 title: "Get Started",
                                 onPressed: () async {
+                                  //Save state that the user has been onboarded
+                                  prefs.setBool("isOnboarded", true);
+
                                   await Get.offAll(
                                     () => const Signup(),
                                     routeName: "/signup",
