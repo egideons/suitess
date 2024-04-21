@@ -24,6 +24,8 @@ class MyCupertinoTextField extends StatelessWidget {
   final MaxLengthEnforcement? maxLengthEnforcement;
   final String? obscuringCharacter;
 
+  final TextAlign? textAlign;
+
   final Color? borderColor;
 
   const MyCupertinoTextField({
@@ -52,6 +54,7 @@ class MyCupertinoTextField extends StatelessWidget {
     this.clearButtonMode,
     this.onEditingComplete,
     this.borderColor,
+    this.textAlign,
   });
 
   @override
@@ -76,13 +79,16 @@ class MyCupertinoTextField extends StatelessWidget {
       inputFormatters: inputFormatters,
       onChanged: onChanged,
       textInputAction: textInputAction,
-      textAlign: TextAlign.start,
+      textAlign: textAlign ?? TextAlign.start,
       cursorColor: colorScheme.inversePrimary,
       autocorrect: true,
       enableSuggestions: true,
       minLines: 1,
       maxLength: 30,
       placeholder: placeholder,
+      cursorOpacityAnimates: true,
+      enableIMEPersonalizedLearning: true,
+      showCursor: true,
       scrollPhysics: const BouncingScrollPhysics(),
       keyboardType: keyboardType,
       textCapitalization: textCapitalization,

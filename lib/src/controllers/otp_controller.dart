@@ -39,7 +39,7 @@ class OTPController extends GetxController {
   //=========== Booleans ===========\\
   var secondsRemaining = 30.obs;
   var isLoading = false.obs;
-  var isEnabled = false.obs;
+  var formIsValid = false.obs;
   var timerComplete = false.obs;
 
   //====================== Functions =========================\\
@@ -72,4 +72,7 @@ class OTPController extends GetxController {
     timerComplete.value = false;
     startTimer();
   }
+
+  //================= Send OTP ======================\\
+  Future<void> sendOTP() async {}
 }

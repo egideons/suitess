@@ -16,7 +16,7 @@ import '../../../../../src/utils/text_form_fields/ios/cupertino_text_field.dart'
 import '../../../components/auth_cupertino_nav_bar.dart';
 import '../../content/login_page_header.dart';
 
-class LoginCupertinoScaffold extends StatelessWidget {
+class LoginCupertinoScaffold extends GetView<LoginController> {
   const LoginCupertinoScaffold({super.key});
 
   @override

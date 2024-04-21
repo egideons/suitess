@@ -17,7 +17,7 @@ import '../../../../../src/constants/assets.dart';
 import '../../../../../src/utils/containers/text_form_field_container.dart';
 import '../../../../../src/utils/text_form_fields/ios/cupertino_text_field.dart';
 
-class SignupCupertinoScaffold extends StatelessWidget {
+class SignupCupertinoScaffold extends GetView<SignupController> {
   const SignupCupertinoScaffold({super.key});
 
   @override
