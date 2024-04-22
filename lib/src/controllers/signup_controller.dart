@@ -38,6 +38,7 @@ class SignupController extends GetxController {
   var passwordIsHidden = true.obs;
   var formIsValid = false.obs;
 
+  //=========== Variables ===========\\
   var responseStatus = 0.obs;
   var responseMessage = "".obs;
   var ngnDialCode = "+234".obs;

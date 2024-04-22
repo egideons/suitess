@@ -3,6 +3,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kribb/app/kyc/kyc_choose_location/screen/kyc_choose_location.dart';
 
 import 'api_processor_controller.dart';
 
@@ -154,6 +155,15 @@ class EmailOTPController extends GetxController {
 
     await Future.delayed(const Duration(seconds: 3));
     ApiProcessorController.successSnack("Email verification successful");
+    Get.offAll(
+      () => const KycChooseLocation(),
+      routeName: "/kyc-choose-location",
+      fullscreenDialog: true,
+      curve: Curves.easeInOut,
+      predicate: (routes) => false,
+      popGesture: false,
+      transition: Get.defaultTransition,
+    );
 
     isLoading.value = false;
     update();
