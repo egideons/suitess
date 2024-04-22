@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kribb/src/controllers/api_processor_controller.dart';
 
+import '../../app/auth/email_otp/screen/email_otp.dart';
 import '../../app/auth/login/screen/login.dart';
-import '../../app/auth/otp/screen/otp.dart';
 import '../constants/consts.dart';
 
 class SignupController extends GetxController {
@@ -136,9 +137,11 @@ class SignupController extends GetxController {
 
       await Future.delayed(const Duration(seconds: 3));
 
+      ApiProcessorController.successSnack("Signup successful");
+
       Get.offAll(
-        () => const OTP(),
-        routeName: "/otp",
+        () => const EmailOTP(),
+        routeName: "/email-otp",
         fullscreenDialog: true,
         curve: Curves.easeInOut,
         predicate: (routes) => false,

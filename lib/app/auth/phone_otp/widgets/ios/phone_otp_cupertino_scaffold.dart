@@ -4,16 +4,16 @@ import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:kribb/app/auth/phone_otp/content/phone_otp_page_header.dart';
+import 'package:kribb/src/controllers/phone_otp_controller.dart';
 
 import '../../../../../src/constants/consts.dart';
-import '../../../../../src/controllers/otp_controller.dart';
 import '../../../../../src/utils/buttons/ios/cupertino_elevated_button.dart';
 import '../../../../../src/utils/containers/text_form_field_container.dart';
 import '../../../../../src/utils/text_form_fields/ios/cupertino_text_field.dart';
 import '../../../../../theme/colors.dart';
 import '../../../components/auth_cupertino_nav_bar.dart';
 
-class PhoneOTPCupertinoScaffold extends GetView<OTPController> {
+class PhoneOTPCupertinoScaffold extends GetView<PhoneOTPController> {
   const PhoneOTPCupertinoScaffold({super.key});
 
   @override
@@ -21,7 +21,7 @@ class PhoneOTPCupertinoScaffold extends GetView<OTPController> {
     var media = MediaQuery.of(context).size;
     var colorScheme = Theme.of(context).colorScheme;
 
-    var otpController = OTPController.instance;
+    var phoneOTPController = PhoneOTPController.instance;
 
     return CupertinoPageScaffold(
       navigationBar: authCupertinoNavBar(
@@ -40,7 +40,7 @@ class PhoneOTPCupertinoScaffold extends GetView<OTPController> {
           ),
           const SizedBox(height: kDefaultPadding * 2),
           Form(
-            key: otpController.formKey,
+            key: phoneOTPController.formKey,
             autovalidateMode: AutovalidateMode.onUserInteraction,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -52,15 +52,15 @@ class PhoneOTPCupertinoScaffold extends GetView<OTPController> {
                   containerWidth: media.width * 0.18,
                   child: Center(
                     child: MyCupertinoTextField(
-                      controller: otpController.pin1EC,
-                      focusNode: otpController.pin1FN,
+                      controller: phoneOTPController.pin1EC,
+                      focusNode: phoneOTPController.pin1FN,
                       textInputAction: TextInputAction.next,
                       textCapitalization: TextCapitalization.none,
                       keyboardType: TextInputType.number,
                       borderColor: kTransparentColor,
                       placeholder: "0",
                       onChanged: (value) {
-                        otpController.pin1Onchanged(value, context);
+                        phoneOTPController.pin1Onchanged(value, context);
                       },
                       inputFormatters: [
                         LengthLimitingTextInputFormatter(1),
@@ -78,8 +78,8 @@ class PhoneOTPCupertinoScaffold extends GetView<OTPController> {
                   containerWidth: media.width * 0.18,
                   child: Center(
                     child: MyCupertinoTextField(
-                      controller: otpController.pin2EC,
-                      focusNode: otpController.pin2FN,
+                      controller: phoneOTPController.pin2EC,
+                      focusNode: phoneOTPController.pin2FN,
                       textInputAction: TextInputAction.next,
                       textCapitalization: TextCapitalization.none,
                       keyboardType: TextInputType.number,
@@ -90,7 +90,7 @@ class PhoneOTPCupertinoScaffold extends GetView<OTPController> {
                         FilteringTextInputFormatter.digitsOnly,
                       ],
                       onChanged: (value) {
-                        otpController.pin2Onchanged(value, context);
+                        phoneOTPController.pin2Onchanged(value, context);
                       },
                       validator: (value) {
                         return null;
@@ -104,8 +104,8 @@ class PhoneOTPCupertinoScaffold extends GetView<OTPController> {
                   containerWidth: media.width * 0.18,
                   child: Center(
                     child: MyCupertinoTextField(
-                      controller: otpController.pin3EC,
-                      focusNode: otpController.pin3FN,
+                      controller: phoneOTPController.pin3EC,
+                      focusNode: phoneOTPController.pin3FN,
                       textInputAction: TextInputAction.next,
                       textCapitalization: TextCapitalization.none,
                       keyboardType: TextInputType.number,
@@ -116,7 +116,7 @@ class PhoneOTPCupertinoScaffold extends GetView<OTPController> {
                         FilteringTextInputFormatter.digitsOnly,
                       ],
                       onChanged: (value) {
-                        otpController.pin3Onchanged(value, context);
+                        phoneOTPController.pin3Onchanged(value, context);
                       },
                       validator: (value) {
                         return null;
@@ -130,20 +130,20 @@ class PhoneOTPCupertinoScaffold extends GetView<OTPController> {
                   containerWidth: media.width * 0.18,
                   child: Center(
                     child: MyCupertinoTextField(
-                      controller: otpController.pin4EC,
-                      focusNode: otpController.pin4FN,
+                      controller: phoneOTPController.pin4EC,
+                      focusNode: phoneOTPController.pin4FN,
                       textInputAction: TextInputAction.done,
                       textCapitalization: TextCapitalization.none,
                       keyboardType: TextInputType.number,
                       borderColor: kTransparentColor,
                       placeholder: "0",
-                      onSubmitted: otpController.onSubmitted,
+                      onSubmitted: phoneOTPController.onSubmitted,
                       inputFormatters: [
                         LengthLimitingTextInputFormatter(1),
                         FilteringTextInputFormatter.digitsOnly,
                       ],
                       onChanged: (value) {
-                        otpController.pin4Onchanged(value, context);
+                        phoneOTPController.pin4Onchanged(value, context);
                       },
                       validator: (value) {
                         return null;
@@ -156,13 +156,13 @@ class PhoneOTPCupertinoScaffold extends GetView<OTPController> {
           ),
           kSizedBox,
           const SizedBox(height: kDefaultPadding * 2),
-          GetBuilder<OTPController>(
+          GetBuilder<PhoneOTPController>(
             builder: (controller) {
               return CupertinoElevatedButton(
                 title: "Continue",
-                isLoading: otpController.isLoading.value ? true : false,
-                disable: otpController.formIsValid.value ? false : true,
-                onPressed: otpController.submitOTP,
+                isLoading: phoneOTPController.isLoading.value ? true : false,
+                disable: phoneOTPController.formIsValid.value ? false : true,
+                onPressed: phoneOTPController.submitOTP,
               );
             },
           ),
@@ -189,15 +189,15 @@ class PhoneOTPCupertinoScaffold extends GetView<OTPController> {
                     curve: Curves.easeIn,
                     style: defaultTextStyle(
                       fontSize: 15.0,
-                      color: otpController.timerComplete.isTrue
+                      color: phoneOTPController.timerComplete.isTrue
                           ? kSuccessColor
                           : kErrorColor,
                       fontWeight: FontWeight.w600,
                     ),
                     textAlign: TextAlign.center,
                     child: Text(
-                      otpController
-                          .formatTime(otpController.secondsRemaining.value),
+                      phoneOTPController.formatTime(
+                          phoneOTPController.secondsRemaining.value),
                     ),
                   );
                 },
@@ -208,8 +208,8 @@ class PhoneOTPCupertinoScaffold extends GetView<OTPController> {
           Obx(
             () {
               return CupertinoButton(
-                onPressed: otpController.timerComplete.isTrue
-                    ? otpController.requestOTP
+                onPressed: phoneOTPController.timerComplete.isTrue
+                    ? phoneOTPController.requestOTP
                     : null,
                 disabledColor: colorScheme.inversePrimary,
                 child: Center(
@@ -232,7 +232,7 @@ class PhoneOTPCupertinoScaffold extends GetView<OTPController> {
                         children: [
                           FaIcon(
                             FontAwesomeIcons.solidEnvelope,
-                            color: otpController.timerComplete.isTrue
+                            color: phoneOTPController.timerComplete.isTrue
                                 ? kSuccessColor
                                 : colorScheme.inversePrimary,
                             size: 12,
@@ -241,7 +241,7 @@ class PhoneOTPCupertinoScaffold extends GetView<OTPController> {
                           Text(
                             "Resend code",
                             style: defaultTextStyle(
-                              color: otpController.timerComplete.isTrue
+                              color: phoneOTPController.timerComplete.isTrue
                                   ? kSuccessColor
                                   : colorScheme.inversePrimary,
                             ),

@@ -4,9 +4,9 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class OTPController extends GetxController {
-  static OTPController get instance {
-    return Get.find<OTPController>();
+class EmailOTPController extends GetxController {
+  static EmailOTPController get instance {
+    return Get.find<EmailOTPController>();
   }
 
   @override

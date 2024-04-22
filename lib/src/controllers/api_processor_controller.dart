@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/route_manager.dart';
+import 'package:kribb/src/constants/consts.dart';
 
 import '../../theme/colors.dart';
 
@@ -29,9 +30,9 @@ class ApiProcessorController extends GetxController {
           child: Text(
             "SUCCESS",
             overflow: TextOverflow.ellipsis,
-            style: TextStyle(
+            style: defaultTextStyle(
               color: kLightBackgroundColor,
-              fontSize: 18,
+              fontSize: 18.0,
               fontWeight: FontWeight.w900,
               letterSpacing: -0.40,
             ),
@@ -43,9 +44,9 @@ class ApiProcessorController extends GetxController {
             msg,
             overflow: TextOverflow.ellipsis,
             maxLines: 4,
-            style: TextStyle(
+            style: defaultTextStyle(
               color: kLightBackgroundColor,
-              fontSize: 14,
+              fontSize: 14.0,
               fontWeight: FontWeight.w600,
               letterSpacing: -0.40,
             ),
@@ -66,7 +67,7 @@ class ApiProcessorController extends GetxController {
           },
           color: kLightBackgroundColor,
           icon: const FaIcon(
-            FontAwesomeIcons.x,
+            FontAwesomeIcons.solidCircleXmark,
             size: 14,
           ),
         ),
@@ -82,9 +83,9 @@ class ApiProcessorController extends GetxController {
           child: Text(
             "ERROR",
             overflow: TextOverflow.ellipsis,
-            style: TextStyle(
+            style: defaultTextStyle(
               color: kLightBackgroundColor,
-              fontSize: 18,
+              fontSize: 18.0,
               fontWeight: FontWeight.w900,
               letterSpacing: -0.40,
             ),
@@ -96,9 +97,9 @@ class ApiProcessorController extends GetxController {
             msg,
             overflow: TextOverflow.ellipsis,
             maxLines: 4,
-            style: TextStyle(
+            style: defaultTextStyle(
               color: kLightBackgroundColor,
-              fontSize: 14,
+              fontSize: 14.0,
               fontWeight: FontWeight.w600,
               letterSpacing: -0.40,
             ),
@@ -119,7 +120,7 @@ class ApiProcessorController extends GetxController {
             Get.back();
           },
           icon: FaIcon(
-            FontAwesomeIcons.x,
+            FontAwesomeIcons.solidCircleXmark,
             size: 14,
             color: kLightBackgroundColor,
           ),

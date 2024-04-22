@@ -6,14 +6,14 @@ import 'package:get/get.dart';
 import 'package:kribb/app/auth/email_otp/content/email_otp_page_header.dart';
 
 import '../../../../../src/constants/consts.dart';
-import '../../../../../src/controllers/otp_controller.dart';
+import '../../../../../src/controllers/email_otp_controller.dart';
 import '../../../../../src/utils/buttons/ios/cupertino_elevated_button.dart';
 import '../../../../../src/utils/containers/text_form_field_container.dart';
 import '../../../../../src/utils/text_form_fields/ios/cupertino_text_field.dart';
 import '../../../../../theme/colors.dart';
 import '../../../components/auth_cupertino_nav_bar.dart';
 
-class EmailOTPCupertinoScaffold extends GetView<OTPController> {
+class EmailOTPCupertinoScaffold extends GetView<EmailOTPController> {
   const EmailOTPCupertinoScaffold({super.key});
 
   @override
@@ -21,7 +21,7 @@ class EmailOTPCupertinoScaffold extends GetView<OTPController> {
     var media = MediaQuery.of(context).size;
     var colorScheme = Theme.of(context).colorScheme;
 
-    var otpController = OTPController.instance;
+    var otpController = EmailOTPController.instance;
 
     return CupertinoPageScaffold(
       navigationBar: authCupertinoNavBar(
@@ -156,7 +156,7 @@ class EmailOTPCupertinoScaffold extends GetView<OTPController> {
           ),
           kSizedBox,
           const SizedBox(height: kDefaultPadding * 2),
-          GetBuilder<OTPController>(
+          GetBuilder<EmailOTPController>(
             builder: (controller) {
               return CupertinoElevatedButton(
                 title: "Continue",
