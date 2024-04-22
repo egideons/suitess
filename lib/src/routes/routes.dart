@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:kribb/app/auth/signup/screen/signup.dart';
+import 'package:kribb/app/kyc/kyc_add_location/screen/kyc_add_location.dart';
 import 'package:kribb/app/onboarding/screen/onboarding.dart';
 import 'package:kribb/app/splash/screens/startup_splash.dart';
 
@@ -23,13 +24,20 @@ class Routes {
   static const resetPassword = "/reset-password";
   static const changePassword = "/change-password";
 
+  //KYC Screens
+  static const kycAddLocation = "/kyc-add-location";
+
   //Get Pages
   static final getPages = [
+    //Auth Pages
     GetPage(name: startupSplashscreen, page: () => const StartupSplashscreen()),
     GetPage(name: onboarding, page: () => const Onboarding()),
     GetPage(name: signup, page: () => const Signup()),
     GetPage(name: login, page: () => const Login()),
     GetPage(name: emailOTP, page: () => const EmailOTP()),
     GetPage(name: phoneOTP, page: () => const PhoneOTP()),
+
+    //KYC Pages
+    GetPage(name: kycAddLocation, page: () => const KycAddLocation()),
   ];
 }

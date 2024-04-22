@@ -14,7 +14,7 @@ import 'package:kribb/src/utils/buttons/ios/cupertino_elevated_button.dart';
 import 'package:kribb/theme/colors.dart';
 
 import '../../../../../src/constants/assets.dart';
-import '../../../../../src/utils/containers/text_form_field_container.dart';
+import '../../../../../src/utils/containers/form_field_container.dart';
 import '../../../../../src/utils/text_form_fields/ios/cupertino_text_field.dart';
 
 class SignupCupertinoScaffold extends GetView<SignupController> {
@@ -46,7 +46,7 @@ class SignupCupertinoScaffold extends GetView<SignupController> {
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   child: Column(
                     children: [
-                      textFormFieldContainer(
+                      formFieldContainer(
                         colorScheme,
                         media,
                         child: Row(
@@ -86,7 +86,7 @@ class SignupCupertinoScaffold extends GetView<SignupController> {
                         ),
                       ),
                       kSizedBox,
-                      textFormFieldContainer(
+                      formFieldContainer(
                         colorScheme,
                         media,
                         child: Row(
@@ -126,7 +126,7 @@ class SignupCupertinoScaffold extends GetView<SignupController> {
                         ),
                       ),
                       kSizedBox,
-                      textFormFieldContainer(
+                      formFieldContainer(
                         colorScheme,
                         media,
                         child: Row(
@@ -166,7 +166,7 @@ class SignupCupertinoScaffold extends GetView<SignupController> {
                         ),
                       ),
                       kSizedBox,
-                      textFormFieldContainer(
+                      formFieldContainer(
                         colorScheme,
                         media,
                         child: Row(
@@ -217,7 +217,7 @@ class SignupCupertinoScaffold extends GetView<SignupController> {
                         ),
                       ),
                       kSizedBox,
-                      textFormFieldContainer(
+                      formFieldContainer(
                         colorScheme,
                         media,
                         child: Row(

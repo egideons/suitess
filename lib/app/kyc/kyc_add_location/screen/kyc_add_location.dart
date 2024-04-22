@@ -4,20 +4,20 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kribb/src/controllers/kyc_choose_location_controller.dart';
 
-import '../widgets/ios/kyc_choose_location_cupertino_scaffold.dart';
+import '../widgets/ios/kyc_add_location_cupertino_scaffold.dart';
 
-class KycChooseLocation extends StatelessWidget {
-  const KycChooseLocation({super.key});
+class KycAddLocation extends StatelessWidget {
+  const KycAddLocation({super.key});
 
   @override
   Widget build(BuildContext context) {
     //Initialize signup controller
-    Get.put(KycChooseLocationController());
+    Get.put(KycAddLocationController());
 
     if (Platform.isIOS) {
       return GestureDetector(
         onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
-        child: const KycChooseLocationCupertinoScaffold(),
+        child: const KycAddLocationCupertinoScaffold(),
       );
     }
     return GestureDetector(

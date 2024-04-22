@@ -8,7 +8,7 @@ import 'package:kribb/src/controllers/phone_otp_controller.dart';
 
 import '../../../../../src/constants/consts.dart';
 import '../../../../../src/utils/buttons/ios/cupertino_elevated_button.dart';
-import '../../../../../src/utils/containers/text_form_field_container.dart';
+import '../../../../../src/utils/containers/form_field_container.dart';
 import '../../../../../src/utils/text_form_fields/ios/cupertino_text_field.dart';
 import '../../../../../theme/colors.dart';
 import '../../../components/auth_cupertino_nav_bar.dart';
@@ -46,7 +46,7 @@ class PhoneOTPCupertinoScaffold extends GetView<PhoneOTPController> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                textFormFieldContainer(
+                formFieldContainer(
                   colorScheme,
                   media,
                   containerWidth: media.width * 0.18,
@@ -72,7 +72,7 @@ class PhoneOTPCupertinoScaffold extends GetView<PhoneOTPController> {
                     ),
                   ),
                 ),
-                textFormFieldContainer(
+                formFieldContainer(
                   colorScheme,
                   media,
                   containerWidth: media.width * 0.18,
@@ -98,7 +98,7 @@ class PhoneOTPCupertinoScaffold extends GetView<PhoneOTPController> {
                     ),
                   ),
                 ),
-                textFormFieldContainer(
+                formFieldContainer(
                   colorScheme,
                   media,
                   containerWidth: media.width * 0.18,
@@ -124,7 +124,7 @@ class PhoneOTPCupertinoScaffold extends GetView<PhoneOTPController> {
                     ),
                   ),
                 ),
-                textFormFieldContainer(
+                formFieldContainer(
                   colorScheme,
                   media,
                   containerWidth: media.width * 0.18,

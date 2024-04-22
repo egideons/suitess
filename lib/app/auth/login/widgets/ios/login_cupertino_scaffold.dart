@@ -11,7 +11,7 @@ import 'package:kribb/theme/colors.dart';
 
 import '../../../../../src/constants/assets.dart';
 import '../../../../../src/controllers/login_controller.dart';
-import '../../../../../src/utils/containers/text_form_field_container.dart';
+import '../../../../../src/utils/containers/form_field_container.dart';
 import '../../../../../src/utils/text_form_fields/ios/cupertino_text_field.dart';
 import '../../../components/auth_cupertino_nav_bar.dart';
 import '../../content/login_page_header.dart';
@@ -45,7 +45,7 @@ class LoginCupertinoScaffold extends GetView<LoginController> {
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   child: Column(
                     children: [
-                      textFormFieldContainer(
+                      formFieldContainer(
                         colorScheme,
                         media,
                         child: Row(
@@ -85,7 +85,7 @@ class LoginCupertinoScaffold extends GetView<LoginController> {
                         ),
                       ),
                       kSizedBox,
-                      textFormFieldContainer(
+                      formFieldContainer(
                         colorScheme,
                         media,
                         child: Row(

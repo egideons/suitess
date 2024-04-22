@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kribb/src/constants/consts.dart';
 
-Widget kycChooseLocationPageHeader({colorScheme, media}) {
+Widget kycAddLocationPageHeader({colorScheme, media}) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.center,
     children: [

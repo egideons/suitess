@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-Widget textFormFieldContainer(colorScheme, media,
+Widget formFieldContainer(colorScheme, media,
     {child, containerHeight, containerWidth}) {
   return Container(
     width: containerWidth ?? media.width,
