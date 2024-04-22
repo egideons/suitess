@@ -307,7 +307,7 @@ class SignupCupertinoScaffold extends GetView<SignupController> {
             const SizedBox(height: kDefaultPadding * 2),
             GetBuilder<SignupController>(
               init: SignupController(),
-              builder: (context) {
+              builder: (controller) {
                 return CupertinoElevatedButton(
                   title: "Continue",
                   disable: signupController.formIsValid.isTrue ? false : true,
@@ -363,7 +363,7 @@ class SignupCupertinoScaffold extends GetView<SignupController> {
               buttonColor: colorScheme.primary,
               textColor: colorScheme.background,
               onPressed: signupController.isLoading.value
-                  ? () {}
+                  ? null
                   : signupController.signupWithGoogle,
             ),
             kSizedBox,

@@ -21,7 +21,7 @@ class OTPCupertinoScaffold extends GetView<OTPController> {
     var media = MediaQuery.of(context).size;
     var colorScheme = Theme.of(context).colorScheme;
 
-    final otpController = OTPController.instance;
+    var otpController = OTPController.instance;
 
     return CupertinoPageScaffold(
       navigationBar: authCupertinoNavBar(
@@ -60,9 +60,7 @@ class OTPCupertinoScaffold extends GetView<OTPController> {
                       borderColor: kTransparentColor,
                       placeholder: "0",
                       onChanged: (value) {
-                        if (value.length == 1) {
-                          FocusScope.of(context).nextFocus();
-                        }
+                        otpController.pin1Onchanged(value, context);
                       },
                       inputFormatters: [
                         LengthLimitingTextInputFormatter(1),
@@ -92,12 +90,7 @@ class OTPCupertinoScaffold extends GetView<OTPController> {
                         FilteringTextInputFormatter.digitsOnly,
                       ],
                       onChanged: (value) {
-                        if (value.isEmpty) {
-                          FocusScope.of(context).previousFocus();
-                        }
-                        if (value.length == 1) {
-                          FocusScope.of(context).nextFocus();
-                        }
+                        otpController.pin2Onchanged(value, context);
                       },
                       validator: (value) {
                         return null;
@@ -123,12 +116,7 @@ class OTPCupertinoScaffold extends GetView<OTPController> {
                         FilteringTextInputFormatter.digitsOnly,
                       ],
                       onChanged: (value) {
-                        if (value.isEmpty) {
-                          FocusScope.of(context).previousFocus();
-                        }
-                        if (value.length == 1) {
-                          FocusScope.of(context).nextFocus();
-                        }
+                        otpController.pin3Onchanged(value, context);
                       },
                       validator: (value) {
                         return null;
@@ -154,15 +142,10 @@ class OTPCupertinoScaffold extends GetView<OTPController> {
                         FilteringTextInputFormatter.digitsOnly,
                       ],
                       onChanged: (value) {
-                        if (value.isEmpty) {
-                          FocusScope.of(context).previousFocus();
-                        }
-                        if (value.length == 1) {
-                          otpController.formIsValid.value = true;
-                        }
+                        otpController.pin4Onchanged(value, context);
                       },
                       onSubmitted: (value) {
-                        otpController.sendOTP;
+                        otpController.onSubmitted(value);
                       },
                       validator: (value) {
                         return null;
@@ -177,64 +160,100 @@ class OTPCupertinoScaffold extends GetView<OTPController> {
           const SizedBox(height: kDefaultPadding * 2),
           GetBuilder<OTPController>(
             init: OTPController(),
-            builder: (context) {
+            builder: (controller) {
               return CupertinoElevatedButton(
                 title: "Continue",
-                disable: otpController.formIsValid.isTrue ? false : true,
                 isLoading: otpController.isLoading.value,
-                onPressed: otpController.sendOTP,
+                disable: otpController.formIsValid.isTrue ? false : true,
+                onPressed: otpController.submitOTP,
+              );
+            },
+          ),
+          const SizedBox(height: kDefaultPadding * 2),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                "Expires in 2 minutes",
+                textAlign: TextAlign.center,
+                overflow: TextOverflow.ellipsis,
+                maxLines: 4,
+                style: defaultTextStyle(
+                  color: colorScheme.primary,
+                  fontSize: 14.0,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              kHalfWidthSizedBox,
+              Obx(
+                () {
+                  return Text(
+                    otpController
+                        .formatTime(otpController.secondsRemaining.value),
+                    textAlign: TextAlign.center,
+                    style: defaultTextStyle(
+                      fontSize: 15.0,
+                      color: otpController.timerComplete.isTrue
+                          ? kSuccessColor
+                          : kErrorColor,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  );
+                },
+              ),
+            ],
+          ),
+          kSizedBox,
+          Obx(
+            () {
+              return CupertinoButton(
+                onPressed: otpController.timerComplete.isTrue
+                    ? otpController.requestOTP
+                    : null,
+                disabledColor: colorScheme.inversePrimary,
+                child: Center(
+                  child: Container(
+                    width: media.width - 250,
+                    padding: const EdgeInsets.all(10),
+                    decoration: ShapeDecoration(
+                      color: Get.isDarkMode
+                          ? kSuccessColor.withOpacity(0.2)
+                          : kSuccessColor.withOpacity(0.06),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(24),
+                      ),
+                    ),
+                    child: Center(
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          FaIcon(
+                            FontAwesomeIcons.solidEnvelope,
+                            color: otpController.timerComplete.isTrue
+                                ? kSuccessColor
+                                : colorScheme.inversePrimary,
+                            size: 12,
+                          ),
+                          kHalfWidthSizedBox,
+                          Text(
+                            "Resend code",
+                            style: defaultTextStyle(
+                              color: otpController.timerComplete.isTrue
+                                  ? kSuccessColor
+                                  : colorScheme.inversePrimary,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
               );
             },
           ),
           kSizedBox,
-          Text(
-            "Expires in 2 minutes",
-            textAlign: TextAlign.center,
-            overflow: TextOverflow.ellipsis,
-            maxLines: 4,
-            style: defaultTextStyle(
-              color: colorScheme.primary,
-              fontSize: 14.0,
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-          kSizedBox,
-          CupertinoButton(
-            onPressed: () {},
-            child: Center(
-              child: Container(
-                width: media.width - 250,
-                padding: const EdgeInsets.all(10),
-                decoration: ShapeDecoration(
-                  color: Get.isDarkMode
-                      ? kSuccessColor.withOpacity(0.2)
-                      : kSuccessColor.withOpacity(0.06),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(24),
-                  ),
-                ),
-                child: Center(
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      FaIcon(
-                        FontAwesomeIcons.solidEnvelope,
-                        color: kSuccessColor,
-                        size: 12,
-                      ),
-                      kHalfWidthSizedBox,
-                      Text(
-                        "Resend code",
-                        style: defaultTextStyle(color: kSuccessColor),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ),
         ],
       ),
     );

@@ -7,7 +7,7 @@ import '../../../constants/consts.dart';
 
 class CupertinoElevatedButton extends StatelessWidget {
   final String title;
-  final Function() onPressed;
+  final Function()? onPressed;
   final bool isLoading;
   final bool disable;
   final String? fontFamily;

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -11,6 +12,7 @@ class OTPController extends GetxController {
   @override
   void onInit() {
     startTimer();
+    log("OTP Timer has started");
     super.onInit();
   }
 
@@ -44,6 +46,48 @@ class OTPController extends GetxController {
 
   //====================== Functions =========================\\
 
+  //================= Onchanged ======================\\
+  pin1Onchanged(value, context) {
+    if (value.length == 1) {
+      FocusScope.of(context).nextFocus();
+    }
+    update();
+  }
+
+  pin2Onchanged(value, context) {
+    if (value.isEmpty) {
+      FocusScope.of(context).previousFocus();
+    }
+    if (value.length == 1) {
+      FocusScope.of(context).nextFocus();
+    }
+    update();
+  }
+
+  pin3Onchanged(value, context) {
+    if (value.isEmpty) {
+      FocusScope.of(context).previousFocus();
+    }
+    if (value.length == 1) {
+      FocusScope.of(context).nextFocus();
+    }
+    update();
+  }
+
+  pin4Onchanged(value, context) {
+    if (value.isEmpty) {
+      FocusScope.of(context).previousFocus();
+      setFormIsInvalid();
+    }
+    if (value.length == 1) {
+      FocusScope.of(context).nearestScope;
+      setFormIsValid();
+      update();
+    }
+
+    update();
+  }
+
   //================= Start Timer ======================\\
   void startTimer() {
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
@@ -66,13 +110,35 @@ class OTPController extends GetxController {
   }
 
   //================= Resend OTP ======================\\
-  void resendOTP(controller) async {
-    controller.resendOTP(emailEC.text);
+  void requestOTP() async {
     secondsRemaining.value = 60;
     timerComplete.value = false;
     startTimer();
+    update();
+    log("Requesting OTP");
+  }
+
+  //================= Set form validity ======================\\
+
+  setFormIsValid() {
+    formIsValid.value = true;
+  }
+
+  setFormIsInvalid() {
+    formIsValid.value = false;
+  }
+
+  //=========== on Submitted ===========\\
+  onSubmitted(value) {
+    if (formIsValid.value == true) {
+      submitOTP();
+    }
   }
 
   //================= Send OTP ======================\\
-  Future<void> sendOTP() async {}
+  Future<void> submitOTP() async {
+    isLoading.value == true;
+    update();
+    log("Submitting OTP");
+  }
 }
