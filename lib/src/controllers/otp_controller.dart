@@ -83,22 +83,27 @@ class OTPController extends GetxController {
       FocusScope.of(context).nearestScope;
       setFormIsValid();
       update();
+      return;
     }
-
     update();
   }
 
   //================= Start Timer ======================\\
-  void startTimer() {
+  startTimer() {
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       if (secondsRemaining > 0) {
         secondsRemaining--;
       } else {
         timerComplete.value = true;
-
         _timer.cancel();
       }
     });
+  }
+
+  pauseTimer() {
+    if (timerComplete.value == false && isLoading.value == true) {
+      _timer.cancel();
+    }
   }
 
   String formatTime(int seconds) {
@@ -130,15 +135,27 @@ class OTPController extends GetxController {
 
   //=========== on Submitted ===========\\
   onSubmitted(value) {
-    if (formIsValid.value == true) {
+    if (formIsValid.isTrue) {
       submitOTP();
+      update();
     }
   }
 
   //================= Send OTP ======================\\
   Future<void> submitOTP() async {
-    isLoading.value == true;
+    isLoading.value = true;
     update();
-    log("Submitting OTP");
+
+    //Pause the timer
+    pauseTimer();
+    timerComplete.value = false;
+
+    await Future.delayed(const Duration(seconds: 3));
+
+    isLoading.value = false;
+    update();
+
+    //Continue the timer and enable resend button
+    onInit();
   }
 }

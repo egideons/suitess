@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -77,7 +79,16 @@ class LoginController extends GetxController {
   }
 
   Future<void> login() async {
-    isLoading.value = true;
+    if (formKey.currentState!.validate()) {
+      formKey.currentState!.save();
+
+      isLoading.value = true;
+      update();
+
+      log("Logging in");
+      await Future.delayed(const Duration(seconds: 3));
+    }
+    isLoading.value = false;
     update();
   }
 

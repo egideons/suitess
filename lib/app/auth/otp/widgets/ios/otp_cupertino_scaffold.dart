@@ -137,15 +137,13 @@ class OTPCupertinoScaffold extends GetView<OTPController> {
                       keyboardType: TextInputType.number,
                       borderColor: kTransparentColor,
                       placeholder: "0",
+                      onSubmitted: otpController.onSubmitted,
                       inputFormatters: [
                         LengthLimitingTextInputFormatter(1),
                         FilteringTextInputFormatter.digitsOnly,
                       ],
                       onChanged: (value) {
                         otpController.pin4Onchanged(value, context);
-                      },
-                      onSubmitted: (value) {
-                        otpController.onSubmitted(value);
                       },
                       validator: (value) {
                         return null;
@@ -159,12 +157,11 @@ class OTPCupertinoScaffold extends GetView<OTPController> {
           kSizedBox,
           const SizedBox(height: kDefaultPadding * 2),
           GetBuilder<OTPController>(
-            init: OTPController(),
             builder: (controller) {
               return CupertinoElevatedButton(
                 title: "Continue",
-                isLoading: otpController.isLoading.value,
-                disable: otpController.formIsValid.isTrue ? false : true,
+                isLoading: otpController.isLoading.value ? true : false,
+                disable: otpController.formIsValid.value ? false : true,
                 onPressed: otpController.submitOTP,
               );
             },
@@ -187,16 +184,20 @@ class OTPCupertinoScaffold extends GetView<OTPController> {
               kHalfWidthSizedBox,
               Obx(
                 () {
-                  return Text(
-                    otpController
-                        .formatTime(otpController.secondsRemaining.value),
-                    textAlign: TextAlign.center,
+                  return AnimatedDefaultTextStyle(
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeIn,
                     style: defaultTextStyle(
                       fontSize: 15.0,
                       color: otpController.timerComplete.isTrue
                           ? kSuccessColor
                           : kErrorColor,
                       fontWeight: FontWeight.w600,
+                    ),
+                    textAlign: TextAlign.center,
+                    child: Text(
+                      otpController
+                          .formatTime(otpController.secondsRemaining.value),
                     ),
                   );
                 },

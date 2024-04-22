@@ -128,18 +128,24 @@ class SignupController extends GetxController {
   }
 
   Future<void> signup() async {
-    isLoading.value = true;
-    update();
+    if (formKey.currentState!.validate()) {
+      formKey.currentState!.save();
 
-    Get.offAll(
-      () => const OTP(),
-      routeName: "/otp",
-      fullscreenDialog: true,
-      curve: Curves.easeInOut,
-      predicate: (routes) => false,
-      popGesture: false,
-      transition: Get.defaultTransition,
-    );
+      isLoading.value = true;
+      update();
+
+      await Future.delayed(const Duration(seconds: 3));
+
+      Get.offAll(
+        () => const OTP(),
+        routeName: "/otp",
+        fullscreenDialog: true,
+        curve: Curves.easeInOut,
+        predicate: (routes) => false,
+        popGesture: false,
+        transition: Get.defaultTransition,
+      );
+    }
     isLoading.value = false;
     update();
   }
