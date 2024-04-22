@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:kribb/app/auth/otp/content/otp_page_header.dart';
+import 'package:kribb/app/auth/email_otp/content/email_otp_page_header.dart';
 
 import '../../../../../src/constants/consts.dart';
 import '../../../../../src/controllers/otp_controller.dart';
@@ -13,8 +13,8 @@ import '../../../../../src/utils/text_form_fields/ios/cupertino_text_field.dart'
 import '../../../../../theme/colors.dart';
 import '../../../components/auth_cupertino_nav_bar.dart';
 
-class OTPCupertinoScaffold extends GetView<OTPController> {
-  const OTPCupertinoScaffold({super.key});
+class EmailOTPCupertinoScaffold extends GetView<OTPController> {
+  const EmailOTPCupertinoScaffold({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +32,7 @@ class OTPCupertinoScaffold extends GetView<OTPController> {
       child: ListView(
         padding: const EdgeInsets.all(10),
         children: [
-          otpPageHeader(
+          emailOTPPageHeader(
             colorScheme: colorScheme,
             media: media,
             title: "Email verification",
