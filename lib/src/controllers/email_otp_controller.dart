@@ -4,6 +4,8 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'api_processor_controller.dart';
+
 class EmailOTPController extends GetxController {
   static EmailOTPController get instance {
     return Get.find<EmailOTPController>();
@@ -120,7 +122,7 @@ class EmailOTPController extends GetxController {
     timerComplete.value = false;
     startTimer();
     update();
-    log("Requesting OTP");
+    ApiProcessorController.successSnack("An OTP has been sent to your email");
   }
 
   //================= Set form validity ======================\\
@@ -151,6 +153,7 @@ class EmailOTPController extends GetxController {
     timerComplete.value = false;
 
     await Future.delayed(const Duration(seconds: 3));
+    ApiProcessorController.successSnack("Email verification successful");
 
     isLoading.value = false;
     update();
