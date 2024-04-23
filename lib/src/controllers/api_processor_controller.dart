@@ -34,7 +34,6 @@ class ApiProcessorController extends GetxController {
               color: kLightBackgroundColor,
               fontSize: 18.0,
               fontWeight: FontWeight.w900,
-              letterSpacing: -0.40,
             ),
           ),
         ),
@@ -48,7 +47,6 @@ class ApiProcessorController extends GetxController {
               color: kLightBackgroundColor,
               fontSize: 14.0,
               fontWeight: FontWeight.w600,
-              letterSpacing: -0.40,
             ),
           ),
         ),
@@ -60,7 +58,7 @@ class ApiProcessorController extends GetxController {
         shouldIconPulse: true,
         isDismissible: true,
         backgroundColor: kSuccessColor,
-        duration: const Duration(seconds: 4),
+        duration: const Duration(seconds: 2),
         mainButton: IconButton(
           onPressed: () {
             Get.back();
@@ -114,7 +112,7 @@ class ApiProcessorController extends GetxController {
         isDismissible: true,
         progressIndicatorBackgroundColor: kLightBackgroundColor,
         backgroundColor: kErrorColor,
-        duration: const Duration(seconds: 4),
+        duration: const Duration(seconds: 2),
         mainButton: IconButton(
           onPressed: () {
             Get.back();

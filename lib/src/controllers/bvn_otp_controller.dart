@@ -4,9 +4,11 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class PhoneOTPController extends GetxController {
-  static PhoneOTPController get instance {
-    return Get.find<PhoneOTPController>();
+import 'api_processor_controller.dart';
+
+class BvnOTPController extends GetxController {
+  static BvnOTPController get instance {
+    return Get.find<BvnOTPController>();
   }
 
   @override
@@ -120,7 +122,9 @@ class PhoneOTPController extends GetxController {
     timerComplete.value = false;
     startTimer();
     update();
-    log("Requesting OTP");
+    ApiProcessorController.successSnack(
+      "An OTP has been sent to your phone number",
+    );
   }
 
   //================= Set form validity ======================\\
@@ -151,6 +155,16 @@ class PhoneOTPController extends GetxController {
     timerComplete.value = false;
 
     await Future.delayed(const Duration(seconds: 3));
+    ApiProcessorController.successSnack("BVN verification successful");
+    // Get.offAll(
+    //   () => const KycAddLocation(),
+    //   routeName: "/kyc-add-location",
+    //   fullscreenDialog: true,
+    //   curve: Curves.easeInOut,
+    //   predicate: (routes) => false,
+    //   popGesture: false,
+    //   transition: Get.defaultTransition,
+    // );
 
     isLoading.value = false;
     update();

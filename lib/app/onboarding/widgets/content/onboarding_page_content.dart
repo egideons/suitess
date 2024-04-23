@@ -18,11 +18,12 @@ Widget onboardingPageContent({controller, colorScheme, media}) {
     itemBuilder: (context, index) {
       return Stack(
         children: [
+          //Top Middle
           Positioned(
-            top: -media.height / 2.5,
-            left: media.width - 380,
+            top: -media.height / 1.8,
+            left: media.width * 0.12,
             child: Container(
-              height: media.height / 2,
+              height: media.height / 1.5,
               width: media.width - 100,
               decoration: ShapeDecoration(
                 shape: RoundedRectangleBorder(
@@ -38,9 +39,10 @@ Widget onboardingPageContent({controller, colorScheme, media}) {
               ),
             ),
           ),
+          //Top Left
           Positioned(
             top: -media.height / 3,
-            right: media.width - 30,
+            right: media.width * .92,
             child: Container(
               height: media.height / 2,
               width: media.width - 120,
@@ -58,9 +60,11 @@ Widget onboardingPageContent({controller, colorScheme, media}) {
               ),
             ),
           ),
+
+          //Middle left
           Positioned(
-            top: media.height - 750,
-            right: media.width - 30,
+            top: media.height * .2,
+            right: media.width * .92,
             child: Container(
               height: media.height / 2,
               width: media.width - 120,
@@ -77,9 +81,11 @@ Widget onboardingPageContent({controller, colorScheme, media}) {
               ),
             ),
           ),
+
+          //Top Right
           Positioned(
             top: -media.height / 3,
-            left: media.width - 30,
+            left: media.width * .92,
             child: Container(
               height: media.height / 2,
               width: media.width - 120,
@@ -97,9 +103,11 @@ Widget onboardingPageContent({controller, colorScheme, media}) {
               ),
             ),
           ),
+
+          //Middle Right
           Positioned(
-            top: media.height - 750,
-            left: media.width - 30,
+            top: media.height * .2,
+            left: media.width * .92,
             child: Container(
               height: media.height / 2,
               width: media.width - 120,
@@ -117,11 +125,13 @@ Widget onboardingPageContent({controller, colorScheme, media}) {
               ),
             ),
           ),
+
+          //Middle
           Positioned(
             top: media.height / 8,
-            left: media.width - 380,
+            left: media.width * 0.12,
             child: Container(
-              height: media.height / 2,
+              height: media.height / 1.5,
               width: media.width - 100,
               decoration: ShapeDecoration(
                 shape: RoundedRectangleBorder(

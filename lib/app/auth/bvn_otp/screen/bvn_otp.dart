@@ -2,22 +2,22 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kribb/src/controllers/phone_otp_controller.dart';
+import 'package:kribb/src/controllers/bvn_otp_controller.dart';
 
-import '../widgets/ios/phone_otp_cupertino_scaffold.dart';
+import '../widgets/ios/bvn_otp_cupertino_scaffold.dart';
 
-class PhoneOTP extends StatelessWidget {
-  const PhoneOTP({super.key});
+class BvnOTP extends StatelessWidget {
+  const BvnOTP({super.key});
 
   @override
   Widget build(BuildContext context) {
     //Initialize otp controller
-    Get.put(PhoneOTPController());
+    Get.put(BvnOTPController());
 
     if (Platform.isIOS) {
       return GestureDetector(
         onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
-        child: const PhoneOTPCupertinoScaffold(),
+        child: const BvnOTPCupertinoScaffold(),
       );
     }
     return GestureDetector(
