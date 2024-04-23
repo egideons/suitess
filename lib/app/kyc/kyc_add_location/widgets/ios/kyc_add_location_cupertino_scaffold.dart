@@ -7,6 +7,8 @@ import 'package:kribb/src/utils/containers/form_field_container.dart';
 
 import '../../../../../src/constants/consts.dart';
 import '../../content/kyc_add_location_page_header.dart';
+import 'kyc_choose_country_cupertino_modal_popup.dart';
+import 'kyc_choose_state_cupertino_modal_popup.dart';
 
 class KycAddLocationCupertinoScaffold
     extends GetView<KycAddLocationController> {
@@ -29,39 +31,13 @@ class KycAddLocationCupertinoScaffold
               key: kycAddLocationController.formKey,
               child: Column(
                 children: [
-                  CupertinoButton(
-                    onPressed: () {
-                      // showKYCChooseCountryCupertinoPopup(
-                      //   context,
-                      //   media,
-                      //   kycAddLocationController,
-                      // );
-                      showCupertinoModalPopup(
-                        context: context,
-                        builder: (context) {
-                          return SizedBox(
-                            height: media.height * 0.2,
-                            child: CupertinoPicker(
-                              itemExtent: 60,
-                              onSelectedItemChanged: (index) {
-                                // setState(() {
-                                //   _selectedIndex = index;
-                                // });
-                              },
-                              children: List.generate(
-                                kycAddLocationController.countries.length,
-                                (index) {
-                                  return Center(
-                                    child: Text(
-                                      kycAddLocationController.countries[index],
-                                      style: defaultTextStyle(),
-                                    ),
-                                  );
-                                },
-                              ),
-                            ),
-                          );
-                        },
+                  GestureDetector(
+                    onTap: () {
+                      showKYCChooseCountryCupertinoPopup(
+                        context,
+                        colorScheme,
+                        media,
+                        kycAddLocationController,
                       );
                     },
                     child: formFieldContainer(
@@ -73,12 +49,17 @@ class KycAddLocationCupertinoScaffold
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(
-                              "Choose Country",
-                              style: defaultTextStyle(
-                                fontSize: 14.0,
-                                fontWeight: FontWeight.normal,
-                              ),
+                            Obx(
+                              () {
+                                return Text(
+                                  kycAddLocationController
+                                      .selectedCountry.value,
+                                  style: defaultTextStyle(
+                                    fontSize: 14.0,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                                );
+                              },
                             ),
                             FaIcon(
                               FontAwesomeIcons.caretDown,
@@ -89,6 +70,60 @@ class KycAddLocationCupertinoScaffold
                         ),
                       ),
                     ),
+                  ),
+                  kSizedBox,
+                  Obx(
+                    () {
+                      return GestureDetector(
+                        onTap: kycAddLocationController.selectedCountry.value ==
+                                "Choose Country"
+                            ? null
+                            : () {
+                                showKYCChooseStateCupertinoPopup(
+                                  context,
+                                  colorScheme,
+                                  media,
+                                  kycAddLocationController,
+                                );
+                              },
+                        child: formFieldContainer(
+                          colorScheme,
+                          media,
+                          child: Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 8.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  kycAddLocationController
+                                              .selectedCountry.value ==
+                                          "Choose Country"
+                                      ? "Choose State"
+                                      : kycAddLocationController
+                                          .selectedState.value,
+                                  style: defaultTextStyle(
+                                    fontSize: 14.0,
+                                    color: kycAddLocationController
+                                                .selectedCountry.value ==
+                                            "Choose Country"
+                                        ? colorScheme.inversePrimary
+                                        : colorScheme.primary,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                                ),
+                                FaIcon(
+                                  FontAwesomeIcons.caretDown,
+                                  color: colorScheme.primary,
+                                  size: 16,
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      );
+                    },
                   ),
                 ],
               ),
