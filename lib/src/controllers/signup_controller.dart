@@ -45,7 +45,7 @@ class SignupController extends GetxController {
 
   //=========== onChanged Functions ===========\\
   firstNameOnChanged(value) {
-    var userNameRegExp = RegExp(userNamePattern);
+    var userNameRegExp = RegExp(namePattern);
     if (!userNameRegExp.hasMatch(firstNameEC.text)) {
       isFirstNameValid.value = false;
     } else {
@@ -55,7 +55,7 @@ class SignupController extends GetxController {
   }
 
   lastNameOnChanged(value) {
-    var userNameRegExp = RegExp(userNamePattern);
+    var userNameRegExp = RegExp(namePattern);
     if (isFirstNameValid.isTrue) {
       if (!userNameRegExp.hasMatch(lastNameEC.text)) {
         isLastNameValid.value = false;

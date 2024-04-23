@@ -6,6 +6,9 @@ import 'package:kribb/src/controllers/kyc_choose_location_controller.dart';
 import 'package:kribb/src/utils/containers/form_field_container.dart';
 
 import '../../../../../src/constants/consts.dart';
+import '../../../../../src/utils/buttons/ios/cupertino_elevated_button.dart';
+import '../../../../../src/utils/text_form_fields/ios/cupertino_text_field.dart';
+import '../../../../../theme/colors.dart';
 import '../../content/kyc_add_location_page_header.dart';
 import 'kyc_choose_country_cupertino_modal_popup.dart';
 import 'kyc_choose_state_cupertino_modal_popup.dart';
@@ -27,56 +30,58 @@ class KycAddLocationCupertinoScaffold
           children: [
             kycAddLocationPageHeader(colorScheme: colorScheme, media: media),
             const SizedBox(height: kDefaultPadding * 2),
-            Form(
-              key: kycAddLocationController.formKey,
-              child: Column(
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      showKYCChooseCountryCupertinoPopup(
-                        context,
-                        colorScheme,
-                        media,
-                        kycAddLocationController,
-                      );
-                    },
-                    child: formFieldContainer(
-                      colorScheme,
-                      media,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Obx(
-                              () {
-                                return Text(
-                                  kycAddLocationController
-                                      .selectedCountry.value,
-                                  style: defaultTextStyle(
-                                    fontSize: 14.0,
-                                    fontWeight: FontWeight.normal,
-                                  ),
-                                );
-                              },
+            Obx(
+              () {
+                return Form(
+                  key: kycAddLocationController.formKey,
+                  child: Column(
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          showKYCChooseCountryCupertinoPopup(
+                            context,
+                            colorScheme,
+                            media,
+                            kycAddLocationController,
+                          );
+                        },
+                        child: formFieldContainer(
+                          colorScheme,
+                          media,
+                          child: Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 8.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Obx(
+                                  () {
+                                    return Text(
+                                      kycAddLocationController
+                                          .selectedCountry.value,
+                                      style: defaultTextStyle(
+                                        fontSize: 14.0,
+                                        color: colorScheme.primary,
+                                        fontWeight: FontWeight.normal,
+                                      ),
+                                    );
+                                  },
+                                ),
+                                FaIcon(
+                                  FontAwesomeIcons.caretDown,
+                                  color: colorScheme.primary,
+                                  size: 16,
+                                )
+                              ],
                             ),
-                            FaIcon(
-                              FontAwesomeIcons.caretDown,
-                              color: colorScheme.primary,
-                              size: 16,
-                            )
-                          ],
+                          ),
                         ),
                       ),
-                    ),
-                  ),
-                  kSizedBox,
-                  Obx(
-                    () {
-                      return GestureDetector(
-                        onTap: kycAddLocationController.selectedCountry.value ==
-                                "Choose Country"
+                      kSizedBox,
+                      GestureDetector(
+                        onTap: kycAddLocationController
+                                .statePickerIsEnabled.isFalse
                             ? null
                             : () {
                                 showKYCChooseStateCupertinoPopup(
@@ -98,16 +103,14 @@ class KycAddLocationCupertinoScaffold
                               children: [
                                 Text(
                                   kycAddLocationController
-                                              .selectedCountry.value ==
-                                          "Choose Country"
+                                          .statePickerIsEnabled.isFalse
                                       ? "Choose State"
                                       : kycAddLocationController
                                           .selectedState.value,
                                   style: defaultTextStyle(
                                     fontSize: 14.0,
                                     color: kycAddLocationController
-                                                .selectedCountry.value ==
-                                            "Choose Country"
+                                            .statePickerIsEnabled.isFalse
                                         ? colorScheme.inversePrimary
                                         : colorScheme.primary,
                                     fontWeight: FontWeight.normal,
@@ -122,12 +125,131 @@ class KycAddLocationCupertinoScaffold
                             ),
                           ),
                         ),
-                      );
-                    },
+                      ),
+                      kSizedBox,
+                      formFieldContainer(
+                        colorScheme,
+                        media,
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            SizedBox(
+                              width: media.width - 60,
+                              child: MyCupertinoTextField(
+                                // prefix: Padding(
+                                //   padding: const EdgeInsets.only(left: 10.0),
+                                //   child: Text(
+                                //     kycAddLocationController.ngnDialCode.value,
+                                //     style: defaultTextStyle(),
+                                //   ),
+                                // ),
+                                enabled: kycAddLocationController
+                                    .cityTextFieldIsEnabled.value,
+                                controller: kycAddLocationController.cityEC,
+
+                                focusNode: kycAddLocationController.cityFN,
+                                placeholder: "City",
+                                textInputAction: TextInputAction.next,
+                                textCapitalization: TextCapitalization.words,
+                                keyboardType: TextInputType.text,
+
+                                borderColor: kTransparentColor,
+                                onChanged:
+                                    kycAddLocationController.cityOnChanged,
+                                validator: (value) {
+                                  return null;
+                                },
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(right: 5),
+                              child: kycAddLocationController.isCityValid.value
+                                  ? FaIcon(
+                                      FontAwesomeIcons.solidCircleCheck,
+                                      color: kSuccessColor,
+                                    )
+                                  : FaIcon(
+                                      FontAwesomeIcons.solidCircleXmark,
+                                      color: kErrorColor,
+                                    ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      kSizedBox,
+                      formFieldContainer(
+                        colorScheme,
+                        media,
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            SizedBox(
+                              width: media.width - 60,
+                              child: MyCupertinoTextField(
+                                // prefix: Padding(
+                                //   padding: const EdgeInsets.only(left: 10.0),
+                                //   child: Text(
+                                //     kycAddLocationController.ngnDialCode.value,
+                                //     style: defaultTextStyle(),
+                                //   ),
+                                // ),
+                                enabled: kycAddLocationController
+                                    .cityTextFieldIsEnabled.value,
+                                controller: kycAddLocationController.cityEC,
+
+                                focusNode: kycAddLocationController.cityFN,
+                                placeholder: "City",
+                                textInputAction: TextInputAction.next,
+                                textCapitalization: TextCapitalization.words,
+                                keyboardType: TextInputType.text,
+
+                                borderColor: kTransparentColor,
+                                onChanged:
+                                    kycAddLocationController.cityOnChanged,
+                                validator: (value) {
+                                  return null;
+                                },
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(right: 5),
+                              child: kycAddLocationController.isCityValid.value
+                                  ? FaIcon(
+                                      FontAwesomeIcons.solidCircleCheck,
+                                      color: kSuccessColor,
+                                    )
+                                  : FaIcon(
+                                      FontAwesomeIcons.solidCircleXmark,
+                                      color: kErrorColor,
+                                    ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                );
+              },
             ),
+            const SizedBox(height: kDefaultPadding * 2),
+            GetBuilder<KycAddLocationController>(
+              init: KycAddLocationController(),
+              builder: (controller) {
+                return CupertinoElevatedButton(
+                  title: "Continue",
+                  disable: kycAddLocationController.formIsValid.isTrue
+                      ? false
+                      : true,
+                  isLoading: kycAddLocationController.isLoading.value,
+                  onPressed: kycAddLocationController.submitForm,
+                );
+              },
+            ),
+            kSizedBox,
           ],
         ),
       ),

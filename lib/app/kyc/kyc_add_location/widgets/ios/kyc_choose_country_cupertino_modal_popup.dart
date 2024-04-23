@@ -20,16 +20,21 @@ void showKYCChooseCountryCupertinoPopup(
           controller: controller.fixedContentScrollController.value,
           child: CupertinoPicker.builder(
             itemExtent: 40,
+            useMagnifier: true,
             childCount: controller.countries.length,
             scrollController: controller.fixedContentScrollController.value,
             onSelectedItemChanged: (index) {
-              controller.selectedCountry.value = controller.countries[index];
+              controller.onSelectedCountryChanged(controller, index);
             },
             itemBuilder: (context, index) {
               return Center(
                 child: Text(
                   controller.countries[index],
-                  style: defaultTextStyle(),
+                  style: defaultTextStyle(
+                    fontSize: 14.0,
+                    color: colorScheme.primary,
+                    fontWeight: FontWeight.normal,
+                  ),
                 ),
               );
             },

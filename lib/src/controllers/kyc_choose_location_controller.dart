@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../constants/consts.dart';
+import 'api_processor_controller.dart';
+
 class KycAddLocationController extends GetxController {
   static KycAddLocationController get instance {
     return Get.find<KycAddLocationController>();
@@ -10,11 +13,23 @@ class KycAddLocationController extends GetxController {
   var scrollController = ScrollController().obs;
   var fixedContentScrollController = FixedExtentScrollController().obs;
 
+  final cityEC = TextEditingController();
+  final addressEC = TextEditingController();
+
+  //=========== Focus Nodes ===========\\
+  final cityFN = FocusNode();
+  final addresesFN = FocusNode();
+
   //=========== Form Key ===========\\
   final formKey = GlobalKey<FormState>();
 
   //=========== Booleans ===========\\
   var isLoading = false.obs;
+  var statePickerIsEnabled = false.obs;
+  var cityTextFieldIsEnabled = false.obs;
+  var isCityValid = false.obs;
+  var isAddressValid = false.obs;
+  var formIsValid = false.obs;
 
   //=========== Variables ===========\\
   var responseStatus = 0.obs;
@@ -265,6 +280,80 @@ class KycAddLocationController extends GetxController {
   ];
 
   //=========== On changed Functions ===========\\
+  onSelectedCountryChanged(controller, index) {
+    controller.selectedCountry.value = controller.countries[index];
+    if (controller.selectedCountry.value != "Choose Country") {
+      statePickerIsEnabled.value = true;
+      update();
+      return;
+    }
+    statePickerIsEnabled.value = false;
+    update();
+  }
+
+  onSelectedStateChanged(controller, index) {
+    controller.selectedState.value = controller.nigerianStates[index];
+    if (controller.selectedState.value != "Choose State") {
+      cityTextFieldIsEnabled.value = true;
+      update();
+      return;
+    }
+    cityTextFieldIsEnabled.value = false;
+    update();
+  }
+
+  cityOnChanged(value) {
+    var cityNameRegExp = RegExp(namePattern);
+    if (!cityNameRegExp.hasMatch(cityEC.text)) {
+      isCityValid.value = false;
+      return;
+    } else {
+      isCityValid.value = true;
+    }
+    update();
+  }
+
+  addressOnChanged(value) {
+    var addressRegExp = RegExp(streetAddressPattern);
+    if (!addressRegExp.hasMatch(addressEC.text)) {
+      isAddressValid.value = false;
+      setFormIsInvalid();
+      return;
+    } else {
+      isAddressValid.value = true;
+      setFormIsValid();
+    }
+    update();
+  }
+
+  //=========== Set form validity ===========\\
+  setFormIsValid() {
+    formIsValid.value = true;
+  }
+
+  setFormIsInvalid() {
+    formIsValid.value = false;
+  }
 
   //=========== Submit form ===========\\
+  onSubmitted(value) {
+    if (formIsValid.isTrue) {
+      submitForm();
+    }
+  }
+
+  Future<void> submitForm() async {
+    if (formKey.currentState!.validate()) {
+      formKey.currentState!.save();
+
+      isLoading.value = true;
+      update();
+
+      await Future.delayed(const Duration(seconds: 3));
+
+      ApiProcessorController.successSnack("Form submitted successfully");
+    }
+    isLoading.value = false;
+    update();
+  }
 }

@@ -56,7 +56,7 @@ const String hideDigits = r'\d';
 const String zipCodePattern = r"^\d{6}(?:-\d{4})?$";
 
 //username pattern
-const String userNamePattern = r'^.{3,}$'; //Min. of 3 characters
+const String namePattern = r'^.{3,}$'; //Min. of 3 characters
 
 //password pattern
 const String passwordPattern =
