@@ -38,14 +38,16 @@ class KycAddLocationCupertinoScaffold
                   child: Column(
                     children: [
                       GestureDetector(
-                        onTap: () {
-                          showKYCChooseCountryCupertinoPopup(
-                            context,
-                            colorScheme,
-                            media,
-                            kycAddLocationController,
-                          );
-                        },
+                        onTap: kycAddLocationController.isLoading.value
+                            ? null
+                            : () {
+                                showKYCChooseCountryCupertinoPopup(
+                                  context,
+                                  colorScheme,
+                                  media,
+                                  kycAddLocationController,
+                                );
+                              },
                         child: formFieldContainer(
                           colorScheme,
                           media,
@@ -84,14 +86,16 @@ class KycAddLocationCupertinoScaffold
                         onTap: kycAddLocationController
                                 .statePickerIsEnabled.isFalse
                             ? null
-                            : () {
-                                showKYCChooseStateCupertinoPopup(
-                                  context,
-                                  colorScheme,
-                                  media,
-                                  kycAddLocationController,
-                                );
-                              },
+                            : kycAddLocationController.isLoading.value
+                                ? null
+                                : () {
+                                    showKYCChooseStateCupertinoPopup(
+                                      context,
+                                      colorScheme,
+                                      media,
+                                      kycAddLocationController,
+                                    );
+                                  },
                         child: formFieldContainer(
                           colorScheme,
                           media,
@@ -142,15 +146,10 @@ class KycAddLocationCupertinoScaffold
                             SizedBox(
                               width: media.width - 60,
                               child: MyCupertinoTextField(
-                                // prefix: Padding(
-                                //   padding: const EdgeInsets.only(left: 10.0),
-                                //   child: Text(
-                                //     kycAddLocationController.ngnDialCode.value,
-                                //     style: defaultTextStyle(),
-                                //   ),
-                                // ),
                                 readOnly: kycAddLocationController
-                                        .cityTextFieldIsEnabled.value
+                                            .cityTextFieldIsEnabled.value &&
+                                        kycAddLocationController
+                                            .isLoading.isFalse
                                     ? false
                                     : true,
                                 controller: kycAddLocationController.cityEC,
@@ -159,7 +158,6 @@ class KycAddLocationCupertinoScaffold
                                 textInputAction: TextInputAction.next,
                                 textCapitalization: TextCapitalization.words,
                                 keyboardType: TextInputType.text,
-
                                 borderColor: kTransparentColor,
                                 onChanged:
                                     kycAddLocationController.cityOnChanged,
@@ -201,14 +199,6 @@ class KycAddLocationCupertinoScaffold
                                 SizedBox(
                                   width: media.width - 120,
                                   child: MyCupertinoTextField(
-                                    // prefix: Padding(
-                                    //   padding: const EdgeInsets.only(left: 10.0),
-                                    //   child: Text(
-                                    //     kycAddLocationController.ngnDialCode.value,
-                                    //     style: defaultTextStyle(),
-                                    //   ),
-                                    // ),
-
                                     readOnly: kycAddLocationController
                                                 .addressTextFieldIsEnabled
                                                 .value &&
