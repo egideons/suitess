@@ -3,7 +3,11 @@ import 'package:flutter/cupertino.dart';
 import '../../../../../src/constants/consts.dart';
 
 void showKYCChooseCountryCupertinoPopup(
-    context, colorScheme, media, controller) {
+  context,
+  colorScheme,
+  media,
+  controller,
+) {
   showCupertinoModalPopup(
     context: context,
     barrierDismissible: true,

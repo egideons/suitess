@@ -9,7 +9,7 @@ Widget formFieldContainer(colorScheme, media,
       color: colorScheme.inversePrimary.withOpacity(0.2),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16),
-        side: BorderSide(color: colorScheme.inversePrimary, width: 0.4),
+        side: BorderSide(color: colorScheme.inversePrimary, width: 0.2),
       ),
 
       // shadows: [
