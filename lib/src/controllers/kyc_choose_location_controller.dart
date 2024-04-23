@@ -18,7 +18,7 @@ class KycAddLocationController extends GetxController {
 
   //=========== Focus Nodes ===========\\
   final cityFN = FocusNode();
-  final addresesFN = FocusNode();
+  final addressFN = FocusNode();
 
   //=========== Form Key ===========\\
   final formKey = GlobalKey<FormState>();
@@ -27,6 +27,7 @@ class KycAddLocationController extends GetxController {
   var isLoading = false.obs;
   var statePickerIsEnabled = false.obs;
   var cityTextFieldIsEnabled = false.obs;
+  var addressTextFieldIsEnabled = false.obs;
   var isCityValid = false.obs;
   var isAddressValid = false.obs;
   var formIsValid = false.obs;
@@ -306,9 +307,10 @@ class KycAddLocationController extends GetxController {
     var cityNameRegExp = RegExp(namePattern);
     if (!cityNameRegExp.hasMatch(cityEC.text)) {
       isCityValid.value = false;
-      return;
+      addressTextFieldIsEnabled.value = false;
     } else {
       isCityValid.value = true;
+      addressTextFieldIsEnabled.value = true;
     }
     update();
   }
@@ -318,7 +320,6 @@ class KycAddLocationController extends GetxController {
     if (!addressRegExp.hasMatch(addressEC.text)) {
       isAddressValid.value = false;
       setFormIsInvalid();
-      return;
     } else {
       isAddressValid.value = true;
       setFormIsValid();

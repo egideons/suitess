@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:kribb/src/controllers/kyc_choose_location_controller.dart';
 import 'package:kribb/src/utils/containers/form_field_container.dart';
 
+import '../../../../../src/constants/assets.dart';
 import '../../../../../src/constants/consts.dart';
 import '../../../../../src/utils/buttons/ios/cupertino_elevated_button.dart';
 import '../../../../../src/utils/text_form_fields/ios/cupertino_text_field.dart';
@@ -118,7 +119,10 @@ class KycAddLocationCupertinoScaffold
                                 ),
                                 FaIcon(
                                   FontAwesomeIcons.caretDown,
-                                  color: colorScheme.primary,
+                                  color: kycAddLocationController
+                                          .statePickerIsEnabled.isFalse
+                                      ? colorScheme.inversePrimary
+                                      : colorScheme.primary,
                                   size: 16,
                                 )
                               ],
@@ -145,10 +149,11 @@ class KycAddLocationCupertinoScaffold
                                 //     style: defaultTextStyle(),
                                 //   ),
                                 // ),
-                                enabled: kycAddLocationController
-                                    .cityTextFieldIsEnabled.value,
+                                readOnly: kycAddLocationController
+                                        .cityTextFieldIsEnabled.value
+                                    ? false
+                                    : true,
                                 controller: kycAddLocationController.cityEC,
-
                                 focusNode: kycAddLocationController.cityFN,
                                 placeholder: "City",
                                 textInputAction: TextInputAction.next,
@@ -179,56 +184,95 @@ class KycAddLocationCupertinoScaffold
                         ),
                       ),
                       kSizedBox,
-                      formFieldContainer(
-                        colorScheme,
-                        media,
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            SizedBox(
-                              width: media.width - 60,
-                              child: MyCupertinoTextField(
-                                // prefix: Padding(
-                                //   padding: const EdgeInsets.only(left: 10.0),
-                                //   child: Text(
-                                //     kycAddLocationController.ngnDialCode.value,
-                                //     style: defaultTextStyle(),
-                                //   ),
-                                // ),
-                                enabled: kycAddLocationController
-                                    .cityTextFieldIsEnabled.value,
-                                controller: kycAddLocationController.cityEC,
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          formFieldContainer(
+                            colorScheme,
+                            media,
+                            containerWidth: media.width - 82,
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                SizedBox(
+                                  width: media.width - 120,
+                                  child: MyCupertinoTextField(
+                                    // prefix: Padding(
+                                    //   padding: const EdgeInsets.only(left: 10.0),
+                                    //   child: Text(
+                                    //     kycAddLocationController.ngnDialCode.value,
+                                    //     style: defaultTextStyle(),
+                                    //   ),
+                                    // ),
 
-                                focusNode: kycAddLocationController.cityFN,
-                                placeholder: "City",
-                                textInputAction: TextInputAction.next,
-                                textCapitalization: TextCapitalization.words,
-                                keyboardType: TextInputType.text,
-
-                                borderColor: kTransparentColor,
-                                onChanged:
-                                    kycAddLocationController.cityOnChanged,
-                                validator: (value) {
-                                  return null;
-                                },
+                                    readOnly: kycAddLocationController
+                                                .addressTextFieldIsEnabled
+                                                .value &&
+                                            kycAddLocationController
+                                                .isLoading.isFalse
+                                        ? false
+                                        : true,
+                                    controller:
+                                        kycAddLocationController.addressEC,
+                                    focusNode:
+                                        kycAddLocationController.addressFN,
+                                    placeholder: "Address",
+                                    textInputAction: TextInputAction.done,
+                                    textCapitalization:
+                                        TextCapitalization.sentences,
+                                    keyboardType: TextInputType.text,
+                                    // borderColor: colorScheme.primary,
+                                    borderColor: kTransparentColor,
+                                    onChanged: kycAddLocationController
+                                        .addressOnChanged,
+                                    onSubmitted:
+                                        kycAddLocationController.onSubmitted,
+                                    validator: (value) {
+                                      return null;
+                                    },
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 5),
+                                  child: kycAddLocationController
+                                          .isAddressValid.value
+                                      ? FaIcon(
+                                          FontAwesomeIcons.solidCircleCheck,
+                                          color: kSuccessColor,
+                                        )
+                                      : FaIcon(
+                                          FontAwesomeIcons.solidCircleXmark,
+                                          color: kErrorColor,
+                                        ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          CupertinoButton(
+                            onPressed: kycAddLocationController
+                                        .addressTextFieldIsEnabled.value &&
+                                    kycAddLocationController.isLoading.isFalse
+                                ? () {}
+                                : null,
+                            child: Container(
+                              height: 30,
+                              width: 30,
+                              decoration: ShapeDecoration(
+                                image: const DecorationImage(
+                                  image: AssetImage(Assets.googleMaps),
+                                  fit: BoxFit.fill,
+                                ),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(24),
+                                ),
                               ),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(right: 5),
-                              child: kycAddLocationController.isCityValid.value
-                                  ? FaIcon(
-                                      FontAwesomeIcons.solidCircleCheck,
-                                      color: kSuccessColor,
-                                    )
-                                  : FaIcon(
-                                      FontAwesomeIcons.solidCircleXmark,
-                                      color: kErrorColor,
-                                    ),
-                            ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
@@ -241,9 +285,8 @@ class KycAddLocationCupertinoScaffold
               builder: (controller) {
                 return CupertinoElevatedButton(
                   title: "Continue",
-                  disable: kycAddLocationController.formIsValid.isTrue
-                      ? false
-                      : true,
+                  disable:
+                      kycAddLocationController.formIsValid.value ? false : true,
                   isLoading: kycAddLocationController.isLoading.value,
                   onPressed: kycAddLocationController.submitForm,
                 );

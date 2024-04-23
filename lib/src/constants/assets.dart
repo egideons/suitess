@@ -6,6 +6,7 @@ class Assets {
 //Icons
   static const emptyImage = "assets/icons/empty.png";
   static const googleIcon = "assets/icons/google_icon.png";
+  static const googleMaps = "assets/icons/google-maps.png";
 
 //Background
   static const lightBackground = "assets/images/light_background.png";
