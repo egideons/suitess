@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:kribb/app/kyc/bvn_otp/content/bvn_otp_page_header.dart';
-import 'package:kribb/src/controllers/bvn_otp_controller.dart';
+import 'package:kribb/app/kyc/kyc_bvn_otp/content/bvn_otp_page_header.dart';
+import 'package:kribb/src/controllers/kyc_bvn_otp_controller.dart';
 
 import '../../../../../src/constants/consts.dart';
 import '../../../../../src/utils/buttons/ios/cupertino_elevated_button.dart';

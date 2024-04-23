@@ -5,23 +5,23 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
 import '../../../../../src/constants/consts.dart';
-import '../../../../../src/controllers/bvn_controller.dart';
+import '../../../../../src/controllers/kyc_bvn_controller.dart';
 import '../../../../../src/utils/buttons/ios/cupertino_elevated_button.dart';
 import '../../../../../src/utils/containers/form_field_container.dart';
 import '../../../../../src/utils/text_form_fields/ios/cupertino_text_field.dart';
 import '../../../../../theme/colors.dart';
 import '../../../../auth/components/auth_cupertino_nav_bar.dart';
-import '../../content/bvn_page_header.dart';
+import '../../content/kyc_bvn_page_header.dart';
 
-class BvnCupertinoScaffold extends GetView<BvnController> {
-  const BvnCupertinoScaffold({super.key});
+class KycBvnCupertinoScaffold extends GetView<KycBvnController> {
+  const KycBvnCupertinoScaffold({super.key});
 
   @override
   Widget build(BuildContext context) {
     var media = MediaQuery.of(context).size;
     var colorScheme = Theme.of(context).colorScheme;
 
-    var bvnController = BvnController.instance;
+    var kycBvnController = KycBvnController.instance;
 
     return CupertinoPageScaffold(
       navigationBar: authCupertinoNavBar(
@@ -38,18 +38,18 @@ class BvnCupertinoScaffold extends GetView<BvnController> {
         child: ListView(
           padding: const EdgeInsets.all(10),
           children: [
-            bvnPageHeader(
+            kycBvnPageHeader(
               colorScheme: colorScheme,
               media: media,
               title: "BVN Verification",
               subtitle:
-                  "We need to verify your account for a in-app payments and other benefits",
+                  "We need to verify your account for in-app transactions",
             ),
             const SizedBox(height: kDefaultPadding * 2),
             Obx(
               () {
                 return Form(
-                  key: bvnController.formKey,
+                  key: kycBvnController.formKey,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   child: Column(
                     children: [
@@ -64,13 +64,14 @@ class BvnCupertinoScaffold extends GetView<BvnController> {
                             SizedBox(
                               width: media.width - 100,
                               child: MyCupertinoTextField(
-                                readOnly: bvnController.isLoading.isFalse
+                                readOnly: kycBvnController.isLoading.isFalse
                                     ? false
                                     : true,
-                                controller: bvnController.bvnEC,
-                                focusNode: bvnController.bvnFN,
+                                controller: kycBvnController.bvnEC,
+                                focusNode: kycBvnController.bvnFN,
                                 placeholder: "Enter your BVN",
-                                obscureText: !bvnController.bvnIsHidden.value,
+                                obscureText:
+                                    !kycBvnController.bvnIsHidden.value,
                                 textInputAction: TextInputAction.done,
                                 textCapitalization: TextCapitalization.none,
                                 keyboardType: TextInputType.number,
@@ -78,8 +79,8 @@ class BvnCupertinoScaffold extends GetView<BvnController> {
                                 maxLengthEnforcement:
                                     MaxLengthEnforcement.enforced,
                                 maxLength: 11,
-                                onChanged: bvnController.bvnOnChanged,
-                                onSubmitted: bvnController.onSubmitted,
+                                onChanged: kycBvnController.bvnOnChanged,
+                                onSubmitted: kycBvnController.onSubmitted,
                                 inputFormatters: [
                                   FilteringTextInputFormatter.digitsOnly
                                 ],
@@ -94,22 +95,22 @@ class BvnCupertinoScaffold extends GetView<BvnController> {
                                 children: [
                                   IconButton(
                                     onPressed: () {
-                                      bvnController.bvnIsHidden.value =
-                                          !bvnController.bvnIsHidden.value;
+                                      kycBvnController.bvnIsHidden.value =
+                                          !kycBvnController.bvnIsHidden.value;
                                     },
                                     mouseCursor: SystemMouseCursors.click,
-                                    tooltip: bvnController.bvnIsHidden.value
+                                    tooltip: kycBvnController.bvnIsHidden.value
                                         ? "Show BVN"
                                         : "Hide BVN",
                                     icon: FaIcon(
                                       color: colorScheme.inversePrimary,
                                       size: 18,
-                                      bvnController.bvnIsHidden.value
+                                      kycBvnController.bvnIsHidden.value
                                           ? FontAwesomeIcons.solidEyeSlash
                                           : FontAwesomeIcons.solidEye,
                                     ),
                                   ),
-                                  bvnController.isBvnValid.value
+                                  kycBvnController.isBvnValid.value
                                       ? FaIcon(
                                           FontAwesomeIcons.solidCircleCheck,
                                           color: kSuccessColor,
@@ -131,13 +132,13 @@ class BvnCupertinoScaffold extends GetView<BvnController> {
             ),
             kSizedBox,
             const SizedBox(height: kDefaultPadding * 2),
-            GetBuilder<BvnController>(
+            GetBuilder<KycBvnController>(
               builder: (controller) {
                 return CupertinoElevatedButton(
                   title: "Continue",
-                  isLoading: bvnController.isLoading.value,
-                  disable: bvnController.formIsValid.value ? false : true,
-                  onPressed: bvnController.submit,
+                  isLoading: kycBvnController.isLoading.value,
+                  disable: kycBvnController.formIsValid.value ? false : true,
+                  onPressed: kycBvnController.submit,
                 );
               },
             ),

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../app/kyc/bvn_otp/screen/bvn_otp.dart';
+import '../../app/kyc/kyc_bvn_otp/screen/bvn_otp.dart';
 
-class BvnController extends GetxController {
-  static BvnController get instance {
-    return Get.find<BvnController>();
+class KycBvnController extends GetxController {
+  static KycBvnController get instance {
+    return Get.find<KycBvnController>();
   }
 
   //=========== Form Key ===========\\
@@ -65,7 +65,7 @@ class BvnController extends GetxController {
 
       Get.offAll(
         () => const BvnOTP(),
-        routeName: "/bvn-otp",
+        routeName: "/kyc-bvn-otp",
         fullscreenDialog: true,
         curve: Curves.easeInOut,
         predicate: (routes) => false,

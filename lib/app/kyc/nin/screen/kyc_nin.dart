@@ -1,23 +1,19 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:kribb/src/controllers/bvn_otp_controller.dart';
 
-import '../widgets/ios/bvn_otp_cupertino_scaffold.dart';
-
-class BvnOTP extends StatelessWidget {
-  const BvnOTP({super.key});
+class KycBvn extends StatelessWidget {
+  const KycBvn({super.key});
 
   @override
   Widget build(BuildContext context) {
     //Initialize otp controller
-    Get.put(BvnOTPController());
+    // Get.put(BvnController());
 
     if (Platform.isIOS) {
       return GestureDetector(
         onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
-        child: const BvnOTPCupertinoScaffold(),
+        // child: const BvnCupertinoScaffold(),
       );
     }
     return GestureDetector(
