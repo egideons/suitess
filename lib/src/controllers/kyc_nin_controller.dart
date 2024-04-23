@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:kribb/app/kyc/kyc_profile_photo/screen/kyc_profile_photo.dart';
 
-class NINController extends GetxController {
-  static NINController get instance {
-    return Get.find<NINController>();
+class KycNINController extends GetxController {
+  static KycNINController get instance {
+    return Get.find<KycNINController>();
   }
 
   //=========== Form Key ===========\\
@@ -17,10 +18,11 @@ class NINController extends GetxController {
 
   //=========== Booleans ===========\\
   var isLoading = false.obs;
-  var isNINValid = false.obs;
+  var isNinValid = false.obs;
   var ninIsHidden = true.obs;
   var formIsValid = false.obs;
 
+  //=========== Variables ===========\\
   var responseStatus = 0.obs;
   var responseMessage = "".obs;
 
@@ -28,10 +30,10 @@ class NINController extends GetxController {
 
   ninOnChanged(value) {
     if (value.length == 11) {
-      isNINValid.value = true;
+      isNinValid.value = true;
       setFormIsValid();
     } else {
-      isNINValid.value = false;
+      isNinValid.value = false;
       setFormIsInvalid();
     }
     update();
@@ -61,15 +63,15 @@ class NINController extends GetxController {
 
       await Future.delayed(const Duration(seconds: 3));
 
-      // Get.offAll(
-      //   () => const ninOTP(),
-      //   routeName: "/nin-otp",
-      //   fullscreenDialog: true,
-      //   curve: Curves.easeInOut,
-      //   predicate: (routes) => false,
-      //   popGesture: false,
-      //   transition: Get.defaultTransition,
-      // );
+      Get.offAll(
+        () => const KycProfilePhoto(),
+        routeName: "/kyc-profile-photo",
+        fullscreenDialog: true,
+        curve: Curves.easeInOut,
+        predicate: (routes) => false,
+        popGesture: false,
+        transition: Get.defaultTransition,
+      );
     }
     isLoading.value = false;
     update();

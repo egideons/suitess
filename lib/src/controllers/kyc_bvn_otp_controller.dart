@@ -4,11 +4,12 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../app/kyc/kyc_nin/screen/kyc_nin.dart';
 import 'api_processor_controller.dart';
 
-class BvnOTPController extends GetxController {
-  static BvnOTPController get instance {
-    return Get.find<BvnOTPController>();
+class KycBvnOTPController extends GetxController {
+  static KycBvnOTPController get instance {
+    return Get.find<KycBvnOTPController>();
   }
 
   @override
@@ -155,16 +156,16 @@ class BvnOTPController extends GetxController {
     timerComplete.value = false;
 
     await Future.delayed(const Duration(seconds: 3));
-    ApiProcessorController.successSnack("BVN verification successful");
-    // Get.offAll(
-    //   () => const KycAddLocation(),
-    //   routeName: "/kyc-add-location",
-    //   fullscreenDialog: true,
-    //   curve: Curves.easeInOut,
-    //   predicate: (routes) => false,
-    //   popGesture: false,
-    //   transition: Get.defaultTransition,
-    // );
+
+    Get.offAll(
+      () => const KycNIN(),
+      routeName: "/kyc-nin",
+      fullscreenDialog: true,
+      curve: Curves.easeInOut,
+      predicate: (routes) => false,
+      popGesture: false,
+      transition: Get.defaultTransition,
+    );
 
     isLoading.value = false;
     update();

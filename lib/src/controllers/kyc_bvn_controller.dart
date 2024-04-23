@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../app/kyc/kyc_bvn_otp/screen/bvn_otp.dart';
+import '../../app/kyc/kyc_bvn_otp/screen/kyc_bvn_otp.dart';
 
 class KycBvnController extends GetxController {
   static KycBvnController get instance {
@@ -64,7 +64,7 @@ class KycBvnController extends GetxController {
       await Future.delayed(const Duration(seconds: 3));
 
       Get.offAll(
-        () => const BvnOTP(),
+        () => const KycBvnOTP(),
         routeName: "/kyc-bvn-otp",
         fullscreenDialog: true,
         curve: Curves.easeInOut,

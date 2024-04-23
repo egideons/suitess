@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:kribb/app/kyc/kyc_bvn_otp/content/bvn_otp_page_header.dart';
+import 'package:kribb/app/kyc/kyc_bvn_otp/content/kyc_bvn_otp_page_header.dart';
 import 'package:kribb/src/controllers/kyc_bvn_otp_controller.dart';
 
 import '../../../../../src/constants/consts.dart';
@@ -13,15 +13,15 @@ import '../../../../../src/utils/text_form_fields/ios/cupertino_text_field.dart'
 import '../../../../../theme/colors.dart';
 import '../../../../auth/components/auth_cupertino_nav_bar.dart';
 
-class BvnOTPCupertinoScaffold extends GetView<BvnOTPController> {
-  const BvnOTPCupertinoScaffold({super.key});
+class KycBvnOTPCupertinoScaffold extends GetView<KycBvnOTPController> {
+  const KycBvnOTPCupertinoScaffold({super.key});
 
   @override
   Widget build(BuildContext context) {
     var media = MediaQuery.of(context).size;
     var colorScheme = Theme.of(context).colorScheme;
 
-    var bvnOTPController = BvnOTPController.instance;
+    var kycBvnOTPController = KycBvnOTPController.instance;
 
     return CupertinoPageScaffold(
       navigationBar: authCupertinoNavBar(
@@ -37,7 +37,7 @@ class BvnOTPCupertinoScaffold extends GetView<BvnOTPController> {
       child: ListView(
         padding: const EdgeInsets.all(10),
         children: [
-          bvnOTPPageHeader(
+          kycBvnOTPPageHeader(
             colorScheme: colorScheme,
             media: media,
             title: "BVN Verification",
@@ -45,7 +45,7 @@ class BvnOTPCupertinoScaffold extends GetView<BvnOTPController> {
           ),
           const SizedBox(height: kDefaultPadding * 2),
           Form(
-            key: bvnOTPController.formKey,
+            key: kycBvnOTPController.formKey,
             autovalidateMode: AutovalidateMode.onUserInteraction,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -57,15 +57,15 @@ class BvnOTPCupertinoScaffold extends GetView<BvnOTPController> {
                   containerWidth: media.width * 0.18,
                   child: Center(
                     child: MyCupertinoTextField(
-                      controller: bvnOTPController.pin1EC,
-                      focusNode: bvnOTPController.pin1FN,
+                      controller: kycBvnOTPController.pin1EC,
+                      focusNode: kycBvnOTPController.pin1FN,
                       textInputAction: TextInputAction.next,
                       textCapitalization: TextCapitalization.none,
                       keyboardType: TextInputType.number,
                       borderColor: kTransparentColor,
                       placeholder: "0",
                       onChanged: (value) {
-                        bvnOTPController.pin1Onchanged(value, context);
+                        kycBvnOTPController.pin1Onchanged(value, context);
                       },
                       inputFormatters: [
                         LengthLimitingTextInputFormatter(1),
@@ -83,8 +83,8 @@ class BvnOTPCupertinoScaffold extends GetView<BvnOTPController> {
                   containerWidth: media.width * 0.18,
                   child: Center(
                     child: MyCupertinoTextField(
-                      controller: bvnOTPController.pin2EC,
-                      focusNode: bvnOTPController.pin2FN,
+                      controller: kycBvnOTPController.pin2EC,
+                      focusNode: kycBvnOTPController.pin2FN,
                       textInputAction: TextInputAction.next,
                       textCapitalization: TextCapitalization.none,
                       keyboardType: TextInputType.number,
@@ -95,7 +95,7 @@ class BvnOTPCupertinoScaffold extends GetView<BvnOTPController> {
                         FilteringTextInputFormatter.digitsOnly,
                       ],
                       onChanged: (value) {
-                        bvnOTPController.pin2Onchanged(value, context);
+                        kycBvnOTPController.pin2Onchanged(value, context);
                       },
                       validator: (value) {
                         return null;
@@ -109,8 +109,8 @@ class BvnOTPCupertinoScaffold extends GetView<BvnOTPController> {
                   containerWidth: media.width * 0.18,
                   child: Center(
                     child: MyCupertinoTextField(
-                      controller: bvnOTPController.pin3EC,
-                      focusNode: bvnOTPController.pin3FN,
+                      controller: kycBvnOTPController.pin3EC,
+                      focusNode: kycBvnOTPController.pin3FN,
                       textInputAction: TextInputAction.next,
                       textCapitalization: TextCapitalization.none,
                       keyboardType: TextInputType.number,
@@ -121,7 +121,7 @@ class BvnOTPCupertinoScaffold extends GetView<BvnOTPController> {
                         FilteringTextInputFormatter.digitsOnly,
                       ],
                       onChanged: (value) {
-                        bvnOTPController.pin3Onchanged(value, context);
+                        kycBvnOTPController.pin3Onchanged(value, context);
                       },
                       validator: (value) {
                         return null;
@@ -135,20 +135,20 @@ class BvnOTPCupertinoScaffold extends GetView<BvnOTPController> {
                   containerWidth: media.width * 0.18,
                   child: Center(
                     child: MyCupertinoTextField(
-                      controller: bvnOTPController.pin4EC,
-                      focusNode: bvnOTPController.pin4FN,
+                      controller: kycBvnOTPController.pin4EC,
+                      focusNode: kycBvnOTPController.pin4FN,
                       textInputAction: TextInputAction.done,
                       textCapitalization: TextCapitalization.none,
                       keyboardType: TextInputType.number,
                       borderColor: kTransparentColor,
                       placeholder: "0",
-                      onSubmitted: bvnOTPController.onSubmitted,
+                      onSubmitted: kycBvnOTPController.onSubmitted,
                       inputFormatters: [
                         LengthLimitingTextInputFormatter(1),
                         FilteringTextInputFormatter.digitsOnly,
                       ],
                       onChanged: (value) {
-                        bvnOTPController.pin4Onchanged(value, context);
+                        kycBvnOTPController.pin4Onchanged(value, context);
                       },
                       validator: (value) {
                         return null;
@@ -161,13 +161,13 @@ class BvnOTPCupertinoScaffold extends GetView<BvnOTPController> {
           ),
           kSizedBox,
           const SizedBox(height: kDefaultPadding * 2),
-          GetBuilder<BvnOTPController>(
+          GetBuilder<KycBvnOTPController>(
             builder: (controller) {
               return CupertinoElevatedButton(
                 title: "Continue",
-                isLoading: bvnOTPController.isLoading.value ? true : false,
-                disable: bvnOTPController.formIsValid.value ? false : true,
-                onPressed: bvnOTPController.submitOTP,
+                isLoading: kycBvnOTPController.isLoading.value ? true : false,
+                disable: kycBvnOTPController.formIsValid.value ? false : true,
+                onPressed: kycBvnOTPController.submitOTP,
               );
             },
           ),
@@ -194,15 +194,15 @@ class BvnOTPCupertinoScaffold extends GetView<BvnOTPController> {
                     curve: Curves.easeIn,
                     style: defaultTextStyle(
                       fontSize: 15.0,
-                      color: bvnOTPController.timerComplete.isTrue
+                      color: kycBvnOTPController.timerComplete.isTrue
                           ? kSuccessColor
                           : kErrorColor,
                       fontWeight: FontWeight.w600,
                     ),
                     textAlign: TextAlign.center,
                     child: Text(
-                      bvnOTPController
-                          .formatTime(bvnOTPController.secondsRemaining.value),
+                      kycBvnOTPController.formatTime(
+                          kycBvnOTPController.secondsRemaining.value),
                     ),
                   );
                 },
@@ -213,8 +213,8 @@ class BvnOTPCupertinoScaffold extends GetView<BvnOTPController> {
           Obx(
             () {
               return CupertinoButton(
-                onPressed: bvnOTPController.timerComplete.isTrue
-                    ? bvnOTPController.requestOTP
+                onPressed: kycBvnOTPController.timerComplete.isTrue
+                    ? kycBvnOTPController.requestOTP
                     : null,
                 disabledColor: colorScheme.inversePrimary,
                 child: Center(
@@ -237,7 +237,7 @@ class BvnOTPCupertinoScaffold extends GetView<BvnOTPController> {
                         children: [
                           FaIcon(
                             FontAwesomeIcons.solidMessage,
-                            color: bvnOTPController.timerComplete.isTrue
+                            color: kycBvnOTPController.timerComplete.isTrue
                                 ? kSuccessColor
                                 : colorScheme.inversePrimary,
                             size: 12,
@@ -246,7 +246,7 @@ class BvnOTPCupertinoScaffold extends GetView<BvnOTPController> {
                           Text(
                             "Resend code",
                             style: defaultTextStyle(
-                              color: bvnOTPController.timerComplete.isTrue
+                              color: kycBvnOTPController.timerComplete.isTrue
                                   ? kSuccessColor
                                   : colorScheme.inversePrimary,
                             ),
