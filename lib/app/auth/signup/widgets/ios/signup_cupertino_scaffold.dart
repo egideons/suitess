@@ -257,8 +257,8 @@ class SignupCupertinoScaffold extends GetView<SignupController> {
                                     mouseCursor: SystemMouseCursors.click,
                                     tooltip:
                                         !signupController.passwordIsHidden.value
-                                            ? "Show password"
-                                            : "Hide password",
+                                            ? "Hide password"
+                                            : "Show password",
                                     icon: FaIcon(
                                       color: colorScheme.inversePrimary,
                                       size: 18,

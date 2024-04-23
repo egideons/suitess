@@ -32,7 +32,7 @@ class BvnOTPCupertinoScaffold extends GetView<BvnOTPController> {
       child: ListView(
         padding: const EdgeInsets.all(10),
         children: [
-          phoneOTPPageHeader(
+          bvnOTPPageHeader(
             colorScheme: colorScheme,
             media: media,
             title: "Phone Number verification",

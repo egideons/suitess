@@ -23,6 +23,7 @@ class MyCupertinoTextField extends StatelessWidget {
   final void Function()? onTap, onEditingComplete;
   final MaxLengthEnforcement? maxLengthEnforcement;
   final String? obscuringCharacter;
+  final int? maxLength, maxLines;
 
   final TextAlign? textAlign;
 
@@ -55,6 +56,8 @@ class MyCupertinoTextField extends StatelessWidget {
     this.onEditingComplete,
     this.borderColor,
     this.textAlign,
+    this.maxLength,
+    this.maxLines,
   });
 
   @override
@@ -84,7 +87,7 @@ class MyCupertinoTextField extends StatelessWidget {
       autocorrect: true,
       enableSuggestions: true,
       minLines: 1,
-      maxLength: 30,
+      maxLength: maxLength ?? 30,
       placeholder: placeholder,
       cursorOpacityAnimates: true,
       enableIMEPersonalizedLearning: true,
@@ -92,7 +95,7 @@ class MyCupertinoTextField extends StatelessWidget {
       scrollPhysics: const BouncingScrollPhysics(),
       keyboardType: keyboardType,
       textCapitalization: textCapitalization,
-      maxLines: 1,
+      maxLines: maxLines ?? 1,
       keyboardAppearance: Get.isDarkMode ? Brightness.dark : Brightness.light,
       prefix: prefix,
       placeholderStyle: defaultTextStyle(

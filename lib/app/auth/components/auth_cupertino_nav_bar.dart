@@ -5,11 +5,8 @@ import 'package:get/get.dart';
 import '../../../src/constants/consts.dart';
 import '../../../theme/colors.dart';
 
-ObstructingPreferredSizeWidget authCupertinoNavBar({
-  colorScheme,
-  media,
-  title,
-}) {
+ObstructingPreferredSizeWidget authCupertinoNavBar(
+    {colorScheme, media, title, faIcon}) {
   return CupertinoNavigationBar(
     transitionBetweenRoutes: true,
     backgroundColor: colorScheme.background,
@@ -31,14 +28,17 @@ ObstructingPreferredSizeWidget authCupertinoNavBar({
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            FaIcon(
-              FontAwesomeIcons.key,
-              color: kSuccessColor,
-              size: 12,
-            ),
+            faIcon ??
+                FaIcon(
+                  FontAwesomeIcons.key,
+                  color: kSuccessColor,
+                  size: 12,
+                ),
             kHalfWidthSizedBox,
             Text(
               title ?? "",
+              textAlign: TextAlign.center,
+              overflow: TextOverflow.ellipsis,
               style: defaultTextStyle(color: kSuccessColor),
             ),
           ],

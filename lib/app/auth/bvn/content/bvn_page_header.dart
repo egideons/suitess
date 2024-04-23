@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../src/constants/consts.dart';
 
-Widget bvnOTPPageHeader({colorScheme, media, title, subtitle}) {
+Widget bvnPageHeader({colorScheme, media, title, subtitle}) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.center,
     children: [

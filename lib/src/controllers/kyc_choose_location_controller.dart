@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../app/auth/bvn/screen/bvn.dart';
 import '../constants/consts.dart';
 import 'api_processor_controller.dart';
 
@@ -353,6 +354,16 @@ class KycAddLocationController extends GetxController {
       await Future.delayed(const Duration(seconds: 3));
 
       ApiProcessorController.successSnack("Form submitted successfully");
+
+      Get.offAll(
+        () => const Bvn(),
+        routeName: "/bvn",
+        fullscreenDialog: true,
+        curve: Curves.easeInOut,
+        predicate: (routes) => false,
+        popGesture: false,
+        transition: Get.defaultTransition,
+      );
     }
     isLoading.value = false;
     update();

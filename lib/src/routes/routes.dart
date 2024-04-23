@@ -4,6 +4,7 @@ import 'package:kribb/app/kyc/kyc_add_location/screen/kyc_add_location.dart';
 import 'package:kribb/app/onboarding/screen/onboarding.dart';
 import 'package:kribb/app/splash/screens/startup_splash.dart';
 
+import '../../app/auth/bvn/screen/bvn.dart';
 import '../../app/auth/bvn_otp/screen/bvn_otp.dart';
 import '../../app/auth/email_otp/screen/email_otp.dart';
 import '../../app/auth/login/screen/login.dart';
@@ -19,13 +20,14 @@ class Routes {
   static const signup = "/signup";
   static const login = "/login";
   static const emailOTP = "/email-otp";
-  static const bvnOTP = "/bvn-otp";
   static const forgotPassword = "/forgot-password";
   static const resetPassword = "/reset-password";
   static const changePassword = "/change-password";
 
   //KYC Screens
   static const kycAddLocation = "/kyc-add-location";
+  static const bvn = "/bvn";
+  static const bvnOTP = "/bvn-otp";
 
   //Get Pages
   static final getPages = [
@@ -35,9 +37,10 @@ class Routes {
     GetPage(name: signup, page: () => const Signup()),
     GetPage(name: login, page: () => const Login()),
     GetPage(name: emailOTP, page: () => const EmailOTP()),
-    GetPage(name: bvnOTP, page: () => const BvnOTP()),
 
     //KYC Pages
     GetPage(name: kycAddLocation, page: () => const KycAddLocation()),
+    GetPage(name: bvn, page: () => const Bvn()),
+    GetPage(name: bvnOTP, page: () => const BvnOTP()),
   ];
 }
