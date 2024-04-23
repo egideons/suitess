@@ -4,8 +4,8 @@ import 'package:kribb/app/kyc/kyc_add_location/screen/kyc_add_location.dart';
 import 'package:kribb/app/onboarding/screen/onboarding.dart';
 import 'package:kribb/app/splash/screens/startup_splash.dart';
 
-import '../../app/auth/bvn/screen/bvn.dart';
-import '../../app/auth/bvn_otp/screen/bvn_otp.dart';
+import '../../app/kyc/bvn/screen/bvn.dart';
+import '../../app/kyc/bvn_otp/screen/bvn_otp.dart';
 import '../../app/auth/email_otp/screen/email_otp.dart';
 import '../../app/auth/login/screen/login.dart';
 

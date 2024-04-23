@@ -1,7 +1,7 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../../app/kyc/bvn_otp/screen/bvn_otp.dart';
 
 class BvnController extends GetxController {
   static BvnController get instance {
@@ -32,11 +32,9 @@ class BvnController extends GetxController {
     if (value.length == 11) {
       isBvnValid.value = true;
       setFormIsValid();
-      log("Form is valid: ${formIsValid.value}");
     } else {
       isBvnValid.value = false;
       setFormIsInvalid();
-      log("Form is valid: ${formIsValid.value}");
     }
     update();
   }
@@ -64,17 +62,16 @@ class BvnController extends GetxController {
       update();
 
       await Future.delayed(const Duration(seconds: 3));
-      log("Submitted");
 
-      // Get.offAll(
-      //   () => const BvnOTP(),
-      //   routeName: "/bvn-otp",
-      //   fullscreenDialog: true,
-      //   curve: Curves.easeInOut,
-      //   predicate: (routes) => false,
-      //   popGesture: false,
-      //   transition: Get.defaultTransition,
-      // );
+      Get.offAll(
+        () => const BvnOTP(),
+        routeName: "/bvn-otp",
+        fullscreenDialog: true,
+        curve: Curves.easeInOut,
+        predicate: (routes) => false,
+        popGesture: false,
+        transition: Get.defaultTransition,
+      );
     }
     isLoading.value = false;
     update();

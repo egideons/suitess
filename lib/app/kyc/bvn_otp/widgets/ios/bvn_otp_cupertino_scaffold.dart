@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:kribb/app/auth/bvn_otp/content/bvn_otp_page_header.dart';
+import 'package:kribb/app/kyc/bvn_otp/content/bvn_otp_page_header.dart';
 import 'package:kribb/src/controllers/bvn_otp_controller.dart';
 
 import '../../../../../src/constants/consts.dart';
@@ -11,7 +11,7 @@ import '../../../../../src/utils/buttons/ios/cupertino_elevated_button.dart';
 import '../../../../../src/utils/containers/form_field_container.dart';
 import '../../../../../src/utils/text_form_fields/ios/cupertino_text_field.dart';
 import '../../../../../theme/colors.dart';
-import '../../../components/auth_cupertino_nav_bar.dart';
+import '../../../../auth/components/auth_cupertino_nav_bar.dart';
 
 class BvnOTPCupertinoScaffold extends GetView<BvnOTPController> {
   const BvnOTPCupertinoScaffold({super.key});
@@ -27,7 +27,12 @@ class BvnOTPCupertinoScaffold extends GetView<BvnOTPController> {
       navigationBar: authCupertinoNavBar(
         colorScheme: colorScheme,
         media: media,
-        title: "OTP",
+        title: "BVN",
+        faIcon: FaIcon(
+          FontAwesomeIcons.buildingColumns,
+          color: kSuccessColor,
+          size: 12,
+        ),
       ),
       child: ListView(
         padding: const EdgeInsets.all(10),
@@ -35,7 +40,7 @@ class BvnOTPCupertinoScaffold extends GetView<BvnOTPController> {
           bvnOTPPageHeader(
             colorScheme: colorScheme,
             media: media,
-            title: "Phone Number verification",
+            title: "BVN Verification",
             subtitle: "Enter the 4-digit OTP sent to your phone number",
           ),
           const SizedBox(height: kDefaultPadding * 2),
@@ -231,7 +236,7 @@ class BvnOTPCupertinoScaffold extends GetView<BvnOTPController> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           FaIcon(
-                            FontAwesomeIcons.solidEnvelope,
+                            FontAwesomeIcons.solidMessage,
                             color: bvnOTPController.timerComplete.isTrue
                                 ? kSuccessColor
                                 : colorScheme.inversePrimary,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../app/auth/bvn/screen/bvn.dart';
+import '../../app/kyc/bvn/screen/bvn.dart';
 import '../constants/consts.dart';
 import 'api_processor_controller.dart';
 

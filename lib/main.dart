@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'app/auth/bvn/screen/bvn.dart';
+import 'app/kyc/bvn/screen/bvn.dart';
 import 'src/controllers/theme_controller.dart';
 import 'src/routes/routes.dart';
 import 'theme/app_theme.dart';

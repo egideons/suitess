@@ -10,7 +10,7 @@ import '../../../../../src/utils/buttons/ios/cupertino_elevated_button.dart';
 import '../../../../../src/utils/containers/form_field_container.dart';
 import '../../../../../src/utils/text_form_fields/ios/cupertino_text_field.dart';
 import '../../../../../theme/colors.dart';
-import '../../../components/auth_cupertino_nav_bar.dart';
+import '../../../../auth/components/auth_cupertino_nav_bar.dart';
 import '../../content/bvn_page_header.dart';
 
 class BvnCupertinoScaffold extends GetView<BvnController> {
@@ -25,14 +25,15 @@ class BvnCupertinoScaffold extends GetView<BvnController> {
 
     return CupertinoPageScaffold(
       navigationBar: authCupertinoNavBar(
-          colorScheme: colorScheme,
-          media: media,
-          title: "BVN",
-          faIcon: FaIcon(
-            FontAwesomeIcons.buildingColumns,
-            color: kSuccessColor,
-            size: 12,
-          )),
+        colorScheme: colorScheme,
+        media: media,
+        title: "BVN",
+        faIcon: FaIcon(
+          FontAwesomeIcons.buildingColumns,
+          color: kSuccessColor,
+          size: 12,
+        ),
+      ),
       child: SafeArea(
         child: ListView(
           padding: const EdgeInsets.all(10),
