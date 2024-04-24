@@ -9,26 +9,24 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  cupertino_icons: ^1.0.6
-  get:
+  cupertino_icons:
   font_awesome_flutter:
+  get:
   path:
   intl:
   shared_preferences:
   lottie:
   url_launcher: ^6.1.12
-  permission_handler: ^10.3.0
-  intl_phone_field: ^3.2.0
-  image_picker: ^1.0.1
+  permission_handler:
+  image_picker:
+  image_cropper:
   google_fonts:
   loading_animation_widget:
-  group_radio_button:
   http:
   delightful_toast:
   flutter_carousel_widget:
   cached_network_image:
   readmore:
-  rating_summary:
   shimmer: ^3.0.0-nullsafety.0
   path_provider:
   awesome_notifications:

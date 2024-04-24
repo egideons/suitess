@@ -41,7 +41,8 @@ class KycProfilePhotoCupertinoScaffold
               colorScheme: colorScheme,
               media: media,
               title: "Upload your profile photo",
-              subtitle: "Personalise your profile with a picture of yourself!",
+              subtitle:
+                  "Grant Kribb access to Camera and Photos to upload your picture",
             ),
             const SizedBox(height: kDefaultPadding * 2),
             formFieldContainer(

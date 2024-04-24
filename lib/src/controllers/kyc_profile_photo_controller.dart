@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:get/get.dart';
 
 class KycProfilePhotoController extends GetxController {
@@ -12,6 +14,7 @@ class KycProfilePhotoController extends GetxController {
   //=========== Variables ===========\\
   var responseStatus = 0.obs;
   var responseMessage = "".obs;
+  File? image;
 
   //=========== onChanged Functions ===========\\
 

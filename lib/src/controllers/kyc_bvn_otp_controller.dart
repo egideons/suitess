@@ -52,7 +52,6 @@ class KycBvnOTPController extends GetxController {
   //================= Onchanged ======================\\
   pin1Onchanged(value, context) {
     if (value.isEmpty) {
-      FocusScope.of(context).previousFocus();
       setFormIsInvalid();
     }
     if (value.length == 1) {

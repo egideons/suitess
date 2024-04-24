@@ -51,6 +51,9 @@ class EmailOTPController extends GetxController {
 
   //================= Onchanged ======================\\
   pin1Onchanged(value, context) {
+    if (value.isEmpty) {
+      setFormIsInvalid();
+    }
     if (value.length == 1) {
       FocusScope.of(context).nextFocus();
     }
@@ -60,6 +63,7 @@ class EmailOTPController extends GetxController {
   pin2Onchanged(value, context) {
     if (value.isEmpty) {
       FocusScope.of(context).previousFocus();
+      setFormIsInvalid();
     }
     if (value.length == 1) {
       FocusScope.of(context).nextFocus();
@@ -70,6 +74,7 @@ class EmailOTPController extends GetxController {
   pin3Onchanged(value, context) {
     if (value.isEmpty) {
       FocusScope.of(context).previousFocus();
+      setFormIsInvalid();
     }
     if (value.length == 1) {
       FocusScope.of(context).nextFocus();
