@@ -216,48 +216,54 @@ class LoginCupertinoScaffold extends GetView<LoginController> {
               ),
             ),
             kSizedBox,
-            CupertinoElevatedButton(
-              disable: false,
-              title: "Continue with Google",
-              isRowVisible: true,
-              isSwitched: true,
-              mainAxisAlignment: MainAxisAlignment.center,
-              buttonIconWidget: Image.asset(
-                Assets.googleIcon,
-                fit: BoxFit.fill,
-                height: min(60, 20),
-                width: 20,
+            Obx(
+              () => CupertinoElevatedButton(
+                disable: false,
+                title: "Continue with Google",
+                isRowVisible: true,
+                isSwitched: true,
+                mainAxisAlignment: MainAxisAlignment.center,
+                buttonIconWidget: Image.asset(
+                  Assets.googleIcon,
+                  fit: BoxFit.fill,
+                  height: min(60, 20),
+                  width: 20,
+                ),
+                buttonColor: colorScheme.primary,
+                textColor: colorScheme.background,
+                onPressed: loginController.isLoading.value
+                    ? null
+                    : loginController.loginWithGoogle,
               ),
-              buttonColor: colorScheme.primary,
-              textColor: colorScheme.background,
-              onPressed: loginController.isLoading.value
-                  ? () {}
-                  : loginController.loginWithGoogle,
             ),
             kSizedBox,
-            Align(
-              alignment: Alignment.center,
-              child: Text.rich(
-                TextSpan(
-                  text: "Don't have an account? ",
-                  style: defaultTextStyle(
-                    color: colorScheme.primary,
-                    fontSize: 16.0,
-                  ),
-                  children: [
-                    TextSpan(
-                      text: "Sign up",
-                      mouseCursor: SystemMouseCursors.click,
-                      recognizer: TapGestureRecognizer()
-                        ..onTap = loginController.isLoading.value
-                            ? null
-                            : loginController.navigateToSignup,
-                      style: defaultTextStyle(
-                        color: kAccentColor,
-                        fontSize: 16.0,
-                      ),
+            Obx(
+              () => Align(
+                alignment: Alignment.center,
+                child: Text.rich(
+                  TextSpan(
+                    text: "Don't have an account? ",
+                    style: defaultTextStyle(
+                      color: colorScheme.primary,
+                      fontSize: 16.0,
                     ),
-                  ],
+                    children: [
+                      TextSpan(
+                        text: "Sign up",
+                        mouseCursor: SystemMouseCursors.click,
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = loginController.isLoading.value
+                              ? null
+                              : loginController.navigateToSignup,
+                        style: defaultTextStyle(
+                          color: loginController.isLoading.value
+                              ? colorScheme.inversePrimary
+                              : kAccentColor,
+                          fontSize: 16.0,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

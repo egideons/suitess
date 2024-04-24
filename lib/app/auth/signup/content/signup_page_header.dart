@@ -17,7 +17,6 @@ Widget signupPageHeader({colorScheme, media}) {
             style: defaultTextStyle(
               fontSize: 24.0,
               color: colorScheme.primary,
-              letterSpacing: .90,
             ),
             children: [
               TextSpan(
@@ -25,7 +24,6 @@ Widget signupPageHeader({colorScheme, media}) {
                 style: defaultTextStyle(
                   fontSize: 24.0,
                   color: kAccentColor,
-                  letterSpacing: .90,
                 ),
               ),
               TextSpan(
@@ -33,7 +31,6 @@ Widget signupPageHeader({colorScheme, media}) {
                 style: defaultTextStyle(
                   fontSize: 24.0,
                   color: colorScheme.primary,
-                  letterSpacing: .90,
                 ),
               ),
             ],

@@ -214,7 +214,7 @@ class EmailOTPCupertinoScaffold extends GetView<EmailOTPController> {
                 disabledColor: colorScheme.inversePrimary,
                 child: Center(
                   child: Container(
-                    width: media.width - 250,
+                    width: media.width - 180,
                     padding: const EdgeInsets.all(10),
                     decoration: ShapeDecoration(
                       color: Get.isDarkMode

@@ -17,7 +17,6 @@ Widget loginPageHeader({colorScheme, media}) {
             style: defaultTextStyle(
               fontSize: 24.0,
               color: colorScheme.primary,
-              letterSpacing: .90,
             ),
             children: [
               TextSpan(
@@ -25,7 +24,6 @@ Widget loginPageHeader({colorScheme, media}) {
                 style: defaultTextStyle(
                   fontSize: 24.0,
                   color: kAccentColor,
-                  letterSpacing: .90,
                 ),
               ),
             ],

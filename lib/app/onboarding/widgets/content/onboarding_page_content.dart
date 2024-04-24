@@ -21,10 +21,10 @@ Widget onboardingPageContent({controller, colorScheme, media}) {
           //Top Middle
           Positioned(
             top: -media.height / 1.8,
-            left: media.width * 0.12,
+            right: media.width / 8,
             child: Container(
               height: media.height / 1.5,
-              width: media.width - 100,
+              width: media.width / 1.34,
               decoration: ShapeDecoration(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(50),
@@ -129,10 +129,10 @@ Widget onboardingPageContent({controller, colorScheme, media}) {
           //Middle
           Positioned(
             top: media.height / 8,
-            left: media.width * 0.12,
+            right: media.width / 8,
             child: Container(
               height: media.height / 1.5,
-              width: media.width - 100,
+              width: media.width / 1.34,
               decoration: ShapeDecoration(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(50),

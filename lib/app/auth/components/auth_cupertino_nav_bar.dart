@@ -12,7 +12,7 @@ ObstructingPreferredSizeWidget authCupertinoNavBar(
     backgroundColor: colorScheme.background,
     border: Border.all(color: kTransparentColor),
     middle: Container(
-      width: media.width - 250,
+      width: media.width - 160,
       padding: const EdgeInsets.all(10),
       decoration: ShapeDecoration(
         color: Get.isDarkMode

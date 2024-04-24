@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 
 import '../../app/auth/signup/screen/signup.dart';
 import '../constants/consts.dart';
+import 'api_processor_controller.dart';
 
 class LoginController extends GetxController {
   static LoginController get instance {
@@ -38,6 +39,7 @@ class LoginController extends GetxController {
     var emailRegExp = RegExp(emailPattern);
     if (!emailRegExp.hasMatch(emailEC.text)) {
       isEmailValid.value = false;
+      setFormIsInvalid();
     } else {
       isEmailValid.value = true;
     }
@@ -82,11 +84,24 @@ class LoginController extends GetxController {
     if (formKey.currentState!.validate()) {
       formKey.currentState!.save();
 
+      if (emailEC.text.isEmpty) {
+        setFormIsInvalid();
+        update();
+        ApiProcessorController.errorSnack("Please enter your email");
+        return;
+      } else if (passwordEC.text.isEmpty) {
+        setFormIsInvalid();
+        update();
+        ApiProcessorController.errorSnack("Please enter your password");
+        return;
+      }
+
       isLoading.value = true;
       update();
 
       log("Logging in");
       await Future.delayed(const Duration(seconds: 3));
+      ApiProcessorController.successSnack("Login successful");
     }
     isLoading.value = false;
     update();

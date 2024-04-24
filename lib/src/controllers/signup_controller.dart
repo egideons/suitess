@@ -48,6 +48,7 @@ class SignupController extends GetxController {
     var userNameRegExp = RegExp(namePattern);
     if (!userNameRegExp.hasMatch(firstNameEC.text)) {
       isFirstNameValid.value = false;
+      setFormIsInvalid();
     } else {
       isFirstNameValid.value = true;
     }
@@ -59,11 +60,13 @@ class SignupController extends GetxController {
     if (isFirstNameValid.isTrue) {
       if (!userNameRegExp.hasMatch(lastNameEC.text)) {
         isLastNameValid.value = false;
+        setFormIsInvalid();
       } else {
         isLastNameValid.value = true;
       }
     } else {
       isLastNameValid.value = false;
+      setFormIsInvalid();
     }
     update();
   }
@@ -73,11 +76,13 @@ class SignupController extends GetxController {
     if (isLastNameValid.isTrue) {
       if (!emailRegExp.hasMatch(emailEC.text)) {
         isEmailValid.value = false;
+        setFormIsInvalid();
       } else {
         isEmailValid.value = true;
       }
     } else {
       isEmailValid.value = false;
+      setFormIsInvalid();
     }
     update();
   }
@@ -87,11 +92,13 @@ class SignupController extends GetxController {
     if (isEmailValid.isTrue) {
       if (!phoneNumberRegExp.hasMatch(phoneNumberEC.text)) {
         isPhoneNumberValid.value = false;
+        setFormIsInvalid();
       } else {
         isPhoneNumberValid.value = true;
       }
     } else {
       isPhoneNumberValid.value = false;
+      setFormIsInvalid();
     }
     update();
   }
@@ -132,6 +139,33 @@ class SignupController extends GetxController {
   Future<void> signup() async {
     if (formKey.currentState!.validate()) {
       formKey.currentState!.save();
+
+      if (firstNameEC.text.isEmpty) {
+        setFormIsInvalid();
+        update();
+        ApiProcessorController.errorSnack("Please enter your first name");
+        return;
+      } else if (lastNameEC.text.isEmpty) {
+        setFormIsInvalid();
+        update();
+        ApiProcessorController.errorSnack("Please enter your last name");
+        return;
+      } else if (emailEC.text.isEmpty) {
+        setFormIsInvalid();
+        update();
+        ApiProcessorController.errorSnack("Please enter your email");
+        return;
+      } else if (phoneNumberEC.text.isEmpty) {
+        setFormIsInvalid();
+        update();
+        ApiProcessorController.errorSnack("Please enter your phone number");
+        return;
+      } else if (passwordEC.text.isEmpty) {
+        setFormIsInvalid();
+        update();
+        ApiProcessorController.errorSnack("Please enter your password");
+        return;
+      }
 
       isLoading.value = true;
       update();

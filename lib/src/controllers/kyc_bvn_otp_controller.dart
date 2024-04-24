@@ -51,6 +51,10 @@ class KycBvnOTPController extends GetxController {
 
   //================= Onchanged ======================\\
   pin1Onchanged(value, context) {
+    if (value.isEmpty) {
+      FocusScope.of(context).previousFocus();
+      setFormIsInvalid();
+    }
     if (value.length == 1) {
       FocusScope.of(context).nextFocus();
     }
@@ -60,6 +64,7 @@ class KycBvnOTPController extends GetxController {
   pin2Onchanged(value, context) {
     if (value.isEmpty) {
       FocusScope.of(context).previousFocus();
+      setFormIsInvalid();
     }
     if (value.length == 1) {
       FocusScope.of(context).nextFocus();
@@ -70,6 +75,7 @@ class KycBvnOTPController extends GetxController {
   pin3Onchanged(value, context) {
     if (value.isEmpty) {
       FocusScope.of(context).previousFocus();
+      setFormIsInvalid();
     }
     if (value.length == 1) {
       FocusScope.of(context).nextFocus();
@@ -148,29 +154,51 @@ class KycBvnOTPController extends GetxController {
 
   //================= Send OTP ======================\\
   Future<void> submitOTP() async {
-    isLoading.value = true;
-    update();
+    if (formKey.currentState!.validate()) {
+      formKey.currentState!.save();
 
-    //Pause the timer
-    pauseTimer();
-    timerComplete.value = false;
+      if (pin1EC.text.isEmpty) {
+        setFormIsInvalid();
+        update();
+        return;
+      } else if (pin2EC.text.isEmpty) {
+        setFormIsInvalid();
+        update();
+        return;
+      } else if (pin3EC.text.isEmpty) {
+        setFormIsInvalid();
+        update();
+        return;
+      } else if (pin4EC.text.isEmpty) {
+        setFormIsInvalid();
+        update();
+        return;
+      }
 
-    await Future.delayed(const Duration(seconds: 3));
+      isLoading.value = true;
+      update();
 
-    Get.offAll(
-      () => const KycNIN(),
-      routeName: "/kyc-nin",
-      fullscreenDialog: true,
-      curve: Curves.easeInOut,
-      predicate: (routes) => false,
-      popGesture: false,
-      transition: Get.defaultTransition,
-    );
+      //Pause the timer
+      pauseTimer();
+      timerComplete.value = false;
 
-    isLoading.value = false;
-    update();
+      await Future.delayed(const Duration(seconds: 3));
 
-    //Continue the timer and enable resend button
-    onInit();
+      Get.offAll(
+        () => const KycNIN(),
+        routeName: "/kyc-nin",
+        fullscreenDialog: true,
+        curve: Curves.easeInOut,
+        predicate: (routes) => false,
+        popGesture: false,
+        transition: Get.defaultTransition,
+      );
+
+      isLoading.value = false;
+      update();
+
+      //Continue the timer and enable resend button
+      onInit();
+    }
   }
 }

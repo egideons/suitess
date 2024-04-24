@@ -264,6 +264,18 @@ class KycAddLocationCupertinoScaffold
                           ),
                         ],
                       ),
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: Text(
+                          "Address must contain the street number",
+                          textAlign: TextAlign.end,
+                          style: defaultTextStyle(
+                            color: colorScheme.inversePrimary,
+                            fontSize: 12.0,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 );
