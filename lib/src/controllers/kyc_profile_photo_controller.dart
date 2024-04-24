@@ -1,6 +1,5 @@
-import 'dart:io';
-
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
 class KycProfilePhotoController extends GetxController {
   static KycProfilePhotoController get instance {
@@ -14,7 +13,21 @@ class KycProfilePhotoController extends GetxController {
   //=========== Variables ===========\\
   var responseStatus = 0.obs;
   var responseMessage = "".obs;
-  File? image;
+  final ImagePicker _picker = ImagePicker();
+  XFile? selectedProfileImage;
+
+  //=========== Variables ===========\\
+  pickImage({ImageSource? source, CameraDevice? cameraDevice}) async {
+    final XFile? image = await _picker.pickImage(
+      source: source ?? ImageSource.camera,
+      preferredCameraDevice: cameraDevice ?? CameraDevice.front,
+      imageQuality: 100,
+    );
+    if (image != null) {
+      selectedProfileImage = image;
+      update();
+    }
+  }
 
   //=========== onChanged Functions ===========\\
 

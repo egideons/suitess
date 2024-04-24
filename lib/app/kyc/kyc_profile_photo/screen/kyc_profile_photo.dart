@@ -11,7 +11,7 @@ class KycProfilePhoto extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //Initialize otp controller
+    //Initialize controllers
     Get.put(KycProfilePhotoController());
 
     if (Platform.isIOS) {

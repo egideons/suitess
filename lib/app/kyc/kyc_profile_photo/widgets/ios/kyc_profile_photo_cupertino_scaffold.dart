@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:kribb/app/kyc/kyc_profile_photo/content/kyc_profile_photo_circle_avatar.dart';
 import 'package:kribb/app/kyc/kyc_profile_photo/content/kyc_profile_photo_page_header.dart';
 import 'package:kribb/app/kyc/kyc_profile_photo/widgets/ios/kyc_profile_photo_cupertino_modal_popup.dart';
 import 'package:kribb/src/controllers/kyc_profile_photo_controller.dart';
@@ -45,6 +46,14 @@ class KycProfilePhotoCupertinoScaffold
                   "Grant Kribb access to Camera and Photos to upload your picture",
             ),
             const SizedBox(height: kDefaultPadding * 2),
+            Center(
+              child: FittedBox(
+                fit: BoxFit.contain,
+                child:
+                    kycProfilePhotoCircleAvatar(colorScheme, "PN", image: null),
+              ),
+            ),
+            const SizedBox(height: kDefaultPadding * 2),
             formFieldContainer(
               colorScheme,
               media,
@@ -55,6 +64,7 @@ class KycProfilePhotoCupertinoScaffold
                     context,
                     media,
                     colorScheme,
+                    kycProfilePhotoController,
                   );
                 },
                 child: Padding(
