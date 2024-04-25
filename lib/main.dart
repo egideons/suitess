@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'app/kyc/kyc_profile_photo/screen/kyc_profile_photo.dart';
 import 'src/controllers/theme_controller.dart';
 import 'src/routes/routes.dart';
 import 'theme/app_theme.dart';
@@ -44,7 +45,7 @@ class MyApp extends StatelessWidget {
       darkTheme: androidDarkTheme,
       themeMode: ThemeController.instance.themeMode.value,
       //This is the home route
-      // home: const KycProfilePhoto(),
+      home: const KycProfilePhoto(),
     );
   }
 }
