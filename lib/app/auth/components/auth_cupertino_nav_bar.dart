@@ -6,9 +6,10 @@ import '../../../src/constants/consts.dart';
 import '../../../theme/colors.dart';
 
 ObstructingPreferredSizeWidget authCupertinoNavBar(
-    {colorScheme, media, title, faIcon}) {
+    {colorScheme, media, title, faIcon, previousPageTitle}) {
   return CupertinoNavigationBar(
     transitionBetweenRoutes: true,
+    previousPageTitle: previousPageTitle ?? "",
     backgroundColor: colorScheme.background,
     border: Border.all(color: kTransparentColor),
     middle: Container(

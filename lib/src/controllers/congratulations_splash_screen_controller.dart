@@ -13,13 +13,15 @@ class CongratulationsSplashScreenController extends GetxController {
 
   @override
   void onInit() {
-    Timer(const Duration(days: 2), () {
+    Timer(const Duration(seconds: 3), () {
       goToNextPage();
     });
     super.onInit();
   }
 
   Future<void> goToNextPage() async {
+    await Get.offAndToNamed(Routes.chooseExperience);
+
     // await Get.off(
     //   () => const ChooseExperience(),
     //   routeName: "/choose-experience",
@@ -29,7 +31,5 @@ class CongratulationsSplashScreenController extends GetxController {
     //   popGesture: false,
     //   transition: Get.defaultTransition,
     // );
-
-    await Get.offAndToNamed(Routes.chooseExperience);
   }
 }

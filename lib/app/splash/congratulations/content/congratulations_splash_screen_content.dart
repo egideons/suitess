@@ -21,44 +21,32 @@ Widget congratulationsSplashScreenContent({media, colorScheme}) {
     ),
     child: Column(
       mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Lottie.asset(
-          Assets.badge,
-        ),
-        kSizedBox,
+        Lottie.asset(Assets.badge, animate: true, fit: BoxFit.contain),
+        const SizedBox(height: kDefaultPadding * 4),
         SizedBox(
           height: media.height * .3,
           child: Stack(
             children: [
               Positioned(
-                child: AnimatedDefaultTextStyle(
-                  duration: const Duration(milliseconds: 100),
-                  curve: Curves.easeInOut,
+                child: Text(
+                  "Congratulations!!\nYou have finished setting up your profile.",
                   textAlign: TextAlign.center,
                   style: defaultTextStyle(
                     fontSize: 24.0,
                     color: kAccentColor,
                   ),
-                  child: const Text(
-                    "Congratulations!!\nYou have finished setting up your profile",
-                  ),
                 ),
               ),
               Positioned(
-                top: -40,
-                // left: media.width / 10,
-                child: Lottie.asset(
-                  Assets.colorSplash,
-                  animate: true,
+                child: Center(
+                  child: Lottie.asset(Assets.colorSplash, animate: true),
                 ),
               ),
             ],
           ),
         ),
-        // LoadingAnimationWidget.staggeredDotsWave(
-        //   color: colorScheme.primary,
-        //   size: 50,
-        // ),
       ],
     ),
   );
