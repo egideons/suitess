@@ -1,4 +1,5 @@
 class Assets {
+//=================== Images and Icons ===================\\
   //App Icon
   static const lightAppLogo = "assets/images/light_app_logo.png";
   static const darkAppLogo = "assets/images/dark_app_logo.png";
@@ -19,4 +20,12 @@ class Assets {
   static const placeholderImage = "assets/images/placeholder_image.png";
   static const userPlaceholderImage =
       "https://img.freepik.com/free-psd/3d-icon-social-media-app_23-2150049569.jpg";
+
+//=================== Animations ===================\\
+  static const badge = "assets/animations/badge.json";
+  static const colorSplash = "assets/animations/color_splash.json";
+  static const connecting = "assets/animations/connecting.json";
+  static const search = "assets/animations/search.json";
+  static const searching = "assets/animations/searching.json";
+  static const success = "assets/animations/success.json";
 }
