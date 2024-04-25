@@ -79,7 +79,7 @@ class ChooseExperienceCupertinoScaffold
                       ? kLightBackgroundColor
                       : colorScheme.inversePrimary,
                   faIcon: FaIcon(
-                    FontAwesomeIcons.solidUser,
+                    FontAwesomeIcons.user,
                     color: chooseExperienceController.items[1]
                         ? kLightBackgroundColor
                         : colorScheme.inversePrimary,
