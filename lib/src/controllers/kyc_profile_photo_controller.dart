@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../routes/routes.dart';
+
 class KycProfilePhotoController extends GetxController {
   static KycProfilePhotoController get instance {
     return Get.find<KycProfilePhotoController>();
@@ -61,15 +63,16 @@ class KycProfilePhotoController extends GetxController {
 
     await Future.delayed(const Duration(seconds: 3));
 
-    // Get.offAll(
-    //   () => const ninOTP(),
-    //   routeName: "/nin-otp",
+    // Get.to(
+    //   () => const CongratulationsSplashScreen(),
+    //   routeName: "/congratulations-splash-screen",
     //   fullscreenDialog: true,
     //   curve: Curves.easeInOut,
-    //   predicate: (routes) => false,
+    //   preventDuplicates: true,
     //   popGesture: false,
     //   transition: Get.defaultTransition,
     // );
+    Get.toNamed(Routes.congratulationsSplashScreen, preventDuplicates: true);
 
     isLoading.value = false;
     update();
