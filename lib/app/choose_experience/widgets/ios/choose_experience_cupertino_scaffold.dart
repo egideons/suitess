@@ -40,7 +40,7 @@ class ChooseExperienceCupertinoScaffold
             const SizedBox(height: kDefaultPadding * 2),
             Obx(
               () {
-                return experienceCupertinoButton(
+                return chooseExperienceCupertinoButton(
                   media,
                   title: "Landlord/Vendor",
                   chooseExperienceController.navigateToLandlord,
@@ -65,7 +65,7 @@ class ChooseExperienceCupertinoScaffold
             kSizedBox,
             Obx(
               () {
-                return experienceCupertinoButton(
+                return chooseExperienceCupertinoButton(
                   media,
                   title: "Tenant/Buyer",
                   chooseExperienceController.navigateToTenant,
@@ -90,7 +90,7 @@ class ChooseExperienceCupertinoScaffold
             kSizedBox,
             Obx(
               () {
-                return experienceCupertinoButton(
+                return chooseExperienceCupertinoButton(
                   media,
                   chooseExperienceController.navigateToAgent,
                   title: "Agent",

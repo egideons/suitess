@@ -4,7 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../../../src/constants/consts.dart';
 import '../../../../theme/colors.dart';
 
-Widget experienceCupertinoButton(
+Widget chooseExperienceCupertinoButton(
   media,
   onPressed, {
   title,
