@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 
 import '../../app/auth/signup/screen/signup.dart';
 import '../constants/consts.dart';
+import '../routes/routes.dart';
 import 'api_processor_controller.dart';
 
 class LoginController extends GetxController {
@@ -120,5 +121,10 @@ class LoginController extends GetxController {
       popGesture: false,
       transition: Get.defaultTransition,
     );
+  }
+
+  navigateToForgotPassword() {
+    // Navigate to Home() screen
+    Get.toNamed(Routes.forgotPassword, preventDuplicates: true);
   }
 }

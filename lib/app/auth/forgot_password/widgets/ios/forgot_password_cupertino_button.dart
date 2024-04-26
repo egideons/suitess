@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../../../../src/constants/consts.dart';
-import '../../../../theme/colors.dart';
+import '../../../../../src/constants/consts.dart';
+import '../../../../../theme/colors.dart';
 
-Widget experienceCupertinoButton(
+Widget forgotPasswordCupertinoButton(
   media,
   onPressed, {
   title,

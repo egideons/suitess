@@ -172,6 +172,61 @@ class LoginCupertinoScaffold extends GetView<LoginController> {
                 );
               },
             ),
+            kSizedBox,
+            Obx(
+              () {
+                return CupertinoButton(
+                  onPressed: loginController.isLoading.value
+                      ? null
+                      : loginController.navigateToForgotPassword,
+                  padding: const EdgeInsets.all(0),
+                  child: Align(
+                    alignment: Alignment.centerRight,
+                    child: Container(
+                      width: media.width - 180,
+                      padding: const EdgeInsets.all(10),
+                      decoration: ShapeDecoration(
+                        color: loginController.isLoading.value
+                            ? colorScheme.inversePrimary
+                            : Get.isDarkMode
+                                ? kErrorColor.withOpacity(0.4).withOpacity(0.2)
+                                : kErrorColor
+                                    .withOpacity(0.4)
+                                    .withOpacity(0.06),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(24),
+                        ),
+                      ),
+                      child: Center(
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            FaIcon(
+                              FontAwesomeIcons.key,
+                              color: loginController.isLoading.value
+                                  ? kLightBackgroundColor
+                                  : kErrorColor.withOpacity(0.4),
+                              size: 12,
+                            ),
+                            kHalfWidthSizedBox,
+                            Text(
+                              "Forgot Password",
+                              style: defaultTextStyle(
+                                color: loginController.isLoading.value
+                                    ? kLightBackgroundColor
+                                    : kErrorColor.withOpacity(0.4),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                );
+              },
+            ),
             const SizedBox(height: kDefaultPadding * 2),
             GetBuilder<LoginController>(
               init: LoginController(),

@@ -40,7 +40,7 @@ class ChooseExperienceCupertinoScaffold
             const SizedBox(height: kDefaultPadding * 2),
             Obx(
               () {
-                return experienceButton(
+                return experienceCupertinoButton(
                   media,
                   title: "Landlord/Vendor",
                   chooseExperienceController.navigateToLandlord,
@@ -65,7 +65,7 @@ class ChooseExperienceCupertinoScaffold
             kSizedBox,
             Obx(
               () {
-                return experienceButton(
+                return experienceCupertinoButton(
                   media,
                   title: "Tenant/Buyer",
                   chooseExperienceController.navigateToTenant,
@@ -79,7 +79,7 @@ class ChooseExperienceCupertinoScaffold
                       ? kLightBackgroundColor
                       : colorScheme.inversePrimary,
                   faIcon: FaIcon(
-                    FontAwesomeIcons.user,
+                    FontAwesomeIcons.solidUser,
                     color: chooseExperienceController.items[1]
                         ? kLightBackgroundColor
                         : colorScheme.inversePrimary,
@@ -90,7 +90,7 @@ class ChooseExperienceCupertinoScaffold
             kSizedBox,
             Obx(
               () {
-                return experienceButton(
+                return experienceCupertinoButton(
                   media,
                   chooseExperienceController.navigateToAgent,
                   title: "Agent",

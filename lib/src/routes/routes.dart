@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:kribb/app/auth/forgot_password/screen/forgot_password.dart';
 import 'package:kribb/app/auth/signup/screen/signup.dart';
 import 'package:kribb/app/choose_experience/screen/choose_experience.dart';
 import 'package:kribb/app/kyc/kyc_add_location/screen/kyc_add_location.dart';
@@ -55,6 +56,7 @@ class Routes {
     GetPage(name: signup, page: () => const Signup()),
     GetPage(name: login, page: () => const Login()),
     GetPage(name: emailOTP, page: () => const EmailOTP()),
+    GetPage(name: forgotPassword, page: () => const ForgotPassword()),
 
     //KYC Pages
     GetPage(name: kycAddLocation, page: () => const KycAddLocation()),
