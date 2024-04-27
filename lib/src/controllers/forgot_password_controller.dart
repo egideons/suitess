@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../routes/routes.dart';
+
 class ForgotPasswordController extends GetxController {
   static ForgotPasswordController get instance {
     return Get.find<ForgotPasswordController>();
@@ -13,11 +15,25 @@ class ForgotPasswordController extends GetxController {
   //================== Navigation ==================\\
   Future<void> navigateToEmail() async {
     items.value = [true, false];
+    isLoading.value = true;
+    update();
+
+    await Future.delayed(const Duration(milliseconds: 1000));
+    Get.toNamed(Routes.forgotPasswordViaEmailOTP, preventDuplicates: true);
+
+    isLoading.value = false;
     update();
   }
 
   Future<void> navigateToSMS() async {
     items.value = [false, true];
+    isLoading.value = true;
+    update();
+
+    await Future.delayed(const Duration(milliseconds: 1000));
+    // Get.toNamed(Routes.forgotPasswordViaEmailOTP, preventDuplicates: true);
+
+    isLoading.value = false;
     update();
   }
 }

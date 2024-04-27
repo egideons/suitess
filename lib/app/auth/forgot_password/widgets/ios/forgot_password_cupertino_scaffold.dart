@@ -32,13 +32,11 @@ class ForgotPasswordCupertinoScaffold
         child: ListView(
           padding: const EdgeInsets.all(10),
           children: [
-            // Obx(
-            //   () => forgotPasswordController.isLoading.value
-            //       ?
-
-            loadingIndicator(media: media),
-            // : const SizedBox(),
-            // ),
+            Obx(
+              () => forgotPasswordController.isLoading.value
+                  ? loadingIndicator(media: media)
+                  : const SizedBox(),
+            ),
             forgotPasswordPageHeader(
               title: "Forgot Password",
               subtitle: "Select where you want us to send you an OTP",
@@ -51,7 +49,9 @@ class ForgotPasswordCupertinoScaffold
                 return forgotPasswordCupertinoButton(
                   media,
                   title: "Email",
-                  forgotPasswordController.navigateToEmail,
+                  forgotPasswordController.isLoading.value
+                      ? null
+                      : forgotPasswordController.navigateToEmail,
                   bgColor: forgotPasswordController.items[0]
                       ? kSuccessColor.withOpacity(0.8)
                       : colorScheme.inversePrimary.withOpacity(0.2),
@@ -76,7 +76,9 @@ class ForgotPasswordCupertinoScaffold
                 return forgotPasswordCupertinoButton(
                   media,
                   title: "SMS",
-                  forgotPasswordController.navigateToSMS,
+                  forgotPasswordController.isLoading.value
+                      ? null
+                      : forgotPasswordController.navigateToSMS,
                   bgColor: forgotPasswordController.items[1]
                       ? kSuccessColor.withOpacity(0.8)
                       : colorScheme.inversePrimary.withOpacity(0.2),

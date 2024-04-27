@@ -8,6 +8,7 @@ import 'package:kribb/app/onboarding/screen/onboarding.dart';
 import 'package:kribb/app/splash/startup/screens/startup_splash.dart';
 
 import '../../app/auth/email_otp/screen/email_otp.dart';
+import '../../app/auth/forgot_password_otp/via_email/screen/forgot_password_via_email_otp.dart';
 import '../../app/auth/login/screen/login.dart';
 import '../../app/kyc/kyc_bvn/screen/kyc_bvn.dart';
 import '../../app/kyc/kyc_bvn_otp/screen/kyc_bvn_otp.dart';
@@ -30,6 +31,8 @@ class Routes {
   static const forgotPassword = "/forgot-password";
   static const resetPassword = "/reset-password";
   static const changePassword = "/change-password";
+  static const forgotPasswordViaEmailOTP = "/forgot-password-via-email-otp";
+  static const forgotPasswordViaSmsOTP = "/forgot-password-via-sms-otp";
 
   //KYC Screens
   static const kycAddLocation = "/kyc-add-location";
@@ -57,6 +60,14 @@ class Routes {
     GetPage(name: login, page: () => const Login()),
     GetPage(name: emailOTP, page: () => const EmailOTP()),
     GetPage(name: forgotPassword, page: () => const ForgotPassword()),
+    GetPage(
+      name: forgotPasswordViaEmailOTP,
+      page: () => const ForgotPasswordViaEmailOTP(),
+    ),
+    // GetPage(
+    //   name: forgotPasswordViaSmsOTP,
+    //   page: () => const ForgotPasswordViaEmailOTP(),
+    // ),
 
     //KYC Pages
     GetPage(name: kycAddLocation, page: () => const KycAddLocation()),
