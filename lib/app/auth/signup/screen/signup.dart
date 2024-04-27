@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kribb/src/controllers/signup_controller.dart';
 
+import '../widgets/android/signup_scaffold.dart';
 import '../widgets/ios/signup_cupertino_scaffold.dart';
 
 class Signup extends StatelessWidget {
@@ -22,7 +23,7 @@ class Signup extends StatelessWidget {
     }
     return GestureDetector(
       onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
-      child: const Scaffold(),
+      child: const SignupScaffold(),
     );
   }
 }

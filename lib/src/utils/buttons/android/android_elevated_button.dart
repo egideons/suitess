@@ -12,11 +12,13 @@ class AndroidElevatedButton extends StatelessWidget {
   final bool isLoading;
   final bool disable;
   final String? fontFamily;
-  final double? buttonElevation, fontSize;
+  final double? buttonElevation, borderRadius, fontSize, buttonIconSize;
   final bool? isRowVisible, isSwitched;
+  final MainAxisAlignment? mainAxisAlignment;
   final IconData? buttonIcon;
-  final Color? buttonIconColor;
-  final double? buttonIconSize;
+  final Color? buttonColor, indicatorColor, textColor, buttonIconColor;
+  final Widget? buttonIconWidget;
+  final FontWeight? fontWeight;
 
   const AndroidElevatedButton({
     super.key,
@@ -32,11 +34,19 @@ class AndroidElevatedButton extends StatelessWidget {
     this.buttonIconColor,
     this.buttonIconSize,
     this.isSwitched,
+    this.buttonColor,
+    this.borderRadius,
+    this.mainAxisAlignment,
+    this.indicatorColor,
+    this.textColor,
+    this.buttonIconWidget,
+    this.fontWeight,
   });
 
   @override
   Widget build(BuildContext context) {
     var media = MediaQuery.of(context).size;
+    var colorScheme = Theme.of(context).colorScheme;
 
     return ElevatedButton(
       onPressed: disable
@@ -46,10 +56,11 @@ class AndroidElevatedButton extends StatelessWidget {
               : onPressed,
       onLongPress: null,
       style: ElevatedButton.styleFrom(
-        disabledBackgroundColor: kAccentColor.withOpacity(0.5),
-        backgroundColor: kAccentColor,
+        disabledBackgroundColor: colorScheme.inversePrimary,
+        backgroundColor: buttonColor ?? kAccentColor,
         elevation: buttonElevation ?? 0,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(borderRadius ?? 24)),
         minimumSize: Size(media.width, 60),
       ),
       child: isLoading
@@ -57,38 +68,47 @@ class AndroidElevatedButton extends StatelessWidget {
           : isRowVisible == true
               ? isSwitched == true
                   ? Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment:
+                          mainAxisAlignment ?? MainAxisAlignment.spaceBetween,
                       children: [
-                        FaIcon(
-                          buttonIcon,
-                          color: buttonIconColor,
-                          size: buttonIconSize ?? 16,
-                        ),
+                        buttonIconWidget ??
+                            FaIcon(
+                              buttonIcon,
+                              color: buttonIconColor,
+                              size: buttonIconSize ?? 16,
+                            ),
+                        mainAxisAlignment == null
+                            ? const SizedBox()
+                            : kHalfWidthSizedBox,
                         Text(
                           title,
                           textAlign: TextAlign.center,
                           style: defaultTextStyle(
-                            color: kTextWhiteColor,
-                            fontSize: fontSize ?? 18.0,
+                            color: textColor ?? kTextWhiteColor,
+                            fontSize: fontSize ?? 14.0,
                             fontFamily: fontFamily,
-                            fontWeight: FontWeight.w900,
+                            fontWeight: fontWeight ?? FontWeight.w600,
                           ),
                         ),
                       ],
                     )
                   : Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment:
+                          mainAxisAlignment ?? MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
                           title,
                           textAlign: TextAlign.center,
                           style: defaultTextStyle(
-                            color: kTextWhiteColor,
-                            fontSize: fontSize ?? 18.0,
+                            color: textColor ?? kTextWhiteColor,
+                            fontSize: fontSize ?? 14.0,
                             fontFamily: fontFamily,
-                            fontWeight: FontWeight.w900,
+                            fontWeight: fontWeight ?? FontWeight.w600,
                           ),
                         ),
+                        mainAxisAlignment == null
+                            ? const SizedBox()
+                            : kHalfWidthSizedBox,
                         FaIcon(
                           buttonIcon,
                           color: buttonIconColor,
@@ -100,10 +120,10 @@ class AndroidElevatedButton extends StatelessWidget {
                   title,
                   textAlign: TextAlign.center,
                   style: defaultTextStyle(
-                    color: kTextWhiteColor,
-                    fontSize: fontSize ?? 16.0,
+                    color: textColor ?? kTextWhiteColor,
+                    fontSize: fontSize ?? 14.0,
                     fontFamily: fontFamily,
-                    fontWeight: FontWeight.w900,
+                    fontWeight: fontWeight ?? FontWeight.w600,
                   ),
                 ),
     );

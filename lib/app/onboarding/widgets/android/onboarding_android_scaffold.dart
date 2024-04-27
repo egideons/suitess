@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../src/controllers/onboarding_controller.dart';
-import '../content/onboarding_page_content.dart';
+import '../../content/onboarding_page_content.dart';
 
 class OnboardingAndroidScaffold extends StatelessWidget {
   const OnboardingAndroidScaffold({super.key});
@@ -14,6 +14,9 @@ class OnboardingAndroidScaffold extends StatelessWidget {
     final controller = OnboardingController.instance;
 
     return Scaffold(
+      appBar: AppBar(
+        toolbarHeight: media.height * .004,
+      ),
       body: SafeArea(
         child: onboardingPageContent(
           media: media,

@@ -1,18 +1,15 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
 import '../../../src/constants/consts.dart';
 import '../../../theme/colors.dart';
 
-ObstructingPreferredSizeWidget authCupertinoNavBar(
-    {colorScheme, media, title, faIcon, previousPageTitle, isVisible}) {
-  return CupertinoNavigationBar(
-    transitionBetweenRoutes: true,
-    previousPageTitle: previousPageTitle ?? "",
+PreferredSizeWidget authAppBar({colorScheme, media, faIcon, title, isVisible}) {
+  return AppBar(
+    centerTitle: true,
     backgroundColor: colorScheme.background,
-    border: Border.all(color: kTransparentColor),
-    middle: isVisible == false
+    title: isVisible == false
         ? const SizedBox()
         : Container(
             width: media.width - 160,

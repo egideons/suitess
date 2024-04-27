@@ -44,7 +44,6 @@ class MyApp extends StatelessWidget {
       darkTheme: androidDarkTheme,
       themeMode: ThemeController.instance.themeMode.value,
       //This is the home route
-      // home: const KycProfilePhoto(),
     );
   }
 }
