@@ -1,24 +1,23 @@
 import 'dart:math';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:kribb/app/auth/components/auth_cupertino_nav_bar.dart';
-import 'package:kribb/app/auth/signup/content/signup_page_header.dart';
-import 'package:kribb/src/constants/consts.dart';
-import 'package:kribb/src/controllers/signup_controller.dart';
-import 'package:kribb/src/utils/buttons/ios/cupertino_elevated_button.dart';
-import 'package:kribb/theme/colors.dart';
+import 'package:kribb/src/utils/buttons/android/android_elevated_button.dart';
+import 'package:kribb/src/utils/text_form_fields/android/android_textformfield.dart';
 
 import '../../../../../src/constants/assets.dart';
+import '../../../../../src/constants/consts.dart';
+import '../../../../../src/controllers/signup_controller.dart';
 import '../../../../../src/utils/containers/form_field_container.dart';
-import '../../../../../src/utils/text_form_fields/ios/cupertino_text_field.dart';
+import '../../../../../theme/colors.dart';
+import '../../../components/auth_app_bar.dart';
+import '../../content/signup_page_header.dart';
 
-class SignupCupertinoScaffold extends GetView<SignupController> {
-  const SignupCupertinoScaffold({super.key});
+class SignupScaffold extends GetView<SignupController> {
+  const SignupScaffold({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,13 +26,13 @@ class SignupCupertinoScaffold extends GetView<SignupController> {
 
     final signupController = SignupController.instance;
 
-    return CupertinoPageScaffold(
-      navigationBar: authCupertinoNavBar(
+    return Scaffold(
+      appBar: authAppBar(
         colorScheme: colorScheme,
         media: media,
         title: "Create account",
       ),
-      child: SafeArea(
+      body: SafeArea(
         child: ListView(
           padding: const EdgeInsets.all(10),
           children: [
@@ -49,22 +48,23 @@ class SignupCupertinoScaffold extends GetView<SignupController> {
                       formFieldContainer(
                         colorScheme,
                         media,
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             SizedBox(
-                              width: media.width - 60,
-                              child: MyCupertinoTextField(
+                              width: media.width - 80,
+                              child: AndroidTextFormField(
                                 controller: signupController.firstNameEC,
                                 focusNode: signupController.firstNameFN,
                                 textInputAction: TextInputAction.next,
                                 keyboardType: TextInputType.name,
                                 textCapitalization: TextCapitalization.words,
-                                borderColor: kTransparentColor,
-                                placeholder: "First Name",
+                                hintText: "First Name",
                                 onChanged: signupController.firstNameOnChanged,
+                                alignLabelWithHint: true,
                                 validator: (value) {
                                   return null;
                                 },
@@ -89,20 +89,20 @@ class SignupCupertinoScaffold extends GetView<SignupController> {
                       formFieldContainer(
                         colorScheme,
                         media,
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             SizedBox(
-                              width: media.width - 60,
-                              child: MyCupertinoTextField(
-                                placeholder: "Last Name",
+                              width: media.width - 80,
+                              child: AndroidTextFormField(
+                                hintText: "Last Name",
                                 controller: signupController.lastNameEC,
                                 focusNode: signupController.lastNameFN,
                                 textInputAction: TextInputAction.next,
                                 textCapitalization: TextCapitalization.words,
-                                borderColor: kTransparentColor,
                                 keyboardType: TextInputType.name,
                                 onChanged: signupController.lastNameOnChanged,
                                 validator: (value) {
@@ -129,21 +129,21 @@ class SignupCupertinoScaffold extends GetView<SignupController> {
                       formFieldContainer(
                         colorScheme,
                         media,
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             SizedBox(
-                              width: media.width - 60,
-                              child: MyCupertinoTextField(
+                              width: media.width - 80,
+                              child: AndroidTextFormField(
                                 controller: signupController.emailEC,
                                 focusNode: signupController.emailFN,
+                                hintText: "Email",
                                 textInputAction: TextInputAction.next,
                                 textCapitalization: TextCapitalization.none,
                                 keyboardType: TextInputType.emailAddress,
-                                borderColor: kTransparentColor,
-                                placeholder: "Email",
                                 onChanged: signupController.emailOnChanged,
                                 validator: (value) {
                                   return null;
@@ -169,14 +169,15 @@ class SignupCupertinoScaffold extends GetView<SignupController> {
                       formFieldContainer(
                         colorScheme,
                         media,
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             SizedBox(
-                              width: media.width - 60,
-                              child: MyCupertinoTextField(
+                              width: media.width - 80,
+                              child: AndroidTextFormField(
                                 // prefix: Padding(
                                 //   padding: const EdgeInsets.only(left: 10.0),
                                 //   child: Text(
@@ -186,14 +187,13 @@ class SignupCupertinoScaffold extends GetView<SignupController> {
                                 // ),
                                 controller: signupController.phoneNumberEC,
                                 focusNode: signupController.phoneNumberFN,
-                                placeholder: "Phone number",
+                                hintText: "Phone number",
                                 textInputAction: TextInputAction.next,
                                 textCapitalization: TextCapitalization.none,
                                 keyboardType: TextInputType.phone,
                                 inputFormatters: [
                                   FilteringTextInputFormatter.digitsOnly
                                 ],
-                                borderColor: kTransparentColor,
                                 onChanged:
                                     signupController.phoneNumberOnChanged,
                                 validator: (value) {
@@ -220,25 +220,25 @@ class SignupCupertinoScaffold extends GetView<SignupController> {
                       formFieldContainer(
                         colorScheme,
                         media,
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             SizedBox(
-                              width: media.width - 100,
-                              child: MyCupertinoTextField(
+                              width: media.width - 120,
+                              child: AndroidTextFormField(
                                 controller: signupController.passwordEC,
                                 focusNode: signupController.passwordFN,
                                 textInputAction: TextInputAction.done,
                                 textCapitalization: TextCapitalization.none,
                                 keyboardType: TextInputType.visiblePassword,
-                                borderColor: kTransparentColor,
                                 obscureText:
                                     signupController.passwordIsHidden.value,
-                                placeholder: "Password",
+                                hintText: "Password",
                                 onChanged: signupController.passwordOnChanged,
-                                onSubmitted: signupController.onSubmitted,
+                                onFieldSubmitted: signupController.onSubmitted,
                                 validator: (value) {
                                   return null;
                                 },
@@ -289,6 +289,7 @@ class SignupCupertinoScaffold extends GetView<SignupController> {
                               ? "Password meets the requirements"
                               : "Password must contain 8 characters,\n a number and\n a special character.",
                           textAlign: TextAlign.end,
+                          maxLines: 4,
                           style: defaultTextStyle(
                             color: signupController.isPasswordValid.value
                                 ? kSuccessColor
@@ -308,7 +309,7 @@ class SignupCupertinoScaffold extends GetView<SignupController> {
             GetBuilder<SignupController>(
               init: SignupController(),
               builder: (controller) {
-                return CupertinoElevatedButton(
+                return AndroidElevatedButton(
                   title: "Continue",
                   disable: signupController.formIsValid.isTrue ? false : true,
                   isLoading: signupController.isLoading.value,
@@ -349,7 +350,7 @@ class SignupCupertinoScaffold extends GetView<SignupController> {
             ),
             kSizedBox,
             Obx(
-              () => CupertinoElevatedButton(
+              () => AndroidElevatedButton(
                 title: "Continue with Google",
                 isRowVisible: true,
                 isSwitched: true,

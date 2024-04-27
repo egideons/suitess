@@ -56,6 +56,7 @@ class LoginCupertinoScaffold extends GetView<LoginController> {
                             SizedBox(
                               width: media.width - 60,
                               child: MyCupertinoTextField(
+                                readOnly: loginController.isLoading.value,
                                 controller: loginController.emailEC,
                                 focusNode: loginController.emailFN,
                                 textInputAction: TextInputAction.next,
@@ -96,6 +97,7 @@ class LoginCupertinoScaffold extends GetView<LoginController> {
                             SizedBox(
                               width: media.width - 100,
                               child: MyCupertinoTextField(
+                                readOnly: loginController.isLoading.value,
                                 controller: loginController.passwordEC,
                                 focusNode: loginController.passwordFN,
                                 textInputAction: TextInputAction.done,
