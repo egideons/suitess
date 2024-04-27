@@ -287,7 +287,7 @@ class SignupCupertinoScaffold extends GetView<SignupController> {
                         child: Text(
                           signupController.isPasswordValid.value
                               ? "Password meets the requirements"
-                              : "Password must contain 8 characters, a number and a special character",
+                              : "Password must contain 8 characters,\n a number and\n a special character.",
                           textAlign: TextAlign.end,
                           style: defaultTextStyle(
                             color: signupController.isPasswordValid.value
@@ -350,7 +350,6 @@ class SignupCupertinoScaffold extends GetView<SignupController> {
             kSizedBox,
             Obx(
               () => CupertinoElevatedButton(
-                disable: false,
                 title: "Continue with Google",
                 isRowVisible: true,
                 isSwitched: true,
@@ -399,6 +398,7 @@ class SignupCupertinoScaffold extends GetView<SignupController> {
                 ),
               ),
             ),
+            kSizedBox,
           ],
         ),
       ),
