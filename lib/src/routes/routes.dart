@@ -57,6 +57,7 @@ class Routes {
     GetPage(name: login, page: () => const Login()),
     GetPage(name: emailOTP, page: () => const EmailOTP()),
     GetPage(name: forgotPassword, page: () => const ForgotPassword()),
+    // GetPage(name: resetPassword, page: () => const ResetPassword()),
 
     //KYC Pages
     GetPage(name: kycAddLocation, page: () => const KycAddLocation()),
