@@ -1,6 +1,8 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:kribb/src/controllers/api_processor_controller.dart';
 
+import '../../app/auth/login/screen/login.dart';
 import '../constants/consts.dart';
 
 class ResetPasswordController extends GetxController {
@@ -61,6 +63,17 @@ class ResetPasswordController extends GetxController {
     update();
 
     await Future.delayed(const Duration(seconds: 2));
+    ApiProcessorController.successSnack("Password reset successful");
+
+    Get.offAll(
+      () => const Login(),
+      routeName: "/login",
+      fullscreenDialog: true,
+      curve: Curves.easeInOut,
+      predicate: (routes) => false,
+      popGesture: false,
+      transition: Get.defaultTransition,
+    );
 
     isLoading.value = false;
     update();
