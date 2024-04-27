@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
 Widget formFieldContainer(colorScheme, media,
-    {child, containerHeight, containerWidth}) {
+    {child, containerHeight, containerWidth, padding}) {
   return Container(
     width: containerWidth ?? media.width,
     height: containerHeight ?? media.height * 0.06,
+    padding: padding,
     decoration: ShapeDecoration(
       color: colorScheme.inversePrimary.withOpacity(0.2),
       shape: RoundedRectangleBorder(

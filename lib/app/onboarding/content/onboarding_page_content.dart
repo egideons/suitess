@@ -5,9 +5,9 @@ import 'package:kribb/app/auth/signup/screen/signup.dart';
 import 'package:kribb/main.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-import '../../../../src/constants/consts.dart';
-import '../../../../src/utils/buttons/ios/cupertino_elevated_button.dart';
-import '../../../../theme/colors.dart';
+import '../../../src/constants/consts.dart';
+import '../../../src/utils/buttons/ios/cupertino_elevated_button.dart';
+import '../../../theme/colors.dart';
 
 Widget onboardingPageContent({controller, colorScheme, media}) {
   return PageView.builder(

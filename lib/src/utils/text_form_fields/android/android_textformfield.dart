@@ -2,12 +2,14 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
+import 'package:kribb/src/constants/consts.dart';
 
-class AndroidPasswordTextFormField extends StatelessWidget {
-  final String hintText;
+class AndroidTextFormField extends StatelessWidget {
+  final String? hintText, obscuringCharacter;
   final TextEditingController controller;
   final FormFieldValidator validator;
-  final void Function(String?)? onSaved;
+  final dynamic onSaved;
   final TextInputAction textInputAction;
   final FocusNode focusNode;
   final TextCapitalization textCapitalization;
@@ -17,20 +19,27 @@ class AndroidPasswordTextFormField extends StatelessWidget {
   final TextStyle? helperStyle, prefixStyle, suffixStyle;
   final String? labelText, helperText, suffixText, prefixText;
   final Color? prefixIconColor, suffixIconColor;
-  final bool? enabled, readOnly, alignLabelWithHint;
+  final bool? enabled,
+      readOnly,
+      alignLabelWithHint,
+      autoCorrect,
+      obscureText,
+      filled;
 
   final List<TextInputFormatter>? inputFormatters;
   final void Function()? onTap;
-  final bool? obsureText;
+  final TextInputType? keyboardType;
+  final int? maxLines, minLines, maxLength;
+  final MaxLengthEnforcement? maxLengthEnforcement;
 
-  const AndroidPasswordTextFormField({
+  const AndroidTextFormField({
     super.key,
     required this.controller,
     required this.validator,
     this.onSaved,
     required this.textInputAction,
     required this.focusNode,
-    required this.hintText,
+    this.hintText,
     required this.textCapitalization,
     this.onChanged,
     this.onFieldSubmitted,
@@ -41,7 +50,6 @@ class AndroidPasswordTextFormField extends StatelessWidget {
     this.readOnly,
     this.inputFormatters,
     this.onTap,
-    this.obsureText,
     this.prefix,
     this.suffix,
     this.prefixIcon,
@@ -54,6 +62,15 @@ class AndroidPasswordTextFormField extends StatelessWidget {
     this.prefixText,
     this.prefixIconColor,
     this.suffixIconColor,
+    this.autoCorrect,
+    this.obscureText,
+    this.keyboardType,
+    this.maxLines,
+    this.minLines,
+    this.maxLengthEnforcement,
+    this.maxLength,
+    this.obscuringCharacter,
+    this.filled,
   });
 
   @override
@@ -77,19 +94,22 @@ class AndroidPasswordTextFormField extends StatelessWidget {
       textInputAction: textInputAction,
       textAlign: TextAlign.start,
       cursorColor: colorScheme.inversePrimary,
-      autocorrect: false,
-      enableSuggestions: false,
-      keyboardType: TextInputType.visiblePassword,
-      obscureText: obsureText ?? true,
-      obscuringCharacter: "X",
+      autocorrect: autoCorrect ?? true,
+      enableSuggestions: true,
+      keyboardType: keyboardType,
       textCapitalization: textCapitalization,
       autovalidateMode: AutovalidateMode.onUserInteraction,
-      maxLines: 1,
-      style: TextStyle(
-        fontSize: 16,
+      maxLines: maxLines ?? 1,
+      minLines: minLines ?? 1,
+      maxLength: maxLength,
+      maxLengthEnforcement: maxLengthEnforcement,
+      obscureText: obscureText ?? false,
+      obscuringCharacter: obscuringCharacter ?? "•",
+      keyboardAppearance: Get.isDarkMode ? Brightness.dark : Brightness.light,
+      style: defaultTextStyle(
+        fontSize: 16.0,
         color: colorScheme.primary,
-        fontWeight: FontWeight.w900,
-        letterSpacing: -0.40,
+        fontWeight: FontWeight.normal,
       ),
       decoration: InputDecoration(
         helperText: helperText,
@@ -108,20 +128,18 @@ class AndroidPasswordTextFormField extends StatelessWidget {
         label: label,
         alignLabelWithHint: alignLabelWithHint,
         labelText: labelText,
-        filled: true,
+        filled: filled ?? false,
         fillColor: colorScheme.background,
         focusColor: const Color(0xFFF6F6F7),
-        labelStyle: TextStyle(
-          fontSize: 16,
-          color: colorScheme.primary,
-          fontWeight: FontWeight.w900,
-          letterSpacing: -0.40,
+        labelStyle: defaultTextStyle(
+          fontSize: 16.0,
+          color: colorScheme.inversePrimary,
+          fontWeight: FontWeight.normal,
         ),
-        hintStyle: TextStyle(
-          fontSize: 16,
-          color: colorScheme.primary,
-          fontWeight: FontWeight.w900,
-          letterSpacing: -0.40,
+        hintStyle: defaultTextStyle(
+          fontSize: 16.0,
+          color: colorScheme.inversePrimary,
+          fontWeight: FontWeight.normal,
         ),
         // errorStyle: const TextStyle(color: Colors.red),
         border: InputBorder.none,
