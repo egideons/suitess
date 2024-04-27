@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:kribb/app/auth/reset_password/screen/reset_password.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'src/controllers/theme_controller.dart';
@@ -45,7 +44,6 @@ class MyApp extends StatelessWidget {
       darkTheme: androidDarkTheme,
       themeMode: ThemeController.instance.themeMode.value,
       //This is the home route
-      home: const ResetPassword(),
     );
   }
 }
