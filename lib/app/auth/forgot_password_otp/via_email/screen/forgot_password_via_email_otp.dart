@@ -5,6 +5,8 @@ import 'package:get/get.dart';
 import 'package:kribb/app/auth/forgot_password_otp/via_email/widgets/ios/forgot_password_via_email_otp_cupertino_scaffold.dart';
 import 'package:kribb/src/controllers/forgot_password_via_email_otp_controller.dart';
 
+import '../widgets/android/forgot_password_via_email_otp_scaffold.dart';
+
 class ForgotPasswordViaEmailOTP extends StatelessWidget {
   const ForgotPasswordViaEmailOTP({super.key});
 
@@ -21,7 +23,7 @@ class ForgotPasswordViaEmailOTP extends StatelessWidget {
     }
     return GestureDetector(
       onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
-      child: const Scaffold(),
+      child: const ForgotPasswordViaEmailOTPScaffold(),
     );
   }
 }

@@ -5,6 +5,8 @@ import 'package:get/get.dart';
 import 'package:kribb/app/auth/email_otp/widgets/ios/email_otp_cupertino_scaffold.dart';
 import 'package:kribb/src/controllers/email_otp_controller.dart';
 
+import '../widgets/android/email_otp_scaffold.dart';
+
 class EmailOTP extends StatelessWidget {
   const EmailOTP({super.key});
 
@@ -21,7 +23,7 @@ class EmailOTP extends StatelessWidget {
     }
     return GestureDetector(
       onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
-      child: const Scaffold(),
+      child: const EmailOTPScaffold(),
     );
   }
 }

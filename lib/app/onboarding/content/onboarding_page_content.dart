@@ -167,7 +167,7 @@ Widget onboardingPageContent({controller, colorScheme, media}) {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Container(
-                        padding: const EdgeInsets.all(20.0),
+                        padding: const EdgeInsets.all(10),
                         decoration: const ShapeDecoration(
                           // color: colorScheme.inversePrimary,
                           shape: RoundedRectangleBorder(
