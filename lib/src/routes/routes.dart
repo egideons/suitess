@@ -68,7 +68,7 @@ class Routes {
     ),
     // GetPage(
     //   name: forgotPasswordViaSmsOTP,
-    //   page: () => const ForgotPasswordViaEmailOTP(),
+    //   page: () => const ForgotPasswordViaSMSOTP(),
     // ),
     GetPage(name: resetPassword, page: () => const ResetPassword()),
 
