@@ -58,6 +58,13 @@ class ApiProcessorController extends GetxController {
         shouldIconPulse: true,
         isDismissible: true,
         backgroundColor: kSuccessColor,
+        barBlur: 2.0,
+        borderRadius: 24,
+        snackPosition: SnackPosition.TOP,
+        // backgroundGradient: LinearGradient(
+        //   colors: [kSuccessColor, kSuccessColor.withOpacity(0.6)],
+        // ),
+        margin: const EdgeInsets.all(10),
         duration: const Duration(seconds: 2),
         mainButton: IconButton(
           onPressed: () {
@@ -110,7 +117,13 @@ class ApiProcessorController extends GetxController {
         ),
         shouldIconPulse: true,
         isDismissible: true,
-        progressIndicatorBackgroundColor: kLightBackgroundColor,
+        barBlur: 2.0,
+        borderRadius: 24,
+        snackPosition: SnackPosition.TOP,
+        // backgroundGradient: LinearGradient(
+        //   colors: [kSuccessColor, kSuccessColor.withOpacity(0.6)],
+        // ),
+        margin: const EdgeInsets.all(10),
         backgroundColor: kErrorColor,
         duration: const Duration(seconds: 2),
         mainButton: IconButton(

@@ -177,13 +177,13 @@ class LoginCupertinoScaffold extends GetView<LoginController> {
             kSizedBox,
             Obx(
               () {
-                return CupertinoButton(
-                  onPressed: loginController.isLoading.value
-                      ? null
-                      : loginController.navigateToForgotPassword,
-                  padding: const EdgeInsets.all(0),
-                  child: Align(
-                    alignment: Alignment.centerRight,
+                return Align(
+                  alignment: Alignment.centerRight,
+                  child: CupertinoButton(
+                    onPressed: loginController.isLoading.value
+                        ? null
+                        : loginController.navigateToForgotPassword,
+                    padding: const EdgeInsets.all(0),
                     child: Container(
                       width: media.width - 180,
                       padding: const EdgeInsets.all(10),

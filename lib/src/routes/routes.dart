@@ -9,6 +9,7 @@ import 'package:kribb/app/splash/startup/screens/startup_splash.dart';
 
 import '../../app/auth/email_otp/screen/email_otp.dart';
 import '../../app/auth/forgot_password_otp/via_email/screen/forgot_password_via_email_otp.dart';
+import '../../app/auth/forgot_password_otp/via_sms/screen/forgot_password_via_sms.dart';
 import '../../app/auth/login/screen/login.dart';
 import '../../app/auth/reset_password/screen/reset_password.dart';
 import '../../app/kyc/kyc_bvn/screen/kyc_bvn.dart';
@@ -61,15 +62,14 @@ class Routes {
     GetPage(name: login, page: () => const Login()),
     GetPage(name: emailOTP, page: () => const EmailOTP()),
     GetPage(name: forgotPassword, page: () => const ForgotPassword()),
-
     GetPage(
       name: forgotPasswordViaEmailOTP,
       page: () => const ForgotPasswordViaEmailOTP(),
     ),
-    // GetPage(
-    //   name: forgotPasswordViaSmsOTP,
-    //   page: () => const ForgotPasswordViaSMSOTP(),
-    // ),
+    GetPage(
+      name: forgotPasswordViaSmsOTP,
+      page: () => const ForgotPasswordViaSMSOTP(),
+    ),
     GetPage(name: resetPassword, page: () => const ResetPassword()),
 
     //KYC Pages

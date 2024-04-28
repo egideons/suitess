@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../routes/routes.dart';
 import 'api_processor_controller.dart';
 
 class ForgotPasswordViaEmailOtpController extends GetxController {
@@ -158,7 +159,10 @@ class ForgotPasswordViaEmailOtpController extends GetxController {
     timerComplete.value = false;
 
     await Future.delayed(const Duration(seconds: 3));
-    ApiProcessorController.successSnack("Email verification successful");
+    ApiProcessorController.successSnack("OTP verification successful");
+
+    Get.toNamed(Routes.resetPassword, preventDuplicates: true);
+
     // Get.offAll(
     //   () => const KycAddLocation(),
     //   routeName: "/kyc-add-location",

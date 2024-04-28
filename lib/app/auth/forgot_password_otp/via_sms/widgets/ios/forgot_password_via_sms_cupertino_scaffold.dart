@@ -5,13 +5,13 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
 import '../../../../../../src/constants/consts.dart';
-import '../../../../../../src/controllers/forgot_password_via_sms.dart';
+import '../../../../../../src/controllers/forgot_password_via_sms_controller.dart';
 import '../../../../../../src/utils/buttons/ios/cupertino_elevated_button.dart';
 import '../../../../../../src/utils/containers/form_field_container.dart';
 import '../../../../../../src/utils/text_form_fields/ios/cupertino_text_field.dart';
 import '../../../../../../theme/colors.dart';
 import '../../../../components/auth_cupertino_nav_bar.dart';
-import '../../content/forgot_password_via_sms.dart';
+import '../../content/forgot_password_via_sms_page_header.dart';
 
 class ForgotPasswordViaSMSOTPCupertinoScaffold
     extends GetView<ForgotPasswordViaSMSOtpController> {
@@ -39,7 +39,7 @@ class ForgotPasswordViaSMSOTPCupertinoScaffold
             colorScheme: colorScheme,
             media: media,
             title: "Verify OTP",
-            subtitle: "Enter the 4-digit OTP sent to your phone number",
+            subtitle: "Enter the 4-digit OTP sent to your phone",
           ),
           const SizedBox(height: kDefaultPadding * 2),
           Form(
