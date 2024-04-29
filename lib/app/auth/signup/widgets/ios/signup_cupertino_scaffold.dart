@@ -377,8 +377,8 @@ class SignupCupertinoScaffold extends GetView<SignupController> {
                   title: "Signup with Apple",
                   isRowVisible: true,
                   isSwitched: true,
-                  isLoading: signupController.isLoadingGoogleSignup.value,
-                  onPressed: signupController.signupWithGoogle,
+                  isLoading: signupController.isLoadingAppleSignup.value,
+                  onPressed: signupController.signupWithApple,
                   mainAxisAlignment: MainAxisAlignment.center,
                   rowIconWidget: Image.asset(
                     Assets.appleIconLight,

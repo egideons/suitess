@@ -47,7 +47,7 @@ class CupertinoElevatedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     var colorScheme = Theme.of(context).colorScheme;
     return CupertinoButton(
-      borderRadius: BorderRadius.circular(24),
+      borderRadius: BorderRadius.circular(16),
       minSize: 60,
       color: buttonColor ?? kAccentColor,
       disabledColor: colorScheme.inversePrimary,
@@ -111,7 +111,8 @@ class CupertinoElevatedButton extends StatelessWidget {
                       ],
                     )
               : isIcon == true
-                  ? Text(
+                  ? iconWidget!
+                  : Text(
                       title ?? "",
                       textAlign: TextAlign.center,
                       style: defaultTextStyle(
@@ -120,8 +121,7 @@ class CupertinoElevatedButton extends StatelessWidget {
                         fontFamily: fontFamily,
                         fontWeight: fontWeight ?? FontWeight.w600,
                       ),
-                    )
-                  : iconWidget ?? const SizedBox(),
+                    ),
     );
   }
 }

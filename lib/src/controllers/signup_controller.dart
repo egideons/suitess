@@ -195,7 +195,7 @@ class SignupController extends GetxController {
 
   //=========== Continue with Google ===========\\
   var scopes = <String>[
-    'egideonsam@gmail.com',
+    'email',
     'https://www.googleapis.com/auth/contacts.readonly',
   ];
 
