@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "537371602886",
+    "project_id": "kribb-ab70a",
+    "storage_bucket": "kribb-ab70a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:537371602886:android:50c1dd7ab81f11b17bccc7",
+        "android_client_info": {
+          "package_name": "com.kribb.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "537371602886-8ftctb72fubofkv4qdmsu47jp6420j34.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kribb.android",
+            "certificate_hash": "cb94922f15d3fa7df264ae248eb3f45689f092b4"
+          }
+        },
+        {
+          "client_id": "537371602886-98ui49dfctd1hlrubloprbit5jah55ti.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAaZ9KdMp3x0XZeBLtKm5XqgHoiJPsMFAU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "537371602886-378t9hb5sha0qk9ut0mli63vtglsfvci.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "537371602886-o25rom5lvbl8f39i46ft2clv7jm1pvet.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.kribb.ios"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

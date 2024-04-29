@@ -6,24 +6,24 @@ import '../../../../theme/colors.dart';
 import '../../../constants/consts.dart';
 
 class CupertinoElevatedButton extends StatelessWidget {
-  final String title;
+  final String? title;
   final Function()? onPressed;
   final bool isLoading;
   final bool disable;
   final String? fontFamily;
   final double? fontSize;
-  final bool? isRowVisible, isSwitched;
+  final bool? isIcon, isRowVisible, isSwitched;
   final MainAxisAlignment? mainAxisAlignment;
   final IconData? buttonIcon;
   final Color? buttonColor, indicatorColor, textColor, buttonIconColor;
   final double? buttonIconSize;
-  final Widget? buttonIconWidget;
+  final Widget? rowIconWidget, iconWidget;
   final FontWeight? fontWeight;
 
   const CupertinoElevatedButton({
     super.key,
-    required this.title,
     required this.onPressed,
+    this.title,
     this.isLoading = false,
     this.disable = false,
     this.fontFamily,
@@ -34,18 +34,20 @@ class CupertinoElevatedButton extends StatelessWidget {
     this.buttonIconColor,
     this.buttonIconSize,
     this.buttonColor,
-    this.buttonIconWidget,
+    this.rowIconWidget,
     this.indicatorColor,
     this.textColor,
     this.mainAxisAlignment,
     this.fontWeight,
+    this.isIcon,
+    this.iconWidget,
   });
 
   @override
   Widget build(BuildContext context) {
     var colorScheme = Theme.of(context).colorScheme;
     return CupertinoButton(
-      borderRadius: BorderRadius.circular(24),
+      borderRadius: BorderRadius.circular(16),
       minSize: 60,
       color: buttonColor ?? kAccentColor,
       disabledColor: colorScheme.inversePrimary,
@@ -62,7 +64,7 @@ class CupertinoElevatedButton extends StatelessWidget {
                       mainAxisAlignment:
                           mainAxisAlignment ?? MainAxisAlignment.spaceBetween,
                       children: [
-                        buttonIconWidget ??
+                        rowIconWidget ??
                             FaIcon(
                               buttonIcon,
                               color: buttonIconColor,
@@ -72,7 +74,7 @@ class CupertinoElevatedButton extends StatelessWidget {
                             ? const SizedBox()
                             : kHalfWidthSizedBox,
                         Text(
-                          title,
+                          title ?? "",
                           textAlign: TextAlign.center,
                           style: defaultTextStyle(
                             color: textColor ?? kTextWhiteColor,
@@ -88,7 +90,7 @@ class CupertinoElevatedButton extends StatelessWidget {
                           mainAxisAlignment ?? MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          title,
+                          title ?? "",
                           textAlign: TextAlign.center,
                           style: defaultTextStyle(
                             color: textColor ?? kTextWhiteColor,
@@ -100,7 +102,7 @@ class CupertinoElevatedButton extends StatelessWidget {
                         mainAxisAlignment == null
                             ? const SizedBox()
                             : kHalfWidthSizedBox,
-                        buttonIconWidget ??
+                        rowIconWidget ??
                             FaIcon(
                               buttonIcon,
                               color: buttonIconColor,
@@ -108,16 +110,18 @@ class CupertinoElevatedButton extends StatelessWidget {
                             ),
                       ],
                     )
-              : Text(
-                  title,
-                  textAlign: TextAlign.center,
-                  style: defaultTextStyle(
-                    color: textColor ?? kTextWhiteColor,
-                    fontSize: fontSize ?? 14.0,
-                    fontFamily: fontFamily,
-                    fontWeight: fontWeight ?? FontWeight.w600,
-                  ),
-                ),
+              : isIcon == true
+                  ? iconWidget!
+                  : Text(
+                      title ?? "",
+                      textAlign: TextAlign.center,
+                      style: defaultTextStyle(
+                        color: textColor ?? kTextWhiteColor,
+                        fontSize: fontSize ?? 14.0,
+                        fontFamily: fontFamily,
+                        fontWeight: fontWeight ?? FontWeight.w600,
+                      ),
+                    ),
     );
   }
 }
