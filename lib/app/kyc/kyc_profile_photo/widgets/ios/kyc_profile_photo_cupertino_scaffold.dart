@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -45,13 +47,36 @@ class KycProfilePhotoCupertinoScaffold
               subtitle: "Grant Kribb access to Camera to upload your picture.",
             ),
             const SizedBox(height: kDefaultPadding * 2),
-            // Center(
-            //   child: FittedBox(
-            //     fit: BoxFit.contain,
-            //     child:
-            //         kycProfilePhotoCircleAvatar(colorScheme, "PN", image: null),
-            //   ),
-            // ),
+            Obx(
+              () {
+                return Center(
+                  child: FittedBox(
+                    fit: BoxFit.contain,
+                    child: CircleAvatar(
+                      backgroundColor: colorScheme.inversePrimary,
+                      radius: 64,
+                      foregroundImage: kycProfilePhotoController
+                                  .selectedProfileImage.value !=
+                              null
+                          ? FileImage(
+                              File(
+                                kycProfilePhotoController
+                                    .selectedProfileImage.value!.path,
+                              ),
+                            )
+                          : null,
+                      child: Text(
+                        "P",
+                        style: defaultTextStyle(
+                          fontSize: 32.0,
+                          color: kLightBackgroundColor,
+                        ),
+                      ),
+                    ),
+                  ),
+                );
+              },
+            ),
             const SizedBox(height: kDefaultPadding * 2),
             formFieldContainer(
               colorScheme,
