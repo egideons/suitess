@@ -37,7 +37,7 @@ class KycAddLocationCupertinoScaffold
                   key: kycAddLocationController.formKey,
                   child: Column(
                     children: [
-                      InkWell(
+                      GestureDetector(
                         onTap: kycAddLocationController.isLoading.value
                             ? null
                             : () {
@@ -48,7 +48,6 @@ class KycAddLocationCupertinoScaffold
                                   kycAddLocationController,
                                 );
                               },
-                        borderRadius: BorderRadius.circular(16),
                         child: formFieldContainer(
                           colorScheme,
                           media,
@@ -83,7 +82,7 @@ class KycAddLocationCupertinoScaffold
                         ),
                       ),
                       kSizedBox,
-                      InkWell(
+                      GestureDetector(
                         onTap: kycAddLocationController
                                 .statePickerIsEnabled.isFalse
                             ? null
@@ -97,7 +96,6 @@ class KycAddLocationCupertinoScaffold
                                       kycAddLocationController,
                                     );
                                   },
-                        borderRadius: BorderRadius.circular(16),
                         child: formFieldContainer(
                           colorScheme,
                           media,
@@ -192,7 +190,7 @@ class KycAddLocationCupertinoScaffold
                           formFieldContainer(
                             colorScheme,
                             media,
-                            containerWidth: media.width - 62,
+                            containerWidth: media.width - 82,
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
