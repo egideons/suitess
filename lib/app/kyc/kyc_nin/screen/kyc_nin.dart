@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../src/controllers/kyc_nin_controller.dart';
+import '../widgets/android/kyc_nin_scaffold.dart';
 import '../widgets/ios/kyc_nin_cupertino_scaffold.dart';
 
 class KycNIN extends StatelessWidget {
@@ -22,7 +23,7 @@ class KycNIN extends StatelessWidget {
     }
     return GestureDetector(
       onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
-      child: const Scaffold(),
+      child: const KycNinScaffold(),
     );
   }
 }

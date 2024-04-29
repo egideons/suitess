@@ -1,14 +1,13 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:kribb/src/constants/consts.dart';
 import 'package:kribb/theme/colors.dart';
 
-kycProfilePhotoCupertinoModalPopup(context, media, colorScheme, controller) {
-  return showCupertinoModalPopup(
+kycProfilePhotoModalSheet(context, media, colorScheme, controller) {
+  return showModalBottomSheet(
     context: context,
-    barrierDismissible: true,
     builder: (context) {
       return Container(
         padding: const EdgeInsets.all(20),
@@ -23,8 +22,9 @@ kycProfilePhotoCupertinoModalPopup(context, media, colorScheme, controller) {
         ),
         child: Row(
           children: [
-            CupertinoButton(
-              onPressed: () {
+            InkWell(
+              borderRadius: BorderRadius.circular(100),
+              onTap: () {
                 Get.back();
                 controller.pickImage(source: ImageSource.camera);
               },
@@ -60,9 +60,10 @@ kycProfilePhotoCupertinoModalPopup(context, media, colorScheme, controller) {
                 ],
               ),
             ),
-            kHalfWidthSizedBox,
-            CupertinoButton(
-              onPressed: () {
+            kWidthSizedBox,
+            InkWell(
+              borderRadius: BorderRadius.circular(100),
+              onTap: () {
                 Get.back();
                 controller.pickImage(source: ImageSource.gallery);
               },
@@ -89,7 +90,7 @@ kycProfilePhotoCupertinoModalPopup(context, media, colorScheme, controller) {
                   ),
                   kHalfSizedBox,
                   Text(
-                    "Photos",
+                    "Gallery",
                     style: defaultTextStyle(
                       color: colorScheme.primary,
                       fontSize: 14.0,

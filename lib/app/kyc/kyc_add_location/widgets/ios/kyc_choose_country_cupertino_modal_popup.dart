@@ -15,8 +15,11 @@ void showKYCChooseCountryCupertinoPopup(
       return Container(
         decoration: ShapeDecoration(
           color: colorScheme.background,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(24),
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(24),
+              topRight: Radius.circular(24),
+            ),
           ),
         ),
         height: media.height * 0.3,

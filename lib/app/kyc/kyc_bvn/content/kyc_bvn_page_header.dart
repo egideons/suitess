@@ -12,6 +12,7 @@ Widget kycBvnPageHeader({colorScheme, media, title, subtitle}) {
           title ?? "",
           overflow: TextOverflow.ellipsis,
           textAlign: TextAlign.center,
+          maxLines: 2,
           style: defaultTextStyle(
             fontSize: 24.0,
             color: colorScheme.primary,
@@ -25,6 +26,8 @@ Widget kycBvnPageHeader({colorScheme, media, title, subtitle}) {
         child: Text(
           subtitle ?? "",
           textAlign: TextAlign.center,
+          overflow: TextOverflow.ellipsis,
+          maxLines: 2,
           style: defaultTextStyle(
             color: colorScheme.inversePrimary,
             fontSize: 14.0,

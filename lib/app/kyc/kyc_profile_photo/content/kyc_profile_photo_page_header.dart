@@ -25,6 +25,7 @@ Widget kycProfilePhotoPageHeader({colorScheme, media, title, subtitle}) {
         child: Text(
           subtitle ?? "",
           textAlign: TextAlign.center,
+          maxLines: 2,
           style: defaultTextStyle(
             color: colorScheme.inversePrimary,
             fontSize: 14.0,

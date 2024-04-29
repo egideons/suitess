@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kribb/src/controllers/choose_experience_controller.dart';
 
+import '../widgets/android/choose_experience_scaffold.dart';
 import '../widgets/ios/choose_experience_cupertino_scaffold.dart';
 
 class ChooseExperience extends StatelessWidget {
@@ -22,7 +23,7 @@ class ChooseExperience extends StatelessWidget {
     }
     return GestureDetector(
       onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
-      child: const Scaffold(),
+      child: const ChooseExperienceScaffold(),
     );
   }
 }

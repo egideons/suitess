@@ -16,19 +16,20 @@ class KycProfilePhotoController extends GetxController {
   var responseStatus = 0.obs;
   var responseMessage = "".obs;
   final ImagePicker _picker = ImagePicker();
-  XFile? selectedProfileImage;
+  var selectedProfileImage = Rx<XFile?>(null);
+  // XFile? selectedProfileImage;
 
   //=========== Variables ===========\\
   pickImage({ImageSource? source, CameraDevice? cameraDevice}) async {
-    final XFile? image = await _picker.pickImage(
+    selectedProfileImage.value = await _picker.pickImage(
       source: source ?? ImageSource.camera,
       preferredCameraDevice: cameraDevice ?? CameraDevice.front,
       imageQuality: 100,
     );
-    if (image != null) {
-      selectedProfileImage = image;
-      update();
-    }
+    // if (image != null) {
+    //   selectedProfileImage.value = image;
+    // }
+    update();
   }
 
   //=========== onChanged Functions ===========\\

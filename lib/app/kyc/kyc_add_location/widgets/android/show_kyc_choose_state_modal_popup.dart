@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 
 import '../../../../../src/constants/consts.dart';
 
-void showKYCChooseStateCupertinoPopup(context, colorScheme, media, controller) {
+void showKYCChooseStateModalPopup(context, colorScheme, media, controller) {
   showCupertinoModalPopup(
     context: context,
     barrierDismissible: true,

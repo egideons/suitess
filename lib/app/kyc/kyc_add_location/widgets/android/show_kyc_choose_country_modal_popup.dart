@@ -2,7 +2,12 @@ import 'package:flutter/cupertino.dart';
 
 import '../../../../../src/constants/consts.dart';
 
-void showKYCChooseStateCupertinoPopup(context, colorScheme, media, controller) {
+void showKYCChooseCountryModalPopup(
+  context,
+  colorScheme,
+  media,
+  controller,
+) {
   showCupertinoModalPopup(
     context: context,
     barrierDismissible: true,
@@ -23,15 +28,15 @@ void showKYCChooseStateCupertinoPopup(context, colorScheme, media, controller) {
           child: CupertinoPicker.builder(
             itemExtent: 40,
             useMagnifier: true,
-            childCount: controller.nigerianStates.length,
+            childCount: controller.countries.length,
             scrollController: controller.fixedContentScrollController.value,
             onSelectedItemChanged: (index) {
-              controller.onSelectedStateChanged(controller, index);
+              controller.onSelectedCountryChanged(controller, index);
             },
             itemBuilder: (context, index) {
               return Center(
                 child: Text(
-                  controller.nigerianStates[index],
+                  controller.countries[index],
                   style: defaultTextStyle(
                     fontSize: 14.0,
                     color: colorScheme.primary,

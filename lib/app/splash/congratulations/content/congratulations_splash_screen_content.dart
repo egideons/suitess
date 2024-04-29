@@ -33,6 +33,7 @@ Widget congratulationsSplashScreenContent({media, colorScheme}) {
                 child: Text(
                   "Congratulations!!\nYou have finished setting up your profile.",
                   textAlign: TextAlign.center,
+                  maxLines: 6,
                   style: defaultTextStyle(
                     fontSize: 24.0,
                     color: kAccentColor,

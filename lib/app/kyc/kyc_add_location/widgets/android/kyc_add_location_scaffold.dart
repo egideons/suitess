@@ -1,22 +1,20 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:kribb/src/controllers/kyc_choose_location_controller.dart';
+import 'package:kribb/src/utils/buttons/android/android_elevated_button.dart';
 import 'package:kribb/src/utils/containers/form_field_container.dart';
+import 'package:kribb/src/utils/text_form_fields/android/android_textformfield.dart';
 
 import '../../../../../src/constants/assets.dart';
 import '../../../../../src/constants/consts.dart';
-import '../../../../../src/utils/buttons/ios/cupertino_elevated_button.dart';
-import '../../../../../src/utils/text_form_fields/ios/cupertino_text_field.dart';
 import '../../../../../theme/colors.dart';
 import '../../content/kyc_add_location_page_header.dart';
-import 'kyc_choose_country_cupertino_modal_popup.dart';
-import 'kyc_choose_state_cupertino_modal_popup.dart';
+import 'show_kyc_choose_country_modal_popup.dart';
+import 'show_kyc_choose_state_modal_popup.dart';
 
-class KycAddLocationCupertinoScaffold
-    extends GetView<KycAddLocationController> {
-  const KycAddLocationCupertinoScaffold({super.key});
+class KycAddLocationScaffold extends GetView<KycAddLocationController> {
+  const KycAddLocationScaffold({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,8 +22,8 @@ class KycAddLocationCupertinoScaffold
     var colorScheme = Theme.of(context).colorScheme;
 
     final kycAddLocationController = KycAddLocationController.instance;
-    return CupertinoPageScaffold(
-      child: SafeArea(
+    return Scaffold(
+      body: SafeArea(
         child: ListView(
           padding: const EdgeInsets.all(10),
           children: [
@@ -41,7 +39,7 @@ class KycAddLocationCupertinoScaffold
                         onTap: kycAddLocationController.isLoading.value
                             ? null
                             : () {
-                                showKYCChooseCountryCupertinoPopup(
+                                showKYCChooseCountryModalPopup(
                                   context,
                                   colorScheme,
                                   media,
@@ -90,7 +88,7 @@ class KycAddLocationCupertinoScaffold
                             : kycAddLocationController.isLoading.value
                                 ? null
                                 : () {
-                                    showKYCChooseStateCupertinoPopup(
+                                    showKYCChooseStateModalPopup(
                                       context,
                                       colorScheme,
                                       media,
@@ -140,14 +138,15 @@ class KycAddLocationCupertinoScaffold
                       formFieldContainer(
                         colorScheme,
                         media,
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             SizedBox(
-                              width: media.width - 60,
-                              child: MyCupertinoTextField(
+                              width: media.width - 80,
+                              child: AndroidTextFormField(
                                 readOnly: kycAddLocationController
                                             .cityTextFieldIsEnabled.value &&
                                         kycAddLocationController
@@ -156,11 +155,10 @@ class KycAddLocationCupertinoScaffold
                                     : true,
                                 controller: kycAddLocationController.cityEC,
                                 focusNode: kycAddLocationController.cityFN,
-                                placeholder: "City",
+                                hintText: "City",
                                 textInputAction: TextInputAction.next,
                                 textCapitalization: TextCapitalization.words,
                                 keyboardType: TextInputType.text,
-                                borderColor: kTransparentColor,
                                 onChanged:
                                     kycAddLocationController.cityOnChanged,
                                 validator: (value) {
@@ -192,6 +190,7 @@ class KycAddLocationCupertinoScaffold
                           formFieldContainer(
                             colorScheme,
                             media,
+                            padding: const EdgeInsets.symmetric(horizontal: 10),
                             containerWidth: media.width - 62,
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -199,8 +198,8 @@ class KycAddLocationCupertinoScaffold
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 SizedBox(
-                                  width: media.width - 120,
-                                  child: MyCupertinoTextField(
+                                  width: media.width - 140,
+                                  child: AndroidTextFormField(
                                     readOnly: kycAddLocationController
                                                 .addressTextFieldIsEnabled
                                                 .value &&
@@ -212,16 +211,14 @@ class KycAddLocationCupertinoScaffold
                                         kycAddLocationController.addressEC,
                                     focusNode:
                                         kycAddLocationController.addressFN,
-                                    placeholder: "Address",
+                                    hintText: "Address",
                                     textInputAction: TextInputAction.done,
                                     textCapitalization:
                                         TextCapitalization.sentences,
                                     keyboardType: TextInputType.text,
-                                    // borderColor: colorScheme.primary,
-                                    borderColor: kTransparentColor,
                                     onChanged: kycAddLocationController
                                         .addressOnChanged,
-                                    onSubmitted:
+                                    onFieldSubmitted:
                                         kycAddLocationController.onSubmitted,
                                     validator: (value) {
                                       return null;
@@ -244,12 +241,13 @@ class KycAddLocationCupertinoScaffold
                               ],
                             ),
                           ),
-                          CupertinoButton(
-                            onPressed: kycAddLocationController
+                          InkWell(
+                            onTap: kycAddLocationController
                                         .addressTextFieldIsEnabled.value &&
                                     kycAddLocationController.isLoading.isFalse
                                 ? () {}
                                 : null,
+                            borderRadius: BorderRadius.circular(24),
                             child: Container(
                               height: 30,
                               width: 30,
@@ -287,7 +285,7 @@ class KycAddLocationCupertinoScaffold
             GetBuilder<KycAddLocationController>(
               init: KycAddLocationController(),
               builder: (controller) {
-                return CupertinoElevatedButton(
+                return AndroidElevatedButton(
                   title: "Continue",
                   disable:
                       kycAddLocationController.formIsValid.value ? false : true,

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../src/controllers/kyc_bvn_controller.dart';
+import '../widgets/android/kyc_bvn_scaffold.dart';
 import '../widgets/ios/kyc_bvn_cupertino_scaffold.dart';
 
 class KycBvn extends StatelessWidget {
@@ -22,7 +23,7 @@ class KycBvn extends StatelessWidget {
     }
     return GestureDetector(
       onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
-      child: const Scaffold(),
+      child: const KycBvnScaffold(),
     );
   }
 }

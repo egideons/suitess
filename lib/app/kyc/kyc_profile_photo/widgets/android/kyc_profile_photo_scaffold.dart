@@ -1,20 +1,20 @@
-import 'package:flutter/cupertino.dart';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:kribb/app/auth/components/auth_app_bar.dart';
 import 'package:kribb/app/kyc/kyc_profile_photo/content/kyc_profile_photo_page_header.dart';
-import 'package:kribb/app/kyc/kyc_profile_photo/widgets/ios/kyc_profile_photo_cupertino_modal_popup.dart';
 import 'package:kribb/src/controllers/kyc_profile_photo_controller.dart';
-import 'package:kribb/src/utils/buttons/ios/cupertino_elevated_button.dart';
+import 'package:kribb/src/utils/buttons/android/android_elevated_button.dart';
 import 'package:kribb/src/utils/containers/form_field_container.dart';
 import 'package:kribb/theme/colors.dart';
 
 import '../../../../../src/constants/consts.dart';
-import '../../../../auth/components/auth_cupertino_nav_bar.dart';
+import 'kyc_profile_photo_modal_sheet.dart';
 
-class KycProfilePhotoCupertinoScaffold
-    extends GetView<KycProfilePhotoController> {
-  const KycProfilePhotoCupertinoScaffold({super.key});
+class KycProfilePhotoScaffold extends GetView<KycProfilePhotoController> {
+  const KycProfilePhotoScaffold({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +23,8 @@ class KycProfilePhotoCupertinoScaffold
 
     var kycProfilePhotoController = KycProfilePhotoController.instance;
 
-    return CupertinoPageScaffold(
-      navigationBar: authCupertinoNavBar(
+    return Scaffold(
+      appBar: authAppBar(
         colorScheme: colorScheme,
         media: media,
         title: "Profile",
@@ -34,7 +34,7 @@ class KycProfilePhotoCupertinoScaffold
           size: 12,
         ),
       ),
-      child: SafeArea(
+      body: SafeArea(
         child: ListView(
           padding: const EdgeInsets.all(10),
           children: [
@@ -45,21 +45,44 @@ class KycProfilePhotoCupertinoScaffold
               subtitle: "Grant Kribb access to Camera to upload your picture.",
             ),
             const SizedBox(height: kDefaultPadding * 2),
-            // Center(
-            //   child: FittedBox(
-            //     fit: BoxFit.contain,
-            //     child:
-            //         kycProfilePhotoCircleAvatar(colorScheme, "PN", image: null),
-            //   ),
-            // ),
+            Obx(
+              () {
+                return Center(
+                  child: FittedBox(
+                    fit: BoxFit.contain,
+                    child: CircleAvatar(
+                      backgroundColor: colorScheme.inversePrimary,
+                      radius: 64,
+                      foregroundImage: kycProfilePhotoController
+                                  .selectedProfileImage.value !=
+                              null
+                          ? FileImage(
+                              File(
+                                kycProfilePhotoController
+                                    .selectedProfileImage.value!.path,
+                              ),
+                            )
+                          : null,
+                      child: Text(
+                        "",
+                        style: defaultTextStyle(
+                          fontSize: 32.0,
+                        ),
+                      ),
+                    ),
+                  ),
+                );
+              },
+            ),
             const SizedBox(height: kDefaultPadding * 2),
             formFieldContainer(
               colorScheme,
               media,
               containerHeight: media.height * 0.08,
-              child: CupertinoButton(
-                onPressed: () {
-                  kycProfilePhotoCupertinoModalPopup(
+              child: InkWell(
+                borderRadius: BorderRadius.circular(16),
+                onTap: () {
+                  kycProfilePhotoModalSheet(
                     context,
                     media,
                     colorScheme,
@@ -91,8 +114,11 @@ class KycProfilePhotoCupertinoScaffold
             GetBuilder<KycProfilePhotoController>(
               init: KycProfilePhotoController(),
               builder: (controller) {
-                return CupertinoElevatedButton(
+                return AndroidElevatedButton(
                   title: "Continue",
+                  disable:
+                      kycProfilePhotoController.selectedProfileImage.value ==
+                          null,
                   isLoading: kycProfilePhotoController.isLoading.value,
                   onPressed: kycProfilePhotoController.submit,
                 );
