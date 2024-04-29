@@ -31,6 +31,8 @@ dependencies:
   awesome_notifications:
   smooth_page_indicator:
   google_sign_in:
+  firebase_core:
+  firebase_auth:
 
 dev_dependencies:
   flutter_test:

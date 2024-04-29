@@ -383,8 +383,9 @@ class SignupCupertinoScaffold extends GetView<SignupController> {
                   rowIconWidget: Image.asset(
                     Assets.appleIconLight,
                     fit: BoxFit.fill,
-                    height: min(60, 20),
-                    width: 20,
+                    color: colorScheme.background,
+                    height: min(60, 30),
+                    width: 30,
                   ),
                   buttonColor: colorScheme.primary,
                   textColor: colorScheme.background,
