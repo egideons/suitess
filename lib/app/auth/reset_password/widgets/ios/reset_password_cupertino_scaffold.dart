@@ -122,7 +122,7 @@ class ResetPasswordCupertinoScaffold extends GetView<ResetPasswordController> {
                         child: Text(
                           resetPasswordController.isPasswordValid.value
                               ? "Password meets the requirements"
-                              : "Password must contain 8 characters, a number and a special character",
+                              : "Password must contain 8 characters,\na number,\n and a special character.",
                           textAlign: TextAlign.end,
                           style: defaultTextStyle(
                             color: resetPasswordController.isPasswordValid.value

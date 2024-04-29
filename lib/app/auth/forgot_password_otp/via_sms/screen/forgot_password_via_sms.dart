@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../../src/controllers/forgot_password_via_sms_controller.dart';
+import '../widgets/android/forgot_password_via_sms_scaffold.dart';
 import '../widgets/ios/forgot_password_via_sms_cupertino_scaffold.dart';
 
 class ForgotPasswordViaSMSOTP extends StatelessWidget {
@@ -22,7 +23,7 @@ class ForgotPasswordViaSMSOTP extends StatelessWidget {
     }
     return GestureDetector(
       onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
-      child: const Scaffold(),
+      child: const ForgotPasswordViaSMSOTPScaffold(),
     );
   }
 }
