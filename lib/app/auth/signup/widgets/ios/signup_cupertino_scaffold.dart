@@ -330,7 +330,7 @@ class SignupCupertinoScaffold extends GetView<SignupController> {
                   ),
                   kHalfWidthSizedBox,
                   Text(
-                    "Or",
+                    "Or continue with",
                     textAlign: TextAlign.center,
                     style: defaultTextStyle(
                       fontSize: 14.0,
@@ -348,24 +348,48 @@ class SignupCupertinoScaffold extends GetView<SignupController> {
               ),
             ),
             kSizedBox,
-            Obx(
-              () => CupertinoElevatedButton(
-                title: "Continue with Google",
-                isRowVisible: true,
-                isSwitched: true,
-                mainAxisAlignment: MainAxisAlignment.center,
-                buttonIconWidget: Image.asset(
-                  Assets.googleIcon,
-                  fit: BoxFit.fill,
-                  height: min(60, 20),
-                  width: 20,
-                ),
-                buttonColor: colorScheme.primary,
-                textColor: colorScheme.background,
-                onPressed: signupController.isLoading.value
-                    ? null
-                    : signupController.signupWithGoogle,
-              ),
+            GetBuilder<SignupController>(
+              init: SignupController(),
+              builder: (controller) {
+                return CupertinoElevatedButton(
+                  title: "Signup with Google",
+                  isRowVisible: true,
+                  isSwitched: true,
+                  isLoading: signupController.isLoadingGoogleSignup.value,
+                  onPressed: signupController.signupWithGoogle,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  buttonColor: colorScheme.primary,
+                  textColor: colorScheme.background,
+                  rowIconWidget: Image.asset(
+                    Assets.googleIcon,
+                    fit: BoxFit.fill,
+                    height: min(60, 20),
+                    width: 20,
+                  ),
+                );
+              },
+            ),
+            kSizedBox,
+            GetBuilder<SignupController>(
+              init: SignupController(),
+              builder: (controller) {
+                return CupertinoElevatedButton(
+                  title: "Signup with Apple",
+                  isRowVisible: true,
+                  isSwitched: true,
+                  isLoading: signupController.isLoadingGoogleSignup.value,
+                  onPressed: signupController.signupWithGoogle,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  rowIconWidget: Image.asset(
+                    Assets.appleIconLight,
+                    fit: BoxFit.fill,
+                    height: min(60, 20),
+                    width: 20,
+                  ),
+                  buttonColor: colorScheme.primary,
+                  textColor: colorScheme.background,
+                );
+              },
             ),
             kSizedBox,
             Obx(

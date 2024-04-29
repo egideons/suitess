@@ -8,6 +8,8 @@ class Assets {
   static const emptyImage = "assets/icons/empty.png";
   static const googleIcon = "assets/icons/google_icon.png";
   static const googleMaps = "assets/icons/google-maps.png";
+  static const appleIconLight = "assets/icons/apple-icon-light.png";
+  static const appleIconDark = "assets/icons/apple-icon-dark.png";
 
 //Background
   static const lightBackground = "assets/images/light_background.png";

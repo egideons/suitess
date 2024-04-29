@@ -28,9 +28,9 @@ dependencies:
   cached_network_image:
   readmore:
   shimmer: ^3.0.0-nullsafety.0
-  path_provider:
   awesome_notifications:
   smooth_page_indicator:
+  google_sign_in:
 
 dev_dependencies:
   flutter_test:

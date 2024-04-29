@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:kribb/src/controllers/api_processor_controller.dart';
 
 import '../../app/auth/email_otp/screen/email_otp.dart';
@@ -30,6 +33,8 @@ class SignupController extends GetxController {
 
   //=========== Booleans ===========\\
   var isLoading = false.obs;
+  var isLoadingGoogleSignup = false.obs;
+  var isLoadingAppleSignup = false.obs;
   var isFirstNameValid = false.obs;
   var isLastNameValid = false.obs;
   var isEmailValid = false.obs;
@@ -188,7 +193,57 @@ class SignupController extends GetxController {
     update();
   }
 
-  Future<void> signupWithGoogle() async {}
+  //=========== Continue with Google ===========\\
+  var scopes = <String>[
+    'egideonsam@gmail.com',
+    'https://www.googleapis.com/auth/contacts.readonly',
+  ];
+
+  Future<void> signupWithGoogle() async {
+    isLoadingGoogleSignup.value = true;
+    update();
+
+    await Future.delayed(const Duration(milliseconds: 500));
+    GoogleSignIn googleSignIn = GoogleSignIn(
+      // Optional clientId
+      // clientId: 'your-client_id.apps.googleusercontent.com',
+      scopes: scopes,
+    );
+    try {
+      await googleSignIn.signIn();
+      isLoadingGoogleSignup.value = false;
+      update();
+      // } on Exception {
+      //   isLoadingGoogleSignup.value = false;
+      //   update();
+      //   throw Exception;
+    } catch (error) {
+      log(error.toString());
+    }
+    isLoadingGoogleSignup.value = false;
+    update();
+  }
+  //=========== Continue with Apple ===========\\
+
+  Future<void> signupWithApple() async {
+    isLoadingAppleSignup.value = true;
+    update();
+
+    await Future.delayed(const Duration(milliseconds: 500));
+
+    try {
+      isLoadingAppleSignup.value = false;
+      update();
+      // } on Exception {
+      //   isLoadingAppleSignup.value = false;
+      //   update();
+      //   throw Exception;
+    } catch (error) {
+      log(error.toString());
+    }
+    isLoadingAppleSignup.value = false;
+    update();
+  }
 
   //=========== Navigate to Login ===========\\
   navigateToLogin() {

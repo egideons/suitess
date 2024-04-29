@@ -280,7 +280,7 @@ class LoginScaffold extends GetView<LoginController> {
                 isRowVisible: true,
                 isSwitched: true,
                 mainAxisAlignment: MainAxisAlignment.center,
-                buttonIconWidget: Image.asset(
+                rowIconWidget: Image.asset(
                   Assets.googleIcon,
                   fit: BoxFit.fill,
                   height: min(60, 20),
