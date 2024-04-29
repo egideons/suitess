@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -206,17 +207,40 @@ class SignupController extends GetxController {
     await Future.delayed(const Duration(milliseconds: 500));
     GoogleSignIn googleSignIn = GoogleSignIn(
       // Optional clientId
-      // clientId: 'your-client_id.apps.googleusercontent.com',
+      clientId:
+          '537371602886-o25rom5lvbl8f39i46ft2clv7jm1pvet.apps.googleusercontent.com',
       scopes: scopes,
     );
+    var gUser = await googleSignIn.signIn();
+
+    var gAuth = await gUser!.authentication;
+
+    final credential = GoogleAuthProvider.credential(
+      accessToken: gAuth.accessToken,
+      idToken: gAuth.idToken,
+    );
+
     try {
-      await googleSignIn.signIn();
+      FirebaseAuth.instance.signInWithCredential(credential);
+
+      ApiProcessorController.successSnack("Signup successful");
+
+      Get.offAll(
+        () => const EmailOTP(),
+        routeName: "/email-otp",
+        fullscreenDialog: true,
+        curve: Curves.easeInOut,
+        predicate: (routes) => false,
+        popGesture: false,
+        transition: Get.defaultTransition,
+      );
+
       isLoadingGoogleSignup.value = false;
       update();
-      // } on Exception {
-      //   isLoadingGoogleSignup.value = false;
-      //   update();
-      //   throw Exception;
+    } on Exception {
+      isLoadingGoogleSignup.value = false;
+      update();
+      throw Exception;
     } catch (error) {
       log(error.toString());
     }

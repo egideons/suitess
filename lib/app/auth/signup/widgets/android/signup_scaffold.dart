@@ -355,17 +355,16 @@ class SignupScaffold extends GetView<SignupController> {
                 isRowVisible: true,
                 isSwitched: true,
                 mainAxisAlignment: MainAxisAlignment.center,
+                buttonColor: colorScheme.primary,
+                textColor: colorScheme.background,
+                isLoading: signupController.isLoadingGoogleSignup.value,
+                onPressed: signupController.signupWithGoogle,
                 buttonIconWidget: Image.asset(
                   Assets.googleIcon,
                   fit: BoxFit.fill,
                   height: min(60, 20),
                   width: 20,
                 ),
-                buttonColor: colorScheme.primary,
-                textColor: colorScheme.background,
-                onPressed: signupController.isLoading.value
-                    ? null
-                    : signupController.signupWithGoogle,
               ),
             ),
             kSizedBox,
