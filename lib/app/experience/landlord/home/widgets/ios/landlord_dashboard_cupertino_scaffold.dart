@@ -6,8 +6,8 @@ import '../../../../../../src/constants/assets.dart';
 import '../../../../../../src/constants/consts.dart';
 import '../../../../../../theme/colors.dart';
 
-class LandLordDashbordCupertinoScaffold extends StatelessWidget {
-  const LandLordDashbordCupertinoScaffold({super.key});
+class LandLordHomeScreenCupertinoScaffold extends StatelessWidget {
+  const LandLordHomeScreenCupertinoScaffold({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -112,9 +112,11 @@ class LandLordDashbordCupertinoScaffold extends StatelessWidget {
           ],
         ),
       ),
-      child: ListView(
-        padding: const EdgeInsets.all(10),
-        children: const [],
+      child: SafeArea(
+        child: ListView(
+          padding: const EdgeInsets.all(10),
+          children: const [],
+        ),
       ),
     );
   }

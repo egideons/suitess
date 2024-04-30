@@ -7,11 +7,12 @@ import 'package:kribb/theme/colors.dart';
 import '../../../../../../src/controllers/navigation_overview_controller.dart';
 
 class LandLordNavigationOverViewCupertinoScaffold extends StatelessWidget {
-  const LandLordNavigationOverViewCupertinoScaffold({super.key});
+  final int? currentIndex;
+  const LandLordNavigationOverViewCupertinoScaffold(
+      {super.key, this.currentIndex});
 
   @override
   Widget build(BuildContext context) {
-    var media = MediaQuery.of(context).size;
     var colorScheme = Theme.of(context).colorScheme;
 
     var controller = NavigationOverviewController.instance;
@@ -26,7 +27,8 @@ class LandLordNavigationOverViewCupertinoScaffold extends StatelessWidget {
         bottomNavigationBar: Obx(
           () {
             return CustomNavigationBar(
-              currentIndex: controller.landlordNavCurrrentIndex.value,
+              currentIndex:
+                  currentIndex ?? controller.landlordNavCurrrentIndex.value,
               backgroundColor: colorScheme.primary,
               selectedColor: colorScheme.background,
               unSelectedColor: colorScheme.inversePrimary,

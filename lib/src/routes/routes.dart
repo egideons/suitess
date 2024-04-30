@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:kribb/app/auth/forgot_password/screen/forgot_password.dart';
 import 'package:kribb/app/auth/signup/screen/signup.dart';
 import 'package:kribb/app/choose_experience/screen/choose_experience.dart';
+import 'package:kribb/app/experience/landlord/home/screen/landlord_home_screen.dart';
 import 'package:kribb/app/experience/landlord/navigation_overview/screen/landlord_navigation_overview.dart';
 import 'package:kribb/app/kyc/kyc_add_location/screen/kyc_add_location.dart';
 import 'package:kribb/app/kyc/kyc_profile_photo/screen/kyc_profile_photo.dart';
@@ -48,18 +49,16 @@ class Routes {
   static const kycBvnOTP = "/kyc-bvn-otp";
   static const kycNin = "/kyc-nin";
   static const kyProfilePhoto = "/kyc-profile-photo";
-
-  //Choose Experience
   static const chooseExperience = "/choose-experience";
 
   //Landlord Section
   static const landLordOverview = "/landlord-navigation-overview";
-  static const landLordDashboard = "/landlord-dashboard";
+  static const landLordHomeScreen = "/landlord-homescreen";
   static const landLordWallet = "/landlord-wallet";
   static const landLordChat = "/landlord-chat";
-  static const landLordSettings = "/landlord-settings";
+  static const landLordProfile = "/landlord-profile";
 
-  //Get Pages
+  //========================= GET PAGES ==========================\\
   static final getPages = [
     //Splash Screens
     GetPage(name: startupSplashscreen, page: () => const StartupSplashscreen()),
@@ -92,8 +91,6 @@ class Routes {
     GetPage(name: kycBvnOTP, page: () => const KycBvnOTP()),
     GetPage(name: kycNin, page: () => const KycNIN()),
     GetPage(name: kyProfilePhoto, page: () => const KycProfilePhoto()),
-
-    //Choose Experience
     GetPage(name: chooseExperience, page: () => const ChooseExperience()),
 
     //LandLord Section
@@ -101,5 +98,21 @@ class Routes {
       name: landLordOverview,
       page: () => const LandLordNavigationOverView(),
     ),
+    GetPage(
+      name: landLordHomeScreen,
+      page: () => const LandLordHomeScreen(),
+    ),
+    // GetPage(
+    //   name: landLordWallet,
+    //   page: () => const LandLordNavigationOverView(),
+    // ),
+    // GetPage(
+    //   name: landLordChat,
+    //   page: () => const LandLordNavigationOverView(),
+    // ),
+    // GetPage(
+    //   name: landLordProfile,
+    //   page: () => const LandLordNavigationOverView(),
+    // ),
   ];
 }

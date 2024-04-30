@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:kribb/app/experience/landlord/home/screen/landlord_home_screen.dart';
 import 'package:kribb/src/constants/consts.dart';
 
 class NavigationOverviewController extends GetxController {
@@ -14,15 +15,7 @@ class NavigationOverviewController extends GetxController {
 
   //=============== LANDLORD SECTION ================\\
   landlordNavScreens(colorScheme) => [
-        Container(
-          color: colorScheme.background,
-          child: Center(
-            child: Text(
-              "Home",
-              style: defaultTextStyle(),
-            ),
-          ),
-        ),
+        const LandLordHomeScreen(),
         Container(
           color: colorScheme.background,
           child: Center(
