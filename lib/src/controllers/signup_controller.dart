@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:kribb/src/controllers/api_processor_controller.dart';
@@ -204,24 +205,31 @@ class SignupController extends GetxController {
     isLoadingGoogleSignup.value = true;
     update();
 
-    await Future.delayed(const Duration(milliseconds: 500));
     GoogleSignIn googleSignIn = GoogleSignIn(
       // Optional clientId
       clientId:
           '537371602886-o25rom5lvbl8f39i46ft2clv7jm1pvet.apps.googleusercontent.com',
       scopes: scopes,
     );
-    var gUser = await googleSignIn.signIn();
-
-    var gAuth = await gUser!.authentication;
-
-    final credential = GoogleAuthProvider.credential(
-      accessToken: gAuth.accessToken,
-      idToken: gAuth.idToken,
-    );
 
     try {
-      FirebaseAuth.instance.signInWithCredential(credential);
+      var gUser = await googleSignIn.signIn();
+
+      if (gUser == null) {
+        isLoadingGoogleSignup.value = false;
+        log("Google sign-up cancelled");
+        update();
+        return; // Exit the function
+      }
+
+      var gAuth = await gUser.authentication;
+
+      final credential = GoogleAuthProvider.credential(
+        accessToken: gAuth.accessToken,
+        idToken: gAuth.idToken,
+      );
+
+      await FirebaseAuth.instance.signInWithCredential(credential);
 
       ApiProcessorController.successSnack("Signup successful");
 
@@ -237,16 +245,21 @@ class SignupController extends GetxController {
 
       isLoadingGoogleSignup.value = false;
       update();
-    } on Exception {
+    } on PlatformException catch (e) {
+      // Handle specific platform exceptions
+      log("Google sign-up failed: ${e.message}");
+      // You can display an error message to the user or handle the error accordingly
       isLoadingGoogleSignup.value = false;
       update();
-      throw Exception;
     } catch (error) {
-      log(error.toString());
+      // Handle other types of errors
+      log("Error during Google sign-up: $error");
+      // You can display an error message to the user or handle the error accordingly
+      isLoadingGoogleSignup.value = false;
+      update();
     }
-    isLoadingGoogleSignup.value = false;
-    update();
   }
+
   //=========== Continue with Apple ===========\\
 
   Future<void> signupWithApple() async {

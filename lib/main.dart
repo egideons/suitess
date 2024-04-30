@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:kribb/firebase_options.dart';
+import 'package:kribb/src/controllers/loading_controller.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'src/controllers/theme_controller.dart';
@@ -22,6 +23,7 @@ void main() async {
   prefs = await SharedPreferences.getInstance();
 
   Get.put(ThemeController());
+  Get.put(LoadingController());
 
   runApp(const MyApp());
 }
@@ -47,6 +49,9 @@ class MyApp extends StatelessWidget {
       darkTheme: androidDarkTheme,
       themeMode: ThemeController.instance.themeMode.value,
       //This is the home route
+      // home: LoadingScreen(
+      //   loadData: LoadingController.instance.loadAgentNavgiationOverView,
+      // ),
     );
   }
 }

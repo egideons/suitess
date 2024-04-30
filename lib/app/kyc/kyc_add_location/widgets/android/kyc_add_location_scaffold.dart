@@ -267,7 +267,7 @@ class KycAddLocationScaffold extends GetView<KycAddLocationController> {
                       Align(
                         alignment: Alignment.centerRight,
                         child: Text(
-                          "Address must contain the street number",
+                          "Address must start with the street number",
                           textAlign: TextAlign.end,
                           style: defaultTextStyle(
                             color: colorScheme.inversePrimary,

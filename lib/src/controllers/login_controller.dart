@@ -1,12 +1,17 @@
 import 'dart:developer';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../app/auth/signup/screen/signup.dart';
+import '../../app/splash/loading/screen/loading_screen.dart';
 import '../constants/consts.dart';
 import '../routes/routes.dart';
 import 'api_processor_controller.dart';
+import 'loading_controller.dart';
 
 class LoginController extends GetxController {
   static LoginController get instance {
@@ -26,6 +31,8 @@ class LoginController extends GetxController {
 
   //=========== Booleans ===========\\
   var isLoading = false.obs;
+  var isLoadingGoogleLogin = false.obs;
+  var isLoadingAppleLogin = false.obs;
   var isEmailValid = false.obs;
   var isPasswordValid = false.obs;
   var passwordIsHidden = true.obs;
@@ -100,15 +107,117 @@ class LoginController extends GetxController {
       isLoading.value = true;
       update();
 
-      log("Logging in");
       await Future.delayed(const Duration(seconds: 3));
+
       ApiProcessorController.successSnack("Login successful");
+
+      await Get.offAll(
+        () => LoadingScreen(
+          loadData: LoadingController.instance.loadLandLordNavgiationOverView,
+        ),
+        routeName: "/loading-screen",
+        fullscreenDialog: true,
+        curve: Curves.easeInOut,
+        predicate: (routes) => false,
+        popGesture: false,
+        transition: Get.defaultTransition,
+      );
     }
     isLoading.value = false;
     update();
   }
 
-  Future<void> loginWithGoogle() async {}
+  //=========== Continue with Google ===========\\
+  var scopes = <String>[
+    'email',
+    'https://www.googleapis.com/auth/contacts.readonly',
+  ];
+
+  Future<void> loginWithGoogle() async {
+    isLoadingGoogleLogin.value = true;
+    update();
+
+    GoogleSignIn googleSignIn = GoogleSignIn(
+      // Optional clientId
+      clientId:
+          '537371602886-o25rom5lvbl8f39i46ft2clv7jm1pvet.apps.googleusercontent.com',
+      scopes: scopes,
+    );
+
+    try {
+      //Sign in silently
+      var gUser = await googleSignIn.signInSilently();
+
+      if (gUser == null) {
+        isLoadingGoogleLogin.value = false;
+        log("Google sign-in cancelled");
+        update();
+        return; // Exit the function
+      }
+
+      var gAuth = await gUser.authentication;
+
+      final credential = GoogleAuthProvider.credential(
+        accessToken: gAuth.accessToken,
+        idToken: gAuth.idToken,
+      );
+
+      await FirebaseAuth.instance.signInWithCredential(credential);
+
+      ApiProcessorController.successSnack("Login successful");
+
+      await Get.offAll(
+        () => LoadingScreen(
+          loadData: LoadingController.instance.loadLandLordNavgiationOverView,
+        ),
+        routeName: "/loading-screen",
+        fullscreenDialog: true,
+        curve: Curves.easeInOut,
+        predicate: (routes) => false,
+        popGesture: false,
+        transition: Get.defaultTransition,
+      );
+
+      isLoadingGoogleLogin.value = false;
+      update();
+    } on PlatformException catch (e) {
+      // Handle specific platform exceptions
+      log("Google sign-in failed: ${e.message}");
+      // You can display an error message to the user or handle the error accordingly
+      isLoadingGoogleLogin.value = false;
+      update();
+    } catch (error) {
+      // Handle other types of errors
+      log("Error during Google sign-in: $error");
+      // You can display an error message to the user or handle the error accordingly
+      isLoadingGoogleLogin.value = false;
+      update();
+    }
+  }
+
+  //=========== Continue with Apple ===========\\
+
+  Future<void> loginWithApple() async {
+    isLoadingAppleLogin.value = true;
+    update();
+
+    await Future.delayed(const Duration(milliseconds: 500));
+
+    try {
+      // ApiProcessorController.successSnack("Login successful");
+
+      isLoadingAppleLogin.value = false;
+      update();
+      // } on Exception {
+      //   isLoadingAppleLogin.value = false;
+      //   update();
+      //   throw Exception;
+    } catch (error) {
+      log(error.toString());
+    }
+    isLoadingAppleLogin.value = false;
+    update();
+  }
 
   navigateToSignup() {
     // Navigate to Home() screen

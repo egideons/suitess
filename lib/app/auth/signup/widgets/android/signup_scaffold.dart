@@ -349,23 +349,26 @@ class SignupScaffold extends GetView<SignupController> {
               ),
             ),
             kSizedBox,
-            Obx(
-              () => AndroidElevatedButton(
-                title: "Continue with Google",
-                isRowVisible: true,
-                isSwitched: true,
-                mainAxisAlignment: MainAxisAlignment.center,
-                buttonColor: colorScheme.primary,
-                textColor: colorScheme.background,
-                isLoading: signupController.isLoadingGoogleSignup.value,
-                onPressed: signupController.signupWithGoogle,
-                buttonIconWidget: Image.asset(
-                  Assets.googleIcon,
-                  fit: BoxFit.fill,
-                  height: min(60, 20),
-                  width: 20,
-                ),
-              ),
+            GetBuilder<SignupController>(
+              init: SignupController(),
+              builder: (controller) {
+                return AndroidElevatedButton(
+                  title: "Signup with Google",
+                  isRowVisible: true,
+                  isSwitched: true,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  buttonColor: colorScheme.primary,
+                  textColor: colorScheme.background,
+                  isLoading: signupController.isLoadingGoogleSignup.value,
+                  onPressed: signupController.signupWithGoogle,
+                  buttonIconWidget: Image.asset(
+                    Assets.googleIcon,
+                    fit: BoxFit.fill,
+                    height: min(60, 20),
+                    width: 20,
+                  ),
+                );
+              },
             ),
             kSizedBox,
             Obx(
