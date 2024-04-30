@@ -278,9 +278,9 @@ class LoginScaffold extends GetView<LoginController> {
               builder: (controller) {
                 return CupertinoElevatedButton(
                   title: "Continue with Google",
-                  disable: false,
                   isRowVisible: true,
                   isSwitched: true,
+                  disable: loginController.isLoading.value,
                   isLoading: loginController.isLoadingAppleLogin.value,
                   onPressed: loginController.loginWithGoogle,
                   mainAxisAlignment: MainAxisAlignment.center,

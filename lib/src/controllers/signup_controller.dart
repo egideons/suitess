@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -245,6 +246,8 @@ class SignupController extends GetxController {
 
       isLoadingGoogleSignup.value = false;
       update();
+    } on SocketException {
+      ApiProcessorController.errorSnack("Please connect to the internet");
     } on PlatformException catch (e) {
       // Handle specific platform exceptions
       log("Google sign-up failed: ${e.message}");

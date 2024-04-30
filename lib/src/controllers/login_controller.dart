@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -151,6 +152,9 @@ class LoginController extends GetxController {
       if (gUser == null) {
         isLoadingGoogleLogin.value = false;
         log("Google sign-in cancelled");
+        ApiProcessorController.errorSnack(
+          "You have not created an account",
+        );
         update();
         return; // Exit the function
       }
@@ -180,6 +184,8 @@ class LoginController extends GetxController {
 
       isLoadingGoogleLogin.value = false;
       update();
+    } on SocketException {
+      ApiProcessorController.errorSnack("Please connect to the internet");
     } on PlatformException catch (e) {
       // Handle specific platform exceptions
       log("Google sign-in failed: ${e.message}");

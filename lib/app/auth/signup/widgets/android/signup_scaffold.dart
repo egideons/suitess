@@ -359,6 +359,7 @@ class SignupScaffold extends GetView<SignupController> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   buttonColor: colorScheme.primary,
                   textColor: colorScheme.background,
+                  disable: signupController.isLoading.value,
                   isLoading: signupController.isLoadingGoogleSignup.value,
                   onPressed: signupController.signupWithGoogle,
                   buttonIconWidget: Image.asset(
