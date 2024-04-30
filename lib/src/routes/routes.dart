@@ -5,7 +5,7 @@ import 'package:kribb/app/choose_experience/screen/choose_experience.dart';
 import 'package:kribb/app/kyc/kyc_add_location/screen/kyc_add_location.dart';
 import 'package:kribb/app/kyc/kyc_profile_photo/screen/kyc_profile_photo.dart';
 import 'package:kribb/app/onboarding/screen/onboarding.dart';
-import 'package:kribb/app/splash/startup/screens/startup_splash.dart';
+import 'package:kribb/app/splash/startup/screen/startup_splash.dart';
 
 import '../../app/auth/email_otp/screen/email_otp.dart';
 import '../../app/auth/forgot_password_otp/via_email/screen/forgot_password_via_email_otp.dart';
@@ -22,6 +22,7 @@ class Routes {
   static const startupSplashscreen = "/";
   static const congratulationsSplashScreen = "/congratulations-splash-screen";
   static const successSplashScreen = "/success-splash-screen";
+  static const loadingSplashScreen = "/loading-screen";
 
   //Onboarding
   static const onboarding = "/onboarding";
@@ -55,6 +56,7 @@ class Routes {
       page: () => const CongratulationsSplashScreen(),
     ),
     // GetPage(name: successSplashScreen, page: () => const SuccesssSplashscreen()),
+    // GetPage(name: loadingScreen, page: () => const LoadingScreen()),
 
     //Auth Pages
     GetPage(name: onboarding, page: () => const Onboarding()),
