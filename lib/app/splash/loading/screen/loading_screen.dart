@@ -10,7 +10,8 @@ import '../widgets/android/loading_screen_scaffold.dart';
 import '../widgets/ios/loading_screen_cupertino_scaffold.dart';
 
 class LoadingScreen extends StatelessWidget {
-  const LoadingScreen({super.key});
+  final Function()? loadData;
+  const LoadingScreen({super.key, this.loadData});
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +21,7 @@ class LoadingScreen extends StatelessWidget {
     if (Platform.isIOS) {
       return GetBuilder<LoadingController>(
         init: LoadingController(),
+        initState: (state) => loadData,
         builder: (controller) {
           return const LoadingScreenCupertinoScaffold();
         },
@@ -27,6 +29,7 @@ class LoadingScreen extends StatelessWidget {
     }
     return GetBuilder<LoadingController>(
       init: LoadingController(),
+      initState: (state) => loadData,
       builder: (controller) {
         return const LoadingScreenScaffold();
       },

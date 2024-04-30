@@ -273,25 +273,49 @@ class LoginCupertinoScaffold extends GetView<LoginController> {
               ),
             ),
             kSizedBox,
-            Obx(
-              () => CupertinoElevatedButton(
-                disable: false,
-                title: "Continue with Google",
-                isRowVisible: true,
-                isSwitched: true,
-                mainAxisAlignment: MainAxisAlignment.center,
-                rowIconWidget: Image.asset(
-                  Assets.googleIcon,
-                  fit: BoxFit.fill,
-                  height: min(60, 20),
-                  width: 20,
-                ),
-                buttonColor: colorScheme.primary,
-                textColor: colorScheme.background,
-                onPressed: loginController.isLoading.value
-                    ? null
-                    : loginController.loginWithGoogle,
-              ),
+            GetBuilder<LoginController>(
+              init: LoginController(),
+              builder: (controller) {
+                return CupertinoElevatedButton(
+                  title: "Continue with Google",
+                  isRowVisible: true,
+                  isSwitched: true,
+                  isLoading: loginController.isLoadingGoogleLogin.value,
+                  onPressed: loginController.loginWithGoogle,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  buttonColor: colorScheme.primary,
+                  textColor: colorScheme.background,
+                  rowIconWidget: Image.asset(
+                    Assets.googleIcon,
+                    fit: BoxFit.fill,
+                    height: min(60, 20),
+                    width: 20,
+                  ),
+                );
+              },
+            ),
+            kSizedBox,
+            GetBuilder<LoginController>(
+              init: LoginController(),
+              builder: (controller) {
+                return CupertinoElevatedButton(
+                  title: "Continue with Apple",
+                  isRowVisible: true,
+                  isSwitched: true,
+                  isLoading: loginController.isLoadingAppleLogin.value,
+                  onPressed: loginController.loginWithApple,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  buttonColor: colorScheme.primary,
+                  textColor: colorScheme.background,
+                  rowIconWidget: Image.asset(
+                    Assets.appleIconLight,
+                    fit: BoxFit.fill,
+                    color: colorScheme.background,
+                    height: min(60, 30),
+                    width: 30,
+                  ),
+                );
+              },
             ),
             kSizedBox,
             Obx(

@@ -330,7 +330,7 @@ class SignupCupertinoScaffold extends GetView<SignupController> {
                   ),
                   kHalfWidthSizedBox,
                   Text(
-                    "Or continue with",
+                    "Or",
                     textAlign: TextAlign.center,
                     style: defaultTextStyle(
                       fontSize: 14.0,
@@ -380,6 +380,8 @@ class SignupCupertinoScaffold extends GetView<SignupController> {
                   isLoading: signupController.isLoadingAppleSignup.value,
                   onPressed: signupController.signupWithApple,
                   mainAxisAlignment: MainAxisAlignment.center,
+                  buttonColor: colorScheme.primary,
+                  textColor: colorScheme.background,
                   rowIconWidget: Image.asset(
                     Assets.appleIconLight,
                     fit: BoxFit.fill,
@@ -387,8 +389,6 @@ class SignupCupertinoScaffold extends GetView<SignupController> {
                     height: min(60, 30),
                     width: 30,
                   ),
-                  buttonColor: colorScheme.primary,
-                  textColor: colorScheme.background,
                 );
               },
             ),

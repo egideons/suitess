@@ -16,16 +16,20 @@ import '../../app/kyc/kyc_bvn/screen/kyc_bvn.dart';
 import '../../app/kyc/kyc_bvn_otp/screen/kyc_bvn_otp.dart';
 import '../../app/kyc/kyc_nin/screen/kyc_nin.dart';
 import '../../app/splash/congratulations/screen/congratulations_screen.dart';
+import '../../app/splash/loading/screen/loading_screen.dart';
 
 class Routes {
   //Splash screens
   static const startupSplashscreen = "/";
   static const congratulationsSplashScreen = "/congratulations-splash-screen";
   static const successSplashScreen = "/success-splash-screen";
-  static const loadingSplashScreen = "/loading-screen";
+  static const loadingScreen = "/loading-screen";
 
   //Onboarding
   static const onboarding = "/onboarding";
+
+  //Locked Screen
+  static const lockedScreen = "/lockedScreen";
 
   //Auth Screens
   static const signup = "/signup";
@@ -47,6 +51,13 @@ class Routes {
   //Choose Experience
   static const chooseExperience = "/choose-experience";
 
+  //Landlord Section
+  static const landLordOverview = "/land-lord-overview";
+  static const landLordDashboard = "/land-lord-dashboard";
+  static const landLordWallet = "/land-lord-wallet";
+  static const landLordChat = "/land-lord-chat";
+  static const landLordSettings = "/land-lord-settings";
+
   //Get Pages
   static final getPages = [
     //Splash Screens
@@ -56,7 +67,7 @@ class Routes {
       page: () => const CongratulationsSplashScreen(),
     ),
     // GetPage(name: successSplashScreen, page: () => const SuccesssSplashscreen()),
-    // GetPage(name: loadingScreen, page: () => const LoadingScreen()),
+    GetPage(name: loadingScreen, page: () => const LoadingScreen()),
 
     //Auth Pages
     GetPage(name: onboarding, page: () => const Onboarding()),

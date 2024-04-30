@@ -205,7 +205,6 @@ class SignupController extends GetxController {
     isLoadingGoogleSignup.value = true;
     update();
 
-    await Future.delayed(const Duration(milliseconds: 500));
     GoogleSignIn googleSignIn = GoogleSignIn(
       // Optional clientId
       clientId:
@@ -218,7 +217,7 @@ class SignupController extends GetxController {
 
       if (gUser == null) {
         isLoadingGoogleSignup.value = false;
-        log("Google sign-in cancelled");
+        log("Google sign-up cancelled");
         update();
         return; // Exit the function
       }
@@ -248,13 +247,13 @@ class SignupController extends GetxController {
       update();
     } on PlatformException catch (e) {
       // Handle specific platform exceptions
-      log("Google sign-in failed: ${e.message}");
+      log("Google sign-up failed: ${e.message}");
       // You can display an error message to the user or handle the error accordingly
       isLoadingGoogleSignup.value = false;
       update();
     } catch (error) {
       // Handle other types of errors
-      log("Error during Google sign-in: $error");
+      log("Error during Google sign-up: $error");
       // You can display an error message to the user or handle the error accordingly
       isLoadingGoogleSignup.value = false;
       update();
