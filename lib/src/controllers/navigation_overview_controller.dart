@@ -1,5 +1,8 @@
+import 'package:custom_navigation_bar/custom_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:kribb/src/constants/consts.dart';
 
 class NavigationOverviewController extends GetxController {
@@ -10,7 +13,7 @@ class NavigationOverviewController extends GetxController {
   var isLoading = false.obs;
 
   //=============== LANDLORD SECTION ================\\
-  screens(colorScheme) => [
+  landlordNavScreens(colorScheme) => [
         Container(
           color: colorScheme.background,
           child: Center(
@@ -49,11 +52,49 @@ class NavigationOverviewController extends GetxController {
         ),
       ];
 
+  landLordNavItems(colorScheme) => [
+        CustomNavigationBarItem(
+          icon: const Icon(Iconsax.home),
+          selectedIcon: const Icon(Iconsax.home1),
+          title: Text(
+            "",
+            style: defaultTextStyle(color: colorScheme.background),
+          ),
+          selectedTitle: Text(
+            "Home",
+            style: defaultTextStyle(color: colorScheme.background),
+          ),
+        ),
+        CustomNavigationBarItem(
+          icon: const Icon(Iconsax.wallet_2),
+          selectedIcon: const Icon(Iconsax.wallet_money1),
+          title: Text(
+            "",
+            style: defaultTextStyle(color: colorScheme.background),
+          ),
+          selectedTitle: Text(
+            "Wallet",
+            style: defaultTextStyle(color: colorScheme.background),
+          ),
+        ),
+        CustomNavigationBarItem(
+          icon: const Icon(Iconsax.message),
+          selectedIcon: const Icon(Iconsax.message5),
+          title: Text(
+            "",
+            style: defaultTextStyle(color: colorScheme.background),
+          ),
+          selectedTitle: Text(
+            "Chat",
+            style: defaultTextStyle(color: colorScheme.background),
+          ),
+        ),
+        CustomNavigationBarItem(
+          icon: const Icon(Iconsax.user),
+          selectedIcon: const FaIcon(FontAwesomeIcons.solidUser),
+          title: const Text("Profile"),
+        ),
+      ];
   //=============== LANDLORD SECTION ================\\
   var landlordNavCurrrentIndex = 0.obs;
-
-  landLordNavOnChanged(index) {
-    landlordNavCurrrentIndex.value = index;
-    update();
-  }
 }

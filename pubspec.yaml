@@ -12,7 +12,7 @@ dependencies:
   cupertino_icons:
   font_awesome_flutter:
   iconsax:
-  floating_navigation_bar:
+  custom_navigation_bar:
   get:
   path:
   intl:
