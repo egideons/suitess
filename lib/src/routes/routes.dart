@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:kribb/app/auth/forgot_password/screen/forgot_password.dart';
 import 'package:kribb/app/auth/signup/screen/signup.dart';
 import 'package:kribb/app/choose_experience/screen/choose_experience.dart';
+import 'package:kribb/app/experience/landlord/navigation_overview/screen/landlord_navigation_overview.dart';
 import 'package:kribb/app/kyc/kyc_add_location/screen/kyc_add_location.dart';
 import 'package:kribb/app/kyc/kyc_profile_photo/screen/kyc_profile_photo.dart';
 import 'package:kribb/app/onboarding/screen/onboarding.dart';
@@ -52,11 +53,11 @@ class Routes {
   static const chooseExperience = "/choose-experience";
 
   //Landlord Section
-  static const landLordOverview = "/land-lord-overview";
-  static const landLordDashboard = "/land-lord-dashboard";
-  static const landLordWallet = "/land-lord-wallet";
-  static const landLordChat = "/land-lord-chat";
-  static const landLordSettings = "/land-lord-settings";
+  static const landLordOverview = "/landlord-navigation-overview";
+  static const landLordDashboard = "/landlord-dashboard";
+  static const landLordWallet = "/landlord-wallet";
+  static const landLordChat = "/landlord-chat";
+  static const landLordSettings = "/landlord-settings";
 
   //Get Pages
   static final getPages = [
@@ -94,5 +95,11 @@ class Routes {
 
     //Choose Experience
     GetPage(name: chooseExperience, page: () => const ChooseExperience()),
+
+    //LandLord Section
+    GetPage(
+      name: landLordOverview,
+      page: () => const LandLordNavigationOverView(),
+    ),
   ];
 }

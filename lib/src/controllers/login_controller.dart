@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -10,6 +11,7 @@ import '../../app/splash/loading/screen/loading_screen.dart';
 import '../constants/consts.dart';
 import '../routes/routes.dart';
 import 'api_processor_controller.dart';
+import 'loading_controller.dart';
 
 class LoginController extends GetxController {
   static LoginController get instance {
@@ -105,24 +107,13 @@ class LoginController extends GetxController {
       isLoading.value = true;
       update();
 
-      log("Logging in");
       await Future.delayed(const Duration(seconds: 3));
 
       ApiProcessorController.successSnack("Login successful");
 
       await Get.offAll(
         () => LoadingScreen(
-          loadData: () {
-            // Get.offAll(
-            //   () => LandLordDashBoard(),
-            //   routeName: "/landlord-dashboard",
-            //   fullscreenDialog: true,
-            //   curve: Curves.easeInOut,
-            //   predicate: (routes) => false,
-            //   popGesture: false,
-            //   transition: Get.defaultTransition,
-            // );
-          },
+          loadData: LoadingController.instance.loadLandLordNavgiationOverView,
         ),
         routeName: "/loading-screen",
         fullscreenDialog: true,
@@ -154,6 +145,7 @@ class LoginController extends GetxController {
     );
 
     try {
+      //Sign in silently
       var gUser = await googleSignIn.signInSilently();
 
       if (gUser == null) {
@@ -163,30 +155,20 @@ class LoginController extends GetxController {
         return; // Exit the function
       }
 
-      // var gAuth = await gUser.authentication;
+      var gAuth = await gUser.authentication;
 
-      // final credential = GoogleAuthProvider.credential(
-      //   accessToken: gAuth.accessToken,
-      //   idToken: gAuth.idToken,
-      // );
+      final credential = GoogleAuthProvider.credential(
+        accessToken: gAuth.accessToken,
+        idToken: gAuth.idToken,
+      );
 
-      // await FirebaseAuth.instance.signInWithCredential(credential);
+      await FirebaseAuth.instance.signInWithCredential(credential);
 
       ApiProcessorController.successSnack("Login successful");
 
       await Get.offAll(
         () => LoadingScreen(
-          loadData: () {
-            // Get.offAll(
-            //   () => LandLordDashBoard(),
-            //   routeName: "/landlord-dashboard",
-            //   fullscreenDialog: true,
-            //   curve: Curves.easeInOut,
-            //   predicate: (routes) => false,
-            //   popGesture: false,
-            //   transition: Get.defaultTransition,
-            // );
-          },
+          loadData: LoadingController.instance.loadLandLordNavgiationOverView,
         ),
         routeName: "/loading-screen",
         fullscreenDialog: true,

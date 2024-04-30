@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:kribb/app/splash/loading/screen/loading_screen.dart';
+import 'package:kribb/src/controllers/loading_controller.dart';
 
 class ChooseExperienceController extends GetxController {
   static ChooseExperienceController get instance {
@@ -23,17 +24,7 @@ class ChooseExperienceController extends GetxController {
 
     await Get.offAll(
       () => LoadingScreen(
-        loadData: () {
-          // Get.offAll(
-          //   () => LandLordDashBoard(),
-          //   routeName: "/landlord-dashboard",
-          //   fullscreenDialog: true,
-          //   curve: Curves.easeInOut,
-          //   predicate: (routes) => false,
-          //   popGesture: false,
-          //   transition: Get.defaultTransition,
-          // );
-        },
+        loadData: LoadingController.instance.loadLandLordNavgiationOverView,
       ),
       routeName: "/loading-screen",
       fullscreenDialog: true,
@@ -48,8 +39,10 @@ class ChooseExperienceController extends GetxController {
     items.value = [false, true, false];
     update();
     // await Get.offAll(
-    //   () => const TenantDashBoard(),
-    //   routeName: "/landlord-dashboard",
+    //   () => LoadingScreen(
+    //     loadData: LoadingController.instance.loadLandLordDashboard,
+    //   ),
+    //   routeName: "/loading-screen",
     //   fullscreenDialog: true,
     //   curve: Curves.easeInOut,
     //   predicate: (routes) => false,
@@ -62,8 +55,10 @@ class ChooseExperienceController extends GetxController {
     items.value = [false, false, true];
     update();
     // await Get.offAll(
-    //   () => const AgentDashboard(),
-    //   routeName: "/landlord-dashboard",
+    //   () => LoadingScreen(
+    //     loadData: LoadingController.instance.loadLandLordDashboard,
+    //   ),
+    //   routeName: "/loading-screen",
     //   fullscreenDialog: true,
     //   curve: Curves.easeInOut,
     //   predicate: (routes) => false,
