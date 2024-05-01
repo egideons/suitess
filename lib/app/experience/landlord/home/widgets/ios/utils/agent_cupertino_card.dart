@@ -93,9 +93,7 @@ Widget landLordHomeScreenAgentCupertinoCard(
                 children: [
                   circleAvatarImage(
                     colorScheme,
-                    foregroundImage: const AssetImage(
-                      Assets.buildings,
-                    ),
+                    foregroundImage: const AssetImage(Assets.buildings),
                   ),
                   kHalfWidthSizedBox,
                   Column(
