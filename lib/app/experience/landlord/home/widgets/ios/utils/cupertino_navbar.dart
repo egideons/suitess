@@ -19,8 +19,10 @@ ObstructingPreferredSizeWidget landLordHomeScreenCupertinoNavBar(
     border: Border.all(color: kTransparentColor),
     transitionBetweenRoutes: true,
     automaticallyImplyLeading: true,
+    padding: const EdgeInsetsDirectional.symmetric(horizontal: 10),
     leading: Container(
       padding: const EdgeInsets.symmetric(horizontal: 10),
+      margin: const EdgeInsets.all(5),
       width: media.width - 190,
       decoration: ShapeDecoration(
         color: colorScheme.inversePrimary.withOpacity(0.4),
@@ -62,13 +64,14 @@ ObstructingPreferredSizeWidget landLordHomeScreenCupertinoNavBar(
       children: [
         CupertinoButton(
           onPressed: goToProfile ?? () {},
-          padding: const EdgeInsets.all(0),
+          padding: const EdgeInsets.all(5),
           alignment: Alignment.center,
           borderRadius: BorderRadius.circular(100),
           child: circleAvatarImage(colorScheme),
         ),
         kHalfWidthSizedBox,
         Container(
+          margin: const EdgeInsets.all(5),
           decoration: ShapeDecoration(
             shape: CircleBorder(
               side: BorderSide(color: colorScheme.inversePrimary),
