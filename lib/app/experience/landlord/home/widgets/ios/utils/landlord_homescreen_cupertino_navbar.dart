@@ -1,10 +1,9 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:iconsax/iconsax.dart';
 
-import '../../../../../../../src/constants/assets.dart';
 import '../../../../../../../src/constants/consts.dart';
+import '../../../../../../../src/utils/components/circle_avatar_image.dart';
 import '../../../../../../../theme/colors.dart';
 
 ObstructingPreferredSizeWidget landLordHomeScreenCupertinoNavBar(
@@ -66,25 +65,7 @@ ObstructingPreferredSizeWidget landLordHomeScreenCupertinoNavBar(
           padding: const EdgeInsets.all(0),
           alignment: Alignment.center,
           borderRadius: BorderRadius.circular(100),
-          child: SizedBox(
-            height: 40,
-            child: FittedBox(
-              fit: BoxFit.contain,
-              child: CircleAvatar(
-                backgroundColor: colorScheme.inversePrimary,
-                radius: 64,
-                foregroundImage:
-                    const NetworkImage(Assets.userPlaceholderImage),
-                child: Text(
-                  "P",
-                  style: defaultTextStyle(
-                    fontSize: 32.0,
-                    color: kLightBackgroundColor,
-                  ),
-                ),
-              ),
-            ),
-          ),
+          child: circleAvatarImage(colorScheme),
         ),
         kHalfWidthSizedBox,
         Container(

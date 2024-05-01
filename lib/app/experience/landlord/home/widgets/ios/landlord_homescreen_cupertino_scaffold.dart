@@ -8,7 +8,9 @@ import 'package:kribb/src/utils/containers/page_background.dart';
 import 'package:kribb/theme/colors.dart';
 import 'package:typewritertext/typewritertext.dart';
 
+import '../../../../../../src/constants/assets.dart';
 import '../../../../../../src/controllers/landlord_homescreen_controller.dart';
+import '../../../../../../src/utils/components/circle_avatar_image.dart';
 import 'utils/landlord_homescreen_cupertino_navbar.dart';
 
 class LandLordHomeScreenCupertinoScaffold extends StatelessWidget {
@@ -83,7 +85,11 @@ class LandLordHomeScreenCupertinoScaffold extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const SizedBox(height: kDefaultPadding * 2),
+                    Obx(
+                      () => controller.isKYCVerified.value
+                          ? const SizedBox(height: kDefaultPadding * 2)
+                          : kSizedBox,
+                    ),
                     Obx(
                       () => controller.isKYCVerified.value
                           ? messageAlertNav(media)
@@ -94,7 +100,129 @@ class LandLordHomeScreenCupertinoScaffold extends StatelessWidget {
                           ? const SizedBox(height: kDefaultPadding * 2)
                           : const SizedBox(),
                     ),
-                    availableAgents(media),
+                    Obx(() => controller.availableAgentsIsVisible.value
+                        ? SizedBox(
+                            height: media.height * .2,
+                            width: media.width,
+                            child: ListView.separated(
+                              shrinkWrap: true,
+                              scrollDirection: Axis.horizontal,
+                              physics: const BouncingScrollPhysics(),
+                              itemCount: 10,
+                              separatorBuilder: (context, index) =>
+                                  kHalfWidthSizedBox,
+                              itemBuilder: (context, index) {
+                                return AnimatedContainer(
+                                  duration: const Duration(milliseconds: 300),
+                                  curve: Curves.easeInOut,
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 10,
+                                  ),
+                                  decoration: ShapeDecoration(
+                                    color: kGreenCardColor.withOpacity(0.2),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(16),
+                                    ),
+                                  ),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    children: [
+                                      Align(
+                                        alignment: Alignment.topRight,
+                                        child: CupertinoButton(
+                                          onPressed:
+                                              controller.hideAvailableAgents,
+                                          padding: const EdgeInsets.all(0),
+                                          alignment: Alignment.centerRight,
+                                          minSize: media.height * .04,
+                                          borderRadius:
+                                              BorderRadius.circular(100),
+                                          child:
+                                              const Icon(Iconsax.close_circle),
+                                        ),
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceAround,
+                                        children: [
+                                          circleAvatarImage(
+                                            colorScheme,
+                                          ),
+                                          kHalfWidthSizedBox,
+                                          Column(
+                                            children: [
+                                              SizedBox(
+                                                width: media.width - 150,
+                                                child: Text(
+                                                  "Mr Tunde Edward",
+                                                  style: defaultTextStyle(
+                                                    color: colorScheme.primary,
+                                                    fontWeight: FontWeight.w600,
+                                                  ),
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                width: media.width - 150,
+                                                child: Text(
+                                                  "Agent",
+                                                  style: defaultTextStyle(
+                                                    color: colorScheme
+                                                        .inversePrimary,
+                                                    fontWeight:
+                                                        FontWeight.normal,
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          CupertinoButton(
+                                            onPressed: () {},
+                                            padding: const EdgeInsets.all(0),
+                                            alignment: Alignment.centerRight,
+                                            // minSize: media.height * .028,
+                                            child: Icon(
+                                              Iconsax.arrow_right,
+                                              color: colorScheme.primary,
+                                              size: 28,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      kSizedBox,
+                                      Container(
+                                        padding: const EdgeInsets.symmetric(
+                                          horizontal: 10,
+                                        ),
+                                        decoration: ShapeDecoration(
+                                          color:
+                                              kGreenCardColor.withOpacity(0.2),
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(16),
+                                          ),
+                                        ),
+                                        child: Row(
+                                          children: [
+                                            circleAvatarImage(
+                                              colorScheme,
+                                              foregroundImage: const AssetImage(
+                                                Assets.buildings,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      kSizedBox,
+                                    ],
+                                  ),
+                                );
+                              },
+                            ),
+                          )
+                        : availableAgents(
+                            media,
+                            onPressed: controller.showAvailableAgents,
+                          )),
                     kSizedBox,
                     Obx(
                       () {
