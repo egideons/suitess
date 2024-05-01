@@ -10,6 +10,7 @@
 .svn/
 migrate_working_dir/
 android/key.properties
+keystore
 
 # IntelliJ related
 *.iml

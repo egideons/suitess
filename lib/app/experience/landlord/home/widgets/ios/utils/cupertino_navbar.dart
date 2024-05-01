@@ -1,14 +1,18 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:iconsax/iconsax.dart';
 
-import '../../../../../../src/constants/assets.dart';
-import '../../../../../../src/constants/consts.dart';
-import '../../../../../../theme/colors.dart';
+import '../../../../../../../src/constants/consts.dart';
+import '../../../../../../../src/utils/components/circle_avatar_image.dart';
+import '../../../../../../../theme/colors.dart';
 
-ObstructingPreferredSizeWidget landLordHomeScreenCupertinoNavBar({
+ObstructingPreferredSizeWidget landLordHomeScreenCupertinoNavBar(
   colorScheme,
-  media,
+  media, {
+  location,
+  goToLocation,
+  goToProfile,
+  goToNotifications,
 }) {
   return CupertinoNavigationBar(
     backgroundColor: colorScheme.background,
@@ -17,7 +21,7 @@ ObstructingPreferredSizeWidget landLordHomeScreenCupertinoNavBar({
     automaticallyImplyLeading: true,
     leading: Container(
       padding: const EdgeInsets.symmetric(horizontal: 10),
-      width: media.width / 3,
+      width: media.width - 190,
       decoration: ShapeDecoration(
         color: colorScheme.inversePrimary.withOpacity(0.4),
         shape: RoundedRectangleBorder(
@@ -25,22 +29,22 @@ ObstructingPreferredSizeWidget landLordHomeScreenCupertinoNavBar({
         ),
       ),
       child: CupertinoButton(
-        onPressed: () {},
+        onPressed: goToLocation ?? () {},
         padding: const EdgeInsets.all(0),
         alignment: Alignment.center,
         borderRadius: BorderRadius.circular(24),
         child: Row(
           children: [
             FaIcon(
-              FontAwesomeIcons.earthAmericas,
+              FontAwesomeIcons.earthAfrica,
               color: colorScheme.inversePrimary,
-              size: 12.0,
+              size: 20.0,
             ),
             kHalfWidthSizedBox,
             SizedBox(
-              width: media.width / 5,
+              width: media.width - 250,
               child: Text(
-                "Enugu, Nigeria.",
+                location,
                 overflow: TextOverflow.ellipsis,
                 style: defaultTextStyle(
                   fontSize: 10.0,
@@ -57,29 +61,11 @@ ObstructingPreferredSizeWidget landLordHomeScreenCupertinoNavBar({
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         CupertinoButton(
-          onPressed: () {},
+          onPressed: goToProfile ?? () {},
           padding: const EdgeInsets.all(0),
           alignment: Alignment.center,
           borderRadius: BorderRadius.circular(100),
-          child: SizedBox(
-            height: 40,
-            child: FittedBox(
-              fit: BoxFit.contain,
-              child: CircleAvatar(
-                backgroundColor: colorScheme.inversePrimary,
-                radius: 64,
-                foregroundImage:
-                    const NetworkImage(Assets.userPlaceholderImage),
-                child: Text(
-                  "P",
-                  style: defaultTextStyle(
-                    fontSize: 32.0,
-                    color: kLightBackgroundColor,
-                  ),
-                ),
-              ),
-            ),
-          ),
+          child: circleAvatarImage(colorScheme),
         ),
         kHalfWidthSizedBox,
         Container(
@@ -89,15 +75,15 @@ ObstructingPreferredSizeWidget landLordHomeScreenCupertinoNavBar({
             ),
           ),
           child: CupertinoButton(
-            onPressed: () {},
+            onPressed: goToNotifications ?? () {},
             padding: const EdgeInsets.all(0),
             alignment: Alignment.center,
             minSize: 38,
             borderRadius: BorderRadius.circular(100),
             child: Stack(
               children: [
-                FaIcon(
-                  FontAwesomeIcons.bell,
+                Icon(
+                  Iconsax.notification,
                   color: colorScheme.primary.withOpacity(0.9),
                   size: 18,
                 ),

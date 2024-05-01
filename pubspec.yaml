@@ -18,7 +18,7 @@ dependencies:
   intl:
   shared_preferences:
   lottie:
-  url_launcher: ^6.1.12
+  url_launcher:
   permission_handler:
   image_picker:
   image_cropper:
@@ -35,6 +35,7 @@ dependencies:
   google_sign_in:
   firebase_core:
   firebase_auth:
+  typewritertext:
 
 dev_dependencies:
   flutter_test:
