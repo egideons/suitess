@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:kribb/src/constants/consts.dart';
 import 'package:kribb/src/utils/containers/form_field_container.dart';
 import 'package:kribb/src/utils/containers/page_background.dart';
@@ -10,9 +9,11 @@ import 'package:typewritertext/typewritertext.dart';
 
 import '../../../../../../src/controllers/landlord_homescreen_controller.dart';
 import '../../../../../../src/utils/components/cupertino_message_alert_nav.dart';
+import '../../content/home_screen_no_properties.dart';
+import 'utils/add_a_property_cupertino_button.dart';
 import 'utils/add_property_cupertino_button.dart';
-import 'utils/landlord_home_screen_agent_cupertino_card.dart';
-import 'utils/landlord_homescreen_cupertino_navbar.dart';
+import 'utils/agent_cupertino_card.dart';
+import 'utils/cupertino_navbar.dart';
 import 'utils/number_of_available_agents_cupertino_card.dart';
 
 class LandLordHomeScreenCupertinoScaffold extends StatelessWidget {
@@ -120,18 +121,16 @@ class LandLordHomeScreenCupertinoScaffold extends StatelessWidget {
                                   colorScheme,
                                   media,
                                   controller,
-                                  agentName:
-                                      "Mr Tunde Edward suehwo sdusdonsund osuhdsd ",
-                                  nameOfProperty:
-                                      "Ibiam Hostel suehwo sdusdonsund osuhdsd ",
-                                  addressOfProperty: "No 8 Ezimiro, Enugu.",
+                                  agentName: "Mr Tunde Edward",
+                                  nameOfProperty: "Ibiam Hostel",
+                                  addressOfProperty: "No 8 Ezimiro, Enugu",
                                   priceOfProperty:
                                       "NGN ${doubleFormattedText(3500000)}",
                                 );
                               },
                             ),
                           )
-                        : noOfAvailableAgentsCupertinoCard(
+                        : homeScreenNoOfAvailableAgentsCupertinoCard(
                             media,
                             onPressed: controller.showAvailableAgents,
                           )),
@@ -161,29 +160,10 @@ class LandLordHomeScreenCupertinoScaffold extends StatelessWidget {
                       },
                     ),
                     kSizedBox,
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Iconsax.cloud_remove,
-                          size: media.height * .12,
-                          color: colorScheme.inversePrimary,
-                        ),
-                        kSizedBox,
-                        SizedBox(
-                          width: media.width - 150,
-                          child: Text(
-                            "No properties yet",
-                            textAlign: TextAlign.center,
-                            style: defaultTextStyle(
-                              color: colorScheme.inversePrimary,
-                              fontWeight: FontWeight.w600,
-                              letterSpacing: 0.90,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                    homeScreenNoProperties(media, colorScheme),
+                    kSizedBox,
+                    homeScreenAddAPropertyCupertinoButton(colorScheme),
+                    kSizedBox,
                   ],
                 ),
               ],

@@ -4,34 +4,35 @@ import 'package:iconsax/iconsax.dart';
 import '../../../../../../../src/constants/consts.dart';
 import '../../../../../../../theme/colors.dart';
 
-Widget addPropertyCupertinoButton({onPressed}) {
+Widget homeScreenAddAPropertyCupertinoButton(colorScheme, {onPressed}) {
   return CupertinoButton(
     onPressed: onPressed ?? () {},
     padding: const EdgeInsets.all(0),
-    borderRadius: BorderRadius.circular(16),
+    borderRadius: BorderRadius.circular(24),
+    pressedOpacity: .8,
     child: Container(
-      padding: const EdgeInsets.all(10),
+      padding: const EdgeInsets.all(20),
       decoration: ShapeDecoration(
-        color: kGreenCardColor.withOpacity(.3),
+        color: colorScheme.inversePrimary.withOpacity(0.8),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(24),
         ),
       ),
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Icon(
-            Iconsax.add,
-            color: kGreenCardColor,
+            Iconsax.add_circle5,
+            color: kGreyColor,
+            size: 32,
           ),
+          kHalfWidthSizedBox,
           Text(
-            "Add property",
+            "Add a property",
             style: defaultTextStyle(
-              color: kGreenCardColor,
-              fontSize: 12.0,
-              fontWeight: FontWeight.w600,
+              color: kGreyColor,
             ),
-          )
+          ),
         ],
       ),
     ),

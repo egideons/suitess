@@ -4,7 +4,8 @@ import 'package:iconsax/iconsax.dart';
 import '../../../../../../../src/constants/consts.dart';
 import '../../../../../../../theme/colors.dart';
 
-Widget noOfAvailableAgentsCupertinoCard(media, {onPressed, noOfAgents}) {
+Widget homeScreenNoOfAvailableAgentsCupertinoCard(media,
+    {onPressed, noOfAgents}) {
   return CupertinoButton(
     onPressed: onPressed ?? () {},
     padding: const EdgeInsets.all(0),
