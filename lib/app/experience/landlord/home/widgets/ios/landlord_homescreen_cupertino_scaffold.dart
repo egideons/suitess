@@ -8,7 +8,6 @@ import 'package:kribb/src/utils/containers/page_background.dart';
 import 'package:kribb/theme/colors.dart';
 import 'package:typewritertext/typewritertext.dart';
 
-import '../../../../../../src/constants/assets.dart';
 import '../../../../../../src/controllers/landlord_homescreen_controller.dart';
 import '../../../../../../src/utils/components/cupertino_message_alert_nav.dart';
 import '../../content/home_screen_no_properties.dart';
@@ -16,6 +15,7 @@ import 'utils/add_a_property_cupertino_button.dart';
 import 'utils/add_property_cupertino_button.dart';
 import 'utils/agent_cupertino_card.dart';
 import 'utils/cupertino_navbar.dart';
+import 'utils/cupertino_property_card.dart';
 import 'utils/number_of_available_agents_cupertino_card.dart';
 
 class LandLordHomeScreenCupertinoScaffold extends StatelessWidget {
@@ -166,160 +166,47 @@ class LandLordHomeScreenCupertinoScaffold extends StatelessWidget {
                           },
                         ),
                         kSizedBox,
-                        Obx(() {
-                          return controller.hasProperties.value
-                              ? homeScreenNoProperties(media, colorScheme)
-                              : const SizedBox();
-                        }),
-                        Obx(() => controller.hasProperties.value
-                            ? kSizedBox
-                            : const SizedBox()),
-                        Obx(() {
-                          return controller.hasProperties.value
-                              ? homeScreenAddAPropertyCupertinoButton(
-                                  colorScheme)
-                              : const SizedBox();
-                        }),
-                        Obx(() => controller.hasProperties.value
-                            ? kSizedBox
-                            : const SizedBox()),
-                        ListView.separated(
-                          itemCount: 10,
-                          shrinkWrap: true,
-                          physics: const BouncingScrollPhysics(),
-                          separatorBuilder: (context, index) => kSizedBox,
-                          itemBuilder: (context, index) {
-                            return CupertinoButton(
-                              onPressed: () {},
-                              padding: const EdgeInsets.all(0),
-                              borderRadius: BorderRadius.circular(24),
-                              pressedOpacity: .6,
-                              child: Container(
-                                padding: const EdgeInsets.all(10),
-                                decoration: ShapeDecoration(
-                                  color: colorScheme.inversePrimary
-                                      .withOpacity(0.4),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(24),
-                                  ),
-                                ),
-                                child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Container(
-                                      decoration: ShapeDecoration(
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(24),
-                                        ),
-                                      ),
-                                      child: Image.asset(Assets.buildings),
-                                    ),
-                                    kHalfWidthSizedBox,
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        SizedBox(
-                                          width: media.width - 180,
-                                          child: Text(
-                                            "Sky Dandelions\nApartments",
-                                            textAlign: TextAlign.start,
-                                            overflow: TextOverflow.ellipsis,
-                                            style: defaultTextStyle(
-                                              color: colorScheme.primary,
-                                              fontWeight: FontWeight.w600,
-                                            ),
-                                          ),
-                                        ),
-                                        kHalfSizedBox,
-                                        Row(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          children: [
-                                            Icon(
-                                              Iconsax.magic_star5,
-                                              color: kStarColor,
-                                              size: 14,
-                                            ),
-                                            Text(
-                                              "4.9",
-                                              textAlign: TextAlign.start,
-                                              style: defaultTextStyle(
-                                                color: colorScheme.primary,
-                                                fontSize: 10.0,
-                                                fontWeight: FontWeight.w600,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        kHalfSizedBox,
-                                        Row(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          children: [
-                                            Icon(
-                                              Iconsax.location5,
-                                              color: kStarColor,
-                                              size: 14,
-                                            ),
-                                            SizedBox(
-                                              width: media.width - 200,
-                                              child: Text(
-                                                "Indepence Layout, Enugu",
-                                                textAlign: TextAlign.start,
-                                                overflow: TextOverflow.ellipsis,
-                                                style: defaultTextStyle(
-                                                  color: colorScheme.primary,
-                                                  fontSize: 10.0,
-                                                  fontWeight: FontWeight.normal,
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
+                        GetBuilder<LandlordHomescreenController>(
+                          init: LandlordHomescreenController(),
+                          builder: (controller) {
+                            return controller.hasProperties.value
+                                ? Column(
+                                    children: [
+                                      homeScreenNoProperties(
+                                          media, colorScheme),
+                                      kSizedBox,
+                                      homeScreenAddAPropertyCupertinoButton(
+                                          colorScheme),
+                                    ],
+                                  )
+                                : ListView.separated(
+                                    itemCount: 10,
+                                    shrinkWrap: true,
+                                    physics: const BouncingScrollPhysics(),
+                                    separatorBuilder: (context, index) =>
                                         kSizedBox,
-                                        Text.rich(
-                                          TextSpan(
-                                            text: "NGN ",
-                                            style: defaultTextStyle(
-                                              fontSize: 16.0,
-                                              color: colorScheme.primary,
-                                              fontWeight: FontWeight.w800,
-                                            ),
-                                            children: [
-                                              TextSpan(
-                                                text:
-                                                    doubleFormattedText(80000),
-                                                style: defaultTextStyle(
-                                                  fontSize: 16.0,
-                                                  color: colorScheme.primary,
-                                                  fontWeight: FontWeight.w800,
-                                                ),
-                                              ),
-                                              TextSpan(
-                                                text: "/month",
-                                                style: defaultTextStyle(
-                                                  fontSize: 10.0,
-                                                  color: colorScheme.primary,
-                                                  fontWeight: FontWeight.normal,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            );
+                                    itemBuilder: (context, index) {
+                                      return homeScreenCupertinoPropertyCard(
+                                        colorScheme,
+                                        media,
+                                        propertyName:
+                                            "Sky Dandelions\nApartments",
+                                        propertyRating: "4.9",
+                                        propertyLocation:
+                                            "Indepence Layout, Enugu",
+                                        propertyPrice:
+                                            doubleFormattedText(80000),
+                                        propertyPaymentFreq: "/month",
+                                      );
+                                    },
+                                  );
                           },
                         ),
                       ],
                     );
                   },
                 ),
+                kSizedBox,
                 Obx(
                   () => controller.isScrollToTopBtnVisible.value
                       ? Positioned(

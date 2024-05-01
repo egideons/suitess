@@ -19,7 +19,6 @@ class LandLordNavigationOverViewCupertinoScaffold extends StatelessWidget {
 
     return CupertinoPageScaffold(
       child: Scaffold(
-        extendBody: true,
         body: Obx(
           () => controller.landlordNavScreens(
               colorScheme)[controller.landlordNavCurrrentIndex.value],
