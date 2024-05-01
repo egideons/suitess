@@ -85,7 +85,14 @@ class NavigationOverviewController extends GetxController {
         CustomNavigationBarItem(
           icon: const Icon(Iconsax.user),
           selectedIcon: const FaIcon(FontAwesomeIcons.solidUser),
-          title: const Text("Profile"),
+          title: Text(
+            "",
+            style: defaultTextStyle(color: colorScheme.background),
+          ),
+          selectedTitle: Text(
+            "Profile",
+            style: defaultTextStyle(color: colorScheme.background),
+          ),
         ),
       ];
   //=============== LANDLORD SECTION ================\\
