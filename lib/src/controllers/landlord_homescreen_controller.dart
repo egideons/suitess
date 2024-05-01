@@ -8,6 +8,11 @@ class LandlordHomescreenController extends GetxController {
 
   //================ variables =================\\
   var isLoading = false.obs;
+  var hasProperties = false.obs;
+  var isKYCVerified = false.obs;
+
+  //================ controllers =================\\
+
   var scrollController = ScrollController();
   var searchController = TextEditingController();
 

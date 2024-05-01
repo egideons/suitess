@@ -6,6 +6,8 @@ Color kDarkBackgroundColor = Colors.black;
 Color kPrimaryColor = Colors.black;
 Color kInversePrimaryColor = const Color(0xFFFFFFFF);
 Color kAccentColor = const Color(0xFFFFBA02);
+Color kGreenCardColor = const Color(0xFF41B696);
+Color kRedCardColor = kErrorColor.withOpacity(0.15);
 
 Color kTextBlackColor = Colors.black;
 Color kTextWhiteColor = Colors.white;
