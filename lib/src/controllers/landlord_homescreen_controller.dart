@@ -8,37 +8,72 @@ class LandlordHomescreenController extends GetxController {
     return Get.find<LandlordHomescreenController>();
   }
 
+  @override
+  void onInit() {
+    super.onInit();
+    scrollController.addListener(_scrollListener);
+  }
+
+  @override
+  void onClose() {
+    super.onClose();
+    scrollController.dispose();
+  }
+
   //================ variables =================\\
-  var isLoading = false.obs;
+  var isRefreshing = false.obs;
   var hasProperties = false.obs;
   var isKYCVerified = false.obs;
   var availableAgentsIsVisible = false.obs;
+  var isScrollToTopBtnVisible = false.obs;
 
   //================ controllers =================\\
 
   var scrollController = ScrollController();
   var searchController = TextEditingController();
 
-  //================ functions =================\\
+//================ Scroll to Top =================//
+  void scrollToTop() {
+    scrollController.animateTo(0,
+        duration: const Duration(seconds: 1), curve: Curves.fastOutSlowIn);
+  }
+
+//================ Scroll Listener =================//
+
+  void _scrollListener() {
+    //========= Show action button ========//
+    if (scrollController.position.pixels >= 100) {
+      isScrollToTopBtnVisible.value = true;
+      update();
+    }
+    //========= Hide action button ========//
+    else if (scrollController.position.pixels < 100) {
+      isScrollToTopBtnVisible.value = false;
+      update();
+    }
+  }
+
   showAvailableAgents() {
     availableAgentsIsVisible.value = true;
     update();
-    log("Agents are availble: ${availableAgentsIsVisible.value}");
+    log("Available agents are visible: ${availableAgentsIsVisible.value}");
   }
 
   hideAvailableAgents() {
     availableAgentsIsVisible.value = false;
     update();
-    log("Agents are availble: ${availableAgentsIsVisible.value}");
+    log("Available agents are visible: ${availableAgentsIsVisible.value}");
   }
 
+//================ Handle refresh ================\\
+
   Future<void> onRefresh() async {
-    isLoading.value = true;
+    isRefreshing.value = true;
     update();
 
     await Future.delayed(const Duration(seconds: 2));
 
-    isLoading.value = false;
+    isRefreshing.value = false;
     update();
   }
 }
