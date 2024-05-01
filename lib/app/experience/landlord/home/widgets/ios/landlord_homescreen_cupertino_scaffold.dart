@@ -8,10 +8,12 @@ import 'package:kribb/src/utils/containers/page_background.dart';
 import 'package:kribb/theme/colors.dart';
 import 'package:typewritertext/typewritertext.dart';
 
-import '../../../../../../src/constants/assets.dart';
 import '../../../../../../src/controllers/landlord_homescreen_controller.dart';
-import '../../../../../../src/utils/components/circle_avatar_image.dart';
+import '../../../../../../src/utils/components/cupertino_message_alert_nav.dart';
+import 'utils/add_property_cupertino_button.dart';
+import 'utils/landlord_home_screen_agent_cupertino_card.dart';
 import 'utils/landlord_homescreen_cupertino_navbar.dart';
+import 'utils/number_of_available_agents_cupertino_card.dart';
 
 class LandLordHomeScreenCupertinoScaffold extends StatelessWidget {
   const LandLordHomeScreenCupertinoScaffold({super.key});
@@ -92,7 +94,10 @@ class LandLordHomeScreenCupertinoScaffold extends StatelessWidget {
                     ),
                     Obx(
                       () => controller.isKYCVerified.value
-                          ? messageAlertNav(media)
+                          ? cupertinoMessageAlertNav(
+                              media,
+                              message: "KYC not verified",
+                            )
                           : const SizedBox(),
                     ),
                     Obx(
@@ -102,124 +107,31 @@ class LandLordHomeScreenCupertinoScaffold extends StatelessWidget {
                     ),
                     Obx(() => controller.availableAgentsIsVisible.value
                         ? SizedBox(
-                            height: media.height * .2,
-                            width: media.width,
+                            height: media.height * .28,
                             child: ListView.separated(
                               shrinkWrap: true,
                               scrollDirection: Axis.horizontal,
                               physics: const BouncingScrollPhysics(),
                               itemCount: 10,
                               separatorBuilder: (context, index) =>
-                                  kHalfWidthSizedBox,
+                                  kWidthSizedBox,
                               itemBuilder: (context, index) {
-                                return AnimatedContainer(
-                                  duration: const Duration(milliseconds: 300),
-                                  curve: Curves.easeInOut,
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 10,
-                                  ),
-                                  decoration: ShapeDecoration(
-                                    color: kGreenCardColor.withOpacity(0.2),
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(16),
-                                    ),
-                                  ),
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                    children: [
-                                      Align(
-                                        alignment: Alignment.topRight,
-                                        child: CupertinoButton(
-                                          onPressed:
-                                              controller.hideAvailableAgents,
-                                          padding: const EdgeInsets.all(0),
-                                          alignment: Alignment.centerRight,
-                                          minSize: media.height * .04,
-                                          borderRadius:
-                                              BorderRadius.circular(100),
-                                          child:
-                                              const Icon(Iconsax.close_circle),
-                                        ),
-                                      ),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceAround,
-                                        children: [
-                                          circleAvatarImage(
-                                            colorScheme,
-                                          ),
-                                          kHalfWidthSizedBox,
-                                          Column(
-                                            children: [
-                                              SizedBox(
-                                                width: media.width - 150,
-                                                child: Text(
-                                                  "Mr Tunde Edward",
-                                                  style: defaultTextStyle(
-                                                    color: colorScheme.primary,
-                                                    fontWeight: FontWeight.w600,
-                                                  ),
-                                                ),
-                                              ),
-                                              SizedBox(
-                                                width: media.width - 150,
-                                                child: Text(
-                                                  "Agent",
-                                                  style: defaultTextStyle(
-                                                    color: colorScheme
-                                                        .inversePrimary,
-                                                    fontWeight:
-                                                        FontWeight.normal,
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                          CupertinoButton(
-                                            onPressed: () {},
-                                            padding: const EdgeInsets.all(0),
-                                            alignment: Alignment.centerRight,
-                                            // minSize: media.height * .028,
-                                            child: Icon(
-                                              Iconsax.arrow_right,
-                                              color: colorScheme.primary,
-                                              size: 28,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      kSizedBox,
-                                      Container(
-                                        padding: const EdgeInsets.symmetric(
-                                          horizontal: 10,
-                                        ),
-                                        decoration: ShapeDecoration(
-                                          color:
-                                              kGreenCardColor.withOpacity(0.2),
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(16),
-                                          ),
-                                        ),
-                                        child: Row(
-                                          children: [
-                                            circleAvatarImage(
-                                              colorScheme,
-                                              foregroundImage: const AssetImage(
-                                                Assets.buildings,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      kSizedBox,
-                                    ],
-                                  ),
+                                return landLordHomeScreenAgentCupertinoCard(
+                                  colorScheme,
+                                  media,
+                                  controller,
+                                  agentName:
+                                      "Mr Tunde Edward suehwo sdusdonsund osuhdsd ",
+                                  nameOfProperty:
+                                      "Ibiam Hostel suehwo sdusdonsund osuhdsd ",
+                                  addressOfProperty: "No 8 Ezimiro, Enugu.",
+                                  priceOfProperty:
+                                      "NGN ${doubleFormattedText(3500000)}",
                                 );
                               },
                             ),
                           )
-                        : availableAgents(
+                        : noOfAvailableAgentsCupertinoCard(
                             media,
                             onPressed: controller.showAvailableAgents,
                           )),
@@ -242,7 +154,7 @@ class LandLordHomeScreenCupertinoScaffold extends StatelessWidget {
                               ),
                             ),
                             controller.hasProperties.value
-                                ? addPropertyButton()
+                                ? addPropertyCupertinoButton()
                                 : const SizedBox(),
                           ],
                         );
@@ -277,146 +189,6 @@ class LandLordHomeScreenCupertinoScaffold extends StatelessWidget {
               ],
             ),
           ),
-        ),
-      ),
-    );
-  }
-
-  Widget addPropertyButton({onPressed}) {
-    return CupertinoButton(
-      onPressed: onPressed ?? () {},
-      padding: const EdgeInsets.all(0),
-      borderRadius: BorderRadius.circular(16),
-      child: Container(
-        padding: const EdgeInsets.all(10),
-        decoration: ShapeDecoration(
-          color: kGreenCardColor.withOpacity(.1),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(24),
-          ),
-        ),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Icon(
-              Iconsax.add,
-              color: kGreenCardColor,
-            ),
-            Text(
-              "Add property",
-              style: defaultTextStyle(
-                color: kGreenCardColor,
-                fontSize: 12.0,
-                fontWeight: FontWeight.w600,
-              ),
-            )
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget availableAgents(media, {onPressed}) {
-    return CupertinoButton(
-      onPressed: onPressed ?? () {},
-      padding: const EdgeInsets.all(0),
-      borderRadius: BorderRadius.circular(16),
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 300),
-        curve: Curves.easeInOut,
-        width: media.width,
-        height: media.height * .09,
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        decoration: ShapeDecoration(
-          color: kGreenCardColor,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16),
-          ),
-          shadows: [
-            BoxShadow(
-              color: kGreenCardColor.withOpacity(0.4),
-              offset: const Offset(0, -20),
-              spreadRadius: -10,
-            ),
-          ],
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Container(
-              padding: const EdgeInsets.all(10),
-              decoration: ShapeDecoration(
-                color: kLightBackgroundColor.withOpacity(0.4),
-                shape: const CircleBorder(),
-              ),
-              child: Center(
-                child: Icon(
-                  Iconsax.profile_2user5,
-                  color: kLightBackgroundColor,
-                ),
-              ),
-            ),
-            kHalfWidthSizedBox,
-            SizedBox(
-              width: media.width * .09,
-              child: Text(
-                intFormattedText(57),
-                style: defaultTextStyle(
-                  color: kTextWhiteColor,
-                  fontWeight: FontWeight.w800,
-                  fontSize: 24.0,
-                ),
-              ),
-            ),
-            kHalfWidthSizedBox,
-            SizedBox(
-              width: media.width * .5,
-              child: Text(
-                "Agents \nare available right now!",
-                textAlign: TextAlign.start,
-                overflow: TextOverflow.ellipsis,
-                maxLines: 2,
-                style: defaultTextStyle(
-                  color: kTextWhiteColor,
-                  fontWeight: FontWeight.w800,
-                  fontSize: 14.0,
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget messageAlertNav(media, {onPressed}) {
-    return CupertinoButton(
-      onPressed: onPressed ?? () {},
-      padding: const EdgeInsets.all(0),
-      borderRadius: BorderRadius.circular(16),
-      child: Container(
-        width: media.width,
-        height: media.height * .066,
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        decoration: ShapeDecoration(
-          color: kRedCardColor,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16),
-          ),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text(
-              "KYC not verified",
-              style: defaultTextStyle(
-                color: kErrorColor,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-            Icon(Iconsax.arrow_right_3, color: kErrorColor),
-          ],
         ),
       ),
     );
