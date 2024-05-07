@@ -6,10 +6,10 @@ import 'package:iconsax/iconsax.dart';
 import 'package:kribb/src/utils/components/circle_avatar_image.dart';
 import 'package:kribb/src/utils/components/responsive_constants.dart';
 import 'package:kribb/theme/colors.dart';
+import 'package:readmore/readmore.dart';
 
 import '../../../../../../src/constants/consts.dart';
 import '../../../../../../src/controllers/landlord_view_property_controller.dart';
-import '../../../../../../src/utils/containers/page_background.dart';
 
 class LandLordViewPropertyCupertinoScaffold extends StatelessWidget {
   const LandLordViewPropertyCupertinoScaffold({super.key});
@@ -51,12 +51,9 @@ class LandLordViewPropertyCupertinoScaffold extends StatelessWidget {
         child: RefreshIndicator.adaptive(
           onRefresh: controller.onRefresh,
           child: CupertinoScrollbar(
+            controller: controller.scrollController,
             child: Stack(
               children: [
-                Positioned(
-                  bottom: -media.height * .65,
-                  child: pageBackground(media, colorScheme),
-                ),
                 GetBuilder<LandLordViewPropertyController>(
                   init: LandLordViewPropertyController(),
                   builder: (context) {
@@ -271,6 +268,169 @@ class LandLordViewPropertyCupertinoScaffold extends StatelessWidget {
                             ),
                           ),
                         ),
+                        kSizedBox,
+                        CupertinoButton(
+                          onPressed: () {},
+                          padding: const EdgeInsets.all(0),
+                          borderRadius: BorderRadius.circular(24),
+                          pressedOpacity: .6,
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 10,
+                              vertical: 10,
+                            ),
+                            decoration: ShapeDecoration(
+                              color: kAccentColor.withOpacity(0.1),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(24),
+                              ),
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Icon(
+                                      Icons.single_bed_rounded,
+                                      color: kAccentColor,
+                                    ),
+                                    kHalfSizedBox,
+                                    SizedBox(
+                                      width: media.width / 5,
+                                      child: Text(
+                                        "4 Beds",
+                                        overflow: TextOverflow.ellipsis,
+                                        textAlign: TextAlign.center,
+                                        style: defaultTextStyle(
+                                          color: kGreyColor,
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.normal,
+                                        ),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Icon(
+                                      Icons.bathtub_rounded,
+                                      color: kAccentColor,
+                                    ),
+                                    kHalfSizedBox,
+                                    SizedBox(
+                                      width: media.width / 4,
+                                      child: Text(
+                                        "4 Baths",
+                                        overflow: TextOverflow.ellipsis,
+                                        textAlign: TextAlign.center,
+                                        style: defaultTextStyle(
+                                          color: kGreyColor,
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.normal,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Icon(
+                                      Iconsax.home_15,
+                                      color: kAccentColor,
+                                    ),
+                                    kHalfSizedBox,
+                                    SizedBox(
+                                      width: media.width / 4,
+                                      child: Text(
+                                        "200 Sqm",
+                                        overflow: TextOverflow.ellipsis,
+                                        textAlign: TextAlign.center,
+                                        style: defaultTextStyle(
+                                          color: kGreyColor,
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.normal,
+                                        ),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Icon(
+                                      Iconsax.tag5,
+                                      color: kAccentColor,
+                                    ),
+                                    kHalfSizedBox,
+                                    SizedBox(
+                                      width: media.width / 6,
+                                      child: Text(
+                                        "Rent",
+                                        textAlign: TextAlign.center,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: defaultTextStyle(
+                                          color: kGreyColor,
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.normal,
+                                        ),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        kSizedBox,
+                        Text(
+                          "Description",
+                          textAlign: TextAlign.start,
+                          overflow: TextOverflow.ellipsis,
+                          style: defaultTextStyle(
+                            color: colorScheme.primary,
+                            fontWeight: FontWeight.w800,
+                            fontSize: 14,
+                          ),
+                        ),
+                        kHalfSizedBox,
+                        ReadMoreText(
+                          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+                          textAlign: TextAlign.start,
+                          style: defaultTextStyle(
+                            color: colorScheme.inversePrimary,
+                            fontWeight: FontWeight.normal,
+                            fontSize: 14,
+                          ),
+                        ),
+                        kSizedBox,
+                        Text(
+                          "Address",
+                          textAlign: TextAlign.start,
+                          overflow: TextOverflow.ellipsis,
+                          style: defaultTextStyle(
+                            color: colorScheme.primary,
+                            fontWeight: FontWeight.w800,
+                            fontSize: 14,
+                          ),
+                        ),
+                        kHalfSizedBox,
+                        ReadMoreText(
+                          "631 Akpos Celina Avenue, Matic lane, Enugu state",
+                          textAlign: TextAlign.start,
+                          style: defaultTextStyle(
+                            color: colorScheme.inversePrimary,
+                            fontWeight: FontWeight.normal,
+                            fontSize: 14,
+                          ),
+                        ),
+                        kSizedBox,
                       ],
                     );
                   },
