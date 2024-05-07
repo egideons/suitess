@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
-import '../../app/experience/landlord/navigation_overview/screen/landlord_navigation_overview.dart';
+import '../../app/experience/landlord/view/screen/landlord_navigation_overview.dart';
 
 class LoadingController extends GetxController {
   static LoadingController get instance {
