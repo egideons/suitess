@@ -9,6 +9,7 @@ import 'package:kribb/theme/colors.dart';
 import 'package:typewritertext/typewritertext.dart';
 
 import '../../../../../../src/controllers/landlord_homescreen_controller.dart';
+import '../../../../../../src/routes/routes.dart';
 import '../../../../../../src/utils/components/cupertino_message_alert_nav.dart';
 import '../../content/home_screen_no_properties.dart';
 import 'utils/add_a_property_cupertino_button.dart';
@@ -189,6 +190,12 @@ class LandLordHomeScreenCupertinoScaffold extends StatelessWidget {
                                       return homeScreenCupertinoPropertyCard(
                                         colorScheme,
                                         media,
+                                        goToProperty: () {
+                                          Get.toNamed(
+                                            Routes.landLordViewProperty,
+                                            preventDuplicates: true,
+                                          );
+                                        },
                                         propertyName:
                                             "Sky Dandelions\nApartments",
                                         propertyRating: "4.9",

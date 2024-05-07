@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:kribb/src/controllers/signup_controller.dart';
 
 import '../../app/auth/signup/screen/signup.dart';
 import '../../app/splash/loading/screen/loading_screen.dart';
@@ -150,11 +151,8 @@ class LoginController extends GetxController {
       var gUser = await googleSignIn.signInSilently();
 
       if (gUser == null) {
+        SignupController.instance.signupWithGoogle();
         isLoadingGoogleLogin.value = false;
-        log("Google sign-in cancelled");
-        ApiProcessorController.errorSnack(
-          "You have not created an account",
-        );
         update();
         return; // Exit the function
       }

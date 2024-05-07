@@ -2,10 +2,10 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kribb/app/experience/landlord/home/widgets/android/landlord_dashboard_scaffold.dart';
-import 'package:kribb/app/experience/landlord/home/widgets/ios/landlord_homescreen_cupertino_scaffold.dart';
 
 import '../../../../../src/controllers/landlord_view_property_controller.dart';
+import '../widgets/android/landlord_view_property_scaffold.dart';
+import '../widgets/ios/landlord_view_property_cupertino_scaffold.dart';
 
 class LandLordViewProperty extends StatelessWidget {
   const LandLordViewProperty({super.key});
@@ -18,12 +18,12 @@ class LandLordViewProperty extends StatelessWidget {
     if (Platform.isIOS) {
       return GestureDetector(
         onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
-        child: const LandLordHomeScreenCupertinoScaffold(),
+        child: const LandLordViewPropertyCupertinoScaffold(),
       );
     }
     return GestureDetector(
       onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
-      child: const LandLordHomeScreenScaffold(),
+      child: const LandLordViewPropertyScaffold(),
     );
   }
 }
