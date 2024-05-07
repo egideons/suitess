@@ -24,9 +24,9 @@ dependencies:
   image_cropper:
   google_fonts:
   loading_animation_widget:
-  http:
+  dio:
   delightful_toast:
-  flutter_carousel_widget:
+  banner_carousel:
   cached_network_image:
   readmore:
   shimmer: ^3.0.0-nullsafety.0

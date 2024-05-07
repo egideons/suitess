@@ -217,8 +217,8 @@ class SignupController extends GetxController {
       var gUser = await googleSignIn.signIn();
 
       if (gUser == null) {
-        isLoadingGoogleSignup.value = false;
         log("Google sign-up cancelled");
+        isLoadingGoogleSignup.value = false;
         update();
         return; // Exit the function
       }
@@ -232,7 +232,7 @@ class SignupController extends GetxController {
 
       await FirebaseAuth.instance.signInWithCredential(credential);
 
-      ApiProcessorController.successSnack("Signup successful");
+      ApiProcessorController.successSnack("Signin successful");
 
       Get.offAll(
         () => const EmailOTP(),
@@ -251,12 +251,14 @@ class SignupController extends GetxController {
     } on PlatformException catch (e) {
       // Handle specific platform exceptions
       log("Google sign-up failed: ${e.message}");
+      ApiProcessorController.errorSnack("$e");
       // You can display an error message to the user or handle the error accordingly
       isLoadingGoogleSignup.value = false;
       update();
     } catch (error) {
       // Handle other types of errors
       log("Error during Google sign-up: $error");
+      ApiProcessorController.errorSnack("$error");
       // You can display an error message to the user or handle the error accordingly
       isLoadingGoogleSignup.value = false;
       update();

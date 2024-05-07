@@ -151,6 +151,7 @@ class LoginController extends GetxController {
       var gUser = await googleSignIn.signInSilently();
 
       if (gUser == null) {
+        Get.put(SignupController());
         SignupController.instance.signupWithGoogle();
         isLoadingGoogleLogin.value = false;
         update();
@@ -187,12 +188,14 @@ class LoginController extends GetxController {
     } on PlatformException catch (e) {
       // Handle specific platform exceptions
       log("Google sign-in failed: ${e.message}");
+      log("Google sign-up failed: ${e.message}");
       // You can display an error message to the user or handle the error accordingly
       isLoadingGoogleLogin.value = false;
       update();
     } catch (error) {
       // Handle other types of errors
       log("Error during Google sign-in: $error");
+      ApiProcessorController.errorSnack("$error");
       // You can display an error message to the user or handle the error accordingly
       isLoadingGoogleLogin.value = false;
       update();

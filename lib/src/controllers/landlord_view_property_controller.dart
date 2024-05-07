@@ -1,5 +1,9 @@
+import 'package:banner_carousel/banner_carousel.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:kribb/src/constants/consts.dart';
+
+import '../constants/assets.dart';
 
 class LandLordViewPropertyController extends GetxController {
   static LandLordViewPropertyController get instance {
@@ -21,6 +25,12 @@ class LandLordViewPropertyController extends GetxController {
   //================ variables =================\\
   var isRefreshing = false.obs;
   var isScrollToTopBtnVisible = false.obs;
+  var listBanners = [
+    BannerModel(imagePath: Assets.kitchen, id: "${createUniqueId()}"),
+    BannerModel(imagePath: Assets.buildings, id: "${createUniqueId()}"),
+    BannerModel(imagePath: Assets.buildings, id: "${createUniqueId()}"),
+    BannerModel(imagePath: Assets.kitchen, id: "${createUniqueId()}"),
+  ];
 
   //================ controllers =================\\
 

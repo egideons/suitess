@@ -18,6 +18,7 @@ class Assets {
   //Test Image
   static const testImage = "assets/images/image.png";
   static const buildings = "assets/images/buildings.png";
+  static const kitchen = "assets/images/kitchen.png";
 
 //Placeholder Image
   static const placeholderImage = "assets/images/placeholder_image.png";
