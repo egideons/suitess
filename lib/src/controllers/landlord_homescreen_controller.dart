@@ -42,12 +42,12 @@ class LandlordHomescreenController extends GetxController {
 
   void _scrollListener() {
     //========= Show action button ========//
-    if (scrollController.position.pixels >= 100) {
+    if (scrollController.position.pixels >= 150) {
       isScrollToTopBtnVisible.value = true;
       update();
     }
     //========= Hide action button ========//
-    else if (scrollController.position.pixels < 100) {
+    else if (scrollController.position.pixels < 150) {
       isScrollToTopBtnVisible.value = false;
       update();
     }

@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:kribb/src/utils/components/circle_avatar_image.dart';
 import 'package:kribb/src/utils/components/responsive_constants.dart';
 import 'package:kribb/theme/colors.dart';
 
@@ -53,7 +54,7 @@ class LandLordViewPropertyCupertinoScaffold extends StatelessWidget {
             child: Stack(
               children: [
                 Positioned(
-                  bottom: -media.height * .6,
+                  bottom: -media.height * .65,
                   child: pageBackground(media, colorScheme),
                 ),
                 GetBuilder<LandLordViewPropertyController>(
@@ -114,6 +115,7 @@ class LandLordViewPropertyCupertinoScaffold extends StatelessWidget {
                               ],
                             ),
                             Container(
+                              width: media.width / 4,
                               padding: const EdgeInsets.all(10),
                               decoration: ShapeDecoration(
                                 color: kRedCardColor,
@@ -123,6 +125,7 @@ class LandLordViewPropertyCupertinoScaffold extends StatelessWidget {
                               ),
                               child: Text(
                                 "For Rent",
+                                textAlign: TextAlign.center,
                                 style: defaultTextStyle(
                                   color: kRedColor,
                                   fontSize: 12,
@@ -134,6 +137,140 @@ class LandLordViewPropertyCupertinoScaffold extends StatelessWidget {
                           ],
                         ),
                         kSizedBox,
+                        Container(
+                          width: media.width,
+                          height: media.height * .09,
+                          padding: const EdgeInsets.symmetric(horizontal: 20),
+                          decoration: ShapeDecoration(
+                            color: kGreenCardColor,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(16),
+                            ),
+                            shadows: [
+                              BoxShadow(
+                                color: kGreenCardColor.withOpacity(0.2),
+                                offset: const Offset(4, 10),
+                                blurRadius: 10,
+                                spreadRadius: 4,
+                              ),
+                            ],
+                          ),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    "You have",
+                                    textAlign: TextAlign.start,
+                                    style: defaultTextStyle(
+                                      fontSize: 12,
+                                      color: kTextWhiteColor,
+                                      fontWeight: FontWeight.normal,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: media.width - 150,
+                                    child: Text(
+                                      "12 new bids",
+                                      overflow: TextOverflow.ellipsis,
+                                      textAlign: TextAlign.start,
+                                      style: defaultTextStyle(
+                                        fontSize: 16,
+                                        color: kTextWhiteColor,
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Container(
+                                color: kLightGreyColor,
+                                height: 40,
+                                width: 2,
+                              ),
+                              CupertinoButton(
+                                onPressed: () {},
+                                padding: const EdgeInsets.all(0),
+                                borderRadius: BorderRadius.circular(50),
+                                child: Text(
+                                  "View\ndetails",
+                                  textAlign: TextAlign.start,
+                                  style: defaultTextStyle(
+                                    fontSize: 14,
+                                    color: kTextWhiteColor,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        kSizedBox,
+                        CupertinoButton(
+                          onPressed: () {},
+                          padding: const EdgeInsets.all(0),
+                          borderRadius: BorderRadius.circular(24),
+                          pressedOpacity: .6,
+                          child: Container(
+                            padding: const EdgeInsets.all(10),
+                            decoration: ShapeDecoration(
+                              color:
+                                  colorScheme.inversePrimary.withOpacity(0.4),
+                              shape: RoundedRectangleBorder(
+                                side: BorderSide(
+                                  color: colorScheme.inversePrimary,
+                                ),
+                                borderRadius: BorderRadius.circular(24),
+                              ),
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "Listing Agent",
+                                      style: defaultTextStyle(
+                                        fontSize: 10,
+                                        color: kGreyColor,
+                                        fontWeight: FontWeight.normal,
+                                      ),
+                                    ),
+                                    kHalfSizedBox,
+                                    Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        circleAvatarImage(colorScheme),
+                                        kHalfWidthSizedBox,
+                                        SizedBox(
+                                          width: media.width - 200,
+                                          child: Text(
+                                            "Ifeanyi Okigbo",
+                                            style: defaultTextStyle(
+                                              fontSize: 14,
+                                              color: kTextBlackColor,
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                Icon(
+                                  Iconsax.arrow_right,
+                                  color: kDarkBackgroundColor,
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
                       ],
                     );
                   },
