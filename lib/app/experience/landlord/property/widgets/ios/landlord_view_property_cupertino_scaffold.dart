@@ -29,7 +29,7 @@ class LandLordViewPropertyCupertinoScaffold extends StatelessWidget {
         trailing: Container(
           padding: const EdgeInsets.all(6),
           decoration: ShapeDecoration(
-            color: kRedCardColor.withOpacity(0.15),
+            color: kRedCardColor,
             shape: const CircleBorder(),
           ),
           child: CupertinoButton(
@@ -64,8 +64,76 @@ class LandLordViewPropertyCupertinoScaffold extends StatelessWidget {
                       padding: const EdgeInsets.all(10),
                       children: [
                         BannerCarousel(
-                          banners: controller.listBanners,
+                          pageController: controller.pageController,
+                          customizedBanners: controller.customBanners(
+                            media,
+                            numberOfBanners: 4,
+                          ),
+                          activeColor: kAccentColor,
+                          borderRadius: 24,
+                          width: media.width,
+                          height: media.height * .2,
+                          margin: const EdgeInsets.all(0),
+                          // showIndicator: false,
+                          animation: true,
+                          viewportFraction: 1,
                         ),
+                        kSizedBox,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                SizedBox(
+                                  width: media.width - 150,
+                                  child: Text(
+                                    "Woodland Apartment",
+                                    overflow: TextOverflow.ellipsis,
+                                    textAlign: TextAlign.start,
+                                    style: defaultTextStyle(
+                                      color: colorScheme.primary,
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 18,
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: media.width - 150,
+                                  child: Text(
+                                    "1012 Ocean avanue, New yourk, USA",
+                                    overflow: TextOverflow.ellipsis,
+                                    textAlign: TextAlign.start,
+                                    style: defaultTextStyle(
+                                      color: colorScheme.inversePrimary,
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 12,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Container(
+                              padding: const EdgeInsets.all(10),
+                              decoration: ShapeDecoration(
+                                color: kRedCardColor,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(24),
+                                ),
+                              ),
+                              child: Text(
+                                "For Rent",
+                                style: defaultTextStyle(
+                                  color: kRedColor,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.normal,
+                                  letterSpacing: -0.40,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        kSizedBox,
                       ],
                     );
                   },

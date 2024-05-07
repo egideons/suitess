@@ -1,7 +1,5 @@
-import 'package:banner_carousel/banner_carousel.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:kribb/src/constants/consts.dart';
 
 import '../constants/assets.dart';
 
@@ -25,17 +23,28 @@ class LandLordViewPropertyController extends GetxController {
   //================ variables =================\\
   var isRefreshing = false.obs;
   var isScrollToTopBtnVisible = false.obs;
-  var listBanners = [
-    BannerModel(imagePath: Assets.kitchen, id: "${createUniqueId()}"),
-    BannerModel(imagePath: Assets.buildings, id: "${createUniqueId()}"),
-    BannerModel(imagePath: Assets.buildings, id: "${createUniqueId()}"),
-    BannerModel(imagePath: Assets.kitchen, id: "${createUniqueId()}"),
-  ];
+  customBanners(media, {numberOfBanners}) => List.generate(
+        numberOfBanners ?? 1,
+        (index) => Container(
+          // width: media.width,
+          // height: media.height * .18,
+          margin: const EdgeInsets.symmetric(horizontal: 5),
+          decoration: ShapeDecoration(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16),
+            ),
+            image: const DecorationImage(
+              image: AssetImage(Assets.buildings),
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+      );
 
   //================ controllers =================\\
 
   var scrollController = ScrollController();
-  var searchController = TextEditingController();
+  var pageController = PageController();
 
 //================ Scroll to Top =================//
   void scrollToTop() {

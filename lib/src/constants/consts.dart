@@ -16,19 +16,19 @@ const kHalfSizedBox = SizedBox(height: kDefaultPadding / 2);
 const kHalfWidthSizedBox = SizedBox(width: kDefaultPadding / 2);
 
 defaultTextStyle({
-  color,
-  background,
-  backgroundColor,
-  decoration,
-  decorationColor,
-  decorationStyle,
-  decorationThickness,
-  debugLabel,
-  fontFamily,
-  fontSize,
-  fontStyle,
-  fontWeight,
-  letterSpacing,
+  Color? color,
+  Paint? background,
+  Color? backgroundColor,
+  TextDecoration? decoration,
+  Color? decorationColor,
+  TextDecorationStyle? decorationStyle,
+  double? decorationThickness,
+  String? debugLabel,
+  String? fontFamily,
+  double? fontSize,
+  FontStyle? fontStyle,
+  FontWeight? fontWeight,
+  double? letterSpacing,
 }) =>
     TextStyle(
       color: color ?? kTextBlackColor,

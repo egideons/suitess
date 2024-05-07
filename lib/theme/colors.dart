@@ -7,7 +7,7 @@ Color kPrimaryColor = Colors.black;
 Color kInversePrimaryColor = const Color(0xFFFFFFFF);
 Color kAccentColor = const Color(0xFFFFBA02);
 Color kGreenCardColor = const Color(0xFF41B696);
-Color kRedCardColor = kErrorColor.withOpacity(0.15);
+Color kRedCardColor = kRedColor.withOpacity(0.15);
 
 Color kTextBlackColor = Colors.black;
 Color kTextWhiteColor = Colors.white;
@@ -20,4 +20,6 @@ Color kPendingColor = Colors.blue.shade800;
 Color kStarColor = Colors.amber;
 
 Color kSuccessColor = Colors.green;
+Color kGreenColor = Colors.green;
 Color kErrorColor = Colors.red;
+Color kRedColor = Colors.red;
