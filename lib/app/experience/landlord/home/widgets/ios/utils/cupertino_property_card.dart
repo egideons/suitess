@@ -100,32 +100,35 @@ Widget homeScreenCupertinoPropertyCard(
                 ],
               ),
               kSizedBox,
-              Text.rich(
-                TextSpan(
-                  text: "NGN ",
-                  style: defaultTextStyle(
-                    fontSize: 16.0,
-                    color: colorScheme.primary,
-                    fontWeight: FontWeight.w800,
+              SizedBox(
+                width: media.width - 200,
+                child: Text.rich(
+                  TextSpan(
+                    text: "NGN ",
+                    style: defaultTextStyle(
+                      fontSize: 16.0,
+                      color: colorScheme.primary,
+                      fontWeight: FontWeight.w800,
+                    ),
+                    children: [
+                      TextSpan(
+                        text: propertyPrice ?? "",
+                        style: defaultTextStyle(
+                          fontSize: 16.0,
+                          color: colorScheme.primary,
+                          fontWeight: FontWeight.w800,
+                        ),
+                      ),
+                      TextSpan(
+                        text: propertyPaymentFreq ?? "b",
+                        style: defaultTextStyle(
+                          fontSize: 10.0,
+                          color: colorScheme.primary,
+                          fontWeight: FontWeight.normal,
+                        ),
+                      ),
+                    ],
                   ),
-                  children: [
-                    TextSpan(
-                      text: propertyPrice ?? "",
-                      style: defaultTextStyle(
-                        fontSize: 16.0,
-                        color: colorScheme.primary,
-                        fontWeight: FontWeight.w800,
-                      ),
-                    ),
-                    TextSpan(
-                      text: propertyPaymentFreq ?? "b",
-                      style: defaultTextStyle(
-                        fontSize: 10.0,
-                        color: colorScheme.primary,
-                        fontWeight: FontWeight.normal,
-                      ),
-                    ),
-                  ],
                 ),
               ),
             ],

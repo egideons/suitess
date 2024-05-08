@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:kribb/src/controllers/signup_controller.dart';
 
 import '../../app/auth/signup/screen/signup.dart';
 import '../../app/splash/loading/screen/loading_screen.dart';
@@ -151,8 +150,55 @@ class LoginController extends GetxController {
       var gUser = await googleSignIn.signInSilently();
 
       if (gUser == null) {
-        Get.put(SignupController());
-        SignupController.instance.signupWithGoogle();
+        try {
+          var gUser = await googleSignIn.signIn();
+
+          if (gUser == null) {
+            log("Google sign-in cancelled");
+            isLoadingGoogleLogin.value = false;
+            update();
+            return; // Exit the function
+          }
+
+          var gAuth = await gUser.authentication;
+
+          final credential = GoogleAuthProvider.credential(
+            accessToken: gAuth.accessToken,
+            idToken: gAuth.idToken,
+          );
+
+          await FirebaseAuth.instance.signInWithCredential(credential);
+          ApiProcessorController.successSnack("Login successful");
+
+          await Get.offAll(
+            () => LoadingScreen(
+              loadData:
+                  LoadingController.instance.loadLandLordNavgiationOverView,
+            ),
+            routeName: "/loading-screen",
+            fullscreenDialog: true,
+            curve: Curves.easeInOut,
+            predicate: (routes) => false,
+            popGesture: false,
+            transition: Get.defaultTransition,
+          );
+        } on SocketException {
+          ApiProcessorController.errorSnack("Please connect to the internet");
+        } on PlatformException catch (e) {
+          // Handle specific platform exceptions
+          log("Google sign-in failed: ${e.message}");
+          ApiProcessorController.errorSnack("$e");
+          // You can display an error message to the user or handle the error accordingly
+          isLoadingGoogleLogin.value = false;
+          update();
+        } catch (error) {
+          // Handle other types of errors
+          log("Error during Google sign-in: $error");
+          ApiProcessorController.errorSnack("$error");
+          // You can display an error message to the user or handle the error accordingly
+          isLoadingGoogleLogin.value = false;
+          update();
+        }
         isLoadingGoogleLogin.value = false;
         update();
         return; // Exit the function

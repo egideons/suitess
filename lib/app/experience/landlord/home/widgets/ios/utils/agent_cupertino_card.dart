@@ -40,7 +40,7 @@ Widget landLordHomeScreenAgentCupertinoCard(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(
-                      width: media.width - 200,
+                      width: media.width / 3,
                       child: Text(
                         agentName ?? "",
                         textAlign: TextAlign.start,
@@ -100,7 +100,7 @@ Widget landLordHomeScreenAgentCupertinoCard(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(
-                        width: media.width - 250,
+                        width: media.width / 3,
                         child: Text(
                           nameOfProperty ?? "",
                           textAlign: TextAlign.start,
@@ -113,7 +113,7 @@ Widget landLordHomeScreenAgentCupertinoCard(
                         ),
                       ),
                       SizedBox(
-                        width: media.width - 250,
+                        width: media.width / 3,
                         child: Text(
                           addressOfProperty ?? "",
                           textAlign: TextAlign.start,
@@ -130,7 +130,7 @@ Widget landLordHomeScreenAgentCupertinoCard(
                 ],
               ),
               SizedBox(
-                width: media.width - 250,
+                width: media.width / 3.2,
                 child: Text(
                   priceOfProperty ?? "",
                   overflow: TextOverflow.ellipsis,
