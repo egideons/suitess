@@ -1,1 +1,29 @@
-{"flutter":{"platforms":{"android":{"default":{"projectId":"kribb-ab70a","appId":"1:537371602886:android:50c1dd7ab81f11b17bccc7","fileOutput":"android/app/google-services.json"}},"ios":{"default":{"projectId":"kribb-ab70a","appId":"1:537371602886:ios:ecf0091a558bd6017bccc7","uploadDebugSymbols":false,"fileOutput":"ios/Runner/GoogleService-Info.plist"}},"dart":{"lib/firebase_options.dart":{"projectId":"kribb-ab70a","configurations":{"android":"1:537371602886:android:50c1dd7ab81f11b17bccc7","ios":"1:537371602886:ios:ecf0091a558bd6017bccc7"}}}}}}
+{
+    "flutter": {
+        "platforms": {
+            "android": {
+                "default": {
+                    "projectId": "kribb-ab70a",
+                    "appId": "1:537371602886:android:50c1dd7ab81f11b17bccc7",
+                    "fileOutput": "android/app/google-services.json"
+                }
+            },
+            "ios": {
+                "default": {
+                    "projectId": "kribb-ab70a",
+                    "appId": "1:537371602886:ios:ecf0091a558bd6017bccc7",
+                    "uploadDebugSymbols": false,
+                    "fileOutput": "ios/Runner/GoogleService-Info.plist"
+                }
+            },
+            "dart": {
+                "lib/firebase_options.dart": {
+                    "projectId": "kribb-ab70a",
+                    "configurations": {
+                        "android": "1:537371602886:android:50c1dd7ab81f11b17bccc7"
+                    }
+                }
+            }
+        }
+    }
+}

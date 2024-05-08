@@ -63,6 +63,9 @@ class DefaultFirebaseOptions {
     messagingSenderId: '537371602886',
     projectId: 'kribb-ab70a',
     storageBucket: 'kribb-ab70a.appspot.com',
+    androidClientId: '537371602886-8ftctb72fubofkv4qdmsu47jp6420j34.apps.googleusercontent.com',
+    iosClientId: '537371602886-o25rom5lvbl8f39i46ft2clv7jm1pvet.apps.googleusercontent.com',
     iosBundleId: 'com.kribb.ios',
   );
+
 }
