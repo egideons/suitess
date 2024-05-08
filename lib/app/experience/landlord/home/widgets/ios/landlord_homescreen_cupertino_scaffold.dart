@@ -124,7 +124,7 @@ class LandLordHomeScreenCupertinoScaffold extends StatelessWidget {
                                   separatorBuilder: (context, index) =>
                                       kWidthSizedBox,
                                   itemBuilder: (context, index) {
-                                    return landLordHomeScreenAgentCupertinoCard(
+                                    return landLordAgentBidCupertinoCard(
                                       colorScheme,
                                       media,
                                       controller,

@@ -142,7 +142,13 @@ String intFormattedText(int value) {
 }
 
 String formatIntNumber(int num) {
-  if (num >= 1000) {
+  if (num >= 1000000000) {
+    double numDouble = num / 1000000000.0;
+    return '${numDouble.toStringAsFixed(numDouble.truncateToDouble() == numDouble ? 0 : 2)}B';
+  } else if (num >= 1000000) {
+    double numDouble = num / 1000000.0;
+    return '${numDouble.toStringAsFixed(numDouble.truncateToDouble() == numDouble ? 0 : 2)}M';
+  } else if (num >= 1000) {
     double numDouble = num / 1000.0;
     return '${numDouble.toStringAsFixed(numDouble.truncateToDouble() == numDouble ? 0 : 2)}K';
   } else {
@@ -151,7 +157,13 @@ String formatIntNumber(int num) {
 }
 
 String formatDoubleNumber(double num) {
-  if (num >= 1000) {
+  if (num >= 1000000000) {
+    double numDouble = num / 1000000000.0;
+    return '${numDouble.toStringAsFixed(numDouble.truncateToDouble() == numDouble ? 0 : 2)}B';
+  } else if (num >= 1000000) {
+    double numDouble = num / 1000000.0;
+    return '${numDouble.toStringAsFixed(numDouble.truncateToDouble() == numDouble ? 0 : 2)}M';
+  } else if (num >= 1000) {
     double numDouble = num / 1000.0;
     return '${numDouble.toStringAsFixed(numDouble.truncateToDouble() == numDouble ? 0 : 2)}K';
   } else {

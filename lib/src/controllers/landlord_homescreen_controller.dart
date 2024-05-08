@@ -53,18 +53,6 @@ class LandlordHomescreenController extends GetxController {
     }
   }
 
-  showAvailableAgents() {
-    availableAgentsIsVisible.value = true;
-    update();
-    log("Available agents are visible: ${availableAgentsIsVisible.value}");
-  }
-
-  hideAvailableAgents() {
-    availableAgentsIsVisible.value = false;
-    update();
-    log("Available agents are visible: ${availableAgentsIsVisible.value}");
-  }
-
 //================ Handle refresh ================\\
 
   Future<void> onRefresh() async {
@@ -75,5 +63,19 @@ class LandlordHomescreenController extends GetxController {
 
     isRefreshing.value = false;
     update();
+  }
+
+  //================ Show and Hide Available Agents =================//
+
+  showAvailableAgents() {
+    availableAgentsIsVisible.value = true;
+    update();
+    log("Available agents are visible: ${availableAgentsIsVisible.value}");
+  }
+
+  hideAvailableAgents() {
+    availableAgentsIsVisible.value = false;
+    update();
+    log("Available agents are visible: ${availableAgentsIsVisible.value}");
   }
 }

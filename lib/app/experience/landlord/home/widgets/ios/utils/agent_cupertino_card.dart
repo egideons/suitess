@@ -6,7 +6,7 @@ import '../../../../../../../src/constants/consts.dart';
 import '../../../../../../../src/utils/components/circle_avatar_image.dart';
 import '../../../../../../../theme/colors.dart';
 
-Widget landLordHomeScreenAgentCupertinoCard(
+Widget landLordAgentBidCupertinoCard(
   colorScheme,
   media,
   controller, {

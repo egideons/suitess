@@ -20,9 +20,12 @@ class LandLordViewPropertyController extends GetxController {
     scrollController.dispose();
   }
 
-  //================ variables =================\\
+  //================ Booleans =================\\
   var isRefreshing = false.obs;
   var isScrollToTopBtnVisible = false.obs;
+  var showBidDetails = false.obs;
+
+  //================ Variables =================\\
   customBanners(media, {numberOfBanners}) => List.generate(
         numberOfBanners ?? 1,
         (index) => Container(
@@ -77,5 +80,19 @@ class LandLordViewPropertyController extends GetxController {
 
     isRefreshing.value = false;
     update();
+  }
+
+//================ Show and Hide Available Agents =================//
+
+  showAvailableAgents() {
+    availableAgentsIsVisible.value = true;
+    update();
+    log("Available agents are visible: ${availableAgentsIsVisible.value}");
+  }
+
+  hideAvailableAgents() {
+    availableAgentsIsVisible.value = false;
+    update();
+    log("Available agents are visible: ${availableAgentsIsVisible.value}");
   }
 }
