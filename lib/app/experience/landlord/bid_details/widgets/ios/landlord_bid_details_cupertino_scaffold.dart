@@ -76,6 +76,15 @@ class LandLordBidDetailsCupertinoScaffold
                     kSizedBox,
                     kSizedBox,
                     controller.bidIsNull.value
+                        ? const SizedBox()
+                        : CupertinoElevatedButton(
+                            title: "Done",
+                            buttonColor: kAccentColor,
+                            onPressed: () {
+                              Get.back();
+                            },
+                          ),
+                    controller.bidIsNull.value
                         ? CupertinoElevatedButton(
                             title: "Accept",
                             buttonColor: kGreenColor,

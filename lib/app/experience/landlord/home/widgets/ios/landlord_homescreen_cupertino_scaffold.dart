@@ -130,7 +130,7 @@ class LandLordHomeScreenCupertinoScaffold
                                       nameOfProperty: "Ibiam Hostel",
                                       addressOfProperty: "No 8 Ezimiro, Enugu",
                                       priceOfProperty:
-                                          "NGN ${doubleFormattedText(3500000)}",
+                                          "NGN ${formatDoubleNumber(350000)}",
                                     );
                                   },
                                 ),
@@ -188,7 +188,7 @@ class LandLordHomeScreenCupertinoScaffold
                                     propertyName: "Sky Dandelions\nApartments",
                                     propertyRating: "4.9",
                                     propertyLocation: "Indepence Layout, Enugu",
-                                    propertyPrice: doubleFormattedText(80000),
+                                    propertyPrice: formatDoubleNumber(80000),
                                     propertyPaymentFreq: "/month",
                                   );
                                 },

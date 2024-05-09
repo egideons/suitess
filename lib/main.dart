@@ -1,4 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -48,6 +49,9 @@ class MyApp extends StatelessWidget {
       theme: androidLightTheme,
       darkTheme: androidDarkTheme,
       themeMode: ThemeController.instance.themeMode.value,
+      scrollBehavior: ScrollConfiguration.of(context).copyWith(
+        multitouchDragStrategy: MultitouchDragStrategy.sumAllPointers,
+      ),
       //This is the home route
       // home: LoadingScreen(
       //   loadData: LoadingController.instance.loadAgentNavgiationOverView,

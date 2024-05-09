@@ -14,7 +14,7 @@ Widget viewPropertyCupertinoHideNewBidsAlert(
     height: media.height * .09,
     padding: const EdgeInsets.symmetric(horizontal: 20),
     decoration: ShapeDecoration(
-      color: kDarkBackgroundColor,
+      color: kDarkGreyColor,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16),
       ),
