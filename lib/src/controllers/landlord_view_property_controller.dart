@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
@@ -23,7 +25,7 @@ class LandLordViewPropertyController extends GetxController {
   //================ Booleans =================\\
   var isRefreshing = false.obs;
   var isScrollToTopBtnVisible = false.obs;
-  var showBidDetails = false.obs;
+  var bidDetailsIsVisible = false.obs;
 
   //================ Variables =================\\
   customBanners(media, {numberOfBanners}) => List.generate(
@@ -82,17 +84,22 @@ class LandLordViewPropertyController extends GetxController {
     update();
   }
 
-//================ Show and Hide Available Agents =================//
+//================ Show and Hide bid details =================//
 
-  showAvailableAgents() {
-    availableAgentsIsVisible.value = true;
+  viewDetailsOfNewBids() {
+    bidDetailsIsVisible.value = true;
     update();
-    log("Available agents are visible: ${availableAgentsIsVisible.value}");
+    log("Bid details are visible: ${bidDetailsIsVisible.value}");
   }
 
-  hideAvailableAgents() {
-    availableAgentsIsVisible.value = false;
+  hideDetailsOfNewBids() {
+    bidDetailsIsVisible.value = false;
     update();
-    log("Available agents are visible: ${availableAgentsIsVisible.value}");
+    log("Bid details are visible: ${bidDetailsIsVisible.value}");
+  }
+
+//================ Navigation =================//
+  toBidDetailsScreen() async {
+    // await Get.toNamed(Routes.bidDetailScreen, preventDuplicates: true);
   }
 }

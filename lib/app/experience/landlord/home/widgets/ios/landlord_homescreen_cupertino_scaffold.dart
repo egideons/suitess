@@ -19,7 +19,8 @@ import 'utils/cupertino_navbar.dart';
 import 'utils/cupertino_property_card.dart';
 import 'utils/number_of_available_agents_cupertino_card.dart';
 
-class LandLordHomeScreenCupertinoScaffold extends StatelessWidget {
+class LandLordHomeScreenCupertinoScaffold
+    extends GetView<LandlordHomescreenController> {
   const LandLordHomeScreenCupertinoScaffold({super.key});
 
   @override
