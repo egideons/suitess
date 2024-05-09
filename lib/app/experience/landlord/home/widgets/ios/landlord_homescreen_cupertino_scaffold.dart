@@ -96,25 +96,19 @@ class LandLordHomeScreenCupertinoScaffold
                             ),
                           ),
                         ),
-                        Obx(
-                          () => controller.isKYCVerified.value
-                              ? const SizedBox(height: kDefaultPadding * 2)
-                              : kSizedBox,
-                        ),
-                        Obx(
-                          () => controller.isKYCVerified.value
-                              ? cupertinoMessageAlertNav(
-                                  media,
-                                  message: "KYC not verified",
-                                )
-                              : const SizedBox(),
-                        ),
-                        Obx(
-                          () => controller.isKYCVerified.value
-                              ? const SizedBox(height: kDefaultPadding * 2)
-                              : const SizedBox(),
-                        ),
-                        Obx(() => controller.availableAgentsIsVisible.value
+                        controller.isKYCVerified.value
+                            ? const SizedBox(height: kDefaultPadding * 2)
+                            : kSizedBox,
+                        controller.isKYCVerified.value
+                            ? cupertinoMessageAlertNav(
+                                media,
+                                message: "KYC not verified",
+                              )
+                            : const SizedBox(),
+                        controller.isKYCVerified.value
+                            ? const SizedBox(height: kDefaultPadding * 2)
+                            : const SizedBox(),
+                        controller.availableAgentsIsVisible.value
                             ? SizedBox(
                                 height: media.height * .28,
                                 child: ListView.separated(
@@ -141,75 +135,61 @@ class LandLordHomeScreenCupertinoScaffold
                             : homeScreenNoOfAvailableAgentsCupertinoCard(
                                 media,
                                 onPressed: controller.showAvailableAgents,
-                              )),
+                              ),
                         kSizedBox,
-                        Obx(
-                          () {
-                            return Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                SizedBox(
-                                  width: media.width * .3,
-                                  child: Text(
-                                    "Your properties",
-                                    overflow: TextOverflow.ellipsis,
-                                    textAlign: TextAlign.start,
-                                    style: defaultTextStyle(
-                                      color: colorScheme.primary,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            SizedBox(
+                              width: media.width * .3,
+                              child: Text(
+                                "Your properties",
+                                overflow: TextOverflow.ellipsis,
+                                textAlign: TextAlign.start,
+                                style: defaultTextStyle(
+                                  color: colorScheme.primary,
+                                  fontWeight: FontWeight.w600,
                                 ),
-                                controller.hasProperties.value
-                                    ? addPropertyCupertinoButton()
-                                    : const SizedBox(),
-                              ],
-                            );
-                          },
+                              ),
+                            ),
+                            controller.hasProperties.value
+                                ? addPropertyCupertinoButton()
+                                : const SizedBox(),
+                          ],
                         ),
                         kSizedBox,
-                        GetBuilder<LandlordHomescreenController>(
-                          init: LandlordHomescreenController(),
-                          builder: (controller) {
-                            return controller.hasProperties.value
-                                ? Column(
-                                    children: [
-                                      homeScreenNoProperties(
-                                          media, colorScheme),
-                                      kSizedBox,
-                                      homeScreenAddAPropertyCupertinoButton(
-                                          colorScheme),
-                                    ],
-                                  )
-                                : ListView.separated(
-                                    itemCount: 10,
-                                    shrinkWrap: true,
-                                    physics: const BouncingScrollPhysics(),
-                                    separatorBuilder: (context, index) =>
-                                        kSizedBox,
-                                    itemBuilder: (context, index) {
-                                      return homeScreenCupertinoPropertyCard(
-                                        colorScheme,
-                                        media,
-                                        goToProperty: () {
-                                          Get.toNamed(
-                                            Routes.landLordViewProperty,
-                                            preventDuplicates: true,
-                                          );
-                                        },
-                                        propertyName:
-                                            "Sky Dandelions\nApartments",
-                                        propertyRating: "4.9",
-                                        propertyLocation:
-                                            "Indepence Layout, Enugu",
-                                        propertyPrice:
-                                            doubleFormattedText(80000),
-                                        propertyPaymentFreq: "/month",
+                        controller.hasProperties.value
+                            ? Column(
+                                children: [
+                                  homeScreenNoProperties(media, colorScheme),
+                                  kSizedBox,
+                                  homeScreenAddAPropertyCupertinoButton(
+                                      colorScheme),
+                                ],
+                              )
+                            : ListView.separated(
+                                itemCount: 10,
+                                shrinkWrap: true,
+                                physics: const BouncingScrollPhysics(),
+                                separatorBuilder: (context, index) => kSizedBox,
+                                itemBuilder: (context, index) {
+                                  return homeScreenCupertinoPropertyCard(
+                                    colorScheme,
+                                    media,
+                                    goToProperty: () {
+                                      Get.toNamed(
+                                        Routes.landLordViewProperty,
+                                        preventDuplicates: true,
                                       );
                                     },
+                                    propertyName: "Sky Dandelions\nApartments",
+                                    propertyRating: "4.9",
+                                    propertyLocation: "Indepence Layout, Enugu",
+                                    propertyPrice: doubleFormattedText(80000),
+                                    propertyPaymentFreq: "/month",
                                   );
-                          },
-                        ),
+                                },
+                              ),
                       ],
                     );
                   },

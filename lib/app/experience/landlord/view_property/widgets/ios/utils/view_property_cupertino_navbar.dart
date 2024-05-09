@@ -4,8 +4,12 @@ import 'package:iconsax/iconsax.dart';
 import '../../../../../../../src/utils/components/responsive_constants.dart';
 import '../../../../../../../theme/colors.dart';
 
-viewPropertyCupertinoNavBar(colorScheme, media,
-    {previousPageTitle, deleteFunction}) {
+viewPropertyCupertinoNavBar(
+  colorScheme,
+  media, {
+  previousPageTitle,
+  deleteFunction,
+}) {
   return CupertinoNavigationBar(
     previousPageTitle: previousPageTitle ?? "",
     transitionBetweenRoutes: true,

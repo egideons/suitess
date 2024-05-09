@@ -19,7 +19,7 @@ Color kDarkGreyColor = Colors.grey.shade800;
 Color kPendingColor = Colors.blue.shade800;
 Color kStarColor = Colors.amber;
 
-Color kSuccessColor = Colors.green;
-Color kGreenColor = Colors.green;
+Color kSuccessColor = const Color(0xFF41B696);
+Color kGreenColor = const Color(0xFF41B696);
 Color kErrorColor = Colors.red;
 Color kRedColor = Colors.red;

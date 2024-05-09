@@ -4,7 +4,12 @@ import '../../../theme/colors.dart';
 import '../../constants/assets.dart';
 import '../../constants/consts.dart';
 
-Widget circleAvatarImage(colorScheme, {height, radius, foregroundImage}) {
+Widget circleAvatarImage(
+  colorScheme, {
+  double? height,
+  double? radius,
+  ImageProvider<Object>? foregroundImage,
+}) {
   return SizedBox(
     height: height ?? 40,
     child: FittedBox(

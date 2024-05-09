@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 import '../constants/assets.dart';
+import '../routes/routes.dart';
 
 class LandLordViewPropertyController extends GetxController {
   static LandLordViewPropertyController get instance {
@@ -100,6 +101,6 @@ class LandLordViewPropertyController extends GetxController {
 
 //================ Navigation =================//
   toBidDetailsScreen() async {
-    // await Get.toNamed(Routes.bidDetailScreen, preventDuplicates: true);
+    await Get.toNamed(Routes.landLordBidDetails, preventDuplicates: true);
   }
 }

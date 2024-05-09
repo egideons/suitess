@@ -8,7 +8,7 @@ import '../../../../../../../theme/colors.dart';
 Widget newBidCupertinoCard(
   colorScheme,
   media, {
-  openNewBid,
+  toBidDetails,
   bidSource,
   bidSourceUserName,
   bidPrice,
@@ -16,7 +16,7 @@ Widget newBidCupertinoCard(
   timeOfBid,
 }) {
   return CupertinoButton(
-    onPressed: openNewBid ?? () {},
+    onPressed: toBidDetails ?? () {},
     padding: const EdgeInsets.all(0),
     borderRadius: BorderRadius.circular(16),
     child: Container(

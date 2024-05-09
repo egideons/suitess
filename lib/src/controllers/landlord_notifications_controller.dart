@@ -1,17 +1,15 @@
-import 'dart:developer';
-
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
-class LandLordBidDetailsController extends GetxController {
-  static LandLordBidDetailsController get instance {
-    return Get.find<LandLordBidDetailsController>();
+class LandLordNotificationsController extends GetxController {
+  static LandLordNotificationsController get instance {
+    return Get.find<LandLordNotificationsController>();
   }
 
   @override
   void onInit() {
     super.onInit();
-    scrollController.addListener(_scrollListener);
+    scrollController.addListener(scrollListener);
   }
 
   @override
@@ -22,10 +20,7 @@ class LandLordBidDetailsController extends GetxController {
 
   //================ Booleans =================\\
   var isScrollToTopBtnVisible = false.obs;
-  var bidIsNull = true.obs;
-  var bidIsAccepted = false.obs;
-  var isAccepting = false.obs;
-  var isDeclining = false.obs;
+  var isRefreshing = false.obs;
 
   //================ Variables =================\\
 
@@ -41,7 +36,7 @@ class LandLordBidDetailsController extends GetxController {
 
 //================ Scroll Listener =================//
 
-  void _scrollListener() {
+  void scrollListener() {
     //========= Show action button ========//
     if (scrollController.position.pixels >= 150) {
       isScrollToTopBtnVisible.value = true;
@@ -54,35 +49,15 @@ class LandLordBidDetailsController extends GetxController {
     }
   }
 
-  //================ Accept and Decline bid =================//
+  //================ Handle refresh ================\\
 
-  acceptBid() async {
-    isAccepting.value = true;
+  Future<void> onRefresh() async {
+    isRefreshing.value = true;
     update();
 
     await Future.delayed(const Duration(seconds: 2));
 
-    bidIsAccepted.value = true;
-    bidIsNull.value = false;
-    update();
-
-    log("Bid details is accepted: ${bidIsAccepted.value}");
-    isAccepting.value = false;
-    update();
-  }
-
-  declineBid() async {
-    isDeclining.value = true;
-    update();
-
-    await Future.delayed(const Duration(seconds: 2));
-
-    bidIsAccepted.value = false;
-    bidIsNull.value = false;
-    update();
-
-    log("Bid details is accepted: ${bidIsAccepted.value}");
-    isDeclining.value = false;
+    isRefreshing.value = false;
     update();
   }
 }

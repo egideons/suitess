@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kribb/src/controllers/landlord_view_property_controller.dart';
 
-class LandLordViewPropertyScaffold
-    extends GetView<LandLordViewPropertyController> {
-  const LandLordViewPropertyScaffold({super.key});
+import '../../../../../../src/controllers/landlord_notifications_controller.dart';
+
+class LandLordNotificationsScaffold
+    extends GetView<LandLordNotificationsController> {
+  const LandLordNotificationsScaffold({super.key});
 
   @override
   Widget build(BuildContext context) {
     // var media = MediaQuery.of(context).size;
     // var colorScheme = Theme.of(context).colorScheme;
 
-    // var controller = LandLordViewPropertyController.instance;
+    // var controller = LandLordNotificationsController.instance;
 
     return Scaffold(
       appBar: AppBar(),

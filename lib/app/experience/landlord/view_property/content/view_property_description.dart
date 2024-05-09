@@ -19,7 +19,7 @@ Widget viewPropertyDescription(colorScheme, {descriptionText}) {
     ),
     style: defaultTextStyle(
       color: colorScheme.inversePrimary,
-      fontWeight: FontWeight.normal,
+      fontWeight: FontWeight.bold,
       fontSize: 14,
     ),
   );

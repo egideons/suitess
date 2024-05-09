@@ -14,7 +14,7 @@ Widget viewPropertyEditCupertinoButton(
     alignment: Alignment.center,
     padding: const EdgeInsets.all(10),
     decoration: ShapeDecoration(
-      color: colorScheme.inversePrimary.withOpacity(0.4),
+      color: colorScheme.inversePrimary.withOpacity(0.2),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(24),
       ),

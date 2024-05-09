@@ -3,6 +3,7 @@ import 'package:kribb/app/auth/forgot_password/screen/forgot_password.dart';
 import 'package:kribb/app/auth/signup/screen/signup.dart';
 import 'package:kribb/app/choose_experience/screen/choose_experience.dart';
 import 'package:kribb/app/experience/landlord/home/screen/landlord_home_screen.dart';
+import 'package:kribb/app/experience/landlord/notifications/screen/landlord_notifiactions.dart';
 import 'package:kribb/app/experience/landlord/view/screen/landlord_navigation_overview.dart';
 import 'package:kribb/app/experience/landlord/view_property/screen/landlord_view_property.dart';
 import 'package:kribb/app/kyc/kyc_add_location/screen/kyc_add_location.dart';
@@ -15,6 +16,7 @@ import '../../app/auth/forgot_password_otp/via_email/screen/forgot_password_via_
 import '../../app/auth/forgot_password_otp/via_sms/screen/forgot_password_via_sms.dart';
 import '../../app/auth/login/screen/login.dart';
 import '../../app/auth/reset_password/screen/reset_password.dart';
+import '../../app/experience/landlord/bid_details/screen/landlord_bid_details.dart';
 import '../../app/kyc/kyc_bvn/screen/kyc_bvn.dart';
 import '../../app/kyc/kyc_bvn_otp/screen/kyc_bvn_otp.dart';
 import '../../app/kyc/kyc_nin/screen/kyc_nin.dart';
@@ -58,6 +60,7 @@ class Routes {
   static const landLordWallet = "/landlord-wallet";
   static const landLordChat = "/landlord-chat";
   static const landLordProfile = "/landlord-profile";
+  static const landLordNotifications = "/landlord-notifications";
   static const landLordViewProperty = "/landlord-view-property";
   static const landLordBidDetails = "/landlord-bid-details";
 
@@ -118,12 +121,16 @@ class Routes {
     //   page: () => const LandLordNavigationOverView(),
     // ),
     GetPage(
+      name: landLordNotifications,
+      page: () => const LandLordNotifications(),
+    ),
+    GetPage(
       name: landLordViewProperty,
       page: () => const LandLordViewProperty(),
     ),
-    // GetPage(
-    //   name: landLordBidDetails,
-    //   page: () => const LandLordBidDetails(),
-    // ),
+    GetPage(
+      name: landLordBidDetails,
+      page: () => const LandLordBidDetails(),
+    ),
   ];
 }

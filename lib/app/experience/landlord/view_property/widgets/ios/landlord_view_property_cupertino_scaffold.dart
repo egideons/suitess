@@ -31,7 +31,7 @@ class LandLordViewPropertyCupertinoScaffold
       navigationBar: viewPropertyCupertinoNavBar(
         colorScheme,
         media,
-        previousPageTitle: "Home",
+        previousPageTitle: "Back",
         deleteFunction: () {},
       ),
       child: SafeArea(
@@ -43,7 +43,7 @@ class LandLordViewPropertyCupertinoScaffold
               children: [
                 GetBuilder<LandLordViewPropertyController>(
                   init: LandLordViewPropertyController(),
-                  builder: (context) {
+                  builder: (controller) {
                     return ListView(
                       controller: controller.scrollController,
                       padding: const EdgeInsets.all(10),
@@ -61,23 +61,21 @@ class LandLordViewPropertyCupertinoScaffold
                           propertyTag: "For rent",
                         ),
                         kSizedBox,
-                        Obx(
-                          () => !controller.bidDetailsIsVisible.value
-                              ? viewPropertyCupertinoShowNewBidsAlert(
-                                  colorScheme,
-                                  media,
-                                  numberOfBids: 12,
-                                  viewDetailsOfNewBids:
-                                      controller.viewDetailsOfNewBids,
-                                )
-                              : viewPropertyCupertinoHideNewBidsAlert(
-                                  colorScheme,
-                                  media,
-                                  numberOfBids: 12,
-                                  hideDetailsOfNewBids:
-                                      controller.hideDetailsOfNewBids,
-                                ),
-                        ),
+                        !controller.bidDetailsIsVisible.value
+                            ? viewPropertyCupertinoShowNewBidsAlert(
+                                colorScheme,
+                                media,
+                                numberOfBids: 12,
+                                viewDetailsOfNewBids:
+                                    controller.viewDetailsOfNewBids,
+                              )
+                            : viewPropertyCupertinoHideNewBidsAlert(
+                                colorScheme,
+                                media,
+                                numberOfBids: 12,
+                                hideDetailsOfNewBids:
+                                    controller.hideDetailsOfNewBids,
+                              ),
                         GetBuilder<LandLordViewPropertyController>(
                           init: LandLordViewPropertyController(),
                           builder: (controller) {
@@ -96,7 +94,8 @@ class LandLordViewPropertyCupertinoScaffold
                                           return newBidCupertinoCard(
                                             colorScheme,
                                             media,
-                                            openNewBid: () {},
+                                            toBidDetails:
+                                                controller.toBidDetailsScreen,
                                             bidSource: "Customer",
                                             bidSourceUserName: "Leleh Henry",
                                             bidPrice: 350000.0,
@@ -161,7 +160,7 @@ class LandLordViewPropertyCupertinoScaffold
                           overflow: TextOverflow.ellipsis,
                           style: defaultTextStyle(
                             color: colorScheme.inversePrimary,
-                            fontWeight: FontWeight.normal,
+                            fontWeight: FontWeight.bold,
                             fontSize: 14,
                           ),
                         ),
