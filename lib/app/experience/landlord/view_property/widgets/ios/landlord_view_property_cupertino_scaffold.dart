@@ -1,11 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
-import 'package:kribb/theme/colors.dart';
 
 import '../../../../../../src/constants/consts.dart';
 import '../../../../../../src/controllers/landlord_view_property_controller.dart';
+import '../../../../../../src/utils/buttons/ios/scroll_to_top_cupertino_button.dart';
 import '../../content/view_property_banner_carousel.dart';
 import '../../content/view_property_description.dart';
 import '../../content/view_property_detail_section.dart';
@@ -183,13 +182,7 @@ class LandLordViewPropertyCupertinoScaffold
                       ? Positioned(
                           bottom: 16.0,
                           right: 16.0,
-                          child: CupertinoButton(
-                            padding: const EdgeInsets.all(0),
-                            borderRadius: BorderRadius.circular(100),
-                            onPressed: controller.scrollToTop,
-                            color: kAccentColor,
-                            child: const Icon(Iconsax.arrow_up_14),
-                          ),
+                          child: scrollToTopCupertinoButton(controller),
                         )
                       : const SizedBox(),
                 ),

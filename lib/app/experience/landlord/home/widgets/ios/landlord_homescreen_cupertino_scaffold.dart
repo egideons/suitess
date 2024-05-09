@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:kribb/src/constants/consts.dart';
+import 'package:kribb/src/utils/buttons/ios/scroll_to_top_cupertino_button.dart';
 import 'package:kribb/src/utils/containers/form_field_container.dart';
 import 'package:kribb/src/utils/containers/page_background.dart';
 import 'package:kribb/theme/colors.dart';
@@ -35,6 +35,9 @@ class LandLordHomeScreenCupertinoScaffold
         colorScheme,
         media,
         location: "Enugu, Nigeria",
+        goToNotifications: () {
+          Get.toNamed(Routes.landLordNotifications, preventDuplicates: true);
+        },
       ),
       child: SafeArea(
         child: RefreshIndicator.adaptive(
@@ -200,13 +203,7 @@ class LandLordHomeScreenCupertinoScaffold
                       ? Positioned(
                           bottom: 16.0,
                           right: 16.0,
-                          child: CupertinoButton(
-                            padding: const EdgeInsets.all(0),
-                            borderRadius: BorderRadius.circular(100),
-                            onPressed: controller.scrollToTop,
-                            color: kAccentColor,
-                            child: const Icon(Iconsax.arrow_up_14),
-                          ),
+                          child: scrollToTopCupertinoButton(controller),
                         )
                       : const SizedBox(),
                 ),
