@@ -91,25 +91,30 @@ class LandLordHomeScreenCupertinoScaffold
                           colorScheme,
                           media,
                           child: CupertinoSearchTextField(
+                            autocorrect: true,
+                            enableIMEPersonalizedLearning: true,
                             controller: controller.searchController,
                             placeholder: "Tap to explore",
                             placeholderStyle: defaultTextStyle(
                               color: colorScheme.inversePrimary,
                               fontWeight: FontWeight.normal,
                             ),
+                            onSubmitted: (value) {},
+                            onChanged: (value) {},
                           ),
                         ),
+                        kSizedBox,
                         controller.isKYCVerified.value
-                            ? const SizedBox(height: kDefaultPadding * 2)
-                            : kSizedBox,
-                        controller.isKYCVerified.value
-                            ? cupertinoMessageAlertNav(
-                                media,
-                                message: "KYC not verified",
+                            ? Column(
+                                children: [
+                                  cupertinoMessageAlertNav(
+                                    media,
+                                    message: "KYC not verified",
+                                  ),
+                                  const SizedBox(height: kDefaultPadding * 1.4),
+                                  // kSizedBox,
+                                ],
                               )
-                            : const SizedBox(),
-                        controller.isKYCVerified.value
-                            ? const SizedBox(height: kDefaultPadding * 2)
                             : const SizedBox(),
                         controller.availableAgentsIsVisible.value
                             ? SizedBox(
@@ -156,8 +161,8 @@ class LandLordHomeScreenCupertinoScaffold
                               ),
                             ),
                             controller.hasProperties.value
-                                ? addPropertyCupertinoButton()
-                                : const SizedBox(),
+                                ? const SizedBox()
+                                : addPropertyCupertinoButton(),
                           ],
                         ),
                         kSizedBox,
@@ -167,7 +172,8 @@ class LandLordHomeScreenCupertinoScaffold
                                   homeScreenNoProperties(media, colorScheme),
                                   kSizedBox,
                                   homeScreenAddAPropertyCupertinoButton(
-                                      colorScheme),
+                                    colorScheme,
+                                  ),
                                 ],
                               )
                             : ListView.separated(
