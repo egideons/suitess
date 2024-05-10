@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:kribb/app/auth/components/auth_app_bar.dart';
-import 'package:kribb/src/controllers/forgot_password_via_email_otp_controller.dart';
+import 'package:kribb/src/controllers/auth/forgot_password_via_email_otp_controller.dart';
 import 'package:kribb/src/utils/buttons/android/android_elevated_button.dart';
 import 'package:kribb/src/utils/text_form_fields/android/android_textformfield.dart';
 

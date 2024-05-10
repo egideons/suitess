@@ -10,7 +10,7 @@ import 'package:kribb/src/utils/text_form_fields/android/android_textformfield.d
 
 import '../../../../../src/constants/assets.dart';
 import '../../../../../src/constants/consts.dart';
-import '../../../../../src/controllers/signup_controller.dart';
+import '../../../../../src/controllers/auth/signup_controller.dart';
 import '../../../../../src/utils/containers/form_field_container.dart';
 import '../../../../../theme/colors.dart';
 import '../../../components/auth_app_bar.dart';

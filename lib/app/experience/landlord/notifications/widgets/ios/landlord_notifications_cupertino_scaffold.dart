@@ -1,11 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kribb/theme/colors.dart';
+import 'package:iconsax/iconsax.dart';
 
 import '../../../../../../src/constants/consts.dart';
-import '../../../../../../src/controllers/landlord_notifications_controller.dart';
+import '../../../../../../src/controllers/landlord/landlord_notifications_controller.dart';
 import '../../../../../../src/utils/buttons/ios/scroll_to_top_cupertino_button.dart';
+import '../../../../../../theme/colors.dart';
 import '../../content/notification_dismissible_widget.dart';
 
 class LandLordNotificationsCupertinoScaffold
@@ -48,24 +49,51 @@ class LandLordNotificationsCupertinoScaffold
                 GetBuilder<LandLordNotificationsController>(
                   init: LandLordNotificationsController(),
                   builder: (controller) {
-                    return ListView.separated(
-                      controller: controller.scrollController,
-                      itemCount: 30,
-                      physics: const BouncingScrollPhysics(),
-                      shrinkWrap: true,
-                      padding: const EdgeInsets.all(10),
-                      separatorBuilder: (context, index) => kHalfSizedBox,
-                      itemBuilder: (context, index) {
-                        return notificationDismissibleWidget(
-                          colorScheme,
-                          media,
-                          notificationMessage:
-                              "Appointment confirmed for 12:00pm, 20th Oct 2021 by Clinton Tia",
-                          notificationTime: "Just now",
-                          notificationColor: kSuccessColor,
-                        );
-                      },
-                    );
+                    return controller.hasUnreadNotifications.value
+                        ? Container(
+                            height: media.height / 2,
+                            width: media.width,
+                            padding: const EdgeInsets.all(10),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  Iconsax.notification5,
+                                  color: kAccentColor,
+                                  size: media.height / 4,
+                                ),
+                                kSizedBox,
+                                Text(
+                                  "You have no unread notifications",
+                                  textAlign: TextAlign.center,
+                                  style: defaultTextStyle(
+                                    color: colorScheme.primary,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          )
+                        : ListView.separated(
+                            controller: controller.scrollController,
+                            itemCount: 10,
+                            physics: const BouncingScrollPhysics(),
+                            shrinkWrap: true,
+                            padding: const EdgeInsets.all(10),
+                            separatorBuilder: (context, index) => kHalfSizedBox,
+                            itemBuilder: (context, index) {
+                              return notificationDismissibleWidget(
+                                colorScheme,
+                                media,
+                                notificationMessage:
+                                    "Appointment confirmed for 12:00pm, 20th Oct 2021 by Clinton Tia",
+                                notificationTime: "Just now",
+                                notificationColor: kSuccessColor,
+                              );
+                            },
+                          );
                   },
                 ),
                 kSizedBox,

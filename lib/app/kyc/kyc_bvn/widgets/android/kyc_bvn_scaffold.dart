@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:kribb/app/auth/components/auth_app_bar.dart';
 
 import '../../../../../src/constants/consts.dart';
-import '../../../../../src/controllers/kyc_bvn_controller.dart';
+import '../../../../../src/controllers/kyc/kyc_bvn_controller.dart';
 import '../../../../../src/utils/buttons/ios/cupertino_elevated_button.dart';
 import '../../../../../src/utils/containers/form_field_container.dart';
 import '../../../../../src/utils/text_form_fields/ios/cupertino_text_field.dart';

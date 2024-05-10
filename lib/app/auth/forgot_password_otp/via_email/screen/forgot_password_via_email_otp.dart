@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kribb/app/auth/forgot_password_otp/via_email/widgets/ios/forgot_password_via_email_otp_cupertino_scaffold.dart';
-import 'package:kribb/src/controllers/forgot_password_via_email_otp_controller.dart';
+import 'package:kribb/src/controllers/auth/forgot_password_via_email_otp_controller.dart';
 
 import '../widgets/android/forgot_password_via_email_otp_scaffold.dart';
 

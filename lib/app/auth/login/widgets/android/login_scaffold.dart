@@ -10,7 +10,7 @@ import 'package:kribb/src/utils/buttons/ios/cupertino_elevated_button.dart';
 import 'package:kribb/theme/colors.dart';
 
 import '../../../../../src/constants/assets.dart';
-import '../../../../../src/controllers/login_controller.dart';
+import '../../../../../src/controllers/auth/login_controller.dart';
 import '../../../../../src/utils/containers/form_field_container.dart';
 import '../../../../../src/utils/text_form_fields/android/android_textformfield.dart';
 import '../../../components/auth_app_bar.dart';

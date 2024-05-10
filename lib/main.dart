@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:kribb/firebase_options.dart';
-import 'package:kribb/src/controllers/loading_controller.dart';
+import 'package:kribb/src/controllers/others/loading_controller.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'src/controllers/theme_controller.dart';
+import 'src/controllers/others/theme_controller.dart';
 import 'src/routes/routes.dart';
 import 'theme/app_theme.dart';
 import 'theme/colors.dart';

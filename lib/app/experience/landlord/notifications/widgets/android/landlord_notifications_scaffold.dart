@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../../../src/controllers/landlord_notifications_controller.dart';
+import '../../../../../../src/controllers/landlord/landlord_notifications_controller.dart';
 
 class LandLordNotificationsScaffold
     extends GetView<LandLordNotificationsController> {

@@ -6,7 +6,7 @@ import 'package:kribb/app/auth/components/auth_app_bar.dart';
 import 'package:kribb/src/utils/buttons/android/android_elevated_button.dart';
 
 import '../../../../../src/constants/consts.dart';
-import '../../../../../src/controllers/kyc_nin_controller.dart';
+import '../../../../../src/controllers/kyc/kyc_nin_controller.dart';
 import '../../../../../src/utils/containers/form_field_container.dart';
 import '../../../../../src/utils/text_form_fields/ios/cupertino_text_field.dart';
 import '../../../../../theme/colors.dart';

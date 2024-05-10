@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kribb/app/experience/landlord/bid_details/widgets/ios/utils/bid_details_cupertino_navbar.dart';
 import 'package:kribb/src/constants/consts.dart';
-import 'package:kribb/src/controllers/landlord_bid_detail_controller.dart';
+import 'package:kribb/src/controllers/landlord/landlord_bid_detail_controller.dart';
 import 'package:kribb/theme/colors.dart';
 
 import '../../../../../../src/utils/buttons/ios/cupertino_elevated_button.dart';

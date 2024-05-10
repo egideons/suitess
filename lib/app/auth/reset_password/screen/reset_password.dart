@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kribb/app/auth/reset_password/widgets/ios/reset_password_cupertino_scaffold.dart';
-import 'package:kribb/src/controllers/reset_password_controller.dart';
+import 'package:kribb/src/controllers/auth/reset_password_controller.dart';
 
 import '../widgets/android/reset_password_scaffold.dart';
 

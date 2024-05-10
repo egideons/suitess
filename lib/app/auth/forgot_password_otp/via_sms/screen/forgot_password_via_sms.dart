@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../../src/controllers/forgot_password_via_sms_controller.dart';
+import '../../../../../src/controllers/auth/forgot_password_via_sms_controller.dart';
 import '../widgets/android/forgot_password_via_sms_scaffold.dart';
 import '../widgets/ios/forgot_password_via_sms_cupertino_scaffold.dart';
 

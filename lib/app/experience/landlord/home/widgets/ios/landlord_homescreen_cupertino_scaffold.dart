@@ -8,7 +8,7 @@ import 'package:kribb/src/utils/containers/page_background.dart';
 import 'package:kribb/theme/colors.dart';
 import 'package:typewritertext/typewritertext.dart';
 
-import '../../../../../../src/controllers/landlord_homescreen_controller.dart';
+import '../../../../../../src/controllers/landlord/landlord_homescreen_controller.dart';
 import '../../../../../../src/routes/routes.dart';
 import '../../../../../../src/utils/components/cupertino_message_alert_nav.dart';
 import '../../content/home_screen_no_properties.dart';

@@ -8,7 +8,7 @@ import 'package:kribb/src/utils/buttons/android/android_elevated_button.dart';
 import 'package:kribb/src/utils/text_form_fields/android/android_textformfield.dart';
 
 import '../../../../../src/constants/consts.dart';
-import '../../../../../src/controllers/email_otp_controller.dart';
+import '../../../../../src/controllers/auth/email_otp_controller.dart';
 import '../../../../../src/utils/containers/form_field_container.dart';
 import '../../../../../theme/colors.dart';
 

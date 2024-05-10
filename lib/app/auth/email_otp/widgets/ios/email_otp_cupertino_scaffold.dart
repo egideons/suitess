@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 import 'package:kribb/app/auth/email_otp/content/email_otp_page_header.dart';
 
 import '../../../../../src/constants/consts.dart';
-import '../../../../../src/controllers/email_otp_controller.dart';
+import '../../../../../src/controllers/auth/email_otp_controller.dart';
 import '../../../../../src/utils/buttons/ios/cupertino_elevated_button.dart';
 import '../../../../../src/utils/containers/form_field_container.dart';
 import '../../../../../src/utils/text_form_fields/ios/cupertino_text_field.dart';

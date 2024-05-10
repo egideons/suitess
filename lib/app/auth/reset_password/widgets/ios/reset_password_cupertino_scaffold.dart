@@ -6,7 +6,7 @@ import 'package:kribb/app/auth/components/auth_cupertino_nav_bar.dart';
 import 'package:kribb/app/auth/reset_password/content/reset_password_page_header.dart';
 
 import '../../../../../src/constants/consts.dart';
-import '../../../../../src/controllers/reset_password_controller.dart';
+import '../../../../../src/controllers/auth/reset_password_controller.dart';
 import '../../../../../src/utils/buttons/ios/cupertino_elevated_button.dart';
 import '../../../../../src/utils/containers/form_field_container.dart';
 import '../../../../../src/utils/text_form_fields/ios/cupertino_text_field.dart';

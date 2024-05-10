@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../src/controllers/kyc_bvn_controller.dart';
+import '../../../../src/controllers/kyc/kyc_bvn_controller.dart';
 import '../widgets/android/kyc_bvn_scaffold.dart';
 import '../widgets/ios/kyc_bvn_cupertino_scaffold.dart';
 

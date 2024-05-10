@@ -9,6 +9,7 @@ notificationDismissibleWidget(
   colorScheme,
   media, {
   onDismissed,
+  Future<bool?> Function(DismissDirection)? confirmDismiss,
   notificationColor,
   notificationMessage,
   notificationTime,
@@ -17,6 +18,7 @@ notificationDismissibleWidget(
     key: GlobalKey(),
     direction: DismissDirection.endToStart,
     onDismissed: onDismissed ?? (direction) {},
+    confirmDismiss: confirmDismiss,
     background: Container(
       decoration: BoxDecoration(color: colorScheme.background),
       width: media.width,

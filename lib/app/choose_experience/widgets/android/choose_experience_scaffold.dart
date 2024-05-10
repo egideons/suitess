@@ -5,7 +5,7 @@ import 'package:kribb/app/choose_experience/content/choose_experience_page_heade
 import 'package:kribb/theme/colors.dart';
 
 import '../../../../src/constants/consts.dart';
-import '../../../../src/controllers/choose_experience_controller.dart';
+import '../../../../src/controllers/others/choose_experience_controller.dart';
 import 'choose_experience_android_button.dart';
 
 class ChooseExperienceScaffold extends GetView<ChooseExperienceController> {

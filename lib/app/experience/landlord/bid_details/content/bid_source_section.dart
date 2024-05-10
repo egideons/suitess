@@ -2,7 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../../../src/constants/consts.dart';
-import '../../../../../src/controllers/landlord_bid_detail_controller.dart';
+import '../../../../../src/controllers/landlord/landlord_bid_detail_controller.dart';
 import '../../../../../src/utils/components/circle_avatar_image.dart';
 import '../../../../../theme/colors.dart';
 

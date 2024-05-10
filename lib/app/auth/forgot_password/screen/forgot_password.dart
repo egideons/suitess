@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kribb/app/auth/forgot_password/widgets/android/forgot_password_scaffold.dart';
 import 'package:kribb/app/auth/forgot_password/widgets/ios/forgot_password_cupertino_scaffold.dart';
-import 'package:kribb/src/controllers/forgot_password_controller.dart';
+import 'package:kribb/src/controllers/auth/forgot_password_controller.dart';
 
 class ForgotPassword extends StatelessWidget {
   const ForgotPassword({super.key});

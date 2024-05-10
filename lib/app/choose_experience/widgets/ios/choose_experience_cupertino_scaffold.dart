@@ -7,7 +7,7 @@ import 'package:kribb/app/choose_experience/widgets/ios/choose_experience_cupert
 import 'package:kribb/theme/colors.dart';
 
 import '../../../../src/constants/consts.dart';
-import '../../../../src/controllers/choose_experience_controller.dart';
+import '../../../../src/controllers/others/choose_experience_controller.dart';
 
 class ChooseExperienceCupertinoScaffold
     extends GetView<ChooseExperienceController> {

@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:kribb/src/controllers/kyc_choose_location_controller.dart';
+import 'package:kribb/src/controllers/kyc/kyc_choose_location_controller.dart';
 import 'package:kribb/src/utils/containers/form_field_container.dart';
 
 import '../../../../../src/constants/assets.dart';

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kribb/theme/colors.dart';
 
-import '../../../../../../src/controllers/navigation_overview_controller.dart';
+import '../../../../../../src/controllers/landlord/landlord_navigation_overview_controller.dart';
 
 class LandLordNavigationOverViewCupertinoScaffold extends StatelessWidget {
   final int? currentIndex;
@@ -15,7 +15,7 @@ class LandLordNavigationOverViewCupertinoScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     var colorScheme = Theme.of(context).colorScheme;
 
-    var controller = NavigationOverviewController.instance;
+    var controller = LandLordNavigationOverviewController.instance;
 
     return CupertinoPageScaffold(
       child: Scaffold(
