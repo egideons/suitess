@@ -162,7 +162,14 @@ class LandLordHomeScreenCupertinoScaffold
                             ),
                             controller.hasProperties.value
                                 ? const SizedBox()
-                                : addPropertyCupertinoButton(),
+                                : addPropertyCupertinoButton(
+                                    onPressed: () {
+                                      Get.toNamed(
+                                        Routes.landLordAddProperty,
+                                        preventDuplicates: true,
+                                      );
+                                    },
+                                  ),
                           ],
                         ),
                         kSizedBox,
@@ -173,6 +180,12 @@ class LandLordHomeScreenCupertinoScaffold
                                   kSizedBox,
                                   homeScreenAddAPropertyCupertinoButton(
                                     colorScheme,
+                                    onPressed: () {
+                                      Get.toNamed(
+                                        Routes.landLordAddProperty,
+                                        preventDuplicates: true,
+                                      );
+                                    },
                                   ),
                                 ],
                               )

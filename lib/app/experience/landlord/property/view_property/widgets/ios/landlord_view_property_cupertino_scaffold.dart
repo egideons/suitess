@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kribb/theme/colors.dart';
 
 import '../../../../../../../src/constants/consts.dart';
 import '../../../../../../../src/controllers/landlord/landlord_view_property_controller.dart';
@@ -125,23 +126,6 @@ class LandLordViewPropertyCupertinoScaffold
                         ),
                         kSizedBox,
                         Text(
-                          "Description",
-                          textAlign: TextAlign.start,
-                          overflow: TextOverflow.ellipsis,
-                          style: defaultTextStyle(
-                            color: colorScheme.primary,
-                            fontWeight: FontWeight.w800,
-                            fontSize: 14,
-                          ),
-                        ),
-                        kHalfSizedBox,
-                        viewPropertyDescription(
-                          colorScheme,
-                          descriptionText:
-                              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
-                        ),
-                        kSizedBox,
-                        Text(
                           "Address",
                           textAlign: TextAlign.start,
                           overflow: TextOverflow.ellipsis,
@@ -162,6 +146,63 @@ class LandLordViewPropertyCupertinoScaffold
                             fontWeight: FontWeight.bold,
                             fontSize: 14,
                           ),
+                        ),
+                        kSizedBox,
+                        Text(
+                          "Description",
+                          textAlign: TextAlign.start,
+                          overflow: TextOverflow.ellipsis,
+                          style: defaultTextStyle(
+                            color: colorScheme.primary,
+                            fontWeight: FontWeight.w800,
+                            fontSize: 14,
+                          ),
+                        ),
+                        kHalfSizedBox,
+                        viewPropertyDescription(
+                          colorScheme,
+                          descriptionText:
+                              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+                        ),
+                        kSizedBox,
+
+                        Text(
+                          "More information and features",
+                          textAlign: TextAlign.start,
+                          overflow: TextOverflow.ellipsis,
+                          style: defaultTextStyle(
+                            color: colorScheme.primary,
+                            fontWeight: FontWeight.w800,
+                            fontSize: 14,
+                          ),
+                        ),
+                        kHalfSizedBox,
+                        Column(
+                          children: [
+                            Row(
+                              children: [
+                                Icon(
+                                  Icons.check_circle,
+                                  color: kSuccessColor,
+                                  size: 14,
+                                ),
+                                SizedBox(
+                                  width: media.width / 1.4,
+                                  child: Text(
+                                    "Parking space availability",
+                                    textAlign: TextAlign.start,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: defaultTextStyle(
+                                      color: colorScheme.inversePrimary,
+                                      fontWeight: FontWeight.normal,
+                                      fontSize: 14,
+                                      letterSpacing: .1,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
                         kSizedBox,
                         viewPropertyEditCupertinoButton(

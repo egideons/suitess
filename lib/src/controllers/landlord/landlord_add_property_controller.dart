@@ -18,8 +18,12 @@ class LandLordAddPropertyController extends GetxController {
     scrollController.dispose();
   }
 
+  //================ Keys =================\\
+  final formKey = GlobalKey<FormState>();
+
   //================ Booleans =================\\
   var isScrollToTopBtnVisible = false.obs;
+  var isNoticePageVisible = true.obs;
 
   //================ Variables =================\\
 
@@ -46,5 +50,12 @@ class LandLordAddPropertyController extends GetxController {
       isScrollToTopBtnVisible.value = false;
       update();
     }
+  }
+
+//================ Remove notice =================//
+  removeNotice() async {
+    scrollToTop();
+    isNoticePageVisible.value = false;
+    update();
   }
 }

@@ -18,7 +18,6 @@ ObstructingPreferredSizeWidget landLordHomeScreenCupertinoNavBar(
     backgroundColor: colorScheme.background,
     border: Border.all(color: kTransparentColor),
     transitionBetweenRoutes: true,
-    automaticallyImplyLeading: true,
     padding: const EdgeInsetsDirectional.symmetric(horizontal: 10),
     leading: Container(
       padding: const EdgeInsets.symmetric(horizontal: 10),

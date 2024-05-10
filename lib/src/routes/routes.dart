@@ -4,8 +4,8 @@ import 'package:kribb/app/auth/signup/screen/signup.dart';
 import 'package:kribb/app/choose_experience/screen/choose_experience.dart';
 import 'package:kribb/app/experience/landlord/home/screen/landlord_home_screen.dart';
 import 'package:kribb/app/experience/landlord/notifications/screen/landlord_notifiactions.dart';
-import 'package:kribb/app/experience/landlord/view/screen/landlord_navigation_overview.dart';
 import 'package:kribb/app/experience/landlord/property/view_property/screen/landlord_view_property.dart';
+import 'package:kribb/app/experience/landlord/view/screen/landlord_navigation_overview.dart';
 import 'package:kribb/app/kyc/kyc_add_location/screen/kyc_add_location.dart';
 import 'package:kribb/app/kyc/kyc_profile_photo/screen/kyc_profile_photo.dart';
 import 'package:kribb/app/onboarding/screen/onboarding.dart';
@@ -17,6 +17,7 @@ import '../../app/auth/forgot_password_otp/via_sms/screen/forgot_password_via_sm
 import '../../app/auth/login/screen/login.dart';
 import '../../app/auth/reset_password/screen/reset_password.dart';
 import '../../app/experience/landlord/bid_details/screen/landlord_bid_details.dart';
+import '../../app/experience/landlord/property/add_property/screen/landlord_add_property.dart';
 import '../../app/kyc/kyc_bvn/screen/kyc_bvn.dart';
 import '../../app/kyc/kyc_bvn_otp/screen/kyc_bvn_otp.dart';
 import '../../app/kyc/kyc_nin/screen/kyc_nin.dart';
@@ -61,6 +62,7 @@ class Routes {
   static const landLordChat = "/landlord-chat";
   static const landLordProfile = "/landlord-profile";
   static const landLordNotifications = "/landlord-notifications";
+  static const landLordAddProperty = "/landlord-add-property";
   static const landLordViewProperty = "/landlord-view-property";
   static const landLordBidDetails = "/landlord-bid-details";
 
@@ -123,6 +125,10 @@ class Routes {
     GetPage(
       name: landLordNotifications,
       page: () => const LandLordNotifications(),
+    ),
+    GetPage(
+      name: landLordAddProperty,
+      page: () => const LandLordAddProperty(),
     ),
     GetPage(
       name: landLordViewProperty,

@@ -47,8 +47,8 @@ class CupertinoElevatedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     var colorScheme = Theme.of(context).colorScheme;
     return CupertinoButton(
-      borderRadius: BorderRadius.circular(16),
-      minSize: 60,
+      borderRadius: BorderRadius.circular(10),
+      minSize: 40,
       color: buttonColor ?? kAccentColor,
       disabledColor: colorScheme.inversePrimary,
       onPressed: disable
