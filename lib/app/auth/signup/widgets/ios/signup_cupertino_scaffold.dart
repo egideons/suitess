@@ -74,12 +74,14 @@ class SignupCupertinoScaffold extends GetView<SignupController> {
                               padding: const EdgeInsets.only(right: 5),
                               child: signupController.isFirstNameValid.value
                                   ? FaIcon(
-                                      FontAwesomeIcons.solidCircleCheck,
+                                      FontAwesomeIcons.check,
                                       color: kSuccessColor,
+                                      size: 14,
                                     )
                                   : FaIcon(
-                                      FontAwesomeIcons.solidCircleXmark,
+                                      FontAwesomeIcons.xmark,
                                       color: kErrorColor,
+                                      size: 14,
                                     ),
                             ),
                           ],
@@ -114,12 +116,14 @@ class SignupCupertinoScaffold extends GetView<SignupController> {
                               padding: const EdgeInsets.only(right: 5),
                               child: signupController.isLastNameValid.value
                                   ? FaIcon(
-                                      FontAwesomeIcons.solidCircleCheck,
+                                      FontAwesomeIcons.check,
                                       color: kSuccessColor,
+                                      size: 14,
                                     )
                                   : FaIcon(
-                                      FontAwesomeIcons.solidCircleXmark,
+                                      FontAwesomeIcons.xmark,
                                       color: kErrorColor,
+                                      size: 14,
                                     ),
                             ),
                           ],
@@ -154,12 +158,14 @@ class SignupCupertinoScaffold extends GetView<SignupController> {
                               padding: const EdgeInsets.only(right: 5),
                               child: signupController.isEmailValid.value
                                   ? FaIcon(
-                                      FontAwesomeIcons.solidCircleCheck,
+                                      FontAwesomeIcons.check,
                                       color: kSuccessColor,
+                                      size: 14,
                                     )
                                   : FaIcon(
-                                      FontAwesomeIcons.solidCircleXmark,
+                                      FontAwesomeIcons.xmark,
                                       color: kErrorColor,
+                                      size: 14,
                                     ),
                             ),
                           ],
@@ -205,12 +211,14 @@ class SignupCupertinoScaffold extends GetView<SignupController> {
                               padding: const EdgeInsets.only(right: 5),
                               child: signupController.isPhoneNumberValid.value
                                   ? FaIcon(
-                                      FontAwesomeIcons.solidCircleCheck,
+                                      FontAwesomeIcons.check,
                                       color: kSuccessColor,
+                                      size: 14,
                                     )
                                   : FaIcon(
-                                      FontAwesomeIcons.solidCircleXmark,
+                                      FontAwesomeIcons.xmark,
                                       color: kErrorColor,
+                                      size: 14,
                                     ),
                             ),
                           ],
@@ -269,12 +277,14 @@ class SignupCupertinoScaffold extends GetView<SignupController> {
                                   ),
                                   signupController.isPasswordValid.value
                                       ? FaIcon(
-                                          FontAwesomeIcons.solidCircleCheck,
+                                          FontAwesomeIcons.check,
                                           color: kSuccessColor,
+                                          size: 14,
                                         )
                                       : FaIcon(
-                                          FontAwesomeIcons.solidCircleXmark,
+                                          FontAwesomeIcons.xmark,
                                           color: kErrorColor,
+                                          size: 14,
                                         ),
                                 ],
                               ),
@@ -293,7 +303,7 @@ class SignupCupertinoScaffold extends GetView<SignupController> {
                             color: signupController.isPasswordValid.value
                                 ? kSuccessColor
                                 : kErrorColor,
-                            fontSize: 12.0,
+                            fontSize: 12 ,
                             fontWeight: FontWeight.w600,
                           ),
                         ),
