@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kribb/theme/colors.dart';
 import 'package:lottie/lottie.dart';
+import 'package:suitess/theme/colors.dart';
 
 import '../../../../src/constants/assets.dart';
 import '../../../../src/constants/consts.dart';

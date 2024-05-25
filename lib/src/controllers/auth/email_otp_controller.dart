@@ -3,7 +3,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kribb/app/kyc/kyc_add_location/screen/kyc_add_location.dart';
+import 'package:suitess/app/kyc/kyc_add_location/screen/kyc_add_location.dart';
 
 import '../others/api_processor_controller.dart';
 

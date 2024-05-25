@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:kribb/src/constants/consts.dart';
+import 'package:suitess/src/constants/consts.dart';
 
 import 'colors.dart';
 

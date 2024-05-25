@@ -1,15 +1,15 @@
 import 'package:get/get.dart';
-import 'package:kribb/app/auth/forgot_password/screen/forgot_password.dart';
-import 'package:kribb/app/auth/signup/screen/signup.dart';
-import 'package:kribb/app/choose_experience/screen/choose_experience.dart';
-import 'package:kribb/app/experience/landlord/home/screen/landlord_home_screen.dart';
-import 'package:kribb/app/experience/landlord/notifications/screen/landlord_notifiactions.dart';
-import 'package:kribb/app/experience/landlord/property/view_property/screen/landlord_view_property.dart';
-import 'package:kribb/app/experience/landlord/view/screen/landlord_navigation_overview.dart';
-import 'package:kribb/app/kyc/kyc_add_location/screen/kyc_add_location.dart';
-import 'package:kribb/app/kyc/kyc_profile_photo/screen/kyc_profile_photo.dart';
-import 'package:kribb/app/onboarding/screen/onboarding.dart';
-import 'package:kribb/app/splash/startup/screen/startup_splash.dart';
+import 'package:suitess/app/auth/forgot_password/screen/forgot_password.dart';
+import 'package:suitess/app/auth/signup/screen/signup.dart';
+import 'package:suitess/app/choose_experience/screen/choose_experience.dart';
+import 'package:suitess/app/experience/landlord/home/screen/landlord_home_screen.dart';
+import 'package:suitess/app/experience/landlord/notifications/screen/landlord_notifiactions.dart';
+import 'package:suitess/app/experience/landlord/property/view_property/screen/landlord_view_property.dart';
+import 'package:suitess/app/experience/landlord/view/screen/landlord_navigation_overview.dart';
+import 'package:suitess/app/kyc/kyc_add_location/screen/kyc_add_location.dart';
+import 'package:suitess/app/kyc/kyc_profile_photo/screen/kyc_profile_photo.dart';
+import 'package:suitess/app/onboarding/screen/onboarding.dart';
+import 'package:suitess/app/splash/startup/screen/startup_splash.dart';
 
 import '../../app/auth/email_otp/screen/email_otp.dart';
 import '../../app/auth/forgot_password_otp/via_email/screen/forgot_password_via_email_otp.dart';

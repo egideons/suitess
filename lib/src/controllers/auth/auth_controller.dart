@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kribb/app/auth/signup/screen/signup.dart';
+import 'package:suitess/app/auth/signup/screen/signup.dart';
 
 import '../../../app/onboarding/screen/onboarding.dart';
 import '../../../main.dart';

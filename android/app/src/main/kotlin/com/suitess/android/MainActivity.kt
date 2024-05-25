@@ -1,4 +1,4 @@
-package com.kribb.android
+package com.suitess.android
 
 import io.flutter.embedding.android.FlutterActivity
 

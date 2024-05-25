@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kribb/src/controllers/kyc/kyc_bvn_otp_controller.dart';
+import 'package:suitess/src/controllers/kyc/kyc_bvn_otp_controller.dart';
 
 import '../widgets/android/kyc_bvn_otp_scaffold.dart';
 import '../widgets/ios/kyc_bvn_otp_cupertino_scaffold.dart';

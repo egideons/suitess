@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:kribb/app/auth/components/auth_app_bar.dart';
-import 'package:kribb/app/auth/reset_password/content/reset_password_page_header.dart';
-import 'package:kribb/src/utils/buttons/android/android_elevated_button.dart';
-import 'package:kribb/src/utils/text_form_fields/android/android_textformfield.dart';
+import 'package:suitess/app/auth/components/auth_app_bar.dart';
+import 'package:suitess/app/auth/reset_password/content/reset_password_page_header.dart';
+import 'package:suitess/src/utils/buttons/android/android_elevated_button.dart';
+import 'package:suitess/src/utils/text_form_fields/android/android_textformfield.dart';
 
 import '../../../../../src/constants/consts.dart';
 import '../../../../../src/controllers/auth/reset_password_controller.dart';

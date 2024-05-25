@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kribb/src/controllers/others/choose_experience_controller.dart';
+import 'package:suitess/src/controllers/others/choose_experience_controller.dart';
 
 import '../widgets/android/choose_experience_scaffold.dart';
 import '../widgets/ios/choose_experience_cupertino_scaffold.dart';

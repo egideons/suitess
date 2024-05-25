@@ -58,14 +58,14 @@
         </intent>
     </queries>
     <application
-        android:label="Kribb"
+        android:label="Suitess"
         android:name="${applicationName}"
         android:enableOnBackInvokedCallback="true"
         android:icon="@mipmap/launcher_icon"
         tools:targetApi="tiramisu"
         tools:ignore="UnusedAttribute">
         <activity
-            android:name=".MainActivity"
+            android:name="com.suitess.android.MainActivity"
             android:exported="true"
             android:launchMode="singleTop"
             android:theme="@style/LaunchTheme"

@@ -1,4 +1,4 @@
-import 'package:kribb/src/constants/assets.dart';
+import 'package:suitess/src/constants/assets.dart';
 
 import 'onboard_model.dart';
 

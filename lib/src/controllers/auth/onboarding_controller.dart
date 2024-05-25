@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kribb/app/onboarding/model/onboard_content.dart';
+import 'package:suitess/app/onboarding/model/onboard_content.dart';
 
 class OnboardingController extends GetxController {
   static OnboardingController get instance {

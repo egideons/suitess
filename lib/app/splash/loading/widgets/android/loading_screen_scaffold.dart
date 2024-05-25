@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:kribb/app/splash/loading/content/loading_screen_content.dart';
+import 'package:suitess/app/splash/loading/content/loading_screen_content.dart';
 
 class LoadingScreenScaffold extends StatelessWidget {
   final void Function()? loadData;

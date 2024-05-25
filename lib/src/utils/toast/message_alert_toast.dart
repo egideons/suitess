@@ -1,7 +1,7 @@
 import 'package:delightful_toast/toast/components/toast_card.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kribb/src/constants/consts.dart';
+import 'package:suitess/src/constants/consts.dart';
 
 import '../../../theme/colors.dart';
 import '../../constants/assets.dart';

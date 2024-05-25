@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:kribb/app/experience/landlord/home/screen/landlord_home_screen.dart';
-import 'package:kribb/src/constants/consts.dart';
+import 'package:suitess/app/experience/landlord/home/screen/landlord_home_screen.dart';
+import 'package:suitess/src/constants/consts.dart';
 
 class LandLordNavigationOverviewController extends GetxController {
   static LandLordNavigationOverviewController get instance {

@@ -6,12 +6,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:kribb/app/auth/components/auth_cupertino_nav_bar.dart';
-import 'package:kribb/app/auth/signup/content/signup_page_header.dart';
-import 'package:kribb/src/constants/consts.dart';
-import 'package:kribb/src/controllers/auth/signup_controller.dart';
-import 'package:kribb/src/utils/buttons/ios/cupertino_elevated_button.dart';
-import 'package:kribb/theme/colors.dart';
+import 'package:suitess/app/auth/components/auth_cupertino_nav_bar.dart';
+import 'package:suitess/app/auth/signup/content/signup_page_header.dart';
+import 'package:suitess/src/constants/consts.dart';
+import 'package:suitess/src/controllers/auth/signup_controller.dart';
+import 'package:suitess/src/utils/buttons/ios/cupertino_elevated_button.dart';
+import 'package:suitess/theme/colors.dart';
 
 import '../../../../../src/constants/assets.dart';
 import '../../../../../src/utils/containers/form_field_container.dart';
@@ -303,7 +303,7 @@ class SignupCupertinoScaffold extends GetView<SignupController> {
                             color: signupController.isPasswordValid.value
                                 ? kSuccessColor
                                 : kErrorColor,
-                            fontSize: 12 ,
+                            fontSize: 12,
                             fontWeight: FontWeight.w600,
                           ),
                         ),

@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:kribb/src/controllers/others/api_processor_controller.dart';
+import 'package:suitess/src/controllers/others/api_processor_controller.dart';
 
 import '../../../app/auth/login/screen/login.dart';
 import '../../constants/consts.dart';

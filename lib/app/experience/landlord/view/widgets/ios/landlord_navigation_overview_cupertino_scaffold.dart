@@ -2,7 +2,7 @@ import 'package:custom_navigation_bar/custom_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kribb/theme/colors.dart';
+import 'package:suitess/theme/colors.dart';
 
 import '../../../../../../src/controllers/landlord/landlord_navigation_overview_controller.dart';
 

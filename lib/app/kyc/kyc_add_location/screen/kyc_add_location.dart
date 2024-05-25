@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kribb/src/controllers/kyc/kyc_choose_location_controller.dart';
+import 'package:suitess/src/controllers/kyc/kyc_choose_location_controller.dart';
 
 import '../widgets/android/kyc_add_location_scaffold.dart';
 import '../widgets/ios/kyc_add_location_cupertino_scaffold.dart';

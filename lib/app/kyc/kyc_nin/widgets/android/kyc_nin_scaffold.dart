@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:kribb/app/auth/components/auth_app_bar.dart';
-import 'package:kribb/src/utils/buttons/android/android_elevated_button.dart';
+import 'package:suitess/app/auth/components/auth_app_bar.dart';
+import 'package:suitess/src/utils/buttons/android/android_elevated_button.dart';
 
 import '../../../../../src/constants/consts.dart';
 import '../../../../../src/controllers/kyc/kyc_nin_controller.dart';

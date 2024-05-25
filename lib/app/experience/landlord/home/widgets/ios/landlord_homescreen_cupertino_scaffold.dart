@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kribb/src/constants/consts.dart';
-import 'package:kribb/src/utils/buttons/ios/scroll_to_top_cupertino_button.dart';
-import 'package:kribb/src/utils/containers/form_field_container.dart';
-import 'package:kribb/src/utils/containers/page_background.dart';
-import 'package:kribb/theme/colors.dart';
+import 'package:suitess/src/constants/consts.dart';
+import 'package:suitess/src/utils/buttons/ios/scroll_to_top_cupertino_button.dart';
+import 'package:suitess/src/utils/containers/form_field_container.dart';
+import 'package:suitess/src/utils/containers/page_background.dart';
+import 'package:suitess/theme/colors.dart';
 import 'package:typewritertext/typewritertext.dart';
 
 import '../../../../../../src/controllers/landlord/landlord_homescreen_controller.dart';

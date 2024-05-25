@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:kribb/src/controllers/others/api_processor_controller.dart';
+import 'package:suitess/src/controllers/others/api_processor_controller.dart';
 
 import '../../../app/auth/email_otp/screen/email_otp.dart';
 import '../../../app/auth/login/screen/login.dart';

@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kribb/app/experience/landlord/bid_details/widgets/ios/utils/bid_details_cupertino_navbar.dart';
-import 'package:kribb/src/constants/consts.dart';
-import 'package:kribb/src/controllers/landlord/landlord_bid_detail_controller.dart';
-import 'package:kribb/theme/colors.dart';
+import 'package:suitess/app/experience/landlord/bid_details/widgets/ios/utils/bid_details_cupertino_navbar.dart';
+import 'package:suitess/src/constants/consts.dart';
+import 'package:suitess/src/controllers/landlord/landlord_bid_detail_controller.dart';
+import 'package:suitess/theme/colors.dart';
 
 import '../../../../../../src/utils/buttons/ios/cupertino_elevated_button.dart';
 import '../../content/bid_source_section.dart';

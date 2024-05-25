@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kribb/src/constants/consts.dart';
+import 'package:suitess/src/constants/consts.dart';
 
 import '../../../../../../../src/controllers/landlord/landlord_add_property_controller.dart';
 import '../../../../../../../src/utils/buttons/ios/cupertino_elevated_button.dart';

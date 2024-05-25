@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kribb/theme/colors.dart';
+import 'package:suitess/theme/colors.dart';
 
 Widget loadingIndicator({media}) {
   return SizedBox(

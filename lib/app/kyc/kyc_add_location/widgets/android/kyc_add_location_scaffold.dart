@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:kribb/src/controllers/kyc/kyc_choose_location_controller.dart';
-import 'package:kribb/src/utils/buttons/android/android_elevated_button.dart';
-import 'package:kribb/src/utils/containers/form_field_container.dart';
-import 'package:kribb/src/utils/text_form_fields/android/android_textformfield.dart';
+import 'package:suitess/src/controllers/kyc/kyc_choose_location_controller.dart';
+import 'package:suitess/src/utils/buttons/android/android_elevated_button.dart';
+import 'package:suitess/src/utils/containers/form_field_container.dart';
+import 'package:suitess/src/utils/text_form_fields/android/android_textformfield.dart';
 
 import '../../../../../src/constants/assets.dart';
 import '../../../../../src/constants/consts.dart';

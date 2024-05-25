@@ -2,9 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:kribb/app/choose_experience/content/choose_experience_page_header.dart';
-import 'package:kribb/app/choose_experience/widgets/ios/choose_experience_cupertino_button.dart';
-import 'package:kribb/theme/colors.dart';
+import 'package:suitess/app/choose_experience/content/choose_experience_page_header.dart';
+import 'package:suitess/app/choose_experience/widgets/ios/choose_experience_cupertino_button.dart';
+import 'package:suitess/theme/colors.dart';
 
 import '../../../../src/constants/consts.dart';
 import '../../../../src/controllers/others/choose_experience_controller.dart';

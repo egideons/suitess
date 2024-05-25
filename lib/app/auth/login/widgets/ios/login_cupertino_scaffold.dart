@@ -5,9 +5,9 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:kribb/src/constants/consts.dart';
-import 'package:kribb/src/utils/buttons/ios/cupertino_elevated_button.dart';
-import 'package:kribb/theme/colors.dart';
+import 'package:suitess/src/constants/consts.dart';
+import 'package:suitess/src/utils/buttons/ios/cupertino_elevated_button.dart';
+import 'package:suitess/theme/colors.dart';
 
 import '../../../../../src/constants/assets.dart';
 import '../../../../../src/controllers/auth/login_controller.dart';

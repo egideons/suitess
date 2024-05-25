@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:kribb/src/constants/consts.dart';
+import 'package:suitess/src/constants/consts.dart';
 
 class AndroidTextFormField extends StatelessWidget {
   final String? hintText, obscuringCharacter;

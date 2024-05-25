@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kribb/src/controllers/landlord/landlord_view_property_controller.dart';
+import 'package:suitess/src/controllers/landlord/landlord_view_property_controller.dart';
 
 class LandLordViewPropertyScaffold
     extends GetView<LandLordViewPropertyController> {

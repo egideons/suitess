@@ -4,9 +4,9 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:kribb/firebase_options.dart';
-import 'package:kribb/src/controllers/others/loading_controller.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:suitess/firebase_options.dart';
+import 'package:suitess/src/controllers/others/loading_controller.dart';
 
 import 'src/controllers/others/theme_controller.dart';
 import 'src/routes/routes.dart';

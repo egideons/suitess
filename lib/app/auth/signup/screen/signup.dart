@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kribb/src/controllers/auth/signup_controller.dart';
+import 'package:suitess/src/controllers/auth/signup_controller.dart';
 
 import '../widgets/android/signup_scaffold.dart';
 import '../widgets/ios/signup_cupertino_scaffold.dart';

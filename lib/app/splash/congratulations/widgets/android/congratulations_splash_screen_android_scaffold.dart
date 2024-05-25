@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kribb/app/splash/congratulations/content/congratulations_splash_screen_content.dart';
+import 'package:suitess/app/splash/congratulations/content/congratulations_splash_screen_content.dart';
 
 class CongratulationsSplashScreenAndroidScaffold extends StatelessWidget {
   const CongratulationsSplashScreenAndroidScaffold({super.key});

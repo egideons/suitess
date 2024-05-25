@@ -2,11 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:kribb/app/auth/forgot_password/content/forgot_password_page_header.dart';
-import 'package:kribb/app/auth/forgot_password/widgets/ios/forgot_password_cupertino_button.dart';
-import 'package:kribb/src/constants/consts.dart';
-import 'package:kribb/src/controllers/auth/forgot_password_controller.dart';
-import 'package:kribb/src/utils/components/loading_indicator.dart';
+import 'package:suitess/app/auth/forgot_password/content/forgot_password_page_header.dart';
+import 'package:suitess/app/auth/forgot_password/widgets/ios/forgot_password_cupertino_button.dart';
+import 'package:suitess/src/constants/consts.dart';
+import 'package:suitess/src/controllers/auth/forgot_password_controller.dart';
+import 'package:suitess/src/utils/components/loading_indicator.dart';
 
 import '../../../../../theme/colors.dart';
 

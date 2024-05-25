@@ -4,12 +4,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:kribb/app/kyc/kyc_profile_photo/content/kyc_profile_photo_page_header.dart';
-import 'package:kribb/app/kyc/kyc_profile_photo/widgets/ios/kyc_profile_photo_cupertino_modal_popup.dart';
-import 'package:kribb/src/controllers/kyc/kyc_profile_photo_controller.dart';
-import 'package:kribb/src/utils/buttons/ios/cupertino_elevated_button.dart';
-import 'package:kribb/src/utils/containers/form_field_container.dart';
-import 'package:kribb/theme/colors.dart';
+import 'package:suitess/app/kyc/kyc_profile_photo/content/kyc_profile_photo_page_header.dart';
+import 'package:suitess/app/kyc/kyc_profile_photo/widgets/ios/kyc_profile_photo_cupertino_modal_popup.dart';
+import 'package:suitess/src/controllers/kyc/kyc_profile_photo_controller.dart';
+import 'package:suitess/src/utils/buttons/ios/cupertino_elevated_button.dart';
+import 'package:suitess/src/utils/containers/form_field_container.dart';
+import 'package:suitess/theme/colors.dart';
 
 import '../../../../../src/constants/consts.dart';
 import '../../../../auth/components/auth_cupertino_nav_bar.dart';

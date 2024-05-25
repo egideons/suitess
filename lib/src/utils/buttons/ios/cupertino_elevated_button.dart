@@ -11,7 +11,7 @@ class CupertinoElevatedButton extends StatelessWidget {
   final bool isLoading;
   final bool disable;
   final String? fontFamily;
-  final double? fontSize;
+  final double? buttonPadding, fontSize;
   final bool? isIcon, isRowVisible, isSwitched;
   final MainAxisAlignment? mainAxisAlignment;
   final IconData? buttonIcon;
@@ -41,6 +41,7 @@ class CupertinoElevatedButton extends StatelessWidget {
     this.fontWeight,
     this.isIcon,
     this.iconWidget,
+    this.buttonPadding,
   });
 
   @override
@@ -48,7 +49,8 @@ class CupertinoElevatedButton extends StatelessWidget {
     var colorScheme = Theme.of(context).colorScheme;
     return CupertinoButton(
       borderRadius: BorderRadius.circular(10),
-      minSize: 40,
+      minSize: 20,
+      padding: EdgeInsets.all(buttonPadding ?? 10),
       color: buttonColor ?? kAccentColor,
       disabledColor: colorScheme.inversePrimary,
       onPressed: disable

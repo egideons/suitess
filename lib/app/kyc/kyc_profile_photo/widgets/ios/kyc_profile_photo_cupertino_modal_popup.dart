@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:kribb/src/constants/consts.dart';
-import 'package:kribb/theme/colors.dart';
+import 'package:suitess/src/constants/consts.dart';
+import 'package:suitess/theme/colors.dart';
 
 kycProfilePhotoCupertinoModalPopup(context, media, colorScheme, controller) {
   return showCupertinoModalPopup(

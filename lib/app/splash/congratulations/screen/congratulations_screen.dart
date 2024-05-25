@@ -4,8 +4,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kribb/app/splash/congratulations/widgets/android/congratulations_splash_screen_android_scaffold.dart';
-import 'package:kribb/src/controllers/others/congratulations_splash_screen_controller.dart';
+import 'package:suitess/app/splash/congratulations/widgets/android/congratulations_splash_screen_android_scaffold.dart';
+import 'package:suitess/src/controllers/others/congratulations_splash_screen_controller.dart';
 
 import '../widgets/ios/congratulations_splash_screen_cupertino_scaffold.dart';
 

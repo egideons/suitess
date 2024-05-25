@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kribb/theme/colors.dart';
+import 'package:suitess/theme/colors.dart';
 
 import '../../../../../../../src/constants/consts.dart';
 import '../../../../../../../src/controllers/landlord/landlord_view_property_controller.dart';

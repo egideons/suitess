@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:kribb/app/auth/components/auth_cupertino_nav_bar.dart';
-import 'package:kribb/app/auth/reset_password/content/reset_password_page_header.dart';
+import 'package:suitess/app/auth/components/auth_cupertino_nav_bar.dart';
+import 'package:suitess/app/auth/reset_password/content/reset_password_page_header.dart';
 
 import '../../../../../src/constants/consts.dart';
 import '../../../../../src/controllers/auth/reset_password_controller.dart';

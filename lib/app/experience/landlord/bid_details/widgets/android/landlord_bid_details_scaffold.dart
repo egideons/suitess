@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kribb/src/controllers/landlord/landlord_bid_detail_controller.dart';
+import 'package:suitess/src/controllers/landlord/landlord_bid_detail_controller.dart';
 
 class LandLordBidDetailsScaffold extends GetView<LandLordBidDetailsController> {
   const LandLordBidDetailsScaffold({super.key});
