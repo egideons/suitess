@@ -63,10 +63,8 @@ class MyApp extends StatelessWidget {
       scrollBehavior: ScrollConfiguration.of(context).copyWith(
         multitouchDragStrategy: MultitouchDragStrategy.sumAllPointers,
       ),
-      //This is the home route
-      // home: LoadingScreen(
-      //   loadData: LoadingController.instance.loadAgentNavgiationOverView,
-      // ),
+      // This is the home route
+      // home:const AppErrorWidget(),
     );
   }
 }

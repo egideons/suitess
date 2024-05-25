@@ -5,22 +5,16 @@ import 'onboard_model.dart';
 class OnboardContent {
   List<OnboardModel> items = [
     OnboardModel(
-      title: "Kribb's got you covered",
+      title: "Welcome to Suitess",
       description:
-          "Looking for a house to call your own? Kribb's got you covered. Click next to continue.",
-      image: Assets.testImage,
+          "Discover your dream home, investment property or rental with a personalized real estate experience.",
+      image: Assets.onboarding1Svg,
     ),
     OnboardModel(
-      title: "Kribb's got you covered",
+      title: "Perfect match for you",
       description:
-          "Looking for a house to call your own? Kribb's got you covered. Click next to continue.",
-      image: Assets.testImage,
-    ),
-    OnboardModel(
-      title: "Kribb's got you covered",
-      description:
-          "Looking for a house to call your own? Kribb's got you covered. Click next to continue.",
-      image: Assets.testImage,
+          "Explore thousands of listings and discover your perfect property",
+      image: Assets.onboarding2Svg,
     ),
   ];
 }

@@ -23,3 +23,4 @@ Color kSuccessColor = const Color(0xFF41B696);
 Color kGreenColor = const Color(0xFF41B696);
 Color kErrorColor = Colors.red;
 Color kRedColor = Colors.red;
+Color kWarningColor = Colors.amber;

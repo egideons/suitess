@@ -1,41 +1,89 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:iconsax/iconsax.dart';
+import 'package:kribb/src/constants/consts.dart';
+import 'package:kribb/src/utils/buttons/android/android_elevated_button.dart';
+import 'package:kribb/src/utils/buttons/ios/cupertino_elevated_button.dart';
+import 'package:kribb/theme/colors.dart';
 
 class AppErrorWidget extends StatelessWidget {
-  const AppErrorWidget({super.key});
+  final Function()? onPressed;
+  const AppErrorWidget({super.key, this.onPressed});
 
-  @override                                     
+  @override
   Widget build(BuildContext context) {
     var colorScheme = Theme.of(context).colorScheme;
+    if (Platform.isAndroid) {
+      Material(
+        color: colorScheme.background,
+        child: Padding(
+          padding: const EdgeInsets.all(24),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(
+                Iconsax.warning_2,
+                size: 200,
+                color: kWarningColor,
+              ),
+              kSizedBox,
+              kSizedBox,
+              const Text(
+                'Oops..something unexpected happened.',
+                maxLines: 4,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              kSizedBox,
+              AndroidElevatedButton(
+                onPressed: onPressed ??
+                    () {
+                      Get.close(0);
+                    },
+                title: "Go back",
+              ),
+            ],
+          ),
+        ),
+      );
+    }
     return Material(
       color: colorScheme.background,
-      child: const Padding(
-        padding: EdgeInsets.all(24),
+      child: Padding(
+        padding: const EdgeInsets.all(24),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
           children: [
             Icon(
-              Icons.warning,
+              Iconsax.warning_2,
               size: 200,
-              color: Colors.amber,
+              color: kWarningColor,
             ),
-            SizedBox(height: 48),
-            Text(
-              'So... something funny happened',
+            kSizedBox,
+            kSizedBox,
+            const Text(
+              'Oops..something unexpected happened.',
+              maxLines: 4,
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 16),
-            Text(
-              'This error is crazy large it covers your whole screen. But no worries'
-              ' though, we\'re working to fix it.',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 16,
-              ),
+            kSizedBox,
+            CupertinoElevatedButton(
+              onPressed: onPressed ??
+                  () {
+                    Get.close(0);
+                  },
+              title: "Go back",
             ),
           ],
         ),
