@@ -7,8 +7,13 @@ const double laptopContainer = 50;
 const double tabletContainer = 50;
 const double mobileContainer = 25;
 
-double breakPoint(double size, double mobile, double tablet, double laptop,
-    double laptopLarge) {
+double breakPoint(
+  double size,
+  double mobile,
+  double tablet,
+  double laptop,
+  double laptopLarge,
+) {
   if (size <= mobileSize) {
     return mobile;
   } else if (size <= tabletSize) {
@@ -20,8 +25,13 @@ double breakPoint(double size, double mobile, double tablet, double laptop,
   }
 }
 
-dynamic breakPointDynamic(dynamic size, dynamic mobile, dynamic tablet,
-    dynamic laptop, dynamic laptopLarge) {
+dynamic breakPointDynamic(
+  dynamic size,
+  dynamic mobile,
+  dynamic tablet,
+  dynamic laptop,
+  dynamic laptopLarge,
+) {
   if (size <= mobileSize) {
     return mobile;
   } else if (size <= tabletSize) {

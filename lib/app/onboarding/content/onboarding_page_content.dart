@@ -1,14 +1,10 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:suitess/src/constants/assets.dart';
 
-import '../../../main.dart';
 import '../../../src/constants/consts.dart';
 import '../../../src/utils/buttons/ios/cupertino_elevated_button.dart';
 import '../../../theme/colors.dart';
-import '../../auth/signup/screen/signup.dart';
 
 Widget onboardingPageContent({controller, colorScheme, media}) {
   return Obx(
@@ -16,253 +12,130 @@ Widget onboardingPageContent({controller, colorScheme, media}) {
       children: [
         Expanded(
           child: PageView.builder(
-            // onPageChanged: (index) => controller.setIsLastPage(index),
+            onPageChanged: (index) => controller.setIsLastPage(index),
             controller: controller.pageController.value,
             itemCount: controller.onboardController.value.items.length,
             physics: const NeverScrollableScrollPhysics(),
             itemBuilder: (context, index) {
-              return Column(
-                children: [
-                  Container(
-                    // height: media.height / 1.6,
-                    decoration: ShapeDecoration(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50),
-                      ),
-                    ),
-                    child: SvgPicture.asset(
-                      Assets.onboarding1Svg,
-                      // controller.onboardController.value.items[index].image,
-                      height: media.height / 1.6,
-                    ),
-                  ),
-                  SizedBox(
-                    width: media.width - 100,
-                    child: Text(
-                      controller.onboardController.value.items[index].title,
-                      textAlign: TextAlign.center,
-                      style: defaultTextStyle(
-                        color: colorScheme.primary,
-                        fontSize: 24.0,
-                      ),
-                    ),
-                  ),
-                  kSizedBox,
-                  SizedBox(
-                    width: media.width - 100,
-                    child: Text(
-                      controller
-                          .onboardController.value.items[index].description,
-                      overflow: TextOverflow.ellipsis,
-                      textAlign: TextAlign.center,
-                      maxLines: 4,
-                      style: defaultTextStyle(
-                        color: colorScheme.inversePrimary,
-                        fontSize: 14.0,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ),
-                  kSizedBox,
-                  SmoothPageIndicator(
-                    controller: controller.pageController.value,
-                    count: controller.onboardController.value.items.length,
-                    onDotClicked: (index) =>
-                        controller.pageController.value.animateToPage(
-                      index,
-                      duration: const Duration(milliseconds: 300),
-                      curve: Curves.easeIn,
-                    ),
-                    effect: SlideEffect(
-                      spacing: 0,
-                      radius: 20.0,
-                      dotWidth: 40.0,
-                      dotHeight: 4.0,
-                      paintStyle: PaintingStyle.stroke,
-                      strokeWidth: 1.0,
-                      dotColor: colorScheme.inversePrimary,
-                      activeDotColor: kAccentColor,
-                    ),
-                  ),
-                  kSizedBox,
-                  controller.isLastPage.value
-                      ? SizedBox(
-                          width: media.width - 100,
-                          child: CupertinoElevatedButton(
-                            title: "Get Started",
-                            buttonColor: kSuccessColor,
-                            onPressed: () async {
-                              //Save state that the user has been onboarded
-                              prefs.setBool("isOnboarded", true);
-
-                              await Get.offAll(
-                                () => const Signup(),
-                                routeName: "/signup",
-                                fullscreenDialog: true,
-                                curve: Curves.easeInOut,
-                                predicate: (routes) => false,
-                                popGesture: false,
-                                transition: Get.defaultTransition,
-                              );
-                            },
+              return Padding(
+                padding: const EdgeInsets.all(20),
+                child: Column(
+                  children: [
+                    Container(
+                      height: media.height * .6,
+                      decoration: ShapeDecoration(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50),
+                        ),
+                        image: DecorationImage(
+                          image: AssetImage(
+                            controller
+                                .onboardController.value.items[index].image,
                           ),
-                        )
-                      : SizedBox(
-                          width: media.width - 100,
-                          child: CupertinoElevatedButton(
-                            title: "Next",
-                            buttonColor: kSuccessColor,
-                            onPressed: () {
-                              controller.pageController.value.nextPage(
-                                duration: const Duration(milliseconds: 300),
-                                curve: Curves.easeIn,
-                              );
-                            },
-                          ),
-                        )
-                  // Obx(
-                  //   () {
-                  //     return Container(
-                  //       height: media.height / 2.5,
-                  //       width: media.width,
-                  //       decoration: ShapeDecoration(
-                  //         color: colorScheme.background,
-                  //         shape: const RoundedRectangleBorder(
-                  //           borderRadius: BorderRadius.only(
-                  //             topLeft: Radius.circular(24),
-                  //             topRight: Radius.circular(24),
-                  //           ),
-                  //         ),
-                  //       ),
-                  //       child: Column(
-                  //         mainAxisAlignment: MainAxisAlignment.start,
-                  //         mainAxisSize: MainAxisSize.min,
-                  //         children: [
-                  //           Container(
-                  //             padding: const EdgeInsets.all(10),
-                  //             decoration: const ShapeDecoration(
-                  //               // color: colorScheme.inversePrimary,
-                  //               shape: RoundedRectangleBorder(
-                  //                 borderRadius: BorderRadius.only(
-                  //                   topLeft: Radius.circular(24),
-                  //                   topRight: Radius.circular(24),
-                  //                 ),
-                  //               ),
-                  //             ),
-                  //             child: Row(
-                  //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  //               mainAxisSize: MainAxisSize.max,
-                  //               children: [
-                  //                 Align(
-                  //                   alignment: Alignment.topRight,
-                  //                   child: TextButton(
-                  //                     onPressed: !controller.isLastPage.value
-                  //                         ? null
-                  //                         : () {
-                  //                             controller.pageController.value
-                  //                                 .animateToPage(
-                  //                               controller.onboardController.value
-                  //                                       .items.length -
-                  //                                   3,
-                  //                               duration: const Duration(
-                  //                                   milliseconds: 300),
-                  //                               curve: Curves.easeIn,
-                  //                             );
-                  //                           },
-                  //                     style: TextButton.styleFrom(
-                  //                       backgroundColor:
-                  //                           !controller.isLastPage.value
-                  //                               ? colorScheme.background
-                  //                               : colorScheme.inversePrimary,
-                  //                       shape: RoundedRectangleBorder(
-                  //                         borderRadius: BorderRadius.circular(10),
-                  //                       ),
-                  //                     ),
-                  //                     child: Row(
-                  //                       mainAxisSize: MainAxisSize.min,
-                  //                       crossAxisAlignment:
-                  //                           CrossAxisAlignment.center,
-                  //                       children: [
-                  //                         FaIcon(
-                  //                           FontAwesomeIcons.chevronLeft,
-                  //                           color: colorScheme.background,
-                  //                           size: 10,
-                  //                         ),
-                  //                         kHalfWidthSizedBox,
-                  //                         Text(
-                  //                           !controller.isLastPage.value
-                  //                               ? ""
-                  //                               : "Back",
-                  //                           style: defaultTextStyle(
-                  //                             color: colorScheme.background,
-                  //                             fontSize: 14.0,
-                  //                           ),
-                  //                         ),
-                  //                       ],
-                  //                     ),
-                  //                   ),
-                  //                 ),
-                  //                 Align(
-                  //                   alignment: Alignment.topRight,
-                  //                   child: TextButton(
-                  //                     onPressed: controller.isLastPage.value
-                  //                         ? null
-                  //                         : () {
-                  //                             controller.pageController.value
-                  //                                 .animateToPage(
-                  //                               controller.onboardController.value
-                  //                                       .items.length -
-                  //                                   1,
-                  //                               duration: const Duration(
-                  //                                   milliseconds: 300),
-                  //                               curve: Curves.easeIn,
-                  //                             );
-                  //                           },
-                  //                     style: TextButton.styleFrom(
-                  //                       backgroundColor: controller.isLastPage.value
-                  //                           ? colorScheme.background
-                  //                           : colorScheme.inversePrimary,
-                  //                       shape: RoundedRectangleBorder(
-                  //                         borderRadius: BorderRadius.circular(10),
-                  //                       ),
-                  //                     ),
-                  //                     child: Row(
-                  //                       mainAxisSize: MainAxisSize.min,
-                  //                       crossAxisAlignment:
-                  //                           CrossAxisAlignment.center,
-                  //                       children: [
-                  //                         Text(
-                  //                           controller.isLastPage.value
-                  //                               ? ""
-                  //                               : "Skip",
-                  //                           style: defaultTextStyle(
-                  //                             color: colorScheme.background,
-                  //                             fontSize: 14.0,
-                  //                           ),
-                  //                         ),
-                  //                         kHalfWidthSizedBox,
-                  //                         FaIcon(
-                  //                           FontAwesomeIcons.chevronRight,
-                  //                           color: colorScheme.background,
-                  //                           size: 10,
-                  //                         )
-                  //                       ],
-                  //                     ),
-                  //                   ),
-                  //                 ),
-                  //               ],
-                  //             ),
-                  //           ),
-                  //
-                  //
-                  //         ],
-                  //       ),
-                  //     );
-                  //   },
-                  // )
-                ],
+                          fit: BoxFit.contain,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: media.width - 100,
+                      child: Text(
+                        controller.onboardController.value.items[index].title,
+                        textAlign: TextAlign.center,
+                        style: defaultTextStyle(
+                          color: colorScheme.primary,
+                          fontSize: 24.0,
+                        ),
+                      ),
+                    ),
+                    kHalfSizedBox,
+                    SizedBox(
+                      width: media.width - 100,
+                      child: Text(
+                        controller
+                            .onboardController.value.items[index].description,
+                        overflow: TextOverflow.ellipsis,
+                        textAlign: TextAlign.center,
+                        maxLines: 4,
+                        style: defaultTextStyle(
+                          color: colorScheme.inversePrimary,
+                          fontSize: 14.0,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               );
             },
+          ),
+        ),
+        SizedBox(
+          height: media.height * .2,
+          child: Column(
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  border: Border.all(color: colorScheme.inversePrimary),
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: SmoothPageIndicator(
+                  controller: controller.pageController.value,
+                  count: controller.onboardController.value.items.length,
+                  onDotClicked: (index) =>
+                      controller.pageController.value.animateToPage(
+                    index,
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeIn,
+                  ),
+                  effect: WormEffect(
+                    spacing: 0,
+                    radius: 20.0,
+                    dotWidth: 40.0,
+                    dotHeight: 2.5,
+                    paintStyle: PaintingStyle.fill,
+                    strokeWidth: 1.0,
+                    type: WormType.thinUnderground,
+                    dotColor: colorScheme.inversePrimary,
+                    activeDotColor: colorScheme.background,
+                  ),
+                ),
+              ),
+              kSizedBox,
+              kHalfSizedBox,
+              controller.isLastPage.value
+                  ? SizedBox(
+                      width: media.width - 100,
+                      child: CupertinoElevatedButton(
+                        title: "Get Started",
+                        buttonColor: kSuccessColor,
+                        onPressed: controller.getStarted,
+                      ),
+                    )
+                  : SizedBox(
+                      width: media.width - 100,
+                      child: CupertinoElevatedButton(
+                        title: "Next",
+                        buttonColor: kSuccessColor,
+                        onPressed: () {
+                          controller.pageController.value.nextPage(
+                            duration: const Duration(milliseconds: 300),
+                            curve: Curves.easeIn,
+                          );
+                        },
+                      ),
+                    ),
+              kSizedBox,
+              CupertinoButton(
+                onPressed: controller.getStarted,
+                color: colorScheme.background,
+                child: Text(
+                  "Skip",
+                  style: defaultTextStyle(
+                    color: kSuccessColor,
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ],

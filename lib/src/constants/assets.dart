@@ -17,8 +17,8 @@ class Assets {
 
   //App Images
   static const onboarding1Png = "assets/images/png/onboarding_1.png";
-  static const onboarding1Svg = "assets/images/svg/onboarding_1.svg";
   static const onboarding2Png = "assets/images/png/onboarding_2.png";
+  static const onboarding1Svg = "assets/images/svg/onboarding_1.svg";
   static const onboarding2Svg = "assets/images/svg/onboarding_2.svg";
   static const buildings = "assets/images/png/buildings.png";
   static const kitchen = "assets/images/png/kitchen.png";

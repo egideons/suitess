@@ -8,13 +8,13 @@ class OnboardContent {
       title: "Welcome to Suitess",
       description:
           "Discover your dream home, investment property or rental with a personalized real estate experience.",
-      image: Assets.onboarding1Svg,
+      image: Assets.onboarding1Png,
     ),
     OnboardModel(
       title: "Perfect match for you",
       description:
           "Explore thousands of listings and discover your perfect property",
-      image: Assets.onboarding2Svg,
+      image: Assets.onboarding2Png,
     ),
   ];
 }
