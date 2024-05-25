@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../src/controllers/auth/onboarding_controller.dart';
+import '../../../../src/controllers/others/onboarding_controller.dart';
 import '../../content/onboarding_page_content.dart';
 
 class OnboardingAndroidScaffold extends StatelessWidget {

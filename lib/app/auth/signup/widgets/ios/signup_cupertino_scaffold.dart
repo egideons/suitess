@@ -6,8 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:suitess/app/auth/components/auth_cupertino_nav_bar.dart';
-import 'package:suitess/app/auth/signup/content/signup_page_header.dart';
 import 'package:suitess/src/constants/consts.dart';
 import 'package:suitess/src/controllers/auth/signup_controller.dart';
 import 'package:suitess/src/utils/buttons/ios/cupertino_elevated_button.dart';
@@ -28,17 +26,11 @@ class SignupCupertinoScaffold extends GetView<SignupController> {
     final signupController = SignupController.instance;
 
     return CupertinoPageScaffold(
-      navigationBar: authCupertinoNavBar(
-        colorScheme: colorScheme,
-        media: media,
-        title: "Create account",
-      ),
       child: SafeArea(
-        child: ListView(
-          padding: const EdgeInsets.all(10),
+        child: Stack(
           children: [
-            signupPageHeader(colorScheme: colorScheme, media: media),
-            const SizedBox(height: kDefaultPadding * 2),
+            // signupPageHeader(colorScheme: colorScheme, media: media),
+
             Obx(
               () {
                 return Form(

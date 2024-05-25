@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:suitess/app/onboarding/model/onboard_content.dart';
 
 import '../../../app/auth/signup/screen/signup.dart';
+import '../../../main.dart';
 
 class OnboardingController extends GetxController {
   static OnboardingController get instance {
@@ -21,7 +22,7 @@ class OnboardingController extends GetxController {
 
   getStarted() async {
     //Save state that the user has been onboarded
-    // prefs.setBool("isOnboarded", true);
+    prefs.setBool("isOnboarded", true);
 
     await Get.offAll(
       () => const Signup(),
