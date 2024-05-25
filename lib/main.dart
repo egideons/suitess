@@ -1,4 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -9,6 +10,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'src/controllers/others/theme_controller.dart';
 import 'src/routes/routes.dart';
+import 'src/utils/components/app_error_widget.dart';
 import 'theme/app_theme.dart';
 import 'theme/colors.dart';
 
@@ -25,6 +27,15 @@ void main() async {
 
   Get.put(ThemeController());
   Get.put(LoadingController());
+
+//Handling widget errors
+  if (kReleaseMode) ErrorWidget.builder = (_) => const AppErrorWidget();
+
+  FlutterError.onError = (details) {
+    FlutterError.dumpErrorToConsole(details);
+    if (!kReleaseMode) return;
+    // Send to your crashlytics service...
+  };
 
   runApp(const MyApp());
 }
