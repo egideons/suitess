@@ -15,19 +15,19 @@ Widget phoneOTPPageHeader({colorScheme, media, title, subtitle}) {
           style: defaultTextStyle(
             fontSize: 24.0,
             color: colorScheme.primary,
-            letterSpacing: .90,
           ),
         ),
       ),
       kSizedBox,
       SizedBox(
-        width: media.width - 50,
+        width: media.width - 100,
         child: Text(
           subtitle ?? "",
           textAlign: TextAlign.center,
           style: defaultTextStyle(
-            color: colorScheme.inversePrimary,
+            color: colorScheme.primary,
             fontSize: 14.0,
+            fontWeight: FontWeight.w300,
           ),
         ),
       ),
