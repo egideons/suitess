@@ -12,24 +12,25 @@ Widget signupFormPageHeader({colorScheme, media}) {
         child: RichText(
           overflow: TextOverflow.ellipsis,
           textAlign: TextAlign.center,
+          maxLines: 4,
           text: TextSpan(
             text: "Create your",
             style: defaultTextStyle(
-              fontSize: 24.0,
+              fontSize: 20.0,
               color: colorScheme.primary,
             ),
             children: [
               TextSpan(
                 text: " Suitess ",
                 style: defaultTextStyle(
-                  fontSize: 24.0,
+                  fontSize: 20.0,
                   color: kSuccessColor,
                 ),
               ),
               TextSpan(
                 text: "account.",
                 style: defaultTextStyle(
-                  fontSize: 24.0,
+                  fontSize: 20.0,
                   color: colorScheme.primary,
                 ),
               ),

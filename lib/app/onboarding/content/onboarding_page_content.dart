@@ -70,7 +70,7 @@ Widget onboardingPageContent({controller, colorScheme, media}) {
           ),
         ),
         SizedBox(
-          height: media.height * .2,
+          height: media.height * .18,
           child: Column(
             children: [
               Container(
@@ -124,7 +124,7 @@ Widget onboardingPageContent({controller, colorScheme, media}) {
                         },
                       ),
                     ),
-              kSizedBox,
+              kHalfSizedBox,
               CupertinoButton(
                 onPressed: controller.getStarted,
                 color: colorScheme.background,
