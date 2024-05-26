@@ -57,7 +57,6 @@ class SignupController extends GetxController {
     var userNameRegExp = RegExp(namePattern);
     if (!userNameRegExp.hasMatch(firstNameEC.text)) {
       isFirstNameValid.value = false;
-      setFormIsInvalid();
     } else {
       isFirstNameValid.value = true;
     }
@@ -66,66 +65,45 @@ class SignupController extends GetxController {
 
   lastNameOnChanged(value) {
     var userNameRegExp = RegExp(namePattern);
-    if (isFirstNameValid.isTrue) {
-      if (!userNameRegExp.hasMatch(lastNameEC.text)) {
-        isLastNameValid.value = false;
-        setFormIsInvalid();
-      } else {
-        isLastNameValid.value = true;
-      }
-    } else {
+    if (!userNameRegExp.hasMatch(lastNameEC.text)) {
       isLastNameValid.value = false;
-      setFormIsInvalid();
+    } else {
+      isLastNameValid.value = true;
     }
     update();
   }
 
   emailOnChanged(value) {
-    var emailRegExp = RegExp(emailPattern);
-    if (isLastNameValid.isTrue) {
-      if (!emailRegExp.hasMatch(emailEC.text)) {
-        isEmailValid.value = false;
-        setFormIsInvalid();
-      } else {
-        isEmailValid.value = true;
-      }
+    // var emailRegExp = RegExp(emailPattern);
+    // if (!emailRegExp.hasMatch(emailEC.text)) {
+    if (emailEC.text.isEmail) {
+      isEmailValid.value = true;
     } else {
       isEmailValid.value = false;
-      setFormIsInvalid();
     }
     update();
   }
 
   phoneNumberOnChanged(value) {
     var phoneNumberRegExp = RegExp(mobilePattern);
-    if (isEmailValid.isTrue) {
-      if (!phoneNumberRegExp.hasMatch(phoneNumberEC.text)) {
-        isPhoneNumberValid.value = false;
-        setFormIsInvalid();
-      } else {
-        isPhoneNumberValid.value = true;
-      }
-    } else {
+    if (!phoneNumberRegExp.hasMatch(phoneNumberEC.text)) {
       isPhoneNumberValid.value = false;
-      setFormIsInvalid();
+    } else {
+      isPhoneNumberValid.value = true;
     }
     update();
   }
 
   passwordOnChanged(value) {
     var passwordRegExp = RegExp(passwordPattern);
-    if (isPhoneNumberValid.isTrue) {
-      if (!passwordRegExp.hasMatch(passwordEC.text)) {
-        isPasswordValid.value = false;
-        setFormIsInvalid();
-      } else {
-        isPasswordValid.value = true;
-        setFormIsValid();
-        update();
-      }
-    } else {
+
+    if (!passwordRegExp.hasMatch(passwordEC.text)) {
       isPasswordValid.value = false;
       setFormIsInvalid();
+    } else {
+      isPasswordValid.value = true;
+      setFormIsValid();
+      update();
     }
     update();
   }
@@ -150,29 +128,34 @@ class SignupController extends GetxController {
       formKey.currentState!.save();
 
       if (firstNameEC.text.isEmpty) {
-        setFormIsInvalid();
-        update();
         ApiProcessorController.errorSnack("Please enter your first name");
         return;
+      } else if (isFirstNameValid.value == false) {
+        ApiProcessorController.errorSnack("Please enter a valid name");
+        return;
       } else if (lastNameEC.text.isEmpty) {
-        setFormIsInvalid();
-        update();
         ApiProcessorController.errorSnack("Please enter your last name");
         return;
+      } else if (isLastNameValid.value == false) {
+        ApiProcessorController.errorSnack("Please enter a valid name");
+        return;
       } else if (emailEC.text.isEmpty) {
-        setFormIsInvalid();
-        update();
         ApiProcessorController.errorSnack("Please enter your email");
         return;
+      } else if (isEmailValid.value == false) {
+        ApiProcessorController.errorSnack("Please enter a valid email");
+        return;
       } else if (phoneNumberEC.text.isEmpty) {
-        setFormIsInvalid();
-        update();
         ApiProcessorController.errorSnack("Please enter your phone number");
         return;
+      } else if (isPhoneNumberValid.value == false) {
+        ApiProcessorController.errorSnack("Please enter a valid phone number");
+        return;
       } else if (passwordEC.text.isEmpty) {
-        setFormIsInvalid();
-        update();
         ApiProcessorController.errorSnack("Please enter your password");
+        return;
+      } else if (isPasswordValid.value == false) {
+        ApiProcessorController.errorSnack("Please enter a valid password");
         return;
       }
 
