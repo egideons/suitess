@@ -13,17 +13,17 @@ class ForgotPasswordViaEmailOTP extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //Initialize signup controller
-    Get.put(ForgotPasswordViaEmailOtpController());
+    Get.put(ForgotPasswordViaPhoneOTPController());
 
     if (Platform.isIOS) {
       return GestureDetector(
         onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
-        child: const ForgotPasswordViaEmailOTPCupertinoScaffold(),
+        child: const ForgotPasswordViaPhoneOTPCupertinoScaffold(),
       );
     }
     return GestureDetector(
       onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
-      child: const ForgotPasswordViaEmailOTPScaffold(),
+      child: const ForgotPasswordViaPhoneOTPScaffold(),
     );
   }
 }

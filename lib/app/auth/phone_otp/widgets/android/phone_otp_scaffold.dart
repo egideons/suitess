@@ -1,38 +1,37 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:suitess/app/auth/email_otp/content/email_otp_page_header.dart';
+import 'package:suitess/app/auth/components/auth_app_bar.dart';
+import 'package:suitess/app/auth/phone_otp/content/phone_otp_page_header.dart';
+import 'package:suitess/src/utils/buttons/android/android_elevated_button.dart';
+import 'package:suitess/src/utils/text_form_fields/android/android_textformfield.dart';
 
 import '../../../../../src/constants/consts.dart';
 import '../../../../../src/controllers/auth/email_otp_controller.dart';
-import '../../../../../src/utils/buttons/ios/cupertino_elevated_button.dart';
 import '../../../../../src/utils/containers/form_field_container.dart';
-import '../../../../../src/utils/text_form_fields/ios/cupertino_text_field.dart';
 import '../../../../../theme/colors.dart';
-import '../../../components/auth_cupertino_nav_bar.dart';
 
-class EmailOTPCupertinoScaffold extends GetView<EmailOTPController> {
-  const EmailOTPCupertinoScaffold({super.key});
+class PhoneOTPScaffold extends GetView<PhoneOTPController> {
+  const PhoneOTPScaffold({super.key});
 
   @override
   Widget build(BuildContext context) {
     var media = MediaQuery.of(context).size;
     var colorScheme = Theme.of(context).colorScheme;
 
-    var otpController = EmailOTPController.instance;
+    var otpController = PhoneOTPController.instance;
 
-    return CupertinoPageScaffold(
-      navigationBar: authCupertinoNavBar(
+    return Scaffold(
+      appBar: authAppBar(
         colorScheme: colorScheme,
         media: media,
         title: "OTP",
       ),
-      child: ListView(
+      body: ListView(
         padding: const EdgeInsets.all(10),
         children: [
-          emailOTPPageHeader(
+          phoneOTPPageHeader(
             colorScheme: colorScheme,
             media: media,
             title: "Email verification",
@@ -50,15 +49,15 @@ class EmailOTPCupertinoScaffold extends GetView<EmailOTPController> {
                   colorScheme,
                   media,
                   containerWidth: media.width * 0.18,
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: Center(
-                    child: MyCupertinoTextField(
+                    child: AndroidTextFormField(
                       controller: otpController.pin1EC,
                       focusNode: otpController.pin1FN,
                       textInputAction: TextInputAction.next,
                       textCapitalization: TextCapitalization.none,
                       keyboardType: TextInputType.number,
-                      borderColor: kTransparentColor,
-                      placeholder: "0",
+                      hintText: "0",
                       onChanged: (value) {
                         otpController.pin1Onchanged(value, context);
                       },
@@ -76,15 +75,15 @@ class EmailOTPCupertinoScaffold extends GetView<EmailOTPController> {
                   colorScheme,
                   media,
                   containerWidth: media.width * 0.18,
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: Center(
-                    child: MyCupertinoTextField(
+                    child: AndroidTextFormField(
                       controller: otpController.pin2EC,
                       focusNode: otpController.pin2FN,
                       textInputAction: TextInputAction.next,
                       textCapitalization: TextCapitalization.none,
                       keyboardType: TextInputType.number,
-                      borderColor: kTransparentColor,
-                      placeholder: "0",
+                      hintText: "0",
                       inputFormatters: [
                         LengthLimitingTextInputFormatter(1),
                         FilteringTextInputFormatter.digitsOnly,
@@ -102,15 +101,15 @@ class EmailOTPCupertinoScaffold extends GetView<EmailOTPController> {
                   colorScheme,
                   media,
                   containerWidth: media.width * 0.18,
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: Center(
-                    child: MyCupertinoTextField(
+                    child: AndroidTextFormField(
                       controller: otpController.pin3EC,
                       focusNode: otpController.pin3FN,
                       textInputAction: TextInputAction.next,
                       textCapitalization: TextCapitalization.none,
                       keyboardType: TextInputType.number,
-                      borderColor: kTransparentColor,
-                      placeholder: "0",
+                      hintText: "0",
                       inputFormatters: [
                         LengthLimitingTextInputFormatter(1),
                         FilteringTextInputFormatter.digitsOnly,
@@ -128,16 +127,16 @@ class EmailOTPCupertinoScaffold extends GetView<EmailOTPController> {
                   colorScheme,
                   media,
                   containerWidth: media.width * 0.18,
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: Center(
-                    child: MyCupertinoTextField(
+                    child: AndroidTextFormField(
                       controller: otpController.pin4EC,
                       focusNode: otpController.pin4FN,
                       textInputAction: TextInputAction.done,
                       textCapitalization: TextCapitalization.none,
                       keyboardType: TextInputType.number,
-                      borderColor: kTransparentColor,
-                      placeholder: "0",
-                      onSubmitted: otpController.onSubmitted,
+                      hintText: "0",
+                      onFieldSubmitted: otpController.onSubmitted,
                       inputFormatters: [
                         LengthLimitingTextInputFormatter(1),
                         FilteringTextInputFormatter.digitsOnly,
@@ -156,9 +155,9 @@ class EmailOTPCupertinoScaffold extends GetView<EmailOTPController> {
           ),
           kSizedBox,
           const SizedBox(height: kDefaultPadding * 2),
-          GetBuilder<EmailOTPController>(
+          GetBuilder<PhoneOTPController>(
             builder: (controller) {
-              return CupertinoElevatedButton(
+              return AndroidElevatedButton(
                 title: "Continue",
                 isLoading: otpController.isLoading.value ? true : false,
                 disable: otpController.formIsValid.value ? false : true,
@@ -207,12 +206,12 @@ class EmailOTPCupertinoScaffold extends GetView<EmailOTPController> {
           kSizedBox,
           Obx(
             () {
-              return CupertinoButton(
-                onPressed: otpController.timerComplete.isTrue
-                    ? otpController.requestOTP
-                    : null,
-                disabledColor: colorScheme.inversePrimary,
-                child: Center(
+              return Center(
+                child: InkWell(
+                  onTap: otpController.timerComplete.isTrue
+                      ? otpController.requestOTP
+                      : null,
+                  borderRadius: BorderRadius.circular(24),
                   child: Container(
                     width: media.width - 180,
                     padding: const EdgeInsets.all(10),

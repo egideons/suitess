@@ -12,9 +12,9 @@ import '../../../../../../src/utils/containers/form_field_container.dart';
 import '../../../../../../theme/colors.dart';
 import '../../content/forgot_password_via_email_otp_page_header.dart';
 
-class ForgotPasswordViaEmailOTPScaffold
-    extends GetView<ForgotPasswordViaEmailOtpController> {
-  const ForgotPasswordViaEmailOTPScaffold({super.key});
+class ForgotPasswordViaPhoneOTPScaffold
+    extends GetView<ForgotPasswordViaPhoneOTPController> {
+  const ForgotPasswordViaPhoneOTPScaffold({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class ForgotPasswordViaEmailOTPScaffold
     var colorScheme = Theme.of(context).colorScheme;
 
     var forgotPasswordViaEmailController =
-        ForgotPasswordViaEmailOtpController.instance;
+        ForgotPasswordViaPhoneOTPController.instance;
 
     return Scaffold(
       appBar: authAppBar(
@@ -162,7 +162,7 @@ class ForgotPasswordViaEmailOTPScaffold
           ),
           kSizedBox,
           const SizedBox(height: kDefaultPadding * 2),
-          GetBuilder<ForgotPasswordViaEmailOtpController>(
+          GetBuilder<ForgotPasswordViaPhoneOTPController>(
             builder: (controller) {
               return AndroidElevatedButton(
                 title: "Continue",

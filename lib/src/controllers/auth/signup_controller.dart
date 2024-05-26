@@ -8,8 +8,8 @@ import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:suitess/src/controllers/others/api_processor_controller.dart';
 
-import '../../../app/auth/email_otp/screen/email_otp.dart';
 import '../../../app/auth/login/screen/login.dart';
+import '../../../app/auth/phone_otp/screen/phone_otp.dart';
 import '../../constants/consts.dart';
 
 class SignupController extends GetxController {
@@ -169,8 +169,8 @@ class SignupController extends GetxController {
       ApiProcessorController.successSnack("Signup successful");
 
       Get.offAll(
-        () => const EmailOTP(),
-        routeName: "/email-otp",
+        () => const PhoneOTP(),
+        routeName: "/phone-otp",
         fullscreenDialog: true,
         curve: Curves.easeInOut,
         predicate: (routes) => false,
@@ -221,8 +221,8 @@ class SignupController extends GetxController {
       ApiProcessorController.successSnack("Signin successful");
 
       Get.offAll(
-        () => const EmailOTP(),
-        routeName: "/email-otp",
+        () => const PhoneOTP(),
+        routeName: "/phone-otp",
         fullscreenDialog: true,
         curve: Curves.easeInOut,
         predicate: (routes) => false,

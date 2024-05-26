@@ -13,9 +13,9 @@ import '../../../../../../theme/colors.dart';
 import '../../../../components/auth_cupertino_nav_bar.dart';
 import '../../content/forgot_password_via_email_otp_page_header.dart';
 
-class ForgotPasswordViaEmailOTPCupertinoScaffold
-    extends GetView<ForgotPasswordViaEmailOtpController> {
-  const ForgotPasswordViaEmailOTPCupertinoScaffold({super.key});
+class ForgotPasswordViaPhoneOTPCupertinoScaffold
+    extends GetView<ForgotPasswordViaPhoneOTPController> {
+  const ForgotPasswordViaPhoneOTPCupertinoScaffold({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class ForgotPasswordViaEmailOTPCupertinoScaffold
     var colorScheme = Theme.of(context).colorScheme;
 
     var forgotPasswordViaEmailController =
-        ForgotPasswordViaEmailOtpController.instance;
+        ForgotPasswordViaPhoneOTPController.instance;
 
     return CupertinoPageScaffold(
       navigationBar: authCupertinoNavBar(
@@ -163,7 +163,7 @@ class ForgotPasswordViaEmailOTPCupertinoScaffold
           ),
           kSizedBox,
           const SizedBox(height: kDefaultPadding * 2),
-          GetBuilder<ForgotPasswordViaEmailOtpController>(
+          GetBuilder<ForgotPasswordViaPhoneOTPController>(
             builder: (controller) {
               return CupertinoElevatedButton(
                 title: "Continue",

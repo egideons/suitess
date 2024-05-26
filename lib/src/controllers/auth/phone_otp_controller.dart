@@ -7,9 +7,9 @@ import 'package:suitess/app/kyc/kyc_add_location/screen/kyc_add_location.dart';
 
 import '../others/api_processor_controller.dart';
 
-class EmailOTPController extends GetxController {
-  static EmailOTPController get instance {
-    return Get.find<EmailOTPController>();
+class PhoneOTPController extends GetxController {
+  static PhoneOTPController get instance {
+    return Get.find<PhoneOTPController>();
   }
 
   @override

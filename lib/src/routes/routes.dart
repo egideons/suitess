@@ -11,10 +11,10 @@ import 'package:suitess/app/kyc/kyc_profile_photo/screen/kyc_profile_photo.dart'
 import 'package:suitess/app/onboarding/screen/onboarding.dart';
 import 'package:suitess/app/splash/startup/screen/startup_splash.dart';
 
-import '../../app/auth/email_otp/screen/email_otp.dart';
 import '../../app/auth/forgot_password_otp/via_email/screen/forgot_password_via_email_otp.dart';
 import '../../app/auth/forgot_password_otp/via_sms/screen/forgot_password_via_sms.dart';
 import '../../app/auth/login/screen/login.dart';
+import '../../app/auth/phone_otp/screen/phone_otp.dart';
 import '../../app/auth/reset_password/screen/reset_password.dart';
 import '../../app/experience/landlord/bid_details/screen/landlord_bid_details.dart';
 import '../../app/experience/landlord/property/add_property/screen/landlord_add_property.dart';
@@ -40,7 +40,7 @@ class Routes {
   //Auth Screens
   static const signup = "/signup";
   static const login = "/login";
-  static const emailOTP = "/email-otp";
+  static const phoneOTP = "/email-otp";
   static const forgotPassword = "/forgot-password";
   static const resetPassword = "/reset-password";
   static const changePassword = "/change-password";
@@ -81,7 +81,7 @@ class Routes {
     GetPage(name: onboarding, page: () => const Onboarding()),
     GetPage(name: signup, page: () => const Signup()),
     GetPage(name: login, page: () => const Login()),
-    GetPage(name: emailOTP, page: () => const EmailOTP()),
+    GetPage(name: phoneOTP, page: () => const PhoneOTP()),
     GetPage(name: forgotPassword, page: () => const ForgotPassword()),
     GetPage(
       name: forgotPasswordViaEmailOTP,
