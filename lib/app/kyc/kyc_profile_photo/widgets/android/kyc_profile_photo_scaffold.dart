@@ -42,7 +42,8 @@ class KycProfilePhotoScaffold extends GetView<KycProfilePhotoController> {
               colorScheme: colorScheme,
               media: media,
               title: "Upload your profile photo",
-              subtitle: "Grant Kribb access to Camera to upload your picture.",
+              subtitle:
+                  "Grant Suitess access to Camera to upload your picture.",
             ),
             const SizedBox(height: kDefaultPadding * 2),
             Obx(

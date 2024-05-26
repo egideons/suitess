@@ -20,7 +20,7 @@ Widget loginPageHeader({colorScheme, media}) {
             ),
             children: [
               TextSpan(
-                text: "Kribb",
+                text: "Suitess",
                 style: defaultTextStyle(
                   fontSize: 24.0,
                   color: kAccentColor,

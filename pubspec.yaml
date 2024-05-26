@@ -14,6 +14,7 @@ dependencies:
   flutter_svg:
   iconsax:
   custom_navigation_bar:
+  animate_do:
   get:
   path:
   intl:

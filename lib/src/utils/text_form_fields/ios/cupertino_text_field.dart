@@ -112,7 +112,7 @@ class MyCupertinoTextField extends StatelessWidget {
         color: kTransparentColor,
         border: Border.all(
           color: borderColor ?? colorScheme.inversePrimary,
-          width: .2,
+          width: .4,
         ),
         borderRadius: BorderRadius.circular(4.0),
       ),

@@ -27,7 +27,7 @@ Widget signupFormPageHeader({colorScheme, media}) {
                 ),
               ),
               TextSpan(
-                text: "account",
+                text: "account.",
                 style: defaultTextStyle(
                   fontSize: 24.0,
                   color: colorScheme.primary,
@@ -41,7 +41,7 @@ Widget signupFormPageHeader({colorScheme, media}) {
       SizedBox(
         width: media.width - 50,
         child: Text(
-          "Register now, suitess has got you covered",
+          "Register now, suitess has got you covered.",
           textAlign: TextAlign.center,
           style: defaultTextStyle(
             color: colorScheme.primary,
