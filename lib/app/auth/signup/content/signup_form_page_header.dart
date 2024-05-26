@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../src/constants/consts.dart';
 import '../../../../theme/colors.dart';
 
-Widget signupPageHeader({colorScheme, media}) {
+Widget signupFormPageHeader({colorScheme, media}) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.center,
     children: [
@@ -23,7 +23,7 @@ Widget signupPageHeader({colorScheme, media}) {
                 text: " Suitess ",
                 style: defaultTextStyle(
                   fontSize: 24.0,
-                  color: kAccentColor,
+                  color: kSuccessColor,
                 ),
               ),
               TextSpan(
@@ -41,11 +41,12 @@ Widget signupPageHeader({colorScheme, media}) {
       SizedBox(
         width: media.width - 50,
         child: Text(
-          "Register now and find your perfect kribb",
+          "Register now, suitess has got you covered",
           textAlign: TextAlign.center,
           style: defaultTextStyle(
-            color: colorScheme.inversePrimary,
+            color: colorScheme.primary,
             fontSize: 14.0,
+            fontWeight: FontWeight.normal,
           ),
         ),
       ),

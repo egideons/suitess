@@ -21,6 +21,7 @@ class SignupController extends GetxController {
   final formKey = GlobalKey<FormState>();
 
   //=========== Controllers ===========\\
+  final scrollController = ScrollController();
   final firstNameEC = TextEditingController();
   final lastNameEC = TextEditingController();
   final emailEC = TextEditingController();

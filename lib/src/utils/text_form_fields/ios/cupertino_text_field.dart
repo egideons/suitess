@@ -99,19 +99,22 @@ class MyCupertinoTextField extends StatelessWidget {
       keyboardAppearance: Get.isDarkMode ? Brightness.dark : Brightness.light,
       prefix: prefix,
       placeholderStyle: defaultTextStyle(
-        fontSize: 16.0,
+        fontSize: 12.0,
         color: colorScheme.inversePrimary,
         fontWeight: FontWeight.normal,
       ),
       style: defaultTextStyle(
-        fontSize: 16.0,
+        fontSize: 12.0,
         color: colorScheme.primary,
         fontWeight: FontWeight.normal,
       ),
       decoration: BoxDecoration(
         color: kTransparentColor,
-        border: Border.all(color: borderColor ?? colorScheme.inversePrimary),
-        borderRadius: BorderRadius.circular(16),
+        border: Border.all(
+          color: borderColor ?? colorScheme.inversePrimary,
+          width: .2,
+        ),
+        borderRadius: BorderRadius.circular(4.0),
       ),
     );
   }

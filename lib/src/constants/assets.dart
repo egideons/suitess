@@ -20,6 +20,8 @@ class Assets {
   static const onboarding2Png = "assets/images/png/onboarding_2.png";
   static const onboarding1Svg = "assets/images/svg/onboarding_1.svg";
   static const onboarding2Svg = "assets/images/svg/onboarding_2.svg";
+  static const authPng = "assets/images/png/auth.png";
+  static const authSvg = "assets/images/svg/auth.svg";
   static const buildings = "assets/images/png/buildings.png";
   static const kitchen = "assets/images/png/kitchen.png";
 

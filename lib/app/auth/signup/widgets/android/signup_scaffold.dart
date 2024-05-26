@@ -14,7 +14,7 @@ import '../../../../../src/controllers/auth/signup_controller.dart';
 import '../../../../../src/utils/containers/form_field_container.dart';
 import '../../../../../theme/colors.dart';
 import '../../../components/auth_app_bar.dart';
-import '../../content/signup_page_header.dart';
+import '../../content/signup_form_page_header.dart';
 
 class SignupScaffold extends GetView<SignupController> {
   const SignupScaffold({super.key});
@@ -36,7 +36,7 @@ class SignupScaffold extends GetView<SignupController> {
         child: ListView(
           padding: const EdgeInsets.all(10),
           children: [
-            signupPageHeader(colorScheme: colorScheme, media: media),
+            signupFormPageHeader(colorScheme: colorScheme, media: media),
             const SizedBox(height: kDefaultPadding * 2),
             Obx(
               () {
