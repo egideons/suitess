@@ -139,19 +139,19 @@ class SignupCupertinoScaffold extends GetView<SignupController> {
                                   },
                                 ),
                                 kSizedBox,
-                                MyCupertinoTextField(
-                                  controller: signupController.emailEC,
-                                  focusNode: signupController.emailFN,
-                                  textInputAction: TextInputAction.next,
-                                  textCapitalization: TextCapitalization.none,
-                                  keyboardType: TextInputType.emailAddress,
-                                  placeholder: "Email",
-                                  onChanged: signupController.emailOnChanged,
-                                  validator: (value) {
-                                    return null;
-                                  },
-                                ),
-                                kSizedBox,
+                                // MyCupertinoTextField(
+                                //   controller: signupController.emailEC,
+                                //   focusNode: signupController.emailFN,
+                                //   textInputAction: TextInputAction.next,
+                                //   textCapitalization: TextCapitalization.none,
+                                //   keyboardType: TextInputType.emailAddress,
+                                //   placeholder: "Email",
+                                //   onChanged: signupController.emailOnChanged,
+                                //   validator: (value) {
+                                //     return null;
+                                //   },
+                                // ),
+                                // kSizedBox,
                                 MyCupertinoTextField(
                                   controller: signupController.phoneNumberEC,
                                   focusNode: signupController.phoneNumberFN,
@@ -493,19 +493,19 @@ class SignupCupertinoScaffold extends GetView<SignupController> {
                                 },
                               ),
                               kSizedBox,
-                              MyCupertinoTextField(
-                                controller: signupController.emailEC,
-                                focusNode: signupController.emailFN,
-                                textInputAction: TextInputAction.next,
-                                textCapitalization: TextCapitalization.none,
-                                keyboardType: TextInputType.emailAddress,
-                                placeholder: "Email",
-                                onChanged: signupController.emailOnChanged,
-                                validator: (value) {
-                                  return null;
-                                },
-                              ),
-                              kSizedBox,
+                              // MyCupertinoTextField(
+                              //   controller: signupController.emailEC,
+                              //   focusNode: signupController.emailFN,
+                              //   textInputAction: TextInputAction.next,
+                              //   textCapitalization: TextCapitalization.none,
+                              //   keyboardType: TextInputType.emailAddress,
+                              //   placeholder: "Email",
+                              //   onChanged: signupController.emailOnChanged,
+                              //   validator: (value) {
+                              //     return null;
+                              //   },
+                              // ),
+                              // kSizedBox,
                               MyCupertinoTextField(
                                 controller: signupController.phoneNumberEC,
                                 focusNode: signupController.phoneNumberFN,
@@ -584,7 +584,6 @@ class SignupCupertinoScaffold extends GetView<SignupController> {
                         builder: (controller) {
                           return CupertinoElevatedButton(
                             title: "Create account",
-                            buttonColor: kSuccessColor,
                             isLoading: signupController.isLoading.value,
                             onPressed: signupController.signup,
                             disable: !signupController.formIsValid.value ||

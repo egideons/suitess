@@ -139,13 +139,15 @@ class SignupController extends GetxController {
       } else if (isLastNameValid.value == false) {
         ApiProcessorController.errorSnack("Please enter a valid name");
         return;
-      } else if (emailEC.text.isEmpty) {
-        ApiProcessorController.errorSnack("Please enter your email");
-        return;
-      } else if (isEmailValid.value == false) {
-        ApiProcessorController.errorSnack("Please enter a valid email");
-        return;
-      } else if (phoneNumberEC.text.isEmpty) {
+      }
+      //  else if (emailEC.text.isEmpty) {
+      //   ApiProcessorController.errorSnack("Please enter your email");
+      //   return;
+      // } else if (isEmailValid.value == false) {
+      //   ApiProcessorController.errorSnack("Please enter a valid email");
+      //   return;
+      // }
+      else if (phoneNumberEC.text.isEmpty) {
         ApiProcessorController.errorSnack("Please enter your phone number");
         return;
       } else if (isPhoneNumberValid.value == false) {

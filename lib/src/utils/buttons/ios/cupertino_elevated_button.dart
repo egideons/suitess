@@ -51,7 +51,7 @@ class CupertinoElevatedButton extends StatelessWidget {
       borderRadius: BorderRadius.circular(10),
       minSize: 20,
       padding: EdgeInsets.all(buttonPadding ?? 10),
-      color: buttonColor ?? kAccentColor,
+      color: buttonColor ?? kSuccessColor,
       disabledColor: colorScheme.inversePrimary,
       onPressed: disable
           ? null
