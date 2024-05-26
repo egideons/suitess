@@ -66,7 +66,8 @@ const String passwordPattern =
 const String referralCodePattern = r'^.{6}$';
 
 //validation for mobile
-const String mobilePattern = r'(^(?:[+0]9)?[0-9]{10,12}$)'; //Must be integers
+// const String mobilePattern = r'(^(?:[+0]9)?[0-9]{10,12}$)'; //Must be integers
+const String mobilePattern = r'^\+?[0-9]{1,3}?[0-9]{10}$'; //Must be integers
 
 String phoneNumberPattern = r'^\(\d{3}\) \d{3}-\d{4}$';
 

@@ -583,12 +583,14 @@ class SignupCupertinoScaffold extends GetView<SignupController> {
                         init: SignupController(),
                         builder: (controller) {
                           return CupertinoElevatedButton(
-                            title: "Continue",
+                            title: "Create account",
+                            buttonColor: kSuccessColor,
                             isLoading: signupController.isLoading.value,
                             onPressed: signupController.signup,
-                            disable: signupController.formIsValid.isTrue
-                                ? false
-                                : true,
+                            disable: !signupController.formIsValid.value ||
+                                signupController.isLoading.value ||
+                                signupController.isLoadingGoogleSignup.value ||
+                                signupController.isLoadingAppleSignup.value,
                           );
                         },
                       ),
@@ -662,6 +664,7 @@ class SignupCupertinoScaffold extends GetView<SignupController> {
                       init: SignupController(),
                       builder: (controller) {
                         return Container(
+                          width: media.width,
                           decoration: BoxDecoration(
                             border: Border.all(
                               width: .4,
@@ -673,7 +676,9 @@ class SignupCupertinoScaffold extends GetView<SignupController> {
                             title: "Continue with Google",
                             isRowVisible: true,
                             isSwitched: true,
-                            disable: signupController.isLoading.value,
+                            disable: signupController.isLoading.value ||
+                                signupController.isLoadingGoogleSignup.value ||
+                                signupController.isLoadingAppleSignup.value,
                             isLoading:
                                 signupController.isLoadingGoogleSignup.value,
                             onPressed: signupController.signupWithGoogle,
@@ -696,6 +701,7 @@ class SignupCupertinoScaffold extends GetView<SignupController> {
                       init: SignupController(),
                       builder: (controller) {
                         return Container(
+                          width: media.width,
                           decoration: BoxDecoration(
                             border: Border.all(
                               width: .4,
@@ -707,7 +713,9 @@ class SignupCupertinoScaffold extends GetView<SignupController> {
                             title: "Continue with Apple",
                             isRowVisible: true,
                             isSwitched: true,
-                            disable: signupController.isLoading.value,
+                            disable: signupController.isLoading.value ||
+                                signupController.isLoadingGoogleSignup.value ||
+                                signupController.isLoadingAppleSignup.value,
                             isLoading:
                                 signupController.isLoadingAppleSignup.value,
                             onPressed: signupController.signupWithApple,
