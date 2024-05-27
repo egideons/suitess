@@ -129,7 +129,7 @@ class AndroidTextFormField extends StatelessWidget {
         alignLabelWithHint: alignLabelWithHint,
         labelText: labelText,
         filled: filled ?? false,
-        fillColor: colorScheme.background,
+        fillColor: colorScheme.surface,
         focusColor: const Color(0xFFF6F6F7),
         labelStyle: defaultTextStyle(
           fontSize: 16.0,

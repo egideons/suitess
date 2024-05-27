@@ -71,7 +71,6 @@ flutter_launcher_icons:
     generate: true
     image_path: "assets/images/png/app_icon.png"
 
-# The following section is specific to Flutter packages.
 flutter:
   uses-material-design: true
 

@@ -48,7 +48,7 @@ class AndroidOutlinedButton extends StatelessWidget {
       onLongPress: null,
       style: OutlinedButton.styleFrom(
         disabledBackgroundColor: colorScheme.primary.withOpacity(0.2),
-        backgroundColor: colorScheme.background,
+        backgroundColor: colorScheme.surface,
         side: BorderSide(color: borderColor ?? colorScheme.primary),
         elevation: buttonElevation ?? 0,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),

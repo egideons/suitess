@@ -22,7 +22,7 @@ class LandLordAddPropertyCupertinoScaffold
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
         previousPageTitle: "Back",
-        backgroundColor: colorScheme.background,
+        backgroundColor: colorScheme.surface,
         border: Border.all(color: kTransparentColor),
         transitionBetweenRoutes: true,
         padding: const EdgeInsetsDirectional.symmetric(horizontal: 10),

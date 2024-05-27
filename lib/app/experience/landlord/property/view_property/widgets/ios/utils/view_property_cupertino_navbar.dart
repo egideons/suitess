@@ -13,8 +13,8 @@ viewPropertyCupertinoNavBar(
   return CupertinoNavigationBar(
     previousPageTitle: previousPageTitle ?? "",
     transitionBetweenRoutes: true,
-    backgroundColor: colorScheme.background,
-    border: Border.all(color: colorScheme.background),
+    backgroundColor: colorScheme.surface,
+    border: Border.all(color: colorScheme.surface),
     trailing: Container(
       padding: const EdgeInsets.all(6),
       decoration: ShapeDecoration(

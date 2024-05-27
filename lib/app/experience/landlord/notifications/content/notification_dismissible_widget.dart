@@ -20,7 +20,7 @@ notificationDismissibleWidget(
     onDismissed: onDismissed ?? (direction) {},
     confirmDismiss: confirmDismiss,
     background: Container(
-      decoration: BoxDecoration(color: colorScheme.background),
+      decoration: BoxDecoration(color: colorScheme.surface),
       width: media.width,
       child: Align(
         alignment: Alignment.centerRight,
@@ -41,7 +41,7 @@ notificationDismissibleWidget(
       padding: const EdgeInsets.all(20),
       width: media.width,
       decoration: ShapeDecoration(
-        color: colorScheme.background,
+        color: colorScheme.surface,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
         ),

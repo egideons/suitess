@@ -16,7 +16,7 @@ class LandLordHomeScreenScaffold extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: colorScheme.background,
+        backgroundColor: colorScheme.surface,
         automaticallyImplyLeading: true,
         leading: Container(
           padding: const EdgeInsets.symmetric(horizontal: 10),

@@ -8,7 +8,7 @@ import '../../../theme/colors.dart';
 PreferredSizeWidget authAppBar({colorScheme, media, faIcon, title, isVisible}) {
   return AppBar(
     centerTitle: true,
-    backgroundColor: colorScheme.background,
+    backgroundColor: colorScheme.surface,
     title: isVisible == false
         ? const SizedBox()
         : Container(

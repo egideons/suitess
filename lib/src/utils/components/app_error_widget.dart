@@ -17,7 +17,7 @@ class AppErrorWidget extends StatelessWidget {
     var colorScheme = Theme.of(context).colorScheme;
     if (Platform.isAndroid) {
       Material(
-        color: colorScheme.background,
+        color: colorScheme.surface,
         child: Padding(
           padding: const EdgeInsets.all(24),
           child: Column(
@@ -54,7 +54,7 @@ class AppErrorWidget extends StatelessWidget {
       );
     }
     return Material(
-      color: colorScheme.background,
+      color: colorScheme.surface,
       child: Padding(
         padding: const EdgeInsets.all(24),
         child: Column(

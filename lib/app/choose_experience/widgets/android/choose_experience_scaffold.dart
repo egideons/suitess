@@ -20,7 +20,7 @@ class ChooseExperienceScaffold extends GetView<ChooseExperienceController> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: colorScheme.background,
+        backgroundColor: colorScheme.surface,
       ),
       body: SafeArea(
         child: ListView(

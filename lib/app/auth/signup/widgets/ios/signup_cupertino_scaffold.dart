@@ -87,7 +87,7 @@ class SignupCupertinoScaffold extends GetView<SignupController> {
                 child: Container(
                   padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
-                    color: colorScheme.background,
+                    color: colorScheme.surface,
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
                       width: .2,
@@ -324,7 +324,7 @@ class SignupCupertinoScaffold extends GetView<SignupController> {
                                   signupController.isLoadingGoogleSignup.value,
                               onPressed: signupController.signupWithGoogle,
                               mainAxisAlignment: MainAxisAlignment.center,
-                              buttonColor: colorScheme.background,
+                              buttonColor: colorScheme.surface,
                               textColor: colorScheme.primary,
                               fontWeight: FontWeight.w400,
                               rowIconWidget: Image.asset(
@@ -358,7 +358,7 @@ class SignupCupertinoScaffold extends GetView<SignupController> {
                                   signupController.isLoadingAppleSignup.value,
                               onPressed: signupController.signupWithApple,
                               mainAxisAlignment: MainAxisAlignment.center,
-                              buttonColor: colorScheme.background,
+                              buttonColor: colorScheme.surface,
                               textColor: colorScheme.primary,
                               rowIconWidget: Image.asset(
                                 Get.isDarkMode
@@ -443,7 +443,7 @@ class SignupCupertinoScaffold extends GetView<SignupController> {
                 height: media.height,
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                  color: colorScheme.background,
+                  color: colorScheme.surface,
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(
                     width: .2,
@@ -682,7 +682,7 @@ class SignupCupertinoScaffold extends GetView<SignupController> {
                                 signupController.isLoadingGoogleSignup.value,
                             onPressed: signupController.signupWithGoogle,
                             mainAxisAlignment: MainAxisAlignment.center,
-                            buttonColor: colorScheme.background,
+                            buttonColor: colorScheme.surface,
                             textColor: colorScheme.primary,
                             fontWeight: FontWeight.w500,
                             rowIconWidget: Image.asset(
@@ -719,7 +719,7 @@ class SignupCupertinoScaffold extends GetView<SignupController> {
                                 signupController.isLoadingAppleSignup.value,
                             onPressed: signupController.signupWithApple,
                             mainAxisAlignment: MainAxisAlignment.center,
-                            buttonColor: colorScheme.background,
+                            buttonColor: colorScheme.surface,
                             textColor: colorScheme.primary,
                             fontWeight: FontWeight.w500,
                             rowIconWidget: Image.asset(

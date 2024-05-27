@@ -29,7 +29,7 @@ class LandLordNavigationOverViewCupertinoScaffold extends StatelessWidget {
               currentIndex:
                   currentIndex ?? controller.landlordNavCurrrentIndex.value,
               backgroundColor: colorScheme.primary,
-              selectedColor: colorScheme.background,
+              selectedColor: colorScheme.surface,
               unSelectedColor: colorScheme.inversePrimary,
               strokeColor: kAccentColor,
               isFloating: true,

@@ -21,7 +21,7 @@ class MessageAlertToast extends StatelessWidget {
     var colorScheme = Theme.of(context).colorScheme;
 
     return ToastCard(
-      color: colorScheme.background,
+      color: colorScheme.surface,
       leading: Image.asset(
         Get.isDarkMode ? Assets.lightAppLogo : Assets.darkAppLogo,
         color: kPrimaryColor,

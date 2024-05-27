@@ -10,7 +10,7 @@ ObstructingPreferredSizeWidget authCupertinoNavBar(
   return CupertinoNavigationBar(
     transitionBetweenRoutes: true,
     previousPageTitle: previousPageTitle ?? "",
-    backgroundColor: colorScheme.background,
+    backgroundColor: colorScheme.surface,
     border: Border.all(color: kTransparentColor),
     middle: isVisible == false
         ? const SizedBox()

@@ -15,7 +15,7 @@ ObstructingPreferredSizeWidget landLordHomeScreenCupertinoNavBar(
   goToNotifications,
 }) {
   return CupertinoNavigationBar(
-    backgroundColor: colorScheme.background,
+    backgroundColor: colorScheme.surface,
     border: Border.all(color: kTransparentColor),
     transitionBetweenRoutes: true,
     padding: const EdgeInsetsDirectional.symmetric(horizontal: 10),

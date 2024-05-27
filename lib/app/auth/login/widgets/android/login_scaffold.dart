@@ -285,11 +285,11 @@ class LoginScaffold extends GetView<LoginController> {
                   onPressed: loginController.loginWithGoogle,
                   mainAxisAlignment: MainAxisAlignment.center,
                   buttonColor: colorScheme.primary,
-                  textColor: colorScheme.background,
+                  textColor: colorScheme.surface,
                   rowIconWidget: Image.asset(
                     Assets.googleIcon,
                     fit: BoxFit.fill,
-                    color: colorScheme.background,
+                    color: colorScheme.surface,
                     height: min(60, 30),
                     width: 30,
                   ),

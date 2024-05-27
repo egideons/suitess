@@ -24,8 +24,8 @@ class LandLordNotificationsCupertinoScaffold
       navigationBar: CupertinoNavigationBar(
         previousPageTitle: "Home",
         transitionBetweenRoutes: true,
-        backgroundColor: colorScheme.background,
-        border: Border.all(color: colorScheme.background),
+        backgroundColor: colorScheme.surface,
+        border: Border.all(color: colorScheme.surface),
         middle: SizedBox(
           width: media.width / 2,
           child: Text(

@@ -11,7 +11,7 @@ Widget congratulationsSplashScreenContent({media, colorScheme}) {
     height: media.height,
     width: media.width,
     decoration: BoxDecoration(
-      color: colorScheme.background,
+      color: colorScheme.surface,
       image: DecorationImage(
         image: AssetImage(
           Get.isDarkMode ? Assets.darkBackground : Assets.lightBackground,

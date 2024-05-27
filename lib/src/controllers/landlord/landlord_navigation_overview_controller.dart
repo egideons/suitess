@@ -17,7 +17,7 @@ class LandLordNavigationOverviewController extends GetxController {
   landlordNavScreens(colorScheme) => [
         const LandLordHomeScreen(),
         Container(
-          color: colorScheme.background,
+          color: colorScheme.surface,
           child: Center(
             child: Text(
               "Wallet",
@@ -26,7 +26,7 @@ class LandLordNavigationOverviewController extends GetxController {
           ),
         ),
         Container(
-          color: colorScheme.background,
+          color: colorScheme.surface,
           child: Center(
             child: Text(
               "Chat",
@@ -35,7 +35,7 @@ class LandLordNavigationOverviewController extends GetxController {
           ),
         ),
         Container(
-          color: colorScheme.background,
+          color: colorScheme.surface,
           child: Center(
             child: Text(
               "Profile",
@@ -51,11 +51,11 @@ class LandLordNavigationOverviewController extends GetxController {
           selectedIcon: const Icon(Iconsax.home1),
           title: Text(
             "",
-            style: defaultTextStyle(color: colorScheme.background),
+            style: defaultTextStyle(color: colorScheme.surface),
           ),
           selectedTitle: Text(
             "Home",
-            style: defaultTextStyle(color: colorScheme.background),
+            style: defaultTextStyle(color: colorScheme.surface),
           ),
         ),
         CustomNavigationBarItem(
@@ -63,11 +63,11 @@ class LandLordNavigationOverviewController extends GetxController {
           selectedIcon: const Icon(Iconsax.wallet_money1),
           title: Text(
             "",
-            style: defaultTextStyle(color: colorScheme.background),
+            style: defaultTextStyle(color: colorScheme.surface),
           ),
           selectedTitle: Text(
             "Wallet",
-            style: defaultTextStyle(color: colorScheme.background),
+            style: defaultTextStyle(color: colorScheme.surface),
           ),
         ),
         CustomNavigationBarItem(
@@ -75,11 +75,11 @@ class LandLordNavigationOverviewController extends GetxController {
           selectedIcon: const Icon(Iconsax.message5),
           title: Text(
             "",
-            style: defaultTextStyle(color: colorScheme.background),
+            style: defaultTextStyle(color: colorScheme.surface),
           ),
           selectedTitle: Text(
             "Chat",
-            style: defaultTextStyle(color: colorScheme.background),
+            style: defaultTextStyle(color: colorScheme.surface),
           ),
         ),
         CustomNavigationBarItem(
@@ -87,11 +87,11 @@ class LandLordNavigationOverviewController extends GetxController {
           selectedIcon: const FaIcon(FontAwesomeIcons.solidUser),
           title: Text(
             "",
-            style: defaultTextStyle(color: colorScheme.background),
+            style: defaultTextStyle(color: colorScheme.surface),
           ),
           selectedTitle: Text(
             "Profile",
-            style: defaultTextStyle(color: colorScheme.background),
+            style: defaultTextStyle(color: colorScheme.surface),
           ),
         ),
       ];

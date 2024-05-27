@@ -1,14 +1,18 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" package="com.kribb.android">
+    xmlns:tools="http://schemas.android.com/tools" package="com.suitess.android"
+    android:versionCode="1"
+    android:versionName="1.0.0">
     <uses-feature
         android:name="android.hardware.camera"
-        android:required="false" />
+        android:required="false"
+        tools:targetApi="eclair" />
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.READ_MEDIA_AUDIO"/>
     <!-- Devices running Android 12L (API level 32) or lower  -->
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="32" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="32"
+        tools:targetApi="donut" />
 
     <!-- Devices running Android 13 (API level 33) or higher -->
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
@@ -21,16 +25,11 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission  android:name="android.permission.READ_PHONE_STATE"/>
-    <uses-permission  android:name="android.permission.INTERNET"  />
     <uses-permission  android:name="android.permission.RECORD_AUDIO"  />
-    <uses-permission  android:name="android.permission.CAMERA"  />
     <uses-permission  android:name="android.permission.MODIFY_AUDIO_SETTINGS"  />
     <uses-permission  android:name="android.permission.ACCESS_NETWORK_STATE"  />
     <uses-permission android:name="android.permission.VIBRATE"/>
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
-    <uses-permission android:name="android.permission.USE_EXACT_ALARM"/>
-    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
-    <uses-permission android:name="android.permission.android.permission.USE_EXACT_ALARM"/>
     <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY"/>
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <!-- The Agora SDK requires Bluetooth permissions in case users are using Bluetooth devices.-->
@@ -87,7 +86,7 @@
         </activity>
         <activity
             android:name="com.yalantis.ucrop.UCropActivity"
-            android:screenOrientation="portrait"
+            android:screenOrientation="fullSensor"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <!-- Don't delete the meta-data below.
              This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->

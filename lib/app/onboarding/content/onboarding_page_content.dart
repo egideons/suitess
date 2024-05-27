@@ -96,7 +96,7 @@ Widget onboardingPageContent({controller, colorScheme, media}) {
                     strokeWidth: 1.0,
                     type: WormType.thinUnderground,
                     dotColor: colorScheme.inversePrimary,
-                    activeDotColor: colorScheme.background,
+                    activeDotColor: colorScheme.surface,
                   ),
                 ),
               ),
@@ -127,7 +127,7 @@ Widget onboardingPageContent({controller, colorScheme, media}) {
               kHalfSizedBox,
               CupertinoButton(
                 onPressed: controller.getStarted,
-                color: colorScheme.background,
+                color: colorScheme.surface,
                 child: Text(
                   "Skip",
                   style: defaultTextStyle(

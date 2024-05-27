@@ -24,7 +24,7 @@ class ChooseExperienceCupertinoScaffold
       navigationBar: CupertinoNavigationBar(
         previousPageTitle: "Profile",
         transitionBetweenRoutes: true,
-        backgroundColor: colorScheme.background,
+        backgroundColor: colorScheme.surface,
         border: Border.all(color: kTransparentColor),
       ),
       child: SafeArea(

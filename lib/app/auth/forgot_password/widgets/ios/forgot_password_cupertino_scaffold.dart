@@ -25,7 +25,7 @@ class ForgotPasswordCupertinoScaffold
       navigationBar: CupertinoNavigationBar(
         previousPageTitle: "Login",
         transitionBetweenRoutes: true,
-        backgroundColor: colorScheme.background,
+        backgroundColor: colorScheme.surface,
         border: Border.all(color: kTransparentColor),
       ),
       child: SafeArea(

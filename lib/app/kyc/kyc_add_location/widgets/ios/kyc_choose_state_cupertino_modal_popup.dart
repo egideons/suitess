@@ -9,7 +9,7 @@ void showKYCChooseStateCupertinoPopup(context, colorScheme, media, controller) {
     builder: (context) {
       return Container(
         decoration: ShapeDecoration(
-          color: colorScheme.background,
+          color: colorScheme.surface,
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(24),

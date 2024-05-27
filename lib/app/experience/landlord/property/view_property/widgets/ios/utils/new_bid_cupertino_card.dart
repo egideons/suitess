@@ -113,7 +113,7 @@ Widget newBidCupertinoCard(
           Container(
             padding: const EdgeInsets.all(10),
             decoration: ShapeDecoration(
-              color: colorScheme.background,
+              color: colorScheme.surface,
               shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(16),

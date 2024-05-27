@@ -12,7 +12,7 @@ kycProfilePhotoModalSheet(context, media, colorScheme, controller) {
       return Container(
         padding: const EdgeInsets.all(20),
         decoration: ShapeDecoration(
-          color: colorScheme.background,
+          color: colorScheme.surface,
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(24),
