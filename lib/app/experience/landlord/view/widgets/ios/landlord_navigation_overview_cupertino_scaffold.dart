@@ -6,7 +6,8 @@ import 'package:suitess/theme/colors.dart';
 
 import '../../../../../../src/controllers/landlord/landlord_navigation_overview_controller.dart';
 
-class LandLordNavigationOverViewCupertinoScaffold extends StatelessWidget {
+class LandLordNavigationOverViewCupertinoScaffold
+    extends GetView<LandLordNavigationOverviewController> {
   final int? currentIndex;
   const LandLordNavigationOverViewCupertinoScaffold(
       {super.key, this.currentIndex});

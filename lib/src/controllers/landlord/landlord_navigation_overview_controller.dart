@@ -13,7 +13,7 @@ class LandLordNavigationOverviewController extends GetxController {
 
   var isLoading = false.obs;
 
-  //=============== LANDLORD SECTION ================\\
+  //=============== LANDLORD SCREENS ================\\
   landlordNavScreens(colorScheme) => [
         const LandLordHomeScreen(),
         Container(
@@ -45,6 +45,7 @@ class LandLordNavigationOverviewController extends GetxController {
         ),
       ];
 
+  //=============== LANDLORD BOTTOMNAV ITEMS ================\\
   landLordNavItems(colorScheme) => [
         CustomNavigationBarItem(
           icon: const Icon(Iconsax.home),
@@ -95,6 +96,7 @@ class LandLordNavigationOverviewController extends GetxController {
           ),
         ),
       ];
+
   //=============== LANDLORD SECTION ================\\
   var landlordNavCurrrentIndex = 0.obs;
 }
