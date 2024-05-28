@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
@@ -28,13 +30,12 @@ void main() async {
   Get.put(ThemeController());
   Get.put(LoadingController());
 
-//Handling widget errors
+  //This is to handle widget errors by showing a custom error widget screen
   if (kReleaseMode) ErrorWidget.builder = (_) => const AppErrorWidget();
 
   FlutterError.onError = (details) {
     FlutterError.dumpErrorToConsole(details);
     if (!kReleaseMode) return;
-    // Send to your crashlytics service...
   };
 
   runApp(const MyApp());
@@ -46,6 +47,24 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    //iOS App
+    if (Platform.isIOS) {
+      return GetCupertinoApp(
+        title: "Suitess",
+        color: kPrimaryColor,
+        navigatorKey: Get.key,
+        defaultTransition: Transition.native,
+        debugShowCheckedModeBanner: false,
+        highContrastTheme: androidLightTheme,
+        highContrastDarkTheme: androidDarkTheme,
+        locale: Get.deviceLocale,
+        initialRoute: Routes.startupSplashscreen,
+        getPages: Routes.getPages,
+        theme: Get.isDarkMode ? iOSDarkTheme : iOSLightTheme,
+      );
+    }
+
+    //Android App
     return GetMaterialApp(
       title: "Suitess",
       color: kPrimaryColor,
