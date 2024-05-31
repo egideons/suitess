@@ -36,7 +36,7 @@ Widget phoneOTPPageHeader({colorScheme, media, title, subtitle, phoneNumber}) {
                 style: defaultTextStyle(
                   color: colorScheme.primary,
                   fontSize: 14.0,
-                  fontWeight: FontWeight.w300,
+                  fontWeight: FontWeight.w600,
                 ),
               )
             ],

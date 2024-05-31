@@ -10,6 +10,7 @@ import '../../../theme/colors.dart';
 
 onboardingAndroidPageContent(
     {OnboardingController? controller, colorScheme, media}) {
+  //Landscape or larger screens
   if (deviceType(media.width) > 1) {
     return Obx(
       () => Row(
@@ -174,7 +175,7 @@ onboardingAndroidPageContent(
       ),
     );
   }
-
+//Mobile or Portrait Screen
   return Obx(
     () => Column(
       children: [

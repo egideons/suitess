@@ -128,7 +128,7 @@ class PhoneOTPController extends GetxController {
     timerComplete.value = false;
     startTimer();
     update();
-    ApiProcessorController.successSnack("An OTP has been sent to your email");
+    ApiProcessorController.successSnack("An OTP has been sent to your number");
   }
 
   //================= Set form validity ======================\\
@@ -160,12 +160,21 @@ class PhoneOTPController extends GetxController {
 
     await Future.delayed(const Duration(seconds: 3));
     ApiProcessorController.successSnack("Verification successful");
-    Get.offAll(
+    // Get.offAll(
+    //   () => const KycAddLocation(),
+    //   routeName: "/kyc-add-location",
+    //   fullscreenDialog: true,
+    //   curve: Curves.easeInOut,
+    //   predicate: (routes) => false,
+    //   popGesture: false,
+    //   transition: Get.defaultTransition,
+    // );
+    Get.to(
       () => const KycAddLocation(),
       routeName: "/kyc-add-location",
       fullscreenDialog: true,
       curve: Curves.easeInOut,
-      predicate: (routes) => false,
+      // predicate: (routes) => false,
       popGesture: false,
       transition: Get.defaultTransition,
     );

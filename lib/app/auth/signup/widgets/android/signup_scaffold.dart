@@ -80,6 +80,7 @@ class SignupScaffold extends GetView<SignupController> {
             ),
             // kWidthSizedBox,
             kHalfWidthSizedBox,
+
             //Signup Form
             Container(
                 width: media.width / 2.2,
@@ -196,43 +197,56 @@ class SignupScaffold extends GetView<SignupController> {
                                     colorScheme,
                                     media,
                                     containerHeight: media.height * .08,
-                                    child: AndroidTextFormField(
-                                      controller: signupController.passwordEC,
-                                      focusNode: signupController.passwordFN,
-                                      textInputAction: TextInputAction.done,
-                                      textCapitalization:
-                                          TextCapitalization.none,
-                                      keyboardType:
-                                          TextInputType.visiblePassword,
-                                      obscureText: signupController
-                                          .passwordIsHidden.value,
-                                      hintText: "Password",
-                                      onChanged:
-                                          signupController.passwordOnChanged,
-                                      onFieldSubmitted:
-                                          signupController.onSubmitted,
-                                      validator: (value) {
-                                        return null;
-                                      },
-                                      suffix: GestureDetector(
-                                        onTap: () {
-                                          signupController
-                                                  .passwordIsHidden.value =
-                                              !signupController
-                                                  .passwordIsHidden.value;
-                                        },
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Icon(
-                                            color: colorScheme.inversePrimary,
-                                            size: 14,
-                                            signupController
-                                                    .passwordIsHidden.value
-                                                ? Iconsax.eye4
-                                                : Iconsax.eye_slash5,
+                                    child: Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        Expanded(
+                                          child: AndroidTextFormField(
+                                            controller:
+                                                signupController.passwordEC,
+                                            focusNode:
+                                                signupController.passwordFN,
+                                            textInputAction:
+                                                TextInputAction.done,
+                                            textCapitalization:
+                                                TextCapitalization.none,
+                                            keyboardType:
+                                                TextInputType.visiblePassword,
+                                            obscureText: signupController
+                                                .passwordIsHidden.value,
+                                            hintText: "Password",
+                                            onChanged: signupController
+                                                .passwordOnChanged,
+                                            onFieldSubmitted:
+                                                signupController.onSubmitted,
+                                            validator: (value) {
+                                              return null;
+                                            },
                                           ),
                                         ),
-                                      ),
+                                        InkWell(
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          onTap: () {
+                                            signupController
+                                                    .passwordIsHidden.value =
+                                                !signupController
+                                                    .passwordIsHidden.value;
+                                          },
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Icon(
+                                              color: colorScheme.inversePrimary,
+                                              size: 14,
+                                              signupController
+                                                      .passwordIsHidden.value
+                                                  ? Iconsax.eye4
+                                                  : Iconsax.eye_slash5,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ),
 
@@ -537,38 +551,52 @@ class SignupScaffold extends GetView<SignupController> {
                               formFieldContainer(
                                 colorScheme,
                                 media,
-                                child: AndroidTextFormField(
-                                  controller: signupController.passwordEC,
-                                  focusNode: signupController.passwordFN,
-                                  textInputAction: TextInputAction.done,
-                                  textCapitalization: TextCapitalization.none,
-                                  keyboardType: TextInputType.visiblePassword,
-                                  obscureText:
-                                      signupController.passwordIsHidden.value,
-                                  hintText: "Password",
-                                  onChanged: signupController.passwordOnChanged,
-                                  onFieldSubmitted:
-                                      signupController.onSubmitted,
-                                  validator: (value) {
-                                    return null;
-                                  },
-                                  suffix: GestureDetector(
-                                    onTap: () {
-                                      signupController.passwordIsHidden.value =
-                                          !signupController
-                                              .passwordIsHidden.value;
-                                    },
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Icon(
-                                        color: colorScheme.inversePrimary,
-                                        size: 14,
-                                        signupController.passwordIsHidden.value
-                                            ? Iconsax.eye4
-                                            : Iconsax.eye_slash5,
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Expanded(
+                                      child: AndroidTextFormField(
+                                        controller: signupController.passwordEC,
+                                        focusNode: signupController.passwordFN,
+                                        textInputAction: TextInputAction.done,
+                                        textCapitalization:
+                                            TextCapitalization.none,
+                                        keyboardType:
+                                            TextInputType.visiblePassword,
+                                        obscureText: signupController
+                                            .passwordIsHidden.value,
+                                        hintText: "Password",
+                                        onChanged:
+                                            signupController.passwordOnChanged,
+                                        onFieldSubmitted:
+                                            signupController.onSubmitted,
+                                        validator: (value) {
+                                          return null;
+                                        },
                                       ),
                                     ),
-                                  ),
+                                    InkWell(
+                                      borderRadius: BorderRadius.circular(20),
+                                      onTap: () {
+                                        signupController
+                                                .passwordIsHidden.value =
+                                            !signupController
+                                                .passwordIsHidden.value;
+                                      },
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Icon(
+                                          color: colorScheme.inversePrimary,
+                                          size: 14,
+                                          signupController
+                                                  .passwordIsHidden.value
+                                              ? Iconsax.eye4
+                                              : Iconsax.eye_slash5,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
 
