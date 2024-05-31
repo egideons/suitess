@@ -159,7 +159,7 @@ class PhoneOTPController extends GetxController {
     timerComplete.value = false;
 
     await Future.delayed(const Duration(seconds: 3));
-    ApiProcessorController.successSnack("Email verification successful");
+    ApiProcessorController.successSnack("Verification successful");
     Get.offAll(
       () => const KycAddLocation(),
       routeName: "/kyc-add-location",

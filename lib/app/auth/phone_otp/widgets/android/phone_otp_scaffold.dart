@@ -49,95 +49,95 @@ class PhoneOTPScaffold extends GetView<PhoneOTPController> {
               children: [
                 SizedBox(
                   width: media.width * 0.18,
-                  child: Center(
-                    child: AndroidTextFormField(
-                      controller: otpController.pin1EC,
-                      focusNode: otpController.pin1FN,
-                      textInputAction: TextInputAction.next,
-                      textCapitalization: TextCapitalization.none,
-                      keyboardType: TextInputType.number,
-                      inputBorder: const UnderlineInputBorder(),
-                      onChanged: (value) {
-                        otpController.pin1Onchanged(value, context);
-                      },
-                      inputFormatters: [
-                        LengthLimitingTextInputFormatter(1),
-                        FilteringTextInputFormatter.digitsOnly,
-                      ],
-                      validator: (value) {
-                        return null;
-                      },
-                    ),
+                  child: AndroidTextFormField(
+                    controller: otpController.pin1EC,
+                    focusNode: otpController.pin1FN,
+                    textInputAction: TextInputAction.next,
+                    textCapitalization: TextCapitalization.none,
+                    keyboardType: TextInputType.number,
+                    inputBorder: const UnderlineInputBorder(),
+                    enabledBorder: const UnderlineInputBorder(),
+                    focusedBorder: const UnderlineInputBorder(),
+                    onChanged: (value) {
+                      otpController.pin1Onchanged(value, context);
+                    },
+                    inputFormatters: [
+                      LengthLimitingTextInputFormatter(1),
+                      FilteringTextInputFormatter.digitsOnly,
+                    ],
+                    validator: (value) {
+                      return null;
+                    },
                   ),
                 ),
                 SizedBox(
                   width: media.width * 0.18,
-                  child: Center(
-                    child: AndroidTextFormField(
-                      controller: otpController.pin2EC,
-                      focusNode: otpController.pin2FN,
-                      textInputAction: TextInputAction.next,
-                      textCapitalization: TextCapitalization.none,
-                      keyboardType: TextInputType.number,
-                      inputBorder: const UnderlineInputBorder(),
-                      inputFormatters: [
-                        LengthLimitingTextInputFormatter(1),
-                        FilteringTextInputFormatter.digitsOnly,
-                      ],
-                      onChanged: (value) {
-                        otpController.pin2Onchanged(value, context);
-                      },
-                      validator: (value) {
-                        return null;
-                      },
-                    ),
+                  child: AndroidTextFormField(
+                    controller: otpController.pin2EC,
+                    focusNode: otpController.pin2FN,
+                    textInputAction: TextInputAction.next,
+                    textCapitalization: TextCapitalization.none,
+                    keyboardType: TextInputType.number,
+                    inputBorder: const UnderlineInputBorder(),
+                    enabledBorder: const UnderlineInputBorder(),
+                    focusedBorder: const UnderlineInputBorder(),
+                    inputFormatters: [
+                      LengthLimitingTextInputFormatter(1),
+                      FilteringTextInputFormatter.digitsOnly,
+                    ],
+                    onChanged: (value) {
+                      otpController.pin2Onchanged(value, context);
+                    },
+                    validator: (value) {
+                      return null;
+                    },
                   ),
                 ),
                 SizedBox(
                   width: media.width * 0.18,
-                  child: Center(
-                    child: AndroidTextFormField(
-                      controller: otpController.pin3EC,
-                      focusNode: otpController.pin3FN,
-                      textInputAction: TextInputAction.next,
-                      textCapitalization: TextCapitalization.none,
-                      keyboardType: TextInputType.number,
-                      inputBorder: const UnderlineInputBorder(),
-                      inputFormatters: [
-                        LengthLimitingTextInputFormatter(1),
-                        FilteringTextInputFormatter.digitsOnly,
-                      ],
-                      onChanged: (value) {
-                        otpController.pin3Onchanged(value, context);
-                      },
-                      validator: (value) {
-                        return null;
-                      },
-                    ),
+                  child: AndroidTextFormField(
+                    controller: otpController.pin3EC,
+                    focusNode: otpController.pin3FN,
+                    textInputAction: TextInputAction.next,
+                    textCapitalization: TextCapitalization.none,
+                    keyboardType: TextInputType.number,
+                    inputBorder: const UnderlineInputBorder(),
+                    enabledBorder: const UnderlineInputBorder(),
+                    focusedBorder: const UnderlineInputBorder(),
+                    inputFormatters: [
+                      LengthLimitingTextInputFormatter(1),
+                      FilteringTextInputFormatter.digitsOnly,
+                    ],
+                    onChanged: (value) {
+                      otpController.pin3Onchanged(value, context);
+                    },
+                    validator: (value) {
+                      return null;
+                    },
                   ),
                 ),
                 SizedBox(
                   width: media.width * 0.18,
-                  child: Center(
-                    child: AndroidTextFormField(
-                      controller: otpController.pin4EC,
-                      focusNode: otpController.pin4FN,
-                      textInputAction: TextInputAction.done,
-                      textCapitalization: TextCapitalization.none,
-                      keyboardType: TextInputType.number,
-                      inputBorder: const UnderlineInputBorder(),
-                      onFieldSubmitted: otpController.onSubmitted,
-                      inputFormatters: [
-                        LengthLimitingTextInputFormatter(1),
-                        FilteringTextInputFormatter.digitsOnly,
-                      ],
-                      onChanged: (value) {
-                        otpController.pin4Onchanged(value, context);
-                      },
-                      validator: (value) {
-                        return null;
-                      },
-                    ),
+                  child: AndroidTextFormField(
+                    controller: otpController.pin4EC,
+                    focusNode: otpController.pin4FN,
+                    textInputAction: TextInputAction.done,
+                    textCapitalization: TextCapitalization.none,
+                    keyboardType: TextInputType.number,
+                    inputBorder: const UnderlineInputBorder(),
+                    enabledBorder: const UnderlineInputBorder(),
+                    focusedBorder: const UnderlineInputBorder(),
+                    onFieldSubmitted: otpController.onSubmitted,
+                    inputFormatters: [
+                      LengthLimitingTextInputFormatter(1),
+                      FilteringTextInputFormatter.digitsOnly,
+                    ],
+                    onChanged: (value) {
+                      otpController.pin4Onchanged(value, context);
+                    },
+                    validator: (value) {
+                      return null;
+                    },
                   ),
                 ),
               ],
@@ -181,17 +181,19 @@ class PhoneOTPScaffold extends GetView<PhoneOTPController> {
                 ),
               ),
               kHalfWidthSizedBox,
-              Obx(() => otpController.timerComplete.isTrue
-                  ? const SizedBox()
-                  : Text(
-                      "in ${otpController.formatTime(otpController.secondsRemaining.value)}s",
-                      textAlign: TextAlign.center,
-                      style: defaultTextStyle(
-                        fontSize: 15.0,
-                        color: colorScheme.primary,
-                        fontWeight: FontWeight.w400,
+              Obx(
+                () => otpController.timerComplete.isTrue
+                    ? const SizedBox()
+                    : Text(
+                        "in ${otpController.formatTime(otpController.secondsRemaining.value)}s",
+                        textAlign: TextAlign.center,
+                        style: defaultTextStyle(
+                          fontSize: 15.0,
+                          color: colorScheme.primary,
+                          fontWeight: FontWeight.w400,
+                        ),
                       ),
-                    )),
+              ),
             ],
           ),
           kSizedBox,

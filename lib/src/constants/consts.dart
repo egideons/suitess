@@ -98,12 +98,6 @@ String maskPhoneNumber(String phoneNumber) {
   return maskedPart + lastFour;
 }
 
-void main() {
-  String phoneNumber = "1234567890";
-  String maskedPhoneNumber = maskPhoneNumber(phoneNumber);
-  print(maskedPhoneNumber); // Output: ******7890
-}
-
 //===================== DateTime Formate ==========================\\
 
 String formatDateAndTime(DateTime dateTime) {
