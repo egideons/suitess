@@ -6,7 +6,7 @@ import '../../../src/constants/consts.dart';
 import '../../../src/utils/buttons/ios/cupertino_elevated_button.dart';
 import '../../../theme/colors.dart';
 
-Widget onboardingPageContent({controller, colorScheme, media}) {
+Widget onboardingCupertinoPageContent({controller, colorScheme, media}) {
   return Obx(
     () => Column(
       children: [
@@ -22,7 +22,7 @@ Widget onboardingPageContent({controller, colorScheme, media}) {
                 child: Column(
                   children: [
                     Container(
-                      height: media.height * .6,
+                      height: media.height * .58,
                       decoration: ShapeDecoration(
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50),
@@ -69,74 +69,70 @@ Widget onboardingPageContent({controller, colorScheme, media}) {
             },
           ),
         ),
-        SizedBox(
-          height: media.height * .18,
-          child: Column(
-            children: [
-              Container(
-                decoration: BoxDecoration(
-                  border: Border.all(color: colorScheme.inversePrimary),
-                  borderRadius: BorderRadius.circular(20),
+        Column(
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                border: Border.all(color: colorScheme.inversePrimary),
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: SmoothPageIndicator(
+                controller: controller.pageController.value,
+                count: controller.onboardController.value.items.length,
+                onDotClicked: (index) =>
+                    controller.pageController.value.animateToPage(
+                  index,
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.easeIn,
                 ),
-                child: SmoothPageIndicator(
-                  controller: controller.pageController.value,
-                  count: controller.onboardController.value.items.length,
-                  onDotClicked: (index) =>
-                      controller.pageController.value.animateToPage(
-                    index,
-                    duration: const Duration(milliseconds: 300),
-                    curve: Curves.easeIn,
-                  ),
-                  effect: WormEffect(
-                    spacing: 0,
-                    radius: 20.0,
-                    dotWidth: 40.0,
-                    dotHeight: 2.5,
-                    paintStyle: PaintingStyle.fill,
-                    strokeWidth: 1.0,
-                    type: WormType.thinUnderground,
-                    dotColor: colorScheme.inversePrimary,
-                    activeDotColor: colorScheme.surface,
-                  ),
+                effect: WormEffect(
+                  spacing: 0,
+                  radius: 20.0,
+                  dotWidth: 40.0,
+                  dotHeight: 2.5,
+                  paintStyle: PaintingStyle.fill,
+                  strokeWidth: 1.0,
+                  type: WormType.thinUnderground,
+                  dotColor: colorScheme.inversePrimary,
+                  activeDotColor: colorScheme.surface,
                 ),
               ),
-              kSizedBox,
-              kHalfSizedBox,
-              controller.isLastPage.value
-                  ? SizedBox(
-                      width: media.width - 100,
-                      child: CupertinoElevatedButton(
-                        title: "Get Started",
-                        buttonColor: kSuccessColor,
-                        onPressed: controller.getStarted,
-                      ),
-                    )
-                  : SizedBox(
-                      width: media.width - 100,
-                      child: CupertinoElevatedButton(
-                        title: "Next",
-                        buttonColor: kSuccessColor,
-                        onPressed: () {
-                          controller.pageController.value.nextPage(
-                            duration: const Duration(milliseconds: 300),
-                            curve: Curves.easeIn,
-                          );
-                        },
-                      ),
+            ),
+            kSizedBox,
+            controller.isLastPage.value
+                ? SizedBox(
+                    width: media.width - 100,
+                    child: CupertinoElevatedButton(
+                      title: "Get Started",
+                      buttonColor: kSuccessColor,
+                      onPressed: controller.getStarted,
                     ),
-              kHalfSizedBox,
-              CupertinoButton(
-                onPressed: controller.getStarted,
-                color: colorScheme.surface,
-                child: Text(
-                  "Skip",
-                  style: defaultTextStyle(
-                    color: kSuccessColor,
+                  )
+                : SizedBox(
+                    width: media.width - 100,
+                    child: CupertinoElevatedButton(
+                      title: "Next",
+                      buttonColor: kSuccessColor,
+                      onPressed: () {
+                        controller.pageController.value.nextPage(
+                          duration: const Duration(milliseconds: 300),
+                          curve: Curves.easeIn,
+                        );
+                      },
+                    ),
                   ),
+            kHalfSizedBox,
+            CupertinoButton(
+              onPressed: controller.getStarted,
+              color: colorScheme.surface,
+              child: Text(
+                "Skip",
+                style: defaultTextStyle(
+                  color: kSuccessColor,
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ],
     ),

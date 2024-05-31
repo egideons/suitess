@@ -1,11 +1,9 @@
 import 'dart:developer';
 import 'dart:io';
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../../app/auth/signup/screen/signup.dart';
 import '../../../app/splash/loading/screen/loading_screen.dart';
@@ -138,94 +136,94 @@ class LoginController extends GetxController {
     isLoadingGoogleLogin.value = true;
     update();
 
-    GoogleSignIn googleSignIn = GoogleSignIn(
-      // Optional clientId
-      clientId:
-          '537371602886-o25rom5lvbl8f39i46ft2clv7jm1pvet.apps.googleusercontent.com',
-      scopes: scopes,
-    );
+    // GoogleSignIn googleSignIn = GoogleSignIn(
+    //   // Optional clientId
+    //   clientId:
+    //       '537371602886-o25rom5lvbl8f39i46ft2clv7jm1pvet.apps.googleusercontent.com',
+    //   scopes: scopes,
+    // );
 
     try {
       //Sign in silently
-      var gUser = await googleSignIn.signInSilently();
+      // var gUser = await googleSignIn.signInSilently();
 
-      if (gUser == null) {
-        try {
-          var gUser = await googleSignIn.signIn();
+      // if (gUser == null) {
+      //   try {
+      //     var gUser = await googleSignIn.signIn();
 
-          if (gUser == null) {
-            log("Google sign-in cancelled");
-            isLoadingGoogleLogin.value = false;
-            update();
-            return; // Exit the function
-          }
+      //     if (gUser == null) {
+      //       log("Google sign-in cancelled");
+      //       isLoadingGoogleLogin.value = false;
+      //       update();
+      //       return; // Exit the function
+      //     }
 
-          var gAuth = await gUser.authentication;
+      //     var gAuth = await gUser.authentication;
 
-          final credential = GoogleAuthProvider.credential(
-            accessToken: gAuth.accessToken,
-            idToken: gAuth.idToken,
-          );
+      //     final credential = GoogleAuthProvider.credential(
+      //       accessToken: gAuth.accessToken,
+      //       idToken: gAuth.idToken,
+      //     );
 
-          await FirebaseAuth.instance.signInWithCredential(credential);
-          ApiProcessorController.successSnack("Login successful");
+      //     await FirebaseAuth.instance.signInWithCredential(credential);
+      //     ApiProcessorController.successSnack("Login successful");
 
-          await Get.offAll(
-            () => LoadingScreen(
-              loadData:
-                  LoadingController.instance.loadLandLordNavgiationOverView,
-            ),
-            routeName: "/loading-screen",
-            fullscreenDialog: true,
-            curve: Curves.easeInOut,
-            predicate: (routes) => false,
-            popGesture: false,
-            transition: Get.defaultTransition,
-          );
-        } on SocketException {
-          ApiProcessorController.errorSnack("Please connect to the internet");
-        } on PlatformException catch (e) {
-          // Handle specific platform exceptions
-          log("Google sign-in failed: ${e.message}");
-          ApiProcessorController.errorSnack("$e");
-          // You can display an error message to the user or handle the error accordingly
-          isLoadingGoogleLogin.value = false;
-          update();
-        } catch (error) {
-          // Handle other types of errors
-          log("Error during Google sign-in: $error");
-          ApiProcessorController.errorSnack("$error");
-          // You can display an error message to the user or handle the error accordingly
-          isLoadingGoogleLogin.value = false;
-          update();
-        }
-        isLoadingGoogleLogin.value = false;
-        update();
-        return; // Exit the function
-      }
+      //     await Get.offAll(
+      //       () => LoadingScreen(
+      //         loadData:
+      //             LoadingController.instance.loadLandLordNavgiationOverView,
+      //       ),
+      //       routeName: "/loading-screen",
+      //       fullscreenDialog: true,
+      //       curve: Curves.easeInOut,
+      //       predicate: (routes) => false,
+      //       popGesture: false,
+      //       transition: Get.defaultTransition,
+      //     );
+      //   } on SocketException {
+      //     ApiProcessorController.errorSnack("Please connect to the internet");
+      //   } on PlatformException catch (e) {
+      //     // Handle specific platform exceptions
+      //     log("Google sign-in failed: ${e.message}");
+      //     ApiProcessorController.errorSnack("$e");
+      //     // You can display an error message to the user or handle the error accordingly
+      //     isLoadingGoogleLogin.value = false;
+      //     update();
+      //   } catch (error) {
+      //     // Handle other types of errors
+      //     log("Error during Google sign-in: $error");
+      //     ApiProcessorController.errorSnack("$error");
+      //     // You can display an error message to the user or handle the error accordingly
+      //     isLoadingGoogleLogin.value = false;
+      //     update();
+      //   }
+      //   isLoadingGoogleLogin.value = false;
+      //   update();
+      //   return; // Exit the function
+      // }
 
-      var gAuth = await gUser.authentication;
+      // var gAuth = await gUser.authentication;
 
-      final credential = GoogleAuthProvider.credential(
-        accessToken: gAuth.accessToken,
-        idToken: gAuth.idToken,
-      );
+      // final credential = GoogleAuthProvider.credential(
+      //   accessToken: gAuth.accessToken,
+      //   idToken: gAuth.idToken,
+      // );
 
-      await FirebaseAuth.instance.signInWithCredential(credential);
+      // await FirebaseAuth.instance.signInWithCredential(credential);
 
-      ApiProcessorController.successSnack("Login successful");
+      // ApiProcessorController.successSnack("Login successful");
 
-      await Get.offAll(
-        () => LoadingScreen(
-          loadData: LoadingController.instance.loadLandLordNavgiationOverView,
-        ),
-        routeName: "/loading-screen",
-        fullscreenDialog: true,
-        curve: Curves.easeInOut,
-        predicate: (routes) => false,
-        popGesture: false,
-        transition: Get.defaultTransition,
-      );
+      // await Get.offAll(
+      //   () => LoadingScreen(
+      //     loadData: LoadingController.instance.loadLandLordNavgiationOverView,
+      //   ),
+      //   routeName: "/loading-screen",
+      //   fullscreenDialog: true,
+      //   curve: Curves.easeInOut,
+      //   predicate: (routes) => false,
+      //   popGesture: false,
+      //   transition: Get.defaultTransition,
+      // );
 
       isLoadingGoogleLogin.value = false;
       update();

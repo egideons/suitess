@@ -60,8 +60,8 @@ class AndroidElevatedButton extends StatelessWidget {
         backgroundColor: buttonColor ?? kAccentColor,
         elevation: buttonElevation ?? 0,
         shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(borderRadius ?? 24)),
-        minimumSize: Size(media.width, 60),
+            borderRadius: BorderRadius.circular(borderRadius ?? 10)),
+        minimumSize: Size(media.width, 40),
       ),
       child: isLoading
           ? CircularProgressIndicator(color: kLightBackgroundColor)

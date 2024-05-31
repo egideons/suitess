@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../src/controllers/others/onboarding_controller.dart';
-import '../../content/onboarding_page_content.dart';
+import '../../content/onboarding_cupertino_page_content.dart';
 
 class OnboardingCupertinoScaffold extends StatelessWidget {
   const OnboardingCupertinoScaffold({super.key});
@@ -15,7 +15,7 @@ class OnboardingCupertinoScaffold extends StatelessWidget {
     final controller = OnboardingController.instance;
 
     return CupertinoPageScaffold(
-      child: onboardingPageContent(
+      child: onboardingCupertinoPageContent(
         media: media,
         colorScheme: colorScheme,
         controller: controller,

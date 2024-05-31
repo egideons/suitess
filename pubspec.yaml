@@ -33,9 +33,9 @@ dependencies:
   readmore:
   shimmer: ^3.0.0-nullsafety.0
   smooth_page_indicator:
-  google_sign_in:
-  firebase_core:
-  firebase_auth:
+  # google_sign_in:
+  # firebase_core:
+  # firebase_auth:
   typewritertext:
 
 dev_dependencies:
