@@ -5,8 +5,7 @@ import 'package:suitess/src/constants/consts.dart';
 import 'package:suitess/src/utils/buttons/ios/scroll_to_top_cupertino_button.dart';
 import 'package:suitess/src/utils/containers/form_field_container.dart';
 import 'package:suitess/src/utils/containers/page_background.dart';
-import 'package:suitess/theme/colors.dart';
-import 'package:typewritertext/typewritertext.dart';
+import 'package:typewritertext/v3/typewriter.dart';
 
 import '../../../../../../src/controllers/landlord/landlord_homescreen_controller.dart';
 import '../../../../../../src/routes/routes.dart';
@@ -56,36 +55,13 @@ class LandLordHomeScreenCupertinoScaffold
                       controller: controller.scrollController,
                       padding: const EdgeInsets.all(10),
                       children: [
-                        TypeWriterText.builder(
-                          " ease.",
-                          play: true,
-                          duration: const Duration(milliseconds: 100),
-                          builder: (context, value) {
-                            return SizedBox(
-                              width: media.width / 3,
-                              child: Text.rich(
-                                TextSpan(
-                                  text: "Manage your \nproperties with",
-                                  style: defaultTextStyle(
-                                    color: colorScheme.primary,
-                                    fontWeight: FontWeight.normal,
-                                    fontSize: 14.0,
-                                  ),
-                                  children: [
-                                    TextSpan(
-                                      text: value,
-                                      style: defaultTextStyle(
-                                        color: kAccentColor,
-                                        fontWeight: FontWeight.normal,
-                                        fontSize: 14.0,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            );
-                          },
-                        ),
+                        TypeWriter.text("Manage your \nproperties with ease",
+                            style: defaultTextStyle(
+                              color: colorScheme.primary,
+                              fontWeight: FontWeight.normal,
+                              fontSize: 14.0,
+                            ),
+                            duration: const Duration(milliseconds: 100)),
                         kSizedBox,
                         formFieldContainer(
                           colorScheme,

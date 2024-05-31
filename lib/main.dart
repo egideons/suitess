@@ -1,13 +1,11 @@
 import 'dart:io';
 
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:suitess/firebase_options.dart';
 import 'package:suitess/src/controllers/others/loading_controller.dart';
 
 import 'src/controllers/others/theme_controller.dart';
@@ -23,7 +21,7 @@ void main() async {
     SystemUiOverlayStyle(statusBarColor: kTransparentColor),
   );
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  // await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   prefs = await SharedPreferences.getInstance();
 

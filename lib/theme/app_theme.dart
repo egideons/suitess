@@ -98,7 +98,7 @@ ThemeData androidLightTheme = ThemeData(
   ),
   // textTheme: GoogleFonts.montserratAlternatesTextTheme(Typography.dense2021),
   colorScheme: ColorScheme.light(
-    background: kLightBackgroundColor,
+    surface: kLightBackgroundColor,
     primary: kDarkBackgroundColor,
     inversePrimary: Colors.grey.shade400,
     secondary: kAccentColor,
@@ -179,7 +179,7 @@ ThemeData androidDarkTheme = ThemeData(
   ),
   // textTheme: GoogleFonts.montserratAlternatesTextTheme(Typography.dense2021),
   colorScheme: ColorScheme.dark(
-    background: kDarkBackgroundColor,
+    surface: kDarkBackgroundColor,
     primary: kLightBackgroundColor,
     inversePrimary: Colors.grey.shade600,
     secondary: kAccentColor,

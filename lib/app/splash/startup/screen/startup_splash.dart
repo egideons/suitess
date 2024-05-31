@@ -28,7 +28,7 @@ class StartupSplashscreen extends StatelessWidget {
     return GetBuilder<AuthController>(
       init: AuthController(),
       builder: (controller) {
-        return const SplashAndroidScaffold();
+        return const StartupSplashAndroidScaffold();
       },
     );
   }

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../content/splash_page_content.dart';
 
-class SplashAndroidScaffold extends StatelessWidget {
-  const SplashAndroidScaffold({super.key});
+class StartupSplashAndroidScaffold extends StatelessWidget {
+  const StartupSplashAndroidScaffold({super.key});
 
   @override
   Widget build(BuildContext context) {
