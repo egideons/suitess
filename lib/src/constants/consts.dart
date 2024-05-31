@@ -81,6 +81,29 @@ const String streetAddressPattern = r'^\d+\s+[a-zA-Z0-9\s.-]+$';
 const String emailPattern =
     r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
 
+//===================== Mask Phone Number ==========================\\
+String maskPhoneNumber(String phoneNumber) {
+  // Ensure the phone number is at least 4 characters long
+  if (phoneNumber.length < 4) {
+    throw ArgumentError('Phone number must be at least 4 digits long');
+  }
+
+  // Get the last 4 digits of the phone number
+  String lastFour = phoneNumber.substring(phoneNumber.length - 4);
+
+  // Mask the remaining part of the phone number with asterisks
+  String maskedPart = '*' * (phoneNumber.length - 4);
+
+  // Combine the masked part with the last four digits
+  return maskedPart + lastFour;
+}
+
+void main() {
+  String phoneNumber = "1234567890";
+  String maskedPhoneNumber = maskPhoneNumber(phoneNumber);
+  print(maskedPhoneNumber); // Output: ******7890
+}
+
 //===================== DateTime Formate ==========================\\
 
 String formatDateAndTime(DateTime dateTime) {

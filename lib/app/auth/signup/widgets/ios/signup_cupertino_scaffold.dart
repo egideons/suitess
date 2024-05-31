@@ -440,7 +440,6 @@ class SignupCupertinoScaffold extends GetView<SignupController> {
             ),
             child: SingleChildScrollView(
               child: Container(
-                height: media.height,
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
                   color: colorScheme.surface,
@@ -512,8 +511,7 @@ class SignupCupertinoScaffold extends GetView<SignupController> {
                                 placeholder: "Phone number",
                                 textInputAction: TextInputAction.next,
                                 textCapitalization: TextCapitalization.none,
-                                keyboardType:
-                                    const TextInputType.numberWithOptions(),
+                                keyboardType: TextInputType.phone,
                                 onChanged:
                                     signupController.phoneNumberOnChanged,
                                 validator: (value) {

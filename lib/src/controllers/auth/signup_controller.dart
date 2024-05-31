@@ -190,6 +190,8 @@ class SignupController extends GetxController {
     isLoadingGoogleSignup.value = true;
     update();
 
+    await Future.delayed(const Duration(milliseconds: 500));
+
     // GoogleSignIn googleSignIn = GoogleSignIn(
     //   // Optional clientId
     //   clientId:

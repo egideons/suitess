@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:suitess/app/auth/components/auth_app_bar.dart';
 import 'package:suitess/app/auth/phone_otp/content/phone_otp_page_header.dart';
 import 'package:suitess/src/utils/buttons/android/android_elevated_button.dart';
 import 'package:suitess/src/utils/text_form_fields/android/android_textformfield.dart';
 
+import '../../../../../src/constants/assets.dart';
 import '../../../../../src/constants/consts.dart';
 import '../../../../../src/controllers/auth/phone_otp_controller.dart';
-import '../../../../../src/utils/containers/form_field_container.dart';
 import '../../../../../theme/colors.dart';
 
 class PhoneOTPScaffold extends GetView<PhoneOTPController> {
@@ -23,19 +22,22 @@ class PhoneOTPScaffold extends GetView<PhoneOTPController> {
     var otpController = PhoneOTPController.instance;
 
     return Scaffold(
-      appBar: authAppBar(
-        colorScheme: colorScheme,
-        media: media,
-        title: "OTP",
-      ),
+      appBar: AppBar(),
       body: ListView(
         padding: const EdgeInsets.all(10),
         children: [
+          SvgPicture.asset(
+            Assets.otpSvg,
+            fit: BoxFit.fitHeight,
+            height: media.height * .2,
+          ),
+          kSizedBox,
           phoneOTPPageHeader(
             colorScheme: colorScheme,
             media: media,
-            title: "Email verification",
-            subtitle: "Enter the 4-digit OTP sent to your email",
+            title: "OTP verification",
+            subtitle: "Enter the 4-digit verification code we sent to ",
+            phoneNumber: maskPhoneNumber("08074656497"),
           ),
           const SizedBox(height: kDefaultPadding * 2),
           Form(
@@ -45,11 +47,8 @@ class PhoneOTPScaffold extends GetView<PhoneOTPController> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                formFieldContainer(
-                  colorScheme,
-                  media,
-                  containerWidth: media.width * 0.18,
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                SizedBox(
+                  width: media.width * 0.18,
                   child: Center(
                     child: AndroidTextFormField(
                       controller: otpController.pin1EC,
@@ -57,7 +56,7 @@ class PhoneOTPScaffold extends GetView<PhoneOTPController> {
                       textInputAction: TextInputAction.next,
                       textCapitalization: TextCapitalization.none,
                       keyboardType: TextInputType.number,
-                      hintText: "0",
+                      inputBorder: const UnderlineInputBorder(),
                       onChanged: (value) {
                         otpController.pin1Onchanged(value, context);
                       },
@@ -71,11 +70,8 @@ class PhoneOTPScaffold extends GetView<PhoneOTPController> {
                     ),
                   ),
                 ),
-                formFieldContainer(
-                  colorScheme,
-                  media,
-                  containerWidth: media.width * 0.18,
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                SizedBox(
+                  width: media.width * 0.18,
                   child: Center(
                     child: AndroidTextFormField(
                       controller: otpController.pin2EC,
@@ -83,7 +79,7 @@ class PhoneOTPScaffold extends GetView<PhoneOTPController> {
                       textInputAction: TextInputAction.next,
                       textCapitalization: TextCapitalization.none,
                       keyboardType: TextInputType.number,
-                      hintText: "0",
+                      inputBorder: const UnderlineInputBorder(),
                       inputFormatters: [
                         LengthLimitingTextInputFormatter(1),
                         FilteringTextInputFormatter.digitsOnly,
@@ -97,11 +93,8 @@ class PhoneOTPScaffold extends GetView<PhoneOTPController> {
                     ),
                   ),
                 ),
-                formFieldContainer(
-                  colorScheme,
-                  media,
-                  containerWidth: media.width * 0.18,
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                SizedBox(
+                  width: media.width * 0.18,
                   child: Center(
                     child: AndroidTextFormField(
                       controller: otpController.pin3EC,
@@ -109,7 +102,7 @@ class PhoneOTPScaffold extends GetView<PhoneOTPController> {
                       textInputAction: TextInputAction.next,
                       textCapitalization: TextCapitalization.none,
                       keyboardType: TextInputType.number,
-                      hintText: "0",
+                      inputBorder: const UnderlineInputBorder(),
                       inputFormatters: [
                         LengthLimitingTextInputFormatter(1),
                         FilteringTextInputFormatter.digitsOnly,
@@ -123,11 +116,8 @@ class PhoneOTPScaffold extends GetView<PhoneOTPController> {
                     ),
                   ),
                 ),
-                formFieldContainer(
-                  colorScheme,
-                  media,
-                  containerWidth: media.width * 0.18,
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                SizedBox(
+                  width: media.width * 0.18,
                   child: Center(
                     child: AndroidTextFormField(
                       controller: otpController.pin4EC,
@@ -135,7 +125,7 @@ class PhoneOTPScaffold extends GetView<PhoneOTPController> {
                       textInputAction: TextInputAction.done,
                       textCapitalization: TextCapitalization.none,
                       keyboardType: TextInputType.number,
-                      hintText: "0",
+                      inputBorder: const UnderlineInputBorder(),
                       onFieldSubmitted: otpController.onSubmitted,
                       inputFormatters: [
                         LengthLimitingTextInputFormatter(1),
@@ -158,7 +148,7 @@ class PhoneOTPScaffold extends GetView<PhoneOTPController> {
           GetBuilder<PhoneOTPController>(
             builder: (controller) {
               return AndroidElevatedButton(
-                title: "Continue",
+                title: "Verify",
                 isLoading: otpController.isLoading.value ? true : false,
                 disable: otpController.formIsValid.value ? false : true,
                 onPressed: otpController.submitOTP,
@@ -169,21 +159,12 @@ class PhoneOTPScaffold extends GetView<PhoneOTPController> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                "Expires in 2 minutes",
-                textAlign: TextAlign.center,
-                overflow: TextOverflow.ellipsis,
-                maxLines: 4,
-                style: defaultTextStyle(
-                  color: colorScheme.primary,
-                  fontSize: 14.0,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-              kHalfWidthSizedBox,
               Obx(
-                () {
-                  return AnimatedDefaultTextStyle(
+                () => InkWell(
+                  onTap: otpController.timerComplete.isTrue
+                      ? otpController.requestOTP
+                      : null,
+                  child: AnimatedDefaultTextStyle(
                     duration: const Duration(milliseconds: 300),
                     curve: Curves.easeIn,
                     style: defaultTextStyle(
@@ -191,67 +172,27 @@ class PhoneOTPScaffold extends GetView<PhoneOTPController> {
                       color: otpController.timerComplete.isTrue
                           ? kSuccessColor
                           : kErrorColor,
+                      decoration: TextDecoration.underline,
                       fontWeight: FontWeight.w600,
                     ),
                     textAlign: TextAlign.center,
-                    child: Text(
-                      otpController
-                          .formatTime(otpController.secondsRemaining.value),
-                    ),
-                  );
-                },
-              ),
-            ],
-          ),
-          kSizedBox,
-          Obx(
-            () {
-              return Center(
-                child: InkWell(
-                  onTap: otpController.timerComplete.isTrue
-                      ? otpController.requestOTP
-                      : null,
-                  borderRadius: BorderRadius.circular(24),
-                  child: Container(
-                    width: media.width - 180,
-                    padding: const EdgeInsets.all(10),
-                    decoration: ShapeDecoration(
-                      color: Get.isDarkMode
-                          ? kSuccessColor.withOpacity(0.2)
-                          : kSuccessColor.withOpacity(0.06),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(24),
-                      ),
-                    ),
-                    child: Center(
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          FaIcon(
-                            FontAwesomeIcons.solidEnvelope,
-                            color: otpController.timerComplete.isTrue
-                                ? kSuccessColor
-                                : colorScheme.inversePrimary,
-                            size: 12,
-                          ),
-                          kHalfWidthSizedBox,
-                          Text(
-                            "Resend code",
-                            style: defaultTextStyle(
-                              color: otpController.timerComplete.isTrue
-                                  ? kSuccessColor
-                                  : colorScheme.inversePrimary,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+                    child: const Text("Resend code"),
                   ),
                 ),
-              );
-            },
+              ),
+              kHalfWidthSizedBox,
+              Obx(() => otpController.timerComplete.isTrue
+                  ? const SizedBox()
+                  : Text(
+                      "in ${otpController.formatTime(otpController.secondsRemaining.value)}s",
+                      textAlign: TextAlign.center,
+                      style: defaultTextStyle(
+                        fontSize: 15.0,
+                        color: colorScheme.primary,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    )),
+            ],
           ),
           kSizedBox,
         ],

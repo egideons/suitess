@@ -1,5 +1,6 @@
 // ignore_for_file: file_names
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:suitess/src/constants/consts.dart';
@@ -17,7 +18,7 @@ class AndroidElevatedButton extends StatelessWidget {
   final MainAxisAlignment? mainAxisAlignment;
   final IconData? buttonIcon;
   final Color? buttonColor, indicatorColor, textColor, buttonIconColor;
-  final Widget? buttonIconWidget;
+  final Widget? rowIconWidget;
   final FontWeight? fontWeight;
 
   const AndroidElevatedButton({
@@ -39,7 +40,7 @@ class AndroidElevatedButton extends StatelessWidget {
     this.mainAxisAlignment,
     this.indicatorColor,
     this.textColor,
-    this.buttonIconWidget,
+    this.rowIconWidget,
     this.fontWeight,
   });
 
@@ -64,14 +65,14 @@ class AndroidElevatedButton extends StatelessWidget {
         minimumSize: Size(media.width, 40),
       ),
       child: isLoading
-          ? CircularProgressIndicator(color: kLightBackgroundColor)
+          ? CupertinoActivityIndicator(color: colorScheme.surface)
           : isRowVisible == true
               ? isSwitched == true
                   ? Row(
                       mainAxisAlignment:
                           mainAxisAlignment ?? MainAxisAlignment.spaceBetween,
                       children: [
-                        buttonIconWidget ??
+                        rowIconWidget ??
                             FaIcon(
                               buttonIcon,
                               color: buttonIconColor,
@@ -109,11 +110,12 @@ class AndroidElevatedButton extends StatelessWidget {
                         mainAxisAlignment == null
                             ? const SizedBox()
                             : kHalfWidthSizedBox,
-                        FaIcon(
-                          buttonIcon,
-                          color: buttonIconColor,
-                          size: buttonIconSize ?? 16,
-                        ),
+                        rowIconWidget ??
+                            FaIcon(
+                              buttonIcon,
+                              color: buttonIconColor,
+                              size: buttonIconSize ?? 16,
+                            ),
                       ],
                     )
               : Text(

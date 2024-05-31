@@ -1,10 +1,9 @@
 // ignore_for_file: file_names
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:suitess/src/constants/consts.dart';
-
-import '../../../../../theme/colors.dart';
 
 class AndroidOutlinedButton extends StatelessWidget {
   final String title;
@@ -12,11 +11,18 @@ class AndroidOutlinedButton extends StatelessWidget {
   final bool isLoading;
   final bool disable;
   final String? fontFamily;
-  final double? buttonElevation, fontSize;
+  final double? buttonElevation, borderRadius, fontSize, buttonIconSize;
+
   final bool? isRowVisible, isSwitched;
+  final MainAxisAlignment? mainAxisAlignment;
   final IconData? buttonIcon;
-  final Color? buttonIconColor, borderColor;
-  final double? buttonIconSize;
+  final Color? borderColor,
+      buttonColor,
+      indicatorColor,
+      textColor,
+      buttonIconColor;
+  final Widget? rowIconWidget;
+  final FontWeight? fontWeight;
 
   const AndroidOutlinedButton({
     super.key,
@@ -32,6 +38,13 @@ class AndroidOutlinedButton extends StatelessWidget {
     this.buttonIconColor,
     this.buttonIconSize,
     this.isSwitched = false,
+    this.borderRadius,
+    this.mainAxisAlignment,
+    this.buttonColor,
+    this.indicatorColor,
+    this.textColor,
+    this.rowIconWidget,
+    this.fontWeight,
     this.borderColor,
   });
 
@@ -47,68 +60,76 @@ class AndroidOutlinedButton extends StatelessWidget {
               : onPressed,
       onLongPress: null,
       style: OutlinedButton.styleFrom(
-        disabledBackgroundColor: colorScheme.primary.withOpacity(0.2),
+        disabledBackgroundColor: colorScheme.inversePrimary,
         backgroundColor: colorScheme.surface,
-        side: BorderSide(color: borderColor ?? colorScheme.primary),
+        side: BorderSide(color: borderColor ?? colorScheme.primary, width: .6),
         elevation: buttonElevation ?? 0,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
-        minimumSize: Size(media.width, 60),
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(borderRadius ?? 10)),
+        minimumSize: Size(media.width, 40),
       ),
       child: isLoading
-          ? CircularProgressIndicator(color: kAccentColor)
+          ? CupertinoActivityIndicator(color: colorScheme.surface)
           : isRowVisible == true
               ? isSwitched == true
                   ? Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment:
+                          mainAxisAlignment ?? MainAxisAlignment.spaceBetween,
                       children: [
-                        FaIcon(
-                          buttonIcon,
-                          color: buttonIconColor,
-                          size: buttonIconSize ?? 16,
-                        ),
+                        rowIconWidget ??
+                            FaIcon(
+                              buttonIcon,
+                              color: buttonIconColor,
+                              size: buttonIconSize ?? 16,
+                            ),
+                        mainAxisAlignment == null
+                            ? const SizedBox()
+                            : kHalfWidthSizedBox,
                         Text(
                           title,
                           textAlign: TextAlign.center,
                           style: defaultTextStyle(
-                            color: colorScheme.inversePrimary,
-                            fontSize: fontSize ?? 18,
+                            color: textColor ?? colorScheme.primary,
+                            fontSize: fontSize ?? 14,
                             fontFamily: fontFamily,
-                            fontWeight: FontWeight.w900,
-                            letterSpacing: -0.40,
+                            fontWeight: fontWeight ?? FontWeight.w600,
                           ),
                         ),
                       ],
                     )
                   : Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment:
+                          mainAxisAlignment ?? MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
                           title,
                           textAlign: TextAlign.center,
                           style: defaultTextStyle(
-                            color: colorScheme.inversePrimary,
-                            fontSize: fontSize ?? 18,
+                            color: textColor ?? colorScheme.primary,
+                            fontSize: fontSize ?? 14,
                             fontFamily: fontFamily,
-                            fontWeight: FontWeight.w900,
-                            letterSpacing: -0.40,
+                            fontWeight: fontWeight ?? FontWeight.w600,
                           ),
                         ),
-                        FaIcon(
-                          buttonIcon,
-                          color: buttonIconColor,
-                          size: buttonIconSize ?? 16,
-                        ),
+                        mainAxisAlignment == null
+                            ? const SizedBox()
+                            : kHalfWidthSizedBox,
+                        rowIconWidget ??
+                            FaIcon(
+                              buttonIcon,
+                              color: buttonIconColor,
+                              size: buttonIconSize ?? 16,
+                            ),
                       ],
                     )
               : Text(
                   title,
                   textAlign: TextAlign.center,
                   style: defaultTextStyle(
-                    color: colorScheme.inversePrimary,
-                    fontSize: fontSize ?? 16,
+                    color: textColor ?? colorScheme.primary,
+                    fontSize: fontSize ?? 14,
                     fontFamily: fontFamily,
-                    fontWeight: FontWeight.w900,
-                    letterSpacing: -0.40,
+                    fontWeight: fontWeight ?? FontWeight.w600,
                   ),
                 ),
     );

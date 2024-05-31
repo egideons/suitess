@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:suitess/app/auth/phone_otp/content/phone_otp_page_header.dart';
@@ -29,8 +30,8 @@ class PhoneOTPCupertinoScaffold extends GetView<PhoneOTPController> {
           padding: const EdgeInsets.all(10),
           children: [
             kSizedBox,
-            Image.asset(
-              Assets.otpPng,
+            SvgPicture.asset(
+              Assets.otpSvg,
               fit: BoxFit.fitHeight,
               height: media.height * .2,
             ),
@@ -39,8 +40,8 @@ class PhoneOTPCupertinoScaffold extends GetView<PhoneOTPController> {
               colorScheme: colorScheme,
               media: media,
               title: "OTP verification",
-              subtitle:
-                  "Enter the 4-digit verification code we sent to your number",
+              subtitle: "Enter the 4-digit verification code we sent to ",
+              phoneNumber: "*******6497",
             ),
             const SizedBox(height: kDefaultPadding * 2),
             Form(

@@ -25,6 +25,7 @@ class AndroidTextFormField extends StatelessWidget {
       autoCorrect,
       obscureText,
       filled;
+  final InputBorder? inputBorder;
 
   final List<TextInputFormatter>? inputFormatters;
   final void Function()? onTap;
@@ -71,6 +72,7 @@ class AndroidTextFormField extends StatelessWidget {
     this.maxLength,
     this.obscuringCharacter,
     this.filled,
+    this.inputBorder,
   });
 
   @override
@@ -142,7 +144,7 @@ class AndroidTextFormField extends StatelessWidget {
           fontWeight: FontWeight.normal,
         ),
         // errorStyle: const TextStyle(color: Colors.red),
-        border: InputBorder.none,
+        border: inputBorder ?? InputBorder.none,
         // enabledBorder: OutlineInputBorder(
         //   borderRadius: BorderRadius.circular(10.0),
         //   borderSide: BorderSide(

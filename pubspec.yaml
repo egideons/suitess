@@ -14,17 +14,12 @@ dependencies:
   flutter_svg:
   iconsax:
   custom_navigation_bar:
-  animate_do:
   get:
   path:
   intl:
   shared_preferences:
   lottie:
-  url_launcher:
-  permission_handler:
   image_picker:
-  image_cropper:
-  google_fonts:
   loading_animation_widget:
   dio:
   delightful_toast:

@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:suitess/theme/colors.dart';
 
 Widget formFieldContainer(colorScheme, media,
-    {child, containerHeight, containerWidth, padding}) {
+    {child, containerHeight, containerWidth, padding, color, borderSide}) {
   return Container(
     width: containerWidth ?? media.width,
     height: containerHeight ?? media.height * 0.06,
-    padding: padding,
+    padding: padding ?? const EdgeInsets.symmetric(horizontal: 10),
     decoration: ShapeDecoration(
-      color: colorScheme.inversePrimary.withOpacity(0.2),
+      color: color ?? kTransparentColor,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
-        side: BorderSide(color: colorScheme.inversePrimary, width: 0.2),
+        borderRadius: BorderRadius.circular(8),
+        side: BorderSide(color: colorScheme.primary, width: 0.2),
       ),
 
       // shadows: [
@@ -23,6 +24,8 @@ Widget formFieldContainer(colorScheme, media,
 
       // ],
     ),
-    child: child,
+    child: Center(
+      child: child,
+    ),
   );
 }

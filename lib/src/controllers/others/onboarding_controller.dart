@@ -11,6 +11,7 @@ class OnboardingController extends GetxController {
   }
 
   var scrollController = ScrollController().obs;
+  var imageController = PageController().obs;
   var pageController = PageController().obs;
   var onboardController = OnboardContent().obs;
 
