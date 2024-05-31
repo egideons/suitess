@@ -22,6 +22,7 @@ class ResetPasswordScaffold extends GetView<ResetPasswordController> {
     var resetPasswordController = ResetPasswordController.instance;
 
     return Scaffold(
+      backgroundColor: colorScheme.surface,
       appBar: authAppBar(
         media: media,
         colorScheme: colorScheme,

@@ -30,6 +30,7 @@ class LoginScaffold extends GetView<LoginController> {
     //Mobile Landscape mode or Large screens
     if (deviceType(media.width) > 1) {
       return Scaffold(
+        backgroundColor: colorScheme.surface,
         body: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -337,6 +338,7 @@ class LoginScaffold extends GetView<LoginController> {
 
     //Portrait mode for mobile screens
     return Scaffold(
+      backgroundColor: colorScheme.surface,
       body: Stack(
         children: [
           //Background Image with Heading

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:suitess/app/auth/forgot_password/content/forgot_password_page_header.dart';
 import 'package:suitess/src/constants/consts.dart';
 import 'package:suitess/src/controllers/auth/forgot_password_controller.dart';
@@ -20,8 +20,18 @@ class ForgotPasswordScaffold extends GetView<ForgotPasswordController> {
     final forgotPasswordController = ForgotPasswordController.instance;
 
     return Scaffold(
+      backgroundColor: colorScheme.surface,
       appBar: AppBar(
         backgroundColor: colorScheme.surface,
+        leading: IconButton(
+          onPressed: () {
+            Get.back();
+          },
+          icon: Icon(
+            Iconsax.arrow_left_2,
+            color: colorScheme.primary,
+          ),
+        ),
       ),
       body: SafeArea(
         child: ListView(
@@ -33,8 +43,8 @@ class ForgotPasswordScaffold extends GetView<ForgotPasswordController> {
                   : const SizedBox(),
             ),
             forgotPasswordPageHeader(
-              title: "Forgot Password",
-              subtitle: "Select where you want us to send you an OTP",
+              title: "Oh no, did you forget your password?",
+              subtitle: "Select an option below to receive an OTP",
               colorScheme: colorScheme,
               media: media,
             ),
@@ -48,7 +58,7 @@ class ForgotPasswordScaffold extends GetView<ForgotPasswordController> {
                       ? null
                       : forgotPasswordController.navigateToEmail,
                   bgColor: forgotPasswordController.items[0]
-                      ? kSuccessColor.withOpacity(0.8)
+                      ? kSuccessColor
                       : colorScheme.inversePrimary.withOpacity(0.2),
                   titleColor: forgotPasswordController.items[0]
                       ? kLightBackgroundColor
@@ -56,8 +66,8 @@ class ForgotPasswordScaffold extends GetView<ForgotPasswordController> {
                   iconColor: forgotPasswordController.items[0]
                       ? kLightBackgroundColor
                       : colorScheme.inversePrimary,
-                  faIcon: FaIcon(
-                    FontAwesomeIcons.solidEnvelope,
+                  faIcon: Icon(
+                    Iconsax.sms5,
                     color: forgotPasswordController.items[0]
                         ? kLightBackgroundColor
                         : colorScheme.inversePrimary,
@@ -75,7 +85,7 @@ class ForgotPasswordScaffold extends GetView<ForgotPasswordController> {
                       ? null
                       : forgotPasswordController.navigateToSMS,
                   bgColor: forgotPasswordController.items[1]
-                      ? kSuccessColor.withOpacity(0.8)
+                      ? kSuccessColor
                       : colorScheme.inversePrimary.withOpacity(0.2),
                   titleColor: forgotPasswordController.items[1]
                       ? kLightBackgroundColor
@@ -83,8 +93,8 @@ class ForgotPasswordScaffold extends GetView<ForgotPasswordController> {
                   iconColor: forgotPasswordController.items[1]
                       ? kLightBackgroundColor
                       : colorScheme.inversePrimary,
-                  faIcon: FaIcon(
-                    FontAwesomeIcons.solidMessage,
+                  faIcon: Icon(
+                    Iconsax.message5,
                     color: forgotPasswordController.items[1]
                         ? kLightBackgroundColor
                         : colorScheme.inversePrimary,

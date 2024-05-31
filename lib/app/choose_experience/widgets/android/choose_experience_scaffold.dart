@@ -19,6 +19,7 @@ class ChooseExperienceScaffold extends GetView<ChooseExperienceController> {
     var chooseExperienceController = ChooseExperienceController.instance;
 
     return Scaffold(
+      backgroundColor: colorScheme.surface,
       appBar: AppBar(
         backgroundColor: colorScheme.surface,
       ),

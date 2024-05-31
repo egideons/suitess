@@ -15,6 +15,7 @@ class LoadingScreenScaffold extends StatelessWidget {
     Timer(Duration.zero, loadData ?? () {});
 
     return Scaffold(
+      backgroundColor: colorScheme.surface,
       body: SafeArea(
         child: ListView(
           physics: const NeverScrollableScrollPhysics(),

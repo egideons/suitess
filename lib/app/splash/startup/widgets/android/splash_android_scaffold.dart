@@ -11,6 +11,7 @@ class StartupSplashAndroidScaffold extends StatelessWidget {
     var colorScheme = Theme.of(context).colorScheme;
 
     return Scaffold(
+      backgroundColor: colorScheme.surface,
       body: SafeArea(
         child: ListView(
           physics: const NeverScrollableScrollPhysics(),

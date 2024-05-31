@@ -24,6 +24,7 @@ class KycProfilePhotoScaffold extends GetView<KycProfilePhotoController> {
     var kycProfilePhotoController = KycProfilePhotoController.instance;
 
     return Scaffold(
+      backgroundColor: colorScheme.surface,
       appBar: authAppBar(
         colorScheme: colorScheme,
         media: media,

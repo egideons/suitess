@@ -23,6 +23,7 @@ class KycNinScaffold extends GetView<KycNINController> {
     var kycNinController = KycNINController.instance;
 
     return Scaffold(
+      backgroundColor: colorScheme.surface,
       appBar: authAppBar(
         colorScheme: colorScheme,
         media: media,

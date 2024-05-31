@@ -25,6 +25,7 @@ class PhoneOTPScaffold extends GetView<PhoneOTPController> {
     //Large screens or Mobile Landscape mode
     if (deviceType(media.width) > 1) {
       return Scaffold(
+        backgroundColor: colorScheme.surface,
         body: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -242,6 +243,7 @@ class PhoneOTPScaffold extends GetView<PhoneOTPController> {
 
     //Portrait mode for Mobile Screens
     return Scaffold(
+      backgroundColor: colorScheme.surface,
       appBar: AppBar(),
       body: SafeArea(
         child: ListView(

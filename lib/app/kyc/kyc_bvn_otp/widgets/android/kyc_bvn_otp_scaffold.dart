@@ -23,6 +23,7 @@ class KycBvnOTPScaffold extends GetView<KycBvnOTPController> {
     var kycBvnOTPController = KycBvnOTPController.instance;
 
     return Scaffold(
+      backgroundColor: colorScheme.surface,
       appBar: authAppBar(
         colorScheme: colorScheme,
         media: media,

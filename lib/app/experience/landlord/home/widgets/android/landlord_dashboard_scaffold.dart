@@ -15,6 +15,7 @@ class LandLordHomeScreenScaffold extends StatelessWidget {
     var colorScheme = Theme.of(context).colorScheme;
 
     return Scaffold(
+      backgroundColor: colorScheme.surface,
       appBar: AppBar(
         backgroundColor: colorScheme.surface,
         automaticallyImplyLeading: true,

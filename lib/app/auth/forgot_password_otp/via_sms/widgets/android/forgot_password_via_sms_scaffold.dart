@@ -25,6 +25,7 @@ class ForgotPasswordViaSMSOTPScaffold
         ForgotPasswordViaSMSOtpController.instance;
 
     return Scaffold(
+      backgroundColor: colorScheme.surface,
       appBar: authAppBar(
         colorScheme: colorScheme,
         media: media,

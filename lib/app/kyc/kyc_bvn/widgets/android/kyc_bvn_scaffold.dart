@@ -23,6 +23,7 @@ class KycBvnScaffold extends GetView<KycBvnController> {
     var kycBvnController = KycBvnController.instance;
 
     return Scaffold(
+      backgroundColor: colorScheme.surface,
       appBar: authAppBar(
         colorScheme: colorScheme,
         media: media,

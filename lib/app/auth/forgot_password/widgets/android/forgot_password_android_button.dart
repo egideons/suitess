@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:iconsax/iconsax.dart';
 
 import '../../../../../src/constants/consts.dart';
 import '../../../../../theme/colors.dart';
 
-Widget forgotPasswordAndroidButton(
+forgotPasswordAndroidButton(
   media,
   onTap, {
   title,
@@ -12,33 +13,35 @@ Widget forgotPasswordAndroidButton(
   faIcon,
   titleColor,
   iconColor,
+  padding,
 }) {
   return InkWell(
     onTap: onTap,
-    borderRadius: BorderRadius.circular(16),
+    borderRadius: BorderRadius.circular(10),
     child: Container(
       width: media.width,
-      padding: const EdgeInsets.all(20),
+      padding: padding ?? const EdgeInsets.all(10),
       decoration: ShapeDecoration(
-        color: bgColor ?? kSuccessColor.withOpacity(0.8),
+        color: bgColor ?? kSuccessColor,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(10),
         ),
       ),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           faIcon ??
-              FaIcon(
-                FontAwesomeIcons.buildingUser,
+              Icon(
+                Iconsax.message,
                 color: kLightBackgroundColor,
               ),
-          SizedBox(
-            width: media.width / 2,
+          kHalfWidthSizedBox,
+          Expanded(
+            flex: 10,
             child: Text(
               title ?? "",
               maxLines: 2,
+              textAlign: TextAlign.start,
               overflow: TextOverflow.ellipsis,
               style: defaultTextStyle(
                 fontSize: 16.0,
@@ -46,12 +49,12 @@ Widget forgotPasswordAndroidButton(
               ),
             ),
           ),
-          kWidthSizedBox,
-          kWidthSizedBox,
-          FaIcon(
-            FontAwesomeIcons.chevronRight,
-            color: iconColor ?? kLightBackgroundColor,
-            size: 16,
+          Expanded(
+            child: FaIcon(
+              FontAwesomeIcons.chevronRight,
+              color: iconColor ?? kLightBackgroundColor,
+              size: 16,
+            ),
           )
         ],
       ),

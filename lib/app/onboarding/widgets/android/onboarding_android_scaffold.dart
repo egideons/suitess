@@ -14,6 +14,7 @@ class OnboardingAndroidScaffold extends StatelessWidget {
     final controller = OnboardingController.instance;
 
     return Scaffold(
+      backgroundColor: colorScheme.surface,
       appBar: AppBar(
         toolbarHeight: media.height * .004,
       ),

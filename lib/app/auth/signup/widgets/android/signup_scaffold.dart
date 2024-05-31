@@ -30,6 +30,7 @@ class SignupScaffold extends GetView<SignupController> {
     //Mobile Landscape mode or Large screens
     if (deviceType(media.width) > 1) {
       return Scaffold(
+        backgroundColor: colorScheme.surface,
         body: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -361,6 +362,7 @@ class SignupScaffold extends GetView<SignupController> {
 
     //Portrait mode for mobile screens
     return Scaffold(
+      backgroundColor: colorScheme.surface,
       body: Stack(
         children: [
           //Background Image with Heading

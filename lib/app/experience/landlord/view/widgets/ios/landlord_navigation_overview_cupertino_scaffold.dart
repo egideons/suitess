@@ -20,6 +20,7 @@ class LandLordNavigationOverViewCupertinoScaffold
 
     return CupertinoPageScaffold(
       child: Scaffold(
+        backgroundColor: colorScheme.surface,
         body: Obx(
           () => controller.landlordNavScreens(
               colorScheme)[controller.landlordNavCurrrentIndex.value],
