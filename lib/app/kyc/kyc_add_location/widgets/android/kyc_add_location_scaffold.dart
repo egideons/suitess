@@ -28,6 +28,8 @@ class KycAddLocationScaffold extends GetView<KycAddLocationController> {
     //Mobile Landscape mode or Large screens
     if (deviceType(media.width) > 1) {
       return Scaffold(
+        backgroundColor: colorScheme.surface,
+        appBar: AppBar(toolbarHeight: 4),
         body: SafeArea(
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -61,7 +63,7 @@ class KycAddLocationScaffold extends GetView<KycAddLocationController> {
                       color: colorScheme.surface,
                       borderRadius: BorderRadius.circular(12),
                       border: Border.all(
-                        width: .2,
+                        width: 1,
                         color: colorScheme.inversePrimary,
                       ),
                     ),
@@ -294,6 +296,8 @@ class KycAddLocationScaffold extends GetView<KycAddLocationController> {
 
     //Portrait mode for Mobile Screens
     return Scaffold(
+      backgroundColor: colorScheme.surface,
+      appBar: AppBar(toolbarHeight: 4),
       body: SafeArea(
         child: ListView(
           padding: const EdgeInsets.all(10),

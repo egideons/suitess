@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 import '../../../../src/constants/consts.dart';
 import '../../../../theme/colors.dart';
 
-Widget loginPageHeader({colorScheme, media}) {
+signupPageHeader() {
   return Container(
-    height: 250.0,
+    height: 220.0,
     alignment: Alignment.center,
     child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          "Welcome back!",
+          "Welcome to suitess",
           overflow: TextOverflow.ellipsis,
           textAlign: TextAlign.center,
           maxLines: 4,
@@ -22,7 +22,7 @@ Widget loginPageHeader({colorScheme, media}) {
           ),
         ),
         Text(
-          "Login to continue",
+          "Let's get you started",
           overflow: TextOverflow.ellipsis,
           textAlign: TextAlign.center,
           maxLines: 4,

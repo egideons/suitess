@@ -36,6 +36,7 @@ class LoginController extends GetxController {
   var isPasswordValid = false.obs;
   var passwordIsHidden = true.obs;
   var formIsValid = false.obs;
+  var rememberMe = false.obs;
 
   var responseStatus = 0.obs;
   var responseMessage = "".obs;
@@ -55,7 +56,7 @@ class LoginController extends GetxController {
   }
 
   passwordOnChanged(value) {
-    var passwordRegExp = RegExp(passwordPattern);
+    var passwordRegExp = RegExp(loginPasswordPattern);
     if (isEmailValid.isTrue) {
       if (!passwordRegExp.hasMatch(passwordEC.text)) {
         isPasswordValid.value = false;
@@ -135,6 +136,8 @@ class LoginController extends GetxController {
   Future<void> loginWithGoogle() async {
     isLoadingGoogleLogin.value = true;
     update();
+
+    await Future.delayed(const Duration(seconds: 2));
 
     // GoogleSignIn googleSignIn = GoogleSignIn(
     //   // Optional clientId

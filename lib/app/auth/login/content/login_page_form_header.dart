@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../src/constants/consts.dart';
 import '../../../../theme/colors.dart';
 
-signupFormPageHeader({colorScheme, media}) {
+loginFormPageHeader({colorScheme, media}) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.center,
     children: [
@@ -14,24 +14,17 @@ signupFormPageHeader({colorScheme, media}) {
           textAlign: TextAlign.center,
           maxLines: 4,
           text: TextSpan(
-            text: "Create your",
+            text: "Login to",
             style: defaultTextStyle(
               fontSize: 20.0,
               color: colorScheme.primary,
             ),
             children: [
               TextSpan(
-                text: " Suitess ",
+                text: " Suitess",
                 style: defaultTextStyle(
                   fontSize: 20.0,
                   color: kSuccessColor,
-                ),
-              ),
-              TextSpan(
-                text: "account.",
-                style: defaultTextStyle(
-                  fontSize: 20.0,
-                  color: colorScheme.primary,
                 ),
               ),
             ],
@@ -42,8 +35,9 @@ signupFormPageHeader({colorScheme, media}) {
       SizedBox(
         width: media.width - 50,
         child: Text(
-          "Register now, suitess has got you covered.",
+          "Looking for that perfect home just for you?\n Suitess has got you covered.",
           textAlign: TextAlign.center,
+          maxLines: 4,
           style: defaultTextStyle(
             color: colorScheme.primary,
             fontSize: 14.0,
