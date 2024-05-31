@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
 import '../../../../../src/constants/consts.dart';
+import '../../../../../src/utils/components/responsive_constants.dart';
 
 void showKYCChooseStateModalPopup(context, colorScheme, media, controller) {
   showCupertinoModalPopup(
@@ -17,11 +18,12 @@ void showKYCChooseStateModalPopup(context, colorScheme, media, controller) {
             ),
           ),
         ),
-        height: media.height * 0.3,
+        height:
+            deviceType(media.width) > 1 ? media.height * .6 : media.height * .3,
         child: CupertinoScrollbar(
           controller: controller.fixedContentScrollController.value,
           child: CupertinoPicker.builder(
-            itemExtent: 40,
+            itemExtent: deviceType(media.width) > 1 ? 60 : 40,
             useMagnifier: true,
             childCount: controller.nigerianStates.length,
             scrollController: controller.fixedContentScrollController.value,

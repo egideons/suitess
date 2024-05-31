@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:suitess/src/routes/routes.dart';
 
-import '../../../app/kyc/kyc_bvn/screen/kyc_bvn.dart';
 import '../../constants/consts.dart';
 import '../others/api_processor_controller.dart';
 
@@ -317,7 +317,7 @@ class KycAddLocationController extends GetxController {
   }
 
   addressOnChanged(value) {
-    var addressRegExp = RegExp(streetAddressPattern);
+    var addressRegExp = RegExp(namePattern);
     if (!addressRegExp.hasMatch(addressEC.text)) {
       isAddressValid.value = false;
       setFormIsInvalid();
@@ -355,17 +355,23 @@ class KycAddLocationController extends GetxController {
 
       ApiProcessorController.successSnack("Form submitted successfully");
 
-      Get.offAll(
-        () => const KycBvn(),
-        routeName: "/kyc-bvn",
-        fullscreenDialog: true,
-        curve: Curves.easeInOut,
-        predicate: (routes) => false,
-        popGesture: false,
-        transition: Get.defaultTransition,
-      );
+      Get.toNamed(Routes.chooseExperience, preventDuplicates: true);
+
+      // Get.offAll(
+      //   () => const ChooseExperience(),
+      //   routeName: "/choose-experience",
+      //   fullscreenDialog: true,
+      //   curve: Curves.easeInOut,
+      //   predicate: (routes) => false,
+      //   popGesture: false,
+      //   transition: Get.defaultTransition,
+      // );
     }
     isLoading.value = false;
     update();
+  }
+
+  skipPage() async {
+    Get.toNamed(Routes.chooseExperience, preventDuplicates: true);
   }
 }

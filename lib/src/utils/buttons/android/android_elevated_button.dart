@@ -17,7 +17,11 @@ class AndroidElevatedButton extends StatelessWidget {
   final bool? isRowVisible, isSwitched;
   final MainAxisAlignment? mainAxisAlignment;
   final IconData? buttonIcon;
-  final Color? buttonColor, indicatorColor, textColor, buttonIconColor;
+  final Color? disabledBackgroundColor,
+      buttonColor,
+      indicatorColor,
+      textColor,
+      buttonIconColor;
   final Widget? rowIconWidget;
   final FontWeight? fontWeight;
 
@@ -42,6 +46,7 @@ class AndroidElevatedButton extends StatelessWidget {
     this.textColor,
     this.rowIconWidget,
     this.fontWeight,
+    this.disabledBackgroundColor,
   });
 
   @override
@@ -57,7 +62,8 @@ class AndroidElevatedButton extends StatelessWidget {
               : onPressed,
       onLongPress: null,
       style: ElevatedButton.styleFrom(
-        disabledBackgroundColor: colorScheme.inversePrimary,
+        disabledBackgroundColor:
+            disabledBackgroundColor ?? colorScheme.inversePrimary,
         backgroundColor: buttonColor ?? kAccentColor,
         elevation: buttonElevation ?? 0,
         shape: RoundedRectangleBorder(

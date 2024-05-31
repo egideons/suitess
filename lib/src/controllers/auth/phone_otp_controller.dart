@@ -160,24 +160,23 @@ class PhoneOTPController extends GetxController {
 
     await Future.delayed(const Duration(seconds: 3));
     ApiProcessorController.successSnack("Verification successful");
-    // Get.offAll(
-    //   () => const KycAddLocation(),
-    //   routeName: "/kyc-add-location",
-    //   fullscreenDialog: true,
-    //   curve: Curves.easeInOut,
-    //   predicate: (routes) => false,
-    //   popGesture: false,
-    //   transition: Get.defaultTransition,
-    // );
-    Get.to(
+    Get.offAll(
       () => const KycAddLocation(),
       routeName: "/kyc-add-location",
       fullscreenDialog: true,
       curve: Curves.easeInOut,
-      // predicate: (routes) => false,
+      predicate: (routes) => false,
       popGesture: false,
       transition: Get.defaultTransition,
     );
+    // Get.to(
+    //   () => const KycAddLocation(),
+    //   routeName: "/kyc-add-location",
+    //   fullscreenDialog: true,
+    //   curve: Curves.easeInOut,
+    //   popGesture: false,
+    //   transition: Get.defaultTransition,
+    // );
 
     isLoading.value = false;
     update();

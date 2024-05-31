@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:suitess/src/utils/components/responsive_constants.dart';
 
 import '../../../../../src/constants/consts.dart';
 
@@ -22,11 +23,12 @@ void showKYCChooseCountryModalPopup(
             ),
           ),
         ),
-        height: media.height * 0.3,
+        height:
+            deviceType(media.width) > 1 ? media.height * .6 : media.height * .3,
         child: CupertinoScrollbar(
           controller: controller.fixedContentScrollController.value,
           child: CupertinoPicker.builder(
-            itemExtent: 40,
+            itemExtent: deviceType(media.width) > 1 ? 60 : 40,
             useMagnifier: true,
             childCount: controller.countries.length,
             scrollController: controller.fixedContentScrollController.value,

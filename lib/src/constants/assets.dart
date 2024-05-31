@@ -22,6 +22,7 @@ class Assets {
   static const onboarding2Png = "assets/images/png/onboarding_2.png";
   static const authPng = "assets/images/png/auth.png";
   static const otpPng = "assets/images/png/otp.png";
+  static const locationPng = "assets/images/png/location.png";
   static const buildings = "assets/images/png/buildings.png";
   static const kitchen = "assets/images/png/kitchen.png";
 
@@ -30,6 +31,7 @@ class Assets {
   static const onboarding2Svg = "assets/images/svg/onboarding_2.svg";
   static const authSvg = "assets/images/svg/auth.svg";
   static const otpSvg = "assets/images/svg/otp.svg";
+  static const locationSvg = "assets/images/svg/location.svg";
 
 //Placeholder Image
   static const placeholderImage = "assets/images/png/placeholder_image.png";

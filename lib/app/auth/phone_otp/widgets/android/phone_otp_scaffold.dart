@@ -22,9 +22,11 @@ class PhoneOTPScaffold extends GetView<PhoneOTPController> {
 
     var otpController = PhoneOTPController.instance;
 
+    //Large screens or Mobile Landscape mode
     if (deviceType(media.width) > 1) {
       return Scaffold(
         body: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SizedBox(
               width: media.width / 2.2,
@@ -34,8 +36,10 @@ class PhoneOTPScaffold extends GetView<PhoneOTPController> {
                 children: [
                   SvgPicture.asset(
                     Assets.otpSvg,
-                    fit: BoxFit.fitHeight,
-                    height: media.height * .4,
+                    fit: BoxFit.cover,
+                    height: deviceType(media.width) > 2
+                        ? media.height * .6
+                        : media.height * .4,
                   ),
                   kSizedBox,
                   phoneOTPPageHeader(
@@ -52,10 +56,18 @@ class PhoneOTPScaffold extends GetView<PhoneOTPController> {
 
             //OTP Form
             Expanded(
-              child: Container(
-                padding: const EdgeInsets.all(10),
-                margin: const EdgeInsets.all(10),
-                child: SingleChildScrollView(
+              child: SingleChildScrollView(
+                child: Container(
+                  padding: const EdgeInsets.all(20),
+                  margin: const EdgeInsets.only(right: 10),
+                  decoration: BoxDecoration(
+                    color: colorScheme.surface,
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(
+                      width: 1,
+                      color: colorScheme.inversePrimary,
+                    ),
+                  ),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -228,6 +240,7 @@ class PhoneOTPScaffold extends GetView<PhoneOTPController> {
       );
     }
 
+    //Portrait mode for Mobile Screens
     return Scaffold(
       appBar: AppBar(),
       body: SafeArea(

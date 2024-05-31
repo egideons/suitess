@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:suitess/src/controllers/kyc/kyc_choose_location_controller.dart';
 import 'package:suitess/src/utils/buttons/android/android_elevated_button.dart';
+import 'package:suitess/src/utils/components/responsive_constants.dart';
 import 'package:suitess/src/utils/containers/form_field_container.dart';
 import 'package:suitess/src/utils/text_form_fields/android/android_textformfield.dart';
 
@@ -22,11 +24,286 @@ class KycAddLocationScaffold extends GetView<KycAddLocationController> {
     var colorScheme = Theme.of(context).colorScheme;
 
     final kycAddLocationController = KycAddLocationController.instance;
+
+    //Mobile Landscape mode or Large screens
+    if (deviceType(media.width) > 1) {
+      return Scaffold(
+        body: SafeArea(
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                width: media.width / 2.2,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    SvgPicture.asset(
+                      Assets.locationSvg,
+                      fit: BoxFit.fitHeight,
+                      height: deviceType(media.width) > 2
+                          ? media.height * .6
+                          : media.height * .4,
+                    ),
+                    kSizedBox,
+                    kycAddLocationPageHeader(
+                        colorScheme: colorScheme, media: media),
+                    const SizedBox(height: kDefaultPadding * 2),
+                  ],
+                ),
+              ),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Container(
+                    padding: const EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      color: colorScheme.surface,
+                      borderRadius: BorderRadius.circular(12),
+                      border: Border.all(
+                        width: .2,
+                        color: colorScheme.inversePrimary,
+                      ),
+                    ),
+                    child: Column(
+                      children: [
+                        Obx(
+                          () {
+                            return Form(
+                              key: kycAddLocationController.formKey,
+                              child: Column(
+                                children: [
+                                  InkWell(
+                                    onTap:
+                                        kycAddLocationController.isLoading.value
+                                            ? null
+                                            : () {
+                                                showKYCChooseCountryModalPopup(
+                                                  context,
+                                                  colorScheme,
+                                                  media,
+                                                  kycAddLocationController,
+                                                );
+                                              },
+                                    borderRadius: BorderRadius.circular(16),
+                                    child: formFieldContainer(
+                                      colorScheme,
+                                      media,
+                                      containerHeight: media.height * .1,
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 8.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Obx(
+                                              () => Text(
+                                                kycAddLocationController
+                                                    .selectedCountry.value,
+                                                style: defaultTextStyle(
+                                                  fontSize: 14,
+                                                  color: colorScheme.primary,
+                                                  fontWeight: FontWeight.normal,
+                                                ),
+                                              ),
+                                            ),
+                                            Icon(
+                                              Iconsax.arrow_down_1,
+                                              color: colorScheme.primary,
+                                              size: 20,
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  kSizedBox,
+                                  InkWell(
+                                    onTap: kycAddLocationController
+                                            .statePickerIsEnabled.isFalse
+                                        ? null
+                                        : kycAddLocationController
+                                                .isLoading.value
+                                            ? null
+                                            : () {
+                                                showKYCChooseStateModalPopup(
+                                                  context,
+                                                  colorScheme,
+                                                  media,
+                                                  kycAddLocationController,
+                                                );
+                                              },
+                                    borderRadius: BorderRadius.circular(16),
+                                    child: formFieldContainer(
+                                      colorScheme,
+                                      media,
+                                      containerHeight: media.height * .1,
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 8.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              kycAddLocationController
+                                                      .statePickerIsEnabled
+                                                      .isFalse
+                                                  ? "Choose State"
+                                                  : kycAddLocationController
+                                                      .selectedState.value,
+                                              style: defaultTextStyle(
+                                                fontSize: 14,
+                                                color: kycAddLocationController
+                                                        .statePickerIsEnabled
+                                                        .isFalse
+                                                    ? colorScheme.inversePrimary
+                                                    : colorScheme.primary,
+                                                fontWeight: FontWeight.normal,
+                                              ),
+                                            ),
+                                            Icon(
+                                              Iconsax.arrow_down_1,
+                                              color: kycAddLocationController
+                                                      .statePickerIsEnabled
+                                                      .isFalse
+                                                  ? colorScheme.inversePrimary
+                                                  : colorScheme.primary,
+                                              size: 20,
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  kSizedBox,
+                                  formFieldContainer(
+                                    colorScheme,
+                                    media,
+                                    containerHeight: media.height * .1,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(4.0),
+                                      child: AndroidTextFormField(
+                                        readOnly: kycAddLocationController
+                                                    .cityTextFieldIsEnabled
+                                                    .value &&
+                                                kycAddLocationController
+                                                    .isLoading.isFalse
+                                            ? false
+                                            : true,
+                                        controller:
+                                            kycAddLocationController.cityEC,
+                                        focusNode:
+                                            kycAddLocationController.cityFN,
+                                        hintText: "City",
+                                        textInputAction: TextInputAction.next,
+                                        textCapitalization:
+                                            TextCapitalization.words,
+                                        keyboardType: TextInputType.text,
+                                        onChanged: kycAddLocationController
+                                            .cityOnChanged,
+                                        validator: (value) {
+                                          return null;
+                                        },
+                                      ),
+                                    ),
+                                  ),
+                                  kSizedBox,
+                                  formFieldContainer(
+                                    colorScheme,
+                                    media,
+                                    containerHeight: media.height * .1,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(4.0),
+                                      child: AndroidTextFormField(
+                                        readOnly: kycAddLocationController
+                                                    .addressTextFieldIsEnabled
+                                                    .value &&
+                                                kycAddLocationController
+                                                    .isLoading.isFalse
+                                            ? false
+                                            : true,
+                                        controller:
+                                            kycAddLocationController.addressEC,
+                                        focusNode:
+                                            kycAddLocationController.addressFN,
+                                        hintText: "Address",
+                                        textInputAction: TextInputAction.done,
+                                        textCapitalization:
+                                            TextCapitalization.sentences,
+                                        keyboardType: TextInputType.text,
+                                        onChanged: kycAddLocationController
+                                            .addressOnChanged,
+                                        onFieldSubmitted:
+                                            kycAddLocationController
+                                                .onSubmitted,
+                                        validator: (value) {
+                                          return null;
+                                        },
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            );
+                          },
+                        ),
+                        const SizedBox(height: kDefaultPadding * 2),
+                        GetBuilder<KycAddLocationController>(
+                          init: KycAddLocationController(),
+                          builder: (controller) {
+                            return AndroidElevatedButton(
+                              title: "Continue",
+                              disable:
+                                  kycAddLocationController.formIsValid.value
+                                      ? false
+                                      : true,
+                              isLoading:
+                                  kycAddLocationController.isLoading.value,
+                              onPressed: kycAddLocationController.submitForm,
+                            );
+                          },
+                        ),
+                        GetBuilder<KycAddLocationController>(
+                          init: KycAddLocationController(),
+                          builder: (controller) {
+                            return AndroidElevatedButton(
+                              title: "Skip",
+                              textColor: kSuccessColor,
+                              buttonColor: colorScheme.surface,
+                              disabledBackgroundColor: colorScheme.surface,
+                              disable: kycAddLocationController.isLoading.value,
+                              onPressed: kycAddLocationController.skipPage,
+                            );
+                          },
+                        ),
+                        kSizedBox,
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+
+    //Portrait mode for Mobile Screens
     return Scaffold(
       body: SafeArea(
         child: ListView(
           padding: const EdgeInsets.all(10),
           children: [
+            SvgPicture.asset(
+              Assets.locationSvg,
+              fit: BoxFit.fitHeight,
+              height: media.height * .24,
+            ),
+            kSizedBox,
             kycAddLocationPageHeader(colorScheme: colorScheme, media: media),
             const SizedBox(height: kDefaultPadding * 2),
             Obx(
@@ -58,23 +335,21 @@ class KycAddLocationScaffold extends GetView<KycAddLocationController> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Obx(
-                                  () {
-                                    return Text(
-                                      kycAddLocationController
-                                          .selectedCountry.value,
-                                      style: defaultTextStyle(
-                                        fontSize: 14.0,
-                                        color: colorScheme.primary,
-                                        fontWeight: FontWeight.normal,
-                                      ),
-                                    );
-                                  },
+                                  () => Text(
+                                    kycAddLocationController
+                                        .selectedCountry.value,
+                                    style: defaultTextStyle(
+                                      fontSize: 14,
+                                      color: colorScheme.primary,
+                                      fontWeight: FontWeight.normal,
+                                    ),
+                                  ),
                                 ),
-                                FaIcon(
-                                  FontAwesomeIcons.caretDown,
+                                Icon(
+                                  Iconsax.arrow_down_1,
                                   color: colorScheme.primary,
-                                  size: 16,
-                                )
+                                  size: 20,
+                                ),
                               ],
                             ),
                           ),
@@ -113,7 +388,7 @@ class KycAddLocationScaffold extends GetView<KycAddLocationController> {
                                       : kycAddLocationController
                                           .selectedState.value,
                                   style: defaultTextStyle(
-                                    fontSize: 14.0,
+                                    fontSize: 14,
                                     color: kycAddLocationController
                                             .statePickerIsEnabled.isFalse
                                         ? colorScheme.inversePrimary
@@ -121,14 +396,14 @@ class KycAddLocationScaffold extends GetView<KycAddLocationController> {
                                     fontWeight: FontWeight.normal,
                                   ),
                                 ),
-                                FaIcon(
-                                  FontAwesomeIcons.caretDown,
+                                Icon(
+                                  Iconsax.arrow_down_1,
                                   color: kycAddLocationController
                                           .statePickerIsEnabled.isFalse
                                       ? colorScheme.inversePrimary
                                       : colorScheme.primary,
-                                  size: 16,
-                                )
+                                  size: 20,
+                                ),
                               ],
                             ),
                           ),
@@ -138,142 +413,46 @@ class KycAddLocationScaffold extends GetView<KycAddLocationController> {
                       formFieldContainer(
                         colorScheme,
                         media,
-                        padding: const EdgeInsets.symmetric(horizontal: 10),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            SizedBox(
-                              width: media.width - 80,
-                              child: AndroidTextFormField(
-                                readOnly: kycAddLocationController
-                                            .cityTextFieldIsEnabled.value &&
-                                        kycAddLocationController
-                                            .isLoading.isFalse
-                                    ? false
-                                    : true,
-                                controller: kycAddLocationController.cityEC,
-                                focusNode: kycAddLocationController.cityFN,
-                                hintText: "City",
-                                textInputAction: TextInputAction.next,
-                                textCapitalization: TextCapitalization.words,
-                                keyboardType: TextInputType.text,
-                                onChanged:
-                                    kycAddLocationController.cityOnChanged,
-                                validator: (value) {
-                                  return null;
-                                },
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(right: 5),
-                              child: kycAddLocationController.isCityValid.value
-                                  ? FaIcon(
-                                      FontAwesomeIcons.solidCircleCheck,
-                                      color: kSuccessColor,
-                                    )
-                                  : FaIcon(
-                                      FontAwesomeIcons.solidCircleXmark,
-                                      color: kErrorColor,
-                                    ),
-                            ),
-                          ],
+                        child: AndroidTextFormField(
+                          readOnly: kycAddLocationController
+                                      .cityTextFieldIsEnabled.value &&
+                                  kycAddLocationController.isLoading.isFalse
+                              ? false
+                              : true,
+                          controller: kycAddLocationController.cityEC,
+                          focusNode: kycAddLocationController.cityFN,
+                          hintText: "City",
+                          textInputAction: TextInputAction.next,
+                          textCapitalization: TextCapitalization.words,
+                          keyboardType: TextInputType.text,
+                          onChanged: kycAddLocationController.cityOnChanged,
+                          validator: (value) {
+                            return null;
+                          },
                         ),
                       ),
                       kSizedBox,
-                      Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          formFieldContainer(
-                            colorScheme,
-                            media,
-                            padding: const EdgeInsets.symmetric(horizontal: 10),
-                            containerWidth: media.width - 62,
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                SizedBox(
-                                  width: media.width - 140,
-                                  child: AndroidTextFormField(
-                                    readOnly: kycAddLocationController
-                                                .addressTextFieldIsEnabled
-                                                .value &&
-                                            kycAddLocationController
-                                                .isLoading.isFalse
-                                        ? false
-                                        : true,
-                                    controller:
-                                        kycAddLocationController.addressEC,
-                                    focusNode:
-                                        kycAddLocationController.addressFN,
-                                    hintText: "Address",
-                                    textInputAction: TextInputAction.done,
-                                    textCapitalization:
-                                        TextCapitalization.sentences,
-                                    keyboardType: TextInputType.text,
-                                    onChanged: kycAddLocationController
-                                        .addressOnChanged,
-                                    onFieldSubmitted:
-                                        kycAddLocationController.onSubmitted,
-                                    validator: (value) {
-                                      return null;
-                                    },
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(right: 5),
-                                  child: kycAddLocationController
-                                          .isAddressValid.value
-                                      ? FaIcon(
-                                          FontAwesomeIcons.solidCircleCheck,
-                                          color: kSuccessColor,
-                                        )
-                                      : FaIcon(
-                                          FontAwesomeIcons.solidCircleXmark,
-                                          color: kErrorColor,
-                                        ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          InkWell(
-                            onTap: kycAddLocationController
-                                        .addressTextFieldIsEnabled.value &&
-                                    kycAddLocationController.isLoading.isFalse
-                                ? () {}
-                                : null,
-                            borderRadius: BorderRadius.circular(24),
-                            child: Container(
-                              height: 30,
-                              width: 30,
-                              decoration: ShapeDecoration(
-                                image: const DecorationImage(
-                                  image: AssetImage(Assets.googleMaps),
-                                  fit: BoxFit.fill,
-                                ),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(24),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      Align(
-                        alignment: Alignment.centerRight,
-                        child: Text(
-                          "Address must start with the street number",
-                          textAlign: TextAlign.end,
-                          style: defaultTextStyle(
-                            color: colorScheme.inversePrimary,
-                            fontSize: 12.0,
-                            fontWeight: FontWeight.w600,
-                          ),
+                      formFieldContainer(
+                        colorScheme,
+                        media,
+                        child: AndroidTextFormField(
+                          readOnly: kycAddLocationController
+                                      .addressTextFieldIsEnabled.value &&
+                                  kycAddLocationController.isLoading.isFalse
+                              ? false
+                              : true,
+                          controller: kycAddLocationController.addressEC,
+                          focusNode: kycAddLocationController.addressFN,
+                          hintText: "Address",
+                          textInputAction: TextInputAction.done,
+                          textCapitalization: TextCapitalization.sentences,
+                          keyboardType: TextInputType.text,
+                          onChanged: kycAddLocationController.addressOnChanged,
+                          onFieldSubmitted:
+                              kycAddLocationController.onSubmitted,
+                          validator: (value) {
+                            return null;
+                          },
                         ),
                       ),
                     ],
@@ -291,6 +470,19 @@ class KycAddLocationScaffold extends GetView<KycAddLocationController> {
                       kycAddLocationController.formIsValid.value ? false : true,
                   isLoading: kycAddLocationController.isLoading.value,
                   onPressed: kycAddLocationController.submitForm,
+                );
+              },
+            ),
+            GetBuilder<KycAddLocationController>(
+              init: KycAddLocationController(),
+              builder: (controller) {
+                return AndroidElevatedButton(
+                  title: "Skip",
+                  textColor: kSuccessColor,
+                  buttonColor: colorScheme.surface,
+                  disabledBackgroundColor: colorScheme.surface,
+                  disable: kycAddLocationController.isLoading.value,
+                  onPressed: kycAddLocationController.skipPage,
                 );
               },
             ),
