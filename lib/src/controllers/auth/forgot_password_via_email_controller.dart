@@ -2,10 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../constants/consts.dart';
+import '../../routes/routes.dart';
+import '../others/api_processor_controller.dart';
 
-class ForgotPasswordViaEmailController extends GetxController {
-  static ForgotPasswordViaEmailController get instance {
-    return Get.find<ForgotPasswordViaEmailController>();
+class ResetPasswordViaEmailController extends GetxController {
+  static ResetPasswordViaEmailController get instance {
+    return Get.find<ResetPasswordViaEmailController>();
+  }
+
+  @override
+  void onInit() {
+    emailFN.requestFocus();
+    super.onInit();
   }
 
   //=========== Form Key ===========\\
@@ -47,21 +55,37 @@ class ForgotPasswordViaEmailController extends GetxController {
     formIsValid.value = false;
   }
 
+  navigateToSMS() async {
+    // Get.toNamed(Routes.forgotPasswordViaSms, preventDuplicates: true);
+  }
+
   //=========== Login Methods ===========\\
   onSubmitted(value) {
     if (formIsValid.isTrue) {
-      toEmailOTP();
+      submitEmail();
     }
   }
 
-  Future<void> toEmailOTP() async {
-    isLoading.value = true;
-    update();
+  Future<void> submitEmail() async {
+    if (formKey.currentState!.validate()) {
+      formKey.currentState!.save();
 
-    await Future.delayed(const Duration(milliseconds: 1000));
-    // Get.toNamed(Routes.forgotPasswordViaEmailOTP, preventDuplicates: true);
+      if (emailEC.text.isEmpty) {
+        ApiProcessorController.errorSnack("Please enter your email");
+        return;
+      } else if (isEmailValid.value == false) {
+        ApiProcessorController.errorSnack("Please enter a valid email");
+        return;
+      }
 
-    isLoading.value = false;
-    update();
+      isLoading.value = true;
+      update();
+
+      await Future.delayed(const Duration(milliseconds: 1000));
+      Get.toNamed(Routes.forgotPasswordViaEmailOTP, preventDuplicates: true);
+
+      isLoading.value = false;
+      update();
+    }
   }
 }

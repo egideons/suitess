@@ -32,6 +32,7 @@ dependencies:
   # firebase_core:
   # firebase_auth:
   typewritertext:
+  animate_do:
 
 dev_dependencies:
   flutter_test:

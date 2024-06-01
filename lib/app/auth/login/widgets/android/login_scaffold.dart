@@ -60,14 +60,14 @@ class LoginScaffold extends GetView<LoginController> {
               child: SingleChildScrollView(
                 child: Container(
                   padding: const EdgeInsets.all(20),
-                  decoration: BoxDecoration(
-                    color: colorScheme.surface,
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border.all(
-                      width: .2,
-                      color: colorScheme.inversePrimary,
-                    ),
-                  ),
+                  // decoration: BoxDecoration(
+                  //   color: colorScheme.surface,
+                  //   borderRadius: BorderRadius.circular(12),
+                  //   border: Border.all(
+                  //     width: .2,
+                  //     color: colorScheme.inversePrimary,
+                  //   ),
+                  // ),
                   child: Column(
                     children: [
                       loginFormPageHeader(
@@ -369,10 +369,6 @@ class LoginScaffold extends GetView<LoginController> {
                 decoration: BoxDecoration(
                   color: colorScheme.surface,
                   borderRadius: BorderRadius.circular(12),
-                  border: Border.all(
-                    width: .2,
-                    color: colorScheme.inversePrimary,
-                  ),
                 ),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,

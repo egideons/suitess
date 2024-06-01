@@ -59,14 +59,14 @@ class SignupScaffold extends GetView<SignupController> {
               child: SingleChildScrollView(
                 child: Container(
                   padding: const EdgeInsets.all(20),
-                  decoration: BoxDecoration(
-                    color: colorScheme.surface,
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border.all(
-                      width: .6,
-                      color: colorScheme.inversePrimary,
-                    ),
-                  ),
+                  // decoration: BoxDecoration(
+                  //   color: colorScheme.surface,
+                  //   borderRadius: BorderRadius.circular(12),
+                  //   border: Border.all(
+                  //     width: .6,
+                  //     color: colorScheme.inversePrimary,
+                  //   ),
+                  // ),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -394,10 +394,6 @@ class SignupScaffold extends GetView<SignupController> {
                 decoration: BoxDecoration(
                   color: colorScheme.surface,
                   borderRadius: BorderRadius.circular(12),
-                  border: Border.all(
-                    width: .2,
-                    color: colorScheme.inversePrimary,
-                  ),
                 ),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,

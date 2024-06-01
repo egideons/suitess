@@ -11,12 +11,12 @@ import 'package:suitess/app/kyc/kyc_profile_photo/screen/kyc_profile_photo.dart'
 import 'package:suitess/app/onboarding/screen/onboarding.dart';
 import 'package:suitess/app/splash/startup/screen/startup_splash.dart';
 
-import '../../app/auth/forgot_password_options/via_email/screen/forgot_password_via_email.dart';
 import '../../app/auth/forgot_password_otp/via_email/screen/forgot_password_via_email_otp.dart';
 import '../../app/auth/forgot_password_otp/via_sms/screen/forgot_password_via_sms.dart';
 import '../../app/auth/login/screen/login.dart';
 import '../../app/auth/phone_otp/screen/phone_otp.dart';
 import '../../app/auth/reset_password/screen/reset_password.dart';
+import '../../app/auth/reset_password_options/via_email/screen/reset_password_via_email.dart';
 import '../../app/experience/landlord/bid_details/screen/landlord_bid_details.dart';
 import '../../app/experience/landlord/property/add_property/screen/landlord_add_property.dart';
 import '../../app/kyc/kyc_bvn/screen/kyc_bvn.dart';
@@ -88,7 +88,7 @@ class Routes {
     GetPage(name: forgotPassword, page: () => const ForgotPassword()),
     GetPage(
       name: forgotPasswordViaEmail,
-      page: () => const ForgotPasswordViaEmail(),
+      page: () => const ResetPasswordViaEmail(),
     ),
     GetPage(
       name: forgotPasswordViaEmailOTP,

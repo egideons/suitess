@@ -31,6 +31,7 @@ class Assets {
   static const onboarding2Svg = "assets/images/svg/onboarding_2.svg";
   static const authSvg = "assets/images/svg/auth.svg";
   static const otpSvg = "assets/images/svg/otp.svg";
+  static const passwordSvg = "assets/images/svg/password.svg";
   static const locationSvg = "assets/images/svg/location.svg";
 
 //Placeholder Image
