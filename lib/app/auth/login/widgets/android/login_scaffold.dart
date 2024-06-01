@@ -507,7 +507,8 @@ class LoginScaffold extends GetView<LoginController> {
                                   fontWeight: FontWeight.w400,
                                 ),
                                 recognizer: TapGestureRecognizer()
-                                  ..onTap = loginController.isLoading.value
+                                  ..onTap = loginController.isLoading.value ||
+                                          controller.isLoadingGoogleLogin.value
                                       ? null
                                       : loginController
                                           .navigateToForgotPassword,
@@ -523,8 +524,9 @@ class LoginScaffold extends GetView<LoginController> {
                       builder: (context) {
                         return AndroidElevatedButton(
                           title: "Login",
-                          disable:
-                              loginController.formIsValid.isTrue ? false : true,
+                          disable: !loginController.formIsValid.value ||
+                              loginController.isLoading.value ||
+                              loginController.isLoadingGoogleLogin.value,
                           isLoading: loginController.isLoading.value,
                           onPressed: loginController.login,
                         );
@@ -547,7 +549,9 @@ class LoginScaffold extends GetView<LoginController> {
                                 text: "Sign up",
                                 mouseCursor: SystemMouseCursors.click,
                                 recognizer: TapGestureRecognizer()
-                                  ..onTap = loginController.isLoading.value
+                                  ..onTap = loginController.isLoading.value ||
+                                          loginController
+                                              .isLoadingGoogleLogin.value
                                       ? null
                                       : loginController.navigateToSignup,
                                 style: defaultTextStyle(

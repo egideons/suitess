@@ -64,6 +64,7 @@ class ResetPasswordViaSMSOTPScaffold
                     media: media,
                     title: "OTP Verification",
                     subtitle: "Enter the 4-digit OTP sent to your phone.",
+                    phoneNumber: maskPhoneNumber("08074656497"),
                   ),
                 ],
               ),

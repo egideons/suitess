@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:suitess/src/routes/routes.dart';
 
 import '../../constants/consts.dart';
 import '../others/api_processor_controller.dart';
@@ -355,7 +354,7 @@ class KycAddLocationController extends GetxController {
 
       ApiProcessorController.successSnack("Form submitted successfully");
 
-      Get.toNamed(Routes.chooseExperience, preventDuplicates: true);
+      // Get.toNamed(Routes.chooseExperience, preventDuplicates: true);
 
       // Get.offAll(
       //   () => const ChooseExperience(),
@@ -372,6 +371,6 @@ class KycAddLocationController extends GetxController {
   }
 
   skipPage() async {
-    Get.toNamed(Routes.chooseExperience, preventDuplicates: true);
+    // Get.toNamed(Routes.chooseExperience, preventDuplicates: true);
   }
 }

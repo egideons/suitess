@@ -7,6 +7,7 @@ resetPasswordViaSMSOTPPageHeader({
   media,
   title,
   subtitle,
+  phoneNumber,
 }) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.center,
@@ -25,14 +26,27 @@ resetPasswordViaSMSOTPPageHeader({
       ),
       kSizedBox,
       SizedBox(
-        width: media.width - 50,
-        child: Text(
-          subtitle ?? "",
+        width: media.width - 100,
+        child: RichText(
           textAlign: TextAlign.center,
-          style: defaultTextStyle(
-            color: colorScheme.primary,
-            fontSize: 14.0,
-            fontWeight: FontWeight.w400,
+          maxLines: 10,
+          text: TextSpan(
+            text: subtitle,
+            style: defaultTextStyle(
+              color: colorScheme.primary,
+              fontSize: 14.0,
+              fontWeight: FontWeight.w300,
+            ),
+            children: [
+              TextSpan(
+                text: phoneNumber,
+                style: defaultTextStyle(
+                  color: colorScheme.primary,
+                  fontSize: 14.0,
+                  fontWeight: FontWeight.w600,
+                ),
+              )
+            ],
           ),
         ),
       ),

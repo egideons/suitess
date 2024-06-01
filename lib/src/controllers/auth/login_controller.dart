@@ -6,11 +6,9 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 import '../../../app/auth/signup/screen/signup.dart';
-import '../../../app/splash/loading/screen/loading_screen.dart';
 import '../../constants/consts.dart';
 import '../../routes/routes.dart';
 import '../others/api_processor_controller.dart';
-import '../others/loading_controller.dart';
 
 class LoginController extends GetxController {
   static LoginController get instance {
@@ -111,17 +109,17 @@ class LoginController extends GetxController {
 
       ApiProcessorController.successSnack("Login successful");
 
-      await Get.offAll(
-        () => LoadingScreen(
-          loadData: LoadingController.instance.loadLandLordNavgiationOverView,
-        ),
-        routeName: "/loading-screen",
-        fullscreenDialog: true,
-        curve: Curves.easeInOut,
-        predicate: (routes) => false,
-        popGesture: false,
-        transition: Get.defaultTransition,
-      );
+      // await Get.offAll(
+      //   () => LoadingScreen(
+      //     loadData: LoadingController.instance.loadLandLordNavgiationOverView,
+      //   ),
+      //   routeName: "/loading-screen",
+      //   fullscreenDialog: true,
+      //   curve: Curves.easeInOut,
+      //   predicate: (routes) => false,
+      //   popGesture: false,
+      //   transition: Get.defaultTransition,
+      // );
     }
     isLoading.value = false;
     update();

@@ -2,7 +2,13 @@ import 'package:flutter/material.dart';
 
 import '../../../../src/constants/consts.dart';
 
-Widget phoneOTPPageHeader({colorScheme, media, title, subtitle, phoneNumber}) {
+Widget phoneOTPPageHeader({
+  colorScheme,
+  media,
+  title,
+  subtitle,
+  phoneNumber,
+}) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.center,
     children: [

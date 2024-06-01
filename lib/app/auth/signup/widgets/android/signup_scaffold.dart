@@ -593,7 +593,9 @@ class SignupScaffold extends GetView<SignupController> {
                                 text: "Login",
                                 mouseCursor: SystemMouseCursors.click,
                                 recognizer: TapGestureRecognizer()
-                                  ..onTap = signupController.isLoading.value
+                                  ..onTap = signupController.isLoading.value ||
+                                          signupController
+                                              .isLoadingGoogleSignup.value
                                       ? null
                                       : signupController.navigateToLogin,
                                 style: defaultTextStyle(
