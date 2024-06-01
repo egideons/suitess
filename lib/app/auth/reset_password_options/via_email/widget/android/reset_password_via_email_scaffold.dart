@@ -12,9 +12,9 @@ import '../../../../../../src/utils/containers/form_field_container.dart';
 import '../../../../../../src/utils/text_form_fields/android/android_textformfield.dart';
 import '../../../content/reset_password_option_header.dart';
 
-class ResetPasswordViaSMSScaffold
+class ResetPasswordViaEmailScaffold
     extends GetView<ResetPasswordViaEmailController> {
-  const ResetPasswordViaSMSScaffold({super.key});
+  const ResetPasswordViaEmailScaffold({super.key});
 
   @override
   Widget build(BuildContext context) {

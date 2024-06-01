@@ -60,8 +60,8 @@ class ResetPasswordViaSMSScaffold
                   resetPasswordOptionHeader(
                     colorScheme,
                     resetPasswordViaEmailController,
-                    registeredOption: "email",
-                    resetOption: "SMS",
+                    registeredOption: "phone number",
+                    resetOption: "Email",
                     resetVia: resetPasswordViaEmailController.navigateToEmail,
                   ),
                   kSizedBox,
@@ -105,12 +105,12 @@ class ResetPasswordViaSMSScaffold
                                         .isLoading.value,
                                     controller: resetPasswordViaEmailController
                                         .phoneNumberEC,
-                                    focusNode:
-                                        resetPasswordViaEmailController.emailFN,
+                                    focusNode: resetPasswordViaEmailController
+                                        .phoneNumberFN,
                                     textInputAction: TextInputAction.done,
                                     textCapitalization: TextCapitalization.none,
-                                    keyboardType: TextInputType.emailAddress,
-                                    hintText: "Email",
+                                    keyboardType: TextInputType.phone,
+                                    hintText: "Phone number",
                                     onFieldSubmitted:
                                         resetPasswordViaEmailController
                                             .onSubmitted,
@@ -138,8 +138,8 @@ class ResetPasswordViaSMSScaffold
                                 : true,
                             isLoading:
                                 resetPasswordViaEmailController.isLoading.value,
-                            onPressed:
-                                resetPasswordViaEmailController.submitEmail,
+                            onPressed: resetPasswordViaEmailController
+                                .submitPhoneNumber,
                           );
                         },
                       ),
@@ -182,7 +182,7 @@ class ResetPasswordViaSMSScaffold
             resetPasswordOptionHeader(
               colorScheme,
               resetPasswordViaEmailController,
-              registeredOption: "sms",
+              registeredOption: "phone number",
               resetOption: "Email",
               resetVia: resetPasswordViaEmailController.navigateToEmail,
             ),
@@ -202,11 +202,12 @@ class ResetPasswordViaSMSScaffold
                               resetPasswordViaEmailController.isLoading.value,
                           controller:
                               resetPasswordViaEmailController.phoneNumberEC,
-                          focusNode: resetPasswordViaEmailController.emailFN,
+                          focusNode:
+                              resetPasswordViaEmailController.phoneNumberFN,
                           textInputAction: TextInputAction.done,
                           textCapitalization: TextCapitalization.none,
-                          keyboardType: TextInputType.emailAddress,
-                          hintText: "Email",
+                          keyboardType: TextInputType.phone,
+                          hintText: "Phone number",
                           onFieldSubmitted:
                               resetPasswordViaEmailController.onSubmitted,
                           onChanged: resetPasswordViaEmailController
@@ -231,7 +232,7 @@ class ResetPasswordViaSMSScaffold
                       ? false
                       : true,
                   isLoading: resetPasswordViaEmailController.isLoading.value,
-                  onPressed: resetPasswordViaEmailController.submitEmail,
+                  onPressed: resetPasswordViaEmailController.submitPhoneNumber,
                 );
               },
             ),

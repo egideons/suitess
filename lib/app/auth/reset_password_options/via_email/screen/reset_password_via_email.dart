@@ -6,8 +6,8 @@ import 'package:get/get.dart';
 import '../../../../../src/controllers/auth/reset_password_via_email_controller.dart';
 import '../widget/android/reset_password_via_email_scaffold.dart';
 
-class ResetPasswordViaSMS extends StatelessWidget {
-  const ResetPasswordViaSMS({super.key});
+class ResetPasswordViaEmail extends StatelessWidget {
+  const ResetPasswordViaEmail({super.key});
   @override
   Widget build(BuildContext context) {
     //Initialize signup controller
@@ -16,12 +16,12 @@ class ResetPasswordViaSMS extends StatelessWidget {
     if (Platform.isIOS) {
       return GestureDetector(
         onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
-        // child: const ForgotPasswordCupertinoScaffold(),
+        // child: const ResetPasswordViaEmailCupertinoScaffold(),
       );
     }
     return GestureDetector(
       onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
-      child: const ResetPasswordViaSMSScaffold(),
+      child: const ResetPasswordViaEmailScaffold(),
     );
   }
 }

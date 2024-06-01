@@ -12,9 +12,9 @@ import '../../../../../../src/utils/containers/form_field_container.dart';
 import '../../../../../../theme/colors.dart';
 import '../../content/reset_password_via_sms_page_header.dart';
 
-class ForgotPasswordViaSMSOTPScaffold
+class ResetPasswordViaSMSOTPScaffold
     extends GetView<ResetPasswordViaSMSOtpController> {
-  const ForgotPasswordViaSMSOTPScaffold({super.key});
+  const ResetPasswordViaSMSOTPScaffold({super.key});
 
   @override
   Widget build(BuildContext context) {

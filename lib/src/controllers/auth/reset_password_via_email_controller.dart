@@ -56,7 +56,7 @@ class ResetPasswordViaEmailController extends GetxController {
   }
 
   navigateToSMS() async {
-    Get.toNamed(Routes.resetPasswordViaSms, preventDuplicates: true);
+    Get.offNamed(Routes.resetPasswordViaSms, preventDuplicates: true);
   }
 
   //=========== Login Methods ===========\\
@@ -72,9 +72,11 @@ class ResetPasswordViaEmailController extends GetxController {
 
       if (emailEC.text.isEmpty) {
         ApiProcessorController.errorSnack("Please enter your email");
+        setFormIsInvalid();
         return;
       } else if (isEmailValid.value == false) {
         ApiProcessorController.errorSnack("Please enter a valid email");
+        setFormIsInvalid();
         return;
       }
 
