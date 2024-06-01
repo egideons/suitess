@@ -1,137 +1,51 @@
-import 'dart:async';
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../constants/consts.dart';
 import '../../routes/routes.dart';
 import '../others/api_processor_controller.dart';
 
-class ForgotPasswordViaSMSOtpController extends GetxController {
-  static ForgotPasswordViaSMSOtpController get instance {
-    return Get.find<ForgotPasswordViaSMSOtpController>();
+class ResetPasswordViaSMSController extends GetxController {
+  static ResetPasswordViaSMSController get instance {
+    return Get.find<ResetPasswordViaSMSController>();
   }
 
   @override
   void onInit() {
-    startTimer();
-    log("OTP Timer has started");
+    emailFN.requestFocus();
     super.onInit();
   }
 
-  //=========== Variables ===========\\
-
-  late Timer _timer;
-
   //=========== Form Key ===========\\
-
   final formKey = GlobalKey<FormState>();
 
   //=========== Controllers ===========\\
-
-  final emailEC = TextEditingController();
-  final pin1EC = TextEditingController();
-  final pin2EC = TextEditingController();
-  final pin3EC = TextEditingController();
-  final pin4EC = TextEditingController();
+  final phoneNumberEC = TextEditingController();
 
   //=========== Focus nodes ===========\\
-  final pin1FN = FocusNode();
-  final pin2FN = FocusNode();
-  final pin3FN = FocusNode();
-  final pin4FN = FocusNode();
+  final emailFN = FocusNode();
 
   //=========== Booleans ===========\\
-  var secondsRemaining = 30.obs;
   var isLoading = false.obs;
+  var isPhoneNumberValid = false.obs;
   var formIsValid = false.obs;
-  var timerComplete = false.obs;
+  var responseStatus = 0.obs;
+  var responseMessage = "".obs;
 
-  //====================== Functions =========================\\
+  //=========== onChanged Functions ===========\\
 
-  //================= Onchanged ======================\\
-  pin1Onchanged(value, context) {
-    if (value.isEmpty) {
+  phoneNumberOnChanged(value) {
+    var phoneRegExp = RegExp(phoneNumberPattern);
+    if (!phoneRegExp.hasMatch(phoneNumberEC.text)) {
+      isPhoneNumberValid.value = false;
       setFormIsInvalid();
-    }
-    if (value.length == 1) {
-      FocusScope.of(context).nextFocus();
-    }
-    update();
-  }
-
-  pin2Onchanged(value, context) {
-    if (value.isEmpty) {
-      FocusScope.of(context).previousFocus();
-      setFormIsInvalid();
-    }
-    if (value.length == 1) {
-      FocusScope.of(context).nextFocus();
-    }
-    update();
-  }
-
-  pin3Onchanged(value, context) {
-    if (value.isEmpty) {
-      FocusScope.of(context).previousFocus();
-      setFormIsInvalid();
-    }
-    if (value.length == 1) {
-      FocusScope.of(context).nextFocus();
-    }
-    update();
-  }
-
-  pin4Onchanged(value, context) {
-    if (value.isEmpty) {
-      FocusScope.of(context).previousFocus();
-      setFormIsInvalid();
-    }
-    if (value.length == 1) {
-      FocusScope.of(context).nearestScope;
+    } else {
+      isPhoneNumberValid.value = true;
       setFormIsValid();
-      update();
-      return;
     }
+
     update();
   }
-
-  //================= Start Timer ======================\\
-  startTimer() {
-    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-      if (secondsRemaining > 0) {
-        secondsRemaining--;
-      } else {
-        timerComplete.value = true;
-        _timer.cancel();
-      }
-    });
-  }
-
-  pauseTimer() {
-    if (timerComplete.value == false && isLoading.value == true) {
-      _timer.cancel();
-    }
-  }
-
-  String formatTime(int seconds) {
-    int minutes = seconds ~/ 60;
-    int remainingSeconds = seconds % 60;
-    String minutesStr = minutes.toString().padLeft(2, '0');
-    String secondsStr = remainingSeconds.toString().padLeft(2, '0');
-    return '$minutesStr:$secondsStr';
-  }
-
-  //================= Resend OTP ======================\\
-  void requestOTP() async {
-    secondsRemaining.value = 60;
-    timerComplete.value = false;
-    startTimer();
-    update();
-    ApiProcessorController.successSnack("An OTP has been sent to your phone");
-  }
-
-  //================= Set form validity ======================\\
 
   setFormIsValid() {
     formIsValid.value = true;
@@ -141,42 +55,39 @@ class ForgotPasswordViaSMSOtpController extends GetxController {
     formIsValid.value = false;
   }
 
-  //=========== on Submitted ===========\\
+  navigateToEmail() async {
+    Get.toNamed(Routes.resetPasswordViaEmail, preventDuplicates: true);
+  }
+
+  //=========== Login Methods ===========\\
   onSubmitted(value) {
     if (formIsValid.isTrue) {
-      submitOTP();
-      update();
+      submitEmail();
     }
   }
 
-  //================= Send OTP ======================\\
-  Future<void> submitOTP() async {
-    isLoading.value = true;
-    update();
+  Future<void> submitEmail() async {
+    if (formKey.currentState!.validate()) {
+      formKey.currentState!.save();
 
-    //Pause the timer
-    pauseTimer();
-    timerComplete.value = false;
+      if (phoneNumberEC.text.isEmpty) {
+        ApiProcessorController.errorSnack("Please enter your email");
+        return;
+      } else if (isPhoneNumberValid.value == false) {
+        ApiProcessorController.errorSnack("Please enter a valid email");
+        return;
+      }
 
-    await Future.delayed(const Duration(seconds: 3));
-    ApiProcessorController.successSnack("OTP verification successful");
+      isLoading.value = true;
+      update();
 
-    Get.toNamed(Routes.resetPassword, preventDuplicates: true);
+      await Future.delayed(const Duration(milliseconds: 1000));
+      ApiProcessorController.successSnack("An OTP has been sent to your email");
 
-    // Get.offAll(
-    //   () => const KycAddLocation(),
-    //   routeName: "/kyc-add-location",
-    //   fullscreenDialog: true,
-    //   curve: Curves.easeInOut,
-    //   predicate: (routes) => false,
-    //   popGesture: false,
-    //   transition: Get.defaultTransition,
-    // );
+      Get.toNamed(Routes.resetPasswordViaEmailOTP, preventDuplicates: true);
 
-    isLoading.value = false;
-    update();
-
-    //Continue the timer and enable resend button
-    onInit();
+      isLoading.value = false;
+      update();
+    }
   }
 }

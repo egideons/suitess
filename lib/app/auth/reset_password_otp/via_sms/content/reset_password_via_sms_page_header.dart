@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../../src/constants/consts.dart';
 
-Widget forgotPasswordViaSMSOTPPageHeader({
+resetPasswordViaSMSOTPPageHeader({
   colorScheme,
   media,
   title,

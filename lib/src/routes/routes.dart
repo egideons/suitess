@@ -16,7 +16,7 @@ import '../../app/auth/phone_otp/screen/phone_otp.dart';
 import '../../app/auth/reset_password/screen/reset_password.dart';
 import '../../app/auth/reset_password_options/via_email/screen/reset_password_via_email.dart';
 import '../../app/auth/reset_password_otp/via_email/screen/reset_password_via_email_otp.dart';
-import '../../app/auth/reset_password_otp/via_sms/screen/forgot_password_via_sms.dart';
+import '../../app/auth/reset_password_otp/via_sms/screen/reset_password_via_sms.dart';
 import '../../app/experience/landlord/bid_details/screen/landlord_bid_details.dart';
 import '../../app/experience/landlord/property/add_property/screen/landlord_add_property.dart';
 import '../../app/kyc/kyc_bvn/screen/kyc_bvn.dart';
@@ -47,8 +47,8 @@ class Routes {
   static const changePassword = "/change-password";
   static const resetPasswordViaEmail = "/reset-password-via-email";
   static const resetPasswordViaEmailOTP = "/reset-password-via-email-otp";
-  static const forgotPasswordViaSms = "/reset-password-via-sms";
-  static const forgotPasswordViaSmsOTP = "/reset-password-via-sms-otp";
+  static const resetPasswordViaSms = "/reset-password-via-sms";
+  static const resetPasswordViaSmsOTP = "/reset-password-via-sms-otp";
 
   //KYC Screens
   static const kycAddLocation = "/kyc-add-location";
@@ -88,18 +88,18 @@ class Routes {
     GetPage(name: forgotPassword, page: () => const ForgotPassword()),
     GetPage(
       name: resetPasswordViaEmail,
-      page: () => const ResetPasswordViaEmail(),
+      page: () => const ResetPasswordViaSMS(),
     ),
     GetPage(
       name: resetPasswordViaEmailOTP,
       page: () => const RestPasswordViaEmailOTP(),
     ),
-    // GetPage(
-    //   name: forgotPasswordViaSmsOTP,
-    //   page: () => const ForgotPasswordViaSMS(),
-    // ),
     GetPage(
-      name: forgotPasswordViaSmsOTP,
+      name: resetPasswordViaSmsOTP,
+      page: () => const ResetPasswordViaSMS(),
+    ),
+    GetPage(
+      name: resetPasswordViaSmsOTP,
       page: () => const ResetPasswordViaSMSOTP(),
     ),
     GetPage(name: resetPassword, page: () => const ResetPassword()),

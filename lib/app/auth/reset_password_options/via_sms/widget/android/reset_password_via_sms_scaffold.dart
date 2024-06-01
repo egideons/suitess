@@ -5,15 +5,15 @@ import 'package:iconsax/iconsax.dart';
 import 'package:suitess/src/constants/assets.dart';
 import 'package:suitess/src/utils/components/responsive_constants.dart';
 
-import '../../../../../../src/constants/consts.dart';
-import '../../../../../../src/controllers/auth/reset_password_via_email_controller.dart';
-import '../../../../../../src/utils/buttons/android/android_elevated_button.dart';
-import '../../../../../../src/utils/containers/form_field_container.dart';
-import '../../../../../../src/utils/text_form_fields/android/android_textformfield.dart';
+import '../../../../../../../src/constants/consts.dart';
+import '../../../../../../../src/utils/buttons/android/android_elevated_button.dart';
+import '../../../../../../../src/utils/containers/form_field_container.dart';
+import '../../../../../../../src/utils/text_form_fields/android/android_textformfield.dart';
+import '../../../../../../src/controllers/auth/reset_password_via_sms_controller.dart';
 import '../../../content/reset_password_option_header.dart';
 
 class ResetPasswordViaSMSScaffold
-    extends GetView<ResetPasswordViaEmailController> {
+    extends GetView<ResetPasswordViaSMSController> {
   const ResetPasswordViaSMSScaffold({super.key});
 
   @override
@@ -22,7 +22,7 @@ class ResetPasswordViaSMSScaffold
     var colorScheme = Theme.of(context).colorScheme;
 
     final resetPasswordViaEmailController =
-        ResetPasswordViaEmailController.instance;
+        ResetPasswordViaSMSController.instance;
 
     //Mobile Landscape mode or larger screens
     if (deviceType(media.width) > 1) {
@@ -62,7 +62,7 @@ class ResetPasswordViaSMSScaffold
                     resetPasswordViaEmailController,
                     registeredOption: "email",
                     resetOption: "SMS",
-                    resetVia: resetPasswordViaEmailController.navigateToSMS,
+                    resetVia: resetPasswordViaEmailController.navigateToEmail,
                   ),
                   kSizedBox,
                 ],
@@ -103,8 +103,8 @@ class ResetPasswordViaSMSScaffold
                                   child: AndroidTextFormField(
                                     readOnly: resetPasswordViaEmailController
                                         .isLoading.value,
-                                    controller:
-                                        resetPasswordViaEmailController.emailEC,
+                                    controller: resetPasswordViaEmailController
+                                        .phoneNumberEC,
                                     focusNode:
                                         resetPasswordViaEmailController.emailFN,
                                     textInputAction: TextInputAction.done,
@@ -115,7 +115,7 @@ class ResetPasswordViaSMSScaffold
                                         resetPasswordViaEmailController
                                             .onSubmitted,
                                     onChanged: resetPasswordViaEmailController
-                                        .emailOnChanged,
+                                        .phoneNumberOnChanged,
                                     validator: (value) {
                                       return null;
                                     },
@@ -127,8 +127,8 @@ class ResetPasswordViaSMSScaffold
                         },
                       ),
                       const SizedBox(height: kDefaultPadding * 2),
-                      GetBuilder<ResetPasswordViaEmailController>(
-                        init: ResetPasswordViaEmailController(),
+                      GetBuilder<ResetPasswordViaSMSController>(
+                        init: ResetPasswordViaSMSController(),
                         builder: (context) {
                           return AndroidElevatedButton(
                             title: "Send code",
@@ -182,9 +182,9 @@ class ResetPasswordViaSMSScaffold
             resetPasswordOptionHeader(
               colorScheme,
               resetPasswordViaEmailController,
-              registeredOption: "email",
-              resetOption: "SMS",
-              resetVia: resetPasswordViaEmailController.navigateToSMS,
+              registeredOption: "sms",
+              resetOption: "Email",
+              resetVia: resetPasswordViaEmailController.navigateToEmail,
             ),
             kSizedBox,
             Obx(
@@ -200,7 +200,8 @@ class ResetPasswordViaSMSScaffold
                         child: AndroidTextFormField(
                           readOnly:
                               resetPasswordViaEmailController.isLoading.value,
-                          controller: resetPasswordViaEmailController.emailEC,
+                          controller:
+                              resetPasswordViaEmailController.phoneNumberEC,
                           focusNode: resetPasswordViaEmailController.emailFN,
                           textInputAction: TextInputAction.done,
                           textCapitalization: TextCapitalization.none,
@@ -208,8 +209,8 @@ class ResetPasswordViaSMSScaffold
                           hintText: "Email",
                           onFieldSubmitted:
                               resetPasswordViaEmailController.onSubmitted,
-                          onChanged:
-                              resetPasswordViaEmailController.emailOnChanged,
+                          onChanged: resetPasswordViaEmailController
+                              .phoneNumberOnChanged,
                           validator: (value) {
                             return null;
                           },
@@ -221,8 +222,8 @@ class ResetPasswordViaSMSScaffold
               },
             ),
             const SizedBox(height: kDefaultPadding * 2),
-            GetBuilder<ResetPasswordViaEmailController>(
-              init: ResetPasswordViaEmailController(),
+            GetBuilder<ResetPasswordViaSMSController>(
+              init: ResetPasswordViaSMSController(),
               builder: (context) {
                 return AndroidElevatedButton(
                   title: "Send code",

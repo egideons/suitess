@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../../src/controllers/auth/reset_password_via_email_controller.dart';
-import '../widget/android/reset_password_via_email_scaffold.dart';
+import '../widget/android/reset_password_via_sms_scaffold.dart';
 
 class ResetPasswordViaSMS extends StatelessWidget {
   const ResetPasswordViaSMS({super.key});

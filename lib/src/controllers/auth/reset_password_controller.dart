@@ -32,7 +32,6 @@ class ResetPasswordController extends GetxController {
   //=========== passwordOnChanged ===========\\
   passwordOnChanged(value) {
     var passwordRegExp = RegExp(passwordPattern);
-
     if (!passwordRegExp.hasMatch(passwordEC.text)) {
       isPasswordValid.value = false;
     } else {
@@ -47,10 +46,6 @@ class ResetPasswordController extends GetxController {
     var passwordRegExp = RegExp(passwordPattern);
 
     if (!passwordRegExp.hasMatch(passwordEC.text)) {
-      if (confirmPasswordEC.text == passwordEC.text) {
-        isConfirmPasswordValid.value = false;
-        // setFormIsInvalid();
-      }
       isConfirmPasswordValid.value = false;
       setFormIsInvalid();
     } else {
@@ -78,23 +73,37 @@ class ResetPasswordController extends GetxController {
   }
 
   Future<void> resetPassword() async {
-    isLoading.value = true;
-    update();
+    if (formKey.currentState!.validate()) {
+      formKey.currentState!.save();
 
-    await Future.delayed(const Duration(seconds: 2));
-    ApiProcessorController.successSnack("Password reset successful");
+      if (passwordEC.text.isEmpty) {
+        ApiProcessorController.errorSnack("Please enter your password");
+        return;
+      } else if (confirmPasswordEC.text.isEmpty) {
+        ApiProcessorController.errorSnack("Please confirm your password");
+        return;
+      } else if (confirmPasswordEC.text != passwordEC.text) {
+        ApiProcessorController.errorSnack("Passwords do not match");
+        return;
+      }
+      isLoading.value = true;
+      update();
 
-    Get.offAll(
-      () => const Login(),
-      routeName: "/login",
-      fullscreenDialog: true,
-      curve: Curves.easeInOut,
-      predicate: (routes) => false,
-      popGesture: false,
-      transition: Get.defaultTransition,
-    );
+      await Future.delayed(const Duration(seconds: 2));
+      ApiProcessorController.successSnack("Password reset successful");
 
-    isLoading.value = false;
-    update();
+      Get.offAll(
+        () => const Login(),
+        routeName: "/login",
+        fullscreenDialog: true,
+        curve: Curves.easeInOut,
+        predicate: (routes) => false,
+        popGesture: false,
+        transition: Get.defaultTransition,
+      );
+
+      isLoading.value = false;
+      update();
+    }
   }
 }

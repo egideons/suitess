@@ -56,7 +56,7 @@ class ResetPasswordViaEmailController extends GetxController {
   }
 
   navigateToSMS() async {
-    // Get.toNamed(Routes.forgotPasswordViaSms, preventDuplicates: true);
+    Get.toNamed(Routes.resetPasswordViaSms, preventDuplicates: true);
   }
 
   //=========== Login Methods ===========\\

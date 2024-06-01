@@ -3,9 +3,9 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../../src/controllers/auth/reset_password_via_sms_controller.dart';
-import '../widgets/android/forgot_password_via_sms_scaffold.dart';
-import '../widgets/ios/forgot_password_via_sms_cupertino_scaffold.dart';
+import '../../../../../src/controllers/auth/reset_password_via_sms_otp_controller.dart';
+import '../widgets/android/reset_password_via_sms_scaffold.dart';
+import '../widgets/ios/reset_password_via_sms_cupertino_scaffold.dart';
 
 class ResetPasswordViaSMSOTP extends StatelessWidget {
   const ResetPasswordViaSMSOTP({super.key});
@@ -13,12 +13,12 @@ class ResetPasswordViaSMSOTP extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //Initialize signup controller
-    Get.put(ForgotPasswordViaSMSOtpController());
+    Get.put(ResetPasswordViaSMSOtpController());
 
     if (Platform.isIOS) {
       return GestureDetector(
         onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
-        child: const ForgotPasswordViaSMSOTPCupertinoScaffold(),
+        child: const ResetPasswordViaSMSOTPCupertinoScaffold(),
       );
     }
     return GestureDetector(
