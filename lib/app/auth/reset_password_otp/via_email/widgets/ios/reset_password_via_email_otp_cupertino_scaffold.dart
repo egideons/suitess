@@ -1,48 +1,49 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:suitess/app/auth/components/auth_app_bar.dart';
-import 'package:suitess/src/utils/buttons/android/android_elevated_button.dart';
-import 'package:suitess/src/utils/text_form_fields/android/android_textformfield.dart';
+import 'package:suitess/src/controllers/auth/reset_password_via_email_otp_controller.dart';
 
 import '../../../../../../src/constants/consts.dart';
-import '../../../../../../src/controllers/auth/forgot_password_via_sms_controller.dart';
+import '../../../../../../src/utils/buttons/ios/cupertino_elevated_button.dart';
 import '../../../../../../src/utils/containers/form_field_container.dart';
+import '../../../../../../src/utils/text_form_fields/ios/cupertino_text_field.dart';
 import '../../../../../../theme/colors.dart';
-import '../../content/forgot_password_via_sms_page_header.dart';
+import '../../../../components/auth_cupertino_nav_bar.dart';
+import '../../content/reset_password_via_email_otp_page_header.dart';
 
-class ForgotPasswordViaSMSOTPScaffold
-    extends GetView<ForgotPasswordViaSMSOtpController> {
-  const ForgotPasswordViaSMSOTPScaffold({super.key});
+class ResetPasswordViaEmailOTPCupertinoScaffold
+    extends GetView<ResetPasswordViaEmailOTPController> {
+  const ResetPasswordViaEmailOTPCupertinoScaffold({super.key});
 
   @override
   Widget build(BuildContext context) {
     var media = MediaQuery.of(context).size;
     var colorScheme = Theme.of(context).colorScheme;
 
-    var forgotPasswordViaSMSController =
-        ForgotPasswordViaSMSOtpController.instance;
+    var forgotPasswordViaEmailController =
+        ResetPasswordViaEmailOTPController.instance;
 
-    return Scaffold(
-      backgroundColor: colorScheme.surface,
-      appBar: authAppBar(
+    return CupertinoPageScaffold(
+      navigationBar: authCupertinoNavBar(
+        previousPageTitle: "Back",
         colorScheme: colorScheme,
         media: media,
         title: "OTP",
       ),
-      body: ListView(
+      child: ListView(
         padding: const EdgeInsets.all(10),
         children: [
-          forgotPasswordViaSMSOTPPageHeader(
+          resetPasswordViaEmailOTPPageHeader(
             colorScheme: colorScheme,
             media: media,
             title: "Verify OTP",
-            subtitle: "Enter the 4-digit OTP sent to your phone.",
+            subtitle: "Enter the 4-digit OTP sent to your email",
           ),
           const SizedBox(height: kDefaultPadding * 2),
           Form(
-            key: forgotPasswordViaSMSController.formKey,
+            key: forgotPasswordViaEmailController.formKey,
             autovalidateMode: AutovalidateMode.onUserInteraction,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -52,17 +53,17 @@ class ForgotPasswordViaSMSOTPScaffold
                   colorScheme,
                   media,
                   containerWidth: media.width * 0.18,
-                  padding: const EdgeInsets.only(left: 10),
                   child: Center(
-                    child: AndroidTextFormField(
-                      controller: forgotPasswordViaSMSController.pin1EC,
-                      focusNode: forgotPasswordViaSMSController.pin1FN,
+                    child: MyCupertinoTextField(
+                      controller: forgotPasswordViaEmailController.pin1EC,
+                      focusNode: forgotPasswordViaEmailController.pin1FN,
                       textInputAction: TextInputAction.next,
                       textCapitalization: TextCapitalization.none,
                       keyboardType: TextInputType.number,
-                      hintText: "0",
+                      borderColor: kTransparentColor,
+                      placeholder: "0",
                       onChanged: (value) {
-                        forgotPasswordViaSMSController.pin1Onchanged(
+                        forgotPasswordViaEmailController.pin1Onchanged(
                             value, context);
                       },
                       inputFormatters: [
@@ -79,21 +80,21 @@ class ForgotPasswordViaSMSOTPScaffold
                   colorScheme,
                   media,
                   containerWidth: media.width * 0.18,
-                  padding: const EdgeInsets.only(left: 10),
                   child: Center(
-                    child: AndroidTextFormField(
-                      controller: forgotPasswordViaSMSController.pin2EC,
-                      focusNode: forgotPasswordViaSMSController.pin2FN,
+                    child: MyCupertinoTextField(
+                      controller: forgotPasswordViaEmailController.pin2EC,
+                      focusNode: forgotPasswordViaEmailController.pin2FN,
                       textInputAction: TextInputAction.next,
                       textCapitalization: TextCapitalization.none,
                       keyboardType: TextInputType.number,
-                      hintText: "0",
+                      borderColor: kTransparentColor,
+                      placeholder: "0",
                       inputFormatters: [
                         LengthLimitingTextInputFormatter(1),
                         FilteringTextInputFormatter.digitsOnly,
                       ],
                       onChanged: (value) {
-                        forgotPasswordViaSMSController.pin2Onchanged(
+                        forgotPasswordViaEmailController.pin2Onchanged(
                             value, context);
                       },
                       validator: (value) {
@@ -106,21 +107,21 @@ class ForgotPasswordViaSMSOTPScaffold
                   colorScheme,
                   media,
                   containerWidth: media.width * 0.18,
-                  padding: const EdgeInsets.only(left: 10),
                   child: Center(
-                    child: AndroidTextFormField(
-                      controller: forgotPasswordViaSMSController.pin3EC,
-                      focusNode: forgotPasswordViaSMSController.pin3FN,
+                    child: MyCupertinoTextField(
+                      controller: forgotPasswordViaEmailController.pin3EC,
+                      focusNode: forgotPasswordViaEmailController.pin3FN,
                       textInputAction: TextInputAction.next,
                       textCapitalization: TextCapitalization.none,
                       keyboardType: TextInputType.number,
-                      hintText: "0",
+                      borderColor: kTransparentColor,
+                      placeholder: "0",
                       inputFormatters: [
                         LengthLimitingTextInputFormatter(1),
                         FilteringTextInputFormatter.digitsOnly,
                       ],
                       onChanged: (value) {
-                        forgotPasswordViaSMSController.pin3Onchanged(
+                        forgotPasswordViaEmailController.pin3Onchanged(
                             value, context);
                       },
                       validator: (value) {
@@ -133,23 +134,22 @@ class ForgotPasswordViaSMSOTPScaffold
                   colorScheme,
                   media,
                   containerWidth: media.width * 0.18,
-                  padding: const EdgeInsets.only(left: 10),
                   child: Center(
-                    child: AndroidTextFormField(
-                      controller: forgotPasswordViaSMSController.pin4EC,
-                      focusNode: forgotPasswordViaSMSController.pin4FN,
+                    child: MyCupertinoTextField(
+                      controller: forgotPasswordViaEmailController.pin4EC,
+                      focusNode: forgotPasswordViaEmailController.pin4FN,
                       textInputAction: TextInputAction.done,
                       textCapitalization: TextCapitalization.none,
                       keyboardType: TextInputType.number,
-                      hintText: "0",
-                      onFieldSubmitted:
-                          forgotPasswordViaSMSController.onSubmitted,
+                      borderColor: kTransparentColor,
+                      placeholder: "0",
+                      onSubmitted: forgotPasswordViaEmailController.onSubmitted,
                       inputFormatters: [
                         LengthLimitingTextInputFormatter(1),
                         FilteringTextInputFormatter.digitsOnly,
                       ],
                       onChanged: (value) {
-                        forgotPasswordViaSMSController.pin4Onchanged(
+                        forgotPasswordViaEmailController.pin4Onchanged(
                             value, context);
                       },
                       validator: (value) {
@@ -163,17 +163,17 @@ class ForgotPasswordViaSMSOTPScaffold
           ),
           kSizedBox,
           const SizedBox(height: kDefaultPadding * 2),
-          GetBuilder<ForgotPasswordViaSMSOtpController>(
+          GetBuilder<ResetPasswordViaEmailOTPController>(
             builder: (controller) {
-              return AndroidElevatedButton(
+              return CupertinoElevatedButton(
                 title: "Continue",
-                isLoading: forgotPasswordViaSMSController.isLoading.value
+                isLoading: forgotPasswordViaEmailController.isLoading.value
                     ? true
                     : false,
-                disable: forgotPasswordViaSMSController.formIsValid.value
+                disable: forgotPasswordViaEmailController.formIsValid.value
                     ? false
                     : true,
-                onPressed: forgotPasswordViaSMSController.submitOTP,
+                onPressed: forgotPasswordViaEmailController.submitOTP,
               );
             },
           ),
@@ -200,15 +200,16 @@ class ForgotPasswordViaSMSOTPScaffold
                     curve: Curves.easeIn,
                     style: defaultTextStyle(
                       fontSize: 15.0,
-                      color: forgotPasswordViaSMSController.timerComplete.isTrue
-                          ? kSuccessColor
-                          : kErrorColor,
+                      color:
+                          forgotPasswordViaEmailController.timerComplete.isTrue
+                              ? kSuccessColor
+                              : kErrorColor,
                       fontWeight: FontWeight.w600,
                     ),
                     textAlign: TextAlign.center,
                     child: Text(
-                      forgotPasswordViaSMSController.formatTime(
-                          forgotPasswordViaSMSController
+                      forgotPasswordViaEmailController.formatTime(
+                          forgotPasswordViaEmailController
                               .secondsRemaining.value),
                     ),
                   );
@@ -219,12 +220,12 @@ class ForgotPasswordViaSMSOTPScaffold
           kSizedBox,
           Obx(
             () {
-              return Center(
-                child: InkWell(
-                  onTap: forgotPasswordViaSMSController.timerComplete.isTrue
-                      ? forgotPasswordViaSMSController.requestOTP
-                      : null,
-                  borderRadius: BorderRadius.circular(24),
+              return CupertinoButton(
+                onPressed: forgotPasswordViaEmailController.timerComplete.isTrue
+                    ? forgotPasswordViaEmailController.requestOTP
+                    : null,
+                disabledColor: colorScheme.inversePrimary,
+                child: Center(
                   child: Container(
                     width: media.width - 180,
                     padding: const EdgeInsets.all(10),
@@ -244,7 +245,7 @@ class ForgotPasswordViaSMSOTPScaffold
                         children: [
                           FaIcon(
                             FontAwesomeIcons.solidEnvelope,
-                            color: forgotPasswordViaSMSController
+                            color: forgotPasswordViaEmailController
                                     .timerComplete.isTrue
                                 ? kSuccessColor
                                 : colorScheme.inversePrimary,
@@ -254,7 +255,7 @@ class ForgotPasswordViaSMSOTPScaffold
                           Text(
                             "Resend code",
                             style: defaultTextStyle(
-                              color: forgotPasswordViaSMSController
+                              color: forgotPasswordViaEmailController
                                       .timerComplete.isTrue
                                   ? kSuccessColor
                                   : colorScheme.inversePrimary,

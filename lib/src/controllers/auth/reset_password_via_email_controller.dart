@@ -82,7 +82,7 @@ class ResetPasswordViaEmailController extends GetxController {
       update();
 
       await Future.delayed(const Duration(milliseconds: 1000));
-      Get.toNamed(Routes.forgotPasswordViaEmailOTP, preventDuplicates: true);
+      Get.toNamed(Routes.resetPasswordViaEmailOTP, preventDuplicates: true);
 
       isLoading.value = false;
       update();

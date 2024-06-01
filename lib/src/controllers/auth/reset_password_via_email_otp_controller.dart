@@ -7,9 +7,9 @@ import 'package:get/get.dart';
 import '../../routes/routes.dart';
 import '../others/api_processor_controller.dart';
 
-class ForgotPasswordViaPhoneOTPController extends GetxController {
-  static ForgotPasswordViaPhoneOTPController get instance {
-    return Get.find<ForgotPasswordViaPhoneOTPController>();
+class ResetPasswordViaEmailOTPController extends GetxController {
+  static ResetPasswordViaEmailOTPController get instance {
+    return Get.find<ResetPasswordViaEmailOTPController>();
   }
 
   @override

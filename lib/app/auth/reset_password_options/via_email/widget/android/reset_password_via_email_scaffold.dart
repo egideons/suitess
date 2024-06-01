@@ -6,7 +6,7 @@ import 'package:suitess/src/constants/assets.dart';
 import 'package:suitess/src/utils/components/responsive_constants.dart';
 
 import '../../../../../../src/constants/consts.dart';
-import '../../../../../../src/controllers/auth/forgot_password_via_email_controller.dart';
+import '../../../../../../src/controllers/auth/reset_password_via_email_controller.dart';
 import '../../../../../../src/utils/buttons/android/android_elevated_button.dart';
 import '../../../../../../src/utils/containers/form_field_container.dart';
 import '../../../../../../src/utils/text_form_fields/android/android_textformfield.dart';

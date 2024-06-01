@@ -1,21 +1,20 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:suitess/src/controllers/auth/forgot_password_via_email_otp_controller.dart';
+import 'package:suitess/app/auth/components/auth_app_bar.dart';
+import 'package:suitess/src/controllers/auth/reset_password_via_email_otp_controller.dart';
+import 'package:suitess/src/utils/buttons/android/android_elevated_button.dart';
+import 'package:suitess/src/utils/text_form_fields/android/android_textformfield.dart';
 
 import '../../../../../../src/constants/consts.dart';
-import '../../../../../../src/utils/buttons/ios/cupertino_elevated_button.dart';
 import '../../../../../../src/utils/containers/form_field_container.dart';
-import '../../../../../../src/utils/text_form_fields/ios/cupertino_text_field.dart';
 import '../../../../../../theme/colors.dart';
-import '../../../../components/auth_cupertino_nav_bar.dart';
-import '../../content/forgot_password_via_email_otp_page_header.dart';
+import '../../content/reset_password_via_email_otp_page_header.dart';
 
-class ForgotPasswordViaPhoneOTPCupertinoScaffold
-    extends GetView<ForgotPasswordViaPhoneOTPController> {
-  const ForgotPasswordViaPhoneOTPCupertinoScaffold({super.key});
+class ForgotPasswordViaEmailOTPScaffold
+    extends GetView<ResetPasswordViaEmailOTPController> {
+  const ForgotPasswordViaEmailOTPScaffold({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,19 +22,19 @@ class ForgotPasswordViaPhoneOTPCupertinoScaffold
     var colorScheme = Theme.of(context).colorScheme;
 
     var forgotPasswordViaEmailController =
-        ForgotPasswordViaPhoneOTPController.instance;
+        ResetPasswordViaEmailOTPController.instance;
 
-    return CupertinoPageScaffold(
-      navigationBar: authCupertinoNavBar(
-        previousPageTitle: "Back",
+    return Scaffold(
+      backgroundColor: colorScheme.surface,
+      appBar: authAppBar(
         colorScheme: colorScheme,
         media: media,
         title: "OTP",
       ),
-      child: ListView(
+      body: ListView(
         padding: const EdgeInsets.all(10),
         children: [
-          forgotPasswordViaEmailOTPPageHeader(
+          resetPasswordViaEmailOTPPageHeader(
             colorScheme: colorScheme,
             media: media,
             title: "Verify OTP",
@@ -53,15 +52,15 @@ class ForgotPasswordViaPhoneOTPCupertinoScaffold
                   colorScheme,
                   media,
                   containerWidth: media.width * 0.18,
+                  padding: const EdgeInsets.only(left: 10),
                   child: Center(
-                    child: MyCupertinoTextField(
+                    child: AndroidTextFormField(
                       controller: forgotPasswordViaEmailController.pin1EC,
                       focusNode: forgotPasswordViaEmailController.pin1FN,
                       textInputAction: TextInputAction.next,
                       textCapitalization: TextCapitalization.none,
                       keyboardType: TextInputType.number,
-                      borderColor: kTransparentColor,
-                      placeholder: "0",
+                      hintText: "0",
                       onChanged: (value) {
                         forgotPasswordViaEmailController.pin1Onchanged(
                             value, context);
@@ -80,15 +79,15 @@ class ForgotPasswordViaPhoneOTPCupertinoScaffold
                   colorScheme,
                   media,
                   containerWidth: media.width * 0.18,
+                  padding: const EdgeInsets.only(left: 10),
                   child: Center(
-                    child: MyCupertinoTextField(
+                    child: AndroidTextFormField(
                       controller: forgotPasswordViaEmailController.pin2EC,
                       focusNode: forgotPasswordViaEmailController.pin2FN,
                       textInputAction: TextInputAction.next,
                       textCapitalization: TextCapitalization.none,
                       keyboardType: TextInputType.number,
-                      borderColor: kTransparentColor,
-                      placeholder: "0",
+                      hintText: "0",
                       inputFormatters: [
                         LengthLimitingTextInputFormatter(1),
                         FilteringTextInputFormatter.digitsOnly,
@@ -107,15 +106,15 @@ class ForgotPasswordViaPhoneOTPCupertinoScaffold
                   colorScheme,
                   media,
                   containerWidth: media.width * 0.18,
+                  padding: const EdgeInsets.only(left: 10),
                   child: Center(
-                    child: MyCupertinoTextField(
+                    child: AndroidTextFormField(
                       controller: forgotPasswordViaEmailController.pin3EC,
                       focusNode: forgotPasswordViaEmailController.pin3FN,
                       textInputAction: TextInputAction.next,
                       textCapitalization: TextCapitalization.none,
                       keyboardType: TextInputType.number,
-                      borderColor: kTransparentColor,
-                      placeholder: "0",
+                      hintText: "0",
                       inputFormatters: [
                         LengthLimitingTextInputFormatter(1),
                         FilteringTextInputFormatter.digitsOnly,
@@ -134,16 +133,17 @@ class ForgotPasswordViaPhoneOTPCupertinoScaffold
                   colorScheme,
                   media,
                   containerWidth: media.width * 0.18,
+                  padding: const EdgeInsets.only(left: 10),
                   child: Center(
-                    child: MyCupertinoTextField(
+                    child: AndroidTextFormField(
                       controller: forgotPasswordViaEmailController.pin4EC,
                       focusNode: forgotPasswordViaEmailController.pin4FN,
                       textInputAction: TextInputAction.done,
                       textCapitalization: TextCapitalization.none,
                       keyboardType: TextInputType.number,
-                      borderColor: kTransparentColor,
-                      placeholder: "0",
-                      onSubmitted: forgotPasswordViaEmailController.onSubmitted,
+                      hintText: "0",
+                      onFieldSubmitted:
+                          forgotPasswordViaEmailController.onSubmitted,
                       inputFormatters: [
                         LengthLimitingTextInputFormatter(1),
                         FilteringTextInputFormatter.digitsOnly,
@@ -163,9 +163,9 @@ class ForgotPasswordViaPhoneOTPCupertinoScaffold
           ),
           kSizedBox,
           const SizedBox(height: kDefaultPadding * 2),
-          GetBuilder<ForgotPasswordViaPhoneOTPController>(
+          GetBuilder<ResetPasswordViaEmailOTPController>(
             builder: (controller) {
-              return CupertinoElevatedButton(
+              return AndroidElevatedButton(
                 title: "Continue",
                 isLoading: forgotPasswordViaEmailController.isLoading.value
                     ? true
@@ -220,12 +220,13 @@ class ForgotPasswordViaPhoneOTPCupertinoScaffold
           kSizedBox,
           Obx(
             () {
-              return CupertinoButton(
-                onPressed: forgotPasswordViaEmailController.timerComplete.isTrue
-                    ? forgotPasswordViaEmailController.requestOTP
-                    : null,
-                disabledColor: colorScheme.inversePrimary,
-                child: Center(
+              return Center(
+                child: InkWell(
+                  onTap: forgotPasswordViaEmailController.timerComplete.isTrue
+                      ? forgotPasswordViaEmailController.requestOTP
+                      : null,
+                  mouseCursor: SystemMouseCursors.click,
+                  borderRadius: BorderRadius.circular(24),
                   child: Container(
                     width: media.width - 180,
                     padding: const EdgeInsets.all(10),

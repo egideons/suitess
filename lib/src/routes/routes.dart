@@ -11,12 +11,12 @@ import 'package:suitess/app/kyc/kyc_profile_photo/screen/kyc_profile_photo.dart'
 import 'package:suitess/app/onboarding/screen/onboarding.dart';
 import 'package:suitess/app/splash/startup/screen/startup_splash.dart';
 
-import '../../app/auth/forgot_password_otp/via_email/screen/forgot_password_via_email_otp.dart';
-import '../../app/auth/forgot_password_otp/via_sms/screen/forgot_password_via_sms.dart';
 import '../../app/auth/login/screen/login.dart';
 import '../../app/auth/phone_otp/screen/phone_otp.dart';
 import '../../app/auth/reset_password/screen/reset_password.dart';
 import '../../app/auth/reset_password_options/via_email/screen/reset_password_via_email.dart';
+import '../../app/auth/reset_password_otp/via_email/screen/reset_password_via_email_otp.dart';
+import '../../app/auth/reset_password_otp/via_sms/screen/forgot_password_via_sms.dart';
 import '../../app/experience/landlord/bid_details/screen/landlord_bid_details.dart';
 import '../../app/experience/landlord/property/add_property/screen/landlord_add_property.dart';
 import '../../app/kyc/kyc_bvn/screen/kyc_bvn.dart';
@@ -45,10 +45,10 @@ class Routes {
   static const forgotPassword = "/forgot-password";
   static const resetPassword = "/reset-password";
   static const changePassword = "/change-password";
-  static const forgotPasswordViaEmail = "/forgot-password-via-email";
-  static const forgotPasswordViaEmailOTP = "/forgot-password-via-email-otp";
-  static const forgotPasswordViaSms = "/forgot-password-via-sms";
-  static const forgotPasswordViaSmsOTP = "/forgot-password-via-sms-otp";
+  static const resetPasswordViaEmail = "/reset-password-via-email";
+  static const resetPasswordViaEmailOTP = "/reset-password-via-email-otp";
+  static const forgotPasswordViaSms = "/reset-password-via-sms";
+  static const forgotPasswordViaSmsOTP = "/reset-password-via-sms-otp";
 
   //KYC Screens
   static const kycAddLocation = "/kyc-add-location";
@@ -87,12 +87,12 @@ class Routes {
     GetPage(name: phoneOTP, page: () => const PhoneOTP()),
     GetPage(name: forgotPassword, page: () => const ForgotPassword()),
     GetPage(
-      name: forgotPasswordViaEmail,
+      name: resetPasswordViaEmail,
       page: () => const ResetPasswordViaEmail(),
     ),
     GetPage(
-      name: forgotPasswordViaEmailOTP,
-      page: () => const ForgotPasswordViaEmailOTP(),
+      name: resetPasswordViaEmailOTP,
+      page: () => const RestPasswordViaEmailOTP(),
     ),
     // GetPage(
     //   name: forgotPasswordViaSmsOTP,
@@ -100,7 +100,7 @@ class Routes {
     // ),
     GetPage(
       name: forgotPasswordViaSmsOTP,
-      page: () => const ForgotPasswordViaSMSOTP(),
+      page: () => const ResetPasswordViaSMSOTP(),
     ),
     GetPage(name: resetPassword, page: () => const ResetPassword()),
 

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../../src/constants/consts.dart';
 
-Widget forgotPasswordViaEmailOTPPageHeader({
+resetPasswordViaEmailOTPPageHeader({
   colorScheme,
   media,
   title,
