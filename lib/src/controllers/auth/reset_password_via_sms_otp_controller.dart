@@ -7,9 +7,9 @@ import 'package:get/get.dart';
 import '../../routes/routes.dart';
 import '../others/api_processor_controller.dart';
 
-class ResetPasswordViaSMSOtpController extends GetxController {
-  static ResetPasswordViaSMSOtpController get instance {
-    return Get.find<ResetPasswordViaSMSOtpController>();
+class ResetPasswordViaSmsOTPController extends GetxController {
+  static ResetPasswordViaSmsOTPController get instance {
+    return Get.find<ResetPasswordViaSmsOTPController>();
   }
 
   @override
@@ -162,16 +162,6 @@ class ResetPasswordViaSMSOtpController extends GetxController {
     ApiProcessorController.successSnack("OTP verification successful");
 
     Get.toNamed(Routes.resetPassword, preventDuplicates: true);
-
-    // Get.offAll(
-    //   () => const KycAddLocation(),
-    //   routeName: "/kyc-add-location",
-    //   fullscreenDialog: true,
-    //   curve: Curves.easeInOut,
-    //   predicate: (routes) => false,
-    //   popGesture: false,
-    //   transition: Get.defaultTransition,
-    // );
 
     isLoading.value = false;
     update();

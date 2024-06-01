@@ -20,7 +20,6 @@ resetPasswordViaSMSOTPPageHeader({
           style: defaultTextStyle(
             fontSize: 24.0,
             color: colorScheme.primary,
-            letterSpacing: .90,
           ),
         ),
       ),
@@ -31,8 +30,9 @@ resetPasswordViaSMSOTPPageHeader({
           subtitle ?? "",
           textAlign: TextAlign.center,
           style: defaultTextStyle(
-            color: colorScheme.inversePrimary,
+            color: colorScheme.primary,
             fontSize: 14.0,
+            fontWeight: FontWeight.w400,
           ),
         ),
       ),

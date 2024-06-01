@@ -14,7 +14,7 @@ import '../../../../components/auth_cupertino_nav_bar.dart';
 import '../../content/reset_password_via_sms_page_header.dart';
 
 class ResetPasswordViaSMSOTPCupertinoScaffold
-    extends GetView<ResetPasswordViaSMSOtpController> {
+    extends GetView<ResetPasswordViaSmsOTPController> {
   const ResetPasswordViaSMSOTPCupertinoScaffold({super.key});
 
   @override
@@ -23,7 +23,7 @@ class ResetPasswordViaSMSOTPCupertinoScaffold
     var colorScheme = Theme.of(context).colorScheme;
 
     var forgotPasswordViaSMSController =
-        ResetPasswordViaSMSOtpController.instance;
+        ResetPasswordViaSmsOTPController.instance;
 
     return CupertinoPageScaffold(
       navigationBar: authCupertinoNavBar(
@@ -163,7 +163,7 @@ class ResetPasswordViaSMSOTPCupertinoScaffold
           ),
           kSizedBox,
           const SizedBox(height: kDefaultPadding * 2),
-          GetBuilder<ResetPasswordViaSMSOtpController>(
+          GetBuilder<ResetPasswordViaSmsOTPController>(
             builder: (controller) {
               return CupertinoElevatedButton(
                 title: "Continue",

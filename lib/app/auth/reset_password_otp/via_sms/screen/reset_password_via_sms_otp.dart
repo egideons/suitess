@@ -13,7 +13,7 @@ class ResetPasswordViaSMSOTP extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //Initialize signup controller
-    Get.put(ResetPasswordViaSMSOtpController());
+    Get.put(ResetPasswordViaSmsOTPController());
 
     if (Platform.isIOS) {
       return GestureDetector(
