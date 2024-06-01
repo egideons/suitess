@@ -11,6 +11,7 @@ import 'package:suitess/app/kyc/kyc_profile_photo/screen/kyc_profile_photo.dart'
 import 'package:suitess/app/onboarding/screen/onboarding.dart';
 import 'package:suitess/app/splash/startup/screen/startup_splash.dart';
 
+import '../../app/auth/forgot_password_options/via_email/screen/forgot_password_via_email.dart';
 import '../../app/auth/forgot_password_otp/via_email/screen/forgot_password_via_email_otp.dart';
 import '../../app/auth/forgot_password_otp/via_sms/screen/forgot_password_via_sms.dart';
 import '../../app/auth/login/screen/login.dart';
@@ -44,7 +45,9 @@ class Routes {
   static const forgotPassword = "/forgot-password";
   static const resetPassword = "/reset-password";
   static const changePassword = "/change-password";
+  static const forgotPasswordViaEmail = "/forgot-password-via-email";
   static const forgotPasswordViaEmailOTP = "/forgot-password-via-email-otp";
+  static const forgotPasswordViaSms = "/forgot-password-via-sms";
   static const forgotPasswordViaSmsOTP = "/forgot-password-via-sms-otp";
 
   //KYC Screens
@@ -84,9 +87,17 @@ class Routes {
     GetPage(name: phoneOTP, page: () => const PhoneOTP()),
     GetPage(name: forgotPassword, page: () => const ForgotPassword()),
     GetPage(
+      name: forgotPasswordViaEmail,
+      page: () => const ForgotPasswordViaEmail(),
+    ),
+    GetPage(
       name: forgotPasswordViaEmailOTP,
       page: () => const ForgotPasswordViaEmailOTP(),
     ),
+    // GetPage(
+    //   name: forgotPasswordViaSmsOTP,
+    //   page: () => const ForgotPasswordViaSMS(),
+    // ),
     GetPage(
       name: forgotPasswordViaSmsOTP,
       page: () => const ForgotPasswordViaSMSOTP(),

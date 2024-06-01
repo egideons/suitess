@@ -20,7 +20,7 @@ forgotPasswordAndroidButton(
     borderRadius: BorderRadius.circular(10),
     child: Container(
       width: media.width,
-      padding: padding ?? const EdgeInsets.all(10),
+      padding: padding ?? const EdgeInsets.all(20),
       decoration: ShapeDecoration(
         color: bgColor ?? kSuccessColor,
         shape: RoundedRectangleBorder(

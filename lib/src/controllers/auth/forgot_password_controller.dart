@@ -19,7 +19,7 @@ class ForgotPasswordController extends GetxController {
     update();
 
     await Future.delayed(const Duration(milliseconds: 1000));
-    Get.toNamed(Routes.forgotPasswordViaEmailOTP, preventDuplicates: true);
+    Get.toNamed(Routes.forgotPasswordViaEmail, preventDuplicates: true);
 
     isLoading.value = false;
     update();
@@ -31,7 +31,7 @@ class ForgotPasswordController extends GetxController {
     update();
 
     await Future.delayed(const Duration(milliseconds: 1000));
-    Get.toNamed(Routes.forgotPasswordViaSmsOTP, preventDuplicates: true);
+    Get.toNamed(Routes.forgotPasswordViaSms, preventDuplicates: true);
 
     isLoading.value = false;
     update();
