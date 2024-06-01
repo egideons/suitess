@@ -14,17 +14,19 @@ class ResetPasswordController extends GetxController {
   final formKey = GlobalKey<FormState>();
 
   //=========== Controllers ===========\\
-  final emailEC = TextEditingController();
   final passwordEC = TextEditingController();
+  final confirmPasswordEC = TextEditingController();
 
   //=========== Focus nodes ===========\\
-  final emailFN = FocusNode();
   final passwordFN = FocusNode();
+  final confirmPasswordFN = FocusNode();
 
   //=========== Booleans ===========\\
   var isLoading = false.obs;
   var isPasswordValid = false.obs;
+  var isConfirmPasswordValid = false.obs;
   var passwordIsHidden = true.obs;
+  var confirmPasswordIsHidden = true.obs;
   var formIsValid = false.obs;
 
   //=========== passwordOnChanged ===========\\
@@ -33,9 +35,26 @@ class ResetPasswordController extends GetxController {
 
     if (!passwordRegExp.hasMatch(passwordEC.text)) {
       isPasswordValid.value = false;
-      setFormIsInvalid();
     } else {
       isPasswordValid.value = true;
+      update();
+    }
+
+    update();
+  }
+
+  confirmPasswordOnChanged(value) {
+    var passwordRegExp = RegExp(passwordPattern);
+
+    if (!passwordRegExp.hasMatch(passwordEC.text)) {
+      if (confirmPasswordEC.text == passwordEC.text) {
+        isConfirmPasswordValid.value = false;
+        // setFormIsInvalid();
+      }
+      isConfirmPasswordValid.value = false;
+      setFormIsInvalid();
+    } else {
+      isConfirmPasswordValid.value = true;
       setFormIsValid();
       update();
     }

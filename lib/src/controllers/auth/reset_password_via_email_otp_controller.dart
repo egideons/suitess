@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -15,7 +14,6 @@ class ResetPasswordViaEmailOTPController extends GetxController {
   @override
   void onInit() {
     startTimer();
-    log("OTP Timer has started");
     super.onInit();
   }
 
@@ -162,16 +160,6 @@ class ResetPasswordViaEmailOTPController extends GetxController {
     ApiProcessorController.successSnack("OTP verification successful");
 
     Get.toNamed(Routes.resetPassword, preventDuplicates: true);
-
-    // Get.offAll(
-    //   () => const KycAddLocation(),
-    //   routeName: "/kyc-add-location",
-    //   fullscreenDialog: true,
-    //   curve: Curves.easeInOut,
-    //   predicate: (routes) => false,
-    //   popGesture: false,
-    //   transition: Get.defaultTransition,
-    // );
 
     isLoading.value = false;
     update();

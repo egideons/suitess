@@ -28,16 +28,127 @@ class ResetPasswordViaEmailScaffold
     if (deviceType(media.width) > 1) {
       return Scaffold(
         backgroundColor: colorScheme.surface,
+        appBar: AppBar(
+          backgroundColor: colorScheme.surface,
+          toolbarHeight: 36,
+          leading: IconButton(
+            onPressed: () {
+              Get.back();
+            },
+            icon: Icon(
+              Iconsax.arrow_left_2,
+              color: colorScheme.primary,
+            ),
+          ),
+        ),
         body: Row(
           children: [
             SizedBox(
               width: media.width / 2.2,
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Container(),
+                  SvgPicture.asset(
+                    Assets.passwordSvg,
+                    fit: BoxFit.fitHeight,
+                    height: deviceType(media.width) > 2
+                        ? media.height * .6
+                        : media.height * .4,
+                  ),
+                  kSizedBox,
+                  resetPasswordOptionHeader(
+                    colorScheme,
+                    resetPasswordViaEmailController,
+                    registeredOption: "email",
+                    resetOption: "SMS",
+                    resetVia: resetPasswordViaEmailController.navigateToSMS,
+                  ),
+                  kSizedBox,
                 ],
               ),
-            )
+            ),
+            kHalfWidthSizedBox,
+
+            //Form
+            Expanded(
+              child: SingleChildScrollView(
+                child: Container(
+                  padding: const EdgeInsets.all(20),
+                  margin: const EdgeInsets.only(right: 10),
+                  decoration: BoxDecoration(
+                    color: colorScheme.surface,
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(
+                      width: 1,
+                      color: colorScheme.inversePrimary,
+                    ),
+                  ),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      const SizedBox(height: kDefaultPadding * 4),
+                      Obx(
+                        () {
+                          return Form(
+                            key: resetPasswordViaEmailController.formKey,
+                            autovalidateMode:
+                                AutovalidateMode.onUserInteraction,
+                            child: Column(
+                              children: [
+                                formFieldContainer(
+                                  colorScheme,
+                                  media,
+                                  containerHeight: media.height * .08,
+                                  child: AndroidTextFormField(
+                                    readOnly: resetPasswordViaEmailController
+                                        .isLoading.value,
+                                    controller:
+                                        resetPasswordViaEmailController.emailEC,
+                                    focusNode:
+                                        resetPasswordViaEmailController.emailFN,
+                                    textInputAction: TextInputAction.done,
+                                    textCapitalization: TextCapitalization.none,
+                                    keyboardType: TextInputType.emailAddress,
+                                    hintText: "Email",
+                                    onFieldSubmitted:
+                                        resetPasswordViaEmailController
+                                            .onSubmitted,
+                                    onChanged: resetPasswordViaEmailController
+                                        .emailOnChanged,
+                                    validator: (value) {
+                                      return null;
+                                    },
+                                  ),
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      ),
+                      const SizedBox(height: kDefaultPadding * 2),
+                      GetBuilder<ResetPasswordViaEmailController>(
+                        init: ResetPasswordViaEmailController(),
+                        builder: (context) {
+                          return AndroidElevatedButton(
+                            title: "Send code",
+                            disable: resetPasswordViaEmailController
+                                    .formIsValid.isTrue
+                                ? false
+                                : true,
+                            isLoading:
+                                resetPasswordViaEmailController.isLoading.value,
+                            onPressed:
+                                resetPasswordViaEmailController.submitEmail,
+                          );
+                        },
+                      ),
+                      const SizedBox(height: kDefaultPadding * 2),
+                    ],
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       );

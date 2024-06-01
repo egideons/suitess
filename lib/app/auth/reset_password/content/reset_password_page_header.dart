@@ -15,7 +15,6 @@ Widget resetPasswordPageHeader({colorScheme, media, title, subtitle}) {
           style: defaultTextStyle(
             fontSize: 24.0,
             color: colorScheme.primary,
-            letterSpacing: .90,
           ),
         ),
       ),
@@ -24,10 +23,12 @@ Widget resetPasswordPageHeader({colorScheme, media, title, subtitle}) {
         width: media.width - 50,
         child: Text(
           subtitle ?? "",
+          maxLines: 10,
           textAlign: TextAlign.center,
           style: defaultTextStyle(
-            color: colorScheme.inversePrimary,
+            color: colorScheme.primary,
             fontSize: 14.0,
+            fontWeight: FontWeight.w300,
           ),
         ),
       ),

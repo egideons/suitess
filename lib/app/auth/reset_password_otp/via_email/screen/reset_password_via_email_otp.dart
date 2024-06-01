@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:suitess/app/auth/reset_password_otp/via_email/widgets/ios/reset_password_via_email_otp_cupertino_scaffold.dart';
 import 'package:suitess/src/controllers/auth/reset_password_via_email_otp_controller.dart';
 
-import '../widgets/android/forgot_password_via_email_otp_scaffold.dart';
+import '../widgets/android/reset_password_via_email_otp_scaffold.dart';
 
 class RestPasswordViaEmailOTP extends StatelessWidget {
   const RestPasswordViaEmailOTP({super.key});

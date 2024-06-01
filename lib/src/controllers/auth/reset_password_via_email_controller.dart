@@ -82,6 +82,8 @@ class ResetPasswordViaEmailController extends GetxController {
       update();
 
       await Future.delayed(const Duration(milliseconds: 1000));
+      ApiProcessorController.successSnack("An OTP has been sent to your email");
+
       Get.toNamed(Routes.resetPasswordViaEmailOTP, preventDuplicates: true);
 
       isLoading.value = false;

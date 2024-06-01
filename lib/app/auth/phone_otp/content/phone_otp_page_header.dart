@@ -23,6 +23,7 @@ Widget phoneOTPPageHeader({colorScheme, media, title, subtitle, phoneNumber}) {
         width: media.width - 100,
         child: RichText(
           textAlign: TextAlign.center,
+          maxLines: 10,
           text: TextSpan(
             text: subtitle,
             style: defaultTextStyle(
