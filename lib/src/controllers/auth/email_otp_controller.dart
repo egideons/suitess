@@ -6,9 +6,9 @@ import 'package:suitess/app/kyc/kyc_add_location/screen/kyc_add_location.dart';
 
 import '../others/api_processor_controller.dart';
 
-class PhoneOTPController extends GetxController {
-  static PhoneOTPController get instance {
-    return Get.find<PhoneOTPController>();
+class EmailOTPController extends GetxController {
+  static EmailOTPController get instance {
+    return Get.find<EmailOTPController>();
   }
 
   @override
@@ -127,7 +127,7 @@ class PhoneOTPController extends GetxController {
     timerComplete.value = false;
     startTimer();
     update();
-    ApiProcessorController.successSnack("An OTP has been sent to your number");
+    ApiProcessorController.successSnack("An OTP has been sent to your email");
   }
 
   //================= Set form validity ======================\\

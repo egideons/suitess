@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:suitess/app/auth/email_otp/screen/email_otp.dart';
 import 'package:suitess/app/auth/forgot_password/screen/forgot_password.dart';
 import 'package:suitess/app/auth/signup/screen/signup.dart';
 import 'package:suitess/app/choose_experience/screen/choose_experience.dart';
@@ -42,7 +43,8 @@ class Routes {
   //Auth Screens
   static const signup = "/signup";
   static const login = "/login";
-  static const phoneOTP = "/email-otp";
+  static const emailOTP = "/email-otp";
+  static const phoneOTP = "/phone-otp";
   static const forgotPassword = "/forgot-password";
   static const resetPassword = "/reset-password";
   static const changePassword = "/change-password";
@@ -85,6 +87,7 @@ class Routes {
     GetPage(name: onboarding, page: () => const Onboarding()),
     GetPage(name: signup, page: () => const Signup()),
     GetPage(name: login, page: () => const Login()),
+    GetPage(name: emailOTP, page: () => const EmailOTP()),
     GetPage(name: phoneOTP, page: () => const PhoneOTP()),
     GetPage(name: forgotPassword, page: () => const ForgotPassword()),
     GetPage(

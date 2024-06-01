@@ -2,25 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:suitess/app/auth/phone_otp/content/phone_otp_page_header.dart';
 import 'package:suitess/src/utils/buttons/android/android_elevated_button.dart';
 import 'package:suitess/src/utils/components/responsive_constants.dart';
 import 'package:suitess/src/utils/text_form_fields/android/android_textformfield.dart';
 
 import '../../../../../src/constants/assets.dart';
 import '../../../../../src/constants/consts.dart';
-import '../../../../../src/controllers/auth/phone_otp_controller.dart';
+import '../../../../../src/controllers/auth/email_otp_controller.dart';
 import '../../../../../theme/colors.dart';
+import '../../content/email_otp_page_header.dart';
 
-class PhoneOTPScaffold extends GetView<PhoneOTPController> {
-  const PhoneOTPScaffold({super.key});
+class EmailOTPScaffold extends GetView<EmailOTPController> {
+  const EmailOTPScaffold({super.key, required this.userEmail});
+
+  final String? userEmail;
 
   @override
   Widget build(BuildContext context) {
     var media = MediaQuery.of(context).size;
     var colorScheme = Theme.of(context).colorScheme;
 
-    var otpController = PhoneOTPController.instance;
+    var otpController = EmailOTPController.instance;
 
     //Large screens or Mobile Landscape mode
     if (deviceType(media.width) > 1) {
@@ -43,12 +45,12 @@ class PhoneOTPScaffold extends GetView<PhoneOTPController> {
                         : media.height * .4,
                   ),
                   kSizedBox,
-                  phoneOTPPageHeader(
+                  emailOTPPageHeader(
                     colorScheme: colorScheme,
                     media: media,
                     title: "OTP verification",
                     subtitle: "Enter the 4-digit verification code we sent to ",
-                    phoneNumber: maskString("08074656497"),
+                    email: "$userEmail",
                   ),
                 ],
               ),
@@ -177,7 +179,7 @@ class PhoneOTPScaffold extends GetView<PhoneOTPController> {
                         ),
                       ),
                       const SizedBox(height: kDefaultPadding * 2),
-                      GetBuilder<PhoneOTPController>(
+                      GetBuilder<EmailOTPController>(
                         builder: (controller) {
                           return AndroidElevatedButton(
                             title: "Verify",
@@ -255,12 +257,12 @@ class PhoneOTPScaffold extends GetView<PhoneOTPController> {
               height: media.height * .2,
             ),
             kSizedBox,
-            phoneOTPPageHeader(
+            emailOTPPageHeader(
               colorScheme: colorScheme,
               media: media,
               title: "OTP verification",
               subtitle: "Enter the 4-digit verification code we sent to ",
-              phoneNumber: maskString("08074656497"),
+              email: "$userEmail",
             ),
             const SizedBox(height: kDefaultPadding * 2),
             Form(
@@ -368,7 +370,7 @@ class PhoneOTPScaffold extends GetView<PhoneOTPController> {
             ),
             kSizedBox,
             const SizedBox(height: kDefaultPadding * 2),
-            GetBuilder<PhoneOTPController>(
+            GetBuilder<EmailOTPController>(
               builder: (controller) {
                 return AndroidElevatedButton(
                   title: "Verify",

@@ -6,8 +6,8 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:suitess/src/controllers/others/api_processor_controller.dart';
 
+import '../../../app/auth/email_otp/screen/email_otp.dart';
 import '../../../app/auth/login/screen/login.dart';
-import '../../../app/auth/phone_otp/screen/phone_otp.dart';
 import '../../constants/consts.dart';
 
 class SignupController extends GetxController {
@@ -72,12 +72,11 @@ class SignupController extends GetxController {
   }
 
   emailOnChanged(value) {
-    // var emailRegExp = RegExp(emailPattern);
-    // if (!emailRegExp.hasMatch(emailEC.text)) {
-    if (emailEC.text.isEmail) {
-      isEmailValid.value = true;
-    } else {
+    var emailRegExp = RegExp(emailPattern);
+    if (!emailRegExp.hasMatch(emailEC.text)) {
       isEmailValid.value = false;
+    } else {
+      isEmailValid.value = true;
     }
     update();
   }
@@ -137,15 +136,13 @@ class SignupController extends GetxController {
       } else if (isLastNameValid.value == false) {
         ApiProcessorController.errorSnack("Please enter a valid name");
         return;
-      }
-      //  else if (emailEC.text.isEmpty) {
-      //   ApiProcessorController.errorSnack("Please enter your email");
-      //   return;
-      // } else if (isEmailValid.value == false) {
-      //   ApiProcessorController.errorSnack("Please enter a valid email");
-      //   return;
-      // }
-      else if (phoneNumberEC.text.isEmpty) {
+      } else if (emailEC.text.isEmpty) {
+        ApiProcessorController.errorSnack("Please enter your email");
+        return;
+      } else if (isEmailValid.value == false) {
+        ApiProcessorController.errorSnack("Please enter a valid email");
+        return;
+      } else if (phoneNumberEC.text.isEmpty) {
         ApiProcessorController.errorSnack("Please enter your phone number");
         return;
       } else if (isPhoneNumberValid.value == false) {
@@ -167,8 +164,8 @@ class SignupController extends GetxController {
       ApiProcessorController.successSnack("Signup successful");
 
       Get.offAll(
-        () => const PhoneOTP(),
-        routeName: "/phone-otp",
+        () => EmailOTP(userEmail: emailEC.text),
+        routeName: "/email-otp",
         fullscreenDialog: true,
         curve: Curves.easeInOut,
         predicate: (routes) => false,
@@ -221,8 +218,8 @@ class SignupController extends GetxController {
       // ApiProcessorController.successSnack("Signin successful");
 
       // Get.offAll(
-      //   () => const PhoneOTP(),
-      //   routeName: "/phone-otp",
+      //   () => const EmailOTP(),
+      //   routeName: "/email-otp",
       //   fullscreenDialog: true,
       //   curve: Curves.easeInOut,
       //   predicate: (routes) => false,

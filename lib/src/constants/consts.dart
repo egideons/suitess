@@ -80,10 +80,10 @@ const String streetAddressPattern = r'^\d+\s+[a-zA-Z0-9\s.-]+$';
 
 //validation for email
 const String emailPattern =
-    r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+    r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))\s*$';
 
 //===================== Mask Phone Number ==========================\\
-String maskPhoneNumber(String phoneNumber) {
+String maskString(String phoneNumber) {
   // Ensure the phone number is at least 4 characters long
   if (phoneNumber.length < 4) {
     throw ArgumentError('Phone number must be at least 4 digits long');
@@ -112,6 +112,20 @@ String formatDateAndTime(DateTime dateTime) {
   String formattedDateTime = '$formattedDate • $formattedTime';
 
   return formattedDateTime;
+}
+
+String formatUNIXTime(int unixTimestamp) {
+  // Convert the Unix timestamp to a DateTime object
+  DateTime dateTime =
+      DateTime.fromMillisecondsSinceEpoch(unixTimestamp * 1000, isUtc: true);
+
+  // Create a DateFormat object
+  DateFormat dateFormat = DateFormat('yyyy-MM-dd • HH:mm');
+
+  // Format the DateTime object to the desired string
+  String formattedString = dateFormat.format(dateTime.toLocal());
+
+  return formattedString;
 }
 
 String format12HrTime(DateTime time) {

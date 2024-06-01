@@ -124,25 +124,24 @@ class SignupScaffold extends GetView<SignupController> {
                                   ),
                                 ),
                                 kSizedBox,
-                                //          formFieldContainer(
-                                //     colorScheme,
-                                //     media,
-                                // containerHeight: media.height * .08,
-                                // child:
-                                // AndroidTextFormField(
-                                //   controller: signupController.emailEC,
-                                //   focusNode: signupController.emailFN,
-                                //   textInputAction: TextInputAction.next,
-                                //   textCapitalization: TextCapitalization.none,
-                                //   keyboardType: TextInputType.emailAddress,
-                                //   hintText: "Email",
-                                //   onChanged: signupController.emailOnChanged,
-                                //   validator: (value) {
-                                //     return null;
-                                //   },
-                                // ),
-                                // ),
-                                // kSizedBox,
+                                formFieldContainer(
+                                  colorScheme,
+                                  media,
+                                  containerHeight: media.height * .08,
+                                  child: AndroidTextFormField(
+                                    controller: signupController.emailEC,
+                                    focusNode: signupController.emailFN,
+                                    textInputAction: TextInputAction.next,
+                                    textCapitalization: TextCapitalization.none,
+                                    keyboardType: TextInputType.emailAddress,
+                                    hintText: "Email",
+                                    onChanged: signupController.emailOnChanged,
+                                    validator: (value) {
+                                      return null;
+                                    },
+                                  ),
+                                ),
+                                kSizedBox,
                                 formFieldContainer(
                                   colorScheme,
                                   media,
@@ -216,7 +215,6 @@ class SignupScaffold extends GetView<SignupController> {
                                     ],
                                   ),
                                 ),
-
                                 Align(
                                   alignment: Alignment.centerRight,
                                   child: Text(
@@ -447,24 +445,23 @@ class SignupScaffold extends GetView<SignupController> {
                                 ),
                               ),
                               kSizedBox,
-                              //          formFieldContainer(
-                              //     colorScheme,
-                              //     media,
-                              // child:
-                              // AndroidTextFormField(
-                              //   controller: signupController.emailEC,
-                              //   focusNode: signupController.emailFN,
-                              //   textInputAction: TextInputAction.next,
-                              //   textCapitalization: TextCapitalization.none,
-                              //   keyboardType: TextInputType.emailAddress,
-                              //   hintText: "Email",
-                              //   onChanged: signupController.emailOnChanged,
-                              //   validator: (value) {
-                              //     return null;
-                              //   },
-                              // ),
-                              // ),
-                              // kSizedBox,
+                              formFieldContainer(
+                                colorScheme,
+                                media,
+                                child: AndroidTextFormField(
+                                  controller: signupController.emailEC,
+                                  focusNode: signupController.emailFN,
+                                  textInputAction: TextInputAction.next,
+                                  textCapitalization: TextCapitalization.none,
+                                  keyboardType: TextInputType.emailAddress,
+                                  hintText: "Email",
+                                  onChanged: signupController.emailOnChanged,
+                                  validator: (value) {
+                                    return null;
+                                  },
+                                ),
+                              ),
+                              kSizedBox,
                               formFieldContainer(
                                 colorScheme,
                                 media,
@@ -534,7 +531,6 @@ class SignupScaffold extends GetView<SignupController> {
                                   ],
                                 ),
                               ),
-
                               Align(
                                 alignment: Alignment.centerRight,
                                 child: Text(
