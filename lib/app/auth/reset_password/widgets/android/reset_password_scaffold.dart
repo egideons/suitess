@@ -56,12 +56,15 @@ class ResetPasswordScaffold extends GetView<ResetPasswordController> {
                         : media.height * .4,
                   ),
                   kSizedBox,
-                  resetPasswordPageHeader(
-                    colorScheme: colorScheme,
-                    media: media,
-                    title: "Enter new password",
-                    subtitle:
-                        "Your new password must be different from your the previously used password.",
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8.0),
+                    child: resetPasswordPageHeader(
+                      colorScheme: colorScheme,
+                      media: media,
+                      title: "Enter new password",
+                      subtitle:
+                          "Your new password must be different from the previously used password.",
+                    ),
                   ),
                 ],
               ),
@@ -292,7 +295,7 @@ class ResetPasswordScaffold extends GetView<ResetPasswordController> {
               media: media,
               title: "Enter new password",
               subtitle:
-                  "Your new password must be different from your the previously used password.",
+                  "Your new password must be different from the previously used password.",
             ),
             const SizedBox(height: kDefaultPadding * 2),
             Obx(
