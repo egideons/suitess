@@ -44,6 +44,7 @@ class SignupController extends GetxController {
   var isPasswordValid = false.obs;
   var passwordIsHidden = true.obs;
   var formIsValid = false.obs;
+  var isTypingPassword = false.obs;
 
   //=========== Variables ===========\\
   var responseStatus = 0.obs;
@@ -94,7 +95,17 @@ class SignupController extends GetxController {
   passwordOnChanged(value) {
     var passwordRegExp = RegExp(passwordPattern);
 
-    if (!passwordRegExp.hasMatch(passwordEC.text)) {
+    // Check if the text field is empty
+    if (value.isEmpty) {
+      isTypingPassword.value = false;
+    } else {
+      isTypingPassword.value = true;
+    }
+
+    update();
+
+    if (!passwordRegExp.hasMatch(passwordEC.text) &&
+        isTypingPassword.value == true) {
       isPasswordValid.value = false;
       setFormIsInvalid();
     } else {
@@ -102,6 +113,7 @@ class SignupController extends GetxController {
       setFormIsValid();
       update();
     }
+
     update();
   }
 

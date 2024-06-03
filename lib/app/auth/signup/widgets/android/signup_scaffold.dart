@@ -218,9 +218,11 @@ class SignupScaffold extends GetView<SignupController> {
                                 Align(
                                   alignment: Alignment.centerRight,
                                   child: Text(
-                                    signupController.isPasswordValid.value
-                                        ? "Password meets the requirements"
-                                        : "Password must contain 8 characters\n a number\n a special character.",
+                                    signupController.isTypingPassword.value
+                                        ? "Hello"
+                                        : signupController.isPasswordValid.value
+                                            ? "Password meets the requirements"
+                                            : "Password must contain 8 characters\n a number\n a special character.",
                                     textAlign: TextAlign.end,
                                     style: defaultTextStyle(
                                       color:
@@ -534,9 +536,11 @@ class SignupScaffold extends GetView<SignupController> {
                               Align(
                                 alignment: Alignment.centerRight,
                                 child: Text(
-                                  signupController.isPasswordValid.value
-                                      ? "Password meets the requirements"
-                                      : "Password must contain 8 characters\n a number\n a special character.",
+                                  signupController.isTypingPassword.isFalse
+                                      ? ""
+                                      : signupController.isPasswordValid.value
+                                          ? "Password meets the requirements"
+                                          : "Password must contain 8 characters\n a number\n a special character.",
                                   textAlign: TextAlign.end,
                                   style: defaultTextStyle(
                                     color:
