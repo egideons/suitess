@@ -218,8 +218,8 @@ class SignupScaffold extends GetView<SignupController> {
                                 Align(
                                   alignment: Alignment.centerRight,
                                   child: Text(
-                                    signupController.isTypingPassword.value
-                                        ? "Hello"
+                                    signupController.isTypingPassword.isFalse
+                                        ? ""
                                         : signupController.isPasswordValid.value
                                             ? "Password meets the requirements"
                                             : "Password must contain 8 characters\n a number\n a special character.",

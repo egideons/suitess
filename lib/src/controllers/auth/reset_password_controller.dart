@@ -28,14 +28,28 @@ class ResetPasswordController extends GetxController {
   var passwordIsHidden = true.obs;
   var confirmPasswordIsHidden = true.obs;
   var formIsValid = false.obs;
+  var isTypingPassword = false.obs;
 
   //=========== passwordOnChanged ===========\\
   passwordOnChanged(value) {
     var passwordRegExp = RegExp(passwordPattern);
-    if (!passwordRegExp.hasMatch(passwordEC.text)) {
+
+    // Check if the text field is empty
+    if (value.isEmpty) {
+      isTypingPassword.value = false;
+    } else {
+      isTypingPassword.value = true;
+    }
+
+    update();
+
+    if (!passwordRegExp.hasMatch(passwordEC.text) &&
+        isTypingPassword.value == true) {
       isPasswordValid.value = false;
+      setFormIsInvalid();
     } else {
       isPasswordValid.value = true;
+      setFormIsValid();
       update();
     }
 

@@ -158,9 +158,12 @@ class ResetPasswordScaffold extends GetView<ResetPasswordController> {
                                   alignment: Alignment.centerRight,
                                   child: Text(
                                     resetPasswordController
-                                            .isPasswordValid.value
-                                        ? "Password meets the requirements"
-                                        : "Password must contain 8 characters\n a number\n a special character.",
+                                            .isTypingPassword.isFalse
+                                        ? ""
+                                        : resetPasswordController
+                                                .isPasswordValid.value
+                                            ? "Password meets the requirements"
+                                            : "Password must contain 8 characters\n a number\n a special character.",
                                     textAlign: TextAlign.end,
                                     style: defaultTextStyle(
                                       color: resetPasswordController
@@ -357,9 +360,11 @@ class ResetPasswordScaffold extends GetView<ResetPasswordController> {
                       Align(
                         alignment: Alignment.centerRight,
                         child: Text(
-                          resetPasswordController.isPasswordValid.value
-                              ? "Password meets the requirements"
-                              : "Password must contain 8 characters\n a number\n a special character.",
+                          resetPasswordController.isTypingPassword.isFalse
+                              ? ""
+                              : resetPasswordController.isPasswordValid.value
+                                  ? "Password meets the requirements"
+                                  : "Password must contain 8 characters\n a number\n a special character.",
                           textAlign: TextAlign.end,
                           style: defaultTextStyle(
                             color: resetPasswordController.isPasswordValid.value
