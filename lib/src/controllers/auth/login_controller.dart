@@ -286,6 +286,7 @@ class LoginController extends GetxController {
 
   navigateToForgotPassword() {
     // Navigate to Home() screen
-    Get.toNamed(Routes.forgotPassword, preventDuplicates: true);
+    // Get.toNamed(Routes.forgotPassword, preventDuplicates: true);
+    Get.toNamed(Routes.resetPasswordViaEmail, preventDuplicates: true);
   }
 }
