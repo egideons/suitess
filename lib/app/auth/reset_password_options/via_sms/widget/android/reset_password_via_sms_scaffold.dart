@@ -45,26 +45,32 @@ class ResetPasswordViaSMSScaffold
           children: [
             SizedBox(
               width: media.width / 2.2,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
+              child: Wrap(
+                alignment: WrapAlignment.center,
                 children: [
-                  SvgPicture.asset(
-                    Assets.passwordSvg,
-                    fit: BoxFit.fitHeight,
-                    height: deviceType(media.width) > 2
-                        ? media.height * .6
-                        : media.height * .4,
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      SvgPicture.asset(
+                        Assets.passwordSvg,
+                        fit: BoxFit.fitHeight,
+                        height: deviceType(media.width) > 2
+                            ? media.height * .4
+                            : media.height * .2,
+                      ),
+                      kSizedBox,
+                      resetPasswordOptionHeader(
+                        colorScheme,
+                        resetPasswordViaEmailController,
+                        registeredOption: "phone number",
+                        resetOption: "Email",
+                        resetVia:
+                            resetPasswordViaEmailController.navigateToEmail,
+                      ),
+                      kSizedBox,
+                    ],
                   ),
-                  kSizedBox,
-                  resetPasswordOptionHeader(
-                    colorScheme,
-                    resetPasswordViaEmailController,
-                    registeredOption: "phone number",
-                    resetOption: "Email",
-                    resetVia: resetPasswordViaEmailController.navigateToEmail,
-                  ),
-                  kSizedBox,
                 ],
               ),
             ),

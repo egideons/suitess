@@ -44,27 +44,32 @@ class ResetPasswordScaffold extends GetView<ResetPasswordController> {
           children: [
             SizedBox(
               width: media.width / 2.1,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
+              child: Wrap(
+                alignment: WrapAlignment.center,
                 children: [
-                  SvgPicture.asset(
-                    Assets.passwordSvg,
-                    fit: BoxFit.cover,
-                    height: deviceType(media.width) > 2
-                        ? media.height * .6
-                        : media.height * .4,
-                  ),
-                  kSizedBox,
-                  Padding(
-                    padding: const EdgeInsets.only(left: 8.0),
-                    child: resetPasswordPageHeader(
-                      colorScheme: colorScheme,
-                      media: media,
-                      title: "Enter new password",
-                      subtitle:
-                          "Your new password must be different from the previously used password.",
-                    ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      SvgPicture.asset(
+                        Assets.passwordSvg,
+                        fit: BoxFit.cover,
+                        height: deviceType(media.width) > 2
+                            ? media.height * .4
+                            : media.height * .2,
+                      ),
+                      kSizedBox,
+                      Padding(
+                        padding: const EdgeInsets.only(left: 8.0),
+                        child: resetPasswordPageHeader(
+                          colorScheme: colorScheme,
+                          media: media,
+                          title: "Enter new password",
+                          subtitle:
+                              "Your new password must be different from the previously used password.",
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),

@@ -47,24 +47,29 @@ class ResetPasswordViaSMSOTPScaffold
           children: [
             SizedBox(
               width: media.width / 2.2,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
+              child: Wrap(
+                alignment: WrapAlignment.center,
                 children: [
-                  SvgPicture.asset(
-                    Assets.otpSvg,
-                    fit: BoxFit.cover,
-                    height: deviceType(media.width) > 2
-                        ? media.height * .6
-                        : media.height * .4,
-                  ),
-                  kSizedBox,
-                  resetPasswordViaSMSOTPPageHeader(
-                    colorScheme: colorScheme,
-                    media: media,
-                    title: "OTP Verification",
-                    subtitle: "Enter the 4-digit OTP sent to your phone.",
-                    phoneNumber: maskString("08074656497"),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      SvgPicture.asset(
+                        Assets.otpSvg,
+                        fit: BoxFit.cover,
+                        height: deviceType(media.width) > 2
+                            ? media.height * .4
+                            : media.height * .2,
+                      ),
+                      kSizedBox,
+                      resetPasswordViaSMSOTPPageHeader(
+                        colorScheme: colorScheme,
+                        media: media,
+                        title: "OTP Verification",
+                        subtitle: "Enter the 4-digit OTP sent to your phone.",
+                        phoneNumber: maskString("08074656497"),
+                      ),
+                    ],
                   ),
                 ],
               ),

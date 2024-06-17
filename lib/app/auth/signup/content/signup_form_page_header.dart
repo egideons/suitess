@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../../src/constants/consts.dart';
-import '../../../../theme/colors.dart';
 
 signupFormPageHeader({colorScheme, media}) {
   return Column(
@@ -14,21 +13,21 @@ signupFormPageHeader({colorScheme, media}) {
           textAlign: TextAlign.center,
           maxLines: 4,
           text: TextSpan(
-            text: "Create your",
+            text: "Create ",
             style: defaultTextStyle(
               fontSize: 20.0,
               color: colorScheme.primary,
             ),
             children: [
+              // TextSpan(
+              //   text: " Suitess ",
+              //   style: defaultTextStyle(
+              //     fontSize: 20.0,
+              //     color: kSuccessColor,
+              //   ),
+              // ),
               TextSpan(
-                text: " Suitess ",
-                style: defaultTextStyle(
-                  fontSize: 20.0,
-                  color: kSuccessColor,
-                ),
-              ),
-              TextSpan(
-                text: "account.",
+                text: "account",
                 style: defaultTextStyle(
                   fontSize: 20.0,
                   color: colorScheme.primary,
