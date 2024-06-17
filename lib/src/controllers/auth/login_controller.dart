@@ -111,7 +111,7 @@ class LoginController extends GetxController {
 
       // await Get.offAll(
       //   () => LoadingScreen(
-      //     loadData: LoadingController.instance.loadLandLordNavgiationOverView,
+      //     loadData: LoadingController.instance.bottomNavgiationView,
       //   ),
       //   routeName: "/loading-screen",
       //   fullscreenDialog: true,
@@ -172,7 +172,7 @@ class LoginController extends GetxController {
       //     await Get.offAll(
       //       () => LoadingScreen(
       //         loadData:
-      //             LoadingController.instance.loadLandLordNavgiationOverView,
+      //             LoadingController.instance.bottomNavgiationView,
       //       ),
       //       routeName: "/loading-screen",
       //       fullscreenDialog: true,
@@ -216,7 +216,7 @@ class LoginController extends GetxController {
 
       // await Get.offAll(
       //   () => LoadingScreen(
-      //     loadData: LoadingController.instance.loadLandLordNavgiationOverView,
+      //     loadData: LoadingController.instance.bottomNavgiationView,
       //   ),
       //   routeName: "/loading-screen",
       //   fullscreenDialog: true,

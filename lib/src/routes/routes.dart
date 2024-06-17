@@ -1,15 +1,12 @@
 import 'package:get/get.dart';
 import 'package:suitess/app/auth/email_otp/screen/email_otp.dart';
-import 'package:suitess/app/auth/forgot_password/screen/forgot_password.dart';
 import 'package:suitess/app/auth/signup/screen/signup.dart';
-import 'package:suitess/app/choose_experience/screen/choose_experience.dart';
-import 'package:suitess/app/experience/landlord/home/screen/landlord_home_screen.dart';
-import 'package:suitess/app/experience/landlord/notifications/screen/landlord_notifiactions.dart';
-import 'package:suitess/app/experience/landlord/property/view_property/screen/landlord_view_property.dart';
-import 'package:suitess/app/experience/landlord/view/screen/landlord_navigation_overview.dart';
 import 'package:suitess/app/kyc/kyc_add_location/screen/kyc_add_location.dart';
 import 'package:suitess/app/kyc/kyc_profile_photo/screen/kyc_profile_photo.dart';
 import 'package:suitess/app/onboarding/screen/onboarding.dart';
+import 'package:suitess/app/screens/home/screen/landlord_home_screen.dart';
+import 'package:suitess/app/screens/notifications/screen/notifiactions.dart';
+import 'package:suitess/app/screens/property/view_property/screen/landlord_view_property.dart';
 import 'package:suitess/app/splash/startup/screen/startup_splash.dart';
 
 import '../../app/auth/login/screen/login.dart';
@@ -19,11 +16,12 @@ import '../../app/auth/reset_password_options/via_email/screen/reset_password_vi
 import '../../app/auth/reset_password_options/via_sms/screen/reset_password_via_sms.dart';
 import '../../app/auth/reset_password_otp/via_email/screen/reset_password_via_email_otp.dart';
 import '../../app/auth/reset_password_otp/via_sms/screen/reset_password_via_sms_otp.dart';
-import '../../app/experience/landlord/bid_details/screen/landlord_bid_details.dart';
-import '../../app/experience/landlord/property/add_property/screen/landlord_add_property.dart';
+import '../../app/experience/screen/landlord_navigation_overview.dart';
 import '../../app/kyc/kyc_bvn/screen/kyc_bvn.dart';
 import '../../app/kyc/kyc_bvn_otp/screen/kyc_bvn_otp.dart';
 import '../../app/kyc/kyc_nin/screen/kyc_nin.dart';
+import '../../app/screens/bid_details/screen/bid_details.dart';
+import '../../app/screens/property/add_property/screen/landlord_add_property.dart';
 import '../../app/splash/congratulations/screen/congratulations_screen.dart';
 import '../../app/splash/loading/screen/loading_screen.dart';
 
@@ -45,7 +43,6 @@ class Routes {
   static const login = "/login";
   static const emailOTP = "/email-otp";
   static const phoneOTP = "/phone-otp";
-  static const forgotPassword = "/forgot-password";
   static const resetPassword = "/reset-password";
   static const changePassword = "/change-password";
   static const resetPasswordViaEmail = "/reset-password-via-email";
@@ -62,15 +59,15 @@ class Routes {
   static const chooseExperience = "/choose-experience";
 
   //Landlord Section
-  static const landLordOverview = "/landlord-navigation-overview";
-  static const landLordHomeScreen = "/landlord-homescreen";
+  static const bottomNavView = "/bottom-navigation-view";
+  static const homeScreen = "/landlord-homescreen";
   static const landLordWallet = "/landlord-wallet";
   static const landLordChat = "/landlord-chat";
   static const landLordProfile = "/landlord-profile";
   static const landLordNotifications = "/landlord-notifications";
   static const landLordAddProperty = "/landlord-add-property";
   static const landLordViewProperty = "/landlord-view-property";
-  static const landLordBidDetails = "/landlord-bid-details";
+  static const bidDetails = "/landlord-bid-details";
 
   //========================= GET PAGES ==========================\\
   static final getPages = [
@@ -89,7 +86,6 @@ class Routes {
     GetPage(name: login, page: () => const Login()),
     GetPage(name: emailOTP, page: () => const EmailOTP()),
     GetPage(name: phoneOTP, page: () => const PhoneOTP()),
-    GetPage(name: forgotPassword, page: () => const ForgotPassword()),
     GetPage(
       name: resetPasswordViaEmail,
       page: () => const ResetPasswordViaEmail(),
@@ -114,29 +110,16 @@ class Routes {
     GetPage(name: kycBvnOTP, page: () => const KycBvnOTP()),
     GetPage(name: kycNin, page: () => const KycNIN()),
     GetPage(name: kyProfilePhoto, page: () => const KycProfilePhoto()),
-    GetPage(name: chooseExperience, page: () => const ChooseExperience()),
 
-    //LandLord Section
+    //Main App Section
     GetPage(
-      name: landLordOverview,
-      page: () => const LandLordNavigationOverView(),
+      name: bottomNavView,
+      page: () => const BottomNavigationView(),
     ),
     GetPage(
-      name: landLordHomeScreen,
-      page: () => const LandLordHomeScreen(),
+      name: homeScreen,
+      page: () => const HomeScreen(),
     ),
-    // GetPage(
-    //   name: landLordWallet,
-    //   page: () => const LandLordNavigationOverView(),
-    // ),
-    // GetPage(
-    //   name: landLordChat,
-    //   page: () => const LandLordNavigationOverView(),
-    // ),
-    // GetPage(
-    //   name: landLordProfile,
-    //   page: () => const LandLordNavigationOverView(),
-    // ),
     GetPage(
       name: landLordNotifications,
       page: () => const LandLordNotifications(),
@@ -150,8 +133,8 @@ class Routes {
       page: () => const LandLordViewProperty(),
     ),
     GetPage(
-      name: landLordBidDetails,
-      page: () => const LandLordBidDetails(),
+      name: bidDetails,
+      page: () => const BidDetails(),
     ),
   ];
 }
