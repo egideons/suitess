@@ -1,6 +1,4 @@
-import 'package:custom_navigation_bar/custom_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:suitess/app/screens/home/screen/landlord_home_screen.dart';
@@ -85,7 +83,7 @@ class BottomNavigationController extends GetxController {
         ),
         CustomNavigationBarItem(
           icon: const Icon(Iconsax.user),
-          selectedIcon: const FaIcon(FontAwesomeIcons.solidUser),
+          selectedIcon: const Icon(Icon.solidUser),
           title: Text(
             "",
             style: defaultTextStyle(color: colorScheme.surface),

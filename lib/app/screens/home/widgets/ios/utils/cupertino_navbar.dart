@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../../../../src/constants/consts.dart';
@@ -36,8 +35,8 @@ landLordHomeScreenCupertinoNavBar(
         borderRadius: BorderRadius.circular(24),
         child: Row(
           children: [
-            FaIcon(
-              FontAwesomeIcons.earthAfrica,
+            Icon(
+              CupertinoIcons.globe,
               color: colorScheme.inversePrimary,
               size: 20.0,
             ),

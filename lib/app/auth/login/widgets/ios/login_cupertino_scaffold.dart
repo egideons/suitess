@@ -3,7 +3,6 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:suitess/src/constants/consts.dart';
 import 'package:suitess/src/utils/buttons/ios/cupertino_elevated_button.dart';
@@ -73,12 +72,12 @@ class LoginCupertinoScaffold extends GetView<LoginController> {
                             Padding(
                               padding: const EdgeInsets.only(right: 5),
                               child: loginController.isEmailValid.value
-                                  ? FaIcon(
-                                      FontAwesomeIcons.solidCircleCheck,
+                                  ? Icon(
+                                      CupertinoIcons.clear_circled_solid,
                                       color: kSuccessColor,
                                     )
-                                  : FaIcon(
-                                      FontAwesomeIcons.solidCircleXmark,
+                                  : Icon(
+                                      CupertinoIcons.clear_circled_solid,
                                       color: kErrorColor,
                                     ),
                             ),
@@ -129,21 +128,21 @@ class LoginCupertinoScaffold extends GetView<LoginController> {
                                         !loginController.passwordIsHidden.value
                                             ? "Show password"
                                             : "Hide password",
-                                    icon: FaIcon(
+                                    icon: Icon(
                                       color: colorScheme.inversePrimary,
                                       size: 18,
                                       loginController.passwordIsHidden.value
-                                          ? FontAwesomeIcons.solidEye
-                                          : FontAwesomeIcons.solidEyeSlash,
+                                          ? CupertinoIcons.eye_fill
+                                          : CupertinoIcons.eye_slash_fill,
                                     ),
                                   ),
                                   loginController.isPasswordValid.value
-                                      ? FaIcon(
-                                          FontAwesomeIcons.solidCircleCheck,
+                                      ? Icon(
+                                          CupertinoIcons.clear_circled_solid,
                                           color: kSuccessColor,
                                         )
-                                      : FaIcon(
-                                          FontAwesomeIcons.solidCircleXmark,
+                                      : Icon(
+                                          CupertinoIcons.clear_circled_solid,
                                           color: kErrorColor,
                                         ),
                                 ],
@@ -205,8 +204,8 @@ class LoginCupertinoScaffold extends GetView<LoginController> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            FaIcon(
-                              FontAwesomeIcons.key,
+                            Icon(
+                              Icons.key,
                               color: loginController.isLoading.value
                                   ? kLightBackgroundColor
                                   : kErrorColor.withOpacity(0.4),

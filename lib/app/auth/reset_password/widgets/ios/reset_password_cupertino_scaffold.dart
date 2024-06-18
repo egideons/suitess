@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:suitess/app/auth/components/auth_cupertino_nav_bar.dart';
 import 'package:suitess/app/auth/reset_password/content/reset_password_page_header.dart';
@@ -93,22 +92,22 @@ class ResetPasswordCupertinoScaffold extends GetView<ResetPasswordController> {
                                             .passwordIsHidden.value
                                         ? "Show password"
                                         : "Hide password",
-                                    icon: FaIcon(
+                                    icon: Icon(
                                       color: colorScheme.inversePrimary,
                                       size: 18,
                                       resetPasswordController
                                               .passwordIsHidden.value
-                                          ? FontAwesomeIcons.solidEye
-                                          : FontAwesomeIcons.solidEyeSlash,
+                                          ? CupertinoIcons.eye_fill
+                                          : CupertinoIcons.eye_slash_fill,
                                     ),
                                   ),
                                   resetPasswordController.isPasswordValid.value
-                                      ? FaIcon(
-                                          FontAwesomeIcons.solidCircleCheck,
+                                      ? Icon(
+                                          CupertinoIcons.clear_thick_circled,
                                           color: kSuccessColor,
                                         )
-                                      : FaIcon(
-                                          FontAwesomeIcons.solidCircleXmark,
+                                      : Icon(
+                                          CupertinoIcons.clear_thick_circled,
                                           color: kErrorColor,
                                         ),
                                 ],

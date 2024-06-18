@@ -33,24 +33,30 @@ class EmailOTPScaffold extends GetView<EmailOTPController> {
           children: [
             SizedBox(
               width: media.width / 2.2,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
+              child: Wrap(
+                alignment: WrapAlignment.center,
                 children: [
-                  SvgPicture.asset(
-                    Assets.otpSvg,
-                    fit: BoxFit.cover,
-                    height: deviceType(media.width) > 2
-                        ? media.height * .6
-                        : media.height * .4,
-                  ),
-                  kSizedBox,
-                  emailOTPPageHeader(
-                    colorScheme: colorScheme,
-                    media: media,
-                    title: "OTP verification",
-                    subtitle: "Enter the 4-digit verification code we sent to ",
-                    email: "$userEmail",
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      SvgPicture.asset(
+                        Assets.otpSvg,
+                        fit: BoxFit.cover,
+                        height: deviceType(media.width) > 2
+                            ? media.height * .4
+                            : media.height * .2,
+                      ),
+                      kSizedBox,
+                      emailOTPPageHeader(
+                        colorScheme: colorScheme,
+                        media: media,
+                        title: "OTP verification",
+                        subtitle:
+                            "Enter the 4-digit verification code we sent to ",
+                        email: "$userEmail",
+                      ),
+                    ],
                   ),
                 ],
               ),

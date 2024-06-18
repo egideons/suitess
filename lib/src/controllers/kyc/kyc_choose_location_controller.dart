@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../app/splash/loading/screen/loading_screen.dart';
 import '../../constants/consts.dart';
 import '../others/api_processor_controller.dart';
+import '../others/loading_controller.dart';
 
 class KycAddLocationController extends GetxController {
   static KycAddLocationController get instance {
@@ -365,12 +367,33 @@ class KycAddLocationController extends GetxController {
       //   popGesture: false,
       //   transition: Get.defaultTransition,
       // );
+      await Get.offAll(
+        () => LoadingScreen(
+          loadData: LoadingController.instance.bottomNavgiationView,
+        ),
+        routeName: "/loading-screen",
+        fullscreenDialog: true,
+        curve: Curves.easeInOut,
+        predicate: (routes) => false,
+        popGesture: false,
+        transition: Get.defaultTransition,
+      );
     }
     isLoading.value = false;
     update();
   }
 
   skipPage() async {
-    // Get.toNamed(Routes.chooseExperience, preventDuplicates: true);
+    await Get.offAll(
+      () => LoadingScreen(
+        loadData: LoadingController.instance.bottomNavgiationView,
+      ),
+      routeName: "/loading-screen",
+      fullscreenDialog: true,
+      curve: Curves.easeInOut,
+      predicate: (routes) => false,
+      popGesture: false,
+      transition: Get.defaultTransition,
+    );
   }
 }

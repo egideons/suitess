@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:suitess/app/auth/components/auth_app_bar.dart';
 import 'package:suitess/app/kyc/kyc_profile_photo/content/kyc_profile_photo_page_header.dart';
@@ -29,8 +28,8 @@ class KycProfilePhotoScaffold extends GetView<KycProfilePhotoController> {
         colorScheme: colorScheme,
         media: media,
         title: "Profile",
-        faIcon: FaIcon(
-          FontAwesomeIcons.solidCircleUser,
+        faIcon: Icon(
+          Icons.person,
           color: kSuccessColor,
           size: 12,
         ),
@@ -96,8 +95,8 @@ class KycProfilePhotoScaffold extends GetView<KycProfilePhotoController> {
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: Row(
                     children: [
-                      FaIcon(
-                        FontAwesomeIcons.circlePlus,
+                      Icon(
+                        Icons.add_circle,
                         color: colorScheme.inversePrimary,
                       ),
                       kWidthSizedBox,

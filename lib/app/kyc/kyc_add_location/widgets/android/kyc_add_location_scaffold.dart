@@ -36,22 +36,27 @@ class KycAddLocationScaffold extends GetView<KycAddLocationController> {
             children: [
               SizedBox(
                 width: media.width / 2.2,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.max,
+                child: Wrap(
+                  alignment: WrapAlignment.center,
                   children: [
-                    SvgPicture.asset(
-                      Assets.locationSvg,
-                      fit: BoxFit.fitHeight,
-                      height: deviceType(media.width) > 2
-                          ? media.height * .6
-                          : media.height * .4,
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        SvgPicture.asset(
+                          Assets.locationSvg,
+                          fit: BoxFit.fitHeight,
+                          height: deviceType(media.width) > 2
+                              ? media.height * .4
+                              : media.height * .2,
+                        ),
+                        kSizedBox,
+                        kycAddLocationPageHeader(
+                            colorScheme: colorScheme, media: media),
+                        const SizedBox(height: kDefaultPadding * 2),
+                      ],
                     ),
-                    kSizedBox,
-                    kycAddLocationPageHeader(
-                        colorScheme: colorScheme, media: media),
-                    const SizedBox(height: kDefaultPadding * 2),
                   ],
                 ),
               ),

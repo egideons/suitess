@@ -2,7 +2,6 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:suitess/src/constants/consts.dart';
 
 class AndroidOutlinedButton extends StatelessWidget {
@@ -77,7 +76,7 @@ class AndroidOutlinedButton extends StatelessWidget {
                           mainAxisAlignment ?? MainAxisAlignment.spaceBetween,
                       children: [
                         rowIconWidget ??
-                            FaIcon(
+                            Icon(
                               buttonIcon,
                               color: buttonIconColor,
                               size: buttonIconSize ?? 16,
@@ -115,7 +114,7 @@ class AndroidOutlinedButton extends StatelessWidget {
                             ? const SizedBox()
                             : kHalfWidthSizedBox,
                         rowIconWidget ??
-                            FaIcon(
+                            Icon(
                               buttonIcon,
                               color: buttonIconColor,
                               size: buttonIconSize ?? 16,

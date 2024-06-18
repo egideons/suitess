@@ -1,7 +1,6 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/route_manager.dart';
 import 'package:suitess/src/constants/consts.dart';
@@ -71,8 +70,8 @@ class ApiProcessorController extends GetxController {
             Get.back();
           },
           color: kLightBackgroundColor,
-          icon: const FaIcon(
-            FontAwesomeIcons.solidCircleXmark,
+          icon: const Icon(
+            Icons.cancel,
             size: 14,
           ),
         ),
@@ -130,8 +129,8 @@ class ApiProcessorController extends GetxController {
           onPressed: () {
             Get.back();
           },
-          icon: FaIcon(
-            FontAwesomeIcons.solidCircleXmark,
+          icon: Icon(
+            Icons.cancel,
             size: 14,
             color: kLightBackgroundColor,
           ),

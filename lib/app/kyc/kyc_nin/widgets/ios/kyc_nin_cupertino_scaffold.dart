@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
 import '../../../../../src/constants/consts.dart';
@@ -28,8 +27,8 @@ class KycNinCupertinoScaffold extends GetView<KycNINController> {
         colorScheme: colorScheme,
         media: media,
         title: "NIN",
-        faIcon: FaIcon(
-          FontAwesomeIcons.buildingColumns,
+        faIcon: Icon(
+          Icons.business,
           color: kSuccessColor,
           size: 12,
         ),
@@ -102,21 +101,21 @@ class KycNinCupertinoScaffold extends GetView<KycNINController> {
                                     tooltip: kycNinController.ninIsHidden.value
                                         ? "Show NIN"
                                         : "Hide NIN",
-                                    icon: FaIcon(
+                                    icon: Icon(
                                       color: colorScheme.inversePrimary,
                                       size: 18,
                                       kycNinController.ninIsHidden.value
-                                          ? FontAwesomeIcons.solidEyeSlash
-                                          : FontAwesomeIcons.solidEye,
+                                          ? Icons.visibility_off
+                                          : Icons.visibility,
                                     ),
                                   ),
                                   kycNinController.isNinValid.value
-                                      ? FaIcon(
-                                          FontAwesomeIcons.solidCircleCheck,
+                                      ? Icon(
+                                          Icons.check,
                                           color: kSuccessColor,
                                         )
-                                      : FaIcon(
-                                          FontAwesomeIcons.solidCircleXmark,
+                                      : Icon(
+                                          Icons.clear,
                                           color: kErrorColor,
                                         ),
                                 ],

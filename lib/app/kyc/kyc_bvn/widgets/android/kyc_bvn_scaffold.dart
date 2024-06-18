@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:suitess/app/auth/components/auth_app_bar.dart';
 
@@ -28,8 +27,8 @@ class KycBvnScaffold extends GetView<KycBvnController> {
         colorScheme: colorScheme,
         media: media,
         title: "BVN",
-        faIcon: FaIcon(
-          FontAwesomeIcons.buildingColumns,
+        faIcon: Icon(
+          Icons.business,
           color: kSuccessColor,
           size: 12,
         ),
@@ -102,21 +101,21 @@ class KycBvnScaffold extends GetView<KycBvnController> {
                                     tooltip: kycBvnController.bvnIsHidden.value
                                         ? "Show BVN"
                                         : "Hide BVN",
-                                    icon: FaIcon(
+                                    icon: Icon(
                                       color: colorScheme.inversePrimary,
                                       size: 18,
                                       kycBvnController.bvnIsHidden.value
-                                          ? FontAwesomeIcons.solidEyeSlash
-                                          : FontAwesomeIcons.solidEye,
+                                          ? Icons.visibility_off
+                                          : Icons.visibility,
                                     ),
                                   ),
                                   kycBvnController.isBvnValid.value
-                                      ? FaIcon(
-                                          FontAwesomeIcons.solidCircleCheck,
+                                      ? Icon(
+                                          Icons.check_circle,
                                           color: kSuccessColor,
                                         )
-                                      : FaIcon(
-                                          FontAwesomeIcons.solidCircleXmark,
+                                      : Icon(
+                                          Icons.check_circle,
                                           color: kErrorColor,
                                         ),
                                 ],

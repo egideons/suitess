@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../../src/controllers/app/landlord_notifications_controller.dart';
+import '../../../../../src/controllers/app/notifications_controller.dart';
 
 class NotificationsScaffold extends GetView<NotificationsController> {
   const NotificationsScaffold({super.key});

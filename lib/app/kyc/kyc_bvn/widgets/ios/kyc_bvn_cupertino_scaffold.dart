@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
 import '../../../../../src/constants/consts.dart';
@@ -28,8 +27,8 @@ class KycBvnCupertinoScaffold extends GetView<KycBvnController> {
         colorScheme: colorScheme,
         media: media,
         title: "BVN",
-        faIcon: FaIcon(
-          FontAwesomeIcons.buildingColumns,
+        faIcon: Icon(
+          CupertinoIcons.building_2_fill,
           color: kSuccessColor,
           size: 12,
         ),
@@ -102,21 +101,21 @@ class KycBvnCupertinoScaffold extends GetView<KycBvnController> {
                                     tooltip: kycBvnController.bvnIsHidden.value
                                         ? "Show BVN"
                                         : "Hide BVN",
-                                    icon: FaIcon(
+                                    icon: Icon(
                                       color: colorScheme.inversePrimary,
                                       size: 18,
                                       kycBvnController.bvnIsHidden.value
-                                          ? FontAwesomeIcons.solidEyeSlash
-                                          : FontAwesomeIcons.solidEye,
+                                          ? CupertinoIcons.eye_slash_fill
+                                          : CupertinoIcons.eye_fill,
                                     ),
                                   ),
                                   kycBvnController.isBvnValid.value
-                                      ? FaIcon(
-                                          FontAwesomeIcons.solidCircleCheck,
+                                      ? Icon(
+                                          Icons.check_circle,
                                           color: kSuccessColor,
                                         )
-                                      : FaIcon(
-                                          FontAwesomeIcons.solidCircleXmark,
+                                      : Icon(
+                                          Icons.check_circle,
                                           color: kErrorColor,
                                         ),
                                 ],

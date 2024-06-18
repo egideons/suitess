@@ -7,7 +7,7 @@ import 'package:suitess/src/utils/containers/form_field_container.dart';
 import 'package:suitess/src/utils/containers/page_background.dart';
 import 'package:typewritertext/v3/typewriter.dart';
 
-import '../../../../../src/controllers/app/landlord_homescreen_controller.dart';
+import '../../../../../src/controllers/app/homescreen_controller.dart';
 import '../../../../../src/routes/routes.dart';
 import '../../../../../src/utils/components/cupertino_message_alert_nav.dart';
 import '../../content/home_screen_no_properties.dart';

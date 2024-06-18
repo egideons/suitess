@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:suitess/src/controllers/kyc/kyc_choose_location_controller.dart';
 import 'package:suitess/src/utils/containers/form_field_container.dart';
@@ -71,8 +70,8 @@ class KycAddLocationCupertinoScaffold
                                     );
                                   },
                                 ),
-                                FaIcon(
-                                  FontAwesomeIcons.caretDown,
+                                Icon(
+                                  CupertinoIcons.chevron_down,
                                   color: colorScheme.primary,
                                   size: 16,
                                 )
@@ -121,8 +120,8 @@ class KycAddLocationCupertinoScaffold
                                     fontWeight: FontWeight.normal,
                                   ),
                                 ),
-                                FaIcon(
-                                  FontAwesomeIcons.caretDown,
+                                Icon(
+                                  CupertinoIcons.chevron_down,
                                   color: kycAddLocationController
                                           .statePickerIsEnabled.isFalse
                                       ? colorScheme.inversePrimary
@@ -169,12 +168,12 @@ class KycAddLocationCupertinoScaffold
                             Padding(
                               padding: const EdgeInsets.only(right: 5),
                               child: kycAddLocationController.isCityValid.value
-                                  ? FaIcon(
-                                      FontAwesomeIcons.solidCircleCheck,
+                                  ? Icon(
+                                      CupertinoIcons.clear_thick_circled,
                                       color: kSuccessColor,
                                     )
-                                  : FaIcon(
-                                      FontAwesomeIcons.solidCircleXmark,
+                                  : Icon(
+                                      CupertinoIcons.clear_thick_circled,
                                       color: kErrorColor,
                                     ),
                             ),
@@ -230,12 +229,12 @@ class KycAddLocationCupertinoScaffold
                                   padding: const EdgeInsets.only(right: 5),
                                   child: kycAddLocationController
                                           .isAddressValid.value
-                                      ? FaIcon(
-                                          FontAwesomeIcons.solidCircleCheck,
+                                      ? Icon(
+                                          CupertinoIcons.clear_thick_circled,
                                           color: kSuccessColor,
                                         )
-                                      : FaIcon(
-                                          FontAwesomeIcons.solidCircleXmark,
+                                      : Icon(
+                                          CupertinoIcons.clear_thick_circled,
                                           color: kErrorColor,
                                         ),
                                 ),

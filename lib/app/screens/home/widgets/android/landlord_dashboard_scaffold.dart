@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../../../src/constants/assets.dart';
 import '../../../../../src/constants/consts.dart';
@@ -30,8 +29,8 @@ class LandLordHomeScreenScaffold extends StatelessWidget {
           ),
           child: Row(
             children: [
-              FaIcon(
-                FontAwesomeIcons.earthAmericas,
+              Icon(
+                Icons.public,
                 color: colorScheme.inversePrimary,
                 size: 12.0,
               ),
@@ -86,8 +85,8 @@ class LandLordHomeScreenScaffold extends StatelessWidget {
               borderRadius: BorderRadius.circular(100),
               child: Stack(
                 children: [
-                  FaIcon(
-                    FontAwesomeIcons.bell,
+                  Icon(
+                    Icons.notifications,
                     color: colorScheme.primary.withOpacity(0.9),
                     size: 18,
                   ),

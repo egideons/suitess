@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../src/controllers/app/landlord_notifications_controller.dart';
+import '../../../../src/controllers/app/notifications_controller.dart';
 import '../widgets/android/notifications_scaffold.dart';
 import '../widgets/ios/notifications_cupertino_scaffold.dart';
 

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:suitess/src/constants/consts.dart';
@@ -43,8 +42,8 @@ kycProfilePhotoModalSheet(context, media, colorScheme, controller) {
                       ),
                     ),
                     child: Center(
-                      child: FaIcon(
-                        FontAwesomeIcons.camera,
+                      child: Icon(
+                        Icons.camera,
                         color: kAccentColor,
                       ),
                     ),
@@ -82,8 +81,8 @@ kycProfilePhotoModalSheet(context, media, colorScheme, controller) {
                       ),
                     ),
                     child: Center(
-                      child: FaIcon(
-                        FontAwesomeIcons.solidImages,
+                      child: Icon(
+                        Icons.image,
                         color: kAccentColor,
                       ),
                     ),

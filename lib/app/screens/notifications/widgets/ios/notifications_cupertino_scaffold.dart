@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../../../src/constants/consts.dart';
-import '../../../../../src/controllers/app/landlord_notifications_controller.dart';
+import '../../../../../src/controllers/app/notifications_controller.dart';
 import '../../../../../src/utils/buttons/ios/scroll_to_top_cupertino_button.dart';
 import '../../../../../theme/colors.dart';
 import '../../content/notification_dismissible_widget.dart';

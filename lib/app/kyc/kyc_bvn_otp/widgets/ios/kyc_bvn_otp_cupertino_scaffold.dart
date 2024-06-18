@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:suitess/app/kyc/kyc_bvn_otp/content/kyc_bvn_otp_page_header.dart';
 import 'package:suitess/src/controllers/kyc/kyc_bvn_otp_controller.dart';
@@ -28,8 +27,8 @@ class KycBvnOTPCupertinoScaffold extends GetView<KycBvnOTPController> {
         colorScheme: colorScheme,
         media: media,
         title: "BVN",
-        faIcon: FaIcon(
-          FontAwesomeIcons.buildingColumns,
+        faIcon: Icon(
+          Icons.business,
           color: kSuccessColor,
           size: 12,
         ),
@@ -235,8 +234,8 @@ class KycBvnOTPCupertinoScaffold extends GetView<KycBvnOTPController> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          FaIcon(
-                            FontAwesomeIcons.solidMessage,
+                          Icon(
+                            Icons.email_rounded,
                             color: kycBvnOTPController.timerComplete.isTrue
                                 ? kSuccessColor
                                 : colorScheme.inversePrimary,

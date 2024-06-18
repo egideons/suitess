@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../src/constants/consts.dart';
@@ -32,8 +32,8 @@ ObstructingPreferredSizeWidget authCupertinoNavBar(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   faIcon ??
-                      FaIcon(
-                        FontAwesomeIcons.key,
+                      Icon(
+                        Icons.key,
                         color: kSuccessColor,
                         size: 12,
                       ),

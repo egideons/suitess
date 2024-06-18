@@ -10,10 +10,8 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons:
-  font_awesome_flutter:
+  iconsax: ^0.0.8
   flutter_svg:
-  iconsax:
-  custom_navigation_bar:
   get:
   path:
   intl:

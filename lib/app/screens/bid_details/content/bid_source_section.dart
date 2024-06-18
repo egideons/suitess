@@ -1,5 +1,4 @@
-import 'package:flutter/widgets.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter/material.dart';
 
 import '../../../../src/constants/consts.dart';
 import '../../../../src/controllers/app/landlord_bid_detail_controller.dart';
@@ -75,13 +74,13 @@ Widget bidSourceSection(
       controller.bidIsNull.value
           ? const SizedBox()
           : controller.bidIsAccepted.value
-              ? FaIcon(
-                  FontAwesomeIcons.solidCircleCheck,
+              ? Icon(
+                  Icons.cancel,
                   color: kSuccessColor,
                   size: media.height * .05,
                 )
-              : FaIcon(
-                  FontAwesomeIcons.solidCircleXmark,
+              : Icon(
+                  Icons.cancel,
                   color: kErrorColor,
                   size: media.height * .05,
                 ),

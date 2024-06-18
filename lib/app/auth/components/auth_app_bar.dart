@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
 import '../../../src/constants/consts.dart';
@@ -29,8 +28,8 @@ PreferredSizeWidget authAppBar({colorScheme, media, faIcon, title, isVisible}) {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   faIcon ??
-                      FaIcon(
-                        FontAwesomeIcons.key,
+                      Icon(
+                        Icons.key,
                         color: kSuccessColor,
                         size: 12,
                       ),

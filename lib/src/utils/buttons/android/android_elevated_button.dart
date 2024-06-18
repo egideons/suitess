@@ -2,7 +2,6 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:suitess/src/constants/consts.dart';
 
 import '../../../../../theme/colors.dart';
@@ -79,7 +78,7 @@ class AndroidElevatedButton extends StatelessWidget {
                           mainAxisAlignment ?? MainAxisAlignment.spaceBetween,
                       children: [
                         rowIconWidget ??
-                            FaIcon(
+                            Icon(
                               buttonIcon,
                               color: buttonIconColor,
                               size: buttonIconSize ?? 16,
@@ -117,7 +116,7 @@ class AndroidElevatedButton extends StatelessWidget {
                             ? const SizedBox()
                             : kHalfWidthSizedBox,
                         rowIconWidget ??
-                            FaIcon(
+                            Icon(
                               buttonIcon,
                               color: buttonIconColor,
                               size: buttonIconSize ?? 16,

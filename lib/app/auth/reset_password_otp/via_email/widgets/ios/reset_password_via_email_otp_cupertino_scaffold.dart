@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:suitess/src/controllers/auth/reset_password_via_email_otp_controller.dart';
 
@@ -243,8 +242,8 @@ class ResetPasswordViaEmailOTPCupertinoScaffold
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          FaIcon(
-                            FontAwesomeIcons.solidEnvelope,
+                          Icon(
+                            CupertinoIcons.envelope_fill,
                             color: forgotPasswordViaEmailController
                                     .timerComplete.isTrue
                                 ? kSuccessColor

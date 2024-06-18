@@ -1,9 +1,7 @@
-import 'package:custom_navigation_bar/custom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../src/controllers/app/landlord_navigation_overview_controller.dart';
-import '../../../../theme/colors.dart';
+import '../../../../src/controllers/app/bottom_navigation_controller.dart';
 
 class BottomNavigationViewScaffold extends GetView<BottomNavigationController> {
   final int? currentIndex;
@@ -24,14 +22,14 @@ class BottomNavigationViewScaffold extends GetView<BottomNavigationController> {
       ),
       bottomNavigationBar: Obx(
         () {
-          return CustomNavigationBar(
+          return BottomNavigationBar(
             currentIndex: currentIndex ?? controller.navCurrrentIndex.value,
             backgroundColor: colorScheme.primary,
-            selectedColor: colorScheme.surface,
-            unSelectedColor: colorScheme.inversePrimary,
-            strokeColor: kAccentColor,
-            isFloating: true,
-            borderRadius: const Radius.circular(24),
+            // selectedColor: colorScheme.surface,
+            // unSelectedColor: colorScheme.inversePrimary,
+            // strokeColor: kAccentColor,
+            // isFloating: true,
+            // borderRadius: const Radius.circular(24),
             items: controller.landLordNavItems(colorScheme),
             onTap: (index) => controller.navCurrrentIndex.value = index,
           );
