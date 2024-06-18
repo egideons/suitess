@@ -64,7 +64,7 @@ class Routes {
   static const landLordWallet = "/landlord-wallet";
   static const landLordChat = "/landlord-chat";
   static const landLordProfile = "/landlord-profile";
-  static const landLordNotifications = "/landlord-notifications";
+  static const notificationsScreen = "/landlord-notifications";
   static const landLordAddProperty = "/landlord-add-property";
   static const landLordViewProperty = "/landlord-view-property";
   static const bidDetails = "/landlord-bid-details";
@@ -121,8 +121,8 @@ class Routes {
       page: () => const HomeScreen(),
     ),
     GetPage(
-      name: landLordNotifications,
-      page: () => const LandLordNotifications(),
+      name: notificationsScreen,
+      page: () => const NotificationsScreen(),
     ),
     GetPage(
       name: landLordAddProperty,

@@ -18,6 +18,11 @@ class Assets {
   static const walletFilledIconSvg = "assets/icons/svg/wallet-filled.svg";
   static const chatFilledIconSvg = "assets/icons/svg/chat-filled.svg";
   static const userFilledIconSvg = "assets/icons/svg/user-filled.svg";
+  static const locationPinFilledIconSvg =
+      "assets/icons/svg/location-pin-filled.svg";
+  static const notificationBellOutlineSvg =
+      "assets/icons/svg/notification-bell-outline.svg";
+  static const redDotFilled = "assets/icons/svg/red-dot-filled.svg";
 
 //=================== Images ===================\\
 

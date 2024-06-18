@@ -34,7 +34,7 @@ class HomeScreenCupertinoScaffold extends GetView<HomescreenController> {
         media,
         location: "Enugu, Nigeria",
         goToNotifications: () {
-          Get.toNamed(Routes.landLordNotifications, preventDuplicates: true);
+          Get.toNamed(Routes.notificationsScreen, preventDuplicates: true);
         },
       ),
       child: SafeArea(

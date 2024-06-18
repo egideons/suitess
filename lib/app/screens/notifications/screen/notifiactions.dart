@@ -7,8 +7,8 @@ import '../../../../src/controllers/app/notifications_controller.dart';
 import '../widgets/android/notifications_scaffold.dart';
 import '../widgets/ios/notifications_cupertino_scaffold.dart';
 
-class LandLordNotifications extends StatelessWidget {
-  const LandLordNotifications({super.key});
+class NotificationsScreen extends StatelessWidget {
+  const NotificationsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

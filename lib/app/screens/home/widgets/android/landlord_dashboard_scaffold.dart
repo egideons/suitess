@@ -1,9 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../../src/constants/assets.dart';
 import '../../../../../src/constants/consts.dart';
-import '../../../../../theme/colors.dart';
 
 class HomeScreenScaffold extends StatelessWidget {
   const HomeScreenScaffold({super.key});
@@ -20,23 +19,24 @@ class HomeScreenScaffold extends StatelessWidget {
         automaticallyImplyLeading: true,
         leading: Container(
           padding: const EdgeInsets.symmetric(horizontal: 10),
-          width: media.width / 3,
+          // width: media.width / 3,
           decoration: ShapeDecoration(
-            color: colorScheme.inversePrimary.withOpacity(0.4),
+            // color: colorScheme.inversePrimary.withOpacity(0.4),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(24),
             ),
           ),
           child: Row(
             children: [
-              Icon(
-                Icons.public,
-                color: colorScheme.inversePrimary,
-                size: 12.0,
+              SvgPicture.asset(
+                height: 30,
+                width: 30,
+                Assets.locationPinFilledIconSvg,
+                fit: BoxFit.cover,
               ),
               kHalfWidthSizedBox,
               SizedBox(
-                width: media.width / 5,
+                // width: media.width / 5,
                 child: Text(
                   "Enugu, Nigeria.",
                   overflow: TextOverflow.ellipsis,
@@ -51,55 +51,59 @@ class HomeScreenScaffold extends StatelessWidget {
           ),
         ),
         actions: [
-          SizedBox(
-            height: 40,
-            child: FittedBox(
-              fit: BoxFit.contain,
-              child: CircleAvatar(
-                backgroundColor: colorScheme.inversePrimary,
-                radius: 64,
-                foregroundImage:
-                    const NetworkImage(Assets.userPlaceholderImage),
-                child: Text(
-                  "P",
-                  style: defaultTextStyle(
-                    fontSize: 32.0,
-                    color: kLightBackgroundColor,
-                  ),
+          // SizedBox(
+          //   height: 40,
+          //   child: FittedBox(
+          //     fit: BoxFit.contain,
+          //     child: CircleAvatar(
+          //       backgroundColor: colorScheme.inversePrimary,
+          //       radius: 64,
+          //       foregroundImage:
+          //           const NetworkImage(Assets.userPlaceholderImage),
+          //       child: Text(
+          //         "P",
+          //         style: defaultTextStyle(
+          //           fontSize: 32.0,
+          //           color: kLightBackgroundColor,
+          //         ),
+          //       ),
+          //     ),
+          //   ),
+          // ),
+          // kHalfWidthSizedBox,
+          Container(
+            margin: const EdgeInsets.only(right: 10),
+            decoration: ShapeDecoration(
+              shape: CircleBorder(
+                side: BorderSide(
+                  color: colorScheme.inversePrimary.withOpacity(0.2),
                 ),
               ),
             ),
-          ),
-          kHalfWidthSizedBox,
-          Container(
-            decoration: ShapeDecoration(
-              shape: CircleBorder(
-                side: BorderSide(color: colorScheme.inversePrimary),
-              ),
-            ),
-            child: CupertinoButton(
+            child: IconButton(
               onPressed: () {},
-              padding: const EdgeInsets.all(0),
-              alignment: Alignment.center,
-              minSize: 38,
-              borderRadius: BorderRadius.circular(100),
-              child: Stack(
+              icon: Stack(
                 children: [
-                  Icon(
-                    Icons.notifications,
-                    color: colorScheme.primary.withOpacity(0.9),
-                    size: 18,
+                  SvgPicture.asset(
+                    Assets.notificationBellOutlineSvg,
+                    fit: BoxFit.contain,
                   ),
                   Positioned(
-                    right: 0,
-                    child: Container(
+                    right: 3,
+                    child: SvgPicture.asset(
                       height: 10,
-                      width: 10,
-                      decoration: ShapeDecoration(
-                        color: kErrorColor,
-                        shape: const CircleBorder(),
-                      ),
+                      Assets.redDotFilled,
+                      fit: BoxFit.contain,
                     ),
+
+                    // Container(
+                    //   height: 6,
+                    //   width: 6,
+                    //   decoration: ShapeDecoration(
+                    //     color: kErrorColor,
+                    //     shape: const CircleBorder(),
+                    //   ),
+                    // ),
                   ),
                 ],
               ),
