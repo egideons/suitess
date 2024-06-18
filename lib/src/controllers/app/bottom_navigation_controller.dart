@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:suitess/app/screens/home/screen/landlord_home_screen.dart';
 import 'package:suitess/src/constants/consts.dart';
+
+import '../../constants/assets.dart';
 
 class BottomNavigationController extends GetxController {
   static BottomNavigationController get instance {
@@ -45,52 +47,53 @@ class BottomNavigationController extends GetxController {
 
   //=============== LANDLORD BOTTOMNAV ITEMS ================\\
   landLordNavItems(colorScheme) => [
-        CustomNavigationBarItem(
-          icon: const Icon(Iconsax.home),
-          selectedIcon: const Icon(Iconsax.home1),
-          title: Text(
-            "",
-            style: defaultTextStyle(color: colorScheme.surface),
+        BottomNavigationBarItem(
+          label: "Home",
+          tooltip: "Home",
+          icon: SvgPicture.asset(
+            Assets.homeFilledIconSvg,
+            fit: BoxFit.cover,
           ),
-          selectedTitle: Text(
-            "Home",
-            style: defaultTextStyle(color: colorScheme.surface),
-          ),
-        ),
-        CustomNavigationBarItem(
-          icon: const Icon(Iconsax.wallet_2),
-          selectedIcon: const Icon(Iconsax.wallet_money1),
-          title: Text(
-            "",
-            style: defaultTextStyle(color: colorScheme.surface),
-          ),
-          selectedTitle: Text(
-            "Wallet",
-            style: defaultTextStyle(color: colorScheme.surface),
+          activeIcon: SvgPicture.asset(
+            Assets.homeFilledIconSvg,
+            // height: 30,
+            fit: BoxFit.cover,
           ),
         ),
-        CustomNavigationBarItem(
-          icon: const Icon(Iconsax.message),
-          selectedIcon: const Icon(Iconsax.message5),
-          title: Text(
-            "",
-            style: defaultTextStyle(color: colorScheme.surface),
+        BottomNavigationBarItem(
+          icon: Image.asset(
+            Assets.homeFilledIconPng,
+            fit: BoxFit.cover,
           ),
-          selectedTitle: Text(
-            "Chat",
-            style: defaultTextStyle(color: colorScheme.surface),
+          label: "Home",
+          tooltip: "Home",
+          activeIcon: Image.asset(
+            Assets.homeFilledIconPng,
+            fit: BoxFit.cover,
           ),
         ),
-        CustomNavigationBarItem(
-          icon: const Icon(Iconsax.user),
-          selectedIcon: const Icon(Icon.solidUser),
-          title: Text(
-            "",
-            style: defaultTextStyle(color: colorScheme.surface),
+        BottomNavigationBarItem(
+          icon: Image.asset(
+            Assets.homeFilledIconPng,
+            fit: BoxFit.cover,
           ),
-          selectedTitle: Text(
-            "Profile",
-            style: defaultTextStyle(color: colorScheme.surface),
+          label: "Home",
+          tooltip: "Home",
+          activeIcon: Image.asset(
+            Assets.homeFilledIconPng,
+            fit: BoxFit.cover,
+          ),
+        ),
+        BottomNavigationBarItem(
+          icon: Image.asset(
+            Assets.homeFilledIconPng,
+            fit: BoxFit.cover,
+          ),
+          label: "Home",
+          tooltip: "Home",
+          activeIcon: Image.asset(
+            Assets.homeFilledIconPng,
+            fit: BoxFit.cover,
           ),
         ),
       ];

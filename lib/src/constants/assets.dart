@@ -1,23 +1,29 @@
 class Assets {
-//=================== Images and Icons ===================\\
+//=================== Icons ===================\\
   //App Icon
   static const lightAppLogo = "assets/images/png/light_app_logo.png";
   static const darkAppLogo = "assets/images/png/dark_app_logo.png";
 
-//Icons
+//========== PNG Icons ==========\\
+
   static const emptyImage = "assets/icons/png/empty.png";
   static const googleIcon = "assets/icons/png/google_icon.png";
   static const googleMaps = "assets/icons/png/google-maps.png";
   static const appleIconLight = "assets/icons/png/apple-icon-light.png";
   static const appleIconDark = "assets/icons/png/apple-icon-dark.png";
+  static const homeFilledIconPng = "assets/icons/png/home-filled.png";
+
+//========== SVG Icons ==========\\
+  static const homeFilledIconSvg = "assets/icons/svg/home-filled.svg";
+
+//=================== Images ===================\\
+
+//======== PNG =========\\
 
 //Background
   static const lightBackground = "assets/images/png/light_background.png";
   static const darkBackground = "assets/images/png/dark_background.png";
 
-  //App Images
-
-  //======== PNG =========\\
   static const onboarding1Png = "assets/images/png/onboarding_1.png";
   static const onboarding2Png = "assets/images/png/onboarding_2.png";
   static const authPng = "assets/images/png/auth.png";
@@ -26,7 +32,7 @@ class Assets {
   static const buildings = "assets/images/png/buildings.png";
   static const kitchen = "assets/images/png/kitchen.png";
 
-  //======== SVG =========\\
+//======== SVG =========\\
   static const onboarding1Svg = "assets/images/svg/onboarding_1.svg";
   static const onboarding2Svg = "assets/images/svg/onboarding_2.svg";
   static const authSvg = "assets/images/svg/auth.svg";

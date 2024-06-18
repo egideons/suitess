@@ -15,7 +15,7 @@ Color kTextGreyColor = const Color(0xFF6C6C6C);
 Color kTextWhiteColor = kLightBackgroundColor;
 
 Color kTransparentColor = Colors.transparent;
-Color kGreyColor = Colors.grey.shade500;
+Color kGreyColor = const Color(0xFF6C6C6C);
 Color kLightGreyColor = Colors.grey.shade300;
 Color kDarkGreyColor = Colors.grey.shade800;
 Color kPendingColor = Colors.blue.shade800;

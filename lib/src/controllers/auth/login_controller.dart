@@ -111,17 +111,17 @@ class LoginController extends GetxController {
 
       ApiProcessorController.successSnack("Login successful");
 
-      // await Get.offAll(
-      //   () => LoadingScreen(
-      //     loadData: LoadingController.instance.bottomNavgiationView,
-      //   ),
-      //   routeName: "/loading-screen",
-      //   fullscreenDialog: true,
-      //   curve: Curves.easeInOut,
-      //   predicate: (routes) => false,
-      //   popGesture: false,
-      //   transition: Get.defaultTransition,
-      // );
+      await Get.offAll(
+        () => LoadingScreen(
+          loadData: LoadingController.instance.bottomNavgiationView,
+        ),
+        routeName: "/loading-screen",
+        fullscreenDialog: true,
+        curve: Curves.easeInOut,
+        predicate: (routes) => false,
+        popGesture: false,
+        transition: Get.defaultTransition,
+      );
     }
     isLoading.value = false;
     update();
