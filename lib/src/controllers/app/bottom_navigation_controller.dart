@@ -56,7 +56,7 @@ class BottomNavigationController extends GetxController {
           ),
           activeIcon: SvgPicture.asset(
             Assets.homeFilledIconSvg,
-            // height: 30,
+            // color: kAccentColor,
             fit: BoxFit.cover,
           ),
         ),

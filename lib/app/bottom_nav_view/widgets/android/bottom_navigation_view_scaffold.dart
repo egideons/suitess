@@ -37,13 +37,13 @@ class BottomNavigationViewScaffold extends GetView<BottomNavigationController> {
             type: BottomNavigationBarType.fixed,
             showSelectedLabels: true,
             selectedItemColor: kAccentColor,
+            showUnselectedLabels: true,
+            unselectedItemColor: colorScheme.inversePrimary,
             selectedFontSize: 12,
             unselectedFontSize: 12,
+
             selectedIconTheme: IconThemeData(color: kAccentColor),
-            selectedLabelStyle: defaultTextStyle(
-              fontWeight: FontWeight.w700,
-              color: kAccentColor,
-            ),
+            selectedLabelStyle: defaultTextStyle(color: kAccentColor),
           );
         },
       ),

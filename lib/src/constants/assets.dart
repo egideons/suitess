@@ -15,6 +15,9 @@ class Assets {
 
 //========== SVG Icons ==========\\
   static const homeFilledIconSvg = "assets/icons/svg/home-filled.svg";
+  static const walletFilledIconSvg = "assets/icons/svg/wallet-filled.svg";
+  static const chatFilledIconSvg = "assets/icons/svg/chat-filled.svg";
+  static const userFilledIconSvg = "assets/icons/svg/user-filled.svg";
 
 //=================== Images ===================\\
 

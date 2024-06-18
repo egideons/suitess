@@ -100,7 +100,7 @@ ThemeData androidLightTheme = ThemeData(
   colorScheme: ColorScheme.light(
     surface: kLightBackgroundColor,
     primary: kDarkBackgroundColor,
-    inversePrimary: Colors.grey.shade400,
+    inversePrimary: kGreyColor,
     secondary: kAccentColor,
     brightness: Brightness.light,
     error: kErrorColor,
@@ -181,7 +181,7 @@ ThemeData androidDarkTheme = ThemeData(
   colorScheme: ColorScheme.dark(
     surface: kDarkBackgroundColor,
     primary: kLightBackgroundColor,
-    inversePrimary: Colors.grey.shade600,
+    inversePrimary: kDarkGreyColor,
     secondary: kAccentColor,
     brightness: Brightness.dark,
     error: kErrorColor,

@@ -214,7 +214,7 @@ class LoginController extends GetxController {
 
       // await FirebaseAuth.instance.signInWithCredential(credential);
 
-      // ApiProcessorController.successSnack("Login successful");
+      ApiProcessorController.successSnack("Login successful");
 
       await Get.offAll(
         () => LoadingScreen(
