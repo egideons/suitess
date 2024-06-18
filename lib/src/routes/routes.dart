@@ -16,7 +16,7 @@ import '../../app/auth/reset_password_options/via_email/screen/reset_password_vi
 import '../../app/auth/reset_password_options/via_sms/screen/reset_password_via_sms.dart';
 import '../../app/auth/reset_password_otp/via_email/screen/reset_password_via_email_otp.dart';
 import '../../app/auth/reset_password_otp/via_sms/screen/reset_password_via_sms_otp.dart';
-import '../../app/experience/screen/landlord_navigation_overview.dart';
+import '../../app/bottom_nav_view/screen/bottom_navigation_view.dart';
 import '../../app/kyc/kyc_bvn/screen/kyc_bvn.dart';
 import '../../app/kyc/kyc_bvn_otp/screen/kyc_bvn_otp.dart';
 import '../../app/kyc/kyc_nin/screen/kyc_nin.dart';
