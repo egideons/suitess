@@ -27,11 +27,12 @@ class BottomNavigationViewScaffold extends GetView<BottomNavigationController> {
         () {
           return BottomNavigationBar(
             items: controller.landLordNavItems(colorScheme),
+
             onTap: (index) => controller.navCurrrentIndex.value = index,
             currentIndex: currentIndex ?? controller.navCurrrentIndex.value,
             backgroundColor: colorScheme.surface,
             enableFeedback: true,
-            elevation: 0,
+            elevation: 20,
             // landscapeLayout: BottomNavigationBarLandscapeLayout.linear,
             mouseCursor: SystemMouseCursors.click,
             type: BottomNavigationBarType.fixed,

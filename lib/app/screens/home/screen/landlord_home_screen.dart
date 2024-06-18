@@ -12,17 +12,17 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //Initialize the controller
-    Get.put(LandlordHomescreenController());
+    Get.put(HomescreenController());
 
     if (Platform.isIOS) {
       return GestureDetector(
         onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
-        child: const LandLordHomeScreenCupertinoScaffold(),
+        child: const HomeScreenCupertinoScaffold(),
       );
     }
     return GestureDetector(
       onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
-      child: const LandLordHomeScreenScaffold(),
+      child: const HomeScreenScaffold(),
     );
   }
 }

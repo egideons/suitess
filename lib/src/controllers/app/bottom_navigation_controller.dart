@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:suitess/app/screens/home/screen/landlord_home_screen.dart';
 import 'package:suitess/src/constants/consts.dart';
 
+import '../../../theme/colors.dart';
 import '../../constants/assets.dart';
 
 class BottomNavigationController extends GetxController {
@@ -56,43 +57,46 @@ class BottomNavigationController extends GetxController {
           ),
           activeIcon: SvgPicture.asset(
             Assets.homeFilledIconSvg,
-            // color: kAccentColor,
+            color: kAccentColor,
             fit: BoxFit.cover,
           ),
         ),
         BottomNavigationBarItem(
-          icon: Image.asset(
-            Assets.homeFilledIconPng,
+          label: "Wallet",
+          tooltip: "Wallet",
+          icon: SvgPicture.asset(
+            Assets.walletFilledIconSvg,
             fit: BoxFit.cover,
           ),
-          label: "Home",
-          tooltip: "Home",
-          activeIcon: Image.asset(
-            Assets.homeFilledIconPng,
-            fit: BoxFit.cover,
-          ),
-        ),
-        BottomNavigationBarItem(
-          icon: Image.asset(
-            Assets.homeFilledIconPng,
-            fit: BoxFit.cover,
-          ),
-          label: "Home",
-          tooltip: "Home",
-          activeIcon: Image.asset(
-            Assets.homeFilledIconPng,
+          activeIcon: SvgPicture.asset(
+            color: kAccentColor,
+            Assets.walletFilledIconSvg,
             fit: BoxFit.cover,
           ),
         ),
         BottomNavigationBarItem(
-          icon: Image.asset(
-            Assets.homeFilledIconPng,
+          label: "Messages",
+          tooltip: "Messages",
+          icon: SvgPicture.asset(
+            Assets.chatFilledIconSvg,
             fit: BoxFit.cover,
           ),
-          label: "Home",
-          tooltip: "Home",
-          activeIcon: Image.asset(
-            Assets.homeFilledIconPng,
+          activeIcon: SvgPicture.asset(
+            Assets.chatFilledIconSvg,
+            color: kAccentColor,
+            fit: BoxFit.cover,
+          ),
+        ),
+        BottomNavigationBarItem(
+          label: "Profile",
+          tooltip: "Profile",
+          icon: SvgPicture.asset(
+            Assets.userFilledIconSvg,
+            fit: BoxFit.cover,
+          ),
+          activeIcon: SvgPicture.asset(
+            Assets.userFilledIconSvg,
+            color: kAccentColor,
             fit: BoxFit.cover,
           ),
         ),

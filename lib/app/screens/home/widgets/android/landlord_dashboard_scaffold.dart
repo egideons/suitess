@@ -5,8 +5,8 @@ import '../../../../../src/constants/assets.dart';
 import '../../../../../src/constants/consts.dart';
 import '../../../../../theme/colors.dart';
 
-class LandLordHomeScreenScaffold extends StatelessWidget {
-  const LandLordHomeScreenScaffold({super.key});
+class HomeScreenScaffold extends StatelessWidget {
+  const HomeScreenScaffold({super.key});
 
   @override
   Widget build(BuildContext context) {

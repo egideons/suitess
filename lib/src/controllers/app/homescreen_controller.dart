@@ -3,9 +3,9 @@ import 'dart:developer';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
-class LandlordHomescreenController extends GetxController {
-  static LandlordHomescreenController get instance {
-    return Get.find<LandlordHomescreenController>();
+class HomescreenController extends GetxController {
+  static HomescreenController get instance {
+    return Get.find<HomescreenController>();
   }
 
   @override
