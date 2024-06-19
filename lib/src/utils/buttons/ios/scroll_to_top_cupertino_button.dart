@@ -3,7 +3,7 @@ import 'package:iconsax/iconsax.dart';
 
 import '../../../../theme/colors.dart';
 
-Widget scrollToTopCupertinoButton(
+scrollToTopCupertinoButton(
   controller,
 ) {
   return CupertinoButton(

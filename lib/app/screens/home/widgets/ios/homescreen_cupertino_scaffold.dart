@@ -11,12 +11,12 @@ import '../../../../../src/controllers/app/homescreen_controller.dart';
 import '../../../../../src/routes/routes.dart';
 import '../../../../../src/utils/components/cupertino_message_alert_nav.dart';
 import '../../content/home_screen_no_properties.dart';
-import 'utils/add_a_property_cupertino_button.dart';
-import 'utils/add_property_cupertino_button.dart';
-import 'utils/agent_cupertino_card.dart';
-import 'utils/cupertino_navbar.dart';
-import 'utils/cupertino_property_card.dart';
-import 'utils/number_of_available_agents_cupertino_card.dart';
+import 'components/add_a_property_cupertino_button.dart';
+import 'components/add_property_cupertino_button.dart';
+import 'components/agent_cupertino_card.dart';
+import 'components/cupertino_navbar.dart';
+import 'components/cupertino_property_card.dart';
+import 'components/number_of_available_agents_cupertino_card.dart';
 
 class HomeScreenCupertinoScaffold extends GetView<HomescreenController> {
   const HomeScreenCupertinoScaffold({super.key});

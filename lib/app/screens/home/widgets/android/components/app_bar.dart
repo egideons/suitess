@@ -10,7 +10,7 @@ homeAppBar(
   Size media,
   String location, {
   Function()? toLocation,
-  Function()? toNotifications,
+  Function()? goToNotifications,
   bool? hasNotifications,
 }) {
   return AppBar(
@@ -86,7 +86,7 @@ homeAppBar(
           ),
         ),
         child: IconButton(
-          onPressed: toNotifications ?? () {},
+          onPressed: goToNotifications ?? () {},
           icon: Stack(
             children: [
               SvgPicture.asset(

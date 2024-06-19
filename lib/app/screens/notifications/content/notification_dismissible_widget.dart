@@ -47,10 +47,10 @@ notificationDismissibleWidget(
         ),
         shadows: [
           BoxShadow(
-            color: colorScheme.primary.withOpacity(0.1),
+            color: colorScheme.inversePrimary.withOpacity(0.2),
             offset: const Offset(4, 10),
-            blurRadius: 10,
-            spreadRadius: 4,
+            blurRadius: 4,
+            spreadRadius: 2,
           ),
         ],
       ),

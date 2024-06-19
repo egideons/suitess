@@ -21,7 +21,7 @@ class NotificationsController extends GetxController {
   //================ Booleans =================\\
   var isScrollToTopBtnVisible = false.obs;
   var isRefreshing = false.obs;
-  var hasUnreadNotifications = false.obs;
+  var hasNoNotifications = false.obs;
 
   //================ Variables =================\\
 

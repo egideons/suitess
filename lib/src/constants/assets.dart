@@ -23,6 +23,8 @@ class Assets {
   static const notificationBellOutlineSvg =
       "assets/icons/svg/notification-bell-outline.svg";
   static const redDotFilled = "assets/icons/svg/red-dot-filled.svg";
+  static const settingsFilled = "assets/icons/svg/settings-filled.svg";
+  static const settingsOutline = "assets/icons/svg/settings-outline.svg";
 
 //=================== Images ===================\\
 

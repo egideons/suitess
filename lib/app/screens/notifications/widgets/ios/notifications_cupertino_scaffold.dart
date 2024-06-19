@@ -28,7 +28,7 @@ class NotificationsCupertinoScaffold extends GetView<NotificationsController> {
         middle: SizedBox(
           width: media.width / 2,
           child: Text(
-            "Nofitications",
+            "Notifications",
             textAlign: TextAlign.center,
             style: defaultTextStyle(
               color: colorScheme.primary,
@@ -48,7 +48,7 @@ class NotificationsCupertinoScaffold extends GetView<NotificationsController> {
                 GetBuilder<NotificationsController>(
                   init: NotificationsController(),
                   builder: (controller) {
-                    return controller.hasUnreadNotifications.value
+                    return controller.hasNoNotifications.value
                         ? Container(
                             height: media.height / 2,
                             width: media.width,
