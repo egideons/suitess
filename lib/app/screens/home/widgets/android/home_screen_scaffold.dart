@@ -17,27 +17,29 @@ class HomeScreenScaffold extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: colorScheme.surface,
         automaticallyImplyLeading: true,
-        leading: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
-          // width: media.width / 3,
-          decoration: ShapeDecoration(
-            // color: colorScheme.inversePrimary.withOpacity(0.4),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(24),
-            ),
-          ),
-          child: Row(
-            children: [
-              SvgPicture.asset(
-                height: 30,
-                width: 30,
-                Assets.locationPinFilledIconSvg,
-                fit: BoxFit.cover,
+        title: InkWell(
+          onTap: () {},
+          borderRadius: BorderRadius.circular(24),
+          child: Container(
+            // margin: const EdgeInsets.all(10),
+            width: media.width / 2.6,
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+            decoration: ShapeDecoration(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(24),
+                side: BorderSide(
+                  color: colorScheme.inversePrimary.withOpacity(0.2),
+                ),
               ),
-              kHalfWidthSizedBox,
-              SizedBox(
-                // width: media.width / 5,
-                child: Text(
+            ),
+            child: Row(
+              children: [
+                SvgPicture.asset(
+                  Assets.locationPinFilledIconSvg,
+                  fit: BoxFit.contain,
+                ),
+                kHalfWidthSizedBox,
+                Text(
                   "Enugu, Nigeria.",
                   overflow: TextOverflow.ellipsis,
                   style: defaultTextStyle(
@@ -46,8 +48,12 @@ class HomeScreenScaffold extends StatelessWidget {
                     fontWeight: FontWeight.normal,
                   ),
                 ),
-              ),
-            ],
+                Icon(
+                  Icons.keyboard_arrow_down,
+                  color: colorScheme.inversePrimary,
+                ),
+              ],
+            ),
           ),
         ),
         actions: [
@@ -95,15 +101,6 @@ class HomeScreenScaffold extends StatelessWidget {
                       Assets.redDotFilled,
                       fit: BoxFit.contain,
                     ),
-
-                    // Container(
-                    //   height: 6,
-                    //   width: 6,
-                    //   decoration: ShapeDecoration(
-                    //     color: kErrorColor,
-                    //     shape: const CircleBorder(),
-                    //   ),
-                    // ),
                   ),
                 ],
               ),

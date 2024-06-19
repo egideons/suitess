@@ -2,8 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:suitess/app/screens/home/widgets/android/landlord_dashboard_scaffold.dart';
-import 'package:suitess/app/screens/home/widgets/ios/landlord_homescreen_cupertino_scaffold.dart';
+import 'package:suitess/app/screens/home/widgets/android/home_screen_scaffold.dart';
+import 'package:suitess/app/screens/home/widgets/ios/homescreen_cupertino_scaffold.dart';
 import 'package:suitess/src/controllers/app/homescreen_controller.dart';
 
 class HomeScreen extends StatelessWidget {

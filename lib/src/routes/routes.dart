@@ -4,7 +4,7 @@ import 'package:suitess/app/auth/signup/screen/signup.dart';
 import 'package:suitess/app/kyc/kyc_add_location/screen/kyc_add_location.dart';
 import 'package:suitess/app/kyc/kyc_profile_photo/screen/kyc_profile_photo.dart';
 import 'package:suitess/app/onboarding/screen/onboarding.dart';
-import 'package:suitess/app/screens/home/screen/landlord_home_screen.dart';
+import 'package:suitess/app/screens/home/screen/home_screen.dart';
 import 'package:suitess/app/screens/notifications/screen/notifiactions.dart';
 import 'package:suitess/app/screens/property/view_property/screen/landlord_view_property.dart';
 import 'package:suitess/app/splash/startup/screen/startup_splash.dart';

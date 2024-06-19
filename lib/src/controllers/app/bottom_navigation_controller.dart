@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:suitess/app/screens/home/screen/landlord_home_screen.dart';
+import 'package:suitess/app/screens/home/screen/home_screen.dart';
 import 'package:suitess/src/constants/consts.dart';
 
 import '../../../theme/colors.dart';
