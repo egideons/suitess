@@ -34,12 +34,14 @@ homeAppBar(
         child: Row(
           children: [
             SvgPicture.asset(
+              height: 20,
+              width: 20,
               Assets.locationPinFilledIconSvg,
               fit: BoxFit.contain,
             ),
             kHalfWidthSizedBox,
             Text(
-              location ?? "",
+              location,
               overflow: TextOverflow.ellipsis,
               style: defaultTextStyle(
                 fontSize: 10.0,
@@ -77,7 +79,7 @@ homeAppBar(
       // ),
       // kHalfWidthSizedBox,
       Container(
-        margin: const EdgeInsets.only(right: 10),
+        margin: const EdgeInsets.all(10),
         decoration: ShapeDecoration(
           shape: CircleBorder(
             side: BorderSide(
@@ -91,12 +93,14 @@ homeAppBar(
             children: [
               SvgPicture.asset(
                 Assets.notificationBellOutlineSvg,
-                fit: BoxFit.contain,
+                height: 20,
+                width: 20,
+                fit: BoxFit.cover,
               ),
               hasNotifications == false
                   ? const SizedBox()
                   : Positioned(
-                      right: 3,
+                      right: 0,
                       child: SvgPicture.asset(
                         height: 10,
                         Assets.redDotFilled,

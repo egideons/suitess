@@ -21,32 +21,7 @@ class NotificationsScaffold extends GetView<NotificationsController> {
 
     return Scaffold(
       backgroundColor: colorScheme.surface,
-      appBar: AppBar(
-        backgroundColor: colorScheme.surface,
-        centerTitle: true,
-        leading: Icon(Icons.chevron_left, color: colorScheme.primary),
-        title: SizedBox(
-          width: media.width / 2,
-          child: Text(
-            "Notifications",
-            textAlign: TextAlign.center,
-            style: defaultTextStyle(
-              color: colorScheme.primary,
-              fontSize: 16,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-        ),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: SvgPicture.asset(
-              Assets.settingsOutline,
-              fit: BoxFit.contain,
-            ),
-          ),
-        ],
-      ),
+      appBar: appBar(colorScheme, media),
       floatingActionButton: Obx(
         () => controller.isScrollToTopBtnVisible.value
             ? FloatingActionButton.small(
@@ -68,33 +43,7 @@ class NotificationsScaffold extends GetView<NotificationsController> {
               init: NotificationsController(),
               builder: (controller) {
                 return controller.hasNoNotifications.value
-                    ? Container(
-                        height: media.height / 2,
-                        width: media.width,
-                        padding: const EdgeInsets.all(10),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.notifications,
-                              color: kAccentColor,
-                              size: media.height / 4,
-                            ),
-                            kSizedBox,
-                            Text(
-                              "You have no unread notifications.",
-                              maxLines: 4,
-                              textAlign: TextAlign.center,
-                              style: defaultTextStyle(
-                                color: colorScheme.primary,
-                                fontSize: 20,
-                                fontWeight: FontWeight.w700,
-                              ),
-                            ),
-                          ],
-                        ),
-                      )
+                    ? emptyNotifications(media, colorScheme)
                     : ListView.separated(
                         controller: controller.scrollController,
                         itemCount: 30,
@@ -103,7 +52,7 @@ class NotificationsScaffold extends GetView<NotificationsController> {
                         padding: const EdgeInsets.all(10),
                         separatorBuilder: (context, index) => kHalfSizedBox,
                         itemBuilder: (context, index) {
-                          return notificationDismissibleWidget(
+                          return notificationWidget(
                             colorScheme,
                             media,
                             notificationMessage:
@@ -118,6 +67,85 @@ class NotificationsScaffold extends GetView<NotificationsController> {
           ),
         ),
       ),
+    );
+  }
+
+  emptyNotifications(
+    Size media,
+    ColorScheme colorScheme, {
+    String? title,
+    String? message,
+  }) {
+    return Container(
+      height: media.height / 2,
+      width: media.width,
+      padding: const EdgeInsets.all(10),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          SvgPicture.asset(
+            Assets.noNotificationsSvg,
+            height: media.height / 4,
+            fit: BoxFit.cover,
+          ),
+          kSizedBox,
+          Text(
+            title ?? "Oops",
+            textAlign: TextAlign.center,
+            style: defaultTextStyle(
+              color: colorScheme.inversePrimary,
+              fontSize: 16,
+              fontWeight: FontWeight.w800,
+            ),
+          ),
+          Text(
+            message ??
+                "You're all caught up! We'll notify you when there's something new.",
+            maxLines: 4,
+            textAlign: TextAlign.center,
+            style: defaultTextStyle(
+              color: colorScheme.inversePrimary,
+              fontSize: 14,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  appBar(ColorScheme colorScheme, Size media, {Function()? goToSettings}) {
+    return AppBar(
+      backgroundColor: colorScheme.surface,
+      centerTitle: true,
+      leading: IconButton(
+        onPressed: () {
+          Get.back();
+        },
+        icon: Icon(Icons.chevron_left, color: colorScheme.primary),
+      ),
+      title: SizedBox(
+        width: media.width / 2,
+        child: Text(
+          "Notifications",
+          textAlign: TextAlign.center,
+          style: defaultTextStyle(
+            color: colorScheme.primary,
+            fontSize: 16,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+      ),
+      actions: [
+        IconButton(
+          onPressed: goToSettings ?? () {},
+          icon: SvgPicture.asset(
+            Assets.settingsOutline,
+            fit: BoxFit.contain,
+          ),
+        ),
+      ],
     );
   }
 }

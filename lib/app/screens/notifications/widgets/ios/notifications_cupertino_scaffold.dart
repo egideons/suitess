@@ -83,7 +83,7 @@ class NotificationsCupertinoScaffold extends GetView<NotificationsController> {
                             padding: const EdgeInsets.all(10),
                             separatorBuilder: (context, index) => kHalfSizedBox,
                             itemBuilder: (context, index) {
-                              return notificationDismissibleWidget(
+                              return notificationWidget(
                                 colorScheme,
                                 media,
                                 notificationMessage:
