@@ -39,10 +39,11 @@ signupFormPageHeader({colorScheme, media}) {
       ),
       kSizedBox,
       SizedBox(
-        width: media.width - 50,
+        width: media.width - 20,
         child: Text(
           "Register now, suitess has got you covered.",
           textAlign: TextAlign.center,
+          maxLines: 2,
           style: defaultTextStyle(
             color: colorScheme.primary,
             fontSize: 14.0,

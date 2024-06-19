@@ -32,9 +32,22 @@ loginFormPageHeader({colorScheme, media}) {
       ),
       kSizedBox,
       SizedBox(
-        width: media.width - 50,
+        width: media.width,
         child: Text(
-          "Looking for that perfect home just for you?\n Suitess has got you covered.",
+          "Looking for that perfect home just for you?",
+          textAlign: TextAlign.center,
+          maxLines: 4,
+          style: defaultTextStyle(
+            color: colorScheme.primary,
+            fontSize: 14.0,
+            fontWeight: FontWeight.normal,
+          ),
+        ),
+      ),
+      SizedBox(
+        width: media.width,
+        child: Text(
+          "Suitess has got you covered.",
           textAlign: TextAlign.center,
           maxLines: 4,
           style: defaultTextStyle(

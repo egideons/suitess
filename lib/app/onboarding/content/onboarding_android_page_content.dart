@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:suitess/src/utils/buttons/android/android_elevated_button.dart';
@@ -191,29 +190,29 @@ onboardingAndroidPageContent(
                 padding: const EdgeInsets.all(20),
                 child: Column(
                   children: [
-                    SvgPicture.asset(
-                      controller.onboardController.value.items[index].image,
-                      height: media.height * .5,
-                      fit: BoxFit.contain,
-                    ),
-                    // Container(
+                    // SvgPicture.asset(
+                    //   controller.onboardController.value.items[index].image,
                     //   height: media.height * .5,
-                    //   decoration: ShapeDecoration(
-                    //     shape: RoundedRectangleBorder(
-                    //       borderRadius: BorderRadius.circular(50),
-                    //     ),
-                    //     image: DecorationImage(
-                    //       image: AssetImage(
-                    //         controller
-                    //             .onboardController.value.items[index].image,
-                    //       ),
-                    //       fit: BoxFit.contain,
-                    //     ),
-                    //   ),
+                    //   fit: BoxFit.contain,
                     // ),
+                    Container(
+                      height: media.height * .5,
+                      decoration: ShapeDecoration(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50),
+                        ),
+                        image: DecorationImage(
+                          image: AssetImage(
+                            controller
+                                .onboardController.value.items[index].image,
+                          ),
+                          fit: BoxFit.contain,
+                        ),
+                      ),
+                    ),
                     kHalfSizedBox,
                     SizedBox(
-                      width: media.width - 100,
+                      // width: media.width - 100,
                       child: Text(
                         controller.onboardController.value.items[index].title,
                         textAlign: TextAlign.center,
