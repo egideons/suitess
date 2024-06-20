@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:iconsax/iconsax.dart';
 
-import '../../../theme/colors.dart';
-import '../../constants/consts.dart';
+import '../../../../../../src/constants/consts.dart';
+import '../../../../../../theme/colors.dart';
 
-Widget cupertinoMessageAlertNav(media, {onPressed, message}) {
+cupertinoMessageAlertNav(media, {onPressed, message}) {
   return CupertinoButton(
     onPressed: onPressed ?? () {},
     padding: const EdgeInsets.all(0),

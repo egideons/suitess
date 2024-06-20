@@ -17,12 +17,12 @@ homeAppBar(
     backgroundColor: colorScheme.surface,
     automaticallyImplyLeading: true,
     title: InkWell(
-      onTap: () {},
+      onTap: toLocation ?? () {},
       borderRadius: BorderRadius.circular(24),
       child: Container(
         width:
             deviceType(media.width) > 1 ? media.width / 4.2 : media.width / 2.2,
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 2),
         decoration: ShapeDecoration(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(24),

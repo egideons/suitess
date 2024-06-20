@@ -9,7 +9,7 @@ import 'package:typewritertext/v3/typewriter.dart';
 
 import '../../../../../src/controllers/app/homescreen_controller.dart';
 import '../../../../../src/routes/routes.dart';
-import '../../../../../src/utils/components/cupertino_message_alert_nav.dart';
+import '../../../notifications/widgets/ios/components/cupertino_message_alert_nav.dart';
 import '../../content/home_screen_no_properties.dart';
 import 'components/add_a_property_cupertino_button.dart';
 import 'components/add_property_cupertino_button.dart';
