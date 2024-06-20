@@ -1,8 +1,8 @@
 class PropertyModel {
-  String name;
+  String propertyName;
   bool isSelected;
   PropertyModel({
-    required this.name,
+    required this.propertyName,
     required this.isSelected,
   });
 }
