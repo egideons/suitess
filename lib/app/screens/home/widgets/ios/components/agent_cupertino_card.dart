@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:suitess/src/controllers/app/homescreen_controller.dart';
 
 import '../../../../../../src/constants/assets.dart';
 import '../../../../../../src/constants/consts.dart';
@@ -7,14 +9,15 @@ import '../../../../../../src/utils/components/circle_avatar_image.dart';
 import '../../../../../../theme/colors.dart';
 
 Widget landLordAgentBidCupertinoCard(
-  colorScheme,
-  media,
-  controller, {
-  agentName,
-  navTo,
-  nameOfProperty,
-  addressOfProperty,
-  priceOfProperty,
+  ColorScheme colorScheme,
+  Size media,
+  HomescreenController controller, {
+  String? agentName,
+  Function()? navTo,
+  String? nameOfProperty,
+  String? addressOfProperty,
+  String? priceOfProperty,
+  Function()? closeButton,
 }) {
   return AnimatedContainer(
     duration: const Duration(milliseconds: 300),
@@ -148,7 +151,7 @@ Widget landLordAgentBidCupertinoCard(
         kSizedBox,
         Center(
           child: CupertinoButton(
-            onPressed: controller.hideAvailableAgents,
+            onPressed: closeButton ?? () {},
             padding: const EdgeInsets.all(0),
             minSize: media.height * .02,
             borderRadius: BorderRadius.circular(100),

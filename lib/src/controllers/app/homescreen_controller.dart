@@ -67,6 +67,8 @@ class HomescreenController extends GetxController {
 
   //================ Show and Hide Available Agents =================//
 
+  goToBids() {}
+
   showAvailableAgents() {
     availableAgentsIsVisible.value = true;
     update();

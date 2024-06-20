@@ -9,6 +9,7 @@ import '../../../../../src/routes/routes.dart';
 import '../../../../../src/utils/containers/form_field_container.dart';
 import 'components/alert_message.dart';
 import 'components/app_bar.dart';
+import 'components/number_of_bids.dart';
 
 class HomeScreenScaffold extends StatelessWidget {
   const HomeScreenScaffold({super.key});
@@ -89,19 +90,19 @@ class HomeScreenScaffold extends StatelessWidget {
                         onChanged: (value) {},
                       ),
                     ),
-                    kSizedBox,
+                    kHalfSizedBox,
                     controller.isKYCVerified.value
-                        ? Column(
-                            children: [
-                              messageAlertAndroid(
-                                media,
-                                message: "KYC not verified",
-                              ),
-                              const SizedBox(height: kDefaultPadding * 1.4),
-                              // kSizedBox,
-                            ],
+                        ? messageAlertAndroid(
+                            media,
+                            message: "KYC not verified",
                           )
                         : const SizedBox(),
+                    kHalfSizedBox,
+                    numberOfBids(
+                      media,
+                      onPressed: controller.goToBids,
+                    ),
+                    kSizedBox,
                   ],
                 );
               },
