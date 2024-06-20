@@ -13,7 +13,7 @@ appBar(ColorScheme colorScheme, Size media, {Function()? goToSettings}) {
       onPressed: () {
         Get.back();
       },
-      icon: Icon(Icons.chevron_left, color: colorScheme.primary),
+      icon: Icon(Icons.chevron_left, color: colorScheme.inversePrimary),
     ),
     title: SizedBox(
       width: media.width / 2,

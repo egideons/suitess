@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../../src/constants/consts.dart';
 import '../../../../../src/controllers/app/notifications_controller.dart';
 import '../../../../../theme/colors.dart';
-import '../../content/notification_dismissible_widget.dart';
+import '../../content/notification_widget.dart';
 import 'components/app_bar.dart';
 import 'components/empty_notification.dart';
 
@@ -41,25 +40,44 @@ class NotificationsScaffold extends GetView<NotificationsController> {
             child: GetBuilder<NotificationsController>(
               init: NotificationsController(),
               builder: (controller) {
-                return !controller.hasNoNotifications.value
+                return controller.hasNoNotifications.value
                     ? emptyNotifications(media, colorScheme)
-                    : ListView.separated(
-                        controller: controller.scrollController,
-                        itemCount: 30,
-                        physics: const BouncingScrollPhysics(),
-                        shrinkWrap: true,
-                        padding: const EdgeInsets.all(10),
-                        separatorBuilder: (context, index) => kHalfSizedBox,
-                        itemBuilder: (context, index) {
-                          return notificationWidget(
-                            colorScheme,
-                            media,
-                            notificationMessage:
-                                "Appointment confirmed for 12:00pm, 20th Oct 2021 by Clinton Tia",
-                            notificationTime: "Just now",
-                            notificationColor: kSuccessColor,
-                          );
-                        },
+                    : Container(
+                        margin: const EdgeInsets.all(10),
+                        decoration: ShapeDecoration(
+                          color: colorScheme.surface,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          shadows: [
+                            BoxShadow(
+                              color: colorScheme.inversePrimary.withOpacity(.2),
+                              offset: const Offset(0, 4),
+                              blurRadius: 10,
+                              spreadRadius: 2,
+                            ),
+                          ],
+                        ),
+                        child: ListView.separated(
+                          controller: controller.scrollController,
+                          itemCount: 30,
+                          physics: const BouncingScrollPhysics(),
+                          shrinkWrap: true,
+                          padding: const EdgeInsets.all(10),
+                          separatorBuilder: (context, index) =>
+                              const SizedBox(height: 2),
+                          itemBuilder: (context, index) {
+                            return notificationWidget(
+                              colorScheme,
+                              media,
+                              notificationTitle: "Appointment",
+                              notificationMessage:
+                                  "Appointment confirmed for 12:00pm, 20th Oct 2021 by Clinton Tia",
+                              notificationTime: "Just now",
+                              notificationColor: kSuccessColor,
+                            );
+                          },
+                        ),
                       );
               },
             ),
