@@ -13,7 +13,10 @@ appBar(ColorScheme colorScheme, Size media, {Function()? goToSettings}) {
       onPressed: () {
         Get.back();
       },
-      icon: Icon(Icons.chevron_left, color: colorScheme.inversePrimary),
+      icon: Icon(
+        Icons.chevron_left,
+        color: colorScheme.primary.withOpacity(.5),
+      ),
     ),
     title: SizedBox(
       width: media.width / 2,
@@ -33,6 +36,7 @@ appBar(ColorScheme colorScheme, Size media, {Function()? goToSettings}) {
         icon: SvgPicture.asset(
           Assets.settingsOutline,
           fit: BoxFit.contain,
+          color: colorScheme.primary.withOpacity(.5),
         ),
       ),
     ],

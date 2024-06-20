@@ -5,11 +5,11 @@ import '../../../../../../theme/colors.dart';
 
 numberOfBids(
   Size media, {
-  Function()? onPressed,
+  Function()? viewAll,
   int? noOfAgents,
 }) {
   return InkWell(
-    onTap: onPressed ?? () {},
+    onTap: viewAll ?? () {},
     borderRadius: BorderRadius.circular(8),
     child: Container(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
@@ -20,7 +20,7 @@ numberOfBids(
         ),
         shadows: [
           BoxShadow(
-            color: kGreenCardColor.withOpacity(0.4),
+            color: kGreenCardColor.withOpacity(.4),
             offset: const Offset(0, -15),
             spreadRadius: -10,
           ),

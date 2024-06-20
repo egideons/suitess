@@ -50,7 +50,7 @@ notificationWidget(
                         notificationTitle ?? "",
                         textAlign: TextAlign.start,
                         style: defaultTextStyle(
-                          color: colorScheme.inversePrimary,
+                          color: colorScheme.primary.withOpacity(.5),
                           fontWeight: FontWeight.w700,
                           fontSize: 14,
                         ),
@@ -59,7 +59,7 @@ notificationWidget(
                         notificationTime ?? "",
                         textAlign: TextAlign.start,
                         style: defaultTextStyle(
-                          color: colorScheme.inversePrimary,
+                          color: colorScheme.primary.withOpacity(.5),
                           fontWeight: FontWeight.normal,
                           fontSize: 10,
                         ),
@@ -105,7 +105,7 @@ notificationWidget(
                       margin: const EdgeInsets.only(left: 10, right: 10),
                       decoration: ShapeDecoration(
                         shape: const CircleBorder(),
-                        color: colorScheme.inversePrimary.withOpacity(.2),
+                        color: colorScheme.primary.withOpacity(.5),
                       ),
                     ),
                     InkWell(

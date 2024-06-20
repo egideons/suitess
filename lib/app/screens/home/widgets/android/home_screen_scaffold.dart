@@ -1,15 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:suitess/theme/colors.dart';
 import 'package:typewritertext/v3/typewriter.dart';
 
 import '../../../../../src/constants/consts.dart';
 import '../../../../../src/controllers/app/homescreen_controller.dart';
 import '../../../../../src/routes/routes.dart';
 import '../../../../../src/utils/containers/form_field_container.dart';
-import '../../../../../theme/colors.dart';
 import 'components/alert_message.dart';
 import 'components/app_bar.dart';
+import 'components/filter_properties_nearby.dart';
 import 'components/number_of_bids.dart';
 
 class HomeScreenScaffold extends StatelessWidget {
@@ -55,6 +56,8 @@ class HomeScreenScaffold extends StatelessWidget {
       body: SafeArea(
         child: RefreshIndicator.adaptive(
           onRefresh: controller.onRefresh,
+          backgroundColor: colorScheme.surface,
+          color: colorScheme.primary,
           child: Scrollbar(
             controller: controller.scrollController,
             child: GetBuilder<HomescreenController>(
@@ -101,34 +104,55 @@ class HomeScreenScaffold extends StatelessWidget {
                     kHalfSizedBox,
                     numberOfBids(
                       media,
-                      onPressed: controller.goToBids,
+                      viewAll: controller.goToBids,
                     ),
                     kSizedBox,
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        SizedBox(
-                          child: Text(
-                            "Properties nearby",
-                            overflow: TextOverflow.ellipsis,
-                            textAlign: TextAlign.start,
-                            style: defaultTextStyle(
-                              color: colorScheme.primary,
-                              fontSize: 16.0,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ),
-                        Text(
-                          "Filter",
-                          style: defaultTextStyle(
-                            color: kAccentColor,
-                            fontSize: 14.0,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        )
-                      ],
+                    filterPropertiesNearby(
+                      () {},
+                      colorScheme,
                     ),
+                    kSizedBox,
+                    SizedBox(
+                      height: 30,
+                      child: ListView.separated(
+                        itemCount: controller.propertyCategories.length,
+                        separatorBuilder: (context, index) =>
+                            kHalfWidthSizedBox,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) {
+                          return InkWell(
+                            onTap: () {
+                              controller.selectPropertyCategory(index);
+                            },
+                            child: AnimatedContainer(
+                              duration: const Duration(milliseconds: 300),
+                              curve: Curves.easeInOut,
+                              padding: const EdgeInsets.all(5),
+                              decoration: ShapeDecoration(
+                                color: controller
+                                        .propertyCategories[index].isSelected
+                                    ? kAccentColor.withOpacity(.4)
+                                    : colorScheme.surface,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(4),
+                                ),
+                              ),
+                              child: Text(
+                                controller.propertyCategories[index].name,
+                                style: defaultTextStyle(
+                                  fontSize: 12,
+                                  color: controller
+                                          .propertyCategories[index].isSelected
+                                      ? kAccentColor
+                                      : colorScheme.inversePrimary,
+                                ),
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                    kSizedBox,
                   ],
                 );
               },

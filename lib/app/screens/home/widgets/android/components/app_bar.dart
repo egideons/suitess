@@ -27,7 +27,7 @@ homeAppBar(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(24),
             side: BorderSide(
-              color: colorScheme.inversePrimary.withOpacity(.2),
+              color: colorScheme.primary.withOpacity(.2),
             ),
           ),
         ),
@@ -37,6 +37,7 @@ homeAppBar(
               height: 20,
               width: 20,
               Assets.locationPinFilledIconSvg,
+              color: colorScheme.primary.withOpacity(.5),
               fit: BoxFit.contain,
             ),
             kHalfWidthSizedBox,
@@ -51,7 +52,7 @@ homeAppBar(
             ),
             Icon(
               Icons.keyboard_arrow_down,
-              color: colorScheme.inversePrimary,
+              color: colorScheme.primary.withOpacity(.5),
             ),
           ],
         ),
@@ -83,7 +84,7 @@ homeAppBar(
         decoration: ShapeDecoration(
           shape: CircleBorder(
             side: BorderSide(
-              color: colorScheme.inversePrimary.withOpacity(.2),
+              color: colorScheme.primary.withOpacity(.2),
             ),
           ),
         ),
@@ -93,6 +94,7 @@ homeAppBar(
             children: [
               SvgPicture.asset(
                 Assets.notificationBellOutlineSvg,
+                color: colorScheme.primary.withOpacity(.5),
                 height: 20,
                 width: 20,
                 fit: BoxFit.cover,

@@ -3,6 +3,8 @@ import 'dart:developer';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
+import '../../models/property_category_model.dart';
+
 class HomescreenController extends GetxController {
   static HomescreenController get instance {
     return Get.find<HomescreenController>();
@@ -26,6 +28,12 @@ class HomescreenController extends GetxController {
   var isKYCVerified = false.obs;
   var availableAgentsIsVisible = false.obs;
   var isScrollToTopBtnVisible = false.obs;
+  var propertyCategories = [
+    PropertyCategoryModel(name: "Apartments/Flats", isSelected: true),
+    PropertyCategoryModel(name: "Lands", isSelected: false),
+    PropertyCategoryModel(name: "Shortlets", isSelected: false),
+    PropertyCategoryModel(name: "Commercial Properties", isSelected: false),
+  ].obs;
 
   //================ controllers =================\\
 
@@ -68,6 +76,13 @@ class HomescreenController extends GetxController {
   //================ Show and Hide Available Agents =================//
 
   goToBids() {}
+
+  void selectPropertyCategory(int index) {
+    for (int i = 0; i < propertyCategories.length; i++) {
+      propertyCategories[i].isSelected = i == index;
+    }
+    update();
+  }
 
   showAvailableAgents() {
     availableAgentsIsVisible.value = true;

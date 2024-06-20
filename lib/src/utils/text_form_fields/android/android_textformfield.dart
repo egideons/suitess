@@ -137,12 +137,12 @@ class AndroidTextFormField extends StatelessWidget {
         focusColor: const Color(0xFFF6F6F7),
         labelStyle: defaultTextStyle(
           fontSize: 16.0,
-          color: colorScheme.inversePrimary,
+          color: colorScheme.primary.withOpacity(.5),
           fontWeight: FontWeight.normal,
         ),
         hintStyle: defaultTextStyle(
           fontSize: 16.0,
-          color: colorScheme.inversePrimary,
+          color: colorScheme.primary.withOpacity(.5),
           fontWeight: FontWeight.normal,
         ),
         // errorStyle: const TextStyle(color: Colors.red),
