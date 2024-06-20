@@ -7,6 +7,7 @@ import '../../../../../src/constants/consts.dart';
 import '../../../../../src/controllers/app/homescreen_controller.dart';
 import '../../../../../src/routes/routes.dart';
 import '../../../../../src/utils/containers/form_field_container.dart';
+import '../../../../../theme/colors.dart';
 import 'components/alert_message.dart';
 import 'components/app_bar.dart';
 import 'components/number_of_bids.dart';
@@ -103,6 +104,31 @@ class HomeScreenScaffold extends StatelessWidget {
                       onPressed: controller.goToBids,
                     ),
                     kSizedBox,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        SizedBox(
+                          child: Text(
+                            "Properties nearby",
+                            overflow: TextOverflow.ellipsis,
+                            textAlign: TextAlign.start,
+                            style: defaultTextStyle(
+                              color: colorScheme.primary,
+                              fontSize: 16.0,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                        Text(
+                          "Filter",
+                          style: defaultTextStyle(
+                            color: kAccentColor,
+                            fontSize: 14.0,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        )
+                      ],
+                    ),
                   ],
                 );
               },
