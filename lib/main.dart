@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:suitess/app/screens/home/screen/home_screen.dart';
 import 'package:suitess/src/controllers/others/loading_controller.dart';
 
 import 'src/controllers/others/theme_controller.dart';
@@ -83,7 +82,7 @@ class MyApp extends StatelessWidget {
         multitouchDragStrategy: MultitouchDragStrategy.sumAllPointers,
       ),
       // This is the home route
-      home: const HomeScreen(),
+      // home: const HomeScreen(),
     );
   }
 }

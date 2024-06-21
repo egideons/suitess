@@ -31,9 +31,10 @@ class Assets {
 
 //======== PNG =========\\
 
-//Background
+//===Background===\\
   static const lightBackground = "assets/images/png/light_background.png";
   static const darkBackground = "assets/images/png/dark_background.png";
+//=======\\
 
   static const onboarding1Png = "assets/images/png/onboarding_1.png";
   static const onboarding2Png = "assets/images/png/onboarding_2.png";
@@ -50,6 +51,9 @@ class Assets {
   static const otpSvg = "assets/images/svg/otp.svg";
   static const passwordSvg = "assets/images/svg/password.svg";
   static const locationSvg = "assets/images/svg/location.svg";
+  static const house1Svg = "assets/images/svg/house_1.svg";
+  static const house2Svg = "assets/images/svg/house_2.svg";
+  static const house3Svg = "assets/images/svg/house_3.svg";
 
 //Placeholder Image
   static const placeholderImage = "assets/images/png/placeholder_image.png";
