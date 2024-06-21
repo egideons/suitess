@@ -5,7 +5,7 @@ import '../../../../../../src/constants/assets.dart';
 import '../../../../../../src/constants/consts.dart';
 import '../../../../../../theme/colors.dart';
 
-Widget homeScreenCupertinoPropertyCard(
+homeScreenCupertinoPropertyCard(
   colorScheme,
   media, {
   goToProperty,
