@@ -26,3 +26,6 @@ Color kGreenColor = const Color(0xFF41B696);
 Color kErrorColor = Colors.red;
 Color kRedColor = Colors.red;
 Color kWarningColor = Colors.amber;
+
+Color kBannerBackgroundColor = const Color(0xFFF9EFD2);
+Color kBannerTextColor = const Color(0xFFE4B533);

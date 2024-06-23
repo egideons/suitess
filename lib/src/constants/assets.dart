@@ -43,6 +43,9 @@ class Assets {
   static const locationPng = "assets/images/png/location.png";
   static const buildings = "assets/images/png/buildings.png";
   static const kitchen = "assets/images/png/kitchen.png";
+  static const house1Png = "assets/images/png/house_1.png";
+  static const house2Png = "assets/images/png/house_2.png";
+  static const house3Png = "assets/images/png/house_3.png";
 
 //======== SVG =========\\
   static const onboarding1Svg = "assets/images/svg/onboarding_1.svg";

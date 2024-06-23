@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:suitess/src/constants/assets.dart';
 import 'package:suitess/theme/colors.dart';
@@ -160,17 +159,21 @@ class HomeScreenScaffold extends StatelessWidget {
                         Stack(
                           children: [
                             Container(
+                              height: media.height * .3,
+
                               decoration: ShapeDecoration(
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(10),
                                 ),
+                                image: const DecorationImage(
+                                  image: AssetImage(Assets.house1Png),
+                                  fit: BoxFit.cover,
+                                ),
                               ),
-                              child: SvgPicture.asset(
-                                Assets.house2Svg,
-                                fit: BoxFit.contain,
-                                height: media.height * .4,
-                                width: media.width,
-                              ),
+                              // child: Image.asset(
+                              //   Assets.house1Png,
+                              //   fit: BoxFit.contain,
+                              // ),
                             ),
                           ],
                         ),
