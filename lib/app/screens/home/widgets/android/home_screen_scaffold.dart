@@ -160,7 +160,6 @@ class HomeScreenScaffold extends StatelessWidget {
                           children: [
                             Container(
                               height: media.height * .3,
-
                               decoration: ShapeDecoration(
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(10),
@@ -170,10 +169,14 @@ class HomeScreenScaffold extends StatelessWidget {
                                   fit: BoxFit.cover,
                                 ),
                               ),
-                              // child: Image.asset(
-                              //   Assets.house1Png,
-                              //   fit: BoxFit.contain,
-                              // ),
+                            ),
+                            Container(
+                              decoration: ShapeDecoration(
+                                color: kBannerBackgroundColor,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                              ),
                             ),
                           ],
                         ),
