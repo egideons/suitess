@@ -105,7 +105,7 @@ homeAppBar(
                       right: 0,
                       child: SvgPicture.asset(
                         height: 10,
-                        Assets.redDotFilled,
+                        Assets.redDotFilledSvg,
                         fit: BoxFit.contain,
                       ),
                     ),

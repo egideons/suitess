@@ -34,7 +34,7 @@ appBar(ColorScheme colorScheme, Size media, {Function()? goToSettings}) {
       IconButton(
         onPressed: goToSettings ?? () {},
         icon: SvgPicture.asset(
-          Assets.settingsOutline,
+          Assets.settingsOutlineSvg,
           fit: BoxFit.contain,
           color: colorScheme.primary.withOpacity(.5),
         ),

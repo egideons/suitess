@@ -175,7 +175,7 @@ class HomeScreenCupertinoScaffold extends GetView<HomescreenController> {
                                     media,
                                     goToProperty: () {
                                       Get.toNamed(
-                                        Routes.landLordViewProperty,
+                                        Routes.viewProperty,
                                         preventDuplicates: true,
                                       );
                                     },

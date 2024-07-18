@@ -6,9 +6,9 @@ import 'package:get/get.dart';
 import '../../constants/assets.dart';
 import '../../routes/routes.dart';
 
-class LandLordViewPropertyController extends GetxController {
-  static LandLordViewPropertyController get instance {
-    return Get.find<LandLordViewPropertyController>();
+class ViewPropertyController extends GetxController {
+  static ViewPropertyController get instance {
+    return Get.find<ViewPropertyController>();
   }
 
   @override

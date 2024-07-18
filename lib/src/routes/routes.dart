@@ -6,7 +6,7 @@ import 'package:suitess/app/kyc/kyc_profile_photo/screen/kyc_profile_photo.dart'
 import 'package:suitess/app/onboarding/screen/onboarding.dart';
 import 'package:suitess/app/screens/home/screen/home_screen.dart';
 import 'package:suitess/app/screens/notifications/screen/notifications.dart';
-import 'package:suitess/app/screens/property/view_property/screen/landlord_view_property.dart';
+import 'package:suitess/app/screens/property/view_property/screen/view_property.dart';
 import 'package:suitess/app/splash/startup/screen/startup_splash.dart';
 
 import '../../app/auth/login/screen/login.dart';
@@ -58,15 +58,15 @@ class Routes {
   static const kyProfilePhoto = "/kyc-profile-photo";
   static const chooseExperience = "/choose-experience";
 
-  //Landlord Section
+  //Home Section
   static const bottomNavView = "/bottom-navigation-view";
-  static const homeScreen = "/landlord-homescreen";
+  static const homeScreen = "/homescreen";
+  static const notificationsScreen = "/notifications";
+  static const viewProperty = "/view-property";
   static const landLordWallet = "/landlord-wallet";
   static const landLordChat = "/landlord-chat";
   static const landLordProfile = "/landlord-profile";
-  static const notificationsScreen = "/landlord-notifications";
   static const landLordAddProperty = "/landlord-add-property";
-  static const landLordViewProperty = "/landlord-view-property";
   static const bidDetails = "/landlord-bid-details";
 
   //========================= GET PAGES ==========================\\
@@ -129,8 +129,8 @@ class Routes {
       page: () => const LandLordAddProperty(),
     ),
     GetPage(
-      name: landLordViewProperty,
-      page: () => const LandLordViewProperty(),
+      name: viewProperty,
+      page: () => const ViewProperty(),
     ),
     GetPage(
       name: bidDetails,

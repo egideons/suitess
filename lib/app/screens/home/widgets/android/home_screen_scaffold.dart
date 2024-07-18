@@ -13,6 +13,7 @@ import 'components/alert_message.dart';
 import 'components/app_bar.dart';
 import 'components/filter_properties_nearby.dart';
 import 'components/number_of_bids.dart';
+import 'components/property_container.dart';
 
 class HomeScreenScaffold extends StatelessWidget {
   const HomeScreenScaffold({super.key});
@@ -53,6 +54,16 @@ class HomeScreenScaffold extends StatelessWidget {
         goToNotifications: () {
           Get.toNamed(Routes.notificationsScreen, preventDuplicates: true);
         },
+      ),
+      floatingActionButton: Obx(
+        () => controller.isScrollToTopBtnVisible.value
+            ? FloatingActionButton.small(
+                onPressed: controller.scrollToTop,
+                backgroundColor: kAccentColor,
+                foregroundColor: kLightBackgroundColor,
+                child: const Icon(Icons.keyboard_arrow_up),
+              )
+            : const SizedBox(),
       ),
       body: SafeArea(
         child: RefreshIndicator.adaptive(
@@ -154,33 +165,29 @@ class HomeScreenScaffold extends StatelessWidget {
                       ),
                     ),
                     kSizedBox,
-                    Column(
-                      children: [
-                        Stack(
-                          children: [
-                            Container(
-                              height: media.height * .3,
-                              decoration: ShapeDecoration(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                image: const DecorationImage(
-                                  image: AssetImage(Assets.house1Png),
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            ),
-                            Container(
-                              decoration: ShapeDecoration(
-                                color: kBannerBackgroundColor,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
+                    ListView.separated(
+                      itemCount: 10,
+                      physics: const BouncingScrollPhysics(),
+                      scrollDirection: Axis.vertical,
+                      shrinkWrap: true,
+                      separatorBuilder: (context, index) {
+                        return kSizedBox;
+                      },
+                      itemBuilder: (context, index) {
+                        return propertyContainer(
+                          media,
+                          colorScheme,
+                          nav: () {},
+                          propertyImage: Assets.house1Png,
+                          tradeType: "sale",
+                          propertyName: "4 Flats Woodland Apartment",
+                          propertyLocation: "Independence layout, Enugu",
+                          propertyPrice: 350000,
+                          propertyPaymentFreq: "month",
+                          numOfBeds: 4,
+                          numOfBaths: 2,
+                        );
+                      },
                     ),
                   ],
                 );

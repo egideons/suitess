@@ -16,16 +16,15 @@ import 'utils/view_property_cupertino_hide_new_bids_alert.dart';
 import 'utils/view_property_cupertino_navbar.dart';
 import 'utils/view_property_cupertino_show_new_bids_alert.dart';
 
-class LandLordViewPropertyCupertinoScaffold
-    extends GetView<LandLordViewPropertyController> {
-  const LandLordViewPropertyCupertinoScaffold({super.key});
+class ViewPropertyCupertinoScaffold extends GetView<ViewPropertyController> {
+  const ViewPropertyCupertinoScaffold({super.key});
 
   @override
   Widget build(BuildContext context) {
     var media = MediaQuery.of(context).size;
     var colorScheme = Theme.of(context).colorScheme;
 
-    var controller = LandLordViewPropertyController.instance;
+    var controller = ViewPropertyController.instance;
 
     return CupertinoPageScaffold(
       navigationBar: viewPropertyCupertinoNavBar(
@@ -41,8 +40,8 @@ class LandLordViewPropertyCupertinoScaffold
             controller: controller.scrollController,
             child: Stack(
               children: [
-                GetBuilder<LandLordViewPropertyController>(
-                  init: LandLordViewPropertyController(),
+                GetBuilder<ViewPropertyController>(
+                  init: ViewPropertyController(),
                   builder: (controller) {
                     return ListView(
                       controller: controller.scrollController,
@@ -76,8 +75,8 @@ class LandLordViewPropertyCupertinoScaffold
                                 hideDetailsOfNewBids:
                                     controller.hideDetailsOfNewBids,
                               ),
-                        GetBuilder<LandLordViewPropertyController>(
-                          init: LandLordViewPropertyController(),
+                        GetBuilder<ViewPropertyController>(
+                          init: ViewPropertyController(),
                           builder: (controller) {
                             return controller.bidDetailsIsVisible.value
                                 ? SizedBox(

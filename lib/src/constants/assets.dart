@@ -20,12 +20,17 @@ class Assets {
   static const userFilledIconSvg = "assets/icons/svg/user-filled.svg";
   static const locationPinFilledIconSvg =
       "assets/icons/svg/location-pin-filled.svg";
+  static const locationPinOutlineIconSvg =
+      "assets/icons/svg/location-pin-outline.svg";
   static const notificationBellOutlineSvg =
       "assets/icons/svg/notification-bell-outline.svg";
   static const noNotificationsSvg = "assets/icons/svg/empty-notification.svg";
-  static const redDotFilled = "assets/icons/svg/red-dot-filled.svg";
-  static const settingsFilled = "assets/icons/svg/settings-filled.svg";
-  static const settingsOutline = "assets/icons/svg/settings-outline.svg";
+  static const redDotFilledSvg = "assets/icons/svg/red-dot-filled.svg";
+  static const settingsFilledSvg = "assets/icons/svg/settings-filled.svg";
+  static const settingsOutlineSvg = "assets/icons/svg/settings-outline.svg";
+  static const bedOutlineSvg = "assets/icons/svg/bed-outline.svg";
+  static const bathOutlineSvg = "assets/icons/svg/bath-outline.svg";
+  static const kitchenOutlineSvg = "assets/icons/svg/kitchen-outline.svg";
 
 //=================== Images ===================\\
 
