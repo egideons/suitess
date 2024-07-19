@@ -35,33 +35,20 @@ class ViewPropertyController extends GetxController {
   var bidDetailsIsVisible = false.obs;
 
   //================ Variables =================\\
+  var propertyCarouselImages = <String>[
+    Assets.indoorKitchenPng,
+    Assets.indoorKitchenPng,
+    Assets.indoorKitchenPng,
+  ];
   var propertyImages = <String>[
-    Assets.indoorKitchenPng,
-    Assets.indoorKitchenPng,
-    Assets.indoorKitchenPng,
+    Assets.indoorSittingRoomPng,
+    Assets.indoorBedroomPng,
+    Assets.indoorKitchen2Png,
   ];
   var propertyTabs = [
     PropertyCategoryModel(name: "About", isSelected: true),
     PropertyCategoryModel(name: "Agent", isSelected: false),
   ].obs;
-
-  customBanners(media, {numberOfBanners}) => List.generate(
-        numberOfBanners ?? 1,
-        (index) => Container(
-          // width: media.width,
-          // height: media.height * .18,
-          margin: const EdgeInsets.symmetric(horizontal: 5),
-          decoration: ShapeDecoration(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(16),
-            ),
-            image: const DecorationImage(
-              image: AssetImage(Assets.buildings),
-              fit: BoxFit.cover,
-            ),
-          ),
-        ),
-      );
 
 //================ Scroll to Top =================//
   void scrollToTop() {

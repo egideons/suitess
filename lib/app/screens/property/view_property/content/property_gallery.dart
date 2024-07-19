@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../../../src/constants/consts.dart';
 import '../../../../../../theme/colors.dart';
 
-viewPropertyGallery(ColorScheme colorScheme, {Function()? viewAll}) {
+propertyGallery(ColorScheme colorScheme, {Function()? viewAll}) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [

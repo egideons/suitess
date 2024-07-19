@@ -4,7 +4,7 @@ import 'package:readmore/readmore.dart';
 import '../../../../../src/constants/consts.dart';
 import '../../../../../theme/colors.dart';
 
-viewPropertyDescription(ColorScheme colorScheme, {String? descriptionText}) {
+propertyDescription(ColorScheme colorScheme, {String? descriptionText}) {
   return ReadMoreText(
     descriptionText ?? "",
     textAlign: TextAlign.start,

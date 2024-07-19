@@ -137,7 +137,7 @@ String format12HrTime(DateTime time) {
 
 String formatDate(DateTime date) {
   // Format the date as '23 Feb 2020'
-  String formattedDate = DateFormat('dd MMM y').format(date);
+  String formattedDate = DateFormat('MMM dd, y').format(date);
 
   return formattedDate;
 }

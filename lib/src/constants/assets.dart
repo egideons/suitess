@@ -33,6 +33,9 @@ class Assets {
   static const bathOutlineSvg = "assets/icons/svg/bath-outline.svg";
   static const kitchenOutlineSvg = "assets/icons/svg/kitchen-outline.svg";
   static const measureOutlineSvg = "assets/icons/svg/measure-outline.svg";
+  static const goldenTickSvg = "assets/icons/svg/golden-tick.svg";
+  static const phoneFilledSvg = "assets/icons/svg/phone-filled.svg";
+  static const penOutline = "assets/icons/svg/pen-outline.svg";
 
 //=================== Images ===================\\
 

@@ -10,7 +10,11 @@ class AndroidOutlinedButton extends StatelessWidget {
   final bool isLoading;
   final bool disable;
   final String? fontFamily;
-  final double? buttonElevation, borderRadius, fontSize, buttonIconSize;
+  final double? buttonElevation,
+      borderWidth,
+      borderRadius,
+      fontSize,
+      buttonIconSize;
 
   final bool? isRowVisible, isSwitched;
   final MainAxisAlignment? mainAxisAlignment;
@@ -45,6 +49,7 @@ class AndroidOutlinedButton extends StatelessWidget {
     this.rowIconWidget,
     this.fontWeight,
     this.borderColor,
+    this.borderWidth,
   });
 
   @override
@@ -61,7 +66,9 @@ class AndroidOutlinedButton extends StatelessWidget {
       style: OutlinedButton.styleFrom(
         disabledBackgroundColor: colorScheme.inversePrimary.withOpacity(.6),
         backgroundColor: colorScheme.surface,
-        side: BorderSide(color: borderColor ?? colorScheme.primary, width: .6),
+        side: BorderSide(
+            color: borderColor ?? colorScheme.primary,
+            width: borderWidth ?? .6),
         elevation: buttonElevation ?? 0,
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(borderRadius ?? 10)),
