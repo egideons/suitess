@@ -6,7 +6,6 @@ import 'package:suitess/theme/colors.dart';
 import '../../../../../../src/constants/consts.dart';
 import '../../../../../../src/controllers/app/view_property_controller.dart';
 import '../../../../../../src/utils/buttons/ios/scroll_to_top_cupertino_button.dart';
-import '../../content/view_property_banner_carousel.dart';
 import '../../content/view_property_description.dart';
 import '../../content/view_property_detail_section.dart';
 import '../../content/view_property_title_section.dart';
@@ -47,11 +46,11 @@ class ViewPropertyCupertinoScaffold extends GetView<ViewPropertyController> {
                       controller: controller.scrollController,
                       padding: const EdgeInsets.all(10),
                       children: [
-                        viewPropertyBannerCarousel(
-                          controller,
-                          media,
-                          numberOfBanners: 4,
-                        ),
+                        // viewPropertyBannerCarousel(
+                        //   controller,
+                        //   media,
+                        //   numberOfBanners: 4,
+                        // ),
                         kSizedBox,
                         viewPropertyTitleSection(
                           media,

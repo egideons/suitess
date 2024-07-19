@@ -31,7 +31,7 @@ defaultTextStyle({
   double? letterSpacing,
 }) =>
     TextStyle(
-      color: color ?? kTextBlackColor,
+      color: color ?? kTextBoldHeadingColor,
       background: background,
       backgroundColor: backgroundColor,
       decoration: decoration ?? TextDecoration.none,

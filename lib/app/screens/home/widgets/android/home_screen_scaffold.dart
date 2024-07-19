@@ -84,7 +84,7 @@ class HomeScreenScaffold extends StatelessWidget {
                     TypeWriter.text(
                       "Manage your \nproperties with ease",
                       style: defaultTextStyle(
-                        color: colorScheme.primary,
+                        color: kTextBoldHeadingColor,
                         fontWeight: FontWeight.w600,
                         fontSize: 20,
                       ),

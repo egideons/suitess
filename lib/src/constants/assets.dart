@@ -26,11 +26,13 @@ class Assets {
       "assets/icons/svg/notification-bell-outline.svg";
   static const noNotificationsSvg = "assets/icons/svg/empty-notification.svg";
   static const redDotFilledSvg = "assets/icons/svg/red-dot-filled.svg";
+  static const greenDotSvg = "assets/icons/svg/green-dot.svg";
   static const settingsFilledSvg = "assets/icons/svg/settings-filled.svg";
   static const settingsOutlineSvg = "assets/icons/svg/settings-outline.svg";
   static const bedOutlineSvg = "assets/icons/svg/bed-outline.svg";
   static const bathOutlineSvg = "assets/icons/svg/bath-outline.svg";
   static const kitchenOutlineSvg = "assets/icons/svg/kitchen-outline.svg";
+  static const measureOutlineSvg = "assets/icons/svg/measure-outline.svg";
 
 //=================== Images ===================\\
 
@@ -47,7 +49,7 @@ class Assets {
   static const otpPng = "assets/images/png/otp.png";
   static const locationPng = "assets/images/png/location.png";
   static const buildings = "assets/images/png/buildings.png";
-  static const kitchen = "assets/images/png/kitchen.png";
+  static const kitchenPng = "assets/images/png/kitchen.png";
   static const house1Png = "assets/images/png/house_1.png";
   static const house2Png = "assets/images/png/house_2.png";
   static const house3Png = "assets/images/png/house_3.png";

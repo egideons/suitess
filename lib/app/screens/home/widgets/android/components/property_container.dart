@@ -76,7 +76,7 @@ propertyContainer(
               overflow: TextOverflow.ellipsis,
               style: defaultTextStyle(
                 fontSize: 14,
-                color: colorScheme.primary,
+                color: kTextBoldHeadingColor,
                 fontWeight: FontWeight.w700,
               ),
             ),
@@ -87,12 +87,14 @@ propertyContainer(
               style: defaultTextStyle(
                 fontFamily: "",
                 fontWeight: FontWeight.w800,
+                color: kTextBoldHeadingColor,
                 fontSize: 12,
               ),
               children: [
                 TextSpan(
                   text: "${intFormattedText(propertyPrice ?? 0)}/",
                   style: defaultTextStyle(
+                    color: kTextBoldHeadingColor,
                     fontWeight: FontWeight.w800,
                     fontSize: 12,
                   ),
@@ -101,6 +103,7 @@ propertyContainer(
                   text: propertyPaymentFreq,
                   style: defaultTextStyle(
                     fontWeight: FontWeight.normal,
+                    color: kTextBoldHeadingColor,
                     fontSize: 10,
                   ),
                 )

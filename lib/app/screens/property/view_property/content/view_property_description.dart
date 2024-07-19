@@ -1,16 +1,16 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:readmore/readmore.dart';
 
 import '../../../../../src/constants/consts.dart';
 import '../../../../../theme/colors.dart';
 
-Widget viewPropertyDescription(colorScheme, {descriptionText}) {
+viewPropertyDescription(ColorScheme colorScheme, {String? descriptionText}) {
   return ReadMoreText(
     descriptionText ?? "",
     textAlign: TextAlign.start,
     colorClickableText: kAccentColor,
     delimiter: "...",
-    trimLines: 4,
+    trimLines: 10,
     trimMode: TrimMode.Line,
     delimiterStyle: defaultTextStyle(
       color: kAccentColor,
@@ -19,7 +19,7 @@ Widget viewPropertyDescription(colorScheme, {descriptionText}) {
     ),
     style: defaultTextStyle(
       color: colorScheme.inversePrimary,
-      fontWeight: FontWeight.bold,
+      fontWeight: FontWeight.w400,
       fontSize: 14,
     ),
   );

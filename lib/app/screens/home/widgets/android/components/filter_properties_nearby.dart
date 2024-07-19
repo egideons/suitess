@@ -16,7 +16,7 @@ filterPropertiesNearby(
           overflow: TextOverflow.ellipsis,
           textAlign: TextAlign.start,
           style: defaultTextStyle(
-            color: colorScheme.primary,
+            color: kTextBoldHeadingColor,
             fontSize: 16.0,
             fontWeight: FontWeight.w600,
           ),

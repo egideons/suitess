@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../constants/assets.dart';
+import '../../models/property_category_model.dart';
 import '../../routes/routes.dart';
 
 class ViewPropertyController extends GetxController {
@@ -39,6 +40,10 @@ class ViewPropertyController extends GetxController {
     Assets.indoorKitchenPng,
     Assets.indoorKitchenPng,
   ];
+  var propertyTabs = [
+    PropertyCategoryModel(name: "About", isSelected: true),
+    PropertyCategoryModel(name: "Agent", isSelected: false),
+  ].obs;
 
   customBanners(media, {numberOfBanners}) => List.generate(
         numberOfBanners ?? 1,
@@ -79,7 +84,13 @@ class ViewPropertyController extends GetxController {
     }
   }
 
-//================ Show Modal BottomSheet =================//
+//================ Select Tab =================//
+  void selectTab(int index) {
+    for (int i = 0; i < propertyTabs.length; i++) {
+      propertyTabs[i].isSelected = i == index;
+    }
+    update();
+  }
 
 //================ Handle refresh ================\\
 

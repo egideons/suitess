@@ -21,7 +21,6 @@ dependencies:
   loading_animation_widget:
   dio:
   delightful_toast:
-  banner_carousel:
   cached_network_image:
   readmore:
   shimmer: ^3.0.0-nullsafety.0
