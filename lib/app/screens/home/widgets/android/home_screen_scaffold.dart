@@ -7,6 +7,7 @@ import 'package:typewritertext/v3/typewriter.dart';
 
 import '../../../../../src/constants/consts.dart';
 import '../../../../../src/controllers/app/homescreen_controller.dart';
+import '../../../../../src/controllers/app/view_property_controller.dart';
 import '../../../../../src/routes/routes.dart';
 import '../../../../../src/utils/containers/form_field_container.dart';
 import 'components/alert_message.dart';
@@ -24,6 +25,7 @@ class HomeScreenScaffold extends StatelessWidget {
     var colorScheme = Theme.of(context).colorScheme;
 
     var controller = HomescreenController.instance;
+    Get.put(ViewPropertyController());
 
     // if (deviceType(media.width) > 2) {
     //   return Scaffold(

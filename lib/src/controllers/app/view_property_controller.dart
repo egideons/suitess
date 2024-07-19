@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../constants/assets.dart';
@@ -35,10 +35,9 @@ class ViewPropertyController extends GetxController {
 
   //================ Variables =================\\
   var propertyImages = <String>[
-    Assets.indoorKitchenSvg,
-    Assets.indoorBedroomSvg,
-    Assets.indoorKitchen2Svg,
-    Assets.indoorSittingRoomSvg,
+    Assets.indoorKitchenPng,
+    Assets.indoorKitchenPng,
+    Assets.indoorKitchenPng,
   ];
 
   customBanners(media, {numberOfBanners}) => List.generate(
@@ -79,6 +78,8 @@ class ViewPropertyController extends GetxController {
       update();
     }
   }
+
+//================ Show Modal BottomSheet =================//
 
 //================ Handle refresh ================\\
 

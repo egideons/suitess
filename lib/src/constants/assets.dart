@@ -51,6 +51,11 @@ class Assets {
   static const house1Png = "assets/images/png/house_1.png";
   static const house2Png = "assets/images/png/house_2.png";
   static const house3Png = "assets/images/png/house_3.png";
+  static const indoorKitchenPng = "assets/images/png/indoor-kitchen.png";
+  static const indoorKitchen2Png = "assets/images/png/indoor-kitchen2.png";
+  static const indoorBedroomPng = "assets/images/png/indoor-bedroom.png";
+  static const indoorSittingRoomPng =
+      "assets/images/png/indoor-sitting-room.png";
 
 //======== SVG =========\\
   static const onboarding1Svg = "assets/images/svg/onboarding_1.svg";
