@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:suitess/theme/colors.dart';
 
 import '../../../../../../src/constants/consts.dart';
-import '../../../../../../src/controllers/app/landlord_view_property_controller.dart';
+import '../../../../../../src/controllers/app/view_property_controller.dart';
 import '../../../../../../src/utils/buttons/ios/scroll_to_top_cupertino_button.dart';
 import '../../content/view_property_banner_carousel.dart';
 import '../../content/view_property_description.dart';

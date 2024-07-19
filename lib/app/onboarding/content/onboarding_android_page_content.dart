@@ -20,7 +20,7 @@ onboardingAndroidPageContent(
             child: PageView.builder(
               onPageChanged: (index) => controller.setIsLastPage(index),
               controller: controller!.imageController.value,
-              itemCount: controller.onboardController.value.items.length,
+              itemCount: controller.onboardContent.value.items.length,
               physics: const NeverScrollableScrollPhysics(),
               itemBuilder: (context, index) {
                 return Padding(
@@ -33,7 +33,7 @@ onboardingAndroidPageContent(
                       ),
                       image: DecorationImage(
                         image: AssetImage(
-                          controller.onboardController.value.items[index].image,
+                          controller.onboardContent.value.items[index].image,
                         ),
                         fit: BoxFit.contain,
                       ),
@@ -50,7 +50,7 @@ onboardingAndroidPageContent(
                   child: PageView.builder(
                     onPageChanged: (index) => controller.setIsLastPage(index),
                     controller: controller.pageController.value,
-                    itemCount: controller.onboardController.value.items.length,
+                    itemCount: controller.onboardContent.value.items.length,
                     physics: const NeverScrollableScrollPhysics(),
                     itemBuilder: (context, index) {
                       return Column(
@@ -61,7 +61,7 @@ onboardingAndroidPageContent(
                             width: media.width - 100,
                             child: Text(
                               controller
-                                  .onboardController.value.items[index].title,
+                                  .onboardContent.value.items[index].title,
                               textAlign: TextAlign.center,
                               style: defaultTextStyle(
                                 color: colorScheme.primary,
@@ -73,7 +73,7 @@ onboardingAndroidPageContent(
                           SizedBox(
                             width: media.width - 100,
                             child: Text(
-                              controller.onboardController.value.items[index]
+                              controller.onboardContent.value.items[index]
                                   .description,
                               overflow: TextOverflow.ellipsis,
                               textAlign: TextAlign.center,
@@ -101,8 +101,7 @@ onboardingAndroidPageContent(
                         ),
                         child: SmoothPageIndicator(
                           controller: controller.pageController.value,
-                          count:
-                              controller.onboardController.value.items.length,
+                          count: controller.onboardContent.value.items.length,
                           onDotClicked: (index) {
                             controller.imageController.value.animateToPage(
                               index,
@@ -183,7 +182,7 @@ onboardingAndroidPageContent(
           child: PageView.builder(
             onPageChanged: (index) => controller.setIsLastPage(index),
             controller: controller!.pageController.value,
-            itemCount: controller.onboardController.value.items.length,
+            itemCount: controller.onboardContent.value.items.length,
             physics: const NeverScrollableScrollPhysics(),
             itemBuilder: (context, index) {
               return Padding(
@@ -191,7 +190,7 @@ onboardingAndroidPageContent(
                 child: Column(
                   children: [
                     // SvgPicture.asset(
-                    //   controller.onboardController.value.items[index].image,
+                    //   controller.onboardContent.value.items[index].image,
                     //   height: media.height * .5,
                     //   fit: BoxFit.contain,
                     // ),
@@ -203,8 +202,7 @@ onboardingAndroidPageContent(
                         ),
                         image: DecorationImage(
                           image: AssetImage(
-                            controller
-                                .onboardController.value.items[index].image,
+                            controller.onboardContent.value.items[index].image,
                           ),
                           fit: BoxFit.contain,
                         ),
@@ -214,7 +212,7 @@ onboardingAndroidPageContent(
                     SizedBox(
                       // width: media.width - 100,
                       child: Text(
-                        controller.onboardController.value.items[index].title,
+                        controller.onboardContent.value.items[index].title,
                         textAlign: TextAlign.center,
                         style: defaultTextStyle(
                           color: colorScheme.primary,
@@ -227,7 +225,7 @@ onboardingAndroidPageContent(
                       width: media.width - 100,
                       child: Text(
                         controller
-                            .onboardController.value.items[index].description,
+                            .onboardContent.value.items[index].description,
                         overflow: TextOverflow.ellipsis,
                         textAlign: TextAlign.center,
                         maxLines: 4,
@@ -253,7 +251,7 @@ onboardingAndroidPageContent(
               ),
               child: SmoothPageIndicator(
                 controller: controller.pageController.value,
-                count: controller.onboardController.value.items.length,
+                count: controller.onboardContent.value.items.length,
                 onDotClicked: (index) =>
                     controller.pageController.value.animateToPage(
                   index,

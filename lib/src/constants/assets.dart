@@ -62,6 +62,11 @@ class Assets {
   static const house1Svg = "assets/images/svg/house_1.svg";
   static const house2Svg = "assets/images/svg/house_2.svg";
   static const house3Svg = "assets/images/svg/house_3.svg";
+  static const indoorKitchenSvg = "assets/images/svg/indoor-kitchen.svg";
+  static const indoorKitchen2Svg = "assets/images/svg/indoor-kitchen-2.svg";
+  static const indoorBedroomSvg = "assets/images/svg/indoor-bedroom.svg";
+  static const indoorSittingRoomSvg =
+      "assets/images/svg/indoor-sitting-room.svg";
 
 //Placeholder Image
   static const placeholderImage = "assets/images/png/placeholder_image.png";

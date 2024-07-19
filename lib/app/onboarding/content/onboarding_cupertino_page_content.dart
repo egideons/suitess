@@ -14,7 +14,7 @@ Widget onboardingCupertinoPageContent({controller, colorScheme, media}) {
           child: PageView.builder(
             onPageChanged: (index) => controller.setIsLastPage(index),
             controller: controller.pageController.value,
-            itemCount: controller.onboardController.value.items.length,
+            itemCount: controller.onboardContent.value.items.length,
             physics: const NeverScrollableScrollPhysics(),
             itemBuilder: (context, index) {
               return Padding(
@@ -29,8 +29,7 @@ Widget onboardingCupertinoPageContent({controller, colorScheme, media}) {
                         ),
                         image: DecorationImage(
                           image: AssetImage(
-                            controller
-                                .onboardController.value.items[index].image,
+                            controller.onboardContent.value.items[index].image,
                           ),
                           fit: BoxFit.contain,
                         ),
@@ -39,7 +38,7 @@ Widget onboardingCupertinoPageContent({controller, colorScheme, media}) {
                     SizedBox(
                       width: media.width - 100,
                       child: Text(
-                        controller.onboardController.value.items[index].title,
+                        controller.onboardContent.value.items[index].title,
                         textAlign: TextAlign.center,
                         style: defaultTextStyle(
                           color: colorScheme.primary,
@@ -52,7 +51,7 @@ Widget onboardingCupertinoPageContent({controller, colorScheme, media}) {
                       width: media.width - 100,
                       child: Text(
                         controller
-                            .onboardController.value.items[index].description,
+                            .onboardContent.value.items[index].description,
                         overflow: TextOverflow.ellipsis,
                         textAlign: TextAlign.center,
                         maxLines: 4,
@@ -78,7 +77,7 @@ Widget onboardingCupertinoPageContent({controller, colorScheme, media}) {
               ),
               child: SmoothPageIndicator(
                 controller: controller.pageController.value,
-                count: controller.onboardController.value.items.length,
+                count: controller.onboardContent.value.items.length,
                 onDotClicked: (index) =>
                     controller.pageController.value.animateToPage(
                   index,

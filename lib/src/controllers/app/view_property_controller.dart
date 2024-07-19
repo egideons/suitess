@@ -23,12 +23,24 @@ class ViewPropertyController extends GetxController {
     scrollController.dispose();
   }
 
+  //================ controllers =================\\
+
+  var scrollController = ScrollController();
+  var imageController = PageController().obs;
+
   //================ Booleans =================\\
   var isRefreshing = false.obs;
   var isScrollToTopBtnVisible = false.obs;
   var bidDetailsIsVisible = false.obs;
 
   //================ Variables =================\\
+  var propertyImages = <String>[
+    Assets.indoorKitchenSvg,
+    Assets.indoorBedroomSvg,
+    Assets.indoorKitchen2Svg,
+    Assets.indoorSittingRoomSvg,
+  ];
+
   customBanners(media, {numberOfBanners}) => List.generate(
         numberOfBanners ?? 1,
         (index) => Container(
@@ -46,11 +58,6 @@ class ViewPropertyController extends GetxController {
           ),
         ),
       );
-
-  //================ controllers =================\\
-
-  var scrollController = ScrollController();
-  var pageController = PageController();
 
 //================ Scroll to Top =================//
   void scrollToTop() {

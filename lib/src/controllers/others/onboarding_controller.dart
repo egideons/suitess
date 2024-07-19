@@ -13,12 +13,12 @@ class OnboardingController extends GetxController {
   var scrollController = ScrollController().obs;
   var imageController = PageController().obs;
   var pageController = PageController().obs;
-  var onboardController = OnboardContent().obs;
+  var onboardContent = OnboardContent().obs;
 
   var isLastPage = false.obs;
 
   setIsLastPage(index) {
-    isLastPage.value = onboardController.value.items.length - 1 == index;
+    isLastPage.value = onboardContent.value.items.length - 1 == index;
   }
 
   getStarted() async {

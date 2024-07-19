@@ -177,7 +177,12 @@ class HomeScreenScaffold extends StatelessWidget {
                         return propertyContainer(
                           media,
                           colorScheme,
-                          nav: () {},
+                          nav: () {
+                            Get.toNamed(
+                              Routes.viewProperty,
+                              preventDuplicates: true,
+                            );
+                          },
                           propertyImage: Assets.house1Png,
                           tradeType: "sale",
                           propertyName: "4 Flats Woodland Apartment",
