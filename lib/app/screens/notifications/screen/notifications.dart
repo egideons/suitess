@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../src/controllers/app/notifications_controller.dart';
-import '../widgets/android/notifications_scaffold.dart';
-import '../widgets/ios/notifications_cupertino_scaffold.dart';
+import '../platform/android/notifications_scaffold.dart';
+import '../platform/ios/notifications_cupertino_scaffold.dart';
 
 class NotificationsScreen extends StatelessWidget {
   const NotificationsScreen({super.key});

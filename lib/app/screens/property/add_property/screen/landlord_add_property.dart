@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../../src/controllers/app/landlord_add_property_controller.dart';
-import '../widgets/android/landlord_add_property_scaffold.dart';
-import '../widgets/ios/landlord_add_property_cupertino_scaffold.dart';
+import '../platform/android/landlord_add_property_scaffold.dart';
+import '../platform/ios/landlord_add_property_cupertino_scaffold.dart';
 
 class LandLordAddProperty extends StatelessWidget {
   const LandLordAddProperty({super.key});

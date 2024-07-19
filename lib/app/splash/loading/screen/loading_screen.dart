@@ -4,8 +4,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 
-import '../widgets/android/loading_screen_scaffold.dart';
-import '../widgets/ios/loading_screen_cupertino_scaffold.dart';
+import '../platform/android/loading_screen_scaffold.dart';
+import '../platform/ios/loading_screen_cupertino_scaffold.dart';
 
 class LoadingScreen extends StatelessWidget {
   final void Function()? loadData;

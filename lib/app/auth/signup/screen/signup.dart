@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:suitess/src/controllers/auth/signup_controller.dart';
 
-import '../widgets/android/signup_scaffold.dart';
-import '../widgets/ios/signup_cupertino_scaffold.dart';
+import '../platform/android/signup_scaffold.dart';
+import '../platform/ios/signup_cupertino_scaffold.dart';
 
 class Signup extends StatelessWidget {
   const Signup({super.key});

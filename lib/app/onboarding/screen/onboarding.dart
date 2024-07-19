@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../src/controllers/others/onboarding_controller.dart';
-import '../widgets/android/onboarding_android_scaffold.dart';
-import '../widgets/ios/onboarding_cupertino_scaffold.dart';
+import '../platform/android/onboarding_android_scaffold.dart';
+import '../platform/ios/onboarding_cupertino_scaffold.dart';
 
 class Onboarding extends StatelessWidget {
   const Onboarding({super.key});

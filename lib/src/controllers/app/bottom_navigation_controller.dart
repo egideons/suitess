@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:suitess/app/screens/home/screen/home_screen.dart';
+import 'package:suitess/app/screens/profile/screen/profile_screen.dart';
 import 'package:suitess/src/constants/consts.dart';
 
 import '../../../theme/colors.dart';
@@ -35,15 +36,7 @@ class BottomNavigationController extends GetxController {
             ),
           ),
         ),
-        Container(
-          color: colorScheme.surface,
-          child: Center(
-            child: Text(
-              "Profile",
-              style: defaultTextStyle(),
-            ),
-          ),
-        ),
+        const ProfileScreen(),
       ];
 
   //=============== LANDLORD BOTTOMNAV ITEMS ================\\

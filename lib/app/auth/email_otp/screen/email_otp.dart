@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../src/controllers/auth/email_otp_controller.dart';
-import '../widgets/android/email_otp_scaffold.dart';
-import '../widgets/ios/email_otp_cupertino_scaffold.dart';
+import '../platform/android/email_otp_scaffold.dart';
+import '../platform/ios/email_otp_cupertino_scaffold.dart';
 
 class EmailOTP extends StatelessWidget {
   const EmailOTP({super.key, this.userEmail});

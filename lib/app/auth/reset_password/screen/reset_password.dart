@@ -2,10 +2,10 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:suitess/app/auth/reset_password/widgets/ios/reset_password_cupertino_scaffold.dart';
+import 'package:suitess/app/auth/reset_password/plaftorm/ios/reset_password_cupertino_scaffold.dart';
 import 'package:suitess/src/controllers/auth/reset_password_controller.dart';
 
-import '../widgets/android/reset_password_scaffold.dart';
+import '../plaftorm/android/reset_password_scaffold.dart';
 
 class ResetPassword extends StatelessWidget {
   const ResetPassword({super.key});

@@ -4,10 +4,10 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:suitess/app/splash/congratulations/widgets/android/congratulations_splash_screen_android_scaffold.dart';
+import 'package:suitess/app/splash/congratulations/platform/android/congratulations_splash_screen_android_scaffold.dart';
 import 'package:suitess/src/controllers/others/congratulations_splash_screen_controller.dart';
 
-import '../widgets/ios/congratulations_splash_screen_cupertino_scaffold.dart';
+import '../platform/ios/congratulations_splash_screen_cupertino_scaffold.dart';
 
 class CongratulationsSplashScreen extends StatelessWidget {
   const CongratulationsSplashScreen({super.key});

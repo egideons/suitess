@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../../src/controllers/auth/reset_password_via_sms_otp_controller.dart';
-import '../widgets/android/reset_password_via_sms_otp_scaffold.dart';
-import '../widgets/ios/reset_password_via_sms_otp_cupertino_scaffold.dart';
+import '../platform/android/reset_password_via_sms_otp_scaffold.dart';
+import '../platform/ios/reset_password_via_sms_otp_cupertino_scaffold.dart';
 
 class ResetPasswordViaSMSOTP extends StatelessWidget {
   const ResetPasswordViaSMSOTP({super.key});

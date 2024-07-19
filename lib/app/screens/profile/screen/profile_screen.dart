@@ -3,27 +3,26 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../src/controllers/auth/login_controller.dart';
-import '../platform/android/login_scaffold.dart';
-import '../platform/ios/login_cupertino_scaffold.dart';
+import '../../../../src/controllers/app/profilescreen_controller.dart';
+import '../platform/android/profile_scaffold.dart';
 
-class Login extends StatelessWidget {
-  const Login({super.key});
+class ProfileScreen extends StatelessWidget {
+  const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    //Initialize signup controller
-    Get.put(LoginController());
+    //Initialize the controller
+    Get.put(ProfilescreenController());
 
     if (Platform.isIOS) {
       return GestureDetector(
         onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
-        child: const LoginCupertinoScaffold(),
+        // child: const HomeScreenCupertinoScaffold(),
       );
     }
     return GestureDetector(
       onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
-      child: const LoginScaffold(),
+      child: const ProfileScreenScaffold(),
     );
   }
 }
