@@ -36,6 +36,8 @@ class Assets {
   static const goldenTickSvg = "assets/icons/svg/golden-tick.svg";
   static const phoneFilledSvg = "assets/icons/svg/phone-filled.svg";
   static const penOutline = "assets/icons/svg/pen-outline.svg";
+  static const cameraOutline = "assets/icons/svg/camera-outline.svg";
+  static const cameraFilled = "assets/icons/svg/camera-filled.svg";
 
 //=================== Images ===================\\
 
