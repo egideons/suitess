@@ -8,6 +8,7 @@ import 'package:suitess/src/controllers/app/view_property_controller.dart';
 
 import '../../../../../../src/constants/assets.dart';
 import '../../../../../../theme/colors.dart';
+import '../../content/view_property_gallery.dart';
 
 class ViewPropertyScaffold extends GetView<ViewPropertyController> {
   const ViewPropertyScaffold({super.key});
@@ -472,7 +473,35 @@ class ViewPropertyScaffold extends GetView<ViewPropertyController> {
                                       colorScheme,
                                       descriptionText:
                                           "4 flats with 4 bedroom each. 1750sqm along the major tarred road between T-junction and Nike Lake Resort Hotel. Good for commercial purposes with certificate of occupancy (C of O).",
-                                    )
+                                    ),
+                                    kSizedBox,
+                                    viewPropertyGallery(
+                                      colorScheme,
+                                      viewAll: () {},
+                                    ),
+                                    kHalfSizedBox,
+                                    SizedBox(
+                                      height: 108,
+                                      child: ListView.separated(
+                                        itemCount: 3,
+                                        scrollDirection: Axis.horizontal,
+                                        shrinkWrap: true,
+                                        separatorBuilder: (context, index) =>
+                                            kHalfWidthSizedBox,
+                                        itemBuilder: (context, index) {
+                                          return Container(
+                                            width: media.width / 3,
+                                            decoration: ShapeDecoration(
+                                              color: colorScheme.inversePrimary,
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(12),
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                      ),
+                                    ),
                                   ],
                                 )
                               : const Column(
