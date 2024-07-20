@@ -44,19 +44,19 @@ class ProfileScreenScaffold extends GetView<ProfileScreenController> {
                             Positioned(
                               bottom: 0,
                               right: 0,
-                              child: InkWell(
-                                onTap: () {},
-                                borderRadius: BorderRadius.circular(20),
-                                child: Container(
-                                  padding: const EdgeInsets.all(8),
-                                  decoration: BoxDecoration(
-                                    color: kAccentColor,
-                                    shape: BoxShape.circle,
-                                    border: Border.all(
-                                      width: 2,
-                                      color: kLightBackgroundColor,
-                                    ),
+                              child: Container(
+                                padding: const EdgeInsets.all(8),
+                                decoration: BoxDecoration(
+                                  color: kAccentColor,
+                                  shape: BoxShape.circle,
+                                  border: Border.all(
+                                    width: 2,
+                                    color: kLightBackgroundColor,
                                   ),
+                                ),
+                                child: InkWell(
+                                  onTap: () {},
+                                  borderRadius: BorderRadius.circular(20),
                                   child: SvgPicture.asset(
                                     Assets.cameraOutline,
                                     color: kLightBackgroundColor,
@@ -126,10 +126,10 @@ class ProfileScreenScaffold extends GetView<ProfileScreenController> {
                           colorScheme,
                           title: "Password",
                           nav: () {
-                            // Get.toNamed(
-                            //   Routes.passwordSettings,
-                            //   preventDuplicates: true,
-                            // );
+                            Get.toNamed(
+                              Routes.passwordSettings,
+                              preventDuplicates: true,
+                            );
                           },
                         ),
                         Divider(
@@ -140,10 +140,10 @@ class ProfileScreenScaffold extends GetView<ProfileScreenController> {
                           colorScheme,
                           title: "Account Type",
                           nav: () {
-                            // Get.toNamed(
-                            //   Routes.accountType,
-                            //   preventDuplicates: true,
-                            // );
+                            Get.toNamed(
+                              Routes.accountType,
+                              preventDuplicates: true,
+                            );
                           },
                         ),
                       ],

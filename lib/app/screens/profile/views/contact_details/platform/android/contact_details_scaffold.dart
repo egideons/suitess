@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:suitess/src/utils/components/my_app_bar.dart';
 import 'package:suitess/theme/colors.dart';
 
 import '../../../../../../../src/constants/consts.dart';
 import '../../../../../../../src/controllers/app/contact_details_controller.dart';
 import '../../content/edit_detail.dart';
-import 'utils/app_bar.dart';
 
 class ContactDetailsScaffold extends GetView<ContactDetailsScreenController> {
   const ContactDetailsScaffold({super.key});
@@ -18,7 +18,7 @@ class ContactDetailsScaffold extends GetView<ContactDetailsScreenController> {
     // var controller = ProfileScreenController.instance;
     return Scaffold(
       backgroundColor: colorScheme.surface,
-      appBar: contactDetailsAppBar(colorScheme, media),
+      appBar: myAppar(colorScheme, media, title: "Contact details"),
       body: SafeArea(
         child: Scrollbar(
           controller: controller.scrollController,

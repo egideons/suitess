@@ -4,10 +4,16 @@ import 'package:get/get.dart';
 import '../../../../../../../../src/constants/consts.dart';
 import '../../../../../../../../theme/colors.dart';
 
-contactDetailsAppBar(ColorScheme colorScheme, Size media) {
+myAppar(
+  ColorScheme colorScheme,
+  Size media, {
+  bool? centerTitle,
+  String? title,
+  List<Widget>? actions,
+}) {
   return AppBar(
     backgroundColor: colorScheme.surface,
-    centerTitle: true,
+    centerTitle: centerTitle ?? true,
     leading: IconButton(
       onPressed: () {
         Get.back();
@@ -20,7 +26,7 @@ contactDetailsAppBar(ColorScheme colorScheme, Size media) {
     title: SizedBox(
       width: media.width / 2,
       child: Text(
-        "Contact details",
+        title ?? "",
         textAlign: TextAlign.center,
         style: defaultTextStyle(
           color: kTextBoldHeadingColor,
@@ -29,6 +35,6 @@ contactDetailsAppBar(ColorScheme colorScheme, Size media) {
         ),
       ),
     ),
-    actions: const [],
+    actions: actions ?? [],
   );
 }
