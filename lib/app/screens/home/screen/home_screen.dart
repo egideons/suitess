@@ -12,7 +12,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //Initialize the controller
-    Get.put(HomescreenController());
+    Get.put(HomeScreenController());
 
     if (Platform.isIOS) {
       return GestureDetector(

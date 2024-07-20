@@ -11,7 +11,7 @@ import '../../../../../../theme/colors.dart';
 Widget landLordAgentBidCupertinoCard(
   ColorScheme colorScheme,
   Size media,
-  HomescreenController controller, {
+  HomeScreenController controller, {
   String? agentName,
   Function()? navTo,
   String? nameOfProperty,

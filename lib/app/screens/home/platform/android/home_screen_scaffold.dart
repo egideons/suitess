@@ -15,7 +15,7 @@ import 'components/filter_properties_nearby.dart';
 import 'components/number_of_bids.dart';
 import 'components/property_container.dart';
 
-class HomeScreenScaffold extends GetView<HomescreenController> {
+class HomeScreenScaffold extends GetView<HomeScreenController> {
   const HomeScreenScaffold({super.key});
 
   @override
@@ -23,7 +23,7 @@ class HomeScreenScaffold extends GetView<HomescreenController> {
     var media = MediaQuery.of(context).size;
     var colorScheme = Theme.of(context).colorScheme;
 
-    var controller = HomescreenController.instance;
+    var controller = HomeScreenController.instance;
 
     // if (deviceType(media.width) > 2) {
     //   return Scaffold(
@@ -72,8 +72,8 @@ class HomeScreenScaffold extends GetView<HomescreenController> {
           color: colorScheme.primary,
           child: Scrollbar(
             controller: controller.scrollController,
-            child: GetBuilder<HomescreenController>(
-              init: HomescreenController(),
+            child: GetBuilder<HomeScreenController>(
+              init: HomeScreenController(),
               builder: (controller) {
                 return ListView(
                   controller: controller.scrollController,

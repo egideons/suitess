@@ -18,7 +18,7 @@ import 'components/cupertino_navbar.dart';
 import 'components/cupertino_property_card.dart';
 import 'components/number_of_available_agents_cupertino_card.dart';
 
-class HomeScreenCupertinoScaffold extends GetView<HomescreenController> {
+class HomeScreenCupertinoScaffold extends GetView<HomeScreenController> {
   const HomeScreenCupertinoScaffold({super.key});
 
   @override
@@ -26,7 +26,7 @@ class HomeScreenCupertinoScaffold extends GetView<HomescreenController> {
     var media = MediaQuery.of(context).size;
     var colorScheme = Theme.of(context).colorScheme;
 
-    var controller = HomescreenController.instance;
+    var controller = HomeScreenController.instance;
 
     return CupertinoPageScaffold(
       navigationBar: landLordHomeScreenCupertinoNavBar(
@@ -47,8 +47,8 @@ class HomeScreenCupertinoScaffold extends GetView<HomescreenController> {
                   bottom: -media.height * .6,
                   child: pageBackground(media, colorScheme),
                 ),
-                GetBuilder<HomescreenController>(
-                  init: HomescreenController(),
+                GetBuilder<HomeScreenController>(
+                  init: HomeScreenController(),
                   builder: (context) {
                     return ListView(
                       controller: controller.scrollController,

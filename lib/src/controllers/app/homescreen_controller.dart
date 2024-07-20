@@ -5,9 +5,9 @@ import 'package:get/get.dart';
 
 import '../../models/property_category_model.dart';
 
-class HomescreenController extends GetxController {
-  static HomescreenController get instance {
-    return Get.find<HomescreenController>();
+class HomeScreenController extends GetxController {
+  static HomeScreenController get instance {
+    return Get.find<HomeScreenController>();
   }
 
   @override

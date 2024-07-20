@@ -3,6 +3,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:suitess/src/constants/assets.dart';
 import 'package:suitess/src/constants/consts.dart';
+import 'package:suitess/src/routes/routes.dart';
+import 'package:suitess/src/utils/buttons/android/android_elevated_button.dart';
 import 'package:suitess/src/utils/components/circle_avatar_image.dart';
 import 'package:suitess/theme/colors.dart';
 
@@ -10,7 +12,7 @@ import '../../../../../src/controllers/app/profilescreen_controller.dart';
 import '../../content/profile_nav_option.dart';
 import '../../content/profile_section_header.dart';
 
-class ProfileScreenScaffold extends GetView<ProfilescreenController> {
+class ProfileScreenScaffold extends GetView<ProfileScreenController> {
   const ProfileScreenScaffold({super.key});
 
   @override
@@ -18,15 +20,15 @@ class ProfileScreenScaffold extends GetView<ProfilescreenController> {
     // var media = MediaQuery.of(context).size;
     var colorScheme = Theme.of(context).colorScheme;
 
-    // var controller = ProfilescreenController.instance;
+    // var controller = ProfileScreenController.instance;
 
     return Scaffold(
       backgroundColor: colorScheme.surface,
       body: SafeArea(
         child: Scrollbar(
           controller: controller.scrollController,
-          child: GetBuilder<ProfilescreenController>(
-            init: ProfilescreenController(),
+          child: GetBuilder<ProfileScreenController>(
+            init: ProfileScreenController(),
             builder: (controller) {
               return ListView(
                 controller: controller.scrollController,
@@ -109,7 +111,12 @@ class ProfileScreenScaffold extends GetView<ProfilescreenController> {
                         profileNavOption(
                           colorScheme,
                           title: "Contact Details",
-                          nav: () {},
+                          nav: () {
+                            Get.toNamed(
+                              Routes.contactDetails,
+                              preventDuplicates: true,
+                            );
+                          },
                         ),
                         Divider(
                           color: colorScheme.inversePrimary.withOpacity(.4),
@@ -253,6 +260,15 @@ class ProfileScreenScaffold extends GetView<ProfilescreenController> {
                     ),
                   ),
                   kSizedBox,
+                  AndroidElevatedButton(
+                    title: "Logout",
+                    isRowVisible: true,
+                    isSwitched: true,
+                    buttonIcon: Icons.logout,
+                    buttonIconColor: kLightBackgroundColor,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    onPressed: () {},
+                  ),
                 ],
               );
             },

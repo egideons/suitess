@@ -6,6 +6,8 @@ import 'package:suitess/app/kyc/kyc_profile_photo/screen/kyc_profile_photo.dart'
 import 'package:suitess/app/onboarding/screen/onboarding.dart';
 import 'package:suitess/app/screens/home/screen/home_screen.dart';
 import 'package:suitess/app/screens/notifications/screen/notifications.dart';
+import 'package:suitess/app/screens/profile/screen/profile_screen.dart';
+import 'package:suitess/app/screens/profile/views/contact_details/screen/contact_details.dart';
 import 'package:suitess/app/screens/property/view_property/screen/view_property.dart';
 import 'package:suitess/app/splash/startup/screen/startup_splash.dart';
 
@@ -69,6 +71,12 @@ class Routes {
   static const landLordAddProperty = "/landlord-add-property";
   static const bidDetails = "/landlord-bid-details";
 
+  //Profile Section
+  static const profileScreen = "/profile";
+  static const contactDetails = "/contact-details";
+  static const passwordSettings = "/password-settings";
+  static const accountType = "/account-type";
+
   //========================= GET PAGES ==========================\\
   static final getPages = [
     //Splash Screens
@@ -87,21 +95,14 @@ class Routes {
     GetPage(name: emailOTP, page: () => const EmailOTP()),
     GetPage(name: phoneOTP, page: () => const PhoneOTP()),
     GetPage(
-      name: resetPasswordViaEmail,
-      page: () => const ResetPasswordViaEmail(),
-    ),
+        name: resetPasswordViaEmail, page: () => const ResetPasswordViaEmail()),
     GetPage(
-      name: resetPasswordViaEmailOTP,
-      page: () => const RestPasswordViaEmailOTP(),
-    ),
+        name: resetPasswordViaEmailOTP,
+        page: () => const RestPasswordViaEmailOTP()),
+    GetPage(name: resetPasswordViaSms, page: () => const ResetPasswordViaSMS()),
     GetPage(
-      name: resetPasswordViaSms,
-      page: () => const ResetPasswordViaSMS(),
-    ),
-    GetPage(
-      name: resetPasswordViaSmsOTP,
-      page: () => const ResetPasswordViaSMSOTP(),
-    ),
+        name: resetPasswordViaSmsOTP,
+        page: () => const ResetPasswordViaSMSOTP()),
     GetPage(name: resetPassword, page: () => const ResetPassword()),
 
     //KYC Pages
@@ -112,29 +113,15 @@ class Routes {
     GetPage(name: kyProfilePhoto, page: () => const KycProfilePhoto()),
 
     //Main App Section
-    GetPage(
-      name: bottomNavView,
-      page: () => const BottomNavigationView(),
-    ),
-    GetPage(
-      name: homeScreen,
-      page: () => const HomeScreen(),
-    ),
-    GetPage(
-      name: notificationsScreen,
-      page: () => const NotificationsScreen(),
-    ),
-    GetPage(
-      name: landLordAddProperty,
-      page: () => const LandLordAddProperty(),
-    ),
-    GetPage(
-      name: viewProperty,
-      page: () => const ViewProperty(),
-    ),
-    GetPage(
-      name: bidDetails,
-      page: () => const BidDetails(),
-    ),
+    GetPage(name: bottomNavView, page: () => const BottomNavigationView()),
+    GetPage(name: homeScreen, page: () => const HomeScreen()),
+    GetPage(name: notificationsScreen, page: () => const NotificationsScreen()),
+    GetPage(name: viewProperty, page: () => const ViewProperty()),
+    GetPage(name: profileScreen, page: () => const ProfileScreen()),
+    GetPage(name: contactDetails, page: () => const ContactDetails()),
+
+    GetPage(name: landLordAddProperty, page: () => const LandLordAddProperty()),
+    GetPage(name: viewProperty, page: () => const ViewProperty()),
+    GetPage(name: bidDetails, page: () => const BidDetails()),
   ];
 }

@@ -1,9 +1,9 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
-class ProfileScreenController extends GetxController {
-  static ProfileScreenController get instance {
-    return Get.find<ProfileScreenController>();
+class ContactDetailsScreenController extends GetxController {
+  static ContactDetailsScreenController get instance {
+    return Get.find<ContactDetailsScreenController>();
   }
 
   @override

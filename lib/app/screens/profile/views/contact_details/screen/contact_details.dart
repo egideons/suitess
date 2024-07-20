@@ -3,16 +3,16 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../src/controllers/app/profilescreen_controller.dart';
-import '../platform/android/profile_scaffold.dart';
+import '../../../../../../src/controllers/app/contact_details_controller.dart';
+import '../platform/android/contact_details_scaffold.dart';
 
-class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
+class ContactDetails extends StatelessWidget {
+  const ContactDetails({super.key});
 
   @override
   Widget build(BuildContext context) {
     //Initialize the controller
-    Get.put(ProfileScreenController());
+    Get.put(ContactDetailsScreenController());
 
     if (Platform.isIOS) {
       return GestureDetector(
@@ -22,7 +22,7 @@ class ProfileScreen extends StatelessWidget {
     }
     return GestureDetector(
       onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
-      child: const ProfileScreenScaffold(),
+      child: const ContactDetailsScaffold(),
     );
   }
 }
