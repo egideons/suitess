@@ -4,8 +4,8 @@ import 'package:get/get.dart';
 import '../../../../../src/controllers/app/notifications_controller.dart';
 import '../../../../../theme/colors.dart';
 import '../../content/notification_widget.dart';
-import 'components/app_bar.dart';
 import 'components/empty_notification.dart';
+import 'components/notifications_app_bar.dart';
 
 class NotificationsScaffold extends GetView<NotificationsController> {
   const NotificationsScaffold({super.key});
@@ -19,7 +19,7 @@ class NotificationsScaffold extends GetView<NotificationsController> {
 
     return Scaffold(
       backgroundColor: colorScheme.surface,
-      appBar: appBar(colorScheme, media),
+      appBar: notificationsAppBar(colorScheme, media),
       floatingActionButton: Obx(
         () => controller.isScrollToTopBtnVisible.value
             ? FloatingActionButton.small(

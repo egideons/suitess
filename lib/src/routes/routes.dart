@@ -76,6 +76,14 @@ class Routes {
   static const contactDetails = "/contact-details";
   static const passwordSettings = "/password-settings";
   static const accountType = "/account-type";
+  static const myBusiness = "/my-business";
+  static const recentlyViewed = "/recently-viewed";
+  static const scheduledAppointments = "/scheduled-appointments";
+  static const transactionsAndOffers = "/transactions-and-offers";
+  static const notificationsSettings = "/notifications-settings";
+  static const privacyAndSecurity = "/privacy-and-security";
+  static const faqs = "/faqs";
+  static const supportAndFeedback = "/support-and-feedback";
 
   //========================= GET PAGES ==========================\\
   static final getPages = [

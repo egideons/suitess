@@ -5,7 +5,8 @@ import 'package:get/get.dart';
 import '../../../../../../src/constants/assets.dart';
 import '../../../../../../src/constants/consts.dart';
 
-appBar(ColorScheme colorScheme, Size media, {Function()? goToSettings}) {
+notificationsAppBar(ColorScheme colorScheme, Size media,
+    {Function()? goToSettings}) {
   return AppBar(
     backgroundColor: colorScheme.surface,
     centerTitle: true,

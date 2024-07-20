@@ -125,7 +125,12 @@ class ProfileScreenScaffold extends GetView<ProfileScreenController> {
                         profileNavOption(
                           colorScheme,
                           title: "Password",
-                          nav: () {},
+                          nav: () {
+                            // Get.toNamed(
+                            //   Routes.passwordSettings,
+                            //   preventDuplicates: true,
+                            // );
+                          },
                         ),
                         Divider(
                           color: colorScheme.inversePrimary.withOpacity(.4),
@@ -134,7 +139,12 @@ class ProfileScreenScaffold extends GetView<ProfileScreenController> {
                         profileNavOption(
                           colorScheme,
                           title: "Account Type",
-                          nav: () {},
+                          nav: () {
+                            // Get.toNamed(
+                            //   Routes.accountType,
+                            //   preventDuplicates: true,
+                            // );
+                          },
                         ),
                       ],
                     ),
@@ -159,7 +169,12 @@ class ProfileScreenScaffold extends GetView<ProfileScreenController> {
                         profileNavOption(
                           colorScheme,
                           title: "My Business",
-                          nav: () {},
+                          nav: () {
+                            // Get.toNamed(
+                            //   Routes.myBusiness,
+                            //   preventDuplicates: true,
+                            // );
+                          },
                         ),
                         Divider(
                           color: colorScheme.inversePrimary.withOpacity(.4),
@@ -168,7 +183,12 @@ class ProfileScreenScaffold extends GetView<ProfileScreenController> {
                         profileNavOption(
                           colorScheme,
                           title: "Recently Viewed",
-                          nav: () {},
+                          nav: () {
+                            // Get.toNamed(
+                            //   Routes.recentlyViewed,
+                            //   preventDuplicates: true,
+                            // );
+                          },
                         ),
                         Divider(
                           color: colorScheme.inversePrimary.withOpacity(.4),
@@ -177,7 +197,12 @@ class ProfileScreenScaffold extends GetView<ProfileScreenController> {
                         profileNavOption(
                           colorScheme,
                           title: "Scheduled Appointments",
-                          nav: () {},
+                          nav: () {
+                            // Get.toNamed(
+                            //   Routes.scheduledAppointments,
+                            //   preventDuplicates: true,
+                            // );
+                          },
                         ),
                         Divider(
                           color: colorScheme.inversePrimary.withOpacity(.4),
@@ -186,7 +211,12 @@ class ProfileScreenScaffold extends GetView<ProfileScreenController> {
                         profileNavOption(
                           colorScheme,
                           title: "Transactions and Offers",
-                          nav: () {},
+                          nav: () {
+                            // Get.toNamed(
+                            //   Routes.transactionsAndOffers,
+                            //   preventDuplicates: true,
+                            // );
+                          },
                         ),
                       ],
                     ),
@@ -211,7 +241,12 @@ class ProfileScreenScaffold extends GetView<ProfileScreenController> {
                         profileNavOption(
                           colorScheme,
                           title: "Notifications",
-                          nav: () {},
+                          nav: () {
+                            // Get.toNamed(
+                            //   Routes.notificationsSettings,
+                            //   preventDuplicates: true,
+                            // );
+                          },
                         ),
                         Divider(
                           color: colorScheme.inversePrimary.withOpacity(.4),
@@ -220,7 +255,12 @@ class ProfileScreenScaffold extends GetView<ProfileScreenController> {
                         profileNavOption(
                           colorScheme,
                           title: "Privacy and Security",
-                          nav: () {},
+                          nav: () {
+                            // Get.toNamed(
+                            //   Routes.privacyAndSecurity,
+                            //   preventDuplicates: true,
+                            // );
+                          },
                         ),
                       ],
                     ),
@@ -245,7 +285,12 @@ class ProfileScreenScaffold extends GetView<ProfileScreenController> {
                         profileNavOption(
                           colorScheme,
                           title: "FAQs",
-                          nav: () {},
+                          nav: () {
+                            // Get.toNamed(
+                            //   Routes.faqs,
+                            //   preventDuplicates: true,
+                            // );
+                          },
                         ),
                         Divider(
                           color: colorScheme.inversePrimary.withOpacity(.4),
@@ -254,7 +299,12 @@ class ProfileScreenScaffold extends GetView<ProfileScreenController> {
                         profileNavOption(
                           colorScheme,
                           title: "Support and Feedback",
-                          nav: () {},
+                          nav: () {
+                            // Get.toNamed(
+                            //   Routes.supportAndFeedback,
+                            //   preventDuplicates: true,
+                            // );
+                          },
                         ),
                       ],
                     ),
