@@ -5,7 +5,7 @@ publish_to: "none" # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=3.4.1 <4.0.0"
+  sdk: ">=3.4.4 <4.0.0"
 dependencies:
   flutter:
     sdk: flutter
@@ -23,13 +23,12 @@ dependencies:
   delightful_toast:
   cached_network_image:
   readmore:
-  shimmer: ^3.0.0-nullsafety.0
   smooth_page_indicator:
   # google_sign_in:
   # firebase_core:
   # firebase_auth:
   typewritertext:
-  animate_do:
+  # animate_do:
 
 dev_dependencies:
   flutter_test:
