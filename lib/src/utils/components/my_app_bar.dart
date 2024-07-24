@@ -24,7 +24,7 @@ myAppBar(
       ),
     ),
     title: SizedBox(
-      width: media.width / 2,
+      width: media.width / 1.6,
       child: Text(
         title ?? "",
         textAlign: TextAlign.center,

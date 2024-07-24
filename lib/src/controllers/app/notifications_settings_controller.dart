@@ -22,6 +22,17 @@ class NotificationsSettingsController extends GetxController {
   var isRefreshing = false.obs;
   var hasProperties = false.obs;
   var isScrollToTopBtnVisible = false.obs;
+  var enableGeneralNotif = true.obs;
+  var enableSound = false.obs;
+  var enableVibrate = true.obs;
+  var enableNewHouseListingNotif = true.obs;
+  var enableNearbyHousesNotif = false.obs;
+  var enableAppUpdatesNotif = false.obs;
+  var enableBillReminderNotif = true.obs;
+  var enablePromotionNotif = true.obs;
+  var enableDiscountAvailableNotif = false.obs;
+  var enableNewServiceAvailableNotif = false.obs;
+  var enableNewTipsAvailableNotif = true.obs;
 
   //================ controllers =================\\
 
