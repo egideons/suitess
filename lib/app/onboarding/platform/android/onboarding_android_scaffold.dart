@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../../src/controllers/others/onboarding_controller.dart';
 import '../../content/onboarding_android_page_content.dart';
 
-class OnboardingAndroidScaffold extends StatelessWidget {
+class OnboardingAndroidScaffold extends GetView<OnboardingController> {
   const OnboardingAndroidScaffold({super.key});
 
   @override
@@ -11,7 +12,7 @@ class OnboardingAndroidScaffold extends StatelessWidget {
     var media = MediaQuery.of(context).size;
     var colorScheme = Theme.of(context).colorScheme;
 
-    final controller = OnboardingController.instance;
+    // final controller = OnboardingController.instance;
 
     return Scaffold(
       backgroundColor: colorScheme.surface,

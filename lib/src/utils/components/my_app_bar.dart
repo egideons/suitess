@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import '../../../../../../../../src/constants/consts.dart';
 import '../../../../../../../../theme/colors.dart';
 
-myAppar(
+myAppBar(
   ColorScheme colorScheme,
   Size media, {
   bool? centerTitle,

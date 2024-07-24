@@ -1,6 +1,6 @@
 import 'package:suitess/src/constants/assets.dart';
 
-import 'onboard_model.dart';
+import '../../../src/models/onboard_model.dart';
 
 class OnboardContent {
   List<OnboardModel> items = [

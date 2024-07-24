@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../src/controllers/auth/login_controller.dart';
+import '../../../../../../src/controllers/auth/login_controller.dart';
 import '../platform/android/login_scaffold.dart';
 import '../platform/ios/login_cupertino_scaffold.dart';
 

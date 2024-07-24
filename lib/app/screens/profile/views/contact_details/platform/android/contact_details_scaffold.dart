@@ -18,7 +18,7 @@ class ContactDetailsScaffold extends GetView<ContactDetailsScreenController> {
     // var controller = ProfileScreenController.instance;
     return Scaffold(
       backgroundColor: colorScheme.surface,
-      appBar: myAppar(colorScheme, media, title: "Contact details"),
+      appBar: myAppBar(colorScheme, media, title: "Contact details"),
       body: SafeArea(
         child: Scrollbar(
           controller: controller.scrollController,

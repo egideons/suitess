@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:suitess/app/onboarding/model/onboard_content.dart';
+import 'package:suitess/app/onboarding/content/onboard_content.dart';
 
 import '../../../app/auth/signup/screen/signup.dart';
 import '../../../main.dart';

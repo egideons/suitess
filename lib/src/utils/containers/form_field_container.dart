@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:suitess/theme/colors.dart';
 
-Widget formFieldContainer(colorScheme, media,
-    {child, containerHeight, containerWidth, padding, color, borderSide}) {
+Widget formFieldContainer(
+  ColorScheme colorScheme,
+  Size media, {
+  Widget? child,
+  double? containerHeight,
+  double? containerWidth,
+  EdgeInsetsGeometry? padding,
+  Color? color,
+  // borderSide,
+}) {
   return Container(
     width: containerWidth ?? media.width,
     height: containerHeight ?? media.height * 0.06,

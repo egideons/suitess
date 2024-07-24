@@ -16,7 +16,7 @@ class PasswordSettingsScaffold extends GetView<PasswordSettingsController> {
     // var controller = PasswordSettingsController.instance;
     return Scaffold(
       backgroundColor: colorScheme.surface,
-      appBar: myAppar(colorScheme, media, title: "Password"),
+      appBar: myAppBar(colorScheme, media, title: "Password"),
       body: SafeArea(
         child: Scrollbar(
           controller: controller.scrollController,

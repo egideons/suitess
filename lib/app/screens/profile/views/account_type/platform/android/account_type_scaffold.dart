@@ -16,7 +16,7 @@ class AccountTypeScaffold extends GetView<AccountTypeController> {
     // var controller = AccountTypeController.instance;
     return Scaffold(
       backgroundColor: colorScheme.surface,
-      appBar: myAppar(colorScheme, media, title: "Account Type"),
+      appBar: myAppBar(colorScheme, media, title: "Account Type"),
       body: SafeArea(
         child: Scrollbar(
           controller: controller.scrollController,
