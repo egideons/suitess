@@ -33,7 +33,6 @@ class ProfileScreenScaffold extends GetView<ProfileScreenController> {
               return ListView(
                 controller: controller.scrollController,
                 padding: const EdgeInsets.all(10),
-                physics: const BouncingScrollPhysics(),
                 children: [
                   Center(
                     child: Column(
@@ -256,10 +255,10 @@ class ProfileScreenScaffold extends GetView<ProfileScreenController> {
                           colorScheme,
                           title: "Privacy and Security",
                           nav: () {
-                            // Get.toNamed(
-                            //   Routes.privacyAndSecurity,
-                            //   preventDuplicates: true,
-                            // );
+                            Get.toNamed(
+                              Routes.privacyAndSecurity,
+                              preventDuplicates: true,
+                            );
                           },
                         ),
                       ],
@@ -286,10 +285,10 @@ class ProfileScreenScaffold extends GetView<ProfileScreenController> {
                           colorScheme,
                           title: "FAQs",
                           nav: () {
-                            // Get.toNamed(
-                            //   Routes.faqs,
-                            //   preventDuplicates: true,
-                            // );
+                            Get.toNamed(
+                              Routes.faqs,
+                              preventDuplicates: true,
+                            );
                           },
                         ),
                         Divider(
@@ -317,7 +316,7 @@ class ProfileScreenScaffold extends GetView<ProfileScreenController> {
                     buttonIcon: Icons.logout,
                     buttonIconColor: kLightBackgroundColor,
                     mainAxisAlignment: MainAxisAlignment.center,
-                    onPressed: () {},
+                    onPressed: controller.logout,
                   ),
                 ],
               );

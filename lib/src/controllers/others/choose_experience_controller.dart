@@ -24,7 +24,7 @@ class ChooseExperienceController extends GetxController {
 
     await Get.offAll(
       () => LoadingScreen(
-        loadData: LoadingController.instance.bottomNavgiationView,
+        loadData: LoadingController.instance.loadBottomNavgiationView,
       ),
       routeName: "/loading-screen",
       fullscreenDialog: true,

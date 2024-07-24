@@ -1,12 +1,9 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
-import '../../../app/splash/loading/screen/loading_screen.dart';
-import '../others/loading_controller.dart';
-
-class ProfileScreenController extends GetxController {
-  static ProfileScreenController get instance {
-    return Get.find<ProfileScreenController>();
+class FaqsController extends GetxController {
+  static FaqsController get instance {
+    return Get.find<FaqsController>();
   }
 
   @override
@@ -52,20 +49,9 @@ class ProfileScreenController extends GetxController {
     }
   }
 
-//================ Logout================\\
-  logout() async {
-    await Get.offAll(
-      () => LoadingScreen(
-        loadData: LoadingController.instance.logout,
-      ),
-      routeName: "/loading-screen",
-      fullscreenDialog: true,
-      curve: Curves.easeInOut,
-      predicate: (routes) => false,
-      popGesture: false,
-      transition: Get.defaultTransition,
-    );
-  }
+//================ Expand Profile Visibility Functions ================\\
 
-  //=================  ===================//
+//================ Expand Listed Properties Functions ================\\
+
+//================ Expand Activity Status Functions ================\\
 }

@@ -24,8 +24,10 @@ import '../../app/kyc/kyc_bvn_otp/screen/kyc_bvn_otp.dart';
 import '../../app/kyc/kyc_nin/screen/kyc_nin.dart';
 import '../../app/screens/bid_details/screen/bid_details.dart';
 import '../../app/screens/profile/views/account_type/screen/account_type_screen.dart';
+import '../../app/screens/profile/views/faqs/screen/faqs_screen.dart';
 import '../../app/screens/profile/views/notifications_settings/screen/notifications_settings_screen.dart';
 import '../../app/screens/profile/views/password/screen/password_settings_screen.dart';
+import '../../app/screens/profile/views/privacy_and_security/screen/privacy_and_security_screen.dart';
 import '../../app/screens/property/add_property/screen/landlord_add_property.dart';
 import '../../app/splash/congratulations/screen/congratulations_screen.dart';
 import '../../app/splash/loading/screen/loading_screen.dart';
@@ -135,6 +137,14 @@ class Routes {
     GetPage(
       name: notificationsSettings,
       page: () => const NotificationsSettingsScreen(),
+    ),
+    GetPage(
+      name: privacyAndSecurity,
+      page: () => const PrivacyAndSecurityScreen(),
+    ),
+    GetPage(
+      name: faqs,
+      page: () => const FaqsScreen(),
     ),
 
     GetPage(name: landLordAddProperty, page: () => const LandLordAddProperty()),

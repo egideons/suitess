@@ -7,7 +7,7 @@ import '../../../../../../theme/colors.dart';
 editDetail(ColorScheme colorScheme,
     {String? title, String? detail, Function()? editFunction}) {
   return Padding(
-    padding: const EdgeInsets.all(8.0),
+    padding: const EdgeInsets.symmetric(horizontal: 8.0),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

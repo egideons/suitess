@@ -60,15 +60,59 @@ class NotificationsSettingsController extends GetxController {
     }
   }
 
-//================ Handle refresh ================\\
-
-  Future<void> onRefresh() async {
-    isRefreshing.value = true;
+//================ Toggle Functions ================\\
+  toggleGeneralNotif(value) {
+    enableGeneralNotif.value = value;
     update();
+  }
 
-    await Future.delayed(const Duration(seconds: 2));
+  toggleSound(value) {
+    enableSound.value = value;
+    update();
+  }
 
-    isRefreshing.value = false;
+  toggleVibrate(value) {
+    enableVibrate.value = value;
+    update();
+  }
+
+  toggleNewHouseListing(value) {
+    enableNewHouseListingNotif.value = value;
+    update();
+  }
+
+  toggleNearbyHouses(value) {
+    enableNearbyHousesNotif.value = value;
+    update();
+  }
+
+  toggleAppUpdates(value) {
+    enableAppUpdatesNotif.value = value;
+    update();
+  }
+
+  toggleBillReminder(value) {
+    enableBillReminderNotif.value = value;
+    update();
+  }
+
+  togglePromotion(value) {
+    enablePromotionNotif.value = value;
+    update();
+  }
+
+  toggleDiscountAvailable(value) {
+    enableDiscountAvailableNotif.value = value;
+    update();
+  }
+
+  toggleNewServiceAvailable(value) {
+    enableNewServiceAvailableNotif.value = value;
+    update();
+  }
+
+  toggleNewTipsAvailable(value) {
+    enableNewTipsAvailableNotif.value = value;
     update();
   }
 

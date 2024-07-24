@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:suitess/src/utils/components/my_app_bar.dart';
-import 'package:suitess/theme/colors.dart';
 
-import '../../../../../../../src/constants/consts.dart';
 import '../../../../../../../src/controllers/app/contact_details_controller.dart';
 import '../../content/edit_detail.dart';
+import '../../content/email_section.dart';
 
 class ContactDetailsScaffold extends GetView<ContactDetailsScreenController> {
   const ContactDetailsScaffold({super.key});
@@ -28,7 +27,6 @@ class ContactDetailsScaffold extends GetView<ContactDetailsScreenController> {
               return ListView(
                 controller: controller.scrollController,
                 padding: const EdgeInsets.all(10),
-                physics: const BouncingScrollPhysics(),
                 children: [
                   Container(
                     decoration: ShapeDecoration(
@@ -43,40 +41,13 @@ class ContactDetailsScaffold extends GetView<ContactDetailsScreenController> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const SizedBox(height: 5),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "Email",
-                                textAlign: TextAlign.start,
-                                overflow: TextOverflow.ellipsis,
-                                style: defaultTextStyle(
-                                  color: colorScheme.inversePrimary,
-                                  fontSize: 10,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                              kHalfSizedBox,
-                              Text(
-                                "userexample@gmail.com",
-                                textAlign: TextAlign.start,
-                                overflow: TextOverflow.ellipsis,
-                                style: defaultTextStyle(
-                                  color: kTextBoldHeadingColor,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                            ],
-                          ),
+                        emailSection(
+                          colorScheme,
+                          userEmail: "userexample@gmail.com",
                         ),
                         Divider(
                           color: colorScheme.inversePrimary.withOpacity(.4),
                         ),
-                        const SizedBox(height: 5),
                         editDetail(
                           colorScheme,
                           title: "Phone",
@@ -86,7 +57,6 @@ class ContactDetailsScaffold extends GetView<ContactDetailsScreenController> {
                         Divider(
                           color: colorScheme.inversePrimary.withOpacity(.4),
                         ),
-                        const SizedBox(height: 5),
                         editDetail(
                           colorScheme,
                           title: "Address",
@@ -96,7 +66,6 @@ class ContactDetailsScaffold extends GetView<ContactDetailsScreenController> {
                         Divider(
                           color: colorScheme.inversePrimary.withOpacity(.4),
                         ),
-                        const SizedBox(height: 5),
                         editDetail(
                           colorScheme,
                           title: "Business name / Username",
