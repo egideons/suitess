@@ -209,25 +209,7 @@ class ForgotPasswordViaEmailOTPScaffold
                           ],
                         ),
                       ),
-                      const SizedBox(height: kDefaultPadding * 2),
-                      GetBuilder<ResetPasswordViaEmailOTPController>(
-                        builder: (controller) {
-                          return AndroidElevatedButton(
-                            title: "Verify",
-                            isLoading:
-                                resetPasswordViaEmailController.isLoading.value
-                                    ? true
-                                    : false,
-                            disable: resetPasswordViaEmailController
-                                    .formIsValid.value
-                                ? false
-                                : true,
-                            onPressed:
-                                resetPasswordViaEmailController.submitOTP,
-                          );
-                        },
-                      ),
-                      const SizedBox(height: kDefaultPadding * 2),
+                      kSizedBox,
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -271,7 +253,25 @@ class ForgotPasswordViaEmailOTPScaffold
                           ),
                         ],
                       ),
-                      kSizedBox,
+                      const SizedBox(height: kDefaultPadding * 2),
+                      GetBuilder<ResetPasswordViaEmailOTPController>(
+                        builder: (controller) {
+                          return AndroidElevatedButton(
+                            title: "Verify",
+                            isLoading:
+                                resetPasswordViaEmailController.isLoading.value
+                                    ? true
+                                    : false,
+                            disable: resetPasswordViaEmailController
+                                    .formIsValid.value
+                                ? false
+                                : true,
+                            onPressed:
+                                resetPasswordViaEmailController.submitOTP,
+                          );
+                        },
+                      ),
+                      const SizedBox(height: kDefaultPadding * 2),
                     ],
                   ),
                 ),
@@ -421,22 +421,6 @@ class ForgotPasswordViaEmailOTPScaffold
             ),
           ),
           kSizedBox,
-          const SizedBox(height: kDefaultPadding * 2),
-          GetBuilder<ResetPasswordViaEmailOTPController>(
-            builder: (controller) {
-              return AndroidElevatedButton(
-                title: "Verify",
-                isLoading: resetPasswordViaEmailController.isLoading.value
-                    ? true
-                    : false,
-                disable: resetPasswordViaEmailController.formIsValid.value
-                    ? false
-                    : true,
-                onPressed: resetPasswordViaEmailController.submitOTP,
-              );
-            },
-          ),
-          const SizedBox(height: kDefaultPadding * 2),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -478,7 +462,22 @@ class ForgotPasswordViaEmailOTPScaffold
               ),
             ],
           ),
-          kSizedBox,
+          const SizedBox(height: kDefaultPadding * 2),
+          GetBuilder<ResetPasswordViaEmailOTPController>(
+            builder: (controller) {
+              return AndroidElevatedButton(
+                title: "Verify",
+                isLoading: resetPasswordViaEmailController.isLoading.value
+                    ? true
+                    : false,
+                disable: resetPasswordViaEmailController.formIsValid.value
+                    ? false
+                    : true,
+                onPressed: resetPasswordViaEmailController.submitOTP,
+              );
+            },
+          ),
+          const SizedBox(height: kDefaultPadding * 2),
         ],
       ),
     );

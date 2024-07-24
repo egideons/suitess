@@ -242,10 +242,10 @@ class ProfileScreenScaffold extends GetView<ProfileScreenController> {
                           colorScheme,
                           title: "Notifications",
                           nav: () {
-                            // Get.toNamed(
-                            //   Routes.notificationsSettings,
-                            //   preventDuplicates: true,
-                            // );
+                            Get.toNamed(
+                              Routes.notificationsSettings,
+                              preventDuplicates: true,
+                            );
                           },
                         ),
                         Divider(

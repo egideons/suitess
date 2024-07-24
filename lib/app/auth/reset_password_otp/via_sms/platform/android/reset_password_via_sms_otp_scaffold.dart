@@ -206,24 +206,7 @@ class ResetPasswordViaSMSOTPScaffold
                           ],
                         ),
                       ),
-                      const SizedBox(height: kDefaultPadding * 2),
-                      GetBuilder<ResetPasswordViaSmsOTPController>(
-                        builder: (controller) {
-                          return AndroidElevatedButton(
-                            title: "Verify",
-                            isLoading:
-                                resetPasswordViaSmsController.isLoading.value
-                                    ? true
-                                    : false,
-                            disable:
-                                resetPasswordViaSmsController.formIsValid.value
-                                    ? false
-                                    : true,
-                            onPressed: resetPasswordViaSmsController.submitOTP,
-                          );
-                        },
-                      ),
-                      const SizedBox(height: kDefaultPadding * 2),
+                      kSizedBox,
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -267,7 +250,24 @@ class ResetPasswordViaSMSOTPScaffold
                           ),
                         ],
                       ),
-                      kSizedBox,
+                      const SizedBox(height: kDefaultPadding * 2),
+                      GetBuilder<ResetPasswordViaSmsOTPController>(
+                        builder: (controller) {
+                          return AndroidElevatedButton(
+                            title: "Verify",
+                            isLoading:
+                                resetPasswordViaSmsController.isLoading.value
+                                    ? true
+                                    : false,
+                            disable:
+                                resetPasswordViaSmsController.formIsValid.value
+                                    ? false
+                                    : true,
+                            onPressed: resetPasswordViaSmsController.submitOTP,
+                          );
+                        },
+                      ),
+                      const SizedBox(height: kDefaultPadding * 2),
                     ],
                   ),
                 ),
@@ -416,22 +416,6 @@ class ResetPasswordViaSMSOTPScaffold
             ),
           ),
           kSizedBox,
-          const SizedBox(height: kDefaultPadding * 2),
-          GetBuilder<ResetPasswordViaSmsOTPController>(
-            builder: (controller) {
-              return AndroidElevatedButton(
-                title: "Verify",
-                isLoading: resetPasswordViaSmsController.isLoading.value
-                    ? true
-                    : false,
-                disable: resetPasswordViaSmsController.formIsValid.value
-                    ? false
-                    : true,
-                onPressed: resetPasswordViaSmsController.submitOTP,
-              );
-            },
-          ),
-          const SizedBox(height: kDefaultPadding * 2),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -472,7 +456,22 @@ class ResetPasswordViaSMSOTPScaffold
               ),
             ],
           ),
-          kSizedBox,
+          const SizedBox(height: kDefaultPadding * 2),
+          GetBuilder<ResetPasswordViaSmsOTPController>(
+            builder: (controller) {
+              return AndroidElevatedButton(
+                title: "Verify",
+                isLoading: resetPasswordViaSmsController.isLoading.value
+                    ? true
+                    : false,
+                disable: resetPasswordViaSmsController.formIsValid.value
+                    ? false
+                    : true,
+                onPressed: resetPasswordViaSmsController.submitOTP,
+              );
+            },
+          ),
+          const SizedBox(height: kDefaultPadding * 2),
         ],
       ),
     );
