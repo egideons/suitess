@@ -1,9 +1,9 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
-class FaqsController extends GetxController {
-  static FaqsController get instance {
-    return Get.find<FaqsController>();
+class SupportAndFeedbackController extends GetxController {
+  static SupportAndFeedbackController get instance {
+    return Get.find<SupportAndFeedbackController>();
   }
 
   @override

@@ -28,6 +28,7 @@ import '../../app/screens/profile/views/faqs/screen/faqs_screen.dart';
 import '../../app/screens/profile/views/notifications_settings/screen/notifications_settings_screen.dart';
 import '../../app/screens/profile/views/password/screen/password_settings_screen.dart';
 import '../../app/screens/profile/views/privacy_and_security/screen/privacy_and_security_screen.dart';
+import '../../app/screens/profile/views/support_and_feedback/screen/support_and_feedback_screen.dart';
 import '../../app/screens/property/add_property/screen/landlord_add_property.dart';
 import '../../app/splash/congratulations/screen/congratulations_screen.dart';
 import '../../app/splash/loading/screen/loading_screen.dart';
@@ -145,6 +146,10 @@ class Routes {
     GetPage(
       name: faqs,
       page: () => const FaqsScreen(),
+    ),
+    GetPage(
+      name: supportAndFeedback,
+      page: () => const SupportAndFeedbackScreen(),
     ),
 
     GetPage(name: landLordAddProperty, page: () => const LandLordAddProperty()),
