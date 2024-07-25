@@ -18,12 +18,12 @@ propertyContainer(
   int? numOfBeds,
   int? numOfBaths,
 }) {
-  return Column(
-    children: [
-      InkWell(
-        onTap: nav ?? () {},
-        borderRadius: BorderRadius.circular(10),
-        child: Stack(
+  return InkWell(
+    onTap: nav ?? () {},
+    borderRadius: BorderRadius.circular(12),
+    child: Column(
+      children: [
+        Stack(
           children: [
             Container(
               height: media.height * .3,
@@ -63,122 +63,122 @@ propertyContainer(
             ),
           ],
         ),
-      ),
-      kHalfSizedBox,
-      Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Expanded(
-            child: Text(
-              propertyName ?? "",
-              textAlign: TextAlign.start,
+        kHalfSizedBox,
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Expanded(
+              child: Text(
+                propertyName ?? "",
+                textAlign: TextAlign.start,
+                overflow: TextOverflow.ellipsis,
+                style: defaultTextStyle(
+                  fontSize: 14,
+                  color: kTextBoldHeadingColor,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+            ),
+            Text.rich(
+              TextSpan(
+                text: "$nairaSign ",
+                style: defaultTextStyle(
+                  fontFamily: "",
+                  fontWeight: FontWeight.w800,
+                  color: kTextBoldHeadingColor,
+                  fontSize: 12,
+                ),
+                children: [
+                  TextSpan(
+                    text: "${intFormattedText(propertyPrice ?? 0)}/",
+                    style: defaultTextStyle(
+                      color: kTextBoldHeadingColor,
+                      fontWeight: FontWeight.w800,
+                      fontSize: 12,
+                    ),
+                  ),
+                  TextSpan(
+                    text: propertyPaymentFreq,
+                    style: defaultTextStyle(
+                      fontWeight: FontWeight.normal,
+                      color: kTextBoldHeadingColor,
+                      fontSize: 10,
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ],
+        ),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            SvgPicture.asset(
+              height: 20,
+              width: 20,
+              Assets.locationPinOutlineIconSvg,
+              color: colorScheme.primary.withOpacity(.5),
+              fit: BoxFit.contain,
+            ),
+            Text(
+              propertyLocation ?? "",
               overflow: TextOverflow.ellipsis,
               style: defaultTextStyle(
-                fontSize: 14,
-                color: kTextBoldHeadingColor,
-                fontWeight: FontWeight.w700,
+                fontSize: 12,
+                color: colorScheme.inversePrimary,
+                fontWeight: FontWeight.normal,
               ),
             ),
-          ),
-          Text.rich(
-            TextSpan(
-              text: "$nairaSign ",
-              style: defaultTextStyle(
-                fontFamily: "",
-                fontWeight: FontWeight.w800,
-                color: kTextBoldHeadingColor,
-                fontSize: 12,
-              ),
+          ],
+        ),
+        Row(
+          children: [
+            Row(
               children: [
-                TextSpan(
-                  text: "${intFormattedText(propertyPrice ?? 0)}/",
+                SvgPicture.asset(
+                  height: 20,
+                  width: 20,
+                  Assets.bedOutlineSvg,
+                  color: colorScheme.primary.withOpacity(.5),
+                  fit: BoxFit.contain,
+                ),
+                Text(
+                  numOfBeds == 1 ? "$numOfBeds Bed" : "$numOfBeds Beds",
+                  overflow: TextOverflow.ellipsis,
                   style: defaultTextStyle(
-                    color: kTextBoldHeadingColor,
-                    fontWeight: FontWeight.w800,
-                    fontSize: 12,
+                    fontSize: 10,
+                    color: colorScheme.inversePrimary,
+                    fontWeight: FontWeight.normal,
                   ),
                 ),
-                TextSpan(
-                  text: propertyPaymentFreq,
-                  style: defaultTextStyle(
-                    fontWeight: FontWeight.normal,
-                    color: kTextBoldHeadingColor,
-                    fontSize: 10,
-                  ),
-                )
               ],
             ),
-          ),
-        ],
-      ),
-      Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          SvgPicture.asset(
-            height: 20,
-            width: 20,
-            Assets.locationPinOutlineIconSvg,
-            color: colorScheme.primary.withOpacity(.5),
-            fit: BoxFit.contain,
-          ),
-          Text(
-            propertyLocation ?? "",
-            overflow: TextOverflow.ellipsis,
-            style: defaultTextStyle(
-              fontSize: 12,
-              color: colorScheme.inversePrimary,
-              fontWeight: FontWeight.normal,
+            kWidthSizedBox,
+            Row(
+              children: [
+                SvgPicture.asset(
+                  height: 20,
+                  width: 20,
+                  Assets.bathOutlineSvg,
+                  color: colorScheme.primary.withOpacity(.5),
+                  fit: BoxFit.contain,
+                ),
+                Text(
+                  numOfBaths == 1 ? "$numOfBaths Bath" : "$numOfBaths Baths",
+                  overflow: TextOverflow.ellipsis,
+                  style: defaultTextStyle(
+                    fontSize: 10,
+                    color: colorScheme.inversePrimary,
+                    fontWeight: FontWeight.normal,
+                  ),
+                ),
+              ],
             ),
-          ),
-        ],
-      ),
-      Row(
-        children: [
-          Row(
-            children: [
-              SvgPicture.asset(
-                height: 20,
-                width: 20,
-                Assets.bedOutlineSvg,
-                color: colorScheme.primary.withOpacity(.5),
-                fit: BoxFit.contain,
-              ),
-              Text(
-                numOfBeds == 1 ? "$numOfBeds Bed" : "$numOfBeds Beds",
-                overflow: TextOverflow.ellipsis,
-                style: defaultTextStyle(
-                  fontSize: 10,
-                  color: colorScheme.inversePrimary,
-                  fontWeight: FontWeight.normal,
-                ),
-              ),
-            ],
-          ),
-          kWidthSizedBox,
-          Row(
-            children: [
-              SvgPicture.asset(
-                height: 20,
-                width: 20,
-                Assets.bathOutlineSvg,
-                color: colorScheme.primary.withOpacity(.5),
-                fit: BoxFit.contain,
-              ),
-              Text(
-                numOfBaths == 1 ? "$numOfBaths Bath" : "$numOfBaths Baths",
-                overflow: TextOverflow.ellipsis,
-                style: defaultTextStyle(
-                  fontSize: 10,
-                  color: colorScheme.inversePrimary,
-                  fontWeight: FontWeight.normal,
-                ),
-              ),
-            ],
-          ),
-        ],
-      ),
-    ],
+          ],
+        ),
+      ],
+    ),
   );
 }
