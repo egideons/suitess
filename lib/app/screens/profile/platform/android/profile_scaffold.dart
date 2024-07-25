@@ -299,10 +299,10 @@ class ProfileScreenScaffold extends GetView<ProfileScreenController> {
                           colorScheme,
                           title: "Support and Feedback",
                           nav: () {
-                            // Get.toNamed(
-                            //   Routes.supportAndFeedback,
-                            //   preventDuplicates: true,
-                            // );
+                            Get.toNamed(
+                              Routes.supportAndFeedback,
+                              preventDuplicates: true,
+                            );
                           },
                         ),
                       ],

@@ -48,7 +48,7 @@ class FaqsScaffold extends GetView<FaqsController> {
                     ),
                     child: Column(
                       children: [
-                        expansionTile(
+                        faqsExpansionTile(
                           colorScheme,
                           title: "Profile Visibility",
                           content:
@@ -58,13 +58,13 @@ class FaqsScaffold extends GetView<FaqsController> {
                           color: colorScheme.inversePrimary.withOpacity(.4),
                           height: 0,
                         ),
-                        expansionTile(
+                        faqsExpansionTile(
                           colorScheme,
                           title: "Listed Properties",
                           content:
                               "Incididunt consectetur magna incididunt ut. Adipisicing elit occaecat labore non voluptate reprehenderit mollit laborum exercitation. Aliqua in consectetur ad exercitation ad proident. Enim labore ipsum consequat deserunt fugiat nulla ut et. Consectetur nisi aliquip sint laborum laborum culpa aliqua reprehenderit aute tempor sit velit in. Voluptate ipsum in irure fugiat sint ullamco duis nostrud officia ipsum cillum laborum. Labore duis mollit non proident aute.\nCulpa ut magna magna voluptate cupidatat labore dolor ad ea non. Cupidatat dolor eu laborum quis labore ipsum amet deserunt amet pariatur eu eiusmod pariatur velit. Eiusmod enim nostrud deserunt laborum reprehenderit esse ullamco occaecat sunt. Et aliqua officia qui anim laborum amet aliquip cupidatat non magna laborum ex. Pariatur magna consectetur anim irure elit eiusmod reprehenderit labore amet velit.\nDolor labore eu officia duis officia fugiat labore sint. Commodo sunt velit ut veniam consectetur labore aliqua Lorem ipsum mollit exercitation. Ipsum proident irure anim Lorem magna enim. Velit voluptate anim aliquip occaecat culpa ad laborum et tempor consectetur. Deserunt ut dolore qui est Lorem ut ipsum commodo fugiat aliquip qui.\nDo consectetur esse veniam eu. Sunt sit eu anim irure non nisi proident. Laboris nostrud pariatur nostrud est Lorem sunt duis irure proident mollit et aute ullamco.",
                         ),
-                        expansionTile(
+                        faqsExpansionTile(
                           colorScheme,
                           title: "Activity Status",
                           content:

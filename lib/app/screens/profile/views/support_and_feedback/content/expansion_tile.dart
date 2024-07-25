@@ -4,7 +4,8 @@ import 'package:readmore/readmore.dart';
 import '../../../../../../src/constants/consts.dart';
 import '../../../../../../theme/colors.dart';
 
-faqsExpansionTile(ColorScheme colorScheme, {String? title, String? content}) {
+supportAndFeedbackExpansionTile(ColorScheme colorScheme,
+    {String? title, String? content}) {
   return ExpansionTile(
     iconColor: colorScheme.inversePrimary.withOpacity(.6),
     collapsedIconColor: colorScheme.inversePrimary.withOpacity(.6),
