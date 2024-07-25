@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 
 import '../../../app/auth/signup/screen/signup.dart';
 import '../../../app/splash/loading/screen/loading_screen.dart';
+import '../../../main.dart';
 import '../../constants/consts.dart';
 import '../../routes/routes.dart';
 import '../others/api_processor_controller.dart';
@@ -110,6 +111,9 @@ class LoginController extends GetxController {
       await Future.delayed(const Duration(seconds: 3));
 
       ApiProcessorController.successSnack("Login successful");
+
+      //Save state that the user has logged in
+      prefs.setBool("isLoggedIn", true);
 
       await Get.offAll(
         () => LoadingScreen(
@@ -215,6 +219,9 @@ class LoginController extends GetxController {
       // await FirebaseAuth.instance.signInWithCredential(credential);
 
       ApiProcessorController.successSnack("Login successful");
+
+      //Save state that the user has logged in
+      prefs.setBool("isLoggedIn", true);
 
       await Get.offAll(
         () => LoadingScreen(

@@ -8,7 +8,7 @@ import 'package:suitess/src/utils/buttons/android/android_elevated_button.dart';
 import 'package:suitess/src/utils/components/circle_avatar_image.dart';
 import 'package:suitess/theme/colors.dart';
 
-import '../../../../../src/controllers/app/profilescreen_controller.dart';
+import '../../../../../src/controllers/app/profile_screen_controller.dart';
 import '../../content/profile_nav_option.dart';
 import '../../content/profile_section_header.dart';
 

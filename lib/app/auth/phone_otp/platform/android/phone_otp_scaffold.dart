@@ -48,7 +48,7 @@ class PhoneOTPScaffold extends GetView<PhoneOTPController> {
                     media: media,
                     title: "OTP verification",
                     subtitle: "Enter the 4-digit verification code we sent to ",
-                    phoneNumber: maskString("08074656497"),
+                    phoneNumber: maskPhoneNumber("08074656497"),
                   ),
                 ],
               ),
@@ -260,7 +260,7 @@ class PhoneOTPScaffold extends GetView<PhoneOTPController> {
               media: media,
               title: "OTP verification",
               subtitle: "Enter the 4-digit verification code we sent to ",
-              phoneNumber: maskString("08074656497"),
+              phoneNumber: maskPhoneNumber("08074656497"),
             ),
             const SizedBox(height: kDefaultPadding * 2),
             Form(

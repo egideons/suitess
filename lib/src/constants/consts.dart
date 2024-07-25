@@ -83,20 +83,16 @@ const String emailPattern =
     r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))\s*$';
 
 //===================== Mask Phone Number ==========================\\
-String maskString(String phoneNumber) {
-  // Ensure the phone number is at least 4 characters long
-  if (phoneNumber.length < 4) {
-    throw ArgumentError('Phone number must be at least 4 digits long');
+String maskPhoneNumber(String phoneNumber) {
+  if (phoneNumber.length <= 4) {
+    // If the phone number is too short, return it as is.
+    return phoneNumber;
+  } else {
+    // Mask all but the last four digits
+    String maskedPart = '*' * (phoneNumber.length - 4);
+    String visiblePart = phoneNumber.substring(phoneNumber.length - 4);
+    return maskedPart + visiblePart;
   }
-
-  // Get the last 4 digits of the phone number
-  String lastFour = phoneNumber.substring(phoneNumber.length - 4);
-
-  // Mask the remaining part of the phone number with asterisks
-  String maskedPart = '*' * (phoneNumber.length - 4);
-
-  // Combine the masked part with the last four digits
-  return maskedPart + lastFour;
 }
 
 //===================== DateTime Formate ==========================\\

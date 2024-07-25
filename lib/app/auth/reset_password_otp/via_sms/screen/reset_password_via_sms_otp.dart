@@ -8,7 +8,8 @@ import '../platform/android/reset_password_via_sms_otp_scaffold.dart';
 import '../platform/ios/reset_password_via_sms_otp_cupertino_scaffold.dart';
 
 class ResetPasswordViaSMSOTP extends StatelessWidget {
-  const ResetPasswordViaSMSOTP({super.key});
+  final String? userPhoneNumber;
+  const ResetPasswordViaSMSOTP({super.key, this.userPhoneNumber});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +24,9 @@ class ResetPasswordViaSMSOTP extends StatelessWidget {
     }
     return GestureDetector(
       onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
-      child: const ResetPasswordViaSMSOTPScaffold(),
+      child: ResetPasswordViaSMSOTPScaffold(
+        userPhoneNumber: userPhoneNumber,
+      ),
     );
   }
 }

@@ -79,7 +79,7 @@ class PrivacyAndSecurityScaffold extends GetView<PrivacyAndSecurityController> {
                             colorScheme,
                             context,
                             controller,
-                            title: "Activiy Status",
+                            title: "Activity Status",
                             isPublic: controller.activityStatusIsPublic.value,
                             isPrivate: controller.activityStatusIsPrivate.value,
                             onTapPrivate: controller

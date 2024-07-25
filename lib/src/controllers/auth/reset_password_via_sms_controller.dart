@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../app/auth/reset_password_otp/via_sms/screen/reset_password_via_sms_otp.dart';
 import '../../constants/consts.dart';
 import '../../routes/routes.dart';
 import '../others/api_processor_controller.dart';
@@ -87,7 +88,15 @@ class ResetPasswordViaSMSController extends GetxController {
         "An OTP has been sent to your phone number",
       );
 
-      Get.toNamed(Routes.resetPasswordViaSmsOTP, preventDuplicates: true);
+      await Get.to(
+        () => ResetPasswordViaSMSOTP(userPhoneNumber: phoneNumberEC.text),
+        routeName: "/reset-password-via-sms-otp",
+        fullscreenDialog: true,
+        curve: Curves.easeInOut,
+        preventDuplicates: true,
+        popGesture: false,
+        transition: Get.defaultTransition,
+      );
 
       isLoading.value = false;
       update();

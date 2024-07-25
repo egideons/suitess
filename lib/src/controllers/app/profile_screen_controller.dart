@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 import '../../../app/splash/loading/screen/loading_screen.dart';
+import '../../../main.dart';
 import '../others/loading_controller.dart';
 
 class ProfileScreenController extends GetxController {
@@ -54,6 +55,9 @@ class ProfileScreenController extends GetxController {
 
 //================ Logout================\\
   logout() async {
+    prefs.setBool("isLoggedIn", false);
+    prefs.setBool("isLoggedOut", true);
+
     await Get.offAll(
       () => LoadingScreen(
         loadData: LoadingController.instance.logout,

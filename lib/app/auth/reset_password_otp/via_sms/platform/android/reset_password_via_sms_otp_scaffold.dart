@@ -15,7 +15,9 @@ import '../../content/reset_password_via_sms_page_header.dart';
 
 class ResetPasswordViaSMSOTPScaffold
     extends GetView<ResetPasswordViaSmsOTPController> {
-  const ResetPasswordViaSMSOTPScaffold({super.key});
+  const ResetPasswordViaSMSOTPScaffold({this.userPhoneNumber, super.key});
+
+  final String? userPhoneNumber;
 
   @override
   Widget build(BuildContext context) {
@@ -66,8 +68,10 @@ class ResetPasswordViaSMSOTPScaffold
                         colorScheme: colorScheme,
                         media: media,
                         title: "OTP Verification",
-                        subtitle: "Enter the 4-digit OTP sent to your phone.",
-                        // phoneNumber: maskString("08074656497"),
+                        subtitle:
+                            "Enter the 4 digit verification code sent to ",
+                        phoneNumber:
+                            maskPhoneNumber(userPhoneNumber ?? "" ?? ""),
                       ),
                     ],
                   ),
@@ -305,7 +309,8 @@ class ResetPasswordViaSMSOTPScaffold
             colorScheme: colorScheme,
             media: media,
             title: "OTP Verification",
-            subtitle: "Enter the 4-digit OTP sent to your phone.",
+            subtitle: "Enter the 4 digit verification code sent to ",
+            phoneNumber: maskPhoneNumber(userPhoneNumber ?? ""),
           ),
           const SizedBox(height: kDefaultPadding * 2),
           Form(
