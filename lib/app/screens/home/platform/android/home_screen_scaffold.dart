@@ -1,5 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:suitess/src/constants/assets.dart';
 import 'package:suitess/theme/colors.dart';
@@ -8,7 +8,6 @@ import 'package:typewritertext/v3/typewriter.dart';
 import '../../../../../src/constants/consts.dart';
 import '../../../../../src/controllers/app/homescreen_controller.dart';
 import '../../../../../src/routes/routes.dart';
-import '../../../../../src/utils/containers/form_field_container.dart';
 import 'components/alert_message.dart';
 import 'components/app_bar.dart';
 import 'components/filter_properties_nearby.dart';
@@ -22,8 +21,6 @@ class HomeScreenScaffold extends GetView<HomeScreenController> {
   Widget build(BuildContext context) {
     var media = MediaQuery.of(context).size;
     var colorScheme = Theme.of(context).colorScheme;
-
-    var controller = HomeScreenController.instance;
 
     // if (deviceType(media.width) > 2) {
     //   return Scaffold(
@@ -69,7 +66,7 @@ class HomeScreenScaffold extends GetView<HomeScreenController> {
         child: RefreshIndicator.adaptive(
           onRefresh: controller.onRefresh,
           backgroundColor: colorScheme.surface,
-          color: colorScheme.primary,
+          color: colorScheme.inversePrimary,
           child: Scrollbar(
             controller: controller.scrollController,
             child: GetBuilder<HomeScreenController>(
@@ -89,21 +86,35 @@ class HomeScreenScaffold extends GetView<HomeScreenController> {
                       duration: const Duration(milliseconds: 100),
                     ),
                     kSizedBox,
-                    formFieldContainer(
-                      colorScheme,
-                      media,
-                      child: CupertinoSearchTextField(
-                        autocorrect: true,
-                        backgroundColor: colorScheme.surface,
-                        enableIMEPersonalizedLearning: true,
-                        controller: controller.searchController,
-                        placeholder: "Search",
-                        placeholderStyle: defaultTextStyle(
-                          color: colorScheme.primary.withOpacity(.5),
-                          fontWeight: FontWeight.normal,
+                    InkWell(
+                      onTap: controller.goToSearchScreen,
+                      borderRadius: BorderRadius.circular(8),
+                      child: Container(
+                        width: media.width,
+                        height: media.height * 0.06,
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        decoration: ShapeDecoration(
+                          color: kTransparentColor,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                            side: BorderSide(
+                                color: colorScheme.primary, width: 0.2),
+                          ),
                         ),
-                        onSubmitted: (value) {},
-                        onChanged: (value) {},
+                        child: Row(
+                          children: [
+                            SvgPicture.asset(Assets.searchOutlineSvg),
+                            kHalfWidthSizedBox,
+                            Text(
+                              "Search",
+                              style: defaultTextStyle(
+                                color: colorScheme.inversePrimary,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                     ),
                     kHalfSizedBox,

@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 import '../../models/property_category_model.dart';
+import '../../routes/routes.dart';
 
 class HomeScreenController extends GetxController {
   static HomeScreenController get instance {
@@ -38,7 +39,6 @@ class HomeScreenController extends GetxController {
   //================ controllers =================\\
 
   var scrollController = ScrollController();
-  var searchController = TextEditingController();
 
 //================ Scroll to Top =================//
   void scrollToTop() {
@@ -94,5 +94,10 @@ class HomeScreenController extends GetxController {
     availableAgentsIsVisible.value = false;
     update();
     log("Available agents are visible: ${availableAgentsIsVisible.value}");
+  }
+
+  //=================== Go to Search Screen ===================\\
+  goToSearchScreen() {
+    Get.toNamed(Routes.searchScreen, preventDuplicates: true);
   }
 }

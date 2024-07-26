@@ -32,7 +32,7 @@ reviewsHeader(ColorScheme colorScheme,
           child: Row(
             children: [
               SvgPicture.asset(
-                Assets.penOutline,
+                Assets.penOutlineSvg,
                 color: kAccentColor,
               ),
               Text(

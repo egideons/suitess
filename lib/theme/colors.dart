@@ -9,7 +9,7 @@ Color kAccentColor = const Color(0xFF41B696);
 
 Color kGreenCardColor = const Color(0xFF41B696);
 Color kRedCardColor = kRedColor.withOpacity(0.15);
-Color kAppBarIconColor = const Color(0xFF4B4B4B);
+Color kAppBarIconColor = const Color(0xFF2D2D2D);
 
 Color kTextBoldHeadingColor = const Color(0xFF4B4B4B);
 Color kTextGreyColor = const Color(0xFF6C6C6C);

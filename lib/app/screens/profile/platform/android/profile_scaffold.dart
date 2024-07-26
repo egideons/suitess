@@ -57,7 +57,7 @@ class ProfileScreenScaffold extends GetView<ProfileScreenController> {
                                   onTap: () {},
                                   borderRadius: BorderRadius.circular(20),
                                   child: SvgPicture.asset(
-                                    Assets.cameraOutline,
+                                    Assets.cameraOutlineSvg,
                                     color: kLightBackgroundColor,
                                   ),
                                 ),

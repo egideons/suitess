@@ -30,6 +30,7 @@ import '../../app/screens/profile/views/password/screen/password_settings_screen
 import '../../app/screens/profile/views/privacy_and_security/screen/privacy_and_security_screen.dart';
 import '../../app/screens/profile/views/support_and_feedback/screen/support_and_feedback_screen.dart';
 import '../../app/screens/property/add_property/screen/landlord_add_property.dart';
+import '../../app/screens/search/screen/search_screen.dart';
 import '../../app/splash/congratulations/screen/congratulations_screen.dart';
 import '../../app/splash/loading/screen/loading_screen.dart';
 
@@ -71,6 +72,7 @@ class Routes {
   static const homeScreen = "/homescreen";
   static const notificationsScreen = "/notifications";
   static const viewProperty = "/view-property";
+  static const searchScreen = "/search-screen";
   static const landLordWallet = "/landlord-wallet";
   static const landLordChat = "/landlord-chat";
   static const landLordProfile = "/landlord-profile";
@@ -131,6 +133,7 @@ class Routes {
     GetPage(name: homeScreen, page: () => const HomeScreen()),
     GetPage(name: notificationsScreen, page: () => const NotificationsScreen()),
     GetPage(name: viewProperty, page: () => const ViewProperty()),
+    GetPage(name: searchScreen, page: () => const SearchScreen()),
     GetPage(name: profileScreen, page: () => const ProfileScreen()),
     GetPage(name: contactDetails, page: () => const ContactDetails()),
     GetPage(name: passwordSettings, page: () => const PasswordSettingsScreen()),
