@@ -91,7 +91,7 @@ propertyContainer(
                 ),
                 children: [
                   TextSpan(
-                    text: "${intFormattedText(propertyPrice ?? 0)}/",
+                    text: "${formatIntNumber(propertyPrice ?? 0)}/",
                     style: defaultTextStyle(
                       color: kTextBoldHeadingColor,
                       fontWeight: FontWeight.w800,

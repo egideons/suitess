@@ -7,13 +7,19 @@ import 'package:intl/intl.dart';
 import 'package:suitess/theme/colors.dart';
 
 const kDefaultPadding = 20.0;
+const kHalfDefaultPadding = 10.0;
+
+const kBigSizedBox = SizedBox(height: kDefaultPadding * 2);
+const kBigWidthSizedBox = SizedBox(width: kDefaultPadding * 2);
 
 const kSizedBox = SizedBox(height: kDefaultPadding);
 const kWidthSizedBox = SizedBox(width: kDefaultPadding);
 
 const kHalfSizedBox = SizedBox(height: kDefaultPadding / 2);
-
 const kHalfWidthSizedBox = SizedBox(width: kDefaultPadding / 2);
+
+const kSmallSizedBox = SizedBox(height: 5);
+const kSmallWidthSizedBox = SizedBox(width: 5);
 
 defaultTextStyle({
   Color? color,

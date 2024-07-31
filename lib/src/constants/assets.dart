@@ -65,6 +65,10 @@ class Assets {
   static const indoorBedroomPng = "assets/images/png/indoor-bedroom.png";
   static const indoorSittingRoomPng =
       "assets/images/png/indoor-sitting-room.png";
+  static const duplex1 = "assets/images/png/duplex1.png";
+  static const duplex2 = "assets/images/png/duple2.png";
+  static const duplex3 = "assets/images/png/duplex3.png";
+  static const duplex4 = "assets/images/png/duplex4.png";
 
 //======== SVG =========\\
   static const onboarding1Svg = "assets/images/svg/onboarding_1.svg";

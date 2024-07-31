@@ -16,6 +16,8 @@ homeAppBar(
   return AppBar(
     backgroundColor: colorScheme.surface,
     automaticallyImplyLeading: true,
+    elevation: 0,
+    scrolledUnderElevation: 0,
     title: InkWell(
       onTap: toLocation ?? () {},
       borderRadius: BorderRadius.circular(24),

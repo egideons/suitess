@@ -6,7 +6,10 @@ import 'propert_carousel.dart';
 import 'property_carousel_indicator.dart';
 
 viewPropertyAppBar(
-    ColorScheme colorScheme, ViewPropertyController controller, Size media) {
+  ColorScheme colorScheme,
+  ViewPropertyController controller,
+  Size media,
+) {
   return SliverAppBar(
     backgroundColor: colorScheme.primary,
     elevation: 0,

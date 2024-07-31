@@ -1,13 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:suitess/src/constants/assets.dart';
 import 'package:suitess/src/utils/components/my_app_bar.dart';
 import 'package:suitess/theme/colors.dart';
 
 import '../../../../../src/constants/consts.dart';
 import '../../../../../src/controllers/app/search_screen_controller.dart';
+import '../../../../../src/routes/routes.dart';
+import '../../content/num_of_search_results_and_filter.dart';
+import '../../content/search_result_container.dart';
 
 class SearchScreenScaffold extends GetView<SearchScreenController> {
   const SearchScreenScaffold({super.key});
@@ -17,10 +18,21 @@ class SearchScreenScaffold extends GetView<SearchScreenController> {
     var media = MediaQuery.of(context).size;
     var colorScheme = Theme.of(context).colorScheme;
     return Scaffold(
+      floatingActionButton: Obx(
+        () => controller.isScrollToTopBtnVisible.value
+            ? FloatingActionButton.small(
+                onPressed: controller.scrollToTop,
+                backgroundColor: kAccentColor,
+                foregroundColor: kLightBackgroundColor,
+                child: const Icon(Icons.keyboard_arrow_up),
+              )
+            : const SizedBox(),
+      ),
       appBar: myAppBar(
         colorScheme,
         media,
         leadingWidth: 34,
+        backgroundColor: colorScheme.surface,
         automaticallyImplyLeading: false,
         titleWidget: CupertinoSearchTextField(
           autocorrect: true,
@@ -44,61 +56,72 @@ class SearchScreenScaffold extends GetView<SearchScreenController> {
         ),
       ),
       body: SafeArea(
-        child: Scrollbar(
-          child: ListView(
-            padding: const EdgeInsets.all(10),
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "${formatIntNumber(492)} Results found",
-                    textAlign: TextAlign.center,
-                    style: defaultTextStyle(
-                      color: kTextBoldHeadingColor,
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {},
-                    borderRadius: BorderRadius.circular(12),
-                    child: Row(
-                      children: [
-                        SvgPicture.asset(
-                          Assets.searchFilterSvg,
-                          color: kAccentColor,
+        child: RefreshIndicator.adaptive(
+          onRefresh: controller.onRefresh,
+          backgroundColor: colorScheme.surface,
+          color: colorScheme.inversePrimary,
+          child: Scrollbar(
+            controller: controller.scrollController,
+            child: GetBuilder<SearchScreenController>(
+                init: SearchScreenController(),
+                builder: (controller) {
+                  return CustomScrollView(
+                    controller: controller.scrollController,
+                    slivers: [
+                      SliverAppBar(
+                        backgroundColor: colorScheme.surface,
+                        elevation: 0,
+                        stretch: true,
+                        pinned: true,
+                        automaticallyImplyLeading: false,
+                        leadingWidth: 0,
+                        scrolledUnderElevation: 0,
+                        bottom: const PreferredSize(
+                          preferredSize: Size.fromHeight(-10.0),
+                          child: SizedBox(),
                         ),
-                        kHalfWidthSizedBox,
-                        Text(
-                          "Filter",
-                          textAlign: TextAlign.center,
-                          style: defaultTextStyle(
-                            color: kAccentColor,
-                            fontSize: 14,
-                            fontWeight: FontWeight.w500,
-                          ),
+                        title: searchResultsAndFilter(492, () {}),
+                      ),
+                      SliverToBoxAdapter(
+                        child: ListView.separated(
+                          itemCount: 20,
+                          shrinkWrap: true,
+                          physics: const BouncingScrollPhysics(),
+                          padding: const EdgeInsets.all(10),
+                          separatorBuilder: (context, index) => kHalfSizedBox,
+                          itemBuilder: (context, index) {
+                            return searchResultContainer(
+                              colorScheme,
+                              media,
+                              onTap: () async {
+                                Get.toNamed(
+                                  Routes.viewProperty,
+                                  preventDuplicates: true,
+                                );
+                                //  await Get.to(
+                                //       () => const ViewProperty(),
+                                //       routeName: "/view-property",
+                                //       fullscreenDialog: true,
+                                //       curve: Curves.easeInOut,
+                                //  preventDuplicates: true
+                                //       popGesture: false,
+                                //       transition: Get.defaultTransition,
+                                //     );
+                              },
+                              tradeType: "Sale",
+                              propertyName: "4 Flats Woodland Apartment",
+                              propertyPrice: 350000,
+                              paymentFreq: "Year",
+                              propertyLocation: "Independence layout, Enugu",
+                              numOfBeds: 4,
+                              numOfBaths: 2,
+                            );
+                          },
                         ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-              kSizedBox,
-              Container(
-                padding: const EdgeInsets.all(4),
-                decoration: ShapeDecoration(
-                  color: colorScheme.surface,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                    side: BorderSide(
-                      width: .5,
-                      color: colorScheme.inversePrimary,
-                    ),
-                  ),
-                ),
-              ),
-            ],
+                      )
+                    ],
+                  );
+                }),
           ),
         ),
       ),

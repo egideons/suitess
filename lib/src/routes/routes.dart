@@ -23,6 +23,7 @@ import '../../app/kyc/kyc_bvn/screen/kyc_bvn.dart';
 import '../../app/kyc/kyc_bvn_otp/screen/kyc_bvn_otp.dart';
 import '../../app/kyc/kyc_nin/screen/kyc_nin.dart';
 import '../../app/screens/bid_details/screen/bid_details.dart';
+import '../../app/screens/messages/screen/messages_screen.dart';
 import '../../app/screens/profile/views/account_type/screen/account_type_screen.dart';
 import '../../app/screens/profile/views/faqs/screen/faqs_screen.dart';
 import '../../app/screens/profile/views/notifications_settings/screen/notifications_settings_screen.dart';
@@ -37,9 +38,9 @@ import '../../app/splash/loading/screen/loading_screen.dart';
 class Routes {
   //Splash screens
   static const startupSplashscreen = "/";
-  static const congratulationsSplashScreen = "/congratulations-splash-screen";
-  static const successSplashScreen = "/success-splash-screen";
-  static const loadingScreen = "/loading-screen";
+  static const congratulationsSplashScreen = "/congratulations-splash";
+  static const successSplashScreen = "/success-splash";
+  static const loadingScreen = "/loading";
 
   //Onboarding
   static const onboarding = "/onboarding";
@@ -72,12 +73,15 @@ class Routes {
   static const homeScreen = "/homescreen";
   static const notificationsScreen = "/notifications";
   static const viewProperty = "/view-property";
-  static const searchScreen = "/search-screen";
+  static const searchScreen = "/search";
   static const landLordWallet = "/landlord-wallet";
   static const landLordChat = "/landlord-chat";
   static const landLordProfile = "/landlord-profile";
   static const landLordAddProperty = "/landlord-add-property";
   static const bidDetails = "/landlord-bid-details";
+
+  //Messages Section
+  static const messagesScreen = "/messages";
 
   //Profile Section
   static const profileScreen = "/profile";
@@ -134,6 +138,7 @@ class Routes {
     GetPage(name: notificationsScreen, page: () => const NotificationsScreen()),
     GetPage(name: viewProperty, page: () => const ViewProperty()),
     GetPage(name: searchScreen, page: () => const SearchScreen()),
+    GetPage(name: messagesScreen, page: () => const MessagesScreen()),
     GetPage(name: profileScreen, page: () => const ProfileScreen()),
     GetPage(name: contactDetails, page: () => const ContactDetails()),
     GetPage(name: passwordSettings, page: () => const PasswordSettingsScreen()),

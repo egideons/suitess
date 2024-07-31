@@ -66,7 +66,10 @@ class ViewPropertyScaffold extends GetView<ViewPropertyController> {
                             scrollDirection: Axis.horizontal,
                             itemBuilder: (context, index) {
                               return viewPropertyTabs(
-                                  controller, index, colorScheme);
+                                controller,
+                                index,
+                                colorScheme,
+                              );
                             },
                           ),
                         ),
