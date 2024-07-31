@@ -5,6 +5,7 @@ import 'package:suitess/app/screens/home/screen/home_screen.dart';
 import 'package:suitess/app/screens/profile/screen/profile_screen.dart';
 import 'package:suitess/src/constants/consts.dart';
 
+import '../../../app/screens/messages/screen/messages_screen.dart';
 import '../../../theme/colors.dart';
 import '../../constants/assets.dart';
 
@@ -27,15 +28,7 @@ class BottomNavigationController extends GetxController {
             ),
           ),
         ),
-        Container(
-          color: colorScheme.surface,
-          child: Center(
-            child: Text(
-              "Chat",
-              style: defaultTextStyle(),
-            ),
-          ),
-        ),
+        const MessagesScreen(),
         const ProfileScreen(),
       ];
 

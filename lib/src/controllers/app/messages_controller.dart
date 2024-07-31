@@ -1,6 +1,8 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
+import '../../../app/chat/screen/chat_screen.dart';
+
 class MessagesController extends GetxController {
   static MessagesController get instance {
     return Get.find<MessagesController>();
@@ -21,6 +23,9 @@ class MessagesController extends GetxController {
   //================ variables =================\\
   var isRefreshing = false.obs;
   var isScrollToTopBtnVisible = false.obs;
+  var userName = "Francis Acoi";
+  var lastMsg =
+      "Hi! Thanks for your time. I'm looking for a 3-bedroom house in a family-friendly neighborhood.";
 
   //================ controllers =================\\
 
@@ -61,5 +66,15 @@ class MessagesController extends GetxController {
 
   //================ Navigation =================//
 
-  goToChat() {}
+  goToChat() async {
+    await Get.to(
+      () => ChatScreen(userName: userName),
+      routeName: "/chat",
+      fullscreenDialog: true,
+      curve: Curves.easeInOut,
+      preventDuplicates: true,
+      popGesture: false,
+      transition: Transition.rightToLeft,
+    );
+  }
 }

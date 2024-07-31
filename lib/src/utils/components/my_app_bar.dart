@@ -9,6 +9,7 @@ myAppBar(
   Size media, {
   Color? backgroundColor,
   bool? centerTitle,
+  bool? leadingIsVisible = true,
   String? title,
   bool? automaticallyImplyLeading,
   Widget? flexibleSpace,
@@ -17,6 +18,7 @@ myAppBar(
   double? scrolledUnderElevation,
   double? toolBarHeight,
   Widget? titleWidget,
+  Widget? leading,
   PreferredSizeWidget? bottom,
   List<Widget>? actions,
 }) {
@@ -30,19 +32,23 @@ myAppBar(
     bottom: bottom,
     toolbarHeight: toolBarHeight ?? kToolbarHeight,
     leadingWidth: leadingWidth ?? 56.0,
-    leading: Padding(
-      padding: const EdgeInsets.only(left: 4.0),
-      child: IconButton(
-        onPressed: () {
-          Get.back();
-        },
-        icon: Icon(
-          Icons.chevron_left,
-          size: 26,
-          color: kAppBarIconColor,
-        ),
-      ),
-    ),
+    leading: leadingIsVisible == true
+        ? leading ??
+            Padding(
+              padding: const EdgeInsets.only(left: 4.0),
+              child: IconButton(
+                tooltip: "Go back",
+                onPressed: () {
+                  Get.back();
+                },
+                icon: Icon(
+                  Icons.chevron_left,
+                  size: 26,
+                  color: kAppBarIconColor,
+                ),
+              ),
+            )
+        : const SizedBox(),
     title: titleWidget ??
         SizedBox(
           width: media.width / 1.6,

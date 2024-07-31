@@ -35,11 +35,13 @@ class Assets {
   static const measureOutlineSvg = "assets/icons/svg/measure-outline.svg";
   static const goldenTickSvg = "assets/icons/svg/golden-tick.svg";
   static const phoneFilledSvg = "assets/icons/svg/phone-filled.svg";
+  static const phoneOutlineSvg = "assets/icons/svg/phone-outline.svg";
   static const penOutlineSvg = "assets/icons/svg/pen-outline.svg";
   static const cameraOutlineSvg = "assets/icons/svg/camera-outline.svg";
   static const cameraFilledSvg = "assets/icons/svg/camera-filled.svg";
   static const searchOutlineSvg = "assets/icons/svg/search-outline.svg";
   static const searchFilterSvg = "assets/icons/svg/search_filter-outline.svg";
+  static const arrowUpSvg = "assets/icons/svg/arrow-up.svg";
 
 //=================== Images ===================\\
 

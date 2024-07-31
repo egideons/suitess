@@ -19,6 +19,7 @@ import '../../app/auth/reset_password_options/via_sms/screen/reset_password_via_
 import '../../app/auth/reset_password_otp/via_email/screen/reset_password_via_email_otp.dart';
 import '../../app/auth/reset_password_otp/via_sms/screen/reset_password_via_sms_otp.dart';
 import '../../app/bottom_nav_view/screen/bottom_navigation_view.dart';
+import '../../app/chat/screen/chat_screen.dart';
 import '../../app/kyc/kyc_bvn/screen/kyc_bvn.dart';
 import '../../app/kyc/kyc_bvn_otp/screen/kyc_bvn_otp.dart';
 import '../../app/kyc/kyc_nin/screen/kyc_nin.dart';
@@ -82,6 +83,8 @@ class Routes {
 
   //Messages Section
   static const messagesScreen = "/messages";
+  static const chatScreen = "/chat";
+  static const callScreen = "/call";
 
   //Profile Section
   static const profileScreen = "/profile";
@@ -139,6 +142,8 @@ class Routes {
     GetPage(name: viewProperty, page: () => const ViewProperty()),
     GetPage(name: searchScreen, page: () => const SearchScreen()),
     GetPage(name: messagesScreen, page: () => const MessagesScreen()),
+    GetPage(name: chatScreen, page: () => const ChatScreen()),
+    // GetPage(name: callScreen, page: () => const CallScreen()),
     GetPage(name: profileScreen, page: () => const ProfileScreen()),
     GetPage(name: contactDetails, page: () => const ContactDetails()),
     GetPage(name: passwordSettings, page: () => const PasswordSettingsScreen()),

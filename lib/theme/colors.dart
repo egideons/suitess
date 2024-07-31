@@ -6,6 +6,8 @@ Color kDarkBackgroundColor = const Color(0xFF2d2d2d);
 Color kPrimaryColor = Colors.black;
 Color kInversePrimaryColor = const Color(0xFFFFFFFF);
 Color kAccentColor = const Color(0xFF41B696);
+Color kUserChatColor = const Color(0xFFD9F2EB);
+Color kSenderChatColor = const Color(0xFFEEF2F6);
 
 Color kGreenCardColor = const Color(0xFF41B696);
 Color kRedCardColor = kRedColor.withOpacity(0.15);
