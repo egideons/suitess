@@ -65,12 +65,12 @@ class ChatScreenScaffold extends GetView<ChatController> {
         ],
       ),
       floatingActionButton: Obx(
-        () => controller.isScrollToTopBtnVisible.value
+        () => controller.isScrollToBottomBtnVisible.value
             ? FloatingActionButton.small(
-                onPressed: controller.scrollToTop,
+                onPressed: controller.jumpTopBottom,
                 backgroundColor: kAccentColor,
                 foregroundColor: kLightBackgroundColor,
-                child: const Icon(Icons.keyboard_arrow_up),
+                child: const Icon(Icons.keyboard_arrow_down),
               )
             : const SizedBox(),
       ),

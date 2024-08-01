@@ -1,3 +1,4 @@
+import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
@@ -11,6 +12,10 @@ class ChatController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    // Scroll to bottom when the controller is initialized
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      jumpTopBottom();
+    });
     scrollController.addListener(_scrollListener);
   }
 
@@ -23,7 +28,7 @@ class ChatController extends GetxController {
   //================ variables =================\\
   var isRefreshing = false.obs;
   var showTime = false.obs;
-  var isScrollToTopBtnVisible = false.obs;
+  var isScrollToBottomBtnVisible = false.obs;
   var canSubmit = false.obs;
 
   //================ Controllers =================\\
@@ -34,23 +39,22 @@ class ChatController extends GetxController {
   var chatFN = FocusNode();
 
 //================ Scroll to Top =================//
-  void scrollToTop() {
-    scrollController.animateTo(0,
-        duration: const Duration(seconds: 1), curve: Curves.fastOutSlowIn);
+  void jumpTopBottom() {
+    if (scrollController.hasClients) {
+      scrollController.jumpTo(scrollController.position.maxScrollExtent);
+    }
+    isScrollToBottomBtnVisible.value = false;
   }
 
 //================ Scroll Listener =================//
 
   void _scrollListener() {
-    //========= Show action button ========//
-    if (scrollController.position.pixels >= 150) {
-      isScrollToTopBtnVisible.value = true;
-      update();
-    }
-    //========= Hide action button ========//
-    else if (scrollController.position.pixels < 150) {
-      isScrollToTopBtnVisible.value = false;
-      update();
+    if (scrollController.position.userScrollDirection ==
+        ScrollDirection.forward) {
+      isScrollToBottomBtnVisible.value = true;
+    } else if (scrollController.position.userScrollDirection ==
+        ScrollDirection.reverse) {
+      isScrollToBottomBtnVisible.value = false;
     }
   }
 
