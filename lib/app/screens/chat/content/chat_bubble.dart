@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:suitess/app/chat/content/chat_bubble_clipper.dart';
+import 'package:suitess/app/screens/chat/content/chat_bubble_clipper.dart';
 import 'package:suitess/src/constants/consts.dart';
 import 'package:suitess/theme/colors.dart';
 

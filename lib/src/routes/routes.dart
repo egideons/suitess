@@ -19,11 +19,11 @@ import '../../app/auth/reset_password_options/via_sms/screen/reset_password_via_
 import '../../app/auth/reset_password_otp/via_email/screen/reset_password_via_email_otp.dart';
 import '../../app/auth/reset_password_otp/via_sms/screen/reset_password_via_sms_otp.dart';
 import '../../app/bottom_nav_view/screen/bottom_navigation_view.dart';
-import '../../app/chat/screen/chat_screen.dart';
 import '../../app/kyc/kyc_bvn/screen/kyc_bvn.dart';
 import '../../app/kyc/kyc_bvn_otp/screen/kyc_bvn_otp.dart';
 import '../../app/kyc/kyc_nin/screen/kyc_nin.dart';
 import '../../app/screens/bid_details/screen/bid_details.dart';
+import '../../app/screens/chat/screen/chat_screen.dart';
 import '../../app/screens/messages/screen/messages_screen.dart';
 import '../../app/screens/profile/views/account_type/screen/account_type_screen.dart';
 import '../../app/screens/profile/views/faqs/screen/faqs_screen.dart';

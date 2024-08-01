@@ -13,7 +13,9 @@ searchResultsAndFilter(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
       Text(
-        "${formatIntNumber(numOfResults ?? 0)} Results found",
+        (numOfResults ?? 0) == 1
+            ? "${formatIntNumber(numOfResults ?? 0)} Result found"
+            : "${formatIntNumber(numOfResults ?? 0)} Results found",
         textAlign: TextAlign.center,
         style: defaultTextStyle(
           color: kTextBoldHeadingColor,

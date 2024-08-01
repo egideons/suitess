@@ -73,7 +73,7 @@ class HomeScreenController extends GetxController {
     update();
   }
 
-  //================ Show and Hide Available Agents =================//
+  //================  =================//
 
   goToBids() {}
 

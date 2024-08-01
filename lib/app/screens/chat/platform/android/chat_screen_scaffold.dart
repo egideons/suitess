@@ -3,11 +3,11 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:suitess/src/utils/components/my_app_bar.dart';
 
-import '../../../../src/constants/assets.dart';
-import '../../../../src/constants/consts.dart';
-import '../../../../src/controllers/app/chat_controller.dart';
-import '../../../../src/utils/components/circle_avatar_image.dart';
-import '../../../../theme/colors.dart';
+import '../../../../../src/constants/assets.dart';
+import '../../../../../src/constants/consts.dart';
+import '../../../../../src/controllers/app/chat_controller.dart';
+import '../../../../../src/utils/components/circle_avatar_image.dart';
+import '../../../../../theme/colors.dart';
 import '../../content/chat_bubble.dart';
 import '../../content/chat_text_field.dart';
 

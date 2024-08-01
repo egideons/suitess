@@ -6,7 +6,7 @@ import 'package:suitess/theme/colors.dart';
 
 import '../../../../../src/constants/consts.dart';
 import '../../../../../src/controllers/app/search_screen_controller.dart';
-import '../../../../../src/routes/routes.dart';
+import '../../../property/view_property/screen/view_property.dart';
 import '../../content/num_of_search_results_and_filter.dart';
 import '../../content/search_result_container.dart';
 
@@ -80,7 +80,15 @@ class SearchScreenScaffold extends GetView<SearchScreenController> {
                           preferredSize: Size.fromHeight(-10.0),
                           child: SizedBox(),
                         ),
-                        title: searchResultsAndFilter(492, () {}),
+                        title: searchResultsAndFilter(
+                          492,
+                          () {
+                            controller.showSearchFilterDraggableScrollSheet(
+                              context,
+                              media,
+                            );
+                          },
+                        ),
                       ),
                       SliverToBoxAdapter(
                         child: ListView.separated(
@@ -94,19 +102,19 @@ class SearchScreenScaffold extends GetView<SearchScreenController> {
                               colorScheme,
                               media,
                               onTap: () async {
-                                Get.toNamed(
-                                  Routes.viewProperty,
+                                // Get.toNamed(
+                                //   Routes.viewProperty,
+                                //   preventDuplicates: true,
+                                // );
+                                await Get.to(
+                                  () => const ViewProperty(),
+                                  routeName: "/view-property",
+                                  fullscreenDialog: true,
+                                  curve: Curves.easeInOut,
                                   preventDuplicates: true,
+                                  popGesture: false,
+                                  transition: Get.defaultTransition,
                                 );
-                                //  await Get.to(
-                                //       () => const ViewProperty(),
-                                //       routeName: "/view-property",
-                                //       fullscreenDialog: true,
-                                //       curve: Curves.easeInOut,
-                                //  preventDuplicates: true
-                                //       popGesture: false,
-                                //       transition: Get.defaultTransition,
-                                //     );
                               },
                               tradeType: "Sale",
                               propertyName: "4 Flats Woodland Apartment",
