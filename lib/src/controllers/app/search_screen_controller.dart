@@ -38,6 +38,8 @@ class SearchScreenController extends GetxController {
 
   var searchFN = FocusNode();
   var searchFilterNumOfBedroomsFN = FocusNode();
+  var searchFilterPriceMinFN = FocusNode();
+  var searchFilterPriceMaxFN = FocusNode();
 
   //================ Booleans =================\\
   var isRefreshing = false.obs;
@@ -148,5 +150,95 @@ class SearchScreenController extends GetxController {
     }
   }
 
-//=========== Number of Bedrooms =================\\
+//=========== Realtors Verification Status =================\\
+
+  var selectedFilter = FilterOption.showAll.obs;
+
+  void setSelectedFilter(FilterOption filter) {
+    selectedFilter.value = filter;
+  }
+
+  void realtorVerificationStatusOnChanged(FilterOption? value) {
+    if (value != null) {
+      setSelectedFilter(value);
+    }
+  }
+
+  // Function to get the display text for each FilterOption
+  String getFilterOptionText(FilterOption option) {
+    switch (option) {
+      case FilterOption.showAll:
+        return 'Show all';
+      case FilterOption.verified:
+        return 'Verified';
+      case FilterOption.unverified:
+        return 'Unverified';
+    }
+  }
+
+//=========== Furnishing =================\\
+
+  var selectedFurnishingOptions = <FurnishOption>[].obs;
+
+  void toggleFurnishOption(FurnishOption option) {
+    if (selectedFurnishingOptions.contains(option)) {
+      selectedFurnishingOptions.remove(option);
+    } else {
+      selectedFurnishingOptions.add(option);
+    }
+  }
+
+  // Function to get the display text for each FurnishOption
+  String getFurnishOptionText(FurnishOption option) {
+    switch (option) {
+      case FurnishOption.fullyFurnished:
+        return 'Fully furnished';
+      case FurnishOption.semiFurnished:
+        return 'Semi-furnished';
+      case FurnishOption.unfurnished:
+        return 'Unfurnished';
+      default:
+        return '';
+    }
+  }
+
+  bool isSelectedFurnishOption(FurnishOption option) {
+    return selectedFurnishingOptions.contains(option);
+  }
+
+//=========== Condition =================\\
+
+  var selectedConditionOption = <ConditionOption>[].obs;
+
+  void toggleConditionOption(ConditionOption option) {
+    if (selectedConditionOption.contains(option)) {
+      selectedConditionOption.remove(option);
+    } else {
+      selectedConditionOption.add(option);
+    }
+  }
+
+  // Function to get the display text for each ConditionOption
+  String getConditionOptionText(ConditionOption option) {
+    switch (option) {
+      case ConditionOption.newlyBuilt:
+        return 'Newly Built';
+      case ConditionOption.recentlyOccupied:
+        return 'Recently Occupied';
+      case ConditionOption.old:
+        return 'Old';
+      default:
+        return '';
+    }
+  }
+
+  bool isSelectedConditionOption(ConditionOption option) {
+    return selectedConditionOption.contains(option);
+  }
 }
+
+enum FilterOption { showAll, verified, unverified }
+
+enum FurnishOption { fullyFurnished, semiFurnished, unfurnished }
+
+enum ConditionOption { newlyBuilt, recentlyOccupied, old }

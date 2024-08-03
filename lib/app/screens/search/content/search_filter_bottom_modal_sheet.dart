@@ -136,6 +136,172 @@ class SearchFilterBottomModalSheet extends GetView<SearchScreenController> {
                       ),
                     ],
                   ),
+                  kSizedBox,
+                  filterScreenSectionHeader("Property Type"),
+                  kHalfSizedBox,
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                        child: formFieldContainer(
+                          colorScheme,
+                          media,
+                          // padding: const EdgeInsets.all(20),
+                          containerHeight: media.height * .075,
+                          borderRadius: 4,
+                          borderSideColor: colorScheme.inversePrimary,
+                          child: AndroidTextFormField(
+                            hintText: "Min",
+                            controller: controller.searchFilterPriceMaxEC,
+                            textInputAction: TextInputAction.done,
+                            focusNode: controller.searchFilterPriceMaxFN,
+                            textCapitalization: TextCapitalization.none,
+                            keyboardType: TextInputType.number,
+                            inputFormatters: [
+                              FilteringTextInputFormatter.digitsOnly,
+                              FilteringTextInputFormatter.singleLineFormatter,
+                            ],
+                            validator: (value) {
+                              return null;
+                            },
+                          ),
+                        ),
+                      ),
+                      kWidthSizedBox,
+                      Expanded(
+                        child: formFieldContainer(
+                          colorScheme,
+                          media,
+                          // padding: const EdgeInsets.all(20),
+                          containerHeight: media.height * .075,
+                          borderRadius: 4,
+                          borderSideColor: colorScheme.inversePrimary,
+                          child: AndroidTextFormField(
+                            hintText: "Max",
+                            controller: controller.searchFilterPriceMinEC,
+                            textInputAction: TextInputAction.done,
+                            focusNode: controller.searchFilterPriceMinFN,
+                            textCapitalization: TextCapitalization.none,
+                            keyboardType: TextInputType.number,
+                            inputFormatters: [
+                              FilteringTextInputFormatter.digitsOnly,
+                              FilteringTextInputFormatter.singleLineFormatter,
+                            ],
+                            validator: (value) {
+                              return null;
+                            },
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  kSizedBox,
+                  filterScreenSectionHeader("Realtors Verification Status"),
+                  kHalfSizedBox,
+                  ListView.separated(
+                    itemCount: FilterOption.values.length,
+                    physics: const BouncingScrollPhysics(),
+                    padding: const EdgeInsets.all(0),
+                    shrinkWrap: true,
+                    separatorBuilder: (context, index) =>
+                        const SizedBox(height: 0),
+                    itemBuilder: (context, index) {
+                      final option = FilterOption.values[index];
+                      return Obx(
+                        () => RadioListTile<FilterOption>(
+                          value: option,
+                          groupValue: controller.selectedFilter.value,
+                          contentPadding: const EdgeInsets.all(0),
+                          activeColor: kAccentColor,
+                          dense: true,
+                          onChanged:
+                              controller.realtorVerificationStatusOnChanged,
+                          // controller.realtorVerificationStatusOnChanged,
+                          title: Text(
+                            controller.getFilterOptionText(option),
+                            style: defaultTextStyle(
+                              color: kTextGreyColor,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                  kSizedBox,
+                  filterScreenSectionHeader("Furnishing"),
+                  kHalfSizedBox,
+                  ListView.separated(
+                    padding: const EdgeInsets.all(0),
+                    itemCount: FurnishOption.values.length,
+                    physics: const BouncingScrollPhysics(),
+                    shrinkWrap: true,
+                    separatorBuilder: (context, index) =>
+                        const SizedBox(height: 0),
+                    itemBuilder: (context, index) {
+                      final option = FurnishOption.values[index];
+                      return Obx(
+                        () {
+                          return CheckboxListTile(
+                            value: controller.isSelectedFurnishOption(option),
+                            onChanged: (_) =>
+                                controller.toggleFurnishOption(option),
+                            dense: true,
+                            contentPadding: const EdgeInsets.all(0),
+                            checkColor: kLightBackgroundColor,
+                            controlAffinity: ListTileControlAffinity.leading,
+                            activeColor: kAccentColor,
+                            title: Text(
+                              controller.getFurnishOptionText(option),
+                              style: defaultTextStyle(
+                                color: kTextGreyColor,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          );
+                        },
+                      );
+                    },
+                  ),
+                  kSizedBox,
+                  filterScreenSectionHeader("Condition"),
+                  kHalfSizedBox,
+                  ListView.separated(
+                    padding: const EdgeInsets.all(0),
+                    itemCount: ConditionOption.values.length,
+                    physics: const BouncingScrollPhysics(),
+                    shrinkWrap: true,
+                    separatorBuilder: (context, index) =>
+                        const SizedBox(height: 0),
+                    itemBuilder: (context, index) {
+                      final option = ConditionOption.values[index];
+                      return Obx(
+                        () {
+                          return CheckboxListTile(
+                            value: controller.isSelectedConditionOption(option),
+                            onChanged: (_) =>
+                                controller.toggleConditionOption(option),
+                            dense: true,
+                            contentPadding: const EdgeInsets.all(0),
+                            checkColor: kLightBackgroundColor,
+                            controlAffinity: ListTileControlAffinity.leading,
+                            activeColor: kAccentColor,
+                            title: Text(
+                              controller.getConditionOptionText(option),
+                              style: defaultTextStyle(
+                                color: kTextGreyColor,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          );
+                        },
+                      );
+                    },
+                  ),
                   kBigSizedBox,
                   AndroidOutlinedButton(
                     title: "Reset filters",
