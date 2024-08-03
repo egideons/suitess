@@ -70,8 +70,7 @@ class ResetPasswordViaSMSOTPScaffold
                         title: "OTP Verification",
                         subtitle:
                             "Enter the 4 digit verification code sent to ",
-                        phoneNumber:
-                            maskPhoneNumber(userPhoneNumber ?? "" ?? ""),
+                        phoneNumber: maskPhoneNumber(userPhoneNumber ?? ""),
                       ),
                     ],
                   ),
