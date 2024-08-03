@@ -109,4 +109,11 @@ class ViewPropertyController extends GetxController {
   toBidDetailsScreen() async {
     await Get.toNamed(Routes.bidDetails, preventDuplicates: true);
   }
+
+  toBookAppointment() async {
+    await Get.toNamed(Routes.bookAppointment, preventDuplicates: true);
+  }
+  // toBidDetailsScreen() async {
+  //   await Get.toNamed(Routes.bidDetails, preventDuplicates: true);
+  // }
 }

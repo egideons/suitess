@@ -87,6 +87,7 @@ class SearchScreenController extends GetxController {
       isDismissible: true,
       enableDrag: true,
       //  useSafeArea: true,
+
       constraints:
           BoxConstraints(maxHeight: media.height, maxWidth: media.width),
       builder: (context) {

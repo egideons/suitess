@@ -83,7 +83,7 @@ class ViewPropertyScaffold extends GetView<ViewPropertyController> {
                         controller.isScrollToTopBtnVisible.value
                             ? AndroidElevatedButton(
                                 title: "Book Appointment",
-                                onPressed: () {},
+                                onPressed: controller.toBookAppointment,
                               )
                             : const SizedBox(),
                         kSizedBox,
