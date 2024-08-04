@@ -36,6 +36,7 @@ import '../../app/screens/property/book_appointment/screen/book_appointment_scre
 import '../../app/screens/search/screen/search_screen.dart';
 import '../../app/splash/congratulations/screen/congratulations_screen.dart';
 import '../../app/splash/loading/screen/loading_screen.dart';
+import '../../app/splash/successful/screen/success_screen.dart';
 
 class Routes {
   //Splash screens
@@ -145,7 +146,7 @@ class Routes {
     GetPage(name: notificationsScreen, page: () => const NotificationsScreen()),
     GetPage(name: viewProperty, page: () => const ViewProperty()),
     GetPage(name: bookAppointment, page: () => const BookAppointmentScreen()),
-    // GetPage(name: successScreen, page: () => const SuccessScreen()),
+    GetPage(name: successScreen, page: () => const SuccessScreen()),
     GetPage(name: searchScreen, page: () => const SearchScreen()),
     GetPage(name: messagesScreen, page: () => const MessagesScreen()),
     GetPage(name: chatScreen, page: () => const ChatScreen()),

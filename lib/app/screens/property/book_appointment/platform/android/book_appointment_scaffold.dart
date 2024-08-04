@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:suitess/app/splash/successful/screen/success_screen.dart';
 import 'package:suitess/src/constants/consts.dart';
+import 'package:suitess/src/utils/buttons/android/android_elevated_button.dart';
 import 'package:suitess/src/utils/components/circle_avatar_image.dart';
 import 'package:suitess/src/utils/components/my_app_bar.dart';
 import 'package:suitess/theme/colors.dart';
 import 'package:table_calendar/table_calendar.dart';
 
-import '../../../../../../src/constants/assets.dart';
 import '../../../../../../src/controllers/app/book_appointment_controller.dart';
+import '../../content/reference_apartment.dart';
 
 class BookAppointmentScaffold extends GetView<BookAppointmentController> {
   const BookAppointmentScaffold({super.key});
@@ -220,166 +221,27 @@ class BookAppointmentScaffold extends GetView<BookAppointmentController> {
                     numOfBeds: 4,
                     tradeType: "Sale",
                   ),
+                  kBigSizedBox,
+                  AndroidElevatedButton(
+                    title: "Book now",
+                    onPressed: () async {
+                      await Get.off(
+                        () => const SuccessScreen(),
+                        routeName: "/success",
+                        fullscreenDialog: true,
+                        curve: Curves.easeInOut,
+                        preventDuplicates: true,
+                        popGesture: false,
+                        transition: Get.defaultTransition,
+                      );
+                    },
+                  )
                 ],
               ),
             );
           },
         ),
       ),
-    );
-  }
-
-  referenceApartment(
-    ColorScheme colorScheme,
-    Size media, {
-    String? tradeType,
-    String? propertyName,
-    String? propertyLocation,
-    int? numOfBeds,
-    int? numOfBaths,
-  }) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Container(
-          height: media.height * .15,
-          width: media.width * .300,
-          decoration: ShapeDecoration(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(6),
-            ),
-            image: const DecorationImage(
-              image: AssetImage(Assets.duplex1),
-              fit: BoxFit.cover,
-            ),
-          ),
-        ),
-        kHalfWidthSizedBox,
-        Expanded(
-          child: Column(
-            children: [
-              Text(
-                propertyName ?? "",
-                textAlign: TextAlign.start,
-                overflow: TextOverflow.ellipsis,
-                style: defaultTextStyle(
-                  fontSize: 14,
-                  color: kTextBoldHeadingColor,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-              kSmallSizedBox,
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  SvgPicture.asset(
-                    height: 20,
-                    width: 20,
-                    Assets.locationPinOutlineIconSvg,
-                    color: colorScheme.primary.withOpacity(.5),
-                    fit: BoxFit.contain,
-                  ),
-                  Expanded(
-                    child: Text(
-                      propertyLocation ?? "",
-                      overflow: TextOverflow.ellipsis,
-                      style: defaultTextStyle(
-                        fontSize: 12,
-                        color: colorScheme.inversePrimary,
-                        fontWeight: FontWeight.normal,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              kHalfSizedBox,
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Row(
-                    children: [
-                      SvgPicture.asset(
-                        height: 20,
-                        width: 20,
-                        Assets.bedOutlineSvg,
-                        color: colorScheme.primary.withOpacity(.5),
-                        fit: BoxFit.contain,
-                      ),
-                      Text(
-                        numOfBeds == 1 ? "$numOfBeds Bed" : "$numOfBeds Beds",
-                        overflow: TextOverflow.ellipsis,
-                        style: defaultTextStyle(
-                          fontSize: 10,
-                          color: colorScheme.inversePrimary,
-                          fontWeight: FontWeight.normal,
-                        ),
-                      ),
-                    ],
-                  ),
-                  kWidthSizedBox,
-                  Row(
-                    children: [
-                      SvgPicture.asset(
-                        height: 20,
-                        width: 20,
-                        Assets.bathOutlineSvg,
-                        color: colorScheme.primary.withOpacity(.5),
-                        fit: BoxFit.contain,
-                      ),
-                      Text(
-                        numOfBaths == 1
-                            ? "$numOfBaths Bath"
-                            : "$numOfBaths Baths",
-                        overflow: TextOverflow.ellipsis,
-                        style: defaultTextStyle(
-                          fontSize: 10,
-                          color: colorScheme.inversePrimary,
-                          fontWeight: FontWeight.normal,
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-              kHalfSizedBox,
-              Row(
-                children: [
-                  Text(
-                    "Status:",
-                    style: defaultTextStyle(
-                      fontSize: 12,
-                      color: kGreyColor,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                  Container(
-                    padding: const EdgeInsets.all(4),
-                    decoration: ShapeDecoration(
-                      color: kBannerBackgroundColor,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(4),
-                      ),
-                    ),
-                    child: Center(
-                      child: Text(
-                        tradeType ?? "",
-                        textAlign: TextAlign.center,
-                        style: defaultTextStyle(
-                          fontSize: 10,
-                          color: kBannerTextColor,
-                          fontWeight: FontWeight.normal,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-      ],
     );
   }
 }
