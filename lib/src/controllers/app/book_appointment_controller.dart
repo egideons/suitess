@@ -1,4 +1,4 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../models/time_appointment_model.dart';
@@ -12,6 +12,7 @@ class BookAppointmentController extends GetxController {
   void onInit() {
     super.onInit();
     scrollController.addListener(_scrollListener);
+    generateTimeOfDayList();
   }
 
   @override
@@ -64,18 +65,50 @@ class BookAppointmentController extends GetxController {
   }
 
   //=========== Time Appointment Categories ===============\\
-  var timeOfDay = [
-    TimeOfDayModel(time: "", isSelected: true),
-    TimeOfDayModel(time: "", isSelected: false),
-    TimeOfDayModel(time: "", isSelected: false),
-    TimeOfDayModel(time: "", isSelected: false),
-    TimeOfDayModel(time: "", isSelected: false),
-    TimeOfDayModel(time: "", isSelected: false),
-  ].obs;
+  var timeOfDayList = <TimeOfDayModel>[].obs;
 
-  void selectPropertyType(int index) {
-    for (int i = 0; i < timeOfDay.length; i++) {
-      timeOfDay[i].isSelected = i == index;
+  void generateTimeOfDayList() {
+    TimeOfDay startTime = const TimeOfDay(hour: 8, minute: 0);
+    TimeOfDay endTime = const TimeOfDay(hour: 18, minute: 0);
+
+    while (startTime.hour < endTime.hour ||
+        (startTime.hour == endTime.hour &&
+            startTime.minute <= endTime.minute)) {
+      timeOfDayList.add(TimeOfDayModel(
+          time: timeOfDayToString(startTime), isSelected: false));
+      startTime = addMinutesToTimeOfDay(startTime, 30);
+    }
+
+    // Optionally, set the first time as selected by default
+    if (timeOfDayList.isNotEmpty) {
+      timeOfDayList[0].isSelected = true;
+    }
+  }
+
+  TimeOfDay addMinutesToTimeOfDay(TimeOfDay time, int minutes) {
+    final int newMinutes = time.minute + minutes;
+    final int hoursToAdd = newMinutes ~/ 60;
+    final int remainingMinutes = newMinutes % 60;
+
+    return TimeOfDay(
+      hour: (time.hour + hoursToAdd) % 24,
+      minute: remainingMinutes,
+    );
+  }
+
+  String timeOfDayToString(TimeOfDay time) {
+    final String hour = time.hourOfPeriod < 10
+        ? '0${time.hourOfPeriod}'
+        : '${time.hourOfPeriod}';
+    final String minute =
+        time.minute < 10 ? '0${time.minute}' : '${time.minute}';
+    final String period = time.period == DayPeriod.am ? 'AM' : 'PM';
+    return '$hour:$minute $period';
+  }
+
+  void selectTimeOfDay(int index) {
+    for (int i = 0; i < timeOfDayList.length; i++) {
+      timeOfDayList[i].isSelected = i == index;
     }
     update();
   }
