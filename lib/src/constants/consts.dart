@@ -101,6 +101,21 @@ String maskPhoneNumber(String phoneNumber) {
   }
 }
 
+String maskCardNumber(String cardNumber) {
+  // Ensure the input string has at least 4 characters
+  if (cardNumber.length < 4) {
+    throw ArgumentError('Card Number must be at least 4 characters long.');
+  }
+
+  // Take the last 4 characters
+  String lastFour = cardNumber.substring(cardNumber.length - 4);
+
+  // Mask the remaining characters
+  String masked = '**** **** **** $lastFour';
+
+  return masked;
+}
+
 //===================== DateTime Formate ==========================\\
 
 String formatDateAndTime(DateTime dateTime) {
@@ -140,6 +155,13 @@ String format12HrTime(DateTime time) {
 String formatDate(DateTime date) {
   // Format the date as '23 Feb 2020'
   String formattedDate = DateFormat('MMM dd, y').format(date);
+
+  return formattedDate;
+}
+
+String formatDayAndMonth(DateTime date) {
+  // Format the date as '23 Feb 2020'
+  String formattedDate = DateFormat('MM/dd').format(date);
 
   return formattedDate;
 }

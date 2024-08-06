@@ -27,7 +27,7 @@ class BookAppointmentController extends GetxController {
   var isRefreshing = false.obs;
   var hasProperties = false.obs;
   var isScrollToTopBtnVisible = false.obs;
-  var today = DateTime.now();
+  var selectedDay = DateTime.now();
 
   //================ controllers =================\\
 
@@ -118,8 +118,8 @@ class BookAppointmentController extends GetxController {
 
   //====================== Calendar Functions =======================\\
   void onDaySelected(DateTime day, DateTime focusedDay) async {
-    today = day;
-    log("Selected day ======> ${today.toString().split(" ")[0]}");
+    selectedDay = day;
+    log("Selected day ======> ${selectedDay.toString().split(" ")[0]}");
     update();
   }
 }

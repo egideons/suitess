@@ -18,6 +18,9 @@ faqsExpansionTile(ColorScheme colorScheme, {String? title, String? content}) {
         fontWeight: FontWeight.w500,
       ),
     ),
+    shape: RoundedRectangleBorder(
+      side: BorderSide(color: kTransparentColor),
+    ),
     childrenPadding: const EdgeInsets.all(10),
     children: [
       ReadMoreText(

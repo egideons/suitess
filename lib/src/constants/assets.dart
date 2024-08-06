@@ -71,6 +71,8 @@ class Assets {
   static const duplex2 = "assets/images/png/duple2.png";
   static const duplex3 = "assets/images/png/duplex3.png";
   static const duplex4 = "assets/images/png/duplex4.png";
+  static const visaPng = "assets/images/png/visa.png";
+  static const mastercardPng = "assets/images/png/mastercard.png";
 
 //======== SVG =========\\
   static const onboarding1Svg = "assets/images/svg/onboarding_1.svg";
@@ -87,6 +89,10 @@ class Assets {
   static const indoorBedroomSvg = "assets/images/svg/indoor-bedroom.svg";
   static const indoorSittingRoomSvg =
       "assets/images/svg/indoor-sitting-room.svg";
+  static const paymentMethod = "assets/images/svg/payment_method.svg";
+  static const bankBuildingSvg = "assets/images/svg/bank-building.svg";
+  static const visaSvg = "assets/images/svg/visa.svg";
+  static const mastercardSvg = "assets/images/svg/mastercard.svg";
 
 //Placeholder Image
   static const placeholderImage = "assets/images/png/placeholder_image.png";

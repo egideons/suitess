@@ -10,10 +10,10 @@ bookAppointmentCalender(BookAppointmentController controller) {
   return TableCalendar(
     firstDay: DateTime.utc(1940, 01, 01),
     lastDay: DateTime.utc(2124, 12, 31),
-    focusedDay: controller.today,
+    focusedDay: controller.selectedDay,
     onDaySelected: controller.onDaySelected,
     availableGestures: AvailableGestures.all,
-    selectedDayPredicate: (day) => isSameDay(day, controller.today),
+    selectedDayPredicate: (day) => isSameDay(day, controller.selectedDay),
     startingDayOfWeek: StartingDayOfWeek.monday,
     rowHeight: 40,
     daysOfWeekHeight: 20,
