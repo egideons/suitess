@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -25,6 +27,7 @@ class BookAppointmentController extends GetxController {
   var isRefreshing = false.obs;
   var hasProperties = false.obs;
   var isScrollToTopBtnVisible = false.obs;
+  var today = DateTime.now();
 
   //================ controllers =================\\
 
@@ -110,6 +113,13 @@ class BookAppointmentController extends GetxController {
     for (int i = 0; i < timeOfDayList.length; i++) {
       timeOfDayList[i].isSelected = i == index;
     }
+    update();
+  }
+
+  //====================== Calendar Functions =======================\\
+  void onDaySelected(DateTime day, DateTime focusedDay) async {
+    today = day;
+    log("Selected day ======> ${today.toString().split(" ")[0]}");
     update();
   }
 }

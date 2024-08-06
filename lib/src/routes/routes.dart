@@ -33,6 +33,7 @@ import '../../app/screens/profile/views/privacy_and_security/screen/privacy_and_
 import '../../app/screens/profile/views/support_and_feedback/screen/support_and_feedback_screen.dart';
 import '../../app/screens/property/add_property/screen/landlord_add_property.dart';
 import '../../app/screens/property/book_appointment/screen/book_appointment_screen.dart';
+import '../../app/screens/property/purchase_property/screen/purchase_property_screen.dart';
 import '../../app/screens/search/screen/search_screen.dart';
 import '../../app/splash/congratulations/screen/congratulations_screen.dart';
 import '../../app/splash/loading/screen/loading_screen.dart';
@@ -79,6 +80,7 @@ class Routes {
   static const notificationsScreen = "/notifications";
   static const viewProperty = "/view-property";
   static const bookAppointment = "/book-appointment";
+  static const purchaseProperty = "/purchase-property";
   static const searchScreen = "/search";
   static const landLordWallet = "/landlord-wallet";
   static const landLordChat = "/landlord-chat";
@@ -146,6 +148,7 @@ class Routes {
     GetPage(name: notificationsScreen, page: () => const NotificationsScreen()),
     GetPage(name: viewProperty, page: () => const ViewProperty()),
     GetPage(name: bookAppointment, page: () => const BookAppointmentScreen()),
+    GetPage(name: purchaseProperty, page: () => const PurchasePropertyScreen()),
     GetPage(name: successScreen, page: () => const SuccessScreen()),
     GetPage(name: searchScreen, page: () => const SearchScreen()),
     GetPage(name: messagesScreen, page: () => const MessagesScreen()),

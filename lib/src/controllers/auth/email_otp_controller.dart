@@ -14,7 +14,7 @@ class EmailOTPController extends GetxController {
   @override
   void onInit() {
     startTimer();
-
+    pin1FN.requestFocus();
     super.onInit();
   }
 

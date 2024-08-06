@@ -19,8 +19,8 @@ referenceApartment(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
       Container(
-        height: media.height * .15,
-        width: media.width * .300,
+        height: media.height * .14,
+        width: media.width * .26,
         decoration: ShapeDecoration(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(6),
@@ -130,6 +130,7 @@ referenceApartment(
                     fontWeight: FontWeight.w500,
                   ),
                 ),
+                kHalfWidthSizedBox,
                 Container(
                   padding: const EdgeInsets.all(4),
                   decoration: ShapeDecoration(

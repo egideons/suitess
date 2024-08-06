@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import '../../../../src/constants/consts.dart';
 
 emailOTPPageHeader({
-  colorScheme,
-  media,
-  title,
-  subtitle,
-  email,
+  ColorScheme? colorScheme,
+  Size? media,
+  String? title,
+  String? subtitle,
+  String? email,
 }) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.center,
@@ -20,13 +20,13 @@ emailOTPPageHeader({
           textAlign: TextAlign.center,
           style: defaultTextStyle(
             fontSize: 24.0,
-            color: colorScheme.primary,
+            color: colorScheme!.primary,
           ),
         ),
       ),
       kSizedBox,
       SizedBox(
-        width: media.width - 100,
+        width: media!.width - 50,
         child: RichText(
           textAlign: TextAlign.center,
           maxLines: 10,

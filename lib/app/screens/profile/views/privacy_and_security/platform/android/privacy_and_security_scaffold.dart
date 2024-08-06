@@ -91,8 +91,7 @@ class PrivacyAndSecurityScaffold extends GetView<PrivacyAndSecurityController> {
                       ],
                     ),
                   ),
-                  kSizedBox,
-                  kSizedBox,
+                  kBigSizedBox,
                   Container(
                     decoration: ShapeDecoration(
                       shape: RoundedRectangleBorder(
@@ -136,8 +135,7 @@ class PrivacyAndSecurityScaffold extends GetView<PrivacyAndSecurityController> {
                             ),
                           ),
                   ),
-                  kSizedBox,
-                  kSizedBox,
+                  kBigSizedBox,
                   toggleOption(
                     colorScheme,
                     title: "Third Party Sharing",

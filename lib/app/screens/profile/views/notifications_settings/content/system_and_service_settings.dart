@@ -83,7 +83,7 @@ systemAndServiceSettings(
           () => toggleOption(
             controller,
             colorScheme,
-            title: "New Tips Availale",
+            title: "New Tips Available",
             value: controller.enableNewTipsAvailableNotif.value,
             onChanged: controller.toggleNewTipsAvailable,
           ),

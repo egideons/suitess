@@ -137,7 +137,7 @@ class SearchFilterBottomModalSheet extends GetView<SearchScreenController> {
                     ],
                   ),
                   kSizedBox,
-                  filterScreenSectionHeader("Property Type"),
+                  filterScreenSectionHeader("Price range"),
                   kHalfSizedBox,
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -213,11 +213,13 @@ class SearchFilterBottomModalSheet extends GetView<SearchScreenController> {
                           value: option,
                           groupValue: controller.selectedFilter.value,
                           contentPadding: const EdgeInsets.all(0),
-                          activeColor: kAccentColor,
                           dense: true,
+                          activeColor: kAccentColor,
+                          hoverColor: kAccentColor,
+                          visualDensity:
+                              const VisualDensity(horizontal: -4, vertical: -4),
                           onChanged:
                               controller.realtorVerificationStatusOnChanged,
-                          // controller.realtorVerificationStatusOnChanged,
                           title: Text(
                             controller.getFilterOptionText(option),
                             style: defaultTextStyle(
@@ -251,6 +253,10 @@ class SearchFilterBottomModalSheet extends GetView<SearchScreenController> {
                             dense: true,
                             contentPadding: const EdgeInsets.all(0),
                             checkColor: kLightBackgroundColor,
+                            visualDensity: const VisualDensity(
+                              horizontal: -4,
+                              vertical: -4,
+                            ),
                             controlAffinity: ListTileControlAffinity.leading,
                             activeColor: kAccentColor,
                             title: Text(
@@ -288,6 +294,10 @@ class SearchFilterBottomModalSheet extends GetView<SearchScreenController> {
                             contentPadding: const EdgeInsets.all(0),
                             checkColor: kLightBackgroundColor,
                             controlAffinity: ListTileControlAffinity.leading,
+                            visualDensity: const VisualDensity(
+                              horizontal: -4,
+                              vertical: -4,
+                            ),
                             activeColor: kAccentColor,
                             title: Text(
                               controller.getConditionOptionText(option),

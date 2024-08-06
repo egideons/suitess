@@ -97,8 +97,8 @@ class PrivacyAndSecurityController extends GetxController {
   }
 
   void selectPrivateActivityStatusVisibility() {
-    activityStatusIsPrivate.value = false;
-    activityStatusIsPublic.value = true;
+    activityStatusIsPublic.value = false;
+    activityStatusIsPrivate.value = true;
     Get.close(0);
     update();
   }

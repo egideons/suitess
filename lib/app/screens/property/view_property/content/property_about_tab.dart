@@ -73,7 +73,7 @@ aboutTab(
         textColor: kAccentColor,
         borderColor: kAccentColor,
         borderWidth: 1,
-        onPressed: () {},
+        onPressed: controller.toPurchaseProperty,
       ),
     ],
   );

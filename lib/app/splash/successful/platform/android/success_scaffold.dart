@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:suitess/src/constants/consts.dart';
 import 'package:suitess/src/utils/buttons/android/android_elevated_button.dart';
+import 'package:suitess/src/utils/components/my_app_bar.dart';
 import 'package:suitess/theme/colors.dart';
 
 import '../../../../../src/controllers/app/success_screen_controller.dart';
@@ -15,6 +16,12 @@ class SuccessScaffold extends GetView<SuccessScreenController> {
     var media = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: colorScheme.surface,
+      appBar: myAppBar(
+        colorScheme,
+        media,
+        leadingIsVisible: false,
+        toolBarHeight: 10,
+      ),
       body: SafeArea(
         child: ListView(
           padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),

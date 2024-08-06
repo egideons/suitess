@@ -184,20 +184,7 @@ class EmailOTPScaffold extends GetView<EmailOTPController> {
                           ],
                         ),
                       ),
-                      const SizedBox(height: kDefaultPadding * 2),
-                      GetBuilder<EmailOTPController>(
-                        builder: (controller) {
-                          return AndroidElevatedButton(
-                            title: "Verify",
-                            isLoading:
-                                otpController.isLoading.value ? true : false,
-                            disable:
-                                otpController.formIsValid.value ? false : true,
-                            onPressed: otpController.submitOTP,
-                          );
-                        },
-                      ),
-                      const SizedBox(height: kDefaultPadding * 2),
+                      kBigSizedBox,
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -238,7 +225,20 @@ class EmailOTPScaffold extends GetView<EmailOTPController> {
                           ),
                         ],
                       ),
-                      const SizedBox(height: kDefaultPadding * 4),
+                      const SizedBox(height: kDefaultPadding * 2),
+                      GetBuilder<EmailOTPController>(
+                        builder: (controller) {
+                          return AndroidElevatedButton(
+                            title: "Verify",
+                            isLoading:
+                                otpController.isLoading.value ? true : false,
+                            disable:
+                                otpController.formIsValid.value ? false : true,
+                            onPressed: otpController.submitOTP,
+                          );
+                        },
+                      ),
+                      const SizedBox(height: kDefaultPadding * 2),
                     ],
                   ),
                 ),
@@ -374,19 +374,7 @@ class EmailOTPScaffold extends GetView<EmailOTPController> {
                 ],
               ),
             ),
-            kSizedBox,
-            const SizedBox(height: kDefaultPadding * 2),
-            GetBuilder<EmailOTPController>(
-              builder: (controller) {
-                return AndroidElevatedButton(
-                  title: "Verify",
-                  isLoading: otpController.isLoading.value ? true : false,
-                  disable: otpController.formIsValid.value ? false : true,
-                  onPressed: otpController.submitOTP,
-                );
-              },
-            ),
-            const SizedBox(height: kDefaultPadding * 2),
+            kBigSizedBox,
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -427,7 +415,18 @@ class EmailOTPScaffold extends GetView<EmailOTPController> {
                 ),
               ],
             ),
-            kSizedBox,
+            const SizedBox(height: kDefaultPadding * 2),
+            GetBuilder<EmailOTPController>(
+              builder: (controller) {
+                return AndroidElevatedButton(
+                  title: "Verify",
+                  isLoading: otpController.isLoading.value ? true : false,
+                  disable: otpController.formIsValid.value ? false : true,
+                  onPressed: otpController.submitOTP,
+                );
+              },
+            ),
+            const SizedBox(height: kDefaultPadding * 2),
           ],
         ),
       ),
