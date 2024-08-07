@@ -9,7 +9,7 @@ import 'package:suitess/theme/colors.dart';
 
 import '../../../../../../src/controllers/app/book_appointment_controller.dart';
 import '../../content/book_appointment_calendar.dart';
-import '../../content/reference_apartment.dart';
+import '../../content/reference_booking_apartment.dart';
 
 class BookAppointmentScaffold extends GetView<BookAppointmentController> {
   const BookAppointmentScaffold({super.key});
@@ -169,7 +169,7 @@ class BookAppointmentScaffold extends GetView<BookAppointmentController> {
                     ),
                   ),
                   kHalfSizedBox,
-                  referenceApartment(
+                  referenceBookingApartment(
                     colorScheme,
                     media,
                     propertyName: "4 Flats Woodland Apartment",

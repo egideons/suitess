@@ -1,11 +1,11 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../app/screens/property/checkout_property/screen/checkout_property_screen.dart';
+import '../../../app/screens/property/checkout_property/content/checkout_property_congratulations_modal_sheet.dart';
 
-class PurchasePropertyController extends GetxController {
-  static PurchasePropertyController get instance {
-    return Get.find<PurchasePropertyController>();
+class CheckoutPropertyController extends GetxController {
+  static CheckoutPropertyController get instance {
+    return Get.find<CheckoutPropertyController>();
   }
 
   @override
@@ -60,42 +60,24 @@ class PurchasePropertyController extends GetxController {
     isRefreshing.value = false;
     update();
   }
+  //================ Search Filter Screen ================\\
 
-  //============= Payment Method ================\\
+  showCongratulationsModalSheet(BuildContext context, Size media) async {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      isDismissible: true,
+      enableDrag: true,
+      //  useSafeArea: true,
 
-  payWithWallet() async {
-    await Get.to(
-      () => const CheckoutPropertyScreen(paymentMethod: "Wallet"),
-      routeName: "/checkout-property",
-      fullscreenDialog: true,
-      curve: Curves.easeInOut,
-      preventDuplicates: true,
-      popGesture: false,
-      transition: Get.defaultTransition,
-    );
-  }
-
-  payWithATMCard() async {
-    await Get.to(
-      () => const CheckoutPropertyScreen(paymentMethod: "ATM Card"),
-      routeName: "/checkout-property",
-      fullscreenDialog: true,
-      curve: Curves.easeInOut,
-      preventDuplicates: true,
-      popGesture: false,
-      transition: Get.defaultTransition,
-    );
-  }
-
-  payWithBankTransfer() async {
-    await Get.to(
-      () => const CheckoutPropertyScreen(paymentMethod: "Bank Transfer"),
-      routeName: "/checkout-property",
-      fullscreenDialog: true,
-      curve: Curves.easeInOut,
-      preventDuplicates: true,
-      popGesture: false,
-      transition: Get.defaultTransition,
+      constraints:
+          BoxConstraints(maxHeight: media.height, maxWidth: media.width),
+      builder: (context) {
+        return GestureDetector(
+          onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
+          child: const CheckoutPropertyCongratulationsModalSheet(),
+        );
+      },
     );
   }
 }

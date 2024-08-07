@@ -42,6 +42,7 @@ class Assets {
   static const searchOutlineSvg = "assets/icons/svg/search-outline.svg";
   static const searchFilterSvg = "assets/icons/svg/search_filter-outline.svg";
   static const arrowUpSvg = "assets/icons/svg/arrow-up.svg";
+  static const creditCardFilledSvg = "assets/icons/svg/credit-card-filled.svg";
 
 //=================== Images ===================\\
 
@@ -93,6 +94,7 @@ class Assets {
   static const bankBuildingSvg = "assets/images/svg/bank-building.svg";
   static const visaSvg = "assets/images/svg/visa.svg";
   static const mastercardSvg = "assets/images/svg/mastercard.svg";
+  static const congratulationsSvg = "assets/images/svg/congratulations.svg";
 
 //Placeholder Image
   static const placeholderImage = "assets/images/png/placeholder_image.png";

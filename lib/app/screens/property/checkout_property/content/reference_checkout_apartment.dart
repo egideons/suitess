@@ -5,7 +5,7 @@ import '../../../../../src/constants/assets.dart';
 import '../../../../../src/constants/consts.dart';
 import '../../../../../theme/colors.dart';
 
-referenceApartment(
+referenceCheckoutApartment(
   ColorScheme colorScheme,
   Size media, {
   String? tradeType,

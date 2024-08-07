@@ -3,16 +3,17 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../../src/controllers/app/purchase_property_controller.dart';
-import '../platform/android/purchase_property_scaffold.dart';
+import '../../../../../src/controllers/app/checkout_property_controller.dart';
+import '../platform/android/checkout_property_scaffold.dart';
 
-class PurchasePropertyScreen extends StatelessWidget {
-  const PurchasePropertyScreen({super.key});
+class CheckoutPropertyScreen extends StatelessWidget {
+  final String? paymentMethod;
+  const CheckoutPropertyScreen({super.key, this.paymentMethod});
 
   @override
   Widget build(BuildContext context) {
     //Initialize the controller
-    Get.put(PurchasePropertyController());
+    Get.put(CheckoutPropertyController());
 
     if (Platform.isIOS) {
       return GestureDetector(
@@ -22,7 +23,7 @@ class PurchasePropertyScreen extends StatelessWidget {
     }
     return GestureDetector(
       onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
-      child: const PurchasePropertyScaffold(),
+      child: CheckoutPropertyScaffold(paymentMethod: paymentMethod),
     );
   }
 }
