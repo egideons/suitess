@@ -95,6 +95,7 @@ class Assets {
   static const visaSvg = "assets/images/svg/visa.svg";
   static const mastercardSvg = "assets/images/svg/mastercard.svg";
   static const congratulationsSvg = "assets/images/svg/congratulations.svg";
+  static const successTickSvg = "assets/images/svg/success-tick.svg";
 
 //Placeholder Image
   static const placeholderImage = "assets/images/png/placeholder_image.png";

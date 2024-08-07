@@ -90,6 +90,9 @@ class Routes {
   static const landLordAddProperty = "/landlord-add-property";
   static const bidDetails = "/landlord-bid-details";
 
+  //Wallet Section
+  static const walletScreen = "/wallet";
+
   //Messages Section
   static const messagesScreen = "/messages";
   static const chatScreen = "/chat";
@@ -157,6 +160,7 @@ class Routes {
     GetPage(name: messagesScreen, page: () => const MessagesScreen()),
     GetPage(name: chatScreen, page: () => const ChatScreen()),
     // GetPage(name: callScreen, page: () => const CallScreen()),
+    // GetPage(name: walletScreen, page: () => const WalletScreen()),
     GetPage(name: profileScreen, page: () => const ProfileScreen()),
     GetPage(name: contactDetails, page: () => const ContactDetails()),
     GetPage(name: passwordSettings, page: () => const PasswordSettingsScreen()),

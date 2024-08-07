@@ -9,9 +9,9 @@ import '../../../../../src/constants/consts.dart';
 import '../../../../../src/controllers/app/checkout_property_controller.dart';
 import '../../../../../theme/colors.dart';
 
-class CheckoutPropertyCongratulationsModalSheet
+class ScheduleMoveInCongratulationsModalSheet
     extends GetView<CheckoutPropertyController> {
-  const CheckoutPropertyCongratulationsModalSheet({super.key});
+  const ScheduleMoveInCongratulationsModalSheet({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +40,7 @@ class CheckoutPropertyCongratulationsModalSheet
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  SvgPicture.asset(Assets.congratulationsSvg),
+                  SvgPicture.asset(Assets.successTickSvg),
                   kSizedBox,
                   Text(
                     "Congratulations",
@@ -64,25 +64,10 @@ class CheckoutPropertyCongratulationsModalSheet
                   ),
                   kBigSizedBox,
                   AndroidElevatedButton(
-                    title: "Schedule move-in",
-                    onPressed: () {
-                      controller.showScheduleMoveInModalSheet(context, media);
-                    },
+                    title: "Return home",
+                    onPressed: controller.goHome,
                   ),
                   kHalfSizedBox,
-                  TextButton(
-                    onPressed: () {},
-                    child: Text(
-                      "Download receipt",
-                      textAlign: TextAlign.center,
-                      maxLines: 10,
-                      style: defaultTextStyle(
-                        color: kAccentColor,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 14,
-                      ),
-                    ),
-                  ),
                 ],
               ),
             );
