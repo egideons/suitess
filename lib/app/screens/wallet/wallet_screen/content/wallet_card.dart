@@ -145,7 +145,7 @@ walletCard(
                   ),
                   Expanded(
                     child: Text(
-                      bvn ?? "",
+                      maskBVN(bvn ?? ""),
                       textAlign: TextAlign.end,
                       overflow: TextOverflow.ellipsis,
                       style: defaultTextStyle(
@@ -164,7 +164,7 @@ walletCard(
           top: 1.4,
           left: 1.4,
           child: SvgPicture.asset(
-            Assets.walletCardEclipse1Svg,
+            Assets.walletCardEllipse1Svg,
             color: kStarColor,
           ),
         ),
@@ -172,7 +172,7 @@ walletCard(
           bottom: 1.5,
           right: 1.4,
           child: SvgPicture.asset(
-            Assets.walletCardEclipse2Svg,
+            Assets.walletCardEllipse2Svg,
             color: kStarColor,
           ),
         ),

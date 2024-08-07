@@ -58,6 +58,27 @@ class WalletScaffold extends GetView<WalletScreenController> {
                   addInkWell(colorScheme, () {}),
                 ],
               ),
+              kBigSizedBox,
+              Container(
+                decoration: ShapeDecoration(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                    side: BorderSide(
+                      width: .5,
+                      color: colorScheme.inversePrimary.withOpacity(.5),
+                    ),
+                  ),
+                ),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                child: const Column(
+                  children: [
+                    Row(
+                      children: [],
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
         ),

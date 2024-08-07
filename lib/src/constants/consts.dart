@@ -131,6 +131,36 @@ String maskCardNumber(String cardNumber) {
   return masked;
 }
 
+String maskAcctNumber(String number) {
+  // Ensure the string has at least 4 characters
+  if (number.length < 4) {
+    throw ArgumentError('Number must be at least 4 characters long.');
+  }
+
+  // Take the last 4 characters
+  String lastFour = number.substring(number.length - 4);
+
+  // Mask the remaining characters
+  String masked = '******$lastFour';
+
+  return masked;
+}
+
+String maskBVN(String number) {
+  // Ensure the string has at least 4 characters
+  if (number.length < 4) {
+    throw ArgumentError('Number must be at least 4 characters long.');
+  }
+
+  // Take the last 4 characters
+  String lastFour = number.substring(number.length - 4);
+
+  // Mask the remaining characters
+  String masked = '*******$lastFour';
+
+  return masked;
+}
+
 //===================== DateTime Formate ==========================\\
 
 String formatDateAndTime(DateTime dateTime) {
