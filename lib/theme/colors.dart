@@ -9,7 +9,7 @@ Color kAccentColor = const Color(0xFF41B696);
 Color kUserChatColor = const Color(0xFFD9F2EB);
 Color kSenderChatColor = const Color(0xFFEEF2F6);
 
-Color kGreenCardColor = const Color(0xFF41B696);
+Color kWalletCardColor = const Color(0xFF21584B);
 Color kRedCardColor = kRedColor.withOpacity(0.15);
 Color kAppBarIconColor = const Color(0xFF2D2D2D);
 

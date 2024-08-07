@@ -14,13 +14,13 @@ Widget viewPropertyCupertinoShowNewBidsAlert(
     height: media.height * .09,
     padding: const EdgeInsets.symmetric(horizontal: 20),
     decoration: ShapeDecoration(
-      color: kGreenCardColor,
+      color: kAccentColor,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16),
       ),
       shadows: [
         BoxShadow(
-          color: kGreenCardColor.withOpacity(0.2),
+          color: kAccentColor.withOpacity(0.2),
           offset: const Offset(4, 10),
           blurRadius: 10,
           spreadRadius: 4,

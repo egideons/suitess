@@ -89,6 +89,21 @@ const String emailPattern =
     r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))\s*$';
 
 //===================== Mask Phone Number ==========================\\
+String maskWalletBalance(String walletBalance) {
+  if (walletBalance.contains('.')) {
+    // Split the walletBalance string into two parts: before and after the decimal point
+    List<String> parts = walletBalance.split('.');
+    // Create masked versions of both parts
+    String maskedBeforeDecimal = parts[0].replaceAll(RegExp(r'[0-9]'), '*');
+    String maskedAfterDecimal = parts[1].replaceAll(RegExp(r'[0-9]'), '*');
+    // Combine both masked parts with the decimal point
+    return '$maskedBeforeDecimal.$maskedAfterDecimal';
+  } else {
+    // If no decimal point, mask the entire walletBalance string
+    return walletBalance.replaceAll(RegExp(r'[0-9]'), '*');
+  }
+}
+
 String maskPhoneNumber(String phoneNumber) {
   if (phoneNumber.length <= 4) {
     // If the phone number is too short, return it as is.
@@ -195,6 +210,11 @@ String doubleFormattedTextWithDecimal(double value) {
 
 String intFormattedText(int value) {
   final numberFormat = NumberFormat('#,##0');
+  return numberFormat.format(value);
+}
+
+String intFormattedTextWithDecimal(int value) {
+  final numberFormat = NumberFormat('#,##0.00');
   return numberFormat.format(value);
 }
 

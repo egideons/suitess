@@ -20,13 +20,13 @@ Widget homeScreenNoOfAvailableAgentsCupertinoCard(
       height: media.height * .09,
       padding: const EdgeInsets.symmetric(horizontal: 20),
       decoration: ShapeDecoration(
-        color: kGreenCardColor,
+        color: kAccentColor,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
         ),
         shadows: [
           BoxShadow(
-            color: kGreenCardColor.withOpacity(0.4),
+            color: kAccentColor.withOpacity(0.4),
             offset: const Offset(0, -20),
             spreadRadius: -10,
           ),

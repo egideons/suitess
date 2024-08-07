@@ -31,6 +31,7 @@ dependencies:
   # animate_do:
   url_launcher:
   table_calendar:
+  dotted_border:
 
 dev_dependencies:
   flutter_test:

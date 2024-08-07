@@ -1,20 +1,18 @@
-import 'dart:developer';
-
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
-import '../../models/property_category_model.dart';
-import '../../routes/routes.dart';
+import '../../../main.dart';
 
-class HomeScreenController extends GetxController {
-  static HomeScreenController get instance {
-    return Get.find<HomeScreenController>();
+class WalletScreenController extends GetxController {
+  static WalletScreenController get instance {
+    return Get.find<WalletScreenController>();
   }
 
   @override
   void onInit() {
     super.onInit();
     scrollController.addListener(_scrollListener);
+    loadVisibilityState();
   }
 
   @override
@@ -25,17 +23,9 @@ class HomeScreenController extends GetxController {
 
   //================ variables =================\\
   var isRefreshing = false.obs;
-  var hasProperties = false.obs;
-  var isKYCVerified = false.obs;
-  var availableAgentsIsVisible = false.obs;
   var isScrollToTopBtnVisible = false.obs;
   var hasNotifications = true.obs;
-  var propertyCategories = [
-    PropertyCategoryModel(name: "Apartments/Flats", isSelected: true),
-    PropertyCategoryModel(name: "Lands", isSelected: false),
-    PropertyCategoryModel(name: "Shortlets", isSelected: false),
-    PropertyCategoryModel(name: "Commercial Properties", isSelected: false),
-  ].obs;
+  var hideBalance = false.obs;
 
   //================ controllers =================\\
 
@@ -74,31 +64,22 @@ class HomeScreenController extends GetxController {
     update();
   }
 
-  //================  =================//
-
-  goToBids() {}
-
-  void selectPropertyCategory(int index) {
-    for (int i = 0; i < propertyCategories.length; i++) {
-      propertyCategories[i].isSelected = i == index;
-    }
+//================ Wallet functions ================\\
+  changeVisibilityState() {
+    saveVisibilityState(!hideBalance.value);
+    hideBalance.value = !hideBalance.value;
     update();
   }
 
-  showAvailableAgents() {
-    availableAgentsIsVisible.value = true;
+  //=========================== Save card state ============================//
+  // Load visibility state from SharedPreferences
+  Future<void> loadVisibilityState() async {
+    hideBalance.value = prefs.getBool('hideBalance') ?? hideBalance.value;
     update();
-    log("Available agents are visible: ${availableAgentsIsVisible.value}");
   }
 
-  hideAvailableAgents() {
-    availableAgentsIsVisible.value = false;
-    update();
-    log("Available agents are visible: ${availableAgentsIsVisible.value}");
-  }
-
-  //=================== Go to Search Screen ===================\\
-  goToSearchScreen() {
-    Get.toNamed(Routes.searchScreen, preventDuplicates: true);
+  // Save visibility state to SharedPreferences
+  Future<void> saveVisibilityState(bool value) async {
+    await prefs.setBool('hideBalance', value);
   }
 }

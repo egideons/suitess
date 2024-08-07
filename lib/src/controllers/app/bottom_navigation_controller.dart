@@ -3,9 +3,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:suitess/app/screens/home/screen/home_screen.dart';
 import 'package:suitess/app/screens/profile/screen/profile_screen.dart';
-import 'package:suitess/src/constants/consts.dart';
 
 import '../../../app/screens/messages/screen/messages_screen.dart';
+import '../../../app/screens/wallet/wallet_screen/screen/wallet_screen.dart';
 import '../../../theme/colors.dart';
 import '../../constants/assets.dart';
 
@@ -19,15 +19,7 @@ class BottomNavigationController extends GetxController {
   //=============== LANDLORD SCREENS ================\\
   navScreens(colorScheme) => [
         const HomeScreen(),
-        Container(
-          color: colorScheme.surface,
-          child: Center(
-            child: Text(
-              "Wallet",
-              style: defaultTextStyle(),
-            ),
-          ),
-        ),
+        const WalletScreen(),
         const MessagesScreen(),
         const ProfileScreen(),
       ];

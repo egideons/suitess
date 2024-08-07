@@ -48,9 +48,7 @@ class HomeScreenScaffold extends GetView<HomeScreenController> {
         colorScheme,
         media,
         "Enugu, Nigeria.",
-        goToNotifications: () {
-          Get.toNamed(Routes.notificationsScreen, preventDuplicates: true);
-        },
+        controller,
       ),
       floatingActionButton: Obx(
         () => controller.isScrollToTopBtnVisible.value

@@ -43,7 +43,7 @@ Widget viewPropertyEditCupertinoButton(
         CupertinoButton(
           onPressed: editProperty ?? () {},
           padding: const EdgeInsets.all(20),
-          color: kGreenCardColor,
+          color: kAccentColor,
           borderRadius: BorderRadius.circular(24),
           child: SizedBox(
             width: media.width / 3,

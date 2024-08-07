@@ -30,7 +30,7 @@ Widget newBidCupertinoCard(
           Container(
             padding: const EdgeInsets.all(10),
             decoration: ShapeDecoration(
-              color: kGreenCardColor,
+              color: kAccentColor,
               shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(16),
@@ -135,7 +135,7 @@ Widget newBidCupertinoCard(
                   children: [
                     Icon(
                       Iconsax.calendar5,
-                      color: kGreenCardColor,
+                      color: kAccentColor,
                       size: 14,
                     ),
                     kHalfWidthSizedBox,
@@ -156,7 +156,7 @@ Widget newBidCupertinoCard(
                   children: [
                     Icon(
                       Iconsax.clock5,
-                      color: kGreenCardColor,
+                      color: kAccentColor,
                       size: 14,
                     ),
                     kHalfWidthSizedBox,

@@ -12,7 +12,7 @@ Widget addPropertyCupertinoButton({onPressed}) {
     child: Container(
       padding: const EdgeInsets.all(10),
       decoration: ShapeDecoration(
-        color: kGreenCardColor.withOpacity(.3),
+        color: kAccentColor.withOpacity(.3),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(24),
         ),
@@ -22,12 +22,12 @@ Widget addPropertyCupertinoButton({onPressed}) {
         children: [
           Icon(
             Iconsax.add,
-            color: kGreenCardColor,
+            color: kAccentColor,
           ),
           Text(
             "Add property",
             style: defaultTextStyle(
-              color: kGreenCardColor,
+              color: kAccentColor,
               fontSize: 12.0,
               fontWeight: FontWeight.w600,
             ),
