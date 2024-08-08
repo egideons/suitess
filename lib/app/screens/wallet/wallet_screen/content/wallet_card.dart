@@ -27,10 +27,10 @@ walletCard(
           decoration: ShapeDecoration(
             shadows: [
               BoxShadow(
-                blurRadius: 4,
+                blurRadius: 7,
                 spreadRadius: 0,
                 color: kAccentColor.withOpacity(.2),
-                offset: const Offset(0, 7),
+                offset: const Offset(0, 10),
               )
             ],
             gradient: LinearGradient(

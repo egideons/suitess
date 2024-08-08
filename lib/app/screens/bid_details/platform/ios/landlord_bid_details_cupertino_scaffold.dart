@@ -36,7 +36,7 @@ class BidDetailsCupertinoScaffold extends GetView<BidDetailsController> {
                   ? colorScheme.primary
                   : controller.bidIsAccepted.value
                       ? kSuccessColor
-                      : kRedColor,
+                      : kErrorColor,
             ),
             child: SafeArea(
               child: CupertinoScrollbar(
@@ -98,7 +98,7 @@ class BidDetailsCupertinoScaffold extends GetView<BidDetailsController> {
                             title: "Decline",
                             textColor: controller.isAccepting.value
                                 ? kTextWhiteColor
-                                : kRedColor,
+                                : kErrorColor,
                             buttonColor: kRedCardColor,
                             disable: controller.isAccepting.value,
                             onPressed: controller.declineBid,

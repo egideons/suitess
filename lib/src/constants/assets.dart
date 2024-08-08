@@ -42,13 +42,19 @@ class Assets {
   static const searchOutlineSvg = "assets/icons/svg/search-outline.svg";
   static const searchFilterSvg = "assets/icons/svg/search_filter-outline.svg";
   static const arrowUpSvg = "assets/icons/svg/arrow-up.svg";
+  static const arrowDownSvg = "assets/icons/svg/arrow-down.svg";
   static const creditCardFilledSvg = "assets/icons/svg/credit-card-filled.svg";
   static const walletCardEllipse1Svg =
       "assets/icons/svg/wallet_card_ellipse_1.svg";
   static const walletCardEllipse2Svg =
       "assets/icons/svg/wallet_card_ellipse_2.svg";
-  static const incomeEllipeSvg = "assets/icons/svg/income_ellipse.svg";
+  static const incomeEllipseSvg = "assets/icons/svg/income_ellipse.svg";
   static const debitEllipseSvg = "assets/icons/svg/debit_ellipse.svg";
+  static const transferSvg = "assets/icons/svg/transfer.svg";
+  static const mobileOutlineSvg = "assets/icons/svg/mobile-outline.svg";
+  static const wifiOutlineSvg = "assets/icons/svg/wifi-outline.svg";
+  static const electricBoltOutlineSvg =
+      "assets/icons/svg/electric-bolt-outline.svg";
 
 //=================== Images ===================\\
 

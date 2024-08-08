@@ -14,8 +14,6 @@ import 'src/utils/components/app_error_widget.dart';
 import 'theme/app_theme.dart';
 import 'theme/colors.dart';
 
-late SharedPreferences prefs;
-
 void main() async {
   SystemChrome.setSystemUIOverlayStyle(
     SystemUiOverlayStyle(statusBarColor: kTransparentColor),
@@ -38,6 +36,8 @@ void main() async {
 
   runApp(const MyApp());
 }
+
+late SharedPreferences prefs;
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -80,6 +80,8 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.light,
       scrollBehavior: ScrollConfiguration.of(context).copyWith(
         multitouchDragStrategy: MultitouchDragStrategy.sumAllPointers,
+        // physics: const BouncingScrollPhysics(),
+        scrollbars: true,
       ),
       // This is the home route
       // home: const HomeScreen(),

@@ -119,7 +119,7 @@ class LandLordAddPropertyCupertinoScaffold
             overflow: TextOverflow.ellipsis,
             style: defaultTextStyle(
               fontSize: 24,
-              color: kRedColor,
+              color: kErrorColor,
               fontWeight: FontWeight.w800,
             ),
           ),
