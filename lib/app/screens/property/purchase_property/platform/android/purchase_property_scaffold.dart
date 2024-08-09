@@ -28,7 +28,7 @@ class PurchasePropertyScaffold extends GetView<PurchasePropertyController> {
             padding: const EdgeInsets.all(10),
             children: [
               SvgPicture.asset(Assets.paymentMethod),
-              kSmallSizedBox,
+              kHalfSizedBox,
               Text(
                 "Kindly select a payment method",
                 textAlign: TextAlign.center,

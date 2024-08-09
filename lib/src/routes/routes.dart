@@ -36,6 +36,8 @@ import '../../app/screens/property/book_appointment/screen/book_appointment_scre
 import '../../app/screens/property/checkout_property/screen/checkout_property_screen.dart';
 import '../../app/screens/property/purchase_property/screen/purchase_property_screen.dart';
 import '../../app/screens/search/screen/search_screen.dart';
+import '../../app/screens/wallet/transfer_options/screen/transfer_options.dart';
+import '../../app/screens/wallet/wallet_screen/screen/wallet_screen.dart';
 import '../../app/splash/congratulations/screen/congratulations_screen.dart';
 import '../../app/splash/loading/screen/loading_screen.dart';
 import '../../app/splash/successful/screen/success_screen.dart';
@@ -92,6 +94,7 @@ class Routes {
 
   //Wallet Section
   static const walletScreen = "/wallet";
+  static const transferOptions = "/transfer-options";
 
   //Messages Section
   static const messagesScreen = "/messages";
@@ -160,7 +163,8 @@ class Routes {
     GetPage(name: messagesScreen, page: () => const MessagesScreen()),
     GetPage(name: chatScreen, page: () => const ChatScreen()),
     // GetPage(name: callScreen, page: () => const CallScreen()),
-    // GetPage(name: walletScreen, page: () => const WalletScreen()),
+    GetPage(name: walletScreen, page: () => const WalletScreen()),
+    GetPage(name: transferOptions, page: () => const TransferOptions()),
     GetPage(name: profileScreen, page: () => const ProfileScreen()),
     GetPage(name: contactDetails, page: () => const ContactDetails()),
     GetPage(name: passwordSettings, page: () => const PasswordSettingsScreen()),

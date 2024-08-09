@@ -85,25 +85,25 @@ class WalletScaffold extends GetView<WalletScreenController> {
                 children: [
                   quickActionCard(
                     colorScheme,
-                    () {},
+                    controller.goToTransferOptions,
                     svgIcon: Assets.transferSvg,
                     title: "Transfer",
                   ),
                   quickActionCard(
                     colorScheme,
-                    () {},
+                    controller.goToAirtime,
                     svgIcon: Assets.mobileOutlineSvg,
                     title: "Airtime",
                   ),
                   quickActionCard(
                     colorScheme,
-                    () {},
+                    controller.gotToWifi,
                     svgIcon: Assets.wifiOutlineSvg,
                     title: "Wifi",
                   ),
                   quickActionCard(
                     colorScheme,
-                    () {},
+                    controller.goToElectricity,
                     svgIcon: Assets.electricBoltOutlineSvg,
                     title: "Electricity",
                   ),

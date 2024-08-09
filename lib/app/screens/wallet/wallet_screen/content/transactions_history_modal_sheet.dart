@@ -56,16 +56,6 @@ class TransactionsHistoryModalSheet extends GetView<WalletScreenController> {
           ],
         ),
       ),
-      floatingActionButton: Obx(
-        () => controller.isScrollToTopBtnVisible.value
-            ? FloatingActionButton.small(
-                onPressed: controller.scrollToTop,
-                backgroundColor: kAccentColor,
-                foregroundColor: kLightBackgroundColor,
-                child: const Icon(Icons.keyboard_arrow_up),
-              )
-            : const SizedBox(),
-      ),
       body: SafeArea(
         child: RefreshIndicator.adaptive(
           onRefresh: controller.onRefresh,
@@ -76,39 +66,40 @@ class TransactionsHistoryModalSheet extends GetView<WalletScreenController> {
             child: GetBuilder<WalletScreenController>(
               init: WalletScreenController(),
               builder: (controller) {
-                return SingleChildScrollView(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-                  child: Container(
-                    decoration: ShapeDecoration(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
-                        side: BorderSide(
-                          width: .4,
-                          color: colorScheme.inversePrimary.withOpacity(.4),
-                        ),
+                return Container(
+                  margin: const EdgeInsets.all(10),
+                  decoration: ShapeDecoration(
+                    color: colorScheme.surface,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    shadows: [
+                      BoxShadow(
+                        color: colorScheme.inversePrimary.withOpacity(.2),
+                        offset: const Offset(0, 4),
+                        blurRadius: 10,
+                        spreadRadius: 2,
                       ),
-                    ),
-                    width: media.width,
-                    child: ListView.separated(
-                      itemCount: 20,
-                      shrinkWrap: true,
-                      controller: controller.scrollController,
-                      physics: const ScrollPhysics(),
-                      separatorBuilder: (context, index) => kHalfSizedBox,
-                      itemBuilder: (context, index) {
-                        return recentTransaction(
-                          media,
-                          () {},
-                          title: "Alonso Diobi",
-                          dateTime: DateTime.now(),
-                          amount: 29000,
-                          isSuccessful: true,
-                          isIncome: true,
-                          isCancelled: false,
-                        );
-                      },
-                    ),
+                    ],
+                  ),
+                  child: ListView.separated(
+                    controller: controller.scrollController,
+                    itemCount: 20,
+                    shrinkWrap: true,
+                    physics: const ScrollPhysics(),
+                    separatorBuilder: (context, index) => kHalfSizedBox,
+                    itemBuilder: (context, index) {
+                      return recentTransaction(
+                        media,
+                        () {},
+                        title: "Alonso Diobi",
+                        dateTime: DateTime.now(),
+                        amount: 29000,
+                        isSuccessful: true,
+                        isIncome: true,
+                        isCancelled: false,
+                      );
+                    },
                   ),
                 );
               },

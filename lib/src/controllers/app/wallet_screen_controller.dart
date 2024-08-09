@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import '../../../app/screens/wallet/wallet_screen/content/transactions_history_modal_sheet.dart';
 import '../../../main.dart';
+import '../../routes/routes.dart';
 
 class WalletScreenController extends GetxController {
   static WalletScreenController get instance {
@@ -25,6 +26,30 @@ class WalletScreenController extends GetxController {
     hideBalance.value = !hideBalance.value;
     update();
   }
+
+  //================ Navigation ================\\
+
+  goToAirtime() async {}
+
+  goToElectricity() async {}
+
+  goToTransferOptions() async {
+    Get.toNamed(
+      Routes.transferOptions,
+      preventDuplicates: true,
+    );
+    //     await Get.to(
+    //   () => const TransferOptions(),
+    //   routeName: "/transfer-options",
+    //   fullscreenDialog: true,
+    //   curve: Curves.easeInOut,
+    //   preventDuplicates: true,
+    //   popGesture: false,
+    //   transition: Get.defaultTransition,
+    // );
+  }
+
+  gotToWifi() async {}
 
   //=========================== Save card state ============================//
   // Load visibility state from SharedPreferences
@@ -58,7 +83,7 @@ class WalletScreenController extends GetxController {
     update();
   }
 
-// Save visibility state to SharedPreferences
+  // Save visibility state to SharedPreferences
   Future<void> saveVisibilityState(bool value) async {
     await prefs.setBool('hideBalance', value);
   }

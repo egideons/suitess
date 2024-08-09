@@ -6,7 +6,7 @@ import '../../../../../src/controllers/app/view_property_controller.dart';
 viewPropertyCarouselIndicator(
     Size media, ViewPropertyController controller, ColorScheme colorScheme) {
   return Positioned(
-    top: media.height / 2.6,
+    top: media.height / 2.66,
     left: media.width / 2.3,
     child: SmoothPageIndicator(
       controller: controller.imageController.value,
