@@ -61,7 +61,6 @@ class NotificationsScaffold extends GetView<NotificationsController> {
                         child: ListView.separated(
                           controller: controller.scrollController,
                           itemCount: 30,
-                          physics: const BouncingScrollPhysics(),
                           shrinkWrap: true,
                           padding: const EdgeInsets.all(10),
                           separatorBuilder: (context, index) =>

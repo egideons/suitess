@@ -15,10 +15,61 @@ class CheckoutPropertyController extends GetxController {
     return Get.find<CheckoutPropertyController>();
   }
 
-  @override
-  void onInit() {
-    super.onInit();
-    scrollController.addListener(_scrollListener);
+  //================ variables =================\\
+  var isRefreshing = false.obs;
+
+  var isScrollToTopBtnVisible = false.obs;
+
+  //================ controllers =================\\
+
+  var scrollController = ScrollController();
+  //=========== Time Appointment Categories ===============\\
+  var timeOfDayList = <TimeOfDayModel>[].obs;
+
+  var selectedDay = DateTime.now();
+
+  TimeOfDay addMinutesToTimeOfDay(TimeOfDay time, int minutes) {
+    final int newMinutes = time.minute + minutes;
+    final int hoursToAdd = newMinutes ~/ 60;
+    final int remainingMinutes = newMinutes % 60;
+
+    return TimeOfDay(
+      hour: (time.hour + hoursToAdd) % 24,
+      minute: remainingMinutes,
+    );
+  }
+
+  void generateTimeOfDayList() {
+    TimeOfDay startTime = const TimeOfDay(hour: 8, minute: 0);
+    TimeOfDay endTime = const TimeOfDay(hour: 18, minute: 0);
+
+    while (startTime.hour < endTime.hour ||
+        (startTime.hour == endTime.hour &&
+            startTime.minute <= endTime.minute)) {
+      timeOfDayList.add(TimeOfDayModel(
+          time: timeOfDayToString(startTime), isSelected: false));
+      startTime = addMinutesToTimeOfDay(startTime, 30);
+    }
+
+    // Optionally, set the first time as selected by default
+    if (timeOfDayList.isNotEmpty) {
+      timeOfDayList[0].isSelected = true;
+    }
+  }
+
+//====================== Go Home =======================\\
+  goHome() async {
+    await Get.offAll(
+      () => LoadingScreen(
+        loadData: LoadingController.instance.loadBottomNavgiationView,
+      ),
+      routeName: "/bottom-navigation-view",
+      fullscreenDialog: true,
+      curve: Curves.easeInOut,
+      predicate: (routes) => false,
+      popGesture: false,
+      transition: Get.defaultTransition,
+    );
   }
 
   @override
@@ -27,36 +78,20 @@ class CheckoutPropertyController extends GetxController {
     scrollController.dispose();
   }
 
-  //================ variables =================\\
-  var isRefreshing = false.obs;
-  var isScrollToTopBtnVisible = false.obs;
-
-  //================ controllers =================\\
-
-  var scrollController = ScrollController();
-
-//================ Scroll to Top =================//
-  void scrollToTop() {
-    scrollController.animateTo(0,
-        duration: const Duration(seconds: 1), curve: Curves.fastOutSlowIn);
+  //====================== Calendar Functions =======================\\
+  void onDaySelected(DateTime day, DateTime focusedDay) async {
+    selectedDay = day;
+    log("Selected day ======> ${selectedDay.toString().split(" ")[0]}");
+    update();
   }
 
-//================ Scroll Listener =================//
-
-  void _scrollListener() {
-    //========= Show action button ========//
-    if (scrollController.position.pixels >= 150) {
-      isScrollToTopBtnVisible.value = true;
-      update();
-    }
-    //========= Hide action button ========//
-    else if (scrollController.position.pixels < 150) {
-      isScrollToTopBtnVisible.value = false;
-      update();
-    }
+  @override
+  void onInit() {
+    super.onInit();
+    scrollController.addListener(_scrollListener);
   }
 
-//================ Handle refresh ================\\
+  //================ Handle refresh ================\\
 
   Future<void> onRefresh() async {
     isRefreshing.value = true;
@@ -67,14 +102,28 @@ class CheckoutPropertyController extends GetxController {
     isRefreshing.value = false;
     update();
   }
+
+  //================ Scroll to Top =================//
+  void scrollToTop() {
+    scrollController.animateTo(0,
+        duration: const Duration(seconds: 1), curve: Curves.fastOutSlowIn);
+  }
+
+  void selectTimeOfDay(int index) {
+    for (int i = 0; i < timeOfDayList.length; i++) {
+      timeOfDayList[i].isSelected = i == index;
+    }
+    update();
+  }
+
   //================ Modal Bottom Sheets ================\\
 
   showCongratulationsModalSheet(BuildContext context, Size media) async {
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
-      isDismissible: true,
-      enableDrag: true,
+      isDismissible: false,
+      enableDrag: false,
       //  useSafeArea: true,
 
       constraints:
@@ -83,26 +132,6 @@ class CheckoutPropertyController extends GetxController {
         return GestureDetector(
           onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
           child: const CheckoutPropertyCongratulationsModalSheet(),
-        );
-      },
-    );
-  }
-
-  showScheduleMoveInModalSheet(BuildContext context, Size media) async {
-    Get.close(0);
-    showModalBottomSheet(
-      context: context,
-      isScrollControlled: true,
-      isDismissible: true,
-      enableDrag: true,
-      //  useSafeArea: true,
-
-      constraints:
-          BoxConstraints(maxHeight: media.height, maxWidth: media.width),
-      builder: (context) {
-        return GestureDetector(
-          onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
-          child: const ScheduleMoveInModalSheet(),
         );
       },
     );
@@ -129,36 +158,23 @@ class CheckoutPropertyController extends GetxController {
     );
   }
 
-  //=========== Time Appointment Categories ===============\\
-  var timeOfDayList = <TimeOfDayModel>[].obs;
-  var selectedDay = DateTime.now();
+  showScheduleMoveInModalSheet(BuildContext context, Size media) async {
+    Get.close(0);
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      isDismissible: false,
+      enableDrag: false,
+      //  useSafeArea: true,
 
-  void generateTimeOfDayList() {
-    TimeOfDay startTime = const TimeOfDay(hour: 8, minute: 0);
-    TimeOfDay endTime = const TimeOfDay(hour: 18, minute: 0);
-
-    while (startTime.hour < endTime.hour ||
-        (startTime.hour == endTime.hour &&
-            startTime.minute <= endTime.minute)) {
-      timeOfDayList.add(TimeOfDayModel(
-          time: timeOfDayToString(startTime), isSelected: false));
-      startTime = addMinutesToTimeOfDay(startTime, 30);
-    }
-
-    // Optionally, set the first time as selected by default
-    if (timeOfDayList.isNotEmpty) {
-      timeOfDayList[0].isSelected = true;
-    }
-  }
-
-  TimeOfDay addMinutesToTimeOfDay(TimeOfDay time, int minutes) {
-    final int newMinutes = time.minute + minutes;
-    final int hoursToAdd = newMinutes ~/ 60;
-    final int remainingMinutes = newMinutes % 60;
-
-    return TimeOfDay(
-      hour: (time.hour + hoursToAdd) % 24,
-      minute: remainingMinutes,
+      constraints:
+          BoxConstraints(maxHeight: media.height, maxWidth: media.width),
+      builder: (context) {
+        return GestureDetector(
+          onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
+          child: const ScheduleMoveInModalSheet(),
+        );
+      },
     );
   }
 
@@ -172,32 +188,18 @@ class CheckoutPropertyController extends GetxController {
     return '$hour:$minute $period';
   }
 
-  void selectTimeOfDay(int index) {
-    for (int i = 0; i < timeOfDayList.length; i++) {
-      timeOfDayList[i].isSelected = i == index;
+  //================ Scroll Listener =================//
+
+  void _scrollListener() {
+    //========= Show action button ========//
+    if (scrollController.position.pixels >= 150) {
+      isScrollToTopBtnVisible.value = true;
+      update();
     }
-    update();
-  }
-
-  //====================== Calendar Functions =======================\\
-  void onDaySelected(DateTime day, DateTime focusedDay) async {
-    selectedDay = day;
-    log("Selected day ======> ${selectedDay.toString().split(" ")[0]}");
-    update();
-  }
-
-  //====================== Go Home =======================\\
-  goHome() async {
-    await Get.offAll(
-      () => LoadingScreen(
-        loadData: LoadingController.instance.loadBottomNavgiationView,
-      ),
-      routeName: "/bottom-navigation-view",
-      fullscreenDialog: true,
-      curve: Curves.easeInOut,
-      predicate: (routes) => false,
-      popGesture: false,
-      transition: Get.defaultTransition,
-    );
+    //========= Hide action button ========//
+    else if (scrollController.position.pixels < 150) {
+      isScrollToTopBtnVisible.value = false;
+      update();
+    }
   }
 }

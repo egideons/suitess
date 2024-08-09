@@ -124,7 +124,12 @@ class WalletScaffold extends GetView<WalletScreenController> {
                     ),
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      controller.showTransactionHistoryModalSheet(
+                        context,
+                        media,
+                      );
+                    },
                     child: Text(
                       "View all",
                       textAlign: TextAlign.start,
