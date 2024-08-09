@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:suitess/src/constants/assets.dart';
 import 'package:suitess/src/constants/consts.dart';
@@ -11,6 +10,8 @@ import '../../../../../../src/utils/components/notification_bell_icon.dart';
 import '../../../../../../theme/colors.dart';
 import '../../content/add_ink_well.dart';
 import '../../content/income_debit_card.dart';
+import '../../content/quick_action_card.dart';
+import '../../content/recent_transaction.dart';
 import '../../content/wallet_card.dart';
 
 class WalletScaffold extends GetView<WalletScreenController> {
@@ -62,8 +63,12 @@ class WalletScaffold extends GetView<WalletScreenController> {
                 ],
               ),
               kBigSizedBox,
-              incomeDebitCard(media, colorScheme,
-                  income: 20000000000, debit: 17000),
+              incomeDebitCard(
+                media,
+                colorScheme,
+                income: 20000000000,
+                debit: 17000,
+              ),
               kSizedBox,
               Text(
                 "Quick Actions",
@@ -74,50 +79,93 @@ class WalletScaffold extends GetView<WalletScreenController> {
                   fontWeight: FontWeight.w500,
                 ),
               ),
-              kSizedBox,
+              kHalfSizedBox,
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Container(
-                    padding: const EdgeInsets.all(10),
-                    decoration: ShapeDecoration(
-                      color: colorScheme.surface,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
-                        side: BorderSide(
-                          width: .4,
-                          color: colorScheme.inversePrimary.withOpacity(.6),
-                        ),
-                      ),
-                      shadows: [
-                        BoxShadow(
-                          blurRadius: 4,
-                          spreadRadius: 0,
-                          color: colorScheme.inversePrimary.withOpacity(.2),
-                          offset: const Offset(0, 7),
-                        ),
-                      ],
+                  quickActionCard(
+                    colorScheme,
+                    () {},
+                    svgIcon: Assets.transferSvg,
+                    title: "Transfer",
+                  ),
+                  quickActionCard(
+                    colorScheme,
+                    () {},
+                    svgIcon: Assets.mobileOutlineSvg,
+                    title: "Airtime",
+                  ),
+                  quickActionCard(
+                    colorScheme,
+                    () {},
+                    svgIcon: Assets.wifiOutlineSvg,
+                    title: "Wifi",
+                  ),
+                  quickActionCard(
+                    colorScheme,
+                    () {},
+                    svgIcon: Assets.electricBoltOutlineSvg,
+                    title: "Electricity",
+                  ),
+                ],
+              ),
+              kSizedBox,
+              Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Recent Transactions",
+                    textAlign: TextAlign.start,
+                    style: defaultTextStyle(
+                      color: kTextBoldHeadingColor,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
                     ),
-                    child: Column(
-                      children: [
-                        SvgPicture.asset(
-                          Assets.transferSvg,
-                          color: kAccentColor,
-                        ),
-                        kHalfSizedBox,
-                        Text(
-                          "Transer",
-                          textAlign: TextAlign.center,
-                          style: defaultTextStyle(
-                            color: kTextBoldHeadingColor,
-                            fontSize: 12,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ],
+                  ),
+                  TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      "View all",
+                      textAlign: TextAlign.start,
+                      style: defaultTextStyle(
+                        color: kAccentColor,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                   ),
                 ],
+              ),
+              kSmallSizedBox,
+              Container(
+                decoration: ShapeDecoration(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    side: BorderSide(
+                      width: .4,
+                      color: colorScheme.inversePrimary.withOpacity(.4),
+                    ),
+                  ),
+                ),
+                height: 320,
+                width: media.width,
+                child: ListView.separated(
+                  itemCount: 20,
+                  separatorBuilder: (context, index) => kHalfSizedBox,
+                  itemBuilder: (context, index) {
+                    return recentTransaction(
+                      media,
+                      () {},
+                      title: "Alonso Diobi",
+                      dateTime: DateTime.now(),
+                      amount: 29000,
+                      isSuccessful: true,
+                      isIncome: true,
+                      isCancelled: false,
+                    );
+                  },
+                ),
               ),
             ],
           ),

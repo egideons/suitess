@@ -50,7 +50,7 @@ class Assets {
       "assets/icons/svg/wallet_card_ellipse_2.svg";
   static const incomeEllipseSvg = "assets/icons/svg/income_ellipse.svg";
   static const debitEllipseSvg = "assets/icons/svg/debit_ellipse.svg";
-  static const transferSvg = "assets/icons/svg/transfer.svg";
+  static const transferSvg = "assets/icons/svg/transfer-filled.svg";
   static const mobileOutlineSvg = "assets/icons/svg/mobile-outline.svg";
   static const wifiOutlineSvg = "assets/icons/svg/wifi-outline.svg";
   static const electricBoltOutlineSvg =

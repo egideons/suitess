@@ -8,8 +8,9 @@ Color kBannerTextColor = const Color(0xFFE4B533);
 Color kDarkBackgroundColor = const Color(0xFF2d2d2d);
 Color kDarkGreyColor = Colors.grey.shade800;
 Color kDebitColor = const Color(0xFFD20031);
-
 Color kErrorColor = Colors.red;
+
+Color kFrameColor = const Color(0x3635371A).withOpacity(.05);
 Color kGreenColor = const Color(0xFF41B696);
 Color kGreyColor = const Color(0xFF6C6C6C);
 
@@ -17,7 +18,7 @@ Color kInversePrimaryColor = const Color(0xFFFFFFFF);
 Color kLightBackgroundColor = const Color(0xFFFFFFFF);
 Color kLightGreyColor = Colors.grey.shade300;
 
-Color kPendingColor = Colors.blue.shade800;
+Color kPendingColor = const Color(0xFFE4B533);
 Color kPrimaryColor = Colors.black;
 Color kRedCardColor = kErrorColor.withOpacity(0.15);
 Color kSenderChatColor = const Color(0xFFEEF2F6);

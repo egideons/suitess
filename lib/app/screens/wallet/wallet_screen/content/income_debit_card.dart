@@ -15,7 +15,7 @@ incomeDebitCard(
     children: [
       Container(
         decoration: ShapeDecoration(
-          color: const Color(0x3635371A).withOpacity(.05),
+          color: kFrameColor,
           shape: RoundedRectangleBorder(
             borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(2),
