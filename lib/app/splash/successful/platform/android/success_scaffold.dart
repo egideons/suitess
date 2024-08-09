@@ -8,7 +8,8 @@ import 'package:suitess/theme/colors.dart';
 import '../../../../../src/controllers/app/success_screen_controller.dart';
 
 class SuccessScaffold extends GetView<SuccessScreenController> {
-  const SuccessScaffold({super.key});
+  final String? subtitle;
+  const SuccessScaffold({this.subtitle, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +51,8 @@ class SuccessScaffold extends GetView<SuccessScreenController> {
                 SizedBox(
                   width: media.width - 50,
                   child: Text(
-                    "Your appointment has been booked with an agent/realtor successfully",
+                    subtitle ??
+                        "Your appointment has been booked with an agent/realtor successfully",
                     textAlign: TextAlign.center,
                     maxLines: 10,
                     style: defaultTextStyle(

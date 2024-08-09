@@ -27,16 +27,16 @@ class WalletTransferScaffold extends GetView<WalletTransferController> {
         title: "Transfer",
         actions: [],
       ),
-      floatingActionButton: Obx(
-        () => controller.isScrollToTopBtnVisible.value
-            ? FloatingActionButton.small(
-                onPressed: controller.scrollToTop,
-                backgroundColor: kAccentColor,
-                foregroundColor: kLightBackgroundColor,
-                child: const Icon(Icons.keyboard_arrow_up),
-              )
-            : const SizedBox(),
-      ),
+      // floatingActionButton: Obx(
+      //   () => controller.isScrollToTopBtnVisible.value
+      //       ? FloatingActionButton.small(
+      //           onPressed: controller.scrollToTop,
+      //           backgroundColor: kAccentColor,
+      //           foregroundColor: kLightBackgroundColor,
+      //           child: const Icon(Icons.keyboard_arrow_up),
+      //         )
+      //       : const SizedBox(),
+      // ),
       body: SafeArea(
         child: Scrollbar(
           controller: controller.scrollController,

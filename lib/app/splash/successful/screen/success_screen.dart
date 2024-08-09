@@ -7,7 +7,8 @@ import '../../../../src/controllers/app/success_screen_controller.dart';
 import '../platform/android/success_scaffold.dart';
 
 class SuccessScreen extends StatelessWidget {
-  const SuccessScreen({super.key});
+  final String? subtitle;
+  const SuccessScreen({super.key, this.subtitle});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +23,7 @@ class SuccessScreen extends StatelessWidget {
     }
     return GestureDetector(
       onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
-      child: const SuccessScaffold(),
+      child: SuccessScaffold(subtitle: subtitle),
     );
   }
 }

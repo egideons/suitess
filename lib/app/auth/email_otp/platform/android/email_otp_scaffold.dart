@@ -13,9 +13,9 @@ import '../../../../../theme/colors.dart';
 import '../../content/email_otp_page_header.dart';
 
 class EmailOTPScaffold extends GetView<EmailOTPController> {
-  const EmailOTPScaffold({super.key, required this.userEmail});
-
   final String? userEmail;
+
+  const EmailOTPScaffold({super.key, required this.userEmail});
 
   @override
   Widget build(BuildContext context) {
