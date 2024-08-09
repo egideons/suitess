@@ -5,6 +5,8 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:suitess/src/constants/consts.dart';
 
+import '../../../../theme/colors.dart';
+
 class AndroidTextFormField extends StatelessWidget {
   final String? hintText, obscuringCharacter;
   final TextEditingController controller;
@@ -112,7 +114,7 @@ class AndroidTextFormField extends StatelessWidget {
       keyboardAppearance: Get.isDarkMode ? Brightness.dark : Brightness.light,
       style: defaultTextStyle(
         fontSize: 16.0,
-        color: colorScheme.primary,
+        color: kFormFieldTextColor,
         fontWeight: FontWeight.normal,
       ),
       decoration: InputDecoration(
@@ -137,12 +139,12 @@ class AndroidTextFormField extends StatelessWidget {
         focusColor: const Color(0xFFF6F6F7),
         labelStyle: defaultTextStyle(
           fontSize: 16.0,
-          color: colorScheme.primary.withOpacity(.5),
+          color: kFormFieldTextColor.withOpacity(.5),
           fontWeight: FontWeight.normal,
         ),
         hintStyle: defaultTextStyle(
           fontSize: 16.0,
-          color: colorScheme.primary.withOpacity(.5),
+          color: kFormFieldTextColor.withOpacity(.5),
           fontWeight: FontWeight.normal,
         ),
         // errorStyle: const TextStyle(color: Colors.red),
