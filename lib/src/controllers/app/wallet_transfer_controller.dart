@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../app/screens/wallet/wallet_screen/content/transactions_history_modal_sheet.dart';
+import '../../models/source_account_model.dart';
 
 class WalletTransferController extends GetxController {
   static WalletTransferController get instance {
@@ -10,15 +11,22 @@ class WalletTransferController extends GetxController {
 
   //================ variables =================\\
   var isRefreshing = false.obs;
-
   var isScrollToTopBtnVisible = false.obs;
-
   var hasNotifications = true.obs;
-  var hideBalance = false.obs;
 
   //================ controllers =================\\
   var walletCardPageController = PageController();
   var scrollController = ScrollController();
+
+  //================ Source Account Card =================//
+  var sourceAccounts = [
+    const SourceAccountModel(
+        availableBalance: 2372054.02, walletName: "Main wallet"),
+    const SourceAccountModel(
+        availableBalance: 1272054.34, walletName: "Spending wallet"),
+    const SourceAccountModel(
+        availableBalance: 4372054.89, walletName: "Savings wallet"),
+  ];
 
   @override
   void onClose() {
@@ -32,7 +40,7 @@ class WalletTransferController extends GetxController {
     scrollController.addListener(_scrollListener);
   }
 
-//================ Handle refresh ================\\
+  //================ Handle refresh ================\\
 
   Future<void> onRefresh() async {
     isRefreshing.value = true;

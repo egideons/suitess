@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:suitess/src/utils/buttons/android/android_elevated_button.dart';
@@ -8,10 +8,13 @@ import '../../../src/constants/consts.dart';
 import '../../../src/controllers/others/onboarding_controller.dart';
 import '../../../theme/colors.dart';
 
-onboardingAndroidPageContent(
-    {OnboardingController? controller, colorScheme, media}) {
+onboardingAndroidPageContent({
+  OnboardingController? controller,
+  ColorScheme? colorScheme,
+  Size? media,
+}) {
   //Landscape or larger screens
-  if (deviceType(media.width) > 1) {
+  if (deviceType(media!.width) > 1) {
     return Obx(
       () => Row(
         children: [
@@ -64,7 +67,7 @@ onboardingAndroidPageContent(
                                   .onboardContent.value.items[index].title,
                               textAlign: TextAlign.center,
                               style: defaultTextStyle(
-                                color: colorScheme.primary,
+                                color: colorScheme!.primary,
                                 fontSize: 24.0,
                               ),
                             ),
@@ -96,7 +99,8 @@ onboardingAndroidPageContent(
                     children: [
                       Container(
                         decoration: BoxDecoration(
-                          border: Border.all(color: colorScheme.inversePrimary),
+                          border:
+                              Border.all(color: colorScheme!.inversePrimary),
                           borderRadius: BorderRadius.circular(20),
                         ),
                         child: SmoothPageIndicator(
@@ -215,7 +219,7 @@ onboardingAndroidPageContent(
                         controller.onboardContent.value.items[index].title,
                         textAlign: TextAlign.center,
                         style: defaultTextStyle(
-                          color: colorScheme.primary,
+                          color: colorScheme!.primary,
                           fontSize: 24.0,
                         ),
                       ),
@@ -246,7 +250,7 @@ onboardingAndroidPageContent(
           children: [
             Container(
               decoration: BoxDecoration(
-                border: Border.all(color: colorScheme.inversePrimary),
+                border: Border.all(color: colorScheme!.inversePrimary),
                 borderRadius: BorderRadius.circular(20),
               ),
               child: SmoothPageIndicator(
