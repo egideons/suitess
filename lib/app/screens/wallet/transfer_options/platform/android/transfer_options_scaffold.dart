@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 
 import '../../../../../../src/constants/assets.dart';
 import '../../../../../../src/constants/consts.dart';
+import '../../../../../../src/routes/routes.dart';
 import '../../../../../../src/utils/components/my_app_bar.dart';
 import '../../../../../../theme/colors.dart';
 import '../../content/transfer_option.dart';
@@ -41,14 +43,24 @@ class TransferOptionsScaffold extends StatelessWidget {
               colorScheme,
               icon: Assets.walletFilledIconSvg,
               title: "Wallet",
-              selectOption: () {},
+              selectOption: () {
+                Get.toNamed(
+                  Routes.walletTransfer,
+                  preventDuplicates: true,
+                );
+              },
             ),
             kSizedBox,
             transferOption(
               colorScheme,
               icon: Assets.bankBuildingSvg,
               title: "Bank Transfer",
-              selectOption: () {},
+              selectOption: () {
+                Get.toNamed(
+                  Routes.bankTransfer,
+                  preventDuplicates: true,
+                );
+              },
             ),
           ],
         ),

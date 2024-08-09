@@ -11,21 +11,11 @@ class HomeScreenController extends GetxController {
     return Get.find<HomeScreenController>();
   }
 
-  @override
-  void onInit() {
-    super.onInit();
-    scrollController.addListener(_scrollListener);
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-    scrollController.dispose();
-  }
-
   //================ variables =================\\
   var isRefreshing = false.obs;
+
   var hasProperties = false.obs;
+
   var isKYCVerified = false.obs;
   var availableAgentsIsVisible = false.obs;
   var isScrollToTopBtnVisible = false.obs;
@@ -36,33 +26,37 @@ class HomeScreenController extends GetxController {
     PropertyCategoryModel(name: "Shortlets", isSelected: false),
     PropertyCategoryModel(name: "Commercial Properties", isSelected: false),
   ].obs;
-
   //================ controllers =================\\
 
   var scrollController = ScrollController();
+  //================  =================//
 
-//================ Scroll to Top =================//
-  void scrollToTop() {
-    scrollController.animateTo(0,
-        duration: const Duration(seconds: 1), curve: Curves.fastOutSlowIn);
+  goToBids() {}
+
+  //=================== Go to Search Screen ===================\\
+  goToSearchScreen() {
+    Get.toNamed(Routes.searchScreen, preventDuplicates: true);
   }
 
-//================ Scroll Listener =================//
-
-  void _scrollListener() {
-    //========= Show action button ========//
-    if (scrollController.position.pixels >= 150) {
-      isScrollToTopBtnVisible.value = true;
-      update();
-    }
-    //========= Hide action button ========//
-    else if (scrollController.position.pixels < 150) {
-      isScrollToTopBtnVisible.value = false;
-      update();
-    }
+  hideAvailableAgents() {
+    availableAgentsIsVisible.value = false;
+    update();
+    log("Available agents are visible: ${availableAgentsIsVisible.value}");
   }
 
-//================ Handle refresh ================\\
+  @override
+  void onClose() {
+    super.onClose();
+    scrollController.dispose();
+  }
+
+  @override
+  void onInit() {
+    super.onInit();
+    scrollController.addListener(_scrollListener);
+  }
+
+  //================ Handle refresh ================\\
 
   Future<void> onRefresh() async {
     isRefreshing.value = true;
@@ -74,9 +68,11 @@ class HomeScreenController extends GetxController {
     update();
   }
 
-  //================  =================//
-
-  goToBids() {}
+  //================ Scroll to Top =================//
+  void scrollToTop() {
+    scrollController.animateTo(0,
+        duration: const Duration(seconds: 1), curve: Curves.fastOutSlowIn);
+  }
 
   void selectPropertyCategory(int index) {
     for (int i = 0; i < propertyCategories.length; i++) {
@@ -91,14 +87,18 @@ class HomeScreenController extends GetxController {
     log("Available agents are visible: ${availableAgentsIsVisible.value}");
   }
 
-  hideAvailableAgents() {
-    availableAgentsIsVisible.value = false;
-    update();
-    log("Available agents are visible: ${availableAgentsIsVisible.value}");
-  }
+  //================ Scroll Listener =================//
 
-  //=================== Go to Search Screen ===================\\
-  goToSearchScreen() {
-    Get.toNamed(Routes.searchScreen, preventDuplicates: true);
+  void _scrollListener() {
+    //========= Show action button ========//
+    if (scrollController.position.pixels >= 150) {
+      isScrollToTopBtnVisible.value = true;
+      update();
+    }
+    //========= Hide action button ========//
+    else if (scrollController.position.pixels < 150) {
+      isScrollToTopBtnVisible.value = false;
+      update();
+    }
   }
 }
