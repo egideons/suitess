@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../../src/controllers/app/wallet_transfer_controller.dart';
+import '../../../../../src/controllers/app/bank_transfer_controller.dart';
 import '../platform/android/bank_transfer_scaffold.dart';
 
 class BankTransferScreen extends StatelessWidget {
@@ -12,7 +12,7 @@ class BankTransferScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //Initialize the controller
-    Get.put(WalletTransferController());
+    Get.put(BankTransferController());
 
     if (Platform.isIOS) {
       return GestureDetector(

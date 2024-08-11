@@ -70,6 +70,34 @@ class BankTransferScaffold extends GetView<BankTransferController> {
                 key: controller.formKey,
                 child: Column(
                   children: [
+                    InkWell(
+                      onTap: () {},
+                      borderRadius: BorderRadius.circular(10),
+                      child: formFieldContainer(
+                        colorScheme,
+                        media,
+                        containerHeight: 55,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "Select Bank",
+                              textAlign: TextAlign.start,
+                              style: defaultTextStyle(
+                                color: kTextGreyColor,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                            Icon(
+                              Icons.chevron_right,
+                              color: colorScheme.inversePrimary,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    kSizedBox,
                     formFieldContainer(
                       colorScheme,
                       media,
@@ -87,6 +115,35 @@ class BankTransferScaffold extends GetView<BankTransferController> {
                         inputFormatters: [
                           FilteringTextInputFormatter.digitsOnly
                         ],
+                      ),
+                    ),
+                    kSmallSizedBox,
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: SizedBox(
+                        width: media.width / 2,
+                        child: InkWell(
+                          onTap: () {},
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Text(
+                                "Choose Beneficiary",
+                                textAlign: TextAlign.start,
+                                style: defaultTextStyle(
+                                  color: kAccentColor,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                              kSmallWidthSizedBox,
+                              Icon(
+                                Icons.chevron_right,
+                                color: kAccentColor,
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
                     ),
                     kSizedBox,
