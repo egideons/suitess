@@ -81,7 +81,9 @@ class BankTransferScaffold extends GetView<BankTransferController> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              "Select Bank",
+                              controller.selectedBank.value.isEmpty
+                                  ? "Select Bank"
+                                  : controller.selectedBank.value,
                               textAlign: TextAlign.start,
                               style: defaultTextStyle(
                                 color: kTextGreyColor,

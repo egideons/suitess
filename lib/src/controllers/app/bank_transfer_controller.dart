@@ -37,6 +37,7 @@ class BankTransferController extends GetxController {
   var accountNumberEC = TextEditingController();
   var amountEC = TextEditingController();
   var unformattedAmountText = "".obs;
+  var selectedBank = "".obs;
   var descriptionEC = TextEditingController();
 
   var accountNumberFN = FocusNode();
@@ -180,8 +181,10 @@ class BankTransferController extends GetxController {
   Future<void> submitForm() async {
     if (formKey.currentState!.validate()) {
       formKey.currentState!.save();
-
-      if (accountNumberEC.text.isEmpty) {
+      if (selectedBank.value.isEmpty) {
+        ApiProcessorController.errorSnack("Please select a bank");
+        return;
+      } else if (accountNumberEC.text.isEmpty) {
         ApiProcessorController.errorSnack("Please enter a bank number");
         return;
       } else if (amountEC.text.isEmpty) {
