@@ -4,15 +4,15 @@ import 'package:get/get.dart';
 import 'package:suitess/src/utils/containers/form_field_container.dart';
 
 import '../../../../../../src/constants/consts.dart';
-import '../../../../../../src/controllers/app/wallet_transfer_controller.dart';
+import '../../../../../../src/controllers/app/bank_transfer_controller.dart';
 import '../../../../../../src/utils/buttons/android/android_elevated_button.dart';
 import '../../../../../../src/utils/components/my_app_bar.dart';
 import '../../../../../../src/utils/text_form_fields/android/android_textformfield.dart';
 import '../../../../../../theme/colors.dart';
-import '../../content/wallet_transfer_source_wallet.dart';
+import '../../content/bank_transfer_source_wallet.dart';
 
-class WalletTransferScaffold extends GetView<WalletTransferController> {
-  const WalletTransferScaffold({super.key});
+class BankTransferScaffold extends GetView<BankTransferController> {
+  const BankTransferScaffold({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +54,7 @@ class WalletTransferScaffold extends GetView<WalletTransferController> {
                 ),
               ),
               kHalfSizedBox,
-              walletTransferSourceWallet(media, colorScheme, controller),
+              bankTransferSourceWallet(media, colorScheme, controller),
               kBigSizedBox,
               Text(
                 "Transfer to",
@@ -75,13 +75,13 @@ class WalletTransferScaffold extends GetView<WalletTransferController> {
                       media,
                       containerHeight: 55,
                       child: AndroidTextFormField(
-                        labelText: "Wallet Number",
-                        controller: controller.walletNumberEC,
+                        labelText: "Account Number",
+                        controller: controller.accountNumberEC,
                         validator: (value) {
                           return null;
                         },
                         textInputAction: TextInputAction.next,
-                        focusNode: controller.walletNumberFN,
+                        focusNode: controller.accountNumberFN,
                         textCapitalization: TextCapitalization.none,
                         keyboardType: TextInputType.number,
                         inputFormatters: [
@@ -131,8 +131,8 @@ class WalletTransferScaffold extends GetView<WalletTransferController> {
                 ),
               ),
               SizedBox(height: media.height * .2),
-              GetBuilder<WalletTransferController>(
-                init: WalletTransferController(),
+              GetBuilder<BankTransferController>(
+                init: BankTransferController(),
                 builder: (controller) {
                   return AndroidElevatedButton(
                     title: "Confirm",

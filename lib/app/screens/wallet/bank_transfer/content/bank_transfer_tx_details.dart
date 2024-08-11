@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../../src/constants/consts.dart';
-import '../../../../../src/controllers/app/wallet_transfer_controller.dart';
+import '../../../../../src/controllers/app/bank_transfer_controller.dart';
 import '../../../../../src/utils/buttons/android/android_elevated_button.dart';
 import '../../../../../src/utils/buttons/android/android_outlined_button.dart';
 import '../../../../../theme/colors.dart';
-import 'wallet_transfer_tx_detail.dart';
+import 'bank_transfer_tx_detail.dart';
 
-class WalletTransferTxDetails extends GetView<WalletTransferController> {
-  const WalletTransferTxDetails({super.key});
+class BankTransferTxDetails extends GetView<BankTransferController> {
+  const BankTransferTxDetails({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +20,8 @@ class WalletTransferTxDetails extends GetView<WalletTransferController> {
       body: SafeArea(
         child: Scrollbar(
           controller: controller.scrollController,
-          child: GetBuilder<WalletTransferController>(
-            init: WalletTransferController(),
+          child: GetBuilder<BankTransferController>(
+            init: BankTransferController(),
             builder: (controller) {
               return SingleChildScrollView(
                 padding: const EdgeInsets.all(10),
@@ -68,7 +68,7 @@ class WalletTransferTxDetails extends GetView<WalletTransferController> {
                       ),
                       child: Column(
                         children: [
-                          walletTransferTxDetail(
+                          bankTransferTxDetail(
                             title: "Source account",
                             child: Text(
                               "093710254",
@@ -81,7 +81,7 @@ class WalletTransferTxDetails extends GetView<WalletTransferController> {
                             ),
                           ),
                           kSizedBox,
-                          walletTransferTxDetail(
+                          bankTransferTxDetail(
                             title: "Benificiary Bank",
                             child: Text(
                               "Suitess Wallet",
@@ -94,7 +94,7 @@ class WalletTransferTxDetails extends GetView<WalletTransferController> {
                             ),
                           ),
                           kSizedBox,
-                          walletTransferTxDetail(
+                          bankTransferTxDetail(
                             title: "Account Number",
                             child: Text(
                               "2062095204",
@@ -107,7 +107,7 @@ class WalletTransferTxDetails extends GetView<WalletTransferController> {
                             ),
                           ),
                           kSizedBox,
-                          walletTransferTxDetail(
+                          bankTransferTxDetail(
                             title: "Benificiary's Name",
                             child: Text(
                               "Okigbo Ifeanyi",
@@ -120,7 +120,7 @@ class WalletTransferTxDetails extends GetView<WalletTransferController> {
                             ),
                           ),
                           kSizedBox,
-                          walletTransferTxDetail(
+                          bankTransferTxDetail(
                             title: "Transaction Amount",
                             child: Text.rich(
                               softWrap: true,
@@ -146,7 +146,7 @@ class WalletTransferTxDetails extends GetView<WalletTransferController> {
                             ),
                           ),
                           kSizedBox,
-                          walletTransferTxDetail(
+                          bankTransferTxDetail(
                             title: "Transaction Charges",
                             child: Text.rich(
                               softWrap: true,
