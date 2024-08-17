@@ -6,9 +6,10 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:suitess/src/controllers/others/api_processor_controller.dart';
 
-import '../../../app/auth/email_otp/screen/email_otp.dart';
 import '../../../app/auth/login/screen/login.dart';
 import '../../constants/consts.dart';
+import '../../models/auth/signup_response_model.dart';
+import '../../services/api/api_url.dart';
 
 class SignupController extends GetxController {
   static SignupController get instance {
@@ -50,6 +51,7 @@ class SignupController extends GetxController {
   var responseStatus = 0.obs;
   var responseMessage = "".obs;
   var ngnDialCode = "+234".obs;
+  var signupResponse = SignupResponseModel.fromJson(null).obs;
 
   //=========== onChanged Functions ===========\\
   firstNameOnChanged(value) {
@@ -171,19 +173,54 @@ class SignupController extends GetxController {
       isLoading.value = true;
       update();
 
-      await Future.delayed(const Duration(seconds: 3));
+      var url = ApiUrl.baseUrl + ApiUrl.register;
 
-      ApiProcessorController.successSnack("Signup successful");
+      Map signupData = {
+        "fullname": "${firstNameEC.text} ${lastNameEC.text}",
+        "phone": phoneNumberEC.text,
+        "email": emailEC.text,
+        "password": passwordEC.text,
+        "password_confirmation": passwordEC.text,
+      };
 
-      Get.offAll(
-        () => EmailOTP(userEmail: emailEC.text),
-        routeName: "/email-otp",
-        fullscreenDialog: true,
-        curve: Curves.easeInOut,
-        predicate: (routes) => false,
-        popGesture: false,
-        transition: Get.defaultTransition,
-      );
+      log("This is the Url: $url");
+      log("This is the Signup Data: $signupData");
+
+      //Client service
+      // var response = await ClientService.postRequest(url)
+      //     .timeout(const Duration(seconds: 20));
+
+      // if (response == null) {
+      //   return;
+      // }
+      // try {
+      //   if (response.statusCode == 200) {
+      //     // Convert to json
+      //     dynamic responseJson;
+      //     if (response.data is String) {
+      //       responseJson = jsonDecode(response.data);
+      //     } else {
+      //       responseJson = response.data;
+      //     }
+
+      //     //Map the response json to the model provided
+      //     signupResponse.value = SignupResponseModel.fromJson(responseJson);
+      //   }
+      // } catch (e) {
+      //   log(e.toString());
+      // }
+
+      // ApiProcessorController.successSnack("Signup successful");
+
+      // Get.offAll(
+      //   () => EmailOTP(userEmail: emailEC.text),
+      //   routeName: "/email-otp",
+      //   fullscreenDialog: true,
+      //   curve: Curves.easeInOut,
+      //   predicate: (routes) => false,
+      //   popGesture: false,
+      //   transition: Get.defaultTransition,
+      // );
     }
     isLoading.value = false;
     update();

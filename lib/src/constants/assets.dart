@@ -3,6 +3,7 @@ class Assets {
   //App Icon
   static const lightAppLogo = "assets/images/png/light_app_logo.png";
   static const darkAppLogo = "assets/images/png/dark_app_logo.png";
+  static const yellowAppLogo = "assets/images/png/yellow_app_logo.png";
 
 //========== PNG Icons ==========\\
 

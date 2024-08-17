@@ -5,7 +5,7 @@ import 'package:loading_animation_widget/loading_animation_widget.dart';
 import '../../../../src/constants/assets.dart';
 import '../../../../src/constants/consts.dart';
 
-Widget startupSplashScreen({media, colorScheme}) {
+startupSplashScreen(Size media, ColorScheme colorScheme) {
   return Container(
     height: media.height,
     width: media.width,
@@ -24,11 +24,9 @@ Widget startupSplashScreen({media, colorScheme}) {
         Container(
           height: media.height / 4,
           width: media.width / 2,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             image: DecorationImage(
-              image: AssetImage(
-                Get.isDarkMode ? Assets.lightAppLogo : Assets.darkAppLogo,
-              ),
+              image: AssetImage(Assets.yellowAppLogo),
             ),
           ),
         ),

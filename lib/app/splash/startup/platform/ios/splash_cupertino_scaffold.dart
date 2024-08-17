@@ -16,7 +16,7 @@ class SplashCupertinoScaffold extends StatelessWidget {
         child: ListView(
           physics: const NeverScrollableScrollPhysics(),
           children: [
-            startupSplashScreen(media: media, colorScheme: colorScheme),
+            startupSplashScreen(media, colorScheme),
           ],
         ),
       ),

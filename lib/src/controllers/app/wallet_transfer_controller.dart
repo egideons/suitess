@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import '../../../app/screens/wallet/wallet_transfer/content/wallet_transfer_tx_details.dart';
 import '../../../app/screens/wallet/wallet_transfer/content/wallet_transfer_tx_pin.dart';
 import '../../../app/splash/successful/screen/success_screen.dart';
-import '../../models/source_account_model.dart';
+import '../../models/wallet/source_account_model.dart';
 import '../others/api_processor_controller.dart';
 
 class WalletTransferController extends GetxController {

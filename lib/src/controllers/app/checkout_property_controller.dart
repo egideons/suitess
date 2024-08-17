@@ -7,7 +7,7 @@ import '../../../app/screens/property/checkout_property/content/checkout_propert
 import '../../../app/screens/property/checkout_property/content/schedule_move_in_congratulations_modal_sheet.dart';
 import '../../../app/screens/property/checkout_property/content/schedule_move_in_modal_sheet.dart';
 import '../../../app/splash/loading/screen/loading_screen.dart';
-import '../../models/time_appointment_model.dart';
+import '../../models/property/time_appointment_model.dart';
 import '../others/loading_controller.dart';
 
 class CheckoutPropertyController extends GetxController {

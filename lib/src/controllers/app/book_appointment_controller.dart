@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../models/time_appointment_model.dart';
+import '../../models/property/time_appointment_model.dart';
 
 class BookAppointmentController extends GetxController {
   static BookAppointmentController get instance {

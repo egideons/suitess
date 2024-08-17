@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../constants/assets.dart';
-import '../../models/property_category_model.dart';
+import '../../models/property/property_category_model.dart';
 import '../../routes/routes.dart';
 
 class ViewPropertyController extends GetxController {

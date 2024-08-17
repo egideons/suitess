@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
-import '../../models/property_category_model.dart';
+import '../../models/property/property_category_model.dart';
 import '../../routes/routes.dart';
 
 class HomeScreenController extends GetxController {

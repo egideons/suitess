@@ -1,9 +1,12 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:suitess/app/splash/loading/content/loading_screen_content.dart';
 
-class LoadingScreenScaffold extends StatelessWidget {
+import '../../../../../src/controllers/others/loading_controller.dart';
+
+class LoadingScreenScaffold extends GetView<LoadingController> {
   final void Function()? loadData;
   const LoadingScreenScaffold({super.key, this.loadData});
 

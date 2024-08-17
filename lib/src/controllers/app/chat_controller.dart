@@ -2,7 +2,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
-import '../../models/chat_message_model.dart';
+import '../../models/chat/chat_message_model.dart';
 
 class ChatController extends GetxController {
   static ChatController get instance {

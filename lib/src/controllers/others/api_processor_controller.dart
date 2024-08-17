@@ -59,7 +59,7 @@ class ApiProcessorController extends GetxController {
         backgroundColor: kSuccessColor,
         barBlur: 2.0,
         borderRadius: 10,
-        snackPosition: SnackPosition.TOP,
+        snackPosition: SnackPosition.BOTTOM,
         // backgroundGradient: LinearGradient(
         //   colors: [kSuccessColor, kSuccessColor.withOpacity(0.6)],
         // ),
@@ -118,7 +118,7 @@ class ApiProcessorController extends GetxController {
         isDismissible: true,
         barBlur: 2.0,
         borderRadius: 10,
-        snackPosition: SnackPosition.TOP,
+        snackPosition: SnackPosition.BOTTOM,
         // backgroundGradient: LinearGradient(
         //   colors: [kSuccessColor, kSuccessColor.withOpacity(0.6)],
         // ),
