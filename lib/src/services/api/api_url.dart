@@ -1,6 +1,8 @@
 class ApiUrl {
 //======= Base URL ========\\
   static const baseUrl = "https://auth.suitess.org";
+
+//======= Auth Section ========\\
   static const auth = "/api/v1/user/auth";
   static const register = "/register";
   static const login = "/login";
