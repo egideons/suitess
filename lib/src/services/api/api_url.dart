@@ -12,4 +12,5 @@ class ApiUrl {
   static const resetPasswordOTP = "/reset-password-otp";
   static const resetPasswordOTPVerify = "/reset-password-otp-verify";
   static const resetPasswordUpdatePassword = "/reset-password-update-password";
+  static const spdsnd = "/reset-password-update-password";
 }
