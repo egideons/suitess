@@ -1,23 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:suitess/src/utils/buttons/android/android_elevated_button.dart';
-import 'package:suitess/src/utils/text_form_fields/android/android_textformfield.dart';
 
 import '../../../../../../src/constants/assets.dart';
 import '../../../../../../src/constants/consts.dart';
 import '../../../../../../src/controllers/auth/reset_password_via_sms_otp_controller.dart';
 import '../../../../../../src/utils/components/responsive_constants.dart';
 import '../../../../../../theme/colors.dart';
+import '../../content/reset_password_via_sms_otp_form_landscape.dart';
+import '../../content/reset_password_via_sms_otp_form_mobile.dart';
 import '../../content/reset_password_via_sms_page_header.dart';
 
 class ResetPasswordViaSMSOTPScaffold
     extends GetView<ResetPasswordViaSmsOTPController> {
-  const ResetPasswordViaSMSOTPScaffold({this.userPhoneNumber, super.key});
+  const ResetPasswordViaSMSOTPScaffold(
+      {required this.userPhoneNumber, super.key});
 
-  final String? userPhoneNumber;
+  final String userPhoneNumber;
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +27,8 @@ class ResetPasswordViaSMSOTPScaffold
 
     var resetPasswordViaSmsController =
         ResetPasswordViaSmsOTPController.instance;
+
+    resetPasswordViaSmsController.phoneEC.text = userPhoneNumber;
 
     //Large screens or Mobile Landscape mode
     if (deviceType(media.width) > 1) {
@@ -70,7 +73,7 @@ class ResetPasswordViaSMSOTPScaffold
                         title: "OTP Verification",
                         subtitle:
                             "Enter the 4 digit verification code sent to ",
-                        phoneNumber: maskPhoneNumber(userPhoneNumber ?? ""),
+                        phoneNumber: maskPhoneNumber(userPhoneNumber),
                       ),
                     ],
                   ),
@@ -97,117 +100,10 @@ class ResetPasswordViaSMSOTPScaffold
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       const SizedBox(height: kDefaultPadding * 4),
-                      Form(
-                        key: resetPasswordViaSmsController.formKey,
-                        autovalidateMode: AutovalidateMode.onUserInteraction,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            SizedBox(
-                              width: media.width * .08,
-                              child: AndroidTextFormField(
-                                controller:
-                                    resetPasswordViaSmsController.pin1EC,
-                                focusNode: resetPasswordViaSmsController.pin1FN,
-                                textInputAction: TextInputAction.next,
-                                textCapitalization: TextCapitalization.none,
-                                keyboardType: TextInputType.number,
-                                inputBorder: const UnderlineInputBorder(),
-                                enabledBorder: const UnderlineInputBorder(),
-                                focusedBorder: const UnderlineInputBorder(),
-                                onChanged: (value) {
-                                  resetPasswordViaSmsController.pin1Onchanged(
-                                      value, context);
-                                },
-                                inputFormatters: [
-                                  LengthLimitingTextInputFormatter(1),
-                                  FilteringTextInputFormatter.digitsOnly,
-                                ],
-                                validator: (value) {
-                                  return null;
-                                },
-                              ),
-                            ),
-                            SizedBox(
-                              width: media.width * .08,
-                              child: AndroidTextFormField(
-                                controller:
-                                    resetPasswordViaSmsController.pin2EC,
-                                focusNode: resetPasswordViaSmsController.pin2FN,
-                                textInputAction: TextInputAction.next,
-                                textCapitalization: TextCapitalization.none,
-                                keyboardType: TextInputType.number,
-                                inputBorder: const UnderlineInputBorder(),
-                                enabledBorder: const UnderlineInputBorder(),
-                                focusedBorder: const UnderlineInputBorder(),
-                                inputFormatters: [
-                                  LengthLimitingTextInputFormatter(1),
-                                  FilteringTextInputFormatter.digitsOnly,
-                                ],
-                                onChanged: (value) {
-                                  resetPasswordViaSmsController.pin2Onchanged(
-                                      value, context);
-                                },
-                                validator: (value) {
-                                  return null;
-                                },
-                              ),
-                            ),
-                            SizedBox(
-                              width: media.width * .08,
-                              child: AndroidTextFormField(
-                                controller:
-                                    resetPasswordViaSmsController.pin3EC,
-                                focusNode: resetPasswordViaSmsController.pin3FN,
-                                textInputAction: TextInputAction.next,
-                                textCapitalization: TextCapitalization.none,
-                                keyboardType: TextInputType.number,
-                                inputBorder: const UnderlineInputBorder(),
-                                enabledBorder: const UnderlineInputBorder(),
-                                focusedBorder: const UnderlineInputBorder(),
-                                inputFormatters: [
-                                  LengthLimitingTextInputFormatter(1),
-                                  FilteringTextInputFormatter.digitsOnly,
-                                ],
-                                onChanged: (value) {
-                                  resetPasswordViaSmsController.pin3Onchanged(
-                                      value, context);
-                                },
-                                validator: (value) {
-                                  return null;
-                                },
-                              ),
-                            ),
-                            SizedBox(
-                              width: media.width * .08,
-                              child: AndroidTextFormField(
-                                controller:
-                                    resetPasswordViaSmsController.pin4EC,
-                                focusNode: resetPasswordViaSmsController.pin4FN,
-                                textInputAction: TextInputAction.done,
-                                textCapitalization: TextCapitalization.none,
-                                keyboardType: TextInputType.number,
-                                inputBorder: const UnderlineInputBorder(),
-                                enabledBorder: const UnderlineInputBorder(),
-                                focusedBorder: const UnderlineInputBorder(),
-                                onFieldSubmitted:
-                                    resetPasswordViaSmsController.onSubmitted,
-                                inputFormatters: [
-                                  LengthLimitingTextInputFormatter(1),
-                                  FilteringTextInputFormatter.digitsOnly,
-                                ],
-                                onChanged: (value) {
-                                  resetPasswordViaSmsController.pin4Onchanged(
-                                      value, context);
-                                },
-                                validator: (value) {
-                                  return null;
-                                },
-                              ),
-                            ),
-                          ],
-                        ),
+                      resetPasswordViaSmsOTPFormLandscape(
+                        resetPasswordViaSmsController,
+                        media,
+                        context,
                       ),
                       kSizedBox,
                       Row(
@@ -309,115 +205,13 @@ class ResetPasswordViaSMSOTPScaffold
             media: media,
             title: "OTP Verification",
             subtitle: "Enter the 4 digit verification code sent to ",
-            phoneNumber: maskPhoneNumber(userPhoneNumber ?? ""),
+            phoneNumber: maskPhoneNumber(userPhoneNumber),
           ),
           const SizedBox(height: kDefaultPadding * 2),
-          Form(
-            key: resetPasswordViaSmsController.formKey,
-            autovalidateMode: AutovalidateMode.onUserInteraction,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  width: media.width * 0.18,
-                  child: AndroidTextFormField(
-                    controller: resetPasswordViaSmsController.pin1EC,
-                    focusNode: resetPasswordViaSmsController.pin1FN,
-                    textInputAction: TextInputAction.next,
-                    textCapitalization: TextCapitalization.none,
-                    keyboardType: TextInputType.number,
-                    inputBorder: const UnderlineInputBorder(),
-                    enabledBorder: const UnderlineInputBorder(),
-                    focusedBorder: const UnderlineInputBorder(),
-                    onChanged: (value) {
-                      resetPasswordViaSmsController.pin1Onchanged(
-                          value, context);
-                    },
-                    inputFormatters: [
-                      LengthLimitingTextInputFormatter(1),
-                      FilteringTextInputFormatter.digitsOnly,
-                    ],
-                    validator: (value) {
-                      return null;
-                    },
-                  ),
-                ),
-                SizedBox(
-                  width: media.width * 0.18,
-                  child: AndroidTextFormField(
-                    controller: resetPasswordViaSmsController.pin2EC,
-                    focusNode: resetPasswordViaSmsController.pin2FN,
-                    textInputAction: TextInputAction.next,
-                    textCapitalization: TextCapitalization.none,
-                    keyboardType: TextInputType.number,
-                    inputBorder: const UnderlineInputBorder(),
-                    enabledBorder: const UnderlineInputBorder(),
-                    focusedBorder: const UnderlineInputBorder(),
-                    onChanged: (value) {
-                      resetPasswordViaSmsController.pin2Onchanged(
-                          value, context);
-                    },
-                    inputFormatters: [
-                      LengthLimitingTextInputFormatter(1),
-                      FilteringTextInputFormatter.digitsOnly,
-                    ],
-                    validator: (value) {
-                      return null;
-                    },
-                  ),
-                ),
-                SizedBox(
-                  width: media.width * 0.18,
-                  child: AndroidTextFormField(
-                    controller: resetPasswordViaSmsController.pin3EC,
-                    focusNode: resetPasswordViaSmsController.pin3FN,
-                    textInputAction: TextInputAction.next,
-                    textCapitalization: TextCapitalization.none,
-                    keyboardType: TextInputType.number,
-                    inputBorder: const UnderlineInputBorder(),
-                    enabledBorder: const UnderlineInputBorder(),
-                    focusedBorder: const UnderlineInputBorder(),
-                    onChanged: (value) {
-                      resetPasswordViaSmsController.pin3Onchanged(
-                          value, context);
-                    },
-                    inputFormatters: [
-                      LengthLimitingTextInputFormatter(1),
-                      FilteringTextInputFormatter.digitsOnly,
-                    ],
-                    validator: (value) {
-                      return null;
-                    },
-                  ),
-                ),
-                SizedBox(
-                  width: media.width * 0.18,
-                  child: AndroidTextFormField(
-                    controller: resetPasswordViaSmsController.pin4EC,
-                    focusNode: resetPasswordViaSmsController.pin4FN,
-                    textInputAction: TextInputAction.done,
-                    textCapitalization: TextCapitalization.none,
-                    keyboardType: TextInputType.number,
-                    inputBorder: const UnderlineInputBorder(),
-                    enabledBorder: const UnderlineInputBorder(),
-                    focusedBorder: const UnderlineInputBorder(),
-                    onFieldSubmitted: resetPasswordViaSmsController.onSubmitted,
-                    onChanged: (value) {
-                      resetPasswordViaSmsController.pin4Onchanged(
-                          value, context);
-                    },
-                    inputFormatters: [
-                      LengthLimitingTextInputFormatter(1),
-                      FilteringTextInputFormatter.digitsOnly,
-                    ],
-                    validator: (value) {
-                      return null;
-                    },
-                  ),
-                ),
-              ],
-            ),
+          resetPasswordViaSmsOTPFormMobile(
+            resetPasswordViaSmsController,
+            media,
+            context,
           ),
           kSizedBox,
           Row(

@@ -8,7 +8,7 @@ import '../../../../src/utils/containers/form_field_container.dart';
 import '../../../../src/utils/text_form_fields/android/android_textformfield.dart';
 import '../../../../theme/colors.dart';
 
-signupForm(
+signupFormLandscape(
   SignupController signupController,
   ColorScheme colorScheme,
   Size media,
@@ -22,6 +22,7 @@ signupForm(
         formFieldContainer(
           colorScheme,
           media,
+          containerHeight: media.height * .08,
           child: AndroidTextFormField(
             controller: signupController.firstNameEC,
             focusNode: signupController.firstNameFN,
@@ -39,6 +40,7 @@ signupForm(
         formFieldContainer(
           colorScheme,
           media,
+          containerHeight: media.height * .08,
           child: AndroidTextFormField(
             hintText: "Last Name",
             controller: signupController.lastNameEC,
@@ -56,6 +58,7 @@ signupForm(
         formFieldContainer(
           colorScheme,
           media,
+          containerHeight: media.height * .08,
           child: AndroidTextFormField(
             controller: signupController.emailEC,
             focusNode: signupController.emailFN,
@@ -73,6 +76,7 @@ signupForm(
         formFieldContainer(
           colorScheme,
           media,
+          containerHeight: media.height * .08,
           child: AndroidTextFormField(
             controller: signupController.phoneNumberEC,
             focusNode: signupController.phoneNumberFN,
@@ -90,9 +94,9 @@ signupForm(
         formFieldContainer(
           colorScheme,
           media,
+          containerHeight: media.height * .08,
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisSize: MainAxisSize.min,
             children: [
               Expanded(
                 child: AndroidTextFormField(

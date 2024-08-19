@@ -140,7 +140,7 @@ class Routes {
         name: resetPasswordViaEmail, page: () => const ResetPasswordViaEmail()),
     GetPage(
         name: resetPasswordViaEmailOTP,
-        page: () => const RestPasswordViaEmailOTP()),
+        page: () => const ResetPasswordViaEmailOTP()),
     GetPage(name: resetPasswordViaSms, page: () => const ResetPasswordViaSMS()),
     GetPage(
         name: resetPasswordViaSmsOTP,

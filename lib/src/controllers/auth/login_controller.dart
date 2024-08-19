@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 
@@ -9,7 +10,10 @@ import '../../../app/auth/signup/screen/signup.dart';
 import '../../../app/splash/loading/screen/loading_screen.dart';
 import '../../../main.dart';
 import '../../constants/consts.dart';
+import '../../models/auth/login_response_model.dart';
 import '../../routes/routes.dart';
+import '../../services/api/api_url.dart';
+import '../../services/client/client_service.dart';
 import '../others/api_processor_controller.dart';
 import '../others/loading_controller.dart';
 
@@ -17,6 +21,8 @@ class LoginController extends GetxController {
   static LoginController get instance {
     return Get.find<LoginController>();
   }
+
+  var loginResponse = LoginResponseModel.fromJson(null).obs;
 
   //=========== Form Key ===========\\
   final formKey = GlobalKey<FormState>();
@@ -108,24 +114,74 @@ class LoginController extends GetxController {
       isLoading.value = true;
       update();
 
-      await Future.delayed(const Duration(seconds: 3));
+      var url = ApiUrl.baseUrl + ApiUrl.auth + ApiUrl.login;
 
-      ApiProcessorController.successSnack("Login successful");
+      Map data = {
+        "email": emailEC.text,
+        "password": passwordEC.text,
+      };
 
-      //Save state that the user has logged in
-      prefs.setBool("isLoggedIn", true);
+      log("This is the Url: $url");
+      log("This is the phone otp Data: $data");
 
-      await Get.offAll(
-        () => LoadingScreen(
-          loadData: LoadingController.instance.loadBottomNavgiationView,
-        ),
-        routeName: "/loading-screen",
-        fullscreenDialog: true,
-        curve: Curves.easeInOut,
-        predicate: (routes) => false,
-        popGesture: false,
-        transition: Get.defaultTransition,
+      // Client service
+      var response = await ClientService.postRequest(
+        url,
+        data,
       );
+
+      if (response == null) {
+        isLoading.value = false;
+        update();
+        return;
+      }
+
+      try {
+        if (response.statusCode == 200) {
+          // Convert to json
+          dynamic responseJson;
+          if (response.data is String) {
+            responseJson = jsonDecode(response.data);
+          } else {
+            responseJson = response.data;
+          }
+
+          log("This is the response body ====> ${response.data}");
+
+          //Map the response json to the model provided
+          loginResponse.value = LoginResponseModel.fromJson(responseJson);
+
+          ApiProcessorController.successSnack("Login successful");
+
+          if (rememberMe.value == true) {
+            //Save state that the user has logged in
+            prefs.setBool("isLoggedIn", true);
+            //Save state that the user token
+            prefs.setString(
+              "userToken",
+              loginResponse.value.data.token,
+            );
+          }
+
+          await Get.offAll(
+            () => LoadingScreen(
+              loadData: LoadingController.instance.loadBottomNavgiationView,
+            ),
+            routeName: "/loading-screen",
+            fullscreenDialog: true,
+            curve: Curves.easeInOut,
+            predicate: (routes) => false,
+            popGesture: false,
+            transition: Get.defaultTransition,
+          );
+        } else {
+          // ApiProcessorController.errorSnack(otpResponse.value.message);
+          log("Request failed with status: ${response.statusCode}");
+          log("Response body: ${response.data}");
+        }
+      } catch (e) {
+        log(e.toString());
+      }
     }
     isLoading.value = false;
     update();

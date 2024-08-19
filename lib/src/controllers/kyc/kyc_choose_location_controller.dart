@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../app/splash/loading/screen/loading_screen.dart';
-import '../../../main.dart';
 import '../../constants/consts.dart';
 import '../others/api_processor_controller.dart';
 import '../others/loading_controller.dart';
@@ -368,9 +367,6 @@ class KycAddLocationController extends GetxController {
       //   popGesture: false,
       //   transition: Get.defaultTransition,
       // );
-
-      //Save state that the user has logged in
-      prefs.setBool("isLoggedIn", true);
 
       await Get.offAll(
         () => LoadingScreen(

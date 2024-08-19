@@ -1,14 +1,24 @@
+import 'dart:convert';
+import 'dart:developer';
+
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:suitess/src/controllers/others/api_processor_controller.dart';
 
 import '../../../app/auth/login/screen/login.dart';
 import '../../constants/consts.dart';
+import '../../services/api/api_url.dart';
+import '../../services/client/client_service.dart';
 
 class ResetPasswordController extends GetxController {
   static ResetPasswordController get instance {
     return Get.find<ResetPasswordController>();
   }
+
+  var otpCode = Get.parameters['otpCode'] ?? '';
+  var phone = Get.parameters['phone'] ?? '';
+  var email = Get.parameters['email'] ?? '';
+  var isPhoneOTP = Get.arguments?['isPhoneOTP'] ?? false;
 
   //=========== Form Key ===========\\
   final formKey = GlobalKey<FormState>();
@@ -103,19 +113,84 @@ class ResetPasswordController extends GetxController {
       isLoading.value = true;
       update();
 
-      await Future.delayed(const Duration(seconds: 2));
-      ApiProcessorController.successSnack("Password reset successful");
+      if (isPhoneOTP == true) {
+        isLoading.value = false;
+        update();
 
-      Get.offAll(
-        () => const Login(),
-        routeName: "/login",
-        fullscreenDialog: true,
-        curve: Curves.easeInOut,
-        predicate: (routes) => false,
-        popGesture: false,
-        transition: Get.defaultTransition,
-      );
+        // Get.offAll(
+        //   () => const Login(),
+        //   routeName: "/login",
+        //   fullscreenDialog: true,
+        //   curve: Curves.easeInOut,
+        //   predicate: (routes) => false,
+        //   popGesture: false,
+        //   transition: Get.defaultTransition,
+        // );
+      } else {
+        var url =
+            ApiUrl.baseUrl + ApiUrl.auth + ApiUrl.resetPasswordUpdatePassword;
 
+        Map data = {
+          "type": "email",
+          "email": email,
+          "password": passwordEC.text,
+          "password_confirmation": confirmPasswordEC.text,
+          "otp": otpCode
+        };
+
+        log("This is the Url: $url");
+        log("This is the phone otp Data: $data");
+
+        // Client service
+        var response = await ClientService.postRequest(
+          url,
+          data,
+        );
+
+        if (response == null) {
+          isLoading.value = false;
+          update();
+          return;
+        }
+
+        try {
+          if (response.statusCode == 200) {
+            // Convert to json
+            dynamic responseJson;
+            if (response.data is String) {
+              responseJson = jsonDecode(response.data);
+            } else {
+              responseJson = response.data;
+            }
+
+            log("This is the response body ====> ${response.data}");
+
+            //Map the response json to the model provided
+            // resetPasswordResponse.value =
+            //     ResetPasswordResponseModel.fromJson(responseJson);
+
+            ApiProcessorController.successSnack(
+              "Password reset successful",
+            );
+
+            Get.offAll(
+              () => const Login(),
+              routeName: "/login",
+              fullscreenDialog: true,
+              curve: Curves.easeInOut,
+              predicate: (routes) => false,
+              popGesture: false,
+              transition: Get.defaultTransition,
+            );
+          } else {
+            // ApiProcessorController.errorSnack(otpResponse.value.message);
+            log("Request failed with status: ${response.statusCode}");
+            log("Response body: ${response.data}");
+          }
+        } catch (e) {
+          log(e.toString());
+        }
+      }
       isLoading.value = false;
       update();
     }

@@ -7,8 +7,9 @@ import 'package:suitess/src/controllers/auth/reset_password_via_email_otp_contro
 
 import '../platform/android/reset_password_via_email_otp_scaffold.dart';
 
-class RestPasswordViaEmailOTP extends StatelessWidget {
-  const RestPasswordViaEmailOTP({super.key});
+class ResetPasswordViaEmailOTP extends StatelessWidget {
+  final String? userEmail;
+  const ResetPasswordViaEmailOTP({super.key, this.userEmail});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +24,7 @@ class RestPasswordViaEmailOTP extends StatelessWidget {
     }
     return GestureDetector(
       onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
-      child: const ForgotPasswordViaEmailOTPScaffold(),
+      child: ResetPasswordViaEmailOTPScaffold(userEmail: userEmail!),
     );
   }
 }

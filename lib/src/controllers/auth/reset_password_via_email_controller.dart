@@ -1,8 +1,15 @@
+import 'dart:convert';
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../app/auth/reset_password_otp/via_email/screen/reset_password_via_email_otp.dart';
 import '../../constants/consts.dart';
+import '../../models/auth/verify_email_otp_response_model.dart';
 import '../../routes/routes.dart';
+import '../../services/api/api_url.dart';
+import '../../services/client/client_service.dart';
 import '../others/api_processor_controller.dart';
 
 class ResetPasswordViaEmailController extends GetxController {
@@ -15,6 +22,8 @@ class ResetPasswordViaEmailController extends GetxController {
     emailFN.requestFocus();
     super.onInit();
   }
+
+  var otpResponse = VerifyOTPResponseModel.fromJson(null).obs;
 
   //=========== Form Key ===========\\
   final formKey = GlobalKey<FormState>();
@@ -83,10 +92,63 @@ class ResetPasswordViaEmailController extends GetxController {
       isLoading.value = true;
       update();
 
-      await Future.delayed(const Duration(milliseconds: 1000));
-      ApiProcessorController.successSnack("An OTP has been sent to your email");
+      var url = ApiUrl.baseUrl + ApiUrl.auth + ApiUrl.resetPasswordOTP;
 
-      Get.toNamed(Routes.resetPasswordViaEmailOTP, preventDuplicates: true);
+      Map data = {
+        "type": "email",
+        "email": emailEC.text,
+      };
+
+      log("This is the Url: $url");
+      log("This is the OTP Data: $data");
+
+      // Client service
+      var response = await ClientService.postRequest(
+        url,
+        data,
+      );
+
+      if (response == null) {
+        isLoading.value = false;
+        update();
+        return;
+      }
+
+      try {
+        if (response.statusCode == 200) {
+          // Convert to json
+          dynamic responseJson;
+          if (response.data is String) {
+            responseJson = jsonDecode(response.data);
+          } else {
+            responseJson = response.data;
+          }
+
+          log("This is the response body ====> ${response.data}");
+
+          //Map the response json to the model provided
+          otpResponse.value = VerifyOTPResponseModel.fromJson(responseJson);
+
+          ApiProcessorController.successSnack(
+            "An OTP has been sent to your email",
+          );
+
+          await Get.to(
+            () => ResetPasswordViaEmailOTP(userEmail: emailEC.text),
+            routeName: "/reset-password-via-email-otp",
+            fullscreenDialog: true,
+            curve: Curves.easeInOut,
+            preventDuplicates: true,
+            popGesture: false,
+            transition: Get.defaultTransition,
+          );
+        } else {
+          log("Request failed with status: ${response.statusCode}");
+          log("Response body: ${response.data}");
+        }
+      } catch (e) {
+        log(e.toString());
+      }
 
       isLoading.value = false;
       update();

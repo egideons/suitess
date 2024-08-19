@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:suitess/src/utils/buttons/android/android_elevated_button.dart';
 import 'package:suitess/src/utils/components/responsive_constants.dart';
-import 'package:suitess/src/utils/text_form_fields/android/android_textformfield.dart';
 
 import '../../../../../src/constants/assets.dart';
 import '../../../../../src/constants/consts.dart';
 import '../../../../../src/controllers/auth/email_otp_controller.dart';
 import '../../../../../theme/colors.dart';
+import '../../content/email_otp_form_landscape.dart';
+import '../../content/email_otp_form_mobile.dart';
 import '../../content/email_otp_page_header.dart';
 
 class EmailOTPScaffold extends GetView<EmailOTPController> {
@@ -22,7 +22,8 @@ class EmailOTPScaffold extends GetView<EmailOTPController> {
     var media = MediaQuery.of(context).size;
     var colorScheme = Theme.of(context).colorScheme;
 
-    var otpController = EmailOTPController.instance;
+    var controller = EmailOTPController.instance;
+    controller.emailEC.text = userEmail!;
 
     //Large screens or Mobile Landscape mode
     if (deviceType(media.width) > 1) {
@@ -81,108 +82,10 @@ class EmailOTPScaffold extends GetView<EmailOTPController> {
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       const SizedBox(height: kDefaultPadding * 4),
-                      Form(
-                        key: otpController.formKey,
-                        autovalidateMode: AutovalidateMode.onUserInteraction,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            SizedBox(
-                              width: media.width * .08,
-                              child: AndroidTextFormField(
-                                controller: otpController.pin1EC,
-                                focusNode: otpController.pin1FN,
-                                textInputAction: TextInputAction.next,
-                                textCapitalization: TextCapitalization.none,
-                                keyboardType: TextInputType.number,
-                                inputBorder: const UnderlineInputBorder(),
-                                enabledBorder: const UnderlineInputBorder(),
-                                focusedBorder: const UnderlineInputBorder(),
-                                onChanged: (value) {
-                                  otpController.pin1Onchanged(value, context);
-                                },
-                                inputFormatters: [
-                                  LengthLimitingTextInputFormatter(1),
-                                  FilteringTextInputFormatter.digitsOnly,
-                                ],
-                                validator: (value) {
-                                  return null;
-                                },
-                              ),
-                            ),
-                            SizedBox(
-                              width: media.width * .08,
-                              child: AndroidTextFormField(
-                                controller: otpController.pin2EC,
-                                focusNode: otpController.pin2FN,
-                                textInputAction: TextInputAction.next,
-                                textCapitalization: TextCapitalization.none,
-                                keyboardType: TextInputType.number,
-                                inputBorder: const UnderlineInputBorder(),
-                                enabledBorder: const UnderlineInputBorder(),
-                                focusedBorder: const UnderlineInputBorder(),
-                                inputFormatters: [
-                                  LengthLimitingTextInputFormatter(1),
-                                  FilteringTextInputFormatter.digitsOnly,
-                                ],
-                                onChanged: (value) {
-                                  otpController.pin2Onchanged(value, context);
-                                },
-                                validator: (value) {
-                                  return null;
-                                },
-                              ),
-                            ),
-                            SizedBox(
-                              width: media.width * .08,
-                              child: AndroidTextFormField(
-                                controller: otpController.pin3EC,
-                                focusNode: otpController.pin3FN,
-                                textInputAction: TextInputAction.next,
-                                textCapitalization: TextCapitalization.none,
-                                keyboardType: TextInputType.number,
-                                inputBorder: const UnderlineInputBorder(),
-                                enabledBorder: const UnderlineInputBorder(),
-                                focusedBorder: const UnderlineInputBorder(),
-                                inputFormatters: [
-                                  LengthLimitingTextInputFormatter(1),
-                                  FilteringTextInputFormatter.digitsOnly,
-                                ],
-                                onChanged: (value) {
-                                  otpController.pin3Onchanged(value, context);
-                                },
-                                validator: (value) {
-                                  return null;
-                                },
-                              ),
-                            ),
-                            SizedBox(
-                              width: media.width * .08,
-                              child: AndroidTextFormField(
-                                controller: otpController.pin4EC,
-                                focusNode: otpController.pin4FN,
-                                textInputAction: TextInputAction.done,
-                                textCapitalization: TextCapitalization.none,
-                                keyboardType: TextInputType.number,
-                                inputBorder: const UnderlineInputBorder(),
-                                enabledBorder: const UnderlineInputBorder(),
-                                focusedBorder: const UnderlineInputBorder(),
-                                onFieldSubmitted: otpController.onSubmitted,
-                                inputFormatters: [
-                                  LengthLimitingTextInputFormatter(1),
-                                  FilteringTextInputFormatter.digitsOnly,
-                                ],
-                                onChanged: (value) {
-                                  otpController.pin4Onchanged(value, context);
-                                },
-                                validator: (value) {
-                                  return null;
-                                },
-                              ),
-                            ),
-                          ],
-                        ),
+                      emailOTPFormLandscape(
+                        controller,
+                        media,
+                        context,
                       ),
                       kBigSizedBox,
                       Row(
@@ -190,15 +93,15 @@ class EmailOTPScaffold extends GetView<EmailOTPController> {
                         children: [
                           Obx(
                             () => InkWell(
-                              onTap: otpController.timerComplete.isTrue
-                                  ? otpController.requestOTP
+                              onTap: controller.timerComplete.isTrue
+                                  ? controller.requestOTP
                                   : null,
                               child: AnimatedDefaultTextStyle(
                                 duration: const Duration(milliseconds: 300),
                                 curve: Curves.easeIn,
                                 style: defaultTextStyle(
                                   fontSize: 15.0,
-                                  color: otpController.timerComplete.isTrue
+                                  color: controller.timerComplete.isTrue
                                       ? kSuccessColor
                                       : kErrorColor,
                                   decoration: TextDecoration.underline,
@@ -211,10 +114,10 @@ class EmailOTPScaffold extends GetView<EmailOTPController> {
                           ),
                           kHalfWidthSizedBox,
                           Obx(
-                            () => otpController.timerComplete.isTrue
+                            () => controller.timerComplete.isTrue
                                 ? const SizedBox()
                                 : Text(
-                                    "in ${otpController.formatTime(otpController.secondsRemaining.value)}s",
+                                    "in ${controller.formatTime(controller.secondsRemaining.value)}s",
                                     textAlign: TextAlign.center,
                                     style: defaultTextStyle(
                                       fontSize: 15.0,
@@ -231,10 +134,10 @@ class EmailOTPScaffold extends GetView<EmailOTPController> {
                           return AndroidElevatedButton(
                             title: "Verify",
                             isLoading:
-                                otpController.isLoading.value ? true : false,
+                                controller.isLoading.value ? true : false,
                             disable:
-                                otpController.formIsValid.value ? false : true,
-                            onPressed: otpController.submitOTP,
+                                controller.formIsValid.value ? false : true,
+                            onPressed: controller.submitOTP,
                           );
                         },
                       ),
@@ -271,124 +174,22 @@ class EmailOTPScaffold extends GetView<EmailOTPController> {
               email: "$userEmail",
             ),
             const SizedBox(height: kDefaultPadding * 2),
-            Form(
-              key: otpController.formKey,
-              autovalidateMode: AutovalidateMode.onUserInteraction,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    width: media.width * 0.18,
-                    child: AndroidTextFormField(
-                      controller: otpController.pin1EC,
-                      focusNode: otpController.pin1FN,
-                      textInputAction: TextInputAction.next,
-                      textCapitalization: TextCapitalization.none,
-                      keyboardType: TextInputType.number,
-                      inputBorder: const UnderlineInputBorder(),
-                      enabledBorder: const UnderlineInputBorder(),
-                      focusedBorder: const UnderlineInputBorder(),
-                      onChanged: (value) {
-                        otpController.pin1Onchanged(value, context);
-                      },
-                      inputFormatters: [
-                        LengthLimitingTextInputFormatter(1),
-                        FilteringTextInputFormatter.digitsOnly,
-                      ],
-                      validator: (value) {
-                        return null;
-                      },
-                    ),
-                  ),
-                  SizedBox(
-                    width: media.width * 0.18,
-                    child: AndroidTextFormField(
-                      controller: otpController.pin2EC,
-                      focusNode: otpController.pin2FN,
-                      textInputAction: TextInputAction.next,
-                      textCapitalization: TextCapitalization.none,
-                      keyboardType: TextInputType.number,
-                      inputBorder: const UnderlineInputBorder(),
-                      enabledBorder: const UnderlineInputBorder(),
-                      focusedBorder: const UnderlineInputBorder(),
-                      inputFormatters: [
-                        LengthLimitingTextInputFormatter(1),
-                        FilteringTextInputFormatter.digitsOnly,
-                      ],
-                      onChanged: (value) {
-                        otpController.pin2Onchanged(value, context);
-                      },
-                      validator: (value) {
-                        return null;
-                      },
-                    ),
-                  ),
-                  SizedBox(
-                    width: media.width * 0.18,
-                    child: AndroidTextFormField(
-                      controller: otpController.pin3EC,
-                      focusNode: otpController.pin3FN,
-                      textInputAction: TextInputAction.next,
-                      textCapitalization: TextCapitalization.none,
-                      keyboardType: TextInputType.number,
-                      inputBorder: const UnderlineInputBorder(),
-                      enabledBorder: const UnderlineInputBorder(),
-                      focusedBorder: const UnderlineInputBorder(),
-                      inputFormatters: [
-                        LengthLimitingTextInputFormatter(1),
-                        FilteringTextInputFormatter.digitsOnly,
-                      ],
-                      onChanged: (value) {
-                        otpController.pin3Onchanged(value, context);
-                      },
-                      validator: (value) {
-                        return null;
-                      },
-                    ),
-                  ),
-                  SizedBox(
-                    width: media.width * 0.18,
-                    child: AndroidTextFormField(
-                      controller: otpController.pin4EC,
-                      focusNode: otpController.pin4FN,
-                      textInputAction: TextInputAction.done,
-                      textCapitalization: TextCapitalization.none,
-                      keyboardType: TextInputType.number,
-                      inputBorder: const UnderlineInputBorder(),
-                      enabledBorder: const UnderlineInputBorder(),
-                      focusedBorder: const UnderlineInputBorder(),
-                      onFieldSubmitted: otpController.onSubmitted,
-                      inputFormatters: [
-                        LengthLimitingTextInputFormatter(1),
-                        FilteringTextInputFormatter.digitsOnly,
-                      ],
-                      onChanged: (value) {
-                        otpController.pin4Onchanged(value, context);
-                      },
-                      validator: (value) {
-                        return null;
-                      },
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            emailOTPFormMobile(controller, media, context),
             kBigSizedBox,
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Obx(
                   () => InkWell(
-                    onTap: otpController.timerComplete.isTrue
-                        ? otpController.requestOTP
+                    onTap: controller.timerComplete.isTrue
+                        ? controller.requestOTP
                         : null,
                     child: AnimatedDefaultTextStyle(
                       duration: const Duration(milliseconds: 300),
                       curve: Curves.easeIn,
                       style: defaultTextStyle(
                         fontSize: 15.0,
-                        color: otpController.timerComplete.isTrue
+                        color: controller.timerComplete.isTrue
                             ? kSuccessColor
                             : kErrorColor,
                         decoration: TextDecoration.underline,
@@ -401,10 +202,10 @@ class EmailOTPScaffold extends GetView<EmailOTPController> {
                 ),
                 kHalfWidthSizedBox,
                 Obx(
-                  () => otpController.timerComplete.isTrue
+                  () => controller.timerComplete.isTrue
                       ? const SizedBox()
                       : Text(
-                          "in ${otpController.formatTime(otpController.secondsRemaining.value)}s",
+                          "in ${controller.formatTime(controller.secondsRemaining.value)}s",
                           textAlign: TextAlign.center,
                           style: defaultTextStyle(
                             fontSize: 15.0,
@@ -420,9 +221,9 @@ class EmailOTPScaffold extends GetView<EmailOTPController> {
               builder: (controller) {
                 return AndroidElevatedButton(
                   title: "Verify",
-                  isLoading: otpController.isLoading.value ? true : false,
-                  disable: otpController.formIsValid.value ? false : true,
-                  onPressed: otpController.submitOTP,
+                  isLoading: controller.isLoading.value ? true : false,
+                  disable: controller.formIsValid.value ? false : true,
+                  onPressed: controller.submitOTP,
                 );
               },
             ),

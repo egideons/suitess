@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:suitess/src/controllers/auth/reset_password_via_email_otp_controller.dart';
 import 'package:suitess/src/utils/buttons/android/android_elevated_button.dart';
-import 'package:suitess/src/utils/text_form_fields/android/android_textformfield.dart';
 
 import '../../../../../../src/constants/assets.dart';
 import '../../../../../../src/constants/consts.dart';
 import '../../../../../../src/utils/components/responsive_constants.dart';
 import '../../../../../../theme/colors.dart';
+import '../../content/reset_password_via_email_otp_form_landscape.dart';
+import '../../content/reset_password_via_email_otp_form_mobile.dart';
 import '../../content/reset_password_via_email_otp_page_header.dart';
 
-class ForgotPasswordViaEmailOTPScaffold
+class ResetPasswordViaEmailOTPScaffold
     extends GetView<ResetPasswordViaEmailOTPController> {
-  const ForgotPasswordViaEmailOTPScaffold({super.key});
+  const ResetPasswordViaEmailOTPScaffold({required this.userEmail, super.key});
+  final String userEmail;
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +25,8 @@ class ForgotPasswordViaEmailOTPScaffold
 
     var resetPasswordViaEmailController =
         ResetPasswordViaEmailOTPController.instance;
+
+    resetPasswordViaEmailController.emailEC.text = userEmail;
 
     //Large screens or Mobile Landscape mode
     if (deviceType(media.width) > 1) {
@@ -93,121 +96,10 @@ class ForgotPasswordViaEmailOTPScaffold
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       const SizedBox(height: kDefaultPadding * 4),
-                      Form(
-                        key: resetPasswordViaEmailController.formKey,
-                        autovalidateMode: AutovalidateMode.onUserInteraction,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            SizedBox(
-                              width: media.width * .08,
-                              child: AndroidTextFormField(
-                                controller:
-                                    resetPasswordViaEmailController.pin1EC,
-                                focusNode:
-                                    resetPasswordViaEmailController.pin1FN,
-                                textInputAction: TextInputAction.next,
-                                textCapitalization: TextCapitalization.none,
-                                keyboardType: TextInputType.number,
-                                inputBorder: const UnderlineInputBorder(),
-                                enabledBorder: const UnderlineInputBorder(),
-                                focusedBorder: const UnderlineInputBorder(),
-                                onChanged: (value) {
-                                  resetPasswordViaEmailController.pin1Onchanged(
-                                      value, context);
-                                },
-                                inputFormatters: [
-                                  LengthLimitingTextInputFormatter(1),
-                                  FilteringTextInputFormatter.digitsOnly,
-                                ],
-                                validator: (value) {
-                                  return null;
-                                },
-                              ),
-                            ),
-                            SizedBox(
-                              width: media.width * .08,
-                              child: AndroidTextFormField(
-                                controller:
-                                    resetPasswordViaEmailController.pin2EC,
-                                focusNode:
-                                    resetPasswordViaEmailController.pin2FN,
-                                textInputAction: TextInputAction.next,
-                                textCapitalization: TextCapitalization.none,
-                                keyboardType: TextInputType.number,
-                                inputBorder: const UnderlineInputBorder(),
-                                enabledBorder: const UnderlineInputBorder(),
-                                focusedBorder: const UnderlineInputBorder(),
-                                inputFormatters: [
-                                  LengthLimitingTextInputFormatter(1),
-                                  FilteringTextInputFormatter.digitsOnly,
-                                ],
-                                onChanged: (value) {
-                                  resetPasswordViaEmailController.pin2Onchanged(
-                                      value, context);
-                                },
-                                validator: (value) {
-                                  return null;
-                                },
-                              ),
-                            ),
-                            SizedBox(
-                              width: media.width * .08,
-                              child: AndroidTextFormField(
-                                controller:
-                                    resetPasswordViaEmailController.pin3EC,
-                                focusNode:
-                                    resetPasswordViaEmailController.pin3FN,
-                                textInputAction: TextInputAction.next,
-                                textCapitalization: TextCapitalization.none,
-                                keyboardType: TextInputType.number,
-                                inputBorder: const UnderlineInputBorder(),
-                                enabledBorder: const UnderlineInputBorder(),
-                                focusedBorder: const UnderlineInputBorder(),
-                                inputFormatters: [
-                                  LengthLimitingTextInputFormatter(1),
-                                  FilteringTextInputFormatter.digitsOnly,
-                                ],
-                                onChanged: (value) {
-                                  resetPasswordViaEmailController.pin3Onchanged(
-                                      value, context);
-                                },
-                                validator: (value) {
-                                  return null;
-                                },
-                              ),
-                            ),
-                            SizedBox(
-                              width: media.width * .08,
-                              child: AndroidTextFormField(
-                                controller:
-                                    resetPasswordViaEmailController.pin4EC,
-                                focusNode:
-                                    resetPasswordViaEmailController.pin4FN,
-                                textInputAction: TextInputAction.done,
-                                textCapitalization: TextCapitalization.none,
-                                keyboardType: TextInputType.number,
-                                inputBorder: const UnderlineInputBorder(),
-                                enabledBorder: const UnderlineInputBorder(),
-                                focusedBorder: const UnderlineInputBorder(),
-                                onFieldSubmitted:
-                                    resetPasswordViaEmailController.onSubmitted,
-                                inputFormatters: [
-                                  LengthLimitingTextInputFormatter(1),
-                                  FilteringTextInputFormatter.digitsOnly,
-                                ],
-                                onChanged: (value) {
-                                  resetPasswordViaEmailController.pin4Onchanged(
-                                      value, context);
-                                },
-                                validator: (value) {
-                                  return null;
-                                },
-                              ),
-                            ),
-                          ],
-                        ),
+                      resetPasswordViaEmailOTPFormLandscape(
+                        resetPasswordViaEmailController,
+                        media,
+                        context,
                       ),
                       kSizedBox,
                       Row(
@@ -312,113 +204,10 @@ class ForgotPasswordViaEmailOTPScaffold
             subtitle: "Enter the 4-digit OTP sent to your email",
           ),
           const SizedBox(height: kDefaultPadding * 2),
-          Form(
-            key: resetPasswordViaEmailController.formKey,
-            autovalidateMode: AutovalidateMode.onUserInteraction,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  width: media.width * 0.18,
-                  child: AndroidTextFormField(
-                    controller: resetPasswordViaEmailController.pin1EC,
-                    focusNode: resetPasswordViaEmailController.pin1FN,
-                    textInputAction: TextInputAction.next,
-                    textCapitalization: TextCapitalization.none,
-                    keyboardType: TextInputType.number,
-                    inputBorder: const UnderlineInputBorder(),
-                    enabledBorder: const UnderlineInputBorder(),
-                    focusedBorder: const UnderlineInputBorder(),
-                    onChanged: (value) {
-                      resetPasswordViaEmailController.pin1Onchanged(
-                          value, context);
-                    },
-                    inputFormatters: [
-                      LengthLimitingTextInputFormatter(1),
-                      FilteringTextInputFormatter.digitsOnly,
-                    ],
-                    validator: (value) {
-                      return null;
-                    },
-                  ),
-                ),
-                SizedBox(
-                  width: media.width * 0.18,
-                  child: AndroidTextFormField(
-                    controller: resetPasswordViaEmailController.pin2EC,
-                    focusNode: resetPasswordViaEmailController.pin2FN,
-                    textInputAction: TextInputAction.next,
-                    textCapitalization: TextCapitalization.none,
-                    keyboardType: TextInputType.number,
-                    inputBorder: const UnderlineInputBorder(),
-                    enabledBorder: const UnderlineInputBorder(),
-                    focusedBorder: const UnderlineInputBorder(),
-                    onChanged: (value) {
-                      resetPasswordViaEmailController.pin2Onchanged(
-                          value, context);
-                    },
-                    inputFormatters: [
-                      LengthLimitingTextInputFormatter(1),
-                      FilteringTextInputFormatter.digitsOnly,
-                    ],
-                    validator: (value) {
-                      return null;
-                    },
-                  ),
-                ),
-                SizedBox(
-                  width: media.width * 0.18,
-                  child: AndroidTextFormField(
-                    controller: resetPasswordViaEmailController.pin3EC,
-                    focusNode: resetPasswordViaEmailController.pin3FN,
-                    textInputAction: TextInputAction.next,
-                    textCapitalization: TextCapitalization.none,
-                    keyboardType: TextInputType.number,
-                    inputBorder: const UnderlineInputBorder(),
-                    enabledBorder: const UnderlineInputBorder(),
-                    focusedBorder: const UnderlineInputBorder(),
-                    onChanged: (value) {
-                      resetPasswordViaEmailController.pin3Onchanged(
-                          value, context);
-                    },
-                    inputFormatters: [
-                      LengthLimitingTextInputFormatter(1),
-                      FilteringTextInputFormatter.digitsOnly,
-                    ],
-                    validator: (value) {
-                      return null;
-                    },
-                  ),
-                ),
-                SizedBox(
-                  width: media.width * 0.18,
-                  child: AndroidTextFormField(
-                    controller: resetPasswordViaEmailController.pin4EC,
-                    focusNode: resetPasswordViaEmailController.pin4FN,
-                    textInputAction: TextInputAction.done,
-                    textCapitalization: TextCapitalization.none,
-                    keyboardType: TextInputType.number,
-                    inputBorder: const UnderlineInputBorder(),
-                    enabledBorder: const UnderlineInputBorder(),
-                    focusedBorder: const UnderlineInputBorder(),
-                    onFieldSubmitted:
-                        resetPasswordViaEmailController.onSubmitted,
-                    onChanged: (value) {
-                      resetPasswordViaEmailController.pin4Onchanged(
-                          value, context);
-                    },
-                    inputFormatters: [
-                      LengthLimitingTextInputFormatter(1),
-                      FilteringTextInputFormatter.digitsOnly,
-                    ],
-                    validator: (value) {
-                      return null;
-                    },
-                  ),
-                ),
-              ],
-            ),
+          resetPasswordViaEmailOTPFormMobile(
+            resetPasswordViaEmailController,
+            media,
+            context,
           ),
           kSizedBox,
           Row(

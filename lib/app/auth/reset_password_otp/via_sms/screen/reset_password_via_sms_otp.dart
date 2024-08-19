@@ -25,7 +25,7 @@ class ResetPasswordViaSMSOTP extends StatelessWidget {
     return GestureDetector(
       onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
       child: ResetPasswordViaSMSOTPScaffold(
-        userPhoneNumber: userPhoneNumber,
+        userPhoneNumber: userPhoneNumber!,
       ),
     );
   }

@@ -1,10 +1,14 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../models/auth/verify_email_otp_response_model.dart';
 import '../../routes/routes.dart';
+import '../../services/api/api_url.dart';
+import '../../services/client/client_service.dart';
 import '../others/api_processor_controller.dart';
 
 class ResetPasswordViaSmsOTPController extends GetxController {
@@ -15,12 +19,12 @@ class ResetPasswordViaSmsOTPController extends GetxController {
   @override
   void onInit() {
     startTimer();
-    log("OTP Timer has started");
+    pin1FN.requestFocus();
     super.onInit();
   }
 
   //=========== Variables ===========\\
-
+  var otpResponse = VerifyOTPResponseModel.fromJson(null).obs;
   late Timer _timer;
 
   //=========== Form Key ===========\\
@@ -28,18 +32,21 @@ class ResetPasswordViaSmsOTPController extends GetxController {
   final formKey = GlobalKey<FormState>();
 
   //=========== Controllers ===========\\
-
-  final emailEC = TextEditingController();
+  final phoneEC = TextEditingController();
   final pin1EC = TextEditingController();
   final pin2EC = TextEditingController();
   final pin3EC = TextEditingController();
   final pin4EC = TextEditingController();
+  final pin5EC = TextEditingController();
+  final pin6EC = TextEditingController();
 
   //=========== Focus nodes ===========\\
   final pin1FN = FocusNode();
   final pin2FN = FocusNode();
   final pin3FN = FocusNode();
   final pin4FN = FocusNode();
+  final pin5FN = FocusNode();
+  final pin6FN = FocusNode();
 
   //=========== Booleans ===========\\
   var secondsRemaining = 30.obs;
@@ -88,6 +95,28 @@ class ResetPasswordViaSmsOTPController extends GetxController {
       setFormIsInvalid();
     }
     if (value.length == 1) {
+      FocusScope.of(context).nextFocus();
+    }
+    update();
+  }
+
+  pin5Onchanged(value, context) {
+    if (value.isEmpty) {
+      FocusScope.of(context).previousFocus();
+      setFormIsInvalid();
+    }
+    if (value.length == 1) {
+      FocusScope.of(context).nextFocus();
+    }
+    update();
+  }
+
+  pin6Onchanged(value, context) {
+    if (value.isEmpty) {
+      FocusScope.of(context).previousFocus();
+      setFormIsInvalid();
+    }
+    if (value.length == 1) {
       FocusScope.of(context).nearestScope;
       setFormIsValid();
       update();
@@ -128,7 +157,54 @@ class ResetPasswordViaSmsOTPController extends GetxController {
     timerComplete.value = false;
     startTimer();
     update();
-    ApiProcessorController.successSnack("An OTP has been sent to your phone");
+
+    var url = ApiUrl.baseUrl + ApiUrl.auth + ApiUrl.resetPasswordOTP;
+
+    Map data = {
+      "type": "phone",
+      "phone": phoneEC.text,
+    };
+
+    log("This is the Url: $url");
+    log("This is the OTP Data: $data");
+
+    // Client service
+    var response = await ClientService.postRequest(
+      url,
+      data,
+    );
+
+    if (response == null) {
+      isLoading.value = false;
+      update();
+      return;
+    }
+
+    try {
+      if (response.statusCode == 200) {
+        // Convert to json
+        dynamic responseJson;
+        if (response.data is String) {
+          responseJson = jsonDecode(response.data);
+        } else {
+          responseJson = response.data;
+        }
+
+        log("This is the response body ====> ${response.data}");
+
+        //Map the response json to the model provided
+        otpResponse.value = VerifyOTPResponseModel.fromJson(responseJson);
+
+        ApiProcessorController.successSnack(
+          "An OTP has been sent to your phone number",
+        );
+      } else {
+        log("Request failed with status: ${response.statusCode}");
+        log("Response body: ${response.data}");
+      }
+    } catch (e) {
+      log(e.toString());
+    }
   }
 
   //================= Set form validity ======================\\
@@ -158,15 +234,79 @@ class ResetPasswordViaSmsOTPController extends GetxController {
     pauseTimer();
     timerComplete.value = false;
 
-    await Future.delayed(const Duration(seconds: 3));
-    ApiProcessorController.successSnack("OTP verification successful");
+    var url = ApiUrl.baseUrl + ApiUrl.auth + ApiUrl.resetPasswordOTPVerify;
 
-    Get.toNamed(Routes.resetPassword, preventDuplicates: true);
+    var otpCode = pin1EC.text +
+        pin2EC.text +
+        pin3EC.text +
+        pin4EC.text +
+        pin5EC.text +
+        pin6EC.text;
+
+    Map data = {
+      "type": "phone",
+      "phone": phoneEC.text,
+      "otp": otpCode,
+    };
+
+    log("This is the Url: $url");
+    log("This is the phone otp Data: $data");
+
+    // Client service
+    var response = await ClientService.postRequest(
+      url,
+      data,
+    );
+
+    if (response == null) {
+      isLoading.value = false;
+      update();
+      //Continue the timer and enable resend button
+      startTimer();
+      return;
+    }
+
+    try {
+      if (response.statusCode == 200) {
+        // Convert to json
+        dynamic responseJson;
+        if (response.data is String) {
+          responseJson = jsonDecode(response.data);
+        } else {
+          responseJson = response.data;
+        }
+
+        log("This is the response body ====> ${response.data}");
+
+        //Map the response json to the model provided
+        otpResponse.value = VerifyOTPResponseModel.fromJson(responseJson);
+
+        ApiProcessorController.successSnack("OTP verification successful");
+        //Continue the timer and enable resend button
+        startTimer();
+        isLoading.value = false;
+        update();
+        Get.toNamed(
+          Routes.resetPassword,
+          preventDuplicates: true,
+          arguments: {"isPhoneOTP": true},
+          parameters: {
+            "otpCode": otpCode,
+            "phone": phoneEC.text,
+          },
+        );
+      } else {
+        ApiProcessorController.errorSnack(otpResponse.value.message);
+        log("Request failed with status: ${response.statusCode}");
+        log("Response body: ${response.data}");
+      }
+    } catch (e) {
+      log(e.toString());
+    }
 
     isLoading.value = false;
     update();
-
     //Continue the timer and enable resend button
-    onInit();
+    startTimer();
   }
 }

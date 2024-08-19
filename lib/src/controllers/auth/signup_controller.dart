@@ -1,15 +1,19 @@
+import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:suitess/app/auth/phone_otp/screen/phone_otp.dart';
+import 'package:suitess/main.dart';
 import 'package:suitess/src/controllers/others/api_processor_controller.dart';
 
 import '../../../app/auth/login/screen/login.dart';
 import '../../constants/consts.dart';
 import '../../models/auth/signup_response_model.dart';
 import '../../services/api/api_url.dart';
+import '../../services/client/client_service.dart';
 
 class SignupController extends GetxController {
   static SignupController get instance {
@@ -173,7 +177,7 @@ class SignupController extends GetxController {
       isLoading.value = true;
       update();
 
-      var url = ApiUrl.baseUrl + ApiUrl.register;
+      var url = ApiUrl.baseUrl + ApiUrl.auth + ApiUrl.register;
 
       Map signupData = {
         "fullname": "${firstNameEC.text} ${lastNameEC.text}",
@@ -186,41 +190,61 @@ class SignupController extends GetxController {
       log("This is the Url: $url");
       log("This is the Signup Data: $signupData");
 
-      //Client service
-      // var response = await ClientService.postRequest(url)
-      //     .timeout(const Duration(seconds: 20));
+      // Client service
+      var response = await ClientService.postRequest(
+        url,
+        signupData,
+      );
 
-      // if (response == null) {
-      //   return;
-      // }
-      // try {
-      //   if (response.statusCode == 200) {
-      //     // Convert to json
-      //     dynamic responseJson;
-      //     if (response.data is String) {
-      //       responseJson = jsonDecode(response.data);
-      //     } else {
-      //       responseJson = response.data;
-      //     }
+      if (response == null) {
+        isLoading.value = false;
+        update();
+        return;
+      }
+      try {
+        if (response.statusCode == 200) {
+          // Convert to json
+          dynamic responseJson;
+          if (response.data is String) {
+            responseJson = jsonDecode(response.data);
+          } else {
+            responseJson = response.data;
+          }
 
-      //     //Map the response json to the model provided
-      //     signupResponse.value = SignupResponseModel.fromJson(responseJson);
-      //   }
-      // } catch (e) {
-      //   log(e.toString());
-      // }
+          //Map the response json to the model provided
+          signupResponse.value = SignupResponseModel.fromJson(responseJson);
 
-      // ApiProcessorController.successSnack("Signup successful");
+          log("This is the response body ====> ${response.data}");
 
-      // Get.offAll(
-      //   () => EmailOTP(userEmail: emailEC.text),
-      //   routeName: "/email-otp",
-      //   fullscreenDialog: true,
-      //   curve: Curves.easeInOut,
-      //   predicate: (routes) => false,
-      //   popGesture: false,
-      //   transition: Get.defaultTransition,
-      // );
+          ApiProcessorController.successSnack("Signup successful");
+
+          // Convert the map to a JSON string
+          String signupDataString = jsonEncode(signupData);
+
+          prefs.setString("signupData", signupDataString);
+
+          Get.offAll(
+            () => PhoneOTP(userPhoneNumber: phoneNumberEC.text),
+            routeName: "/phone-otp",
+            fullscreenDialog: true,
+            curve: Curves.easeInOut,
+            predicate: (routes) => false,
+            popGesture: false,
+            transition: Get.defaultTransition,
+          );
+        } else {
+          log("Request failed with status: ${response.statusCode}");
+          log("Response body: ${response.data}");
+          isLoading.value = false;
+          update();
+          return;
+        }
+      } catch (e) {
+        log(e.toString());
+        isLoading.value = false;
+        update();
+        return;
+      }
     }
     isLoading.value = false;
     update();
