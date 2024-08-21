@@ -99,26 +99,6 @@ class BankTransferScaffold extends GetView<BankTransferController> {
                         ),
                       ),
                     ),
-                    kSizedBox,
-                    formFieldContainer(
-                      colorScheme,
-                      media,
-                      containerHeight: 55,
-                      child: AndroidTextFormField(
-                        labelText: "Account Number",
-                        controller: controller.accountNumberEC,
-                        validator: (value) {
-                          return null;
-                        },
-                        textInputAction: TextInputAction.next,
-                        focusNode: controller.accountNumberFN,
-                        textCapitalization: TextCapitalization.none,
-                        keyboardType: TextInputType.number,
-                        inputFormatters: [
-                          FilteringTextInputFormatter.digitsOnly
-                        ],
-                      ),
-                    ),
                     kSmallSizedBox,
                     Align(
                       alignment: Alignment.centerRight,
@@ -126,6 +106,7 @@ class BankTransferScaffold extends GetView<BankTransferController> {
                         width: media.width / 2,
                         child: InkWell(
                           onTap: () {},
+                          borderRadius: BorderRadius.circular(8),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
@@ -146,6 +127,26 @@ class BankTransferScaffold extends GetView<BankTransferController> {
                             ],
                           ),
                         ),
+                      ),
+                    ),
+                    kSizedBox,
+                    formFieldContainer(
+                      colorScheme,
+                      media,
+                      containerHeight: 55,
+                      child: AndroidTextFormField(
+                        labelText: "Account Number",
+                        controller: controller.accountNumberEC,
+                        validator: (value) {
+                          return null;
+                        },
+                        textInputAction: TextInputAction.next,
+                        focusNode: controller.accountNumberFN,
+                        textCapitalization: TextCapitalization.none,
+                        keyboardType: TextInputType.number,
+                        inputFormatters: [
+                          FilteringTextInputFormatter.digitsOnly
+                        ],
                       ),
                     ),
                     kSizedBox,

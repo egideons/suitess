@@ -38,31 +38,33 @@ recentTransaction(
                   ),
                 ),
                 kSmallWidthSizedBox,
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      width: media.width - 250,
-                      child: Text(
-                        title ?? "",
-                        textAlign: TextAlign.start,
-                        style: defaultTextStyle(
-                          color: kTextBoldHeadingColor,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500,
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        width: media.width - 250,
+                        child: Text(
+                          title ?? "",
+                          textAlign: TextAlign.start,
+                          style: defaultTextStyle(
+                            color: kTextBoldHeadingColor,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                          ),
                         ),
                       ),
-                    ),
-                    Text(
-                      formatDate(dateTime ?? DateTime.now()),
-                      textAlign: TextAlign.start,
-                      style: defaultTextStyle(
-                        color: kTextGreyColor,
-                        fontSize: 12,
-                        fontWeight: FontWeight.w400,
+                      Text(
+                        formatDate(dateTime ?? DateTime.now()),
+                        textAlign: TextAlign.start,
+                        style: defaultTextStyle(
+                          color: kTextGreyColor,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ],
             ),
