@@ -4,12 +4,14 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
 import 'package:suitess/app/kyc/kyc_add_location/screen/kyc_add_location.dart';
 
 import '../../../main.dart';
-import '../../models/auth/verify_email_otp_response_model.dart';
+import '../../models/auth/verify_otp_response_model.dart';
 import '../../services/api/api_url.dart';
-import '../../services/client/client_service.dart';
+import '../../services/client/dio_client_service.dart';
+import '../../services/client/http_client_service.dart';
 import '../others/api_processor_controller.dart';
 
 class PhoneOTPController extends GetxController {
@@ -170,7 +172,7 @@ class PhoneOTPController extends GetxController {
     log("This is the OTP Data: $data");
 
     // Client service
-    var response = await ClientService.postRequest(
+    var response = await DioClientService.postRequest(
       url,
       data,
     );
@@ -182,20 +184,19 @@ class PhoneOTPController extends GetxController {
     }
 
     try {
+      // Convert to json
+      dynamic responseJson;
+      if (response.data is String) {
+        responseJson = jsonDecode(response.data);
+      } else {
+        responseJson = response.data;
+      }
+
+      log("This is the response body ====> ${response.data}");
+
+      //Map the response json to the model provided
+      otpResponse.value = VerifyOTPResponseModel.fromJson(responseJson);
       if (response.statusCode == 200) {
-        // Convert to json
-        dynamic responseJson;
-        if (response.data is String) {
-          responseJson = jsonDecode(response.data);
-        } else {
-          responseJson = response.data;
-        }
-
-        log("This is the response body ====> ${response.data}");
-
-        //Map the response json to the model provided
-        otpResponse.value = VerifyOTPResponseModel.fromJson(responseJson);
-
         ApiProcessorController.successSnack(
           "An OTP has been sent to your phone number",
         );
@@ -254,12 +255,15 @@ class PhoneOTPController extends GetxController {
     log("This is the Url: $url");
     log("This is the phone otp Data: $data");
 
-    // Client service
-    var response = await ClientService.postRequest(
-      url,
-      data,
-    );
+    //HTTP Client Service
+    http.Response? response =
+        await HttpClientService.postRequest(url, null, data);
 
+    //Dio Client Service
+    // var response = await DioClientService.postRequest(
+    //   url,
+    //   data,
+    // );
     if (response == null) {
       isLoading.value = false;
       update();
@@ -267,20 +271,17 @@ class PhoneOTPController extends GetxController {
     }
 
     try {
+      // Convert to json
+      dynamic responseJson;
+
+      responseJson = jsonDecode(response.body);
+
+      log("This is the response body ====> ${response.body}");
+
+      //Map the response json to the model provided
+      otpResponse.value = VerifyOTPResponseModel.fromJson(responseJson);
+
       if (response.statusCode == 200) {
-        // Convert to json
-        dynamic responseJson;
-        if (response.data is String) {
-          responseJson = jsonDecode(response.data);
-        } else {
-          responseJson = response.data;
-        }
-
-        log("This is the response body ====> ${response.data}");
-
-        //Map the response json to the model provided
-        otpResponse.value = VerifyOTPResponseModel.fromJson(responseJson);
-
         //Save state that the user has logged in
         prefs.setBool("isLoggedIn", true);
 
@@ -298,7 +299,7 @@ class PhoneOTPController extends GetxController {
       } else {
         ApiProcessorController.errorSnack(otpResponse.value.message);
         log("Request failed with status: ${response.statusCode}");
-        log("Response body: ${response.data}");
+        log("Response body: ${response.body}");
         isLoading.value = false;
         update();
         return;

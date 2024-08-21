@@ -10,7 +10,7 @@ String contentType = "application/json";
 
 final dio = Dio();
 
-class ClientService {
+class DioClientService {
   static Future<Response?> postRequest(String url, Object data) async {
     Response? response;
     try {
@@ -25,29 +25,27 @@ class ClientService {
           receiveDataWhenStatusError: true,
         ),
       );
-    } on SocketException catch (_) {
+    } on SocketException {
       ApiProcessorController.errorSnack("Please connect to the internet");
       return null;
     } on DioException catch (e) {
       // Handle Dio exceptions
 
-      // The request was made, but there was no internet connection on the device
-      if (e.type == DioExceptionType.connectionTimeout ||
-          e.type == DioExceptionType.receiveTimeout ||
-          e.type == DioExceptionType.sendTimeout) {
-        log("Dio Timeout Error: ${e.requestOptions}");
-        ApiProcessorController.errorSnack(
-            "Request timed out. Please try again.");
-      } else if (e.type == DioExceptionType.unknown &&
-          e.message!.contains("Failed host lookup")) {
+      // The request was made but there was no internet connection on the device
+      if (e.message!.contains("The connection errored: Failed host lookup:")) {
         log("Dio Request Options Error: ${e.requestOptions}");
         log("Dio Error Message: ${e.message}");
         ApiProcessorController.errorSnack("Please connect to the internet");
-      } else {
-        ApiProcessorController.errorSnack("An error occured");
-        log("Dio Error: ${e.message}");
       }
-      return null;
+      // The request was made but there was no error message
+      else if (e.message == null) {
+        log("Dio Request Options Error: ${e.requestOptions}");
+        log("Dio Error Message: ${e.message}");
+        ApiProcessorController.errorSnack(
+          "Please check your internet connection",
+        );
+      }
+      return null; // Return null in the catch block if an exception occurs
     } catch (e) {
       log(e.toString());
       return null;
@@ -55,11 +53,12 @@ class ClientService {
     return response; // Return the response in the try block
   }
 
-  static Future<Response?> getRequest(String url) async {
+  static Future<Response?> getRequest(String url, {Object? data}) async {
     Response? response;
     try {
       response = await dio.getUri(
         Uri.parse(url),
+        data: data,
         options: Options(
           contentType: contentType,
           receiveTimeout: const Duration(seconds: 10),
@@ -68,28 +67,26 @@ class ClientService {
           receiveDataWhenStatusError: true,
         ),
       );
-    } on SocketException catch (_) {
+    } on SocketException {
       ApiProcessorController.errorSnack("Please connect to the internet");
       return null;
     } on DioException catch (e) {
       // Handle Dio exceptions
 
-      // The request was made, but there was no internet connection on the device
-      if (e.type == DioExceptionType.connectionTimeout ||
-          e.type == DioExceptionType.receiveTimeout ||
-          e.type == DioExceptionType.sendTimeout) {
-        log("Dio Timeout Error: ${e.requestOptions}");
-        ApiProcessorController.errorSnack(
-            "Request timed out. Please try again.");
-      } else if (e.type == DioExceptionType.unknown &&
-          e.message!.contains("Failed host lookup")) {
+      // The request was made but there was no internet connection on the device
+      if (e.message!.contains("The connection errored: Failed host lookup:")) {
         log("Dio Request Options Error: ${e.requestOptions}");
         log("Dio Error Message: ${e.message}");
         ApiProcessorController.errorSnack("Please connect to the internet");
-      } else {
-        log("Dio Error: ${e.message}");
       }
-      return null;
+      // The request was made but there was no error message
+      else if (e.message == null) {
+        log("Dio Request Options Error: ${e.requestOptions}");
+        log("Dio Error Message: ${e.message}");
+        ApiProcessorController.errorSnack(
+            "Please check your internet connection");
+      }
+      return null; // Return null in the catch block if an exception occurs
     } catch (e) {
       log(e.toString());
       return null;

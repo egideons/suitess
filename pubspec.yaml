@@ -20,6 +20,7 @@ dependencies:
   image_picker:
   loading_animation_widget:
   dio:
+  http:
   delightful_toast:
   cached_network_image:
   readmore:

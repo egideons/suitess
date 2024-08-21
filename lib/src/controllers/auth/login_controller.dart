@@ -5,6 +5,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
 
 import '../../../app/auth/signup/screen/signup.dart';
 import '../../../app/splash/loading/screen/loading_screen.dart';
@@ -13,7 +14,7 @@ import '../../constants/consts.dart';
 import '../../models/auth/login_response_model.dart';
 import '../../routes/routes.dart';
 import '../../services/api/api_url.dart';
-import '../../services/client/client_service.dart';
+import '../../services/client/http_client_service.dart';
 import '../others/api_processor_controller.dart';
 import '../others/loading_controller.dart';
 
@@ -124,11 +125,15 @@ class LoginController extends GetxController {
       log("This is the Url: $url");
       log("This is the phone otp Data: $data");
 
-      // Client service
-      var response = await ClientService.postRequest(
-        url,
-        data,
-      );
+      //HTTP Client Service
+      http.Response? response =
+          await HttpClientService.postRequest(url, null, data);
+
+      //Dio Client Service
+      // var response = await DioClientService.postRequest(
+      //   url,
+      //   data,
+      // );
 
       if (response == null) {
         isLoading.value = false;
@@ -137,31 +142,30 @@ class LoginController extends GetxController {
       }
 
       try {
+        // Convert to json
+        dynamic responseJson;
+
+        responseJson = jsonDecode(response.body);
+
+        log("This is the response body ====> ${response.body}");
+
+        //Map the response json to the model provided
+        loginResponse.value = LoginResponseModel.fromJson(responseJson);
+        responseMessage.value = loginResponse.value.message;
+
         if (response.statusCode == 200) {
-          // Convert to json
-          dynamic responseJson;
-          if (response.data is String) {
-            responseJson = jsonDecode(response.data);
-          } else {
-            responseJson = response.data;
-          }
-
-          log("This is the response body ====> ${response.data}");
-
-          //Map the response json to the model provided
-          loginResponse.value = LoginResponseModel.fromJson(responseJson);
-
+          //Display Snackbar
           ApiProcessorController.successSnack("Login successful");
 
           if (rememberMe.value == true) {
             //Save state that the user has logged in
             prefs.setBool("isLoggedIn", true);
-            //Save state that the user token
-            prefs.setString(
-              "userToken",
-              loginResponse.value.data.token,
-            );
           }
+          //Save state that the user token
+          prefs.setString(
+            "userToken",
+            loginResponse.value.data.token,
+          );
 
           await Get.offAll(
             () => LoadingScreen(
@@ -175,9 +179,9 @@ class LoginController extends GetxController {
             transition: Get.defaultTransition,
           );
         } else {
-          // ApiProcessorController.errorSnack(otpResponse.value.message);
+          ApiProcessorController.errorSnack(responseMessage.value);
           log("Request failed with status: ${response.statusCode}");
-          log("Response body: ${response.data}");
+          log("Response body: ${response.body}");
         }
       } catch (e) {
         log(e.toString());

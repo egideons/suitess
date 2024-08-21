@@ -3,12 +3,14 @@ import 'dart:developer';
 
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
 import 'package:suitess/src/controllers/others/api_processor_controller.dart';
 
 import '../../../app/auth/login/screen/login.dart';
 import '../../constants/consts.dart';
+import '../../models/auth/reset_password_response_model.dart';
 import '../../services/api/api_url.dart';
-import '../../services/client/client_service.dart';
+import '../../services/client/http_client_service.dart';
 
 class ResetPasswordController extends GetxController {
   static ResetPasswordController get instance {
@@ -19,6 +21,7 @@ class ResetPasswordController extends GetxController {
   var phone = Get.parameters['phone'] ?? '';
   var email = Get.parameters['email'] ?? '';
   var isPhoneOTP = Get.arguments?['isPhoneOTP'] ?? false;
+  var resetPasswordResponse = ResetPasswordResponseModel.fromJson(null).obs;
 
   //=========== Form Key ===========\\
   final formKey = GlobalKey<FormState>();
@@ -141,12 +144,15 @@ class ResetPasswordController extends GetxController {
         log("This is the Url: $url");
         log("This is the phone otp Data: $data");
 
-        // Client service
-        var response = await ClientService.postRequest(
-          url,
-          data,
-        );
+        //HTTP Client Service
+        http.Response? response =
+            await HttpClientService.postRequest(url, null, data);
 
+        //Dio Client Service
+        // var response = await DioClientService.postRequest(
+        //   url,
+        //   data,
+        // );
         if (response == null) {
           isLoading.value = false;
           update();
@@ -154,23 +160,17 @@ class ResetPasswordController extends GetxController {
         }
 
         try {
+          // Convert to json
+          dynamic responseJson;
+          responseJson = jsonDecode(response.body);
+
+          log("This is the response body ====> ${response.body}");
+          // Map the response json to the model provided
+          resetPasswordResponse.value =
+              ResetPasswordResponseModel.fromJson(responseJson);
           if (response.statusCode == 200) {
-            // Convert to json
-            dynamic responseJson;
-            if (response.data is String) {
-              responseJson = jsonDecode(response.data);
-            } else {
-              responseJson = response.data;
-            }
-
-            log("This is the response body ====> ${response.data}");
-
-            //Map the response json to the model provided
-            // resetPasswordResponse.value =
-            //     ResetPasswordResponseModel.fromJson(responseJson);
-
             ApiProcessorController.successSnack(
-              "Password reset successful",
+              "Password reset successfully",
             );
 
             Get.offAll(
@@ -183,9 +183,10 @@ class ResetPasswordController extends GetxController {
               transition: Get.defaultTransition,
             );
           } else {
-            // ApiProcessorController.errorSnack(otpResponse.value.message);
+            ApiProcessorController.errorSnack(
+                resetPasswordResponse.value.message);
             log("Request failed with status: ${response.statusCode}");
-            log("Response body: ${response.data}");
+            log("Response body: ${response.body}");
           }
         } catch (e) {
           log(e.toString());

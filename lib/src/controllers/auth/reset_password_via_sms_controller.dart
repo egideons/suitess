@@ -1,9 +1,16 @@
+import 'dart:convert';
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
 
+import '../../../app/auth/reset_password_otp/via_sms/screen/reset_password_via_sms_otp.dart';
 import '../../constants/consts.dart';
-import '../../models/auth/verify_email_otp_response_model.dart';
+import '../../models/auth/verify_otp_response_model.dart';
 import '../../routes/routes.dart';
+import '../../services/api/api_url.dart';
+import '../../services/client/http_client_service.dart';
 import '../others/api_processor_controller.dart';
 
 class ResetPasswordViaSMSController extends GetxController {
@@ -85,66 +92,72 @@ class ResetPasswordViaSMSController extends GetxController {
       isLoading.value = true;
       update();
 
-      ApiProcessorController.errorSnack(
-        "This option is not yet available,\nPlease reset via email",
-      );
+      var url = ApiUrl.baseUrl + ApiUrl.auth + ApiUrl.resetPasswordOTP;
 
-      // var url = ApiUrl.baseUrl + ApiUrl.auth + ApiUrl.resetPasswordOTP;
+      Map data = {
+        "type": "phone",
+        "phone": phoneNumberEC.text,
+      };
 
-      // Map data = {
-      //   "type": "phone",
-      //   "phone": phoneNumberEC.text,
-      // };
+      log("This is the Url: $url");
+      log("This is the OTP Data: $data");
 
-      // log("This is the Url: $url");
-      // log("This is the OTP Data: $data");
+      //HTTP Client Service
+      http.Response? response =
+          await HttpClientService.postRequest(url, null, data);
 
-      // // Client service
-      // var response = await ClientService.postRequest(
+      //Dio Client Service
+      // var response = await DioClientService.postRequest(
       //   url,
       //   data,
       // );
 
-      // if (response == null) {
-      //   isLoading.value = false;
-      //   update();
-      //   return;
-      // }
+      if (response == null) {
+        isLoading.value = false;
+        update();
+        return;
+      }
 
-      // try {
-      //   if (response.statusCode == 200) {
-      //     // Convert to json
-      //     dynamic responseJson;
-      //     if (response.data is String) {
-      //       responseJson = jsonDecode(response.data);
-      //     } else {
-      //       responseJson = response.data;
-      //     }
+      try {
+        // Convert to json
+        dynamic responseJson;
+        responseJson = jsonDecode(response.body);
 
-      //     log("This is the response body ====> ${response.data}");
+        log("This is the response body ====> ${response.body}");
 
-      //     //Map the response json to the model provided
-      //     otpResponse.value = VerifyOTPResponseModel.fromJson(responseJson);
+        //Map the response json to the model provided
+        otpResponse.value = VerifyOTPResponseModel.fromJson(responseJson);
+        responseMessage.value = otpResponse.value.message;
+        if (response.statusCode == 200) {
+          ApiProcessorController.successSnack(
+            "An OTP has been sent to your email",
+          );
 
-      //     ApiProcessorController.successSnack(
-      //       "An OTP has been sent to your phone number",
-      //     );
-      //     await Get.to(
-      //       () => ResetPasswordViaSMSOTP(userPhoneNumber: phoneNumberEC.text),
-      //       routeName: "/reset-password-via-sms-otp",
-      //       fullscreenDialog: true,
-      //       curve: Curves.easeInOut,
-      //       preventDuplicates: true,
-      //       popGesture: false,
-      //       transition: Get.defaultTransition,
-      //     );
-      //   } else {
-      //     log("Request failed with status: ${response.statusCode}");
-      //     log("Response body: ${response.data}");
-      //   }
-      // } catch (e) {
-      //   log(e.toString());
-      // }
+          log("This is the response body ====> ${response.body}");
+
+          //Map the response json to the model provided
+          otpResponse.value = VerifyOTPResponseModel.fromJson(responseJson);
+
+          ApiProcessorController.successSnack(
+            "An OTP has been sent to your phone number",
+          );
+          await Get.to(
+            () => ResetPasswordViaSMSOTP(userPhoneNumber: phoneNumberEC.text),
+            routeName: "/reset-password-via-sms-otp",
+            fullscreenDialog: true,
+            curve: Curves.easeInOut,
+            preventDuplicates: true,
+            popGesture: false,
+            transition: Get.defaultTransition,
+          );
+        } else {
+          ApiProcessorController.errorSnack(responseMessage.value);
+          log("Request failed with status: ${response.statusCode}");
+          log("Response body: ${response.body}");
+        }
+      } catch (e) {
+        log(e.toString());
+      }
 
       isLoading.value = false;
       update();

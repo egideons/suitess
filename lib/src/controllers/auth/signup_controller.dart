@@ -5,15 +5,16 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:suitess/app/auth/phone_otp/screen/phone_otp.dart';
+import 'package:http/http.dart' as http;
 import 'package:suitess/main.dart';
 import 'package:suitess/src/controllers/others/api_processor_controller.dart';
 
+import '../../../app/auth/email_otp/screen/email_otp.dart';
 import '../../../app/auth/login/screen/login.dart';
 import '../../constants/consts.dart';
 import '../../models/auth/signup_response_model.dart';
 import '../../services/api/api_url.dart';
-import '../../services/client/client_service.dart';
+import '../../services/client/http_client_service.dart';
 
 class SignupController extends GetxController {
   static SignupController get instance {
@@ -190,32 +191,33 @@ class SignupController extends GetxController {
       log("This is the Url: $url");
       log("This is the Signup Data: $signupData");
 
-      // Client service
-      var response = await ClientService.postRequest(
-        url,
-        signupData,
-      );
+      //HTTP Client Service
+      http.Response? response =
+          await HttpClientService.postRequest(url, null, signupData);
 
+      //Dio Client Service
+      // var response = await DioClientService.postRequest(
+      //   url,
+      //   data,
+      // );
       if (response == null) {
         isLoading.value = false;
         update();
         return;
       }
       try {
+        // Convert to json
+        dynamic responseJson;
+        responseJson = jsonDecode(response.body);
+
+        //Map the response json to the model provided
+        signupResponse.value = SignupResponseModel.fromJson(responseJson);
+
+        log("This is the response body ====> ${response.body}");
+
+        responseMessage.value = signupResponse.value.message;
+
         if (response.statusCode == 200) {
-          // Convert to json
-          dynamic responseJson;
-          if (response.data is String) {
-            responseJson = jsonDecode(response.data);
-          } else {
-            responseJson = response.data;
-          }
-
-          //Map the response json to the model provided
-          signupResponse.value = SignupResponseModel.fromJson(responseJson);
-
-          log("This is the response body ====> ${response.data}");
-
           ApiProcessorController.successSnack("Signup successful");
 
           // Convert the map to a JSON string
@@ -223,27 +225,31 @@ class SignupController extends GetxController {
 
           prefs.setString("signupData", signupDataString);
 
-          Get.offAll(
-            () => PhoneOTP(userPhoneNumber: phoneNumberEC.text),
-            routeName: "/phone-otp",
-            fullscreenDialog: true,
-            curve: Curves.easeInOut,
-            predicate: (routes) => false,
-            popGesture: false,
-            transition: Get.defaultTransition,
-          );
+          // Get.offAll(
+          //   () => PhoneOTP(userPhoneNumber: phoneNumberEC.text),
+          //   routeName: "/phone-otp",
+          //   fullscreenDialog: true,
+          //   curve: Curves.easeInOut,
+          //   predicate: (routes) => false,
+          //   popGesture: false,
+          //   transition: Get.defaultTransition,
+          // );
+          // Get.offAll(
+          //   () => EmailOTP(userEmail: emailEC.text),
+          //   routeName: "/email-otp",
+          //   fullscreenDialog: true,
+          //   curve: Curves.easeInOut,
+          //   predicate: (routes) => false,
+          //   popGesture: false,
+          //   transition: Get.defaultTransition,
+          // );
         } else {
+          ApiProcessorController.errorSnack(responseMessage.value);
           log("Request failed with status: ${response.statusCode}");
-          log("Response body: ${response.data}");
-          isLoading.value = false;
-          update();
-          return;
+          log("Response body: ${response.body}");
         }
       } catch (e) {
         log(e.toString());
-        isLoading.value = false;
-        update();
-        return;
       }
     }
     isLoading.value = false;
@@ -300,6 +306,15 @@ class SignupController extends GetxController {
       //   transition: Get.defaultTransition,
       // );
 
+      Get.offAll(
+        () => EmailOTP(userEmail: emailEC.text),
+        routeName: "/email-otp",
+        fullscreenDialog: true,
+        curve: Curves.easeInOut,
+        predicate: (routes) => false,
+        popGesture: false,
+        transition: Get.defaultTransition,
+      );
       isLoadingGoogleSignup.value = false;
       update();
     } on SocketException {
