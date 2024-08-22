@@ -234,15 +234,15 @@ class SignupController extends GetxController {
           //   popGesture: false,
           //   transition: Get.defaultTransition,
           // );
-          // Get.offAll(
-          //   () => EmailOTP(userEmail: emailEC.text),
-          //   routeName: "/email-otp",
-          //   fullscreenDialog: true,
-          //   curve: Curves.easeInOut,
-          //   predicate: (routes) => false,
-          //   popGesture: false,
-          //   transition: Get.defaultTransition,
-          // );
+          Get.offAll(
+            () => EmailOTP(userEmail: emailEC.text),
+            routeName: "/email-otp",
+            fullscreenDialog: true,
+            curve: Curves.easeInOut,
+            predicate: (routes) => false,
+            popGesture: false,
+            transition: Get.defaultTransition,
+          );
         } else {
           ApiProcessorController.errorSnack(responseMessage.value);
           log("Request failed with status: ${response.statusCode}");
