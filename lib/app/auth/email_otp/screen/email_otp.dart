@@ -26,7 +26,7 @@ class EmailOTP extends StatelessWidget {
     return GestureDetector(
       onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
       child: EmailOTPScaffold(
-        userEmail: userEmail,
+        userEmail: userEmail!,
       ),
     );
   }

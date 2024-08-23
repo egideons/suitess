@@ -29,13 +29,13 @@ class EmailOTPController extends GetxController {
   //=========== Variables ===========\\
   var otpResponse = VerifyOTPResponseModel.fromJson(null).obs;
   late Timer _timer;
+  var userEmail = Get.arguments?['email'] ?? "";
 
   //=========== Form Key ===========\\
 
   final formKey = GlobalKey<FormState>();
 
   //=========== Controllers ===========\\
-  final emailEC = TextEditingController();
   final pin1EC = TextEditingController();
   final pin2EC = TextEditingController();
   final pin3EC = TextEditingController();
@@ -164,11 +164,11 @@ class EmailOTPController extends GetxController {
     var url = ApiUrl.baseUrl + ApiUrl.auth + ApiUrl.sendEmailOTP;
 
     Map data = {
-      "email": "gideon.dart@gmail.com",
+      "email": userEmail,
     };
 
     log("This is the Url: $url");
-    log("This is the Signup Data: $data");
+    log("This is the Signup email address: $data");
 
     // Client service
     var response = await DioClientService.postRequest(
@@ -193,8 +193,6 @@ class EmailOTPController extends GetxController {
 
       log("This is the response body ====> ${response.data}");
 
-      //Map the response json to the model provided
-      otpResponse.value = VerifyOTPResponseModel.fromJson(responseJson);
       if (response.statusCode == 200) {
         ApiProcessorController.successSnack(
           "An OTP has been sent to your email",
@@ -245,14 +243,14 @@ class EmailOTPController extends GetxController {
         pin6EC.text;
 
     Map data = {
-      "email": "gideon.dart@gmail.com",
+      "email": userEmail,
       "otp": otpCode,
       "type": "email",
       "purpose": "registration",
     };
 
     log("This is the Url: $url");
-    log("This is the Signup Data: $data");
+    log("This is the email otp data: $data");
 
     //HTTP Client Service
     http.Response? response =
@@ -281,7 +279,7 @@ class EmailOTPController extends GetxController {
 
       if (response.statusCode == 200) {
         ApiProcessorController.successSnack(
-          "Verification successful",
+          "Signup successful",
         );
         Get.offAll(
           () => const KycAddLocation(),

@@ -218,8 +218,6 @@ class SignupController extends GetxController {
         responseMessage.value = signupResponse.value.message;
 
         if (response.statusCode == 200) {
-          ApiProcessorController.successSnack("Signup successful");
-
           // Convert the map to a JSON string
           String signupDataString = jsonEncode(signupData);
 
@@ -240,6 +238,7 @@ class SignupController extends GetxController {
             fullscreenDialog: true,
             curve: Curves.easeInOut,
             predicate: (routes) => false,
+            arguments: {"email": emailEC.text},
             popGesture: false,
             transition: Get.defaultTransition,
           );
@@ -306,15 +305,6 @@ class SignupController extends GetxController {
       //   transition: Get.defaultTransition,
       // );
 
-      Get.offAll(
-        () => EmailOTP(userEmail: emailEC.text),
-        routeName: "/email-otp",
-        fullscreenDialog: true,
-        curve: Curves.easeInOut,
-        predicate: (routes) => false,
-        popGesture: false,
-        transition: Get.defaultTransition,
-      );
       isLoadingGoogleSignup.value = false;
       update();
     } on SocketException {
