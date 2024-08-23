@@ -100,9 +100,7 @@ class EmailOTPScaffold extends GetView<EmailOTPController> {
                                 curve: Curves.easeIn,
                                 style: defaultTextStyle(
                                   fontSize: 15.0,
-                                  color: controller.timerComplete.isTrue
-                                      ? kSuccessColor
-                                      : kErrorColor,
+                                  color: kSuccessColor,
                                   decoration: TextDecoration.underline,
                                   fontWeight: FontWeight.w600,
                                 ),
@@ -188,9 +186,7 @@ class EmailOTPScaffold extends GetView<EmailOTPController> {
                       curve: Curves.easeIn,
                       style: defaultTextStyle(
                         fontSize: 15.0,
-                        color: controller.timerComplete.isTrue
-                            ? kSuccessColor
-                            : kErrorColor,
+                        color: kSuccessColor,
                         decoration: TextDecoration.underline,
                         fontWeight: FontWeight.w600,
                       ),

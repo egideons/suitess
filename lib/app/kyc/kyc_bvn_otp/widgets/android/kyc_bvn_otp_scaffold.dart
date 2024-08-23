@@ -236,18 +236,14 @@ class KycBvnOTPScaffold extends GetView<KycBvnOTPController> {
                         children: [
                           Icon(
                             Icons.email_rounded,
-                            color: kycBvnOTPController.timerComplete.isTrue
-                                ? kSuccessColor
-                                : colorScheme.inversePrimary,
+                            color: kSuccessColor,
                             size: 12,
                           ),
                           kHalfWidthSizedBox,
                           Text(
                             "Resend code",
                             style: defaultTextStyle(
-                              color: kycBvnOTPController.timerComplete.isTrue
-                                  ? kSuccessColor
-                                  : colorScheme.inversePrimary,
+                              color: kSuccessColor,
                             ),
                           ),
                         ],

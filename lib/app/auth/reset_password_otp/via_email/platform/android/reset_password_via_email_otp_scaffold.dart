@@ -116,10 +116,7 @@ class ResetPasswordViaEmailOTPScaffold
                                 curve: Curves.easeIn,
                                 style: defaultTextStyle(
                                   fontSize: 15.0,
-                                  color: resetPasswordViaEmailController
-                                          .timerComplete.isTrue
-                                      ? kSuccessColor
-                                      : kErrorColor,
+                                  color: kSuccessColor,
                                   decoration: TextDecoration.underline,
                                   fontWeight: FontWeight.w600,
                                 ),
@@ -223,10 +220,7 @@ class ResetPasswordViaEmailOTPScaffold
                     curve: Curves.easeIn,
                     style: defaultTextStyle(
                       fontSize: 15.0,
-                      color:
-                          resetPasswordViaEmailController.timerComplete.isTrue
-                              ? kSuccessColor
-                              : kErrorColor,
+                      color: kSuccessColor,
                       decoration: TextDecoration.underline,
                       fontWeight: FontWeight.w600,
                     ),

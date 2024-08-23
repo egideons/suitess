@@ -120,10 +120,7 @@ class ResetPasswordViaSMSOTPScaffold
                                 curve: Curves.easeIn,
                                 style: defaultTextStyle(
                                   fontSize: 15.0,
-                                  color: resetPasswordViaSmsController
-                                          .timerComplete.isTrue
-                                      ? kSuccessColor
-                                      : kErrorColor,
+                                  color: kSuccessColor,
                                   decoration: TextDecoration.underline,
                                   fontWeight: FontWeight.w600,
                                 ),
@@ -227,9 +224,7 @@ class ResetPasswordViaSMSOTPScaffold
                     curve: Curves.easeIn,
                     style: defaultTextStyle(
                       fontSize: 15.0,
-                      color: resetPasswordViaSmsController.timerComplete.isTrue
-                          ? kSuccessColor
-                          : kErrorColor,
+                      color: kSuccessColor,
                       decoration: TextDecoration.underline,
                       fontWeight: FontWeight.w600,
                     ),

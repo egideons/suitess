@@ -103,9 +103,7 @@ class PhoneOTPScaffold extends GetView<PhoneOTPController> {
                                 curve: Curves.easeIn,
                                 style: defaultTextStyle(
                                   fontSize: 15.0,
-                                  color: otpController.timerComplete.isTrue
-                                      ? kSuccessColor
-                                      : kErrorColor,
+                                  color: kSuccessColor,
                                   decoration: TextDecoration.underline,
                                   fontWeight: FontWeight.w600,
                                 ),
@@ -190,9 +188,7 @@ class PhoneOTPScaffold extends GetView<PhoneOTPController> {
                       curve: Curves.easeIn,
                       style: defaultTextStyle(
                         fontSize: 15.0,
-                        color: otpController.timerComplete.isTrue
-                            ? kSuccessColor
-                            : kErrorColor,
+                        color: kSuccessColor,
                         decoration: TextDecoration.underline,
                         fontWeight: FontWeight.w600,
                       ),
