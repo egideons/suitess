@@ -223,24 +223,21 @@ class SignupController extends GetxController {
 
           prefs.setString("signupData", signupDataString);
 
-          // Get.offAll(
-          //   () => PhoneOTP(userPhoneNumber: phoneNumberEC.text),
-          //   routeName: "/phone-otp",
-          //   fullscreenDialog: true,
-          //   curve: Curves.easeInOut,
-          //   predicate: (routes) => false,
-          //   popGesture: false,
-          //   transition: Get.defaultTransition,
-          // );
           Get.offAll(
-            () => EmailOTP(userEmail: emailEC.text),
+            () => EmailOTP(
+              userEmail: emailEC.text,
+              userPhoneNumber: phoneNumberEC.text,
+            ),
             routeName: "/email-otp",
             fullscreenDialog: true,
             curve: Curves.easeInOut,
             predicate: (routes) => false,
-            arguments: {"email": emailEC.text},
             popGesture: false,
             transition: Get.defaultTransition,
+            arguments: {
+              "email": emailEC.text,
+              "phoneNumber": phoneNumberEC.text,
+            },
           );
         } else {
           ApiProcessorController.errorSnack(responseMessage.value);

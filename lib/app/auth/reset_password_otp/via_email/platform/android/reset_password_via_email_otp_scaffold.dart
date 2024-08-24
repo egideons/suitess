@@ -69,7 +69,7 @@ class ResetPasswordViaEmailOTPScaffold
                         colorScheme: colorScheme,
                         media: media,
                         title: "OTP Verification",
-                        subtitle: "Enter the 4-digit OTP sent to your email",
+                        subtitle: "Enter the 6-digit OTP sent to your email",
                       ),
                     ],
                   ),
@@ -198,7 +198,7 @@ class ResetPasswordViaEmailOTPScaffold
             colorScheme: colorScheme,
             media: media,
             title: "OTP Verification",
-            subtitle: "Enter the 4-digit OTP sent to your email",
+            subtitle: "Enter the 6-digit OTP sent to your email",
           ),
           const SizedBox(height: kDefaultPadding * 2),
           resetPasswordViaEmailOTPFormMobile(

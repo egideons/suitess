@@ -8,8 +8,8 @@ import 'package:suitess/src/controllers/auth/phone_otp_controller.dart';
 import '../platform/android/phone_otp_scaffold.dart';
 
 class PhoneOTP extends StatelessWidget {
-  final String? userPhoneNumber;
-  const PhoneOTP({super.key, this.userPhoneNumber});
+  final String? userPhoneNumber, userEmail;
+  const PhoneOTP({super.key, this.userPhoneNumber, this.userEmail});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,10 @@ class PhoneOTP extends StatelessWidget {
     }
     return GestureDetector(
       onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
-      child: PhoneOTPScaffold(userPhoneNumber: userPhoneNumber ?? ""),
+      child: PhoneOTPScaffold(
+        userPhoneNumber: userPhoneNumber!,
+        userEmail: userEmail!,
+      ),
     );
   }
 }

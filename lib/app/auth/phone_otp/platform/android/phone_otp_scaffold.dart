@@ -13,8 +13,9 @@ import '../../content/phone_otp_form_landscape.dart';
 import '../../content/phone_otp_form_mobile.dart';
 
 class PhoneOTPScaffold extends GetView<PhoneOTPController> {
-  final String userPhoneNumber;
-  const PhoneOTPScaffold({required this.userPhoneNumber, super.key});
+  final String userPhoneNumber, userEmail;
+  const PhoneOTPScaffold(
+      {required this.userPhoneNumber, required this.userEmail, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +23,6 @@ class PhoneOTPScaffold extends GetView<PhoneOTPController> {
     var colorScheme = Theme.of(context).colorScheme;
 
     var otpController = PhoneOTPController.instance;
-    otpController.phoneEC.text = userPhoneNumber;
 
     //Large screens or Mobile Landscape mode
     if (deviceType(media.width) > 1) {
@@ -49,8 +49,10 @@ class PhoneOTPScaffold extends GetView<PhoneOTPController> {
                     colorScheme: colorScheme,
                     media: media,
                     title: "OTP verification",
-                    subtitle: "Enter the 4-digit verification code we sent to ",
+                    subtitle: "Enter the 6-digit verification code we sent to ",
                     phoneNumber: maskPhoneNumber(userPhoneNumber),
+                    otpOption: "Email",
+                    signupVia: controller.sendToEmail,
                   ),
                 ],
               ),
@@ -157,24 +159,14 @@ class PhoneOTPScaffold extends GetView<PhoneOTPController> {
               colorScheme: colorScheme,
               media: media,
               title: "OTP verification",
-              subtitle: "Enter the 4-digit verification code we sent to ",
+              subtitle: "Enter the 6-digit verification code we sent to ",
               phoneNumber: maskPhoneNumber(userPhoneNumber),
+              otpOption: "Email",
+              signupVia: controller.sendToEmail,
             ),
             const SizedBox(height: kDefaultPadding * 2),
             phoneOTPFormMobile(otpController, media, context),
-            kSizedBox,
-            const SizedBox(height: kDefaultPadding * 2),
-            GetBuilder<PhoneOTPController>(
-              builder: (controller) {
-                return AndroidElevatedButton(
-                  title: "Verify",
-                  isLoading: otpController.isLoading.value ? true : false,
-                  disable: otpController.formIsValid.value ? false : true,
-                  onPressed: otpController.submitOTP,
-                );
-              },
-            ),
-            const SizedBox(height: kDefaultPadding * 2),
+            kBigSizedBox,
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -213,7 +205,18 @@ class PhoneOTPScaffold extends GetView<PhoneOTPController> {
                 ),
               ],
             ),
-            kSizedBox,
+            const SizedBox(height: kDefaultPadding * 2),
+            GetBuilder<PhoneOTPController>(
+              builder: (controller) {
+                return AndroidElevatedButton(
+                  title: "Verify",
+                  isLoading: otpController.isLoading.value ? true : false,
+                  disable: otpController.formIsValid.value ? false : true,
+                  onPressed: otpController.submitOTP,
+                );
+              },
+            ),
+            const SizedBox(height: kDefaultPadding * 2),
           ],
         ),
       ),

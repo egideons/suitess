@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
+import '../../../app/auth/phone_otp/screen/phone_otp.dart';
 import '../../../app/kyc/kyc_add_location/screen/kyc_add_location.dart';
 import '../../models/auth/verify_otp_response_model.dart';
 import '../../services/api/api_url.dart';
@@ -21,7 +22,6 @@ class EmailOTPController extends GetxController {
   @override
   void onInit() {
     requestOTP();
-    startTimer();
     pin1FN.requestFocus();
     super.onInit();
   }
@@ -30,6 +30,7 @@ class EmailOTPController extends GetxController {
   var otpResponse = VerifyOTPResponseModel.fromJson(null).obs;
   late Timer _timer;
   var userEmail = Get.arguments?['email'] ?? "";
+  var userPhoneNumber = Get.arguments?['phoneNumber'] ?? "";
 
   //=========== Form Key ===========\\
 
@@ -158,7 +159,6 @@ class EmailOTPController extends GetxController {
   void requestOTP() async {
     secondsRemaining.value = 30;
     timerComplete.value = false;
-    // startTimer();
     update();
 
     var url = ApiUrl.baseUrl + ApiUrl.auth + ApiUrl.sendEmailOTP;
@@ -192,11 +192,13 @@ class EmailOTPController extends GetxController {
       }
 
       log("This is the response body ====> ${response.data}");
+      log("This is the response json ====> $responseJson");
 
       if (response.statusCode == 200) {
         ApiProcessorController.successSnack(
           "An OTP has been sent to your email",
         );
+        startTimer();
       } else {
         log("Request failed with status: ${response.statusCode}");
         log("Response body: ${response.data}");
@@ -222,6 +224,27 @@ class EmailOTPController extends GetxController {
       submitOTP();
       update();
     }
+  }
+
+  //=========== Navigation ===========\\
+  sendToPhone() {
+    // ApiProcessorController.errorSnack("This option is not yet available");
+    Get.off(
+      () => PhoneOTP(
+        userPhoneNumber: userPhoneNumber,
+        userEmail: userEmail,
+      ),
+      arguments: {
+        "email": userEmail,
+        "phoneNumber": userPhoneNumber,
+      },
+      routeName: "/phone-otp",
+      fullscreenDialog: true,
+      curve: Curves.easeInOut,
+      preventDuplicates: true,
+      popGesture: false,
+      transition: Get.defaultTransition,
+    );
   }
 
   //================= Submit OTP ======================\\

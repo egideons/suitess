@@ -40,7 +40,7 @@ class KycBvnOTPScaffold extends GetView<KycBvnOTPController> {
             colorScheme: colorScheme,
             media: media,
             title: "BVN Verification",
-            subtitle: "Enter the 4-digit OTP sent to your phone number",
+            subtitle: "Enter the 6-digit OTP sent to your phone number",
           ),
           const SizedBox(height: kDefaultPadding * 2),
           Form(

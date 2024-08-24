@@ -1,6 +1,8 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../src/constants/consts.dart';
+import '../../../../theme/colors.dart';
 
 emailOTPPageHeader({
   ColorScheme? colorScheme,
@@ -8,6 +10,8 @@ emailOTPPageHeader({
   String? title,
   String? subtitle,
   String? email,
+  String? otpOption,
+  void Function()? signupVia,
 }) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.center,
@@ -39,13 +43,24 @@ emailOTPPageHeader({
             ),
             children: [
               TextSpan(
-                text: email,
+                text: "$email ",
                 style: defaultTextStyle(
                   color: colorScheme.primary,
                   fontSize: 14.0,
                   fontWeight: FontWeight.w600,
                 ),
-              )
+              ),
+              TextSpan(
+                text: "Send to $otpOption",
+                mouseCursor: SystemMouseCursors.click,
+                recognizer: TapGestureRecognizer()..onTap = signupVia ?? () {},
+                style: defaultTextStyle(
+                  color: kSuccessColor,
+                  fontWeight: FontWeight.w700,
+                  decoration: TextDecoration.underline,
+                  fontSize: 14.0,
+                ),
+              ),
             ],
           ),
         ),

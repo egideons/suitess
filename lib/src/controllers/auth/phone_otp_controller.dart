@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:suitess/app/kyc/kyc_add_location/screen/kyc_add_location.dart';
 
+import '../../../app/auth/email_otp/screen/email_otp.dart';
 import '../../../main.dart';
 import '../../models/auth/verify_otp_response_model.dart';
 import '../../services/api/api_url.dart';
@@ -22,7 +23,6 @@ class PhoneOTPController extends GetxController {
   @override
   void onInit() {
     requestOTP();
-    // startTimer();
     pin1FN.requestFocus();
     super.onInit();
   }
@@ -30,13 +30,14 @@ class PhoneOTPController extends GetxController {
   //=========== Variables ===========\\
   var otpResponse = VerifyOTPResponseModel.fromJson(null).obs;
   late Timer _timer;
+  var userEmail = Get.arguments?['email'] ?? "";
+  var userPhoneNumber = Get.arguments?['phoneNumber'] ?? "";
 
   //=========== Form Key ===========\\
 
   final formKey = GlobalKey<FormState>();
 
   //=========== Controllers ===========\\
-  final phoneEC = TextEditingController();
   final pin1EC = TextEditingController();
   final pin2EC = TextEditingController();
   final pin3EC = TextEditingController();
@@ -159,13 +160,12 @@ class PhoneOTPController extends GetxController {
   void requestOTP() async {
     secondsRemaining.value = 30;
     timerComplete.value = false;
-    startTimer();
     update();
 
     var url = ApiUrl.baseUrl + ApiUrl.auth + ApiUrl.sendPhoneOTP;
 
     Map data = {
-      "phone": phoneEC.text,
+      "phone": userPhoneNumber,
     };
 
     log("This is the Url: $url");
@@ -193,13 +193,13 @@ class PhoneOTPController extends GetxController {
       }
 
       log("This is the response body ====> ${response.data}");
+      log("This is the response json ====> $responseJson");
 
-      //Map the response json to the model provided
-      otpResponse.value = VerifyOTPResponseModel.fromJson(responseJson);
       if (response.statusCode == 200) {
         ApiProcessorController.successSnack(
           "An OTP has been sent to your phone number",
         );
+        startTimer();
       } else {
         log("Request failed with status: ${response.statusCode}");
         log("Response body: ${response.data}");
@@ -227,6 +227,26 @@ class PhoneOTPController extends GetxController {
     }
   }
 
+  //=========== Navigation ===========\\
+  sendToEmail() {
+    Get.off(
+      () => EmailOTP(
+        userPhoneNumber: userPhoneNumber,
+        userEmail: userEmail,
+      ),
+      arguments: {
+        "email": userEmail,
+        "phoneNumber": userPhoneNumber,
+      },
+      routeName: "/email-otp",
+      fullscreenDialog: true,
+      curve: Curves.easeInOut,
+      preventDuplicates: true,
+      popGesture: false,
+      transition: Get.defaultTransition,
+    );
+  }
+
   //================= Send OTP ======================\\
   Future<void> submitOTP() async {
     isLoading.value = true;
@@ -246,7 +266,7 @@ class PhoneOTPController extends GetxController {
         pin6EC.text;
 
     Map data = {
-      "phone": phoneEC.text,
+      "phone": userPhoneNumber,
       "otp": otpCode,
       "type": "phone",
       "purpose": "registration",

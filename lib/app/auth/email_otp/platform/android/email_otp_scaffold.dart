@@ -13,9 +13,13 @@ import '../../content/email_otp_form_mobile.dart';
 import '../../content/email_otp_page_header.dart';
 
 class EmailOTPScaffold extends GetView<EmailOTPController> {
-  final String userEmail;
+  final String userEmail, userPhoneNumber;
 
-  const EmailOTPScaffold({super.key, required this.userEmail});
+  const EmailOTPScaffold({
+    super.key,
+    required this.userEmail,
+    required this.userPhoneNumber,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -53,8 +57,10 @@ class EmailOTPScaffold extends GetView<EmailOTPController> {
                         media: media,
                         title: "OTP verification",
                         subtitle:
-                            "Enter the 4-digit verification code we sent to ",
+                            "Enter the 6-digit verification code we sent to ",
                         email: userEmail,
+                        otpOption: "Phone",
+                        signupVia: controller.sendToPhone,
                       ),
                     ],
                   ),
@@ -167,8 +173,10 @@ class EmailOTPScaffold extends GetView<EmailOTPController> {
               colorScheme: colorScheme,
               media: media,
               title: "OTP verification",
-              subtitle: "Enter the 4-digit verification code we sent to ",
+              subtitle: "Enter the 6-digit verification code we sent to ",
               email: userEmail,
+              otpOption: "Phone",
+              signupVia: controller.sendToPhone,
             ),
             const SizedBox(height: kDefaultPadding * 2),
             emailOTPFormMobile(controller, media, context),

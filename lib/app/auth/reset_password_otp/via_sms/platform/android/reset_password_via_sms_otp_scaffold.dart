@@ -72,7 +72,7 @@ class ResetPasswordViaSMSOTPScaffold
                         media: media,
                         title: "OTP Verification",
                         subtitle:
-                            "Enter the 4 digit verification code sent to ",
+                            "Enter the 6-digit verification code sent to ",
                         phoneNumber: maskPhoneNumber(userPhoneNumber),
                       ),
                     ],
@@ -201,7 +201,7 @@ class ResetPasswordViaSMSOTPScaffold
             colorScheme: colorScheme,
             media: media,
             title: "OTP Verification",
-            subtitle: "Enter the 4 digit verification code sent to ",
+            subtitle: "Enter the 6-digit verification code sent to ",
             phoneNumber: maskPhoneNumber(userPhoneNumber),
           ),
           const SizedBox(height: kDefaultPadding * 2),

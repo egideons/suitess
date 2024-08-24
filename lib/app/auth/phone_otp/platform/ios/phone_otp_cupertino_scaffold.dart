@@ -39,7 +39,7 @@ class PhoneOTPCupertinoScaffold extends GetView<PhoneOTPController> {
               colorScheme: colorScheme,
               media: media,
               title: "OTP verification",
-              subtitle: "Enter the 4-digit verification code we sent to ",
+              subtitle: "Enter the 6-digit verification code we sent to ",
               phoneNumber: "*******6497",
             ),
             const SizedBox(height: kDefaultPadding * 2),

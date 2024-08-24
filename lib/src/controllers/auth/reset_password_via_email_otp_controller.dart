@@ -157,7 +157,6 @@ class ResetPasswordViaEmailOTPController extends GetxController {
   void requestOTP() async {
     secondsRemaining.value = 60;
     timerComplete.value = false;
-    startTimer();
     update();
 
     var url = ApiUrl.baseUrl + ApiUrl.auth + ApiUrl.resetPasswordOTP;
@@ -199,6 +198,7 @@ class ResetPasswordViaEmailOTPController extends GetxController {
         ApiProcessorController.successSnack(
           "An OTP has been sent to your email",
         );
+        startTimer();
       } else {
         log("Request failed with status: ${response.statusCode}");
         log("Response body: ${response.data}");

@@ -38,7 +38,7 @@ class ResetPasswordViaEmailOTPCupertinoScaffold
             colorScheme: colorScheme,
             media: media,
             title: "Verify OTP",
-            subtitle: "Enter the 4-digit OTP sent to your email",
+            subtitle: "Enter the 6-digit OTP sent to your email",
           ),
           const SizedBox(height: kDefaultPadding * 2),
           Form(

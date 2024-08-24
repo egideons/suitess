@@ -8,9 +8,9 @@ import '../platform/android/email_otp_scaffold.dart';
 import '../platform/ios/email_otp_cupertino_scaffold.dart';
 
 class EmailOTP extends StatelessWidget {
-  const EmailOTP({super.key, this.userEmail});
+  const EmailOTP({super.key, this.userEmail, this.userPhoneNumber});
 
-  final String? userEmail;
+  final String? userEmail, userPhoneNumber;
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +27,7 @@ class EmailOTP extends StatelessWidget {
       onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
       child: EmailOTPScaffold(
         userEmail: userEmail!,
+        userPhoneNumber: userPhoneNumber!,
       ),
     );
   }
