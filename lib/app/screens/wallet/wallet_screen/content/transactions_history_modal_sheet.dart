@@ -29,7 +29,7 @@ class TransactionsHistoryModalSheet extends GetView<WalletScreenController> {
           leadingIsVisible: true,
           actions: [
             InkWell(
-              onTap: () {},
+              onTap: controller.toggleTransactionHistoryFilter,
               borderRadius: BorderRadius.circular(12),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -66,41 +66,132 @@ class TransactionsHistoryModalSheet extends GetView<WalletScreenController> {
             child: GetBuilder<WalletScreenController>(
               init: WalletScreenController(),
               builder: (controller) {
-                return Container(
-                  margin: const EdgeInsets.all(10),
-                  decoration: ShapeDecoration(
-                    color: colorScheme.surface,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    shadows: [
-                      BoxShadow(
-                        color: colorScheme.inversePrimary.withOpacity(.2),
-                        offset: const Offset(0, 4),
-                        blurRadius: 10,
-                        spreadRadius: 2,
+                return Stack(
+                  children: [
+                    Container(
+                      margin: const EdgeInsets.all(10),
+                      decoration: ShapeDecoration(
+                        color: colorScheme.surface,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        shadows: [
+                          BoxShadow(
+                            color: colorScheme.inversePrimary.withOpacity(.2),
+                            offset: const Offset(0, 4),
+                            blurRadius: 10,
+                            spreadRadius: 2,
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                  child: ListView.separated(
-                    controller: controller.scrollController,
-                    itemCount: 20,
-                    shrinkWrap: true,
-                    physics: const ScrollPhysics(),
-                    separatorBuilder: (context, index) => kHalfSizedBox,
-                    itemBuilder: (context, index) {
-                      return recentTransaction(
-                        media,
-                        () {},
-                        title: "Alonso Diobi",
-                        dateTime: DateTime.now(),
-                        amount: 29000,
-                        isSuccessful: true,
-                        isIncome: true,
-                        isCancelled: false,
-                      );
-                    },
-                  ),
+                      child: ListView.separated(
+                        controller: controller.scrollController,
+                        itemCount: 20,
+                        shrinkWrap: true,
+                        physics: const ScrollPhysics(),
+                        separatorBuilder: (context, index) => kHalfSizedBox,
+                        itemBuilder: (context, index) {
+                          return recentTransaction(
+                            media,
+                            () {},
+                            title: "Alonso Diobi",
+                            dateTime: DateTime.now(),
+                            amount: 29000,
+                            isSuccessful: true,
+                            isIncome: true,
+                            isCancelled: false,
+                          );
+                        },
+                      ),
+                    ),
+                    Positioned(
+                      top: 0,
+                      child: Obx(
+                        () {
+                          return Visibility(
+                            visible: controller
+                                .transactionHistoryFilterIsVisible.value,
+                            child: AnimatedContainer(
+                              duration: const Duration(milliseconds: 300),
+                              curve: Curves.easeInOut,
+                              padding: const EdgeInsets.all(10),
+                              width: media.width,
+                              height: 300,
+                              decoration: ShapeDecoration(
+                                color: colorScheme.surface,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(24),
+                                ),
+                              ),
+                              child: Column(
+                                children: [
+                                  Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: List.generate(
+                                      controller.filterTabs.length,
+                                      (index) => TextButton(
+                                        onPressed: () {
+                                          controller.selectFilterTab(index);
+                                        },
+                                        child: Text(
+                                          controller.filterTabs[index].name,
+                                          style: defaultTextStyle(
+                                            color: controller.filterTabs[index]
+                                                    .isSelected
+                                                ? kSuccessColor
+                                                : kTextBoldHeadingColor,
+                                            fontSize: 14,
+                                            decoration: controller
+                                                    .filterTabs[index]
+                                                    .isSelected
+                                                ? TextDecoration.underline
+                                                : TextDecoration.none,
+                                            decorationColor: kSuccessColor,
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: PageView(
+                                      controller: controller
+                                          .transactionHistoryFilterPageController,
+                                      children: [
+                                        Center(
+                                          child: Text(
+                                            "Page 1",
+                                            style: defaultTextStyle(
+                                              color: kTextBoldHeadingColor,
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                          ),
+                                        ),
+                                        Center(
+                                          child: Text(
+                                            "Page 2",
+                                            style: defaultTextStyle(
+                                              color: kTextBoldHeadingColor,
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                  ],
                 );
               },
             ),

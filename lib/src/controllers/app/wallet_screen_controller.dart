@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import '../../../app/screens/wallet/wallet_screen/content/transactions_history_modal_sheet.dart';
 import '../../../main.dart';
+import '../../models/wallet/transaction_filter_section_model.dart';
 import '../../routes/routes.dart';
 
 class WalletScreenController extends GetxController {
@@ -10,16 +11,34 @@ class WalletScreenController extends GetxController {
     return Get.find<WalletScreenController>();
   }
 
+  @override
+  void onClose() {
+    super.onClose();
+    scrollController.dispose();
+  }
+
+  @override
+  void onInit() {
+    super.onInit();
+    scrollController.addListener(_scrollListener);
+    loadVisibilityState();
+  }
+
   //================ variables =================\\
   var isRefreshing = false.obs;
-
   var isScrollToTopBtnVisible = false.obs;
-
   var hasNotifications = true.obs;
   var hideBalance = false.obs;
-  //================ controllers =================\\
+  var transactionHistoryFilterIsVisible = false.obs;
+  var filterTabs = [
+    TransactionFilterSectionModel(name: "Categories", isSelected: true),
+    TransactionFilterSectionModel(name: "Month", isSelected: false),
+  ].obs;
 
+  //================ controllers =================\\
+  var transactionHistoryFilterPageController = PageController();
   var scrollController = ScrollController();
+
   //================ Wallet functions ================\\
   changeVisibilityState() {
     saveVisibilityState(!hideBalance.value);
@@ -49,26 +68,13 @@ class WalletScreenController extends GetxController {
     // );
   }
 
-  gotToWifi() async {}
+  gotToData() async {}
 
   //=========================== Save card state ============================//
   // Load visibility state from SharedPreferences
   Future<void> loadVisibilityState() async {
     hideBalance.value = prefs.getBool('hideBalance') ?? hideBalance.value;
     update();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-    scrollController.dispose();
-  }
-
-  @override
-  void onInit() {
-    super.onInit();
-    scrollController.addListener(_scrollListener);
-    loadVisibilityState();
   }
 
 //================ Handle refresh ================\\
@@ -112,6 +118,35 @@ class WalletScreenController extends GetxController {
           child: const TransactionsHistoryModalSheet(),
         );
       },
+    );
+  }
+
+  toggleTransactionHistoryFilter() {
+    transactionHistoryFilterIsVisible.value =
+        !transactionHistoryFilterIsVisible.value;
+  }
+
+//================ Select Filter Tab =================//
+  void selectFilterTab(int index) {
+    for (int i = 0; i < filterTabs.length; i++) {
+      filterTabs[i].isSelected = i == index;
+    }
+    update();
+  }
+
+  goToMonthPage() {
+    transactionHistoryFilterPageController.animateToPage(
+      1,
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeInOut,
+    );
+  }
+
+  goToCategoriesPage() {
+    transactionHistoryFilterPageController.animateToPage(
+      0,
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeInOut,
     );
   }
 
