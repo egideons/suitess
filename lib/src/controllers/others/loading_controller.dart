@@ -44,7 +44,7 @@ class LoadingController extends GetxController {
       () => const Login(),
       routeName: "/login",
       fullscreenDialog: true,
-      curve: Curves.easeInOut,  
+      curve: Curves.easeInOut,
       predicate: (routes) => false,
       popGesture: false,
       transition: Get.defaultTransition,

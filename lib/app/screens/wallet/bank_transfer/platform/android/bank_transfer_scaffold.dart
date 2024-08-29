@@ -71,7 +71,7 @@ class BankTransferScaffold extends GetView<BankTransferController> {
                 child: Column(
                   children: [
                     InkWell(
-                      onTap: () {},
+                      onTap: controller.showListOfBanksModalSheet,
                       borderRadius: BorderRadius.circular(10),
                       child: formFieldContainer(
                         colorScheme,

@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import '../../../app/screens/wallet/bank_transfer/content/bank_transfer_tx_details.dart';
 import '../../../app/screens/wallet/bank_transfer/content/bank_transfer_tx_pin.dart';
+import '../../../app/screens/wallet/bank_transfer/content/list_of_banks_modal.dart';
 import '../../../app/splash/successful/screen/success_screen.dart';
 import '../../models/wallet/source_account_model.dart';
 import '../others/api_processor_controller.dart';
@@ -35,12 +36,16 @@ class BankTransferController extends GetxController {
   //================ Bank Transfer Form =================//
   final formKey = GlobalKey<FormState>();
   var accountNumberEC = TextEditingController();
+  var bankSearchEC = TextEditingController();
+  var beneficiarySearchEC = TextEditingController();
   var amountEC = TextEditingController();
   var unformattedAmountText = "".obs;
   var selectedBank = "".obs;
   var descriptionEC = TextEditingController();
 
   var accountNumberFN = FocusNode();
+  var bankSearchFN = FocusNode();
+  var beneficiarySearchFN = FocusNode();
   var amountFN = FocusNode();
   var descriptionFN = FocusNode();
 
@@ -135,6 +140,25 @@ class BankTransferController extends GetxController {
   }
 
   //================ Modal Bottom Sheets ================\\
+
+  showListOfBanksModalSheet() async {
+    var media = MediaQuery.of(Get.context!).size;
+    showModalBottomSheet(
+      context: Get.context!,
+      isScrollControlled: true,
+      isDismissible: true,
+      enableDrag: true,
+      useSafeArea: true,
+      constraints:
+          BoxConstraints(maxHeight: media.height, maxWidth: media.width),
+      builder: (context) {
+        return GestureDetector(
+          onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
+          child: const ListOfBanksModal(),
+        );
+      },
+    );
+  }
 
   showBankTransferTxDetailsModalSheet() async {
     var media = MediaQuery.of(Get.context!).size;

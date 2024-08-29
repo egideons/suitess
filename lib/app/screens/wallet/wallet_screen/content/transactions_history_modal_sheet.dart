@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:suitess/src/models/wallet/transaction_filter_month_model.dart';
 import 'package:suitess/src/utils/components/my_app_bar.dart';
 
 import '../../../../../src/constants/assets.dart';
@@ -112,77 +113,59 @@ class TransactionsHistoryModalSheet extends GetView<WalletScreenController> {
                             visible: controller
                                 .transactionHistoryFilterIsVisible.value,
                             child: AnimatedContainer(
-                              duration: const Duration(milliseconds: 300),
+                              duration: const Duration(milliseconds: 500),
                               curve: Curves.easeInOut,
                               padding: const EdgeInsets.all(10),
                               width: media.width,
-                              height: 300,
+                              height:
+                                  //  controller.filterTabs.first.isSelected
+                                  //     ? media.height * .45
+                                  //     :
+                                  media.height * .52,
                               decoration: ShapeDecoration(
                                 color: colorScheme.surface,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(24),
+                                shape: const RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.vertical(
+                                    bottom: Radius.circular(8),
+                                  ),
                                 ),
+                                shadows: [
+                                  BoxShadow(
+                                    color: colorScheme.inversePrimary
+                                        .withOpacity(.2),
+                                    offset: const Offset(0, 4),
+                                    blurRadius: 10,
+                                    spreadRadius: 2,
+                                  ),
+                                ],
                               ),
                               child: Column(
                                 children: [
-                                  Row(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: List.generate(
-                                      controller.filterTabs.length,
-                                      (index) => TextButton(
-                                        onPressed: () {
-                                          controller.selectFilterTab(index);
-                                        },
-                                        child: Text(
-                                          controller.filterTabs[index].name,
-                                          style: defaultTextStyle(
-                                            color: controller.filterTabs[index]
-                                                    .isSelected
-                                                ? kSuccessColor
-                                                : kTextBoldHeadingColor,
-                                            fontSize: 14,
-                                            decoration: controller
-                                                    .filterTabs[index]
-                                                    .isSelected
-                                                ? TextDecoration.underline
-                                                : TextDecoration.none,
-                                            decorationColor: kSuccessColor,
-                                            fontWeight: FontWeight.w500,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
+                                  transactionFilterTabs(controller),
                                   Expanded(
-                                    child: PageView(
-                                      controller: controller
-                                          .transactionHistoryFilterPageController,
-                                      children: [
-                                        Center(
-                                          child: Text(
-                                            "Page 1",
-                                            style: defaultTextStyle(
-                                              color: kTextBoldHeadingColor,
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.w500,
-                                            ),
+                                    child: Obx(() {
+                                      // Split the list into two equal parts
+                                      final firstHalf = controller.filterMonths
+                                          .take(6)
+                                          .toList();
+                                      final secondHalf = controller.filterMonths
+                                          .skip(6)
+                                          .toList();
+                                      return PageView(
+                                        controller: controller
+                                            .transactionHistoryFilterPageController,
+                                        physics:
+                                            const NeverScrollableScrollPhysics(),
+                                        children: [
+                                          txFilterByCategoriesPage(controller),
+                                          buildMonthSelection(
+                                            firstHalf,
+                                            controller,
+                                            secondHalf,
                                           ),
-                                        ),
-                                        Center(
-                                          child: Text(
-                                            "Page 2",
-                                            style: defaultTextStyle(
-                                              color: kTextBoldHeadingColor,
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.w500,
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
+                                        ],
+                                      );
+                                    }),
                                   )
                                 ],
                               ),
@@ -197,6 +180,125 @@ class TransactionsHistoryModalSheet extends GetView<WalletScreenController> {
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  buildMonthSelection(
+    List<TransactionFilterMonthModel> firstHalf,
+    WalletScreenController controller,
+    List<TransactionFilterMonthModel> secondHalf,
+  ) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        // First Column
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: firstHalf.map((month) {
+              return ListTile(
+                title: Text(
+                  month.name,
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: month.isSelected ? Colors.green : Colors.black,
+                    fontWeight:
+                        month.isSelected ? FontWeight.bold : FontWeight.normal,
+                  ),
+                ),
+                trailing: month.isSelected
+                    ? const Icon(Icons.check, color: Colors.green, size: 20)
+                    : null,
+                onTap: () {
+                  controller.selectMonth(month.name);
+                },
+              );
+            }).toList(),
+          ),
+        ),
+        // Second Column
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: secondHalf.map((month) {
+              return ListTile(
+                title: Text(
+                  month.name,
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: month.isSelected ? Colors.green : Colors.black,
+                    fontWeight:
+                        month.isSelected ? FontWeight.bold : FontWeight.normal,
+                  ),
+                ),
+                trailing: month.isSelected
+                    ? const Icon(Icons.check, color: Colors.green, size: 20)
+                    : null,
+                onTap: () {
+                  controller.selectMonth(month.name);
+                },
+              );
+            }).toList(),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Row transactionFilterTabs(WalletScreenController controller) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: List.generate(
+        controller.filterTabs.length,
+        (index) => TextButton(
+          onPressed: () {
+            controller.selectFilterTab(index);
+          },
+          child: Text(
+            controller.filterTabs[index].name,
+            style: defaultTextStyle(
+              color: controller.filterTabs[index].isSelected
+                  ? kSuccessColor
+                  : kTextBoldHeadingColor,
+              fontSize: 14,
+              decoration: controller.filterTabs[index].isSelected
+                  ? TextDecoration.underline
+                  : TextDecoration.none,
+              decorationColor: kSuccessColor,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  txFilterByCategoriesPage(WalletScreenController controller) {
+    return Column(
+      children: List.generate(
+        controller.filterCategories.length,
+        (index) {
+          var filterCategoryTab = controller.filterCategories[index];
+          return ListTile(
+            onTap: () => controller.selectFilterCategories(index),
+            title: Text(
+              filterCategoryTab.name,
+              style: defaultTextStyle(
+                color: kTextBoldHeadingColor,
+                fontSize: 14,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            trailing: filterCategoryTab.isSelected
+                ? Icon(
+                    Icons.check,
+                    color: kSuccessColor,
+                  )
+                : const SizedBox(),
+          );
+        },
       ),
     );
   }

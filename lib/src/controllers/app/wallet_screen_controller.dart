@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:suitess/src/models/wallet/transaction_filter_categories_model.dart';
 
 import '../../../app/screens/wallet/wallet_screen/content/transactions_history_modal_sheet.dart';
 import '../../../main.dart';
+import '../../models/wallet/transaction_filter_month_model.dart';
 import '../../models/wallet/transaction_filter_section_model.dart';
 import '../../routes/routes.dart';
 
@@ -34,10 +36,34 @@ class WalletScreenController extends GetxController {
     TransactionFilterSectionModel(name: "Categories", isSelected: true),
     TransactionFilterSectionModel(name: "Month", isSelected: false),
   ].obs;
+  var filterCategories = [
+    TransactionFilterCategoriesModel(
+        name: "All transactions", isSelected: true),
+    TransactionFilterCategoriesModel(name: "Credits", isSelected: false),
+    TransactionFilterCategoriesModel(name: "Debits", isSelected: false),
+    TransactionFilterCategoriesModel(name: "Pending", isSelected: false),
+    TransactionFilterCategoriesModel(name: "Reversed", isSelected: false),
+  ].obs;
+
+  RxList<TransactionFilterMonthModel> filterMonths = [
+    TransactionFilterMonthModel(name: "January", isSelected: true),
+    TransactionFilterMonthModel(name: "February", isSelected: false),
+    TransactionFilterMonthModel(name: "March", isSelected: false),
+    TransactionFilterMonthModel(name: "April", isSelected: false),
+    TransactionFilterMonthModel(name: "May", isSelected: false),
+    TransactionFilterMonthModel(name: "June", isSelected: false),
+    TransactionFilterMonthModel(name: "July", isSelected: false),
+    TransactionFilterMonthModel(name: "August", isSelected: false),
+    TransactionFilterMonthModel(name: "September", isSelected: false),
+    TransactionFilterMonthModel(name: "October", isSelected: false),
+    TransactionFilterMonthModel(name: "November", isSelected: false),
+    TransactionFilterMonthModel(name: "December", isSelected: false),
+  ].obs;
 
   //================ controllers =================\\
   var transactionHistoryFilterPageController = PageController();
   var scrollController = ScrollController();
+  var overlayPortalController = OverlayPortalController();
 
   //================ Wallet functions ================\\
   changeVisibilityState() {
@@ -124,30 +150,42 @@ class WalletScreenController extends GetxController {
   toggleTransactionHistoryFilter() {
     transactionHistoryFilterIsVisible.value =
         !transactionHistoryFilterIsVisible.value;
+
+    filterTabs.first.isSelected = true;
+    filterTabs.last.isSelected = false;
   }
 
 //================ Select Filter Tab =================//
   void selectFilterTab(int index) {
     for (int i = 0; i < filterTabs.length; i++) {
       filterTabs[i].isSelected = i == index;
+      navigateToPage(index);
     }
     update();
   }
 
-  goToMonthPage() {
+  navigateToPage(index) {
     transactionHistoryFilterPageController.animateToPage(
-      1,
+      index,
       duration: const Duration(milliseconds: 300),
       curve: Curves.easeInOut,
     );
   }
 
-  goToCategoriesPage() {
-    transactionHistoryFilterPageController.animateToPage(
-      0,
-      duration: const Duration(milliseconds: 300),
-      curve: Curves.easeInOut,
-    );
+//================ Select Filter By Categories =================//
+  void selectFilterCategories(int index) {
+    for (int i = 0; i < filterCategories.length; i++) {
+      filterCategories[i].isSelected = i == index;
+    }
+    update();
+  }
+
+//================ Select Filter By Month =================//
+  void selectMonth(String selectedMonth) {
+    for (var month in filterMonths) {
+      month.isSelected = month.name == selectedMonth;
+    }
+    filterMonths.refresh(); // Trigger the UI update
   }
 
   //================ Scroll Listener =================//

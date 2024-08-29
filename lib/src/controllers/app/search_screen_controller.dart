@@ -80,7 +80,7 @@ class SearchScreenController extends GetxController {
 
 //================ Search Filter Screen ================\\
 
-  showSearchFilterDraggableScrollSheet(BuildContext context, Size media) async {
+  showSearchFilterBottomModalSheet(BuildContext context, Size media) async {
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,

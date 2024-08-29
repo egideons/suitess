@@ -83,7 +83,7 @@ class SearchScreenScaffold extends GetView<SearchScreenController> {
                         title: searchResultsAndFilter(
                           492,
                           () {
-                            controller.showSearchFilterDraggableScrollSheet(
+                            controller.showSearchFilterBottomModalSheet(
                               context,
                               media,
                             );
