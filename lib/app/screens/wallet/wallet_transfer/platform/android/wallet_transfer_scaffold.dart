@@ -80,6 +80,7 @@ class WalletTransferScaffold extends GetView<WalletTransferController> {
                         validator: (value) {
                           return null;
                         },
+                        onChanged: controller.walletOnChanged,
                         textInputAction: TextInputAction.next,
                         focusNode: controller.walletNumberFN,
                         textCapitalization: TextCapitalization.none,
@@ -88,6 +89,24 @@ class WalletTransferScaffold extends GetView<WalletTransferController> {
                           FilteringTextInputFormatter.digitsOnly
                         ],
                       ),
+                    ),
+                    Obx(
+                      () {
+                        return controller.beneficiaryName.value.isEmpty
+                            ? const SizedBox()
+                            : Align(
+                                alignment: Alignment.centerRight,
+                                child: Text(
+                                  controller.beneficiaryName.value,
+                                  textAlign: TextAlign.start,
+                                  style: defaultTextStyle(
+                                    color: kTextBoldHeadingColor,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              );
+                      },
                     ),
                     kSizedBox,
                     formFieldContainer(

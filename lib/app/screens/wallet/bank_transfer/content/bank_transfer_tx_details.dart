@@ -9,7 +9,17 @@ import '../../../../../theme/colors.dart';
 import 'bank_transfer_tx_detail.dart';
 
 class BankTransferTxDetails extends GetView<BankTransferController> {
-  const BankTransferTxDetails({super.key});
+  const BankTransferTxDetails({
+    this.transactionAmount,
+    this.transactionCharge,
+    this.accountNumber,
+    this.beneficiaryName,
+    this.beneficiaryBank,
+    super.key,
+  });
+
+  final double? transactionAmount, transactionCharge;
+  final String? beneficiaryName, beneficiaryBank, accountNumber;
 
   @override
   Widget build(BuildContext context) {
@@ -84,7 +94,7 @@ class BankTransferTxDetails extends GetView<BankTransferController> {
                           bankTransferTxDetail(
                             title: "Benificiary Bank",
                             child: Text(
-                              "Suitess Wallet",
+                              beneficiaryBank ?? "",
                               textAlign: TextAlign.end,
                               style: defaultTextStyle(
                                 color: kTextBoldHeadingColor,
@@ -97,7 +107,7 @@ class BankTransferTxDetails extends GetView<BankTransferController> {
                           bankTransferTxDetail(
                             title: "Account Number",
                             child: Text(
-                              "2062095204",
+                              accountNumber ?? "",
                               textAlign: TextAlign.end,
                               style: defaultTextStyle(
                                 color: kTextBoldHeadingColor,
@@ -110,7 +120,8 @@ class BankTransferTxDetails extends GetView<BankTransferController> {
                           bankTransferTxDetail(
                             title: "Benificiary's Name",
                             child: Text(
-                              "Okigbo Ifeanyi",
+                              beneficiaryName ?? "",
+                              maxLines: 2,
                               textAlign: TextAlign.end,
                               style: defaultTextStyle(
                                 color: kTextBoldHeadingColor,
@@ -134,7 +145,8 @@ class BankTransferTxDetails extends GetView<BankTransferController> {
                                 ),
                                 children: [
                                   TextSpan(
-                                    text: doubleFormattedTextWithDecimal(20000),
+                                    text: doubleFormattedTextWithDecimal(
+                                        transactionAmount ?? 0),
                                     style: defaultTextStyle(
                                       color: kTextBoldHeadingColor,
                                       fontWeight: FontWeight.w600,
@@ -160,7 +172,8 @@ class BankTransferTxDetails extends GetView<BankTransferController> {
                                 ),
                                 children: [
                                   TextSpan(
-                                    text: doubleFormattedTextWithDecimal(52),
+                                    text: doubleFormattedTextWithDecimal(
+                                        transactionCharge ?? 0),
                                     style: defaultTextStyle(
                                       color: kTextBoldHeadingColor,
                                       fontWeight: FontWeight.w600,

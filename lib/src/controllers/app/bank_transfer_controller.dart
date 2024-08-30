@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:suitess/src/models/bank/bank_model.dart';
 
 import '../../../app/screens/wallet/bank_transfer/content/bank_transfer_tx_details.dart';
 import '../../../app/screens/wallet/bank_transfer/content/bank_transfer_tx_pin.dart';
 import '../../../app/screens/wallet/bank_transfer/content/list_of_banks_modal.dart';
+import '../../../app/screens/wallet/bank_transfer/content/list_of_beneficiaries_modal.dart';
 import '../../../app/splash/successful/screen/success_screen.dart';
+import '../../models/bank/beneficiary_model.dart';
 import '../../models/wallet/source_account_model.dart';
 import '../others/api_processor_controller.dart';
 
@@ -18,6 +21,7 @@ class BankTransferController extends GetxController {
   var isScrollToTopBtnVisible = false.obs;
   var hasNotifications = true.obs;
   var isSubmitting = false.obs;
+  var transactionCharge = 52.0.obs;
 
   //================ controllers =================\\
   var bankCardPageController = PageController();
@@ -41,8 +45,13 @@ class BankTransferController extends GetxController {
   var amountEC = TextEditingController();
   var unformattedAmountText = "".obs;
   var selectedBank = "".obs;
+  var selectedAccountName = "".obs;
+  var selectedBeneficiary = {
+    "name": "",
+    "accountNumber": "",
+    "bankName": "",
+  };
   var descriptionEC = TextEditingController();
-
   var accountNumberFN = FocusNode();
   var bankSearchFN = FocusNode();
   var beneficiarySearchFN = FocusNode();
@@ -107,7 +116,7 @@ class BankTransferController extends GetxController {
 
   //================  On FieldSubmitted =================//
   onFieldSubmitted(value) {
-    submitForm();
+    submitBankTransferForm();
   }
 
   @override
@@ -115,6 +124,21 @@ class BankTransferController extends GetxController {
     super.onInit();
     scrollController.addListener(_scrollListener);
     amountEC.addListener(formatAmount);
+  }
+
+  //================ Scroll Listener =================//
+
+  void _scrollListener() {
+    //========= Show action button ========//
+    if (scrollController.position.pixels >= 150) {
+      isScrollToTopBtnVisible.value = true;
+      update();
+    }
+    //========= Hide action button ========//
+    else if (scrollController.position.pixels < 150) {
+      isScrollToTopBtnVisible.value = false;
+      update();
+    }
   }
 
   //================ Handle refresh ================\\
@@ -139,7 +163,33 @@ class BankTransferController extends GetxController {
         duration: const Duration(seconds: 1), curve: Curves.fastOutSlowIn);
   }
 
+  //================= Account Number Onchanged ======================\\
+  accountNumberOnChanged(String value) async {
+    if (value.isEmpty) {
+      selectedAccountName.value = "";
+    } else if (value.length == 10) {
+      await Future.delayed(const Duration(seconds: 1));
+      selectedAccountName.value = beneficiaryModel.name;
+    }
+  }
+
   //================ Modal Bottom Sheets ================\\
+
+  //Select Bank Section
+  var bankModel = BankModel(
+    name: "Suitess Bank",
+    code: "1234",
+    ussdTemplate: "",
+    baseUssdCode: "",
+    transferUssdTemplate: "",
+    bankId: "",
+    nipBankCode: "",
+  );
+
+  selectBank(index) {
+    Get.back();
+    selectedBank.value = bankModel.name;
+  }
 
   showListOfBanksModalSheet() async {
     var media = MediaQuery.of(Get.context!).size;
@@ -160,8 +210,47 @@ class BankTransferController extends GetxController {
     );
   }
 
+  //Select Beneficiary Section
+  var beneficiaryModel = BeneficiaryModel(
+    name: "Gideon Chukwuoma Chimemerie",
+    bankCode: "1234",
+    accountNumber: "1234567890",
+    bankName: "Suitess Bank",
+  );
+
+  selectBeneficiary(index) {
+    Get.back();
+    selectedBeneficiary["name"] = beneficiaryModel.name;
+    selectedBeneficiary["accountNumber"] = beneficiaryModel.accountNumber;
+    selectedBeneficiary["bankName"] = beneficiaryModel.bankName;
+    selectedAccountName.value = selectedBeneficiary["name"] ?? "";
+    accountNumberEC.text = selectedBeneficiary["accountNumber"] ?? "";
+    selectedBank.value = selectedBeneficiary["bankName"] ?? "";
+  }
+
+  showListOfBeneficiaries() async {
+    var media = MediaQuery.of(Get.context!).size;
+    showModalBottomSheet(
+      context: Get.context!,
+      isScrollControlled: true,
+      isDismissible: true,
+      enableDrag: true,
+      useSafeArea: true,
+      constraints:
+          BoxConstraints(maxHeight: media.height, maxWidth: media.width),
+      builder: (context) {
+        return GestureDetector(
+          onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
+          child: const ListOfBeneficiariesModal(),
+        );
+      },
+    );
+  }
+
+  //Bank Transfer Details
   showBankTransferTxDetailsModalSheet() async {
     var media = MediaQuery.of(Get.context!).size;
+    var transactionAmount = double.tryParse(unformattedAmountText.value);
     showModalBottomSheet(
       context: Get.context!,
       isScrollControlled: true,
@@ -174,12 +263,19 @@ class BankTransferController extends GetxController {
       builder: (context) {
         return GestureDetector(
           onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
-          child: const BankTransferTxDetails(),
+          child: BankTransferTxDetails(
+            accountNumber: accountNumberEC.text,
+            beneficiaryBank: selectedBank.value,
+            beneficiaryName: selectedAccountName.value,
+            transactionAmount: transactionAmount,
+            transactionCharge: transactionAmount,
+          ),
         );
       },
     );
   }
 
+  //Bank Transfer Transaction Pin
   showBankTransferTxPinModalSheet() async {
     var media = MediaQuery.of(Get.context!).size;
 
@@ -202,7 +298,7 @@ class BankTransferController extends GetxController {
   }
 
   //================  Submit form =================//
-  Future<void> submitForm() async {
+  Future<void> submitBankTransferForm() async {
     if (formKey.currentState!.validate()) {
       formKey.currentState!.save();
       if (selectedBank.value.isEmpty) {
@@ -251,7 +347,7 @@ class BankTransferController extends GetxController {
   }
 
   //================= Transaction Pins Onchanged ======================\\
-  txPin1Onchanged(value, context) {
+  txPin1Onchanged(String value, context) {
     if (value.isEmpty) {
       return;
     }
@@ -292,20 +388,5 @@ class BankTransferController extends GetxController {
       return;
     }
     update();
-  }
-
-  //================ Scroll Listener =================//
-
-  void _scrollListener() {
-    //========= Show action button ========//
-    if (scrollController.position.pixels >= 150) {
-      isScrollToTopBtnVisible.value = true;
-      update();
-    }
-    //========= Hide action button ========//
-    else if (scrollController.position.pixels < 150) {
-      isScrollToTopBtnVisible.value = false;
-      update();
-    }
   }
 }

@@ -1,9 +1,12 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../app/screens/wallet/wallet_transfer/content/wallet_transfer_tx_details.dart';
 import '../../../app/screens/wallet/wallet_transfer/content/wallet_transfer_tx_pin.dart';
 import '../../../app/splash/successful/screen/success_screen.dart';
+import '../../constants/consts.dart';
 import '../../models/wallet/source_account_model.dart';
 import '../others/api_processor_controller.dart';
 
@@ -17,6 +20,8 @@ class WalletTransferController extends GetxController {
   var isScrollToTopBtnVisible = false.obs;
   var hasNotifications = true.obs;
   var isSubmitting = false.obs;
+  var beneficiaryName = "".obs;
+  var transactionCharge = 52.0.obs;
 
   //================ controllers =================\\
   var walletCardPageController = PageController();
@@ -82,15 +87,6 @@ class WalletTransferController extends GetxController {
     }
   }
 
-  String formatWithCommas(String value) {
-    // Convert the value to a number
-    final number = double.parse(value);
-
-    // Format the number with commas
-    return number.toStringAsFixed(0).replaceAllMapped(
-        RegExp(r'(\d)(?=(\d{3})+(?!\d))'), (Match match) => '${match[1]},');
-  }
-
   @override
   void onClose() {
     super.onClose();
@@ -133,10 +129,24 @@ class WalletTransferController extends GetxController {
         duration: const Duration(seconds: 1), curve: Curves.fastOutSlowIn);
   }
 
+//Wallet Onchanged
+  walletOnChanged(String value) async {
+    if (value.isEmpty) {
+      beneficiaryName.value = "";
+    } else if (value.length == 10) {
+      await Future.delayed(const Duration(seconds: 1));
+      beneficiaryName.value = "Ifeanyi Okigbo";
+    }
+  }
+
   //================ Modal Bottom Sheets ================\\
 
   showWalletTransferTxDetailsModalSheet() async {
     var media = MediaQuery.of(Get.context!).size;
+    var transactionAmount = double.tryParse(unformattedAmountText.value);
+
+    log("This is the Transaction Amount: $transactionAmount");
+
     showModalBottomSheet(
       context: Get.context!,
       isScrollControlled: true,
@@ -145,11 +155,16 @@ class WalletTransferController extends GetxController {
       //  useSafeArea: true,
 
       constraints:
-          BoxConstraints(maxHeight: media.height / 1.4, maxWidth: media.width),
+          BoxConstraints(maxHeight: media.height / 1.56, maxWidth: media.width),
       builder: (context) {
         return GestureDetector(
           onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
-          child: const WalletTransferTxDetails(),
+          child: WalletTransferTxDetails(
+            accountNumber: walletNumberEC.text,
+            beneficiaryName: beneficiaryName.value,
+            transactionAmount: transactionAmount,
+            transactionCharge: transactionCharge.value,
+          ),
         );
       },
     );

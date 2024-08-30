@@ -16,6 +16,7 @@ walletTransferTxDetail({String? title, Widget? child}) {
           fontWeight: FontWeight.w400,
         ),
       ),
+      kWidthSizedBox,
       Expanded(
         child: Align(
           alignment: Alignment.centerRight,

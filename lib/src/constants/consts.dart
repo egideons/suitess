@@ -188,6 +188,15 @@ String formatNumberWithCommas(int number) {
   return formatter.format(number);
 }
 
+String formatWithCommas(String value) {
+  // Convert the value to a number
+  final number = double.parse(value);
+
+  // Format the number with commas
+  return number.toStringAsFixed(0).replaceAllMapped(
+      RegExp(r'(\d)(?=(\d{3})+(?!\d))'), (Match match) => '${match[1]},');
+}
+
 String formatUNIXTime(int unixTimestamp) {
   // Convert the Unix timestamp to a DateTime object
   DateTime dateTime =
@@ -310,4 +319,14 @@ String shortenId(String id) {
   }
   final int mid = id.length ~/ 2;
   return '${id.substring(0, 4)}...${id.substring(mid + 1)}';
+}
+
+String getNameInitials(String name) {
+  // Split the name by spaces
+  List<String> nameParts = name.split(' ');
+
+  // Map each part to its first letter and join them
+  String initials = nameParts.map((part) => part[0]).join();
+
+  return initials.toUpperCase(); // Convert to uppercase if needed
 }

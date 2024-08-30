@@ -66,138 +66,159 @@ class BankTransferScaffold extends GetView<BankTransferController> {
                 ),
               ),
               kSizedBox,
-              Form(
-                key: controller.formKey,
-                child: Column(
-                  children: [
-                    InkWell(
-                      onTap: controller.showListOfBanksModalSheet,
-                      borderRadius: BorderRadius.circular(10),
-                      child: formFieldContainer(
-                        colorScheme,
-                        media,
-                        containerHeight: 55,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              controller.selectedBank.value.isEmpty
-                                  ? "Select Bank"
-                                  : controller.selectedBank.value,
-                              textAlign: TextAlign.start,
-                              style: defaultTextStyle(
-                                color: kTextGreyColor,
-                                fontSize: 14,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                            Icon(
-                              Icons.chevron_right,
-                              color: colorScheme.inversePrimary,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    kSmallSizedBox,
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: SizedBox(
-                        width: media.width / 2,
-                        child: InkWell(
-                          onTap: () {},
-                          borderRadius: BorderRadius.circular(8),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Text(
-                                "Choose Beneficiary",
-                                textAlign: TextAlign.start,
-                                style: defaultTextStyle(
-                                  color: kAccentColor,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w500,
+              Obx(
+                () {
+                  return Form(
+                    key: controller.formKey,
+                    child: Column(
+                      children: [
+                        InkWell(
+                          onTap: controller.showListOfBanksModalSheet,
+                          borderRadius: BorderRadius.circular(10),
+                          child: formFieldContainer(
+                            colorScheme,
+                            media,
+                            containerHeight: 55,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  controller.selectedBank.value.isEmpty
+                                      ? "Select Bank"
+                                      : controller.selectedBank.value,
+                                  textAlign: TextAlign.start,
+                                  style: defaultTextStyle(
+                                    color: kTextGreyColor,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w500,
+                                  ),
                                 ),
+                                Icon(
+                                  Icons.chevron_right,
+                                  color: colorScheme.inversePrimary,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        kSmallSizedBox,
+                        Align(
+                          alignment: Alignment.centerRight,
+                          child: SizedBox(
+                            width: media.width / 2,
+                            child: InkWell(
+                              onTap: controller.showListOfBeneficiaries,
+                              borderRadius: BorderRadius.circular(8),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  Text(
+                                    "Choose Beneficiary",
+                                    textAlign: TextAlign.start,
+                                    style: defaultTextStyle(
+                                      color: kAccentColor,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                  kSmallWidthSizedBox,
+                                  Icon(
+                                    Icons.chevron_right,
+                                    color: kAccentColor,
+                                  ),
+                                ],
                               ),
-                              kSmallWidthSizedBox,
-                              Icon(
-                                Icons.chevron_right,
-                                color: kAccentColor,
-                              ),
+                            ),
+                          ),
+                        ),
+                        kSizedBox,
+                        formFieldContainer(
+                          colorScheme,
+                          media,
+                          containerHeight: 55,
+                          child: AndroidTextFormField(
+                            labelText: "Account Number",
+                            controller: controller.accountNumberEC,
+                            textInputAction: TextInputAction.next,
+                            focusNode: controller.accountNumberFN,
+                            textCapitalization: TextCapitalization.none,
+                            keyboardType: TextInputType.number,
+                            onChanged: controller.accountNumberOnChanged,
+                            validator: (value) {
+                              return null;
+                            },
+                            inputFormatters: [
+                              FilteringTextInputFormatter.digitsOnly
                             ],
                           ),
                         ),
-                      ),
+                        Obx(() {
+                          return controller.selectedAccountName.value.isEmpty
+                              ? const SizedBox()
+                              : Align(
+                                  alignment: Alignment.centerRight,
+                                  child: Text(
+                                    controller.selectedAccountName.value,
+                                    textAlign: TextAlign.start,
+                                    style: defaultTextStyle(
+                                      color: kTextBoldHeadingColor,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                );
+                        }),
+                        kSizedBox,
+                        formFieldContainer(
+                          colorScheme,
+                          media,
+                          containerHeight: 55,
+                          child: AndroidTextFormField(
+                            labelText: "Amount",
+                            controller: controller.amountEC,
+                            validator: (value) {
+                              return null;
+                            },
+                            textInputAction: TextInputAction.next,
+                            focusNode: controller.amountFN,
+                            textCapitalization: TextCapitalization.none,
+                            keyboardType: TextInputType.number,
+                            inputFormatters: [
+                              FilteringTextInputFormatter.digitsOnly
+                            ],
+                          ),
+                        ),
+                        kSizedBox,
+                        formFieldContainer(
+                          colorScheme,
+                          media,
+                          containerHeight: 55,
+                          child: AndroidTextFormField(
+                            labelText: "Description",
+                            controller: controller.descriptionEC,
+                            validator: (value) {
+                              return null;
+                            },
+                            textInputAction: TextInputAction.done,
+                            focusNode: controller.descriptionFN,
+                            textCapitalization: TextCapitalization.sentences,
+                            keyboardType: TextInputType.text,
+                            onFieldSubmitted: controller.onFieldSubmitted,
+                          ),
+                        ),
+                      ],
                     ),
-                    kSizedBox,
-                    formFieldContainer(
-                      colorScheme,
-                      media,
-                      containerHeight: 55,
-                      child: AndroidTextFormField(
-                        labelText: "Account Number",
-                        controller: controller.accountNumberEC,
-                        validator: (value) {
-                          return null;
-                        },
-                        textInputAction: TextInputAction.next,
-                        focusNode: controller.accountNumberFN,
-                        textCapitalization: TextCapitalization.none,
-                        keyboardType: TextInputType.number,
-                        inputFormatters: [
-                          FilteringTextInputFormatter.digitsOnly
-                        ],
-                      ),
-                    ),
-                    kSizedBox,
-                    formFieldContainer(
-                      colorScheme,
-                      media,
-                      containerHeight: 55,
-                      child: AndroidTextFormField(
-                        labelText: "Amount",
-                        controller: controller.amountEC,
-                        validator: (value) {
-                          return null;
-                        },
-                        textInputAction: TextInputAction.next,
-                        focusNode: controller.amountFN,
-                        textCapitalization: TextCapitalization.none,
-                        keyboardType: TextInputType.number,
-                        inputFormatters: [
-                          FilteringTextInputFormatter.digitsOnly
-                        ],
-                      ),
-                    ),
-                    kSizedBox,
-                    formFieldContainer(
-                      colorScheme,
-                      media,
-                      containerHeight: 55,
-                      child: AndroidTextFormField(
-                        labelText: "Description",
-                        controller: controller.descriptionEC,
-                        validator: (value) {
-                          return null;
-                        },
-                        textInputAction: TextInputAction.done,
-                        focusNode: controller.descriptionFN,
-                        textCapitalization: TextCapitalization.sentences,
-                        keyboardType: TextInputType.text,
-                        onFieldSubmitted: controller.onFieldSubmitted,
-                      ),
-                    ),
-                  ],
-                ),
+                  );
+                },
               ),
-              SizedBox(height: media.height * .2),
+              SizedBox(height: media.height * .12),
               GetBuilder<BankTransferController>(
                 init: BankTransferController(),
                 builder: (controller) {
                   return AndroidElevatedButton(
                     title: "Confirm",
                     isLoading: controller.isSubmitting.value,
-                    onPressed: controller.submitForm,
+                    onPressed: controller.submitBankTransferForm,
                   );
                 },
               ),

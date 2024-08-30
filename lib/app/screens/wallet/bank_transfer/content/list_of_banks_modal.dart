@@ -41,7 +41,10 @@ class ListOfBanksModal extends GetView<BankTransferController> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 10,
+                vertical: 10,
+              ),
               child: CupertinoSearchTextField(
                 autocorrect: true,
                 keyboardType: TextInputType.text,
@@ -64,7 +67,6 @@ class ListOfBanksModal extends GetView<BankTransferController> {
                 onChanged: (value) {},
               ),
             ),
-            kBigSizedBox,
             Expanded(
               child: Scrollbar(
                 child: ListView.separated(
@@ -73,14 +75,22 @@ class ListOfBanksModal extends GetView<BankTransferController> {
                       Padding(
                     padding: const EdgeInsets.all(4),
                     child: Divider(
-                      color: colorScheme.inversePrimary,
+                      color: kLightGreyColor,
+                      indent: 10,
+                      endIndent: 10,
                     ),
                   ),
-                  itemBuilder: (BuildContext context, int index) {
+                  itemBuilder: (context, index) {
                     return ListTile(
-                      leading: Image.asset(Assets.yellowAppLogo, height: 32),
+                      onTap: () {
+                        controller.selectBank(index);
+                      },
+                      leading: Image.asset(
+                        Assets.yellowAppLogo,
+                        height: 32,
+                      ),
                       title: Text(
-                        "Bank of Nigeria".toUpperCase(),
+                        controller.bankModel.name,
                         style: defaultTextStyle(
                           fontSize: 12,
                           color: kTextBoldHeadingColor,
@@ -92,6 +102,7 @@ class ListOfBanksModal extends GetView<BankTransferController> {
                 ),
               ),
             ),
+            SizedBox(height: media.height * .04),
           ],
         ),
       ),

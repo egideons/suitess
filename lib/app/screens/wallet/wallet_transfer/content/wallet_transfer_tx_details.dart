@@ -9,7 +9,17 @@ import '../../../../../theme/colors.dart';
 import 'wallet_transfer_tx_detail.dart';
 
 class WalletTransferTxDetails extends GetView<WalletTransferController> {
-  const WalletTransferTxDetails({super.key});
+  const WalletTransferTxDetails({
+    this.beneficiaryName,
+    this.accountNumber,
+    this.transactionAmount,
+    this.transactionCharge,
+    super.key,
+  });
+
+  final double? transactionAmount, transactionCharge;
+  final String? accountNumber;
+  final String? beneficiaryName;
 
   @override
   Widget build(BuildContext context) {
@@ -97,7 +107,7 @@ class WalletTransferTxDetails extends GetView<WalletTransferController> {
                           walletTransferTxDetail(
                             title: "Account Number",
                             child: Text(
-                              "2062095204",
+                              accountNumber ?? "",
                               textAlign: TextAlign.end,
                               style: defaultTextStyle(
                                 color: kTextBoldHeadingColor,
@@ -110,7 +120,8 @@ class WalletTransferTxDetails extends GetView<WalletTransferController> {
                           walletTransferTxDetail(
                             title: "Benificiary's Name",
                             child: Text(
-                              "Okigbo Ifeanyi",
+                              beneficiaryName ?? "",
+                              maxLines: 2,
                               textAlign: TextAlign.end,
                               style: defaultTextStyle(
                                 color: kTextBoldHeadingColor,
@@ -134,7 +145,8 @@ class WalletTransferTxDetails extends GetView<WalletTransferController> {
                                 ),
                                 children: [
                                   TextSpan(
-                                    text: doubleFormattedTextWithDecimal(20000),
+                                    text: doubleFormattedTextWithDecimal(
+                                        transactionAmount ?? 0),
                                     style: defaultTextStyle(
                                       color: kTextBoldHeadingColor,
                                       fontWeight: FontWeight.w600,
@@ -160,7 +172,8 @@ class WalletTransferTxDetails extends GetView<WalletTransferController> {
                                 ),
                                 children: [
                                   TextSpan(
-                                    text: doubleFormattedTextWithDecimal(52),
+                                    text: doubleFormattedTextWithDecimal(
+                                        transactionCharge ?? 0),
                                     style: defaultTextStyle(
                                       color: kTextBoldHeadingColor,
                                       fontWeight: FontWeight.w600,

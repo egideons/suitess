@@ -5,9 +5,12 @@ import '../../constants/assets.dart';
 import '../../constants/consts.dart';
 
 Widget circleAvatarImage(
-  colorScheme, {
+  ColorScheme colorScheme, {
+  Color? backgroundColor,
+  Color? textColor,
   double? height,
   double? radius,
+  String? imageText,
   ImageProvider<Object>? foregroundImage,
 }) {
   return SizedBox(
@@ -15,15 +18,15 @@ Widget circleAvatarImage(
     child: FittedBox(
       fit: BoxFit.contain,
       child: CircleAvatar(
-        backgroundColor: colorScheme.inversePrimary,
+        backgroundColor: backgroundColor ?? colorScheme.inversePrimary,
         radius: radius ?? 64,
         foregroundImage:
             foregroundImage ?? const NetworkImage(Assets.userPlaceholderImage),
         child: Text(
-          "P",
+          imageText ?? "P",
           style: defaultTextStyle(
             fontSize: 32.0,
-            color: kLightBackgroundColor,
+            color: textColor ?? kLightBackgroundColor,
           ),
         ),
       ),
