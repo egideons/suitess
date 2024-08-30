@@ -97,7 +97,7 @@ class WalletScaffold extends GetView<WalletScreenController> {
                   ),
                   quickActionCard(
                     colorScheme,
-                    controller.gotToData,
+                    controller.gotToMobileData,
                     svgIcon: Assets.wifiOutlineSvg,
                     title: "Data",
                   ),

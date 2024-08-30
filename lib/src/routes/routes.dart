@@ -36,7 +36,9 @@ import '../../app/screens/property/book_appointment/screen/book_appointment_scre
 import '../../app/screens/property/checkout_property/screen/checkout_property_screen.dart';
 import '../../app/screens/property/purchase_property/screen/purchase_property_screen.dart';
 import '../../app/screens/search/screen/search_screen.dart';
+import '../../app/screens/wallet/airtime_purchase/screen/airtime_purchase_screen.dart';
 import '../../app/screens/wallet/bank_transfer/screen/bank_transfer_screen.dart';
+import '../../app/screens/wallet/mobile_data/screen/mobile_data_screen.dart';
 import '../../app/screens/wallet/transfer_options/screen/transfer_options.dart';
 import '../../app/screens/wallet/wallet_screen/screen/wallet_screen.dart';
 import '../../app/screens/wallet/wallet_transfer/screen/wallet_transfer_screen.dart';
@@ -99,6 +101,9 @@ class Routes {
   static const transferOptions = "/transfer-options";
   static const walletTransfer = "/wallet-transfer";
   static const bankTransfer = "/bank-transfer";
+  static const airtimePurchase = "/airtime-purchase";
+  static const mobileData = "/mobile-data";
+  static const electricityBill = "/electricity-bill";
 
   //Messages Section
   static const messagesScreen = "/messages";
@@ -171,6 +176,8 @@ class Routes {
     GetPage(name: transferOptions, page: () => const TransferOptions()),
     GetPage(name: walletTransfer, page: () => const WalletTransferScreen()),
     GetPage(name: bankTransfer, page: () => const BankTransferScreen()),
+    GetPage(name: airtimePurchase, page: () => const AirtimePurchaseScreen()),
+    GetPage(name: mobileData, page: () => const MobileDataScreen()),
     GetPage(name: profileScreen, page: () => const ProfileScreen()),
     GetPage(name: contactDetails, page: () => const ContactDetails()),
     GetPage(name: passwordSettings, page: () => const PasswordSettingsScreen()),

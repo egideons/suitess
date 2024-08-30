@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:suitess/src/controllers/others/api_processor_controller.dart';
 import 'package:suitess/src/models/wallet/transaction_filter_categories_model.dart';
 
 import '../../../app/screens/wallet/wallet_screen/content/transactions_history_modal_sheet.dart';
@@ -74,9 +75,27 @@ class WalletScreenController extends GetxController {
 
   //================ Navigation ================\\
 
-  goToAirtime() async {}
+  goToAirtime() async {
+    Get.toNamed(
+      Routes.airtimePurchase,
+      preventDuplicates: true,
+    );
+  }
 
-  goToElectricity() async {}
+  gotToMobileData() async {
+    Get.toNamed(
+      Routes.mobileData,
+      preventDuplicates: true,
+    );
+  }
+
+  goToElectricity() async {
+    ApiProcessorController.errorSnack("This option is not yet available");
+    // Get.toNamed(
+    //   Routes.electricityBill,
+    //   preventDuplicates: true,
+    // );
+  }
 
   goToTransferOptions() async {
     Get.toNamed(
@@ -93,8 +112,6 @@ class WalletScreenController extends GetxController {
     //   transition: Get.defaultTransition,
     // );
   }
-
-  gotToData() async {}
 
   //=========================== Save card state ============================//
   // Load visibility state from SharedPreferences

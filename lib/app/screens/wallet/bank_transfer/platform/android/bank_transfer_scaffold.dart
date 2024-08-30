@@ -88,9 +88,11 @@ class BankTransferScaffold extends GetView<BankTransferController> {
                                       : controller.selectedBank.value,
                                   textAlign: TextAlign.start,
                                   style: defaultTextStyle(
-                                    color: kTextGreyColor,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w500,
+                                    color: controller.selectedBank.value.isEmpty
+                                        ? kFormFieldTextColor.withOpacity(.5)
+                                        : kFormFieldTextColor,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.normal,
                                   ),
                                 ),
                                 Icon(
