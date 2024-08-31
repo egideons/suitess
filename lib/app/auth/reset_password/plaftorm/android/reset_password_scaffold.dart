@@ -21,7 +21,7 @@ class ResetPasswordScaffold extends GetView<ResetPasswordController> {
     var media = MediaQuery.of(context).size;
     var colorScheme = Theme.of(context).colorScheme;
 
-    var resetPasswordController = ResetPasswordController.instance;
+    var controller = ResetPasswordController.instance;
 
     //Mobile Landscape mode or Large screens
     if (deviceType(media.width) > 1) {
@@ -96,7 +96,7 @@ class ResetPasswordScaffold extends GetView<ResetPasswordController> {
                       Obx(
                         () {
                           return Form(
-                            key: resetPasswordController.formKey,
+                            key: controller.formKey,
                             autovalidateMode:
                                 AutovalidateMode.onUserInteraction,
                             child: Column(
@@ -115,22 +115,19 @@ class ResetPasswordScaffold extends GetView<ResetPasswordController> {
                                     children: [
                                       Expanded(
                                         child: AndroidTextFormField(
-                                          readOnly: resetPasswordController
-                                              .isLoading.value,
-                                          controller: resetPasswordController
-                                              .passwordEC,
-                                          focusNode: resetPasswordController
-                                              .passwordFN,
+                                          readOnly: controller.isLoading.value,
+                                          controller: controller.passwordEC,
+                                          focusNode: controller.passwordFN,
                                           textInputAction: TextInputAction.next,
                                           textCapitalization:
                                               TextCapitalization.none,
                                           keyboardType:
                                               TextInputType.visiblePassword,
-                                          obscureText: resetPasswordController
-                                              .passwordIsHidden.value,
+                                          obscureText:
+                                              controller.passwordIsHidden.value,
                                           hintText: "Password",
-                                          onChanged: resetPasswordController
-                                              .passwordOnChanged,
+                                          onChanged:
+                                              controller.passwordOnChanged,
                                           validator: (value) {
                                             return null;
                                           },
@@ -139,9 +136,8 @@ class ResetPasswordScaffold extends GetView<ResetPasswordController> {
                                       InkWell(
                                         borderRadius: BorderRadius.circular(20),
                                         onTap: () {
-                                          resetPasswordController
-                                                  .passwordIsHidden.value =
-                                              !resetPasswordController
+                                          controller.passwordIsHidden.value =
+                                              !controller
                                                   .passwordIsHidden.value;
                                         },
                                         child: Padding(
@@ -149,8 +145,7 @@ class ResetPasswordScaffold extends GetView<ResetPasswordController> {
                                           child: Icon(
                                             color: colorScheme.inversePrimary,
                                             size: 14,
-                                            resetPasswordController
-                                                    .passwordIsHidden.value
+                                            controller.passwordIsHidden.value
                                                 ? Iconsax.eye4
                                                 : Iconsax.eye_slash5,
                                           ),
@@ -162,17 +157,14 @@ class ResetPasswordScaffold extends GetView<ResetPasswordController> {
                                 Align(
                                   alignment: Alignment.centerRight,
                                   child: Text(
-                                    resetPasswordController
-                                            .isTypingPassword.isFalse
+                                    controller.isTypingPassword.isFalse
                                         ? ""
-                                        : resetPasswordController
-                                                .isPasswordValid.value
+                                        : controller.isPasswordValid.value
                                             ? "Password meets the requirements"
                                             : "Password must contain 8 characters\n a number\n a special character.",
                                     textAlign: TextAlign.end,
                                     style: defaultTextStyle(
-                                      color: resetPasswordController
-                                              .isPasswordValid.value
+                                      color: controller.isPasswordValid.value
                                           ? kSuccessColor
                                           : kErrorColor,
                                       fontSize: 10,
@@ -194,25 +186,23 @@ class ResetPasswordScaffold extends GetView<ResetPasswordController> {
                                     children: [
                                       Expanded(
                                         child: AndroidTextFormField(
-                                          readOnly: resetPasswordController
-                                              .isLoading.value,
-                                          controller: resetPasswordController
-                                              .confirmPasswordEC,
-                                          focusNode: resetPasswordController
-                                              .confirmPasswordFN,
+                                          readOnly: controller.isLoading.value,
+                                          controller:
+                                              controller.confirmPasswordEC,
+                                          focusNode:
+                                              controller.confirmPasswordFN,
                                           textInputAction: TextInputAction.done,
                                           textCapitalization:
                                               TextCapitalization.none,
                                           keyboardType:
                                               TextInputType.visiblePassword,
-                                          obscureText: resetPasswordController
+                                          obscureText: controller
                                               .confirmPasswordIsHidden.value,
                                           hintText: "Confirm Password",
-                                          onChanged: resetPasswordController
+                                          onChanged: controller
                                               .confirmPasswordOnChanged,
                                           onFieldSubmitted:
-                                              resetPasswordController
-                                                  .onSubmitted,
+                                              controller.onSubmitted,
                                           validator: (value) {
                                             return null;
                                           },
@@ -221,10 +211,9 @@ class ResetPasswordScaffold extends GetView<ResetPasswordController> {
                                       InkWell(
                                         borderRadius: BorderRadius.circular(20),
                                         onTap: () {
-                                          resetPasswordController
-                                                  .confirmPasswordIsHidden
+                                          controller.confirmPasswordIsHidden
                                                   .value =
-                                              !resetPasswordController
+                                              !controller
                                                   .confirmPasswordIsHidden
                                                   .value;
                                         },
@@ -233,8 +222,7 @@ class ResetPasswordScaffold extends GetView<ResetPasswordController> {
                                           child: Icon(
                                             color: colorScheme.inversePrimary,
                                             size: 14,
-                                            resetPasswordController
-                                                    .confirmPasswordIsHidden
+                                            controller.confirmPasswordIsHidden
                                                     .value
                                                 ? Iconsax.eye4
                                                 : Iconsax.eye_slash5,
@@ -255,11 +243,10 @@ class ResetPasswordScaffold extends GetView<ResetPasswordController> {
                         builder: (context) {
                           return AndroidElevatedButton(
                             title: "Reset Password",
-                            disable: resetPasswordController.formIsValid.isTrue
-                                ? false
-                                : true,
-                            isLoading: resetPasswordController.isLoading.value,
-                            onPressed: resetPasswordController.resetPassword,
+                            disable:
+                                controller.formIsValid.isTrue ? false : true,
+                            isLoading: controller.isLoading.value,
+                            onPressed: controller.resetPassword,
                           );
                         },
                       ),
@@ -309,7 +296,7 @@ class ResetPasswordScaffold extends GetView<ResetPasswordController> {
             Obx(
               () {
                 return Form(
-                  key: resetPasswordController.formKey,
+                  key: controller.formKey,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
@@ -324,18 +311,15 @@ class ResetPasswordScaffold extends GetView<ResetPasswordController> {
                           children: [
                             Expanded(
                               child: AndroidTextFormField(
-                                readOnly:
-                                    resetPasswordController.isLoading.value,
-                                controller: resetPasswordController.passwordEC,
-                                focusNode: resetPasswordController.passwordFN,
+                                readOnly: controller.isLoading.value,
+                                controller: controller.passwordEC,
+                                focusNode: controller.passwordFN,
                                 textInputAction: TextInputAction.next,
                                 textCapitalization: TextCapitalization.none,
                                 keyboardType: TextInputType.visiblePassword,
-                                obscureText: resetPasswordController
-                                    .passwordIsHidden.value,
+                                obscureText: controller.passwordIsHidden.value,
                                 hintText: "Password",
-                                onChanged:
-                                    resetPasswordController.passwordOnChanged,
+                                onChanged: controller.passwordOnChanged,
                                 validator: (value) {
                                   return null;
                                 },
@@ -344,16 +328,15 @@ class ResetPasswordScaffold extends GetView<ResetPasswordController> {
                             InkWell(
                               borderRadius: BorderRadius.circular(20),
                               onTap: () {
-                                resetPasswordController.passwordIsHidden.value =
-                                    !resetPasswordController
-                                        .passwordIsHidden.value;
+                                controller.passwordIsHidden.value =
+                                    !controller.passwordIsHidden.value;
                               },
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Icon(
                                   color: colorScheme.inversePrimary,
                                   size: 14,
-                                  resetPasswordController.passwordIsHidden.value
+                                  controller.passwordIsHidden.value
                                       ? Iconsax.eye4
                                       : Iconsax.eye_slash5,
                                 ),
@@ -365,14 +348,14 @@ class ResetPasswordScaffold extends GetView<ResetPasswordController> {
                       Align(
                         alignment: Alignment.centerRight,
                         child: Text(
-                          resetPasswordController.isTypingPassword.isFalse
+                          controller.isTypingPassword.isFalse
                               ? ""
-                              : resetPasswordController.isPasswordValid.value
+                              : controller.isPasswordValid.value
                                   ? "Password meets the requirements"
                                   : "Password must contain 8 characters\n a number\n a special character.",
                           textAlign: TextAlign.end,
                           style: defaultTextStyle(
-                            color: resetPasswordController.isPasswordValid.value
+                            color: controller.isPasswordValid.value
                                 ? kSuccessColor
                                 : kErrorColor,
                             fontSize: 10,
@@ -391,22 +374,17 @@ class ResetPasswordScaffold extends GetView<ResetPasswordController> {
                           children: [
                             Expanded(
                               child: AndroidTextFormField(
-                                readOnly:
-                                    resetPasswordController.isLoading.value,
-                                controller:
-                                    resetPasswordController.confirmPasswordEC,
-                                focusNode:
-                                    resetPasswordController.confirmPasswordFN,
+                                readOnly: controller.isLoading.value,
+                                controller: controller.confirmPasswordEC,
+                                focusNode: controller.confirmPasswordFN,
                                 textInputAction: TextInputAction.done,
                                 textCapitalization: TextCapitalization.none,
                                 keyboardType: TextInputType.visiblePassword,
-                                obscureText: resetPasswordController
-                                    .confirmPasswordIsHidden.value,
+                                obscureText:
+                                    controller.confirmPasswordIsHidden.value,
                                 hintText: "Confirm Password",
-                                onChanged: resetPasswordController
-                                    .confirmPasswordOnChanged,
-                                onFieldSubmitted:
-                                    resetPasswordController.onSubmitted,
+                                onChanged: controller.confirmPasswordOnChanged,
+                                onFieldSubmitted: controller.onSubmitted,
                                 validator: (value) {
                                   return null;
                                 },
@@ -415,18 +393,15 @@ class ResetPasswordScaffold extends GetView<ResetPasswordController> {
                             InkWell(
                               borderRadius: BorderRadius.circular(20),
                               onTap: () {
-                                resetPasswordController
-                                        .confirmPasswordIsHidden.value =
-                                    !resetPasswordController
-                                        .confirmPasswordIsHidden.value;
+                                controller.confirmPasswordIsHidden.value =
+                                    !controller.confirmPasswordIsHidden.value;
                               },
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Icon(
                                   color: colorScheme.inversePrimary,
                                   size: 14,
-                                  resetPasswordController
-                                          .confirmPasswordIsHidden.value
+                                  controller.confirmPasswordIsHidden.value
                                       ? Iconsax.eye4
                                       : Iconsax.eye_slash5,
                                 ),
@@ -446,10 +421,9 @@ class ResetPasswordScaffold extends GetView<ResetPasswordController> {
               builder: (context) {
                 return AndroidElevatedButton(
                   title: "Reset Password",
-                  disable:
-                      resetPasswordController.formIsValid.isTrue ? false : true,
-                  isLoading: resetPasswordController.isLoading.value,
-                  onPressed: resetPasswordController.resetPassword,
+                  disable: controller.formIsValid.isTrue ? false : true,
+                  isLoading: controller.isLoading.value,
+                  onPressed: controller.resetPassword,
                 );
               },
             ),

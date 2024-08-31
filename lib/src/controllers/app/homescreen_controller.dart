@@ -34,7 +34,7 @@ class HomeScreenController extends GetxController {
   goToBids() {}
 
   //=================== Go to Search Screen ===================\\
-  goToSearchScreen() {
+  goToSearchScreen() async {
     Get.toNamed(Routes.searchScreen, preventDuplicates: true);
   }
 

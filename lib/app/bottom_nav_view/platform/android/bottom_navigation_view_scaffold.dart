@@ -6,30 +6,29 @@ import 'package:suitess/theme/colors.dart';
 import '../../../../src/controllers/app/bottom_navigation_controller.dart';
 
 class BottomNavigationViewScaffold extends GetView<BottomNavigationController> {
-  final int? currentIndex;
+  final int currentIndex;
 
-  const BottomNavigationViewScaffold({this.currentIndex, super.key});
+  const BottomNavigationViewScaffold({this.currentIndex = 0, super.key});
 
   @override
   Widget build(BuildContext context) {
     var colorScheme = Theme.of(context).colorScheme;
 
-    var controller = BottomNavigationController.instance;
+    // Set the initial index when the widget is built
+    controller.navCurrentIndex.value = currentIndex;
 
     return Scaffold(
       backgroundColor: colorScheme.surface,
-      // extendBody: true,
       body: Obx(
         () => controller
-            .navScreens(colorScheme)[controller.navCurrrentIndex.value],
+            .navScreens(colorScheme)[controller.navCurrentIndex.value],
       ),
       bottomNavigationBar: Obx(
         () {
           return BottomNavigationBar(
-            items: controller.landLordNavItems(colorScheme),
-
-            onTap: (index) => controller.navCurrrentIndex.value = index,
-            currentIndex: currentIndex ?? controller.navCurrrentIndex.value,
+            items: controller.bottomNavItems(colorScheme),
+            onTap: (index) => controller.navCurrentIndex.value = index,
+            currentIndex: controller.navCurrentIndex.value,
             backgroundColor: colorScheme.surface,
             enableFeedback: true,
             elevation: 20,

@@ -16,6 +16,58 @@ class BankTransferController extends GetxController {
     return Get.find<BankTransferController>();
   }
 
+  @override
+  void onInit() {
+    super.onInit();
+    scrollController.addListener(_scrollListener);
+    amountEC.addListener(formatAmount);
+  }
+
+  @override
+  void onClose() {
+    super.onClose();
+    scrollController.dispose();
+    amountEC.removeListener(formatAmount);
+    amountEC.dispose();
+  }
+
+  //================ Scroll Listener =================//
+
+  void _scrollListener() {
+    //========= Show action button ========//
+    if (scrollController.position.pixels >= 150) {
+      isScrollToTopBtnVisible.value = true;
+      update();
+    }
+    //========= Hide action button ========//
+    else if (scrollController.position.pixels < 150) {
+      isScrollToTopBtnVisible.value = false;
+      update();
+    }
+  }
+
+  //================ Handle refresh ================\\
+
+  Future<void> onRefresh() async {
+    isRefreshing.value = true;
+    update();
+
+    await Future.delayed(const Duration(seconds: 2));
+
+    isRefreshing.value = false;
+    update();
+  }
+
+  onTxPinSubmitted(value) {
+    submitTxPin();
+  }
+
+  //================ Scroll to Top =================//
+  void scrollToTop() {
+    scrollController.animateTo(0,
+        duration: const Duration(seconds: 1), curve: Curves.fastOutSlowIn);
+  }
+
   //================ variables =================\\
   var isRefreshing = false.obs;
   var isScrollToTopBtnVisible = false.obs;
@@ -106,61 +158,9 @@ class BankTransferController extends GetxController {
         RegExp(r'(\d)(?=(\d{3})+(?!\d))'), (Match match) => '${match[1]},');
   }
 
-  @override
-  void onClose() {
-    super.onClose();
-    scrollController.dispose();
-    amountEC.removeListener(formatAmount);
-    amountEC.dispose();
-  }
-
   //================  On FieldSubmitted =================//
   onFieldSubmitted(value) {
     submitBankTransferForm();
-  }
-
-  @override
-  void onInit() {
-    super.onInit();
-    scrollController.addListener(_scrollListener);
-    amountEC.addListener(formatAmount);
-  }
-
-  //================ Scroll Listener =================//
-
-  void _scrollListener() {
-    //========= Show action button ========//
-    if (scrollController.position.pixels >= 150) {
-      isScrollToTopBtnVisible.value = true;
-      update();
-    }
-    //========= Hide action button ========//
-    else if (scrollController.position.pixels < 150) {
-      isScrollToTopBtnVisible.value = false;
-      update();
-    }
-  }
-
-  //================ Handle refresh ================\\
-
-  Future<void> onRefresh() async {
-    isRefreshing.value = true;
-    update();
-
-    await Future.delayed(const Duration(seconds: 2));
-
-    isRefreshing.value = false;
-    update();
-  }
-
-  onTxPinSubmitted(value) {
-    submitTxPin();
-  }
-
-  //================ Scroll to Top =================//
-  void scrollToTop() {
-    scrollController.animateTo(0,
-        duration: const Duration(seconds: 1), curve: Curves.fastOutSlowIn);
   }
 
   //================= Account Number Onchanged ======================\\
@@ -336,6 +336,7 @@ class BankTransferController extends GetxController {
     await Get.off(
       () => const SuccessScreen(
         subtitle: "Your transaction was successful",
+        isWalletTab: true,
       ),
       routeName: "/success-screen",
       fullscreenDialog: true,

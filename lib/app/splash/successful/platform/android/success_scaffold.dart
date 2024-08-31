@@ -9,7 +9,8 @@ import '../../../../../src/controllers/app/success_screen_controller.dart';
 
 class SuccessScaffold extends GetView<SuccessScreenController> {
   final String? subtitle;
-  const SuccessScaffold({this.subtitle, super.key});
+  final bool isWalletTab;
+  const SuccessScaffold({this.isWalletTab = false, this.subtitle, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +66,9 @@ class SuccessScaffold extends GetView<SuccessScreenController> {
                 kBigSizedBox,
                 AndroidElevatedButton(
                   title: "Return Home",
-                  onPressed: controller.goHome,
+                  onPressed: isWalletTab == true
+                      ? controller.goToWalletTab
+                      : controller.goHome,
                 ),
                 kBigSizedBox,
               ],

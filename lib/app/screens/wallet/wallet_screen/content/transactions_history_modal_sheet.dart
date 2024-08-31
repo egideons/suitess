@@ -159,6 +159,7 @@ class TransactionsHistoryModalSheet extends GetView<WalletScreenController> {
                                         children: [
                                           txFilterByCategoriesPage(controller),
                                           buildMonthSelection(
+                                            colorScheme,
                                             firstHalf,
                                             controller,
                                             secondHalf,
@@ -185,6 +186,7 @@ class TransactionsHistoryModalSheet extends GetView<WalletScreenController> {
   }
 
   buildMonthSelection(
+    ColorScheme colorScheme,
     List<TransactionFilterMonthModel> firstHalf,
     WalletScreenController controller,
     List<TransactionFilterMonthModel> secondHalf,
@@ -202,13 +204,14 @@ class TransactionsHistoryModalSheet extends GetView<WalletScreenController> {
                   month.name,
                   style: TextStyle(
                     fontSize: 16,
-                    color: month.isSelected ? Colors.green : Colors.black,
+                    color:
+                        month.isSelected ? kSuccessColor : colorScheme.primary,
                     fontWeight:
                         month.isSelected ? FontWeight.bold : FontWeight.normal,
                   ),
                 ),
                 trailing: month.isSelected
-                    ? const Icon(Icons.check, color: Colors.green, size: 20)
+                    ? Icon(Icons.check, color: kSuccessColor, size: 20)
                     : null,
                 onTap: () {
                   controller.selectMonth(month.name);
@@ -227,13 +230,14 @@ class TransactionsHistoryModalSheet extends GetView<WalletScreenController> {
                   month.name,
                   style: TextStyle(
                     fontSize: 16,
-                    color: month.isSelected ? Colors.green : Colors.black,
+                    color:
+                        month.isSelected ? kSuccessColor : colorScheme.primary,
                     fontWeight:
                         month.isSelected ? FontWeight.bold : FontWeight.normal,
                   ),
                 ),
                 trailing: month.isSelected
-                    ? const Icon(Icons.check, color: Colors.green, size: 20)
+                    ? Icon(Icons.check, color: kSuccessColor, size: 20)
                     : null,
                 onTap: () {
                   controller.selectMonth(month.name);
@@ -246,7 +250,7 @@ class TransactionsHistoryModalSheet extends GetView<WalletScreenController> {
     );
   }
 
-  Row transactionFilterTabs(WalletScreenController controller) {
+  transactionFilterTabs(WalletScreenController controller) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,

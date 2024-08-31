@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:get/get.dart';
 
 import '../../../../src/constants/consts.dart';
 import '../../../../src/controllers/app/wallet_intro_controller.dart';
 import '../../../../src/utils/containers/form_field_container.dart';
 import '../../../../src/utils/text_form_fields/android/android_textformfield.dart';
-import 'wallet_intro_page_2_form_calendar.dart';
 
 walletIntroPage2Form(
   ColorScheme colorScheme,
@@ -71,36 +69,6 @@ walletIntroPage2Form(
             return null;
           },
         ),
-      ),
-      kSizedBox,
-      Obx(
-        () {
-          if (controller.tableCalendarIsVisible.value) {
-            return Container(
-              decoration: ShapeDecoration(
-                color: colorScheme.surface,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
-                  side: BorderSide(
-                    width: .2,
-                    color: colorScheme.inversePrimary,
-                  ),
-                ),
-                shadows: [
-                  BoxShadow(
-                    blurRadius: 2,
-                    spreadRadius: 0,
-                    color: colorScheme.inversePrimary.withOpacity(.2),
-                    offset: const Offset(0, 2),
-                  )
-                ],
-              ),
-              child: walletIntroPage2FormCalendar(controller),
-            );
-          } else {
-            return const SizedBox();
-          }
-        },
       ),
       kBigSizedBox,
     ],

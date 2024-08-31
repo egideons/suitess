@@ -65,4 +65,18 @@ class SuccessScreenController extends GetxController {
       transition: Get.defaultTransition,
     );
   }
+
+  goToWalletTab() async {
+    await Get.offAll(
+      () => LoadingScreen(
+        loadData: LoadingController.instance.loadWalletTab,
+      ),
+      routeName: "/bottom-navigation-view",
+      fullscreenDialog: true,
+      curve: Curves.easeInOut,
+      predicate: (routes) => false,
+      popGesture: false,
+      transition: Get.defaultTransition,
+    );
+  }
 }

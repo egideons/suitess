@@ -33,6 +33,26 @@ class LoadingController extends GetxController {
     update();
   }
 
+  loadWalletTab() async {
+    isLoading.value = true;
+    update();
+
+    await Future.delayed(const Duration(seconds: 2));
+
+    await Get.offAll(
+      () => const BottomNavigationView(currentIndex: 1),
+      routeName: "/bottom-navigation-view",
+      fullscreenDialog: true,
+      curve: Curves.easeInOut,
+      predicate: (routes) => false,
+      popGesture: false,
+      transition: Get.defaultTransition,
+    );
+
+    isLoading.value = true;
+    update();
+  }
+
 //============= Logout =============\\
   logout() async {
     isLoading.value = true;

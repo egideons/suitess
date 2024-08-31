@@ -13,18 +13,15 @@ class PasswordSettingsScaffold extends GetView<PasswordSettingsController> {
     var media = MediaQuery.of(context).size;
     var colorScheme = Theme.of(context).colorScheme;
 
-    // var controller = PasswordSettingsController.instance;
     return Scaffold(
       backgroundColor: colorScheme.surface,
       appBar: myAppBar(colorScheme, media, title: "Password"),
       body: SafeArea(
         child: Scrollbar(
-          controller: controller.scrollController,
           child: GetBuilder<PasswordSettingsController>(
             init: PasswordSettingsController(),
             builder: (controller) {
               return ListView(
-                controller: controller.scrollController,
                 padding: const EdgeInsets.all(10),
                 physics: const BouncingScrollPhysics(),
                 children: [
@@ -41,7 +38,8 @@ class PasswordSettingsScaffold extends GetView<PasswordSettingsController> {
                     ),
                     child: changePassword(
                       colorScheme,
-                      changePasswordFunc: () {},
+                      changePasswordFunc:
+                          controller.showChangePasswordModalSheet,
                     ),
                   )
                 ],

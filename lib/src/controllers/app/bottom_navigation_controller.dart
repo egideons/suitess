@@ -17,6 +17,7 @@ class BottomNavigationController extends GetxController {
   }
 
   var isLoading = false.obs;
+  var navCurrentIndex = 0.obs;
   var userHasViewedWalletIntro = prefs.getBool("hasViewedWalletIntro") ?? false;
 
   //=============== LANDLORD SCREENS ================\\
@@ -29,8 +30,8 @@ class BottomNavigationController extends GetxController {
         const ProfileScreen(),
       ];
 
-  //=============== LANDLORD BOTTOMNAV ITEMS ================\\
-  landLordNavItems(colorScheme) => [
+  //=============== BOTTOMNAV ITEMS ================\\
+  bottomNavItems(colorScheme) => [
         BottomNavigationBarItem(
           label: "Home",
           tooltip: "Home",
@@ -84,7 +85,4 @@ class BottomNavigationController extends GetxController {
           ),
         ),
       ];
-
-  //=============== LANDLORD SECTION ================\\
-  var navCurrrentIndex = 0.obs;
 }

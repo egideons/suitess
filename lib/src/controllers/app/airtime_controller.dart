@@ -239,6 +239,7 @@ class AirtimePurchaseController extends GetxController {
     await Get.off(
       () => const SuccessScreen(
         subtitle: "Your transaction was successful",
+        isWalletTab: true,
       ),
       routeName: "/success-screen",
       fullscreenDialog: true,

@@ -3,18 +3,16 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../src/controllers/app/success_screen_controller.dart';
-import '../platform/android/success_scaffold.dart';
+import '../../../../../../src/controllers/app/wallet_information_controller.dart';
+import '../platform/android/wallet_information_scaffold.dart';
 
-class SuccessScreen extends StatelessWidget {
-  final String? subtitle;
-  final bool? isWalletTab;
-  const SuccessScreen({super.key, this.subtitle, this.isWalletTab});
+class WalletInformationScreen extends StatelessWidget {
+  const WalletInformationScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     //Initialize the controller
-    Get.put(SuccessScreenController());
+    Get.put(WalletInformationController());
 
     if (Platform.isIOS) {
       return GestureDetector(
@@ -24,10 +22,7 @@ class SuccessScreen extends StatelessWidget {
     }
     return GestureDetector(
       onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
-      child: SuccessScaffold(
-        subtitle: subtitle,
-        isWalletTab: isWalletTab ?? false,
-      ),
+      child: const WalletInformationScaffold(),
     );
   }
 }

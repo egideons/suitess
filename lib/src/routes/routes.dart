@@ -31,6 +31,7 @@ import '../../app/screens/profile/views/notifications_settings/screen/notificati
 import '../../app/screens/profile/views/password/screen/password_settings_screen.dart';
 import '../../app/screens/profile/views/privacy_and_security/screen/privacy_and_security_screen.dart';
 import '../../app/screens/profile/views/support_and_feedback/screen/support_and_feedback_screen.dart';
+import '../../app/screens/profile/views/wallet_information/screen/wallet_information_screen.dart';
 import '../../app/screens/property/add_property/screen/landlord_add_property.dart';
 import '../../app/screens/property/book_appointment/screen/book_appointment_screen.dart';
 import '../../app/screens/property/checkout_property/screen/checkout_property_screen.dart';
@@ -116,6 +117,7 @@ class Routes {
   static const profileScreen = "/profile";
   static const contactDetails = "/contact-details";
   static const passwordSettings = "/password-settings";
+  static const walletInformation = "/wallet-information";
   static const accountType = "/account-type";
   static const myBusiness = "/my-business";
   static const recentlyViewed = "/recently-viewed";
@@ -184,6 +186,8 @@ class Routes {
     GetPage(name: profileScreen, page: () => const ProfileScreen()),
     GetPage(name: contactDetails, page: () => const ContactDetails()),
     GetPage(name: passwordSettings, page: () => const PasswordSettingsScreen()),
+    GetPage(
+        name: walletInformation, page: () => const WalletInformationScreen()),
     GetPage(name: accountType, page: () => const AccountTypeScreen()),
     GetPage(
       name: notificationsSettings,

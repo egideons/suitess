@@ -137,10 +137,10 @@ class ProfileScreenScaffold extends GetView<ProfileScreenController> {
                         const SizedBox(height: 5),
                         profileNavOption(
                           colorScheme,
-                          title: "Account Type",
+                          title: "Wallet Information",
                           nav: () {
                             Get.toNamed(
-                              Routes.accountType,
+                              Routes.walletInformation,
                               preventDuplicates: true,
                             );
                           },
