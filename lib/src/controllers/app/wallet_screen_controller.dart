@@ -27,6 +27,27 @@ class WalletScreenController extends GetxController {
     loadVisibilityState();
   }
 
+  //================ Scroll Listener =================//
+
+  void _scrollListener() {
+    //========= Show action button ========//
+    if (scrollController.position.pixels >= 150) {
+      isScrollToTopBtnVisible.value = true;
+      update();
+    }
+    //========= Hide action button ========//
+    else if (scrollController.position.pixels < 150) {
+      isScrollToTopBtnVisible.value = false;
+      update();
+    }
+  }
+
+  //================ Scroll to Top =================//
+  void scrollToTop() {
+    scrollController.animateTo(0,
+        duration: const Duration(seconds: 1), curve: Curves.fastOutSlowIn);
+  }
+
   //================ variables =================\\
   var isRefreshing = false.obs;
   var isScrollToTopBtnVisible = false.obs;
@@ -137,12 +158,6 @@ class WalletScreenController extends GetxController {
     await prefs.setBool('hideBalance', value);
   }
 
-  //================ Scroll to Top =================//
-  void scrollToTop() {
-    scrollController.animateTo(0,
-        duration: const Duration(seconds: 1), curve: Curves.fastOutSlowIn);
-  }
-
   //================ Modal Bottom Sheets ================\\
 
   showTransactionHistoryModalSheet(BuildContext context, Size media) async {
@@ -203,20 +218,5 @@ class WalletScreenController extends GetxController {
       month.isSelected = month.name == selectedMonth;
     }
     filterMonths.refresh(); // Trigger the UI update
-  }
-
-  //================ Scroll Listener =================//
-
-  void _scrollListener() {
-    //========= Show action button ========//
-    if (scrollController.position.pixels >= 150) {
-      isScrollToTopBtnVisible.value = true;
-      update();
-    }
-    //========= Hide action button ========//
-    else if (scrollController.position.pixels < 150) {
-      isScrollToTopBtnVisible.value = false;
-      update();
-    }
   }
 }

@@ -119,9 +119,9 @@ class TransactionsHistoryModalSheet extends GetView<WalletScreenController> {
                               width: media.width,
                               height:
                                   //  controller.filterTabs.first.isSelected
-                                  //     ? media.height * .45
+                                  //     ? media.height * .48
                                   //     :
-                                  media.height * .52,
+                                  media.height * .56,
                               decoration: ShapeDecoration(
                                 color: colorScheme.surface,
                                 shape: const RoundedRectangleBorder(

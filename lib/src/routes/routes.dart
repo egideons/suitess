@@ -42,6 +42,7 @@ import '../../app/screens/wallet/mobile_data/screen/mobile_data_screen.dart';
 import '../../app/screens/wallet/transfer_options/screen/transfer_options.dart';
 import '../../app/screens/wallet/wallet_screen/screen/wallet_screen.dart';
 import '../../app/screens/wallet/wallet_transfer/screen/wallet_transfer_screen.dart';
+import '../../app/screens/wallet_intro/screen/wallet_intro_screen.dart';
 import '../../app/splash/congratulations/screen/congratulations_screen.dart';
 import '../../app/splash/loading/screen/loading_screen.dart';
 import '../../app/splash/successful/screen/success_screen.dart';
@@ -97,6 +98,7 @@ class Routes {
   static const bidDetails = "/landlord-bid-details";
 
   //Wallet Section
+  static const walletIntroScreen = "/wallet-intro";
   static const walletScreen = "/wallet";
   static const transferOptions = "/transfer-options";
   static const walletTransfer = "/wallet-transfer";
@@ -172,6 +174,7 @@ class Routes {
     GetPage(name: messagesScreen, page: () => const MessagesScreen()),
     GetPage(name: chatScreen, page: () => const ChatScreen()),
     // GetPage(name: callScreen, page: () => const CallScreen()),
+    GetPage(name: walletIntroScreen, page: () => const WalletIntroScreen()),
     GetPage(name: walletScreen, page: () => const WalletScreen()),
     GetPage(name: transferOptions, page: () => const TransferOptions()),
     GetPage(name: walletTransfer, page: () => const WalletTransferScreen()),

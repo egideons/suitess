@@ -29,7 +29,7 @@ dependencies:
   # firebase_core:
   # firebase_auth:
   typewritertext:
-  # animate_do:
+  animate_do:
   url_launcher:
   table_calendar:
   dotted_border:

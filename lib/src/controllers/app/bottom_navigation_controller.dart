@@ -6,6 +6,8 @@ import 'package:suitess/app/screens/profile/screen/profile_screen.dart';
 
 import '../../../app/screens/messages/screen/messages_screen.dart';
 import '../../../app/screens/wallet/wallet_screen/screen/wallet_screen.dart';
+import '../../../app/screens/wallet_intro/screen/wallet_intro_screen.dart';
+import '../../../main.dart';
 import '../../../theme/colors.dart';
 import '../../constants/assets.dart';
 
@@ -15,11 +17,14 @@ class BottomNavigationController extends GetxController {
   }
 
   var isLoading = false.obs;
+  var userHasViewedWalletIntro = prefs.getBool("hasViewedWalletIntro") ?? false;
 
   //=============== LANDLORD SCREENS ================\\
   navScreens(colorScheme) => [
         const HomeScreen(),
-        const WalletScreen(),
+        userHasViewedWalletIntro
+            ? const WalletScreen()
+            : const WalletIntroScreen(),
         const MessagesScreen(),
         const ProfileScreen(),
       ];
