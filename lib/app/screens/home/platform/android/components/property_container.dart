@@ -18,9 +18,8 @@ propertyContainer(
   int? numOfBeds,
   int? numOfBaths,
 }) {
-  return InkWell(
+  return GestureDetector(
     onTap: nav ?? () {},
-    borderRadius: BorderRadius.circular(12),
     child: Column(
       children: [
         Stack(

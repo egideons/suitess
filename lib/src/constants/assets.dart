@@ -13,6 +13,7 @@ class Assets {
   static const appleIconLight = "assets/icons/png/apple-icon-light.png";
   static const appleIconDark = "assets/icons/png/apple-icon-dark.png";
   static const homeFilledIconPng = "assets/icons/png/home-filled.png";
+  static const goldBadge3DPng = "assets/icons/png/3d-gold_badge.png";
 
 //========== SVG Icons ==========\\
   static const homeFilledIconSvg = "assets/icons/svg/home-filled.svg";
@@ -56,6 +57,7 @@ class Assets {
   static const wifiOutlineSvg = "assets/icons/svg/wifi-outline.svg";
   static const electricBoltOutlineSvg =
       "assets/icons/svg/electric-bolt-outline.svg";
+  static const goldBadge3DSvg = "assets/icons/svg/3d-gold_badge.svg";
 
 //=================== Images ===================\\
 

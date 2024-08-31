@@ -13,7 +13,7 @@ walletIntroPage1(ColorScheme colorScheme, WalletIntroController controller) {
     children: [
       Expanded(
         child: Container(
-          decoration: BoxDecoration(color: kGreenBackgroundColor),
+          decoration: BoxDecoration(color: kGreenFrameBackgroundColor),
           child: Center(
             child: FadeInDown(child: SvgPicture.asset(Assets.walletIntro1Svg)),
           ),
