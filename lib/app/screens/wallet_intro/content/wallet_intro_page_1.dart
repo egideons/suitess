@@ -38,7 +38,7 @@ walletIntroPage1(ColorScheme colorScheme, WalletIntroController controller) {
               kSizedBox,
               Text(
                 "Manage funds, track payments, and unlock exclusive offers—all in one place.",
-                maxLines: 4,
+                maxLines: 10,
                 textAlign: TextAlign.center,
                 style: defaultTextStyle(
                   color: kTextBoldHeadingColor,

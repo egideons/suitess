@@ -9,12 +9,12 @@ import '../../../../src/utils/text_form_fields/android/android_textformfield.dar
 import '../../../../theme/colors.dart';
 
 signupFormMobile(
-  SignupController signupController,
+  SignupController controller,
   ColorScheme colorScheme,
   Size media,
 ) {
   return Form(
-    key: signupController.formKey,
+    key: controller.formKey,
     autovalidateMode: AutovalidateMode.onUserInteraction,
     child: Column(
       mainAxisSize: MainAxisSize.max,
@@ -23,13 +23,13 @@ signupFormMobile(
           colorScheme,
           media,
           child: AndroidTextFormField(
-            controller: signupController.firstNameEC,
-            focusNode: signupController.firstNameFN,
+            controller: controller.firstNameEC,
+            focusNode: controller.firstNameFN,
             textInputAction: TextInputAction.next,
             keyboardType: TextInputType.name,
             textCapitalization: TextCapitalization.words,
             hintText: "First Name",
-            onChanged: signupController.firstNameOnChanged,
+            onChanged: controller.firstNameOnChanged,
             validator: (value) {
               return null;
             },
@@ -41,12 +41,12 @@ signupFormMobile(
           media,
           child: AndroidTextFormField(
             hintText: "Last Name",
-            controller: signupController.lastNameEC,
-            focusNode: signupController.lastNameFN,
+            controller: controller.lastNameEC,
+            focusNode: controller.lastNameFN,
             textInputAction: TextInputAction.next,
             textCapitalization: TextCapitalization.words,
             keyboardType: TextInputType.name,
-            onChanged: signupController.lastNameOnChanged,
+            onChanged: controller.lastNameOnChanged,
             validator: (value) {
               return null;
             },
@@ -57,13 +57,13 @@ signupFormMobile(
           colorScheme,
           media,
           child: AndroidTextFormField(
-            controller: signupController.emailEC,
-            focusNode: signupController.emailFN,
+            controller: controller.emailEC,
+            focusNode: controller.emailFN,
             textInputAction: TextInputAction.next,
             textCapitalization: TextCapitalization.none,
             keyboardType: TextInputType.emailAddress,
             hintText: "Email",
-            onChanged: signupController.emailOnChanged,
+            onChanged: controller.emailOnChanged,
             validator: (value) {
               return null;
             },
@@ -74,13 +74,13 @@ signupFormMobile(
           colorScheme,
           media,
           child: AndroidTextFormField(
-            controller: signupController.phoneNumberEC,
-            focusNode: signupController.phoneNumberFN,
+            controller: controller.phoneNumberEC,
+            focusNode: controller.phoneNumberFN,
             hintText: "Phone number",
             textInputAction: TextInputAction.next,
             textCapitalization: TextCapitalization.none,
             keyboardType: TextInputType.phone,
-            onChanged: signupController.phoneNumberOnChanged,
+            onChanged: controller.phoneNumberOnChanged,
             validator: (value) {
               return null;
             },
@@ -96,15 +96,15 @@ signupFormMobile(
             children: [
               Expanded(
                 child: AndroidTextFormField(
-                  controller: signupController.passwordEC,
-                  focusNode: signupController.passwordFN,
+                  controller: controller.passwordEC,
+                  focusNode: controller.passwordFN,
                   textInputAction: TextInputAction.done,
                   textCapitalization: TextCapitalization.none,
                   keyboardType: TextInputType.visiblePassword,
-                  obscureText: signupController.passwordIsHidden.value,
+                  obscureText: controller.passwordIsHidden.value,
                   hintText: "Password",
-                  onChanged: signupController.passwordOnChanged,
-                  onFieldSubmitted: signupController.onSubmitted,
+                  onChanged: controller.passwordOnChanged,
+                  onFieldSubmitted: controller.onSubmitted,
                   validator: (value) {
                     return null;
                   },
@@ -113,15 +113,15 @@ signupFormMobile(
               InkWell(
                 borderRadius: BorderRadius.circular(20),
                 onTap: () {
-                  signupController.passwordIsHidden.value =
-                      !signupController.passwordIsHidden.value;
+                  controller.passwordIsHidden.value =
+                      !controller.passwordIsHidden.value;
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Icon(
                     color: colorScheme.inversePrimary,
                     size: 14,
-                    signupController.passwordIsHidden.value
+                    controller.passwordIsHidden.value
                         ? Iconsax.eye4
                         : Iconsax.eye_slash5,
                   ),
@@ -133,14 +133,14 @@ signupFormMobile(
         Align(
           alignment: Alignment.centerRight,
           child: Text(
-            signupController.isTypingPassword.isFalse
+            controller.isTypingPassword.isFalse
                 ? ""
-                : signupController.isPasswordValid.value
+                : controller.isPasswordValid.value
                     ? "Password meets the requirements"
                     : "Password must contain 8 characters\n a number\n a special character.",
             textAlign: TextAlign.end,
             style: defaultTextStyle(
-              color: signupController.isPasswordValid.value
+              color: controller.isPasswordValid.value
                   ? kSuccessColor
                   : kErrorColor,
               fontSize: 10,
