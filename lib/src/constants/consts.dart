@@ -33,7 +33,7 @@ const String loginPasswordPattern = r'^.{8,}$';
 //validation for mobile
 // const String mobilePattern = r'(^(?:[+0]9)?[0-9]{10,12}$)';
 // const String mobilePattern = r'^\+?[0-9]{1,3}?[0-9]{10}$';
-const String mobilePattern = r'^(?!0+$)\d{10,11}$';
+const String mobilePattern = r'^[+\-\(\)\s\d]{1,14}$';
 
 //username pattern
 const String namePattern = r'^.{3,}$'; //Min. of 3 characters
@@ -298,7 +298,7 @@ String maskPhoneNumber(String phoneNumber) {
   }
 }
 
-//===================== Mask Phone Number ==========================\\
+//===================== Mask Wallet ==========================\\
 String maskWalletBalance(String walletBalance) {
   if (walletBalance.contains('.')) {
     // Split the walletBalance string into two parts: before and after the decimal point

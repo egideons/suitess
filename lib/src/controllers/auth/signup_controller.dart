@@ -237,6 +237,7 @@ class SignupController extends GetxController {
             arguments: {
               "email": emailEC.text,
               "phoneNumber": phoneNumberEC.text,
+              "password": passwordEC.text,
             },
           );
         } else {

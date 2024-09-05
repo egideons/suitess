@@ -8,6 +8,8 @@ import 'package:http/http.dart' as http;
 
 import '../../../app/auth/phone_otp/screen/phone_otp.dart';
 import '../../../app/kyc/kyc_add_location/screen/kyc_add_location.dart';
+import '../../../main.dart';
+import '../../models/auth/login_response_model.dart';
 import '../../models/auth/verify_otp_response_model.dart';
 import '../../services/api/api_url.dart';
 import '../../services/client/dio_client_service.dart';
@@ -28,9 +30,14 @@ class EmailOTPController extends GetxController {
 
   //=========== Variables ===========\\
   var otpResponse = VerifyOTPResponseModel.fromJson(null).obs;
+  var loginResponse = LoginResponseModel.fromJson(null).obs;
+  var loginResponseMessage = "".obs;
+  var userToken = prefs.getString("userToken");
+
   late Timer _timer;
   var userEmail = Get.arguments?['email'] ?? "";
   var userPhoneNumber = Get.arguments?['phoneNumber'] ?? "";
+  var userPassword = Get.arguments?["password"] ?? "";
 
   //=========== Form Key ===========\\
 
@@ -333,5 +340,65 @@ class EmailOTPController extends GetxController {
 
     //Continue the timer and enable resend button
     startTimer();
+  }
+
+  loginUser() async {
+    var url = ApiUrl.baseUrl + ApiUrl.auth + ApiUrl.login;
+
+    Map data = {
+      "email": userEmail,
+      "password": userPassword,
+    };
+
+    log("This is the Url: $url");
+    log("This is the login data: $data");
+
+    //HTTP Client Service
+    http.Response? response =
+        await HttpClientService.postRequest(url, null, data);
+
+    //Dio Client Service
+    // var response = await DioClientService.postRequest(
+    //   url,
+    //   data,
+    // );
+
+    if (response == null) {
+      isLoading.value = false;
+      update();
+      return;
+    }
+
+    try {
+      // Convert to json
+      dynamic responseJson;
+
+      responseJson = jsonDecode(response.body);
+
+      log("This is the response body ====> ${response.body}");
+
+      //Map the response json to the model provided
+      loginResponse.value = LoginResponseModel.fromJson(responseJson);
+      loginResponseMessage.value = loginResponse.value.message;
+
+      if (response.statusCode == 200) {
+        prefs.setBool("isLoggedIn", true);
+
+        //Save state that the user token
+        prefs.setString(
+          "userToken",
+          loginResponse.value.data.token,
+        );
+
+        log("This is the user token: $userToken");
+
+        log("User has logged in successfully");
+      } else {
+        log("Request failed with status: ${response.statusCode}");
+        log("Response body: ${response.body}");
+      }
+    } catch (e) {
+      log(e.toString());
+    }
   }
 }

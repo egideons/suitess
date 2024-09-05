@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:suitess/src/constants/consts.dart';
+import 'package:suitess/src/utils/buttons/android/android_elevated_button.dart';
 import 'package:suitess/src/utils/components/my_app_bar.dart';
 
 import '../../../../../../../src/controllers/app/wallet_information_controller.dart';
@@ -80,6 +81,11 @@ class WalletInformationScaffold extends GetView<WalletInformationController> {
                     maxSingleTransfer: "5m",
                     dailyTransactionLimit: "25m",
                     maximumAccountBalance: "Unlimited",
+                  ),
+                  kSizedBox,
+                  AndroidElevatedButton(
+                    title: "Upgrade to Tier 2",
+                    onPressed: () {},
                   ),
                   kSizedBox,
                 ],

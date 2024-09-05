@@ -88,9 +88,22 @@ class WalletScreenController extends GetxController {
   var overlayPortalController = OverlayPortalController();
 
   //================ Wallet functions ================\\
+
+  // Save visibility state to SharedPreferences
+  Future<void> saveVisibilityState(bool value) async {
+    await prefs.setBool('hideBalance', value);
+  }
+
   changeVisibilityState() {
     saveVisibilityState(!hideBalance.value);
     hideBalance.value = !hideBalance.value;
+    update();
+  }
+
+  //=========================== Save card state ============================//
+  // Load visibility state from SharedPreferences
+  Future<void> loadVisibilityState() async {
+    hideBalance.value = prefs.getBool('hideBalance') ?? hideBalance.value;
     update();
   }
 
@@ -134,13 +147,6 @@ class WalletScreenController extends GetxController {
     // );
   }
 
-  //=========================== Save card state ============================//
-  // Load visibility state from SharedPreferences
-  Future<void> loadVisibilityState() async {
-    hideBalance.value = prefs.getBool('hideBalance') ?? hideBalance.value;
-    update();
-  }
-
 //================ Handle refresh ================\\
 
   Future<void> onRefresh() async {
@@ -151,11 +157,6 @@ class WalletScreenController extends GetxController {
 
     isRefreshing.value = false;
     update();
-  }
-
-  // Save visibility state to SharedPreferences
-  Future<void> saveVisibilityState(bool value) async {
-    await prefs.setBool('hideBalance', value);
   }
 
   //================ Modal Bottom Sheets ================\\

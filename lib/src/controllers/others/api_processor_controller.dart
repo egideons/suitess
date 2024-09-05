@@ -27,18 +27,6 @@ class ApiProcessorController extends GetxController {
         titleText: SizedBox(
           width: Get.width,
           child: Text(
-            "SUCCESS",
-            overflow: TextOverflow.ellipsis,
-            style: defaultTextStyle(
-              color: kLightBackgroundColor,
-              fontSize: 18.0,
-              fontWeight: FontWeight.w900,
-            ),
-          ),
-        ),
-        messageText: SizedBox(
-          width: Get.width,
-          child: Text(
             msg,
             overflow: TextOverflow.ellipsis,
             maxLines: 4,
@@ -49,6 +37,19 @@ class ApiProcessorController extends GetxController {
             ),
           ),
         ),
+        // messageText: SizedBox(
+        //   width: Get.width,
+        //   child: Text(
+        //     msg,
+        //     overflow: TextOverflow.ellipsis,
+        //     maxLines: 4,
+        //     style: defaultTextStyle(
+        //       color: kLightBackgroundColor,
+        //       fontSize: 14.0,
+        //       fontWeight: FontWeight.w600,
+        //     ),
+        //   ),
+        // ),
         icon: Icon(
           Icons.check_circle,
           size: 16,
@@ -85,19 +86,6 @@ class ApiProcessorController extends GetxController {
         titleText: SizedBox(
           width: Get.width,
           child: Text(
-            "ERROR",
-            overflow: TextOverflow.ellipsis,
-            style: defaultTextStyle(
-              color: kLightBackgroundColor,
-              fontSize: 18.0,
-              fontWeight: FontWeight.w900,
-              letterSpacing: -0.40,
-            ),
-          ),
-        ),
-        messageText: SizedBox(
-          width: Get.width,
-          child: Text(
             msg,
             overflow: TextOverflow.ellipsis,
             maxLines: 4,
@@ -109,6 +97,20 @@ class ApiProcessorController extends GetxController {
             ),
           ),
         ),
+        // messageText: SizedBox(
+        //   width: Get.width,
+        //   child: Text(
+        //     msg,
+        //     overflow: TextOverflow.ellipsis,
+        //     maxLines: 4,
+        //     style: defaultTextStyle(
+        //       color: kLightBackgroundColor,
+        //       fontSize: 14.0,
+        //       fontWeight: FontWeight.w600,
+        //       letterSpacing: -0.40,
+        //     ),
+        //   ),
+        // ),
         icon: Icon(
           Icons.error_rounded,
           size: 18,
