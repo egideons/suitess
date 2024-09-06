@@ -32,7 +32,6 @@ class EmailOTPController extends GetxController {
   var otpResponse = VerifyOTPResponseModel.fromJson(null).obs;
   var loginResponse = LoginResponseModel.fromJson(null).obs;
   var loginResponseMessage = "".obs;
-  var userToken = prefs.getString("userToken");
 
   late Timer _timer;
   var userEmail = Get.arguments?['email'] ?? "";
@@ -168,9 +167,10 @@ class EmailOTPController extends GetxController {
     timerComplete.value = false;
     update();
 
-    var url = ApiUrl.baseUrl + ApiUrl.auth + ApiUrl.sendEmailOTP;
+    var url = ApiUrl.authBaseUrl + ApiUrl.auth + ApiUrl.sendEmailOTP;
 
     Map data = {
+      // "email": "gideon.dart@gmail.com",
       "email": userEmail,
     };
 
@@ -205,7 +205,8 @@ class EmailOTPController extends GetxController {
         ApiProcessorController.successSnack(
           "An OTP has been sent to your email",
         );
-        startTimer();
+        await Future.delayed(const Duration(milliseconds: 500));
+        await startTimer();
       } else {
         log("Request failed with status: ${response.statusCode}");
         log("Response body: ${response.data}");
@@ -244,6 +245,7 @@ class EmailOTPController extends GetxController {
       arguments: {
         "email": userEmail,
         "phoneNumber": userPhoneNumber,
+        "password": userPassword,
       },
       routeName: "/phone-otp",
       fullscreenDialog: true,
@@ -263,7 +265,7 @@ class EmailOTPController extends GetxController {
     pauseTimer();
     timerComplete.value = false;
 
-    var url = ApiUrl.baseUrl + ApiUrl.auth + ApiUrl.verifyOTP;
+    var url = ApiUrl.authBaseUrl + ApiUrl.auth + ApiUrl.verifyOTP;
 
     var otpCode = pin1EC.text +
         pin2EC.text +
@@ -272,7 +274,12 @@ class EmailOTPController extends GetxController {
         pin5EC.text +
         pin6EC.text;
 
+    log("This is the user email:$userEmail");
+    log("This is the user phone numberq:$userPhoneNumber");
+    log("This is the user password:$userPassword");
+
     Map data = {
+      // "email": "gideon.dart@gmail.com",
       "email": userEmail,
       "otp": otpCode,
       "type": "email",
@@ -311,7 +318,9 @@ class EmailOTPController extends GetxController {
         ApiProcessorController.successSnack(
           "Signup successful",
         );
-        Get.offAll(
+        await loginUser();
+
+        await Get.offAll(
           () => const KycAddLocation(),
           routeName: "/kyc-add-location",
           fullscreenDialog: true,
@@ -342,8 +351,8 @@ class EmailOTPController extends GetxController {
     startTimer();
   }
 
-  loginUser() async {
-    var url = ApiUrl.baseUrl + ApiUrl.auth + ApiUrl.login;
+  Future<void> loginUser() async {
+    var url = ApiUrl.authBaseUrl + ApiUrl.auth + ApiUrl.login;
 
     Map data = {
       "email": userEmail,
@@ -389,8 +398,6 @@ class EmailOTPController extends GetxController {
           "userToken",
           loginResponse.value.data.token,
         );
-
-        log("This is the user token: $userToken");
 
         log("User has logged in successfully");
       } else {

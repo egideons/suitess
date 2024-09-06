@@ -1,7 +1,10 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../app/splash/loading/screen/loading_screen.dart';
+import '../../../main.dart';
 import '../../constants/consts.dart';
 import '../others/api_processor_controller.dart';
 import '../others/loading_controller.dart';
@@ -11,9 +14,16 @@ class KycAddLocationController extends GetxController {
     return Get.find<KycAddLocationController>();
   }
 
+  @override
+  void onInit() {
+    super.onInit();
+    log("This is the user token: $userToken");
+  }
+
   //=========== Controllers ===========\\
   var scrollController = ScrollController().obs;
   var fixedContentScrollController = FixedExtentScrollController().obs;
+  var userToken = prefs.getString("userToken");
 
   final cityEC = TextEditingController();
   final addressEC = TextEditingController();
@@ -285,6 +295,7 @@ class KycAddLocationController extends GetxController {
   //=========== On changed Functions ===========\\
   onSelectedCountryChanged(controller, index) {
     controller.selectedCountry.value = controller.countries[index];
+
     if (controller.selectedCountry.value != "Choose Country") {
       statePickerIsEnabled.value = true;
       update();
@@ -296,6 +307,7 @@ class KycAddLocationController extends GetxController {
 
   onSelectedStateChanged(controller, index) {
     controller.selectedState.value = controller.nigerianStates[index];
+
     if (controller.selectedState.value != "Choose State") {
       cityTextFieldIsEnabled.value = true;
       update();

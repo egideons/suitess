@@ -159,7 +159,7 @@ class ResetPasswordViaEmailOTPController extends GetxController {
     timerComplete.value = false;
     update();
 
-    var url = ApiUrl.baseUrl + ApiUrl.auth + ApiUrl.resetPasswordOTP;
+    var url = ApiUrl.authBaseUrl + ApiUrl.auth + ApiUrl.resetPasswordOTP;
 
     Map data = {
       "type": "email",
@@ -235,7 +235,7 @@ class ResetPasswordViaEmailOTPController extends GetxController {
     pauseTimer();
     timerComplete.value = false;
 
-    var url = ApiUrl.baseUrl + ApiUrl.auth + ApiUrl.resetPasswordOTPVerify;
+    var url = ApiUrl.authBaseUrl + ApiUrl.auth + ApiUrl.resetPasswordOTPVerify;
 
     var otpCode = pin1EC.text +
         pin2EC.text +

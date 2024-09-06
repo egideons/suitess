@@ -178,7 +178,7 @@ class SignupController extends GetxController {
       isLoading.value = true;
       update();
 
-      var url = ApiUrl.baseUrl + ApiUrl.auth + ApiUrl.register;
+      var url = ApiUrl.authBaseUrl + ApiUrl.auth + ApiUrl.register;
 
       Map signupData = {
         "fullname": "${firstNameEC.text} ${lastNameEC.text}",

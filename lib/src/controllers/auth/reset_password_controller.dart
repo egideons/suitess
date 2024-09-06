@@ -130,8 +130,9 @@ class ResetPasswordController extends GetxController {
         //   transition: Get.defaultTransition,
         // );
       } else {
-        var url =
-            ApiUrl.baseUrl + ApiUrl.auth + ApiUrl.resetPasswordUpdatePassword;
+        var url = ApiUrl.authBaseUrl +
+            ApiUrl.auth +
+            ApiUrl.resetPasswordUpdatePassword;
 
         Map data = {
           "type": "email",

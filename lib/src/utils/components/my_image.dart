@@ -38,7 +38,7 @@ class MyImage extends StatelessWidget {
             // url!.startsWith("https")
             //     ?
             url!,
-        // : Api.baseUrl + url!,
+        // : Api.authBaseUrl + url!,
         width: width ?? media.width,
         height: height ?? media.height,
         alignment: alignment ?? Alignment.center,

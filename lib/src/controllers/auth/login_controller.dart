@@ -115,7 +115,7 @@ class LoginController extends GetxController {
       isLoading.value = true;
       update();
 
-      var url = ApiUrl.baseUrl + ApiUrl.auth + ApiUrl.login;
+      var url = ApiUrl.authBaseUrl + ApiUrl.auth + ApiUrl.login;
 
       Map data = {
         "email": emailEC.text,

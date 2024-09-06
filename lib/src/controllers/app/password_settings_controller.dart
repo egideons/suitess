@@ -132,7 +132,7 @@ class PasswordSettingsController extends GetxController {
       }
       isLoading.value = true;
 
-      var url = ApiUrl.baseUrl + ApiUrl.auth + ApiUrl.updatePassword;
+      var url = ApiUrl.authBaseUrl + ApiUrl.auth + ApiUrl.updatePassword;
 
       Map data = {
         "current_password": currentPasswordEC.text,

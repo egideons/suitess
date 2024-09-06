@@ -24,23 +24,10 @@ class ApiProcessorController extends GetxController {
   static void successSnack(msg) {
     Get.showSnackbar(
       GetSnackBar(
-        titleText: SizedBox(
-          width: Get.width,
-          child: Text(
-            msg,
-            overflow: TextOverflow.ellipsis,
-            maxLines: 4,
-            style: defaultTextStyle(
-              color: kLightBackgroundColor,
-              fontSize: 14.0,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-        ),
-        // messageText: SizedBox(
+        // titleText: SizedBox(
         //   width: Get.width,
         //   child: Text(
-        //     msg,
+        //     "",
         //     overflow: TextOverflow.ellipsis,
         //     maxLines: 4,
         //     style: defaultTextStyle(
@@ -50,6 +37,19 @@ class ApiProcessorController extends GetxController {
         //     ),
         //   ),
         // ),
+        messageText: SizedBox(
+          width: Get.width,
+          child: Text(
+            msg,
+            overflow: TextOverflow.ellipsis,
+            maxLines: 4,
+            style: defaultTextStyle(
+              color: kLightBackgroundColor,
+              fontSize: 12.0,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ),
         icon: Icon(
           Icons.check_circle,
           size: 16,
@@ -83,21 +83,7 @@ class ApiProcessorController extends GetxController {
   static void errorSnack(msg) {
     Get.showSnackbar(
       GetSnackBar(
-        titleText: SizedBox(
-          width: Get.width,
-          child: Text(
-            msg,
-            overflow: TextOverflow.ellipsis,
-            maxLines: 4,
-            style: defaultTextStyle(
-              color: kLightBackgroundColor,
-              fontSize: 14.0,
-              fontWeight: FontWeight.w600,
-              letterSpacing: -0.40,
-            ),
-          ),
-        ),
-        // messageText: SizedBox(
+        // titleText: SizedBox(
         //   width: Get.width,
         //   child: Text(
         //     msg,
@@ -111,6 +97,20 @@ class ApiProcessorController extends GetxController {
         //     ),
         //   ),
         // ),
+        messageText: SizedBox(
+          width: Get.width,
+          child: Text(
+            msg,
+            overflow: TextOverflow.ellipsis,
+            maxLines: 4,
+            style: defaultTextStyle(
+              color: kLightBackgroundColor,
+              fontSize: 14.0,
+              fontWeight: FontWeight.w600,
+              letterSpacing: -0.40,
+            ),
+          ),
+        ),
         icon: Icon(
           Icons.error_rounded,
           size: 18,

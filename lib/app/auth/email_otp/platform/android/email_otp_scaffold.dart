@@ -186,9 +186,10 @@ class EmailOTPScaffold extends GetView<EmailOTPController> {
               children: [
                 Obx(
                   () => InkWell(
-                    onTap: controller.timerComplete.isTrue
+                    onTap: controller.timerComplete.value
                         ? controller.requestOTP
                         : null,
+                    borderRadius: BorderRadius.circular(8),
                     child: AnimatedDefaultTextStyle(
                       duration: const Duration(milliseconds: 300),
                       curve: Curves.easeIn,

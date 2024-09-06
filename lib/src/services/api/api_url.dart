@@ -1,8 +1,10 @@
 class ApiUrl {
-//======= Base URL ========\\
-  static const baseUrl = "https://auth.suitess.org";
+//============= Base URL ===============\\
+  static const authBaseUrl = "https://auth.suitess.org";
+  static const businessBaseUrl = "https://bussiness.suitess.org";
+  static const transactionBaseUrl = "https://transaction.suitess.org";
 
-//======= Auth Section ========\\
+//============ Auth Section =============\\
   static const auth = "/api/v1/user/auth";
   static const register = "/register";
   static const login = "/login";
@@ -13,4 +15,8 @@ class ApiUrl {
   static const resetPasswordOTPVerify = "/reset-password-otp-verify";
   static const resetPasswordUpdatePassword = "/reset-password-update-password";
   static const updatePassword = "/settings/password/update";
+
+  //============= User Profile ================\\
+
+  //=============== Business ====================\\
 }

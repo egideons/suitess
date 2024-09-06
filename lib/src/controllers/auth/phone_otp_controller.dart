@@ -162,7 +162,7 @@ class PhoneOTPController extends GetxController {
     timerComplete.value = false;
     update();
 
-    var url = ApiUrl.baseUrl + ApiUrl.auth + ApiUrl.sendPhoneOTP;
+    var url = ApiUrl.authBaseUrl + ApiUrl.auth + ApiUrl.sendPhoneOTP;
 
     Map data = {
       "phone": userPhoneNumber,
@@ -256,7 +256,7 @@ class PhoneOTPController extends GetxController {
     pauseTimer();
     timerComplete.value = false;
 
-    var url = ApiUrl.baseUrl + ApiUrl.auth + ApiUrl.verifyOTP;
+    var url = ApiUrl.authBaseUrl + ApiUrl.auth + ApiUrl.verifyOTP;
 
     var otpCode = pin1EC.text +
         pin2EC.text +

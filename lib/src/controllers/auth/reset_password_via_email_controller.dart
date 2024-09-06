@@ -96,7 +96,7 @@ class ResetPasswordViaEmailController extends GetxController {
       isLoading.value = true;
       update();
 
-      var url = ApiUrl.baseUrl + ApiUrl.auth + ApiUrl.resetPasswordOTP;
+      var url = ApiUrl.authBaseUrl + ApiUrl.auth + ApiUrl.resetPasswordOTP;
 
       Map data = {
         "type": "email",
