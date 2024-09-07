@@ -147,7 +147,7 @@ class PasswordSettingsController extends GetxController {
       var url = ApiUrl.authBaseUrl + ApiUrl.auth + ApiUrl.updatePassword;
       var userToken = prefs.getString("userToken");
 
-      Map data = {
+      dynamic data = {
         "current_password": currentPasswordEC.text,
         "new_password": passwordEC.text,
         "new_password_confirmation": confirmPasswordEC.text,
@@ -159,21 +159,19 @@ class PasswordSettingsController extends GetxController {
 
       //HTTP Client Service
       http.Response? response =
-          await HttpClientService.postRequest(url, userToken, data);
+          await HttpClientService.putRequest(url, userToken, data);
 
       //Dio Client Service
       // var response = await DioClientService.postRequest(
       //   url,
       //   data,
       // );
-      log("Got here 1");
 
       if (response == null) {
         isLoading.value = false;
         return;
       }
 
-      log("Got here 2");
       log("This is the status code: ${response.statusCode}");
 
       try {

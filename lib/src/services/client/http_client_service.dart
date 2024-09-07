@@ -38,7 +38,37 @@ class HttpClientService {
               body: jsonEncode(data),
             )
             .timeout(const Duration(seconds: 20));
+
+        log(response.body);
       }
+    } catch (e) {
+      response = null;
+      log(e.toString());
+    }
+    return response;
+  }
+
+  static Future<http.Response?> putRequest([
+    String? url,
+    String? token,
+    dynamic data,
+  ]) async {
+    http.Response? response;
+    try {
+      log("This is the http put client service data: $data");
+
+      response = await http
+          .put(
+            Uri.parse(url!),
+            headers: {
+              HttpHeaders.contentTypeHeader: header,
+              "Content-Type": content,
+              HttpHeaders.authorizationHeader: "Bearer $token",
+            },
+            body: data,
+          )
+          .timeout(const Duration(seconds: 20));
+      log("This is the http put client service response body: ${response.body}");
     } catch (e) {
       response = null;
       log(e.toString());
