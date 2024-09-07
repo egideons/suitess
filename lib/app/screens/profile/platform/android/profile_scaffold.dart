@@ -39,7 +39,11 @@ class ProfileScreenScaffold extends GetView<ProfileScreenController> {
                       children: [
                         Stack(
                           children: [
-                            circleAvatarImage(colorScheme, height: 120),
+                            circleAvatarImage(
+                              colorScheme,
+                              height: 120,
+                              imageText: getNameInitials(user!.fullname ?? ""),
+                            ),
                             Positioned(
                               bottom: 0,
                               right: 0,
@@ -54,7 +58,7 @@ class ProfileScreenScaffold extends GetView<ProfileScreenController> {
                                   ),
                                 ),
                                 child: InkWell(
-                                  onTap: () {},
+                                  onTap: controller.showUploadProfilePicModal,
                                   borderRadius: BorderRadius.circular(20),
                                   child: SvgPicture.asset(
                                     Assets.cameraOutlineSvg,
@@ -67,7 +71,7 @@ class ProfileScreenScaffold extends GetView<ProfileScreenController> {
                         ),
                         kSizedBox,
                         Text(
-                          user!.fullname ?? "",
+                          user.fullname ?? "",
                           textAlign: TextAlign.center,
                           overflow: TextOverflow.ellipsis,
                           style: defaultTextStyle(

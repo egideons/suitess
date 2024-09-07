@@ -1,8 +1,10 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:suitess/app/screens/profile/content/select_profile_pic_modal.dart';
 
 import '../../../app/splash/loading/screen/loading_screen.dart';
 import '../../../main.dart';
+import '../auth/user_controller.dart';
 import '../others/loading_controller.dart';
 
 class ProfileScreenController extends GetxController {
@@ -13,6 +15,7 @@ class ProfileScreenController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    UserController.instance.getUserProfile();
     scrollController.addListener(_scrollListener);
   }
 
@@ -23,7 +26,7 @@ class ProfileScreenController extends GetxController {
   }
 
   //================ variables =================\\
-  var isRefreshing = false.obs;
+  var isLoading = false.obs;
   var hasProperties = false.obs;
   var isScrollToTopBtnVisible = false.obs;
 
@@ -53,7 +56,30 @@ class ProfileScreenController extends GetxController {
     }
   }
 
-//================ Logout================\\
+//================ Upload Profile Picture ==================\\
+  showUploadProfilePicModal() {
+    var media = MediaQuery.of(Get.context!).size;
+    var colorScheme = Theme.of(Get.context!).colorScheme;
+
+    showModalBottomSheet(
+      context: Get.context!,
+      isScrollControlled: true,
+      isDismissible: true,
+      enableDrag: true,
+      useSafeArea: true,
+      barrierColor: colorScheme.inversePrimary.withOpacity(.4),
+      constraints:
+          BoxConstraints(maxHeight: media.height / 2, maxWidth: media.width),
+      builder: (context) {
+        return GestureDetector(
+          onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
+          child: const SelectProfilePicModal(),
+        );
+      },
+    );
+  }
+
+//================ Logout ================\\
   logout() async {
     prefs.setBool("isLoggedIn", false);
     prefs.setBool("isLoggedOut", true);

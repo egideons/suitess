@@ -9,6 +9,7 @@ import '../../../app/auth/login/screen/login.dart';
 import '../../../app/bottom_nav_view/screen/bottom_navigation_view.dart';
 import '../../../app/onboarding/screen/onboarding.dart';
 import '../../../main.dart';
+import 'user_controller.dart';
 
 class AuthController extends GetxController {
   static AuthController get instance {
@@ -58,6 +59,7 @@ class AuthController extends GetxController {
         },
       );
     } else if (isLoggedIn) {
+      await UserController.instance.getUserProfile();
       await Get.offAll(
         () => const BottomNavigationView(),
         routeName: "/bottom-navigation-view",

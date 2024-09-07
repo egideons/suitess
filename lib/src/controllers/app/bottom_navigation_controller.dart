@@ -3,7 +3,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:suitess/app/screens/home/screen/home_screen.dart';
 import 'package:suitess/app/screens/profile/screen/profile_screen.dart';
-import 'package:suitess/src/controllers/auth/user_controller.dart';
 
 import '../../../app/screens/messages/screen/messages_screen.dart';
 import '../../../app/screens/wallet/wallet_screen/screen/wallet_screen.dart';
@@ -20,12 +19,6 @@ class BottomNavigationController extends GetxController {
   var isLoading = false.obs;
   var navCurrentIndex = 0.obs;
   var userHasViewedWalletIntro = prefs.getBool("hasViewedWalletIntro") ?? false;
-
-  @override
-  void onInit() async {
-    await UserController.instance.getUserProfile();
-    super.onInit();
-  }
 
   //=============== LANDLORD SCREENS ================\\
   navScreens(colorScheme) => [

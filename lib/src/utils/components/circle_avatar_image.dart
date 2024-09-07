@@ -18,15 +18,15 @@ Widget circleAvatarImage(
     child: FittedBox(
       fit: BoxFit.contain,
       child: CircleAvatar(
-        backgroundColor: backgroundColor ?? colorScheme.inversePrimary,
+        backgroundColor: backgroundColor ?? kLightGreyColor,
         radius: radius ?? 64,
         foregroundImage:
             foregroundImage ?? const NetworkImage(Assets.userPlaceholderImage),
         child: Text(
-          imageText ?? "P",
+          imageText ?? "",
           style: defaultTextStyle(
             fontSize: 32.0,
-            color: textColor ?? kLightBackgroundColor,
+            color: textColor ?? kTextBoldHeadingColor,
           ),
         ),
       ),
