@@ -58,6 +58,8 @@ class Assets {
   static const electricBoltOutlineSvg =
       "assets/icons/svg/electric-bolt-outline.svg";
   static const goldBadge3DSvg = "assets/icons/svg/3d-gold_badge.svg";
+  static const imageOutlineSvg = "assets/icons/svg/image-outline.svg";
+  static const imageFilledSvg = "assets/icons/svg/image-filled.svg";
 
 //=================== Images ===================\\
 

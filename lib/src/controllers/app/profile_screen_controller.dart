@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:suitess/app/screens/profile/content/select_profile_pic_modal.dart';
 
 import '../../../app/splash/loading/screen/loading_screen.dart';
@@ -59,7 +60,6 @@ class ProfileScreenController extends GetxController {
 //================ Upload Profile Picture ==================\\
   showUploadProfilePicModal() {
     var media = MediaQuery.of(Get.context!).size;
-    var colorScheme = Theme.of(Get.context!).colorScheme;
 
     showModalBottomSheet(
       context: Get.context!,
@@ -67,9 +67,16 @@ class ProfileScreenController extends GetxController {
       isDismissible: true,
       enableDrag: true,
       useSafeArea: true,
-      barrierColor: colorScheme.inversePrimary.withOpacity(.4),
+      showDragHandle: true,
+      sheetAnimationStyle: AnimationStyle(curve: Curves.easeInOut),
       constraints:
-          BoxConstraints(maxHeight: media.height / 2, maxWidth: media.width),
+          BoxConstraints(maxHeight: media.height / 3, maxWidth: media.width),
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(12),
+          topRight: Radius.circular(12),
+        ),
+      ),
       builder: (context) {
         return GestureDetector(
           onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
@@ -77,6 +84,25 @@ class ProfileScreenController extends GetxController {
         );
       },
     );
+  }
+
+  final ImagePicker picker = ImagePicker();
+  XFile? selectedLogoImage;
+
+  uploadProfilePicWithCamera() async {
+    final XFile? image = await picker.pickImage(source: ImageSource.camera);
+    if (image != null) {
+      selectedLogoImage = image;
+      update();
+    }
+  }
+
+  uploadProfilePicWithGallery() async {
+    final XFile? image = await picker.pickImage(source: ImageSource.gallery);
+    if (image != null) {
+      selectedLogoImage = image;
+      update();
+    }
   }
 
 //================ Logout ================\\
