@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 
 import '../../models/property/property_category_model.dart';
 import '../../routes/routes.dart';
+import '../auth/user_controller.dart';
 
 class HomeScreenController extends GetxController {
   static HomeScreenController get instance {
@@ -62,7 +63,7 @@ class HomeScreenController extends GetxController {
     isRefreshing.value = true;
     update();
 
-    await Future.delayed(const Duration(seconds: 2));
+    await UserController.instance.getUserProfile();
 
     isRefreshing.value = false;
     update();

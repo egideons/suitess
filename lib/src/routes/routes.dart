@@ -28,7 +28,7 @@ import '../../app/screens/messages/screen/messages_screen.dart';
 import '../../app/screens/profile/views/account_type/screen/account_type_screen.dart';
 import '../../app/screens/profile/views/faqs/screen/faqs_screen.dart';
 import '../../app/screens/profile/views/notifications_settings/screen/notifications_settings_screen.dart';
-import '../../app/screens/profile/views/password/screen/password_settings_screen.dart';
+import '../../app/screens/profile/views/password_settings/screen/password_settings_screen.dart';
 import '../../app/screens/profile/views/privacy_and_security/screen/privacy_and_security_screen.dart';
 import '../../app/screens/profile/views/support_and_feedback/screen/support_and_feedback_screen.dart';
 import '../../app/screens/profile/views/wallet_information/screen/wallet_information_screen.dart';

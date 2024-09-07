@@ -33,6 +33,7 @@ dependencies:
   url_launcher:
   table_calendar:
   dotted_border:
+  skeletonizer:
 
 dev_dependencies:
   flutter_test:

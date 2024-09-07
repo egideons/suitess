@@ -214,11 +214,13 @@ class ChangePasswordModalSheet extends GetView<PasswordSettingsController> {
           GetBuilder<PasswordSettingsController>(
             init: PasswordSettingsController(),
             builder: (context) {
-              return AndroidElevatedButton(
-                title: "Save Changes",
-                disable: controller.formIsValid.isTrue ? false : true,
-                isLoading: controller.isLoading.value,
-                onPressed: controller.updatePassword,
+              return Obx(
+                () => AndroidElevatedButton(
+                  title: "Save Changes",
+                  disable: controller.formIsValid.value,
+                  isLoading: controller.isLoading.value,
+                  onPressed: controller.updatePassword,
+                ),
               );
             },
           ),

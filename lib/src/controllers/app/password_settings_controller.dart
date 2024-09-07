@@ -6,10 +6,10 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
 import '../../../app/auth/login/screen/login.dart';
-import '../../../app/screens/profile/views/password/content/change_password_modal_sheet.dart';
+import '../../../app/screens/profile/views/password_settings/content/change_password_modal_sheet.dart';
 import '../../../main.dart';
 import '../../constants/consts.dart';
-import '../../models/auth/reset_password_response_model.dart';
+import '../../models/auth/update_password_response_model.dart';
 import '../../services/api/api_url.dart';
 import '../../services/client/http_client_service.dart';
 import '../others/api_processor_controller.dart';
@@ -21,8 +21,7 @@ class PasswordSettingsController extends GetxController {
 
   //=========== Variables ===========\\
   final formKey = GlobalKey<FormState>();
-  var resetPasswordResponse = ResetPasswordResponseModel.fromJson(null).obs;
-  var userToken = prefs.getString("userToken");
+  var resetPasswordResponse = UpdatePasswordResponseModel.fromJson(null).obs;
 
   //=========== Controllers ===========\\
   final currentPasswordEC = TextEditingController();
@@ -67,6 +66,9 @@ class PasswordSettingsController extends GetxController {
   currentPasswordOnChanged(String value) {
     var passwordRegExp = RegExp(passwordPattern);
 
+    if (value.isEmpty) {
+      setFormIsInvalid();
+    }
     if (!passwordRegExp.hasMatch(passwordEC.text) &&
         isTypingPassword.value == true) {
       isPasswordValid.value = false;
@@ -83,6 +85,7 @@ class PasswordSettingsController extends GetxController {
     // Check if the text field is empty
     if (value.isEmpty) {
       isTypingPassword.value = false;
+      setFormIsInvalid();
     } else {
       isTypingPassword.value = true;
     }
@@ -98,9 +101,10 @@ class PasswordSettingsController extends GetxController {
   }
 
   confirmPasswordOnChanged(String value) {
-    var passwordRegExp = RegExp(passwordPattern);
-
-    if (!passwordRegExp.hasMatch(passwordEC.text)) {
+    if (value.isEmpty) {
+      formIsValid.value = false;
+    }
+    if (confirmPasswordEC.text == passwordEC.text) {
       isConfirmPasswordValid.value = false;
       setFormIsInvalid();
     } else {
@@ -141,6 +145,7 @@ class PasswordSettingsController extends GetxController {
       isLoading.value = true;
 
       var url = ApiUrl.authBaseUrl + ApiUrl.auth + ApiUrl.updatePassword;
+      var userToken = prefs.getString("userToken");
 
       Map data = {
         "current_password": currentPasswordEC.text,
@@ -149,7 +154,8 @@ class PasswordSettingsController extends GetxController {
       };
 
       log("This is the Url: $url");
-      log("This is the phone otp Data: $data");
+      log("This is the user token: $userToken");
+      log("This is the form data: $data");
 
       //HTTP Client Service
       http.Response? response =
@@ -160,15 +166,15 @@ class PasswordSettingsController extends GetxController {
       //   url,
       //   data,
       // );
+      log("Got here 1");
+
       if (response == null) {
         isLoading.value = false;
-
         return;
       }
 
-      ApiProcessorController.successSnack(
-        "Password reset successfully \n(FAKE RESPONSE MESSAGE!!)",
-      );
+      log("Got here 2");
+      log("This is the status code: ${response.statusCode}");
 
       try {
         // Convert to json
@@ -178,10 +184,10 @@ class PasswordSettingsController extends GetxController {
         log("This is the response body ====> ${response.body}");
         // Map the response json to the model provided
         resetPasswordResponse.value =
-            ResetPasswordResponseModel.fromJson(responseJson);
+            UpdatePasswordResponseModel.fromJson(responseJson);
         if (response.statusCode == 200) {
           ApiProcessorController.successSnack(
-            "Password reset successfully",
+            resetPasswordResponse.value.message,
           );
 
           Get.offAll(

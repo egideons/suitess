@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import '../../../app/auth/login/screen/login.dart';
 import '../../../app/bottom_nav_view/screen/bottom_navigation_view.dart';
+import '../auth/user_controller.dart';
 
 class LoadingController extends GetxController {
   static LoadingController get instance {
@@ -16,8 +17,6 @@ class LoadingController extends GetxController {
   loadBottomNavgiationView() async {
     isLoading.value = true;
     update();
-
-    await Future.delayed(const Duration(seconds: 2));
 
     await Get.offAll(
       () => const BottomNavigationView(),
@@ -37,7 +36,7 @@ class LoadingController extends GetxController {
     isLoading.value = true;
     update();
 
-    await Future.delayed(const Duration(seconds: 2));
+    await UserController.instance.getUserProfile();
 
     await Get.offAll(
       () => const BottomNavigationView(currentIndex: 1),
@@ -57,6 +56,8 @@ class LoadingController extends GetxController {
   logout() async {
     isLoading.value = true;
     update();
+
+    UserController.deleteUserSignupData();
 
     await Future.delayed(const Duration(seconds: 2));
 

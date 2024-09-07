@@ -44,7 +44,7 @@ class LoginController extends GetxController {
   var isPasswordValid = false.obs;
   var passwordIsHidden = true.obs;
   var formIsValid = false.obs;
-  var rememberMe = false.obs;
+  var rememberMe = true.obs;
 
   var responseStatus = 0.obs;
   var responseMessage = "".obs;
@@ -164,7 +164,7 @@ class LoginController extends GetxController {
             prefs.setBool("isLoggedIn", false);
           }
 
-          prefs.setBool("hasBeenVerifiedEmailOnSignup", true);
+          prefs.setBool("hasNotBeenVerifiedEmailOnSignup", false);
 
           //Save state that the user token
           prefs.setString(
@@ -285,20 +285,26 @@ class LoginController extends GetxController {
 
       ApiProcessorController.successSnack("Login successful");
 
-      //Save state that the user has logged in
-      prefs.setBool("isLoggedIn", true);
+      if (rememberMe.value == true) {
+        //Save state that the user has logged in
+        prefs.setBool("isLoggedIn", true);
+      } else {
+        prefs.setBool("isLoggedIn", false);
+      }
 
-      await Get.offAll(
-        () => LoadingScreen(
-          loadData: LoadingController.instance.loadBottomNavgiationView,
-        ),
-        routeName: "/loading-screen",
-        fullscreenDialog: true,
-        curve: Curves.easeInOut,
-        predicate: (routes) => false,
-        popGesture: false,
-        transition: Get.defaultTransition,
-      );
+      prefs.setBool("hasBeenVerifiedEmailOnSignup", true);
+
+      // await Get.offAll(
+      //   () => LoadingScreen(
+      //     loadData: LoadingController.instance.loadBottomNavgiationView,
+      //   ),
+      //   routeName: "/loading-screen",
+      //   fullscreenDialog: true,
+      //   curve: Curves.easeInOut,
+      //   predicate: (routes) => false,
+      //   popGesture: false,
+      //   transition: Get.defaultTransition,
+      // );
 
       isLoadingGoogleLogin.value = false;
       update();

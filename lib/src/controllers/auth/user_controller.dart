@@ -2,15 +2,59 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
+import 'package:suitess/src/models/user/user_model.dart';
 
 import '../../../main.dart';
 import '../../models/user/user_signup_model.dart';
+import '../../services/api/api_url.dart';
+import '../../services/client/http_client_service.dart';
 
 class UserController extends GetxController {
   static UserController get instance => Get.find<UserController>();
 
+  var userModel = UserModel.fromJson(null).obs;
+  var userToken = prefs.getString("userToken");
+  var isLoading = false.obs;
+
+  Future<void> getUserProfile() async {
+    var url = ApiUrl.authBaseUrl + ApiUrl.auth + ApiUrl.getUserProfile;
+
+    //HTTP Client Service
+    http.Response? response =
+        await HttpClientService.getRequest(url, userToken);
+
+    //Dio Client Service
+    // var response = await DioClientService.postRequest(
+    //   url,
+    //   data,
+    // );
+
+    if (response == null) {
+      isLoading.value = false;
+      return;
+    }
+
+    try {
+      // Convert to json
+      dynamic responseJson;
+      responseJson = jsonDecode(response.body);
+
+      if (response.statusCode == 200) {
+        userModel.value = UserModel.fromJson(responseJson);
+        log("This is the user model ====> ${jsonEncode(userModel.value)}");
+      } else {
+        log("Request failed with status: ${response.statusCode}");
+        log("Response body: ${response.body}");
+      }
+    } catch (e) {
+      log(e.toString());
+    }
+  }
+
   // Save user data to SharedPreferences as a JSON string
-  static Future<void> saveUserToPreferences(UserSignupDataModel user) async {
+  static Future<void> saveUserSignupDataToPreferences(
+      UserSignupDataModel user) async {
     // Convert UserSignupDataModel to JSON string
 
     String userJson = jsonEncode(user.toJson());
@@ -22,7 +66,7 @@ class UserController extends GetxController {
   }
 
   // Load user data from SharedPreferences and convert it back to UserSignupDataModel
-  static Future<void> loadUserFromPreferences() async {
+  static Future<void> loadUserSignupDataToPreferences() async {
     var userModel = UserSignupDataModel.fromJson(null).obs;
 
     // Retrieve the JSON string from shared preferences
@@ -38,10 +82,22 @@ class UserController extends GetxController {
   }
 
   // Example method to update the user model (e.g., after an API call)
-  static void updateUser(UserSignupDataModel user) {
+  static void updateUserSignupData(UserSignupDataModel user) {
     var userModel = UserSignupDataModel.fromJson(null).obs;
 
-    userModel.value = user; // Update the observable UserSignupDataModel
-    saveUserToPreferences(user); // Save the updated user to shared preferences
+    // Update the observable UserSignupDataModel
+    userModel.value = user;
+
+    log("This is the updated user signup data: $user");
+
+    // Save the updated user to shared preferences
+    saveUserSignupDataToPreferences(user);
+  }
+
+  static void deleteUserSignupData() {
+    var userModel = UserSignupDataModel.fromJson(null).obs;
+
+    // Save the updated user to shared preferences
+    updateUserSignupData(userModel.value);
   }
 }

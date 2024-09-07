@@ -224,9 +224,9 @@ class EmailOTPController extends GetxController {
   }
 
   //=========== Navigation ===========\\
-  sendToPhone() {
+  sendToPhone() async {
     // ApiProcessorController.warningSnack("This option is not yet available");
-    Get.off(
+    await Get.off(
       () => PhoneOTP(
         userPhoneNumber: userPhoneNumber,
         userEmail: userEmail,

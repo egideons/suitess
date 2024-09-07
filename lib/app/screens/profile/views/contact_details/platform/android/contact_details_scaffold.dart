@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:suitess/src/utils/components/my_app_bar.dart';
 
 import '../../../../../../../src/controllers/app/contact_details_controller.dart';
+import '../../../../../../../src/controllers/auth/user_controller.dart';
 import '../../content/edit_detail.dart';
 import '../../content/email_section.dart';
 
@@ -14,7 +15,8 @@ class ContactDetailsScaffold extends GetView<ContactDetailsScreenController> {
     var media = MediaQuery.of(context).size;
     var colorScheme = Theme.of(context).colorScheme;
 
-    // var controller = ProfileScreenController.instance;
+    var user = UserController.instance.userModel.value.data;
+
     return Scaffold(
       backgroundColor: colorScheme.surface,
       appBar: myAppBar(colorScheme, media, title: "Contact details"),
@@ -43,7 +45,7 @@ class ContactDetailsScaffold extends GetView<ContactDetailsScreenController> {
                       children: [
                         emailSection(
                           colorScheme,
-                          userEmail: "userexample@gmail.com",
+                          userEmail: user!.email ?? "Email",
                         ),
                         Divider(
                           color: colorScheme.inversePrimary.withOpacity(.4),
@@ -51,7 +53,7 @@ class ContactDetailsScaffold extends GetView<ContactDetailsScreenController> {
                         editDetail(
                           colorScheme,
                           title: "Phone",
-                          detail: "+234 9037703499",
+                          detail: user.phone ?? "Phone Number",
                           editFunction: () {},
                         ),
                         Divider(
@@ -60,7 +62,7 @@ class ContactDetailsScaffold extends GetView<ContactDetailsScreenController> {
                         editDetail(
                           colorScheme,
                           title: "Address",
-                          detail: "Independence layout, Enugu Nigeria",
+                          detail: "",
                           editFunction: () {},
                         ),
                         Divider(
@@ -69,7 +71,7 @@ class ContactDetailsScaffold extends GetView<ContactDetailsScreenController> {
                         editDetail(
                           colorScheme,
                           title: "Business name / Username",
-                          detail: "Omedel Limited",
+                          detail: "",
                           editFunction: () {},
                         ),
                       ],

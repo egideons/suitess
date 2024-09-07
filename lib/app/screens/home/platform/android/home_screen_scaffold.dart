@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 import 'package:suitess/src/constants/assets.dart';
 import 'package:suitess/theme/colors.dart';
 
@@ -76,105 +77,114 @@ class HomeScreenScaffold extends GetView<HomeScreenController> {
                     sliverTypWriterTextAppBar(),
                     sliverHomeSearchAppBar(colorScheme, controller, media),
                     SliverToBoxAdapter(
-                      child: SingleChildScrollView(
-                        padding: const EdgeInsets.all(10),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            controller.isKYCVerified.value
-                                ? messageAlertAndroid(
-                                    media,
-                                    message: "KYC not verified",
-                                  )
-                                : const SizedBox(),
-                            kHalfSizedBox,
-                            numberOfBids(
-                              media,
-                              viewAll: controller.goToBids,
-                            ),
-                            kSizedBox,
-                            filterPropertiesNearby(
-                              () {},
-                              colorScheme,
-                            ),
-                            kSizedBox,
-                            SizedBox(
-                              height: 30,
-                              child: ListView.separated(
-                                itemCount: controller.propertyCategories.length,
-                                separatorBuilder: (context, index) =>
-                                    kHalfWidthSizedBox,
-                                scrollDirection: Axis.horizontal,
-                                itemBuilder: (context, index) {
-                                  return InkWell(
-                                    onTap: () {
-                                      controller.selectPropertyCategory(index);
-                                    },
-                                    child: AnimatedContainer(
-                                      duration:
-                                          const Duration(milliseconds: 300),
-                                      curve: Curves.easeInOut,
-                                      padding: const EdgeInsets.all(5),
-                                      decoration: ShapeDecoration(
-                                        color: controller
-                                                .propertyCategories[index]
-                                                .isSelected
-                                            ? kAccentColor.withOpacity(.4)
-                                            : colorScheme.surface,
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(4),
-                                        ),
-                                      ),
-                                      child: Text(
+                      child: Skeletonizer(
+                        enabled: controller.isRefreshing.value,
+                        enableSwitchAnimation: true,
+                        ignoreContainers: true,
+                        justifyMultiLineText: true,
+                        child: SingleChildScrollView(
+                          padding: const EdgeInsets.all(10),
+                          physics: const BouncingScrollPhysics(),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              controller.isKYCVerified.value
+                                  ? messageAlertAndroid(
+                                      media,
+                                      message: "KYC not verified",
+                                    )
+                                  : const SizedBox(),
+                              kHalfSizedBox,
+                              numberOfBids(
+                                media,
+                                viewAll: controller.goToBids,
+                              ),
+                              kSizedBox,
+                              filterPropertiesNearby(
+                                () {},
+                                colorScheme,
+                              ),
+                              kSizedBox,
+                              SizedBox(
+                                height: 30,
+                                child: ListView.separated(
+                                  itemCount:
+                                      controller.propertyCategories.length,
+                                  separatorBuilder: (context, index) =>
+                                      kHalfWidthSizedBox,
+                                  scrollDirection: Axis.horizontal,
+                                  itemBuilder: (context, index) {
+                                    return InkWell(
+                                      onTap: () {
                                         controller
-                                            .propertyCategories[index].name,
-                                        style: defaultTextStyle(
-                                          fontSize: 12,
+                                            .selectPropertyCategory(index);
+                                      },
+                                      child: AnimatedContainer(
+                                        duration:
+                                            const Duration(milliseconds: 300),
+                                        curve: Curves.easeInOut,
+                                        padding: const EdgeInsets.all(5),
+                                        decoration: ShapeDecoration(
                                           color: controller
                                                   .propertyCategories[index]
                                                   .isSelected
-                                              ? kAccentColor
-                                              : colorScheme.inversePrimary,
+                                              ? kAccentColor.withOpacity(.4)
+                                              : colorScheme.surface,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(4),
+                                          ),
+                                        ),
+                                        child: Text(
+                                          controller
+                                              .propertyCategories[index].name,
+                                          style: defaultTextStyle(
+                                            fontSize: 12,
+                                            color: controller
+                                                    .propertyCategories[index]
+                                                    .isSelected
+                                                ? kAccentColor
+                                                : colorScheme.inversePrimary,
+                                          ),
                                         ),
                                       ),
-                                    ),
+                                    );
+                                  },
+                                ),
+                              ),
+                              kSizedBox,
+                              ListView.separated(
+                                itemCount: 10,
+                                physics: const BouncingScrollPhysics(),
+                                scrollDirection: Axis.vertical,
+                                shrinkWrap: true,
+                                separatorBuilder: (context, index) {
+                                  return kSizedBox;
+                                },
+                                itemBuilder: (context, index) {
+                                  return propertyContainer(
+                                    media,
+                                    colorScheme,
+                                    nav: () {
+                                      Get.toNamed(
+                                        Routes.viewProperty,
+                                        preventDuplicates: true,
+                                      );
+                                    },
+                                    propertyImage: Assets.house1Png,
+                                    tradeType: "sale",
+                                    propertyName: "4 Flats Woodland Apartment",
+                                    propertyLocation:
+                                        "Independence layout, Enugu",
+                                    propertyPrice: 350000,
+                                    propertyPaymentFreq: "month",
+                                    numOfBeds: 4,
+                                    numOfBaths: 2,
                                   );
                                 },
                               ),
-                            ),
-                            kSizedBox,
-                            ListView.separated(
-                              itemCount: 10,
-                              physics: const BouncingScrollPhysics(),
-                              scrollDirection: Axis.vertical,
-                              shrinkWrap: true,
-                              separatorBuilder: (context, index) {
-                                return kSizedBox;
-                              },
-                              itemBuilder: (context, index) {
-                                return propertyContainer(
-                                  media,
-                                  colorScheme,
-                                  nav: () {
-                                    Get.toNamed(
-                                      Routes.viewProperty,
-                                      preventDuplicates: true,
-                                    );
-                                  },
-                                  propertyImage: Assets.house1Png,
-                                  tradeType: "sale",
-                                  propertyName: "4 Flats Woodland Apartment",
-                                  propertyLocation:
-                                      "Independence layout, Enugu",
-                                  propertyPrice: 350000,
-                                  propertyPaymentFreq: "month",
-                                  numOfBeds: 4,
-                                  numOfBaths: 2,
-                                );
-                              },
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     )

@@ -3,23 +3,25 @@ class UserModel {
   UserData? data;
   String? message;
 
-  UserModel({this.status, this.data, this.message});
+  UserModel({
+    required this.status,
+    required this.data,
+    required this.message,
+  });
 
-  UserModel.fromJson(Map<String, dynamic>? json) {
+  factory UserModel.fromJson(Map<String, dynamic>? json) {
     json ??= {};
-    status = json['status'] ?? false;
-    data = json['data'] != null ? UserData.fromJson(json['data'] ?? {}) : null;
-    message = json['message'] ?? "";
+    return UserModel(
+      status: json['status'] ?? false,
+      data: UserData.fromJson(json['data'] ?? {}),
+      message: json['message'] ?? "",
+    );
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['status'] = status;
-    if (this.data != null) {
-      data['data'] = this.data!.toJson();
-    } else {
-      data['data'] = {};
-    }
+    data['data'] = this.data!.toJson();
     data['message'] = message;
     return data;
   }
@@ -43,40 +45,42 @@ class UserData {
   String? settings;
 
   UserData({
-    this.id,
-    this.fullname,
-    this.firstName,
-    this.lastName,
-    this.email,
-    this.phone,
-    this.passwordChangedAt,
-    this.profileImage,
-    this.providerName,
-    this.providerId,
-    this.emailVerifiedAt,
-    this.phoneVerifiedAt,
-    this.createdAt,
-    this.updatedAt,
-    this.settings,
+    required this.id,
+    required this.fullname,
+    required this.firstName,
+    required this.lastName,
+    required this.email,
+    required this.phone,
+    required this.passwordChangedAt,
+    required this.profileImage,
+    required this.providerName,
+    required this.providerId,
+    required this.emailVerifiedAt,
+    required this.phoneVerifiedAt,
+    required this.createdAt,
+    required this.updatedAt,
+    required this.settings,
   });
 
-  UserData.fromJson(Map<String, dynamic>? json) {
+  factory UserData.fromJson(Map<String, dynamic>? json) {
     json ??= {};
-    id = json['id'] ?? 0;
-    fullname = json['fullname'] ?? "";
-    firstName = json['first_name'] ?? "";
-    lastName = json['last_name'] ?? "";
-    email = json['email'] ?? "";
-    phone = json['phone'] ?? "";
-    passwordChangedAt = json['password_changed_at'] ?? "";
-    profileImage = json['profile_image'] ?? "";
-    providerName = json['provider_name'] ?? "";
-    providerId = json['provider_id'] ?? "";
-    emailVerifiedAt = json['email_verified_at'] ?? "";
-    phoneVerifiedAt = json['phone_verified_at'] ?? "";
-    createdAt = json['created_at'] ?? "";
-    updatedAt = json['updated_at'] ?? "";
-    settings = json['settings'] ?? "";
+    return UserData(
+      id: json['id'] ?? 0,
+      fullname: json['fullname'] ?? "",
+      firstName: json['first_name'] ?? "",
+      lastName: json['last_name'] ?? "",
+      email: json['email'] ?? "",
+      phone: json['phone'] ?? "",
+      passwordChangedAt: json['password_changed_at'] ?? "",
+      profileImage: json['profile_image'] ?? "",
+      providerName: json['provider_name'] ?? "",
+      providerId: json['provider_id'] ?? "",
+      emailVerifiedAt: json['email_verified_at'] ?? "",
+      phoneVerifiedAt: json['phone_verified_at'] ?? "",
+      createdAt: json['created_at'] ?? "",
+      updatedAt: json['updated_at'] ?? "",
+      settings: json['settings'] ?? "",
+    );
   }
 
   Map<String, dynamic> toJson() {

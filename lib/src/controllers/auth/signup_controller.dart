@@ -219,7 +219,8 @@ class SignupController extends GetxController {
 
         if (response.statusCode == 200) {
           // Save the user model to shared preferences
-          UserController.saveUserToPreferences(signupResponse.value.data);
+          UserController.saveUserSignupDataToPreferences(
+              signupResponse.value.data);
 
           prefs.setBool("hasNotBeenVerifiedEmailOnSignup", true);
 

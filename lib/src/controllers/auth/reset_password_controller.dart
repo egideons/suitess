@@ -70,9 +70,7 @@ class ResetPasswordController extends GetxController {
   }
 
   confirmPasswordOnChanged(value) {
-    var passwordRegExp = RegExp(passwordPattern);
-
-    if (!passwordRegExp.hasMatch(passwordEC.text)) {
+    if (confirmPasswordEC.text == passwordEC.text) {
       isConfirmPasswordValid.value = false;
       setFormIsInvalid();
     } else {

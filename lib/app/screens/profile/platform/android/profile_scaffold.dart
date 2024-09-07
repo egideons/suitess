@@ -9,6 +9,7 @@ import 'package:suitess/src/utils/components/circle_avatar_image.dart';
 import 'package:suitess/theme/colors.dart';
 
 import '../../../../../src/controllers/app/profile_screen_controller.dart';
+import '../../../../../src/controllers/auth/user_controller.dart';
 import '../../content/profile_nav_option.dart';
 import '../../content/profile_section_header.dart';
 
@@ -19,8 +20,7 @@ class ProfileScreenScaffold extends GetView<ProfileScreenController> {
   Widget build(BuildContext context) {
     // var media = MediaQuery.of(context).size;
     var colorScheme = Theme.of(context).colorScheme;
-
-    // var controller = ProfileScreenController.instance;
+    var user = UserController.instance.userModel.value.data;
 
     return Scaffold(
       backgroundColor: colorScheme.surface,
@@ -67,7 +67,7 @@ class ProfileScreenScaffold extends GetView<ProfileScreenController> {
                         ),
                         kSizedBox,
                         Text(
-                          "Francis Acoi",
+                          user!.fullname ?? "",
                           textAlign: TextAlign.center,
                           overflow: TextOverflow.ellipsis,
                           style: defaultTextStyle(
