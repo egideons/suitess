@@ -197,16 +197,16 @@ class WalletTransferController extends GetxController {
       formKey.currentState!.save();
 
       if (walletNumberEC.text.isEmpty) {
-        ApiProcessorController.errorSnack("Please enter a wallet number");
+        ApiProcessorController.warningSnack("Please enter a wallet number");
         return;
       } else if (amountEC.text.isEmpty) {
-        ApiProcessorController.errorSnack("Please enter an amount");
+        ApiProcessorController.warningSnack("Please enter an amount");
         return;
       } else if (double.tryParse(unformattedAmountText.value)! <= 100) {
-        ApiProcessorController.errorSnack("The amount is too small!");
+        ApiProcessorController.warningSnack("The amount is too small!");
         return;
       } else if (descriptionEC.text.isEmpty) {
-        ApiProcessorController.errorSnack("Please enter a description");
+        ApiProcessorController.warningSnack("Please enter a description");
         return;
       }
     }

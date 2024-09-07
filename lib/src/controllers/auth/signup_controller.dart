@@ -15,11 +15,10 @@ import '../../constants/consts.dart';
 import '../../models/auth/signup_response_model.dart';
 import '../../services/api/api_url.dart';
 import '../../services/client/http_client_service.dart';
+import 'user_controller.dart';
 
 class SignupController extends GetxController {
-  static SignupController get instance {
-    return Get.find<SignupController>();
-  }
+  static SignupController get instance => Get.find<SignupController>();
 
   //=========== Form Key ===========\\
   final formKey = GlobalKey<FormState>();
@@ -144,34 +143,35 @@ class SignupController extends GetxController {
       formKey.currentState!.save();
 
       if (firstNameEC.text.isEmpty) {
-        ApiProcessorController.errorSnack("Please enter your first name");
+        ApiProcessorController.warningSnack("Please enter your first name");
         return;
       } else if (isFirstNameValid.value == false) {
-        ApiProcessorController.errorSnack("Please enter a valid name");
+        ApiProcessorController.warningSnack("Please enter a valid name");
         return;
       } else if (lastNameEC.text.isEmpty) {
-        ApiProcessorController.errorSnack("Please enter your last name");
+        ApiProcessorController.warningSnack("Please enter your last name");
         return;
       } else if (isLastNameValid.value == false) {
-        ApiProcessorController.errorSnack("Please enter a valid name");
+        ApiProcessorController.warningSnack("Please enter a valid name");
         return;
       } else if (emailEC.text.isEmpty) {
-        ApiProcessorController.errorSnack("Please enter your email");
+        ApiProcessorController.warningSnack("Please enter your email");
         return;
       } else if (isEmailValid.value == false) {
-        ApiProcessorController.errorSnack("Please enter a valid email");
+        ApiProcessorController.warningSnack("Please enter a valid email");
         return;
       } else if (phoneNumberEC.text.isEmpty) {
-        ApiProcessorController.errorSnack("Please enter your phone number");
+        ApiProcessorController.warningSnack("Please enter your phone number");
         return;
       } else if (isPhoneNumberValid.value == false) {
-        ApiProcessorController.errorSnack("Please enter a valid phone number");
+        ApiProcessorController.warningSnack(
+            "Please enter a valid phone number");
         return;
       } else if (passwordEC.text.isEmpty) {
-        ApiProcessorController.errorSnack("Please enter your password");
+        ApiProcessorController.warningSnack("Please enter your password");
         return;
       } else if (isPasswordValid.value == false) {
-        ApiProcessorController.errorSnack("Please enter a valid password");
+        ApiProcessorController.warningSnack("Please enter a valid password");
         return;
       }
 
@@ -218,10 +218,10 @@ class SignupController extends GetxController {
         responseMessage.value = signupResponse.value.message;
 
         if (response.statusCode == 200) {
-          // Convert the map to a JSON string
-          String signupDataString = jsonEncode(signupData);
+          // Save the user model to shared preferences
+          UserController.saveUserToPreferences(signupResponse.value.data);
 
-          prefs.setString("signupData", signupDataString);
+          prefs.setBool("hasNotBeenVerifiedEmailOnSignup", true);
 
           Get.offAll(
             () => EmailOTP(
@@ -240,8 +240,13 @@ class SignupController extends GetxController {
               "password": passwordEC.text,
             },
           );
+
+          //Save the user details to shared preferences
+          prefs.setString("userEmail", emailEC.text);
+          prefs.setString("phoneNumber", phoneNumberEC.text);
+          prefs.setString("password", passwordEC.text);
         } else {
-          ApiProcessorController.errorSnack(responseMessage.value);
+          ApiProcessorController.warningSnack(responseMessage.value);
           log("Request failed with status: ${response.statusCode}");
           log("Response body: ${response.body}");
         }
@@ -306,18 +311,18 @@ class SignupController extends GetxController {
       isLoadingGoogleSignup.value = false;
       update();
     } on SocketException {
-      ApiProcessorController.errorSnack("Please connect to the internet");
+      ApiProcessorController.warningSnack("Please connect to the internet");
     } on PlatformException catch (e) {
       // Handle specific platform exceptions
       log("Google sign-up failed: ${e.message}");
-      ApiProcessorController.errorSnack("$e");
+      ApiProcessorController.warningSnack("$e");
       // You can display an error message to the user or handle the error accordingly
       isLoadingGoogleSignup.value = false;
       update();
     } catch (error) {
       // Handle other types of errors
       log("Error during Google sign-up: $error");
-      ApiProcessorController.errorSnack("$error");
+      ApiProcessorController.warningSnack("$error");
       // You can display an error message to the user or handle the error accordingly
       isLoadingGoogleSignup.value = false;
       update();

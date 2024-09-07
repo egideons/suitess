@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:suitess/src/controllers/others/loading_controller.dart';
 
+import 'src/controllers/auth/user_controller.dart';
 import 'src/controllers/others/theme_controller.dart';
 import 'src/routes/routes.dart';
 import 'src/utils/components/app_error_widget.dart';
@@ -25,6 +26,7 @@ void main() async {
 
   Get.put(ThemeController());
   Get.put(LoadingController());
+  Get.put(UserController());
 
   //This is to handle widget errors by showing a custom error widget screen
   if (kReleaseMode) ErrorWidget.builder = (_) => const AppErrorWidget();

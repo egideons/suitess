@@ -65,7 +65,7 @@ class ResetPasswordViaEmailController extends GetxController {
   }
 
   navigateToSMS() async {
-    ApiProcessorController.errorSnack(
+    ApiProcessorController.warningSnack(
       "This option is not yet available,\nPlease reset via email",
     );
 
@@ -84,11 +84,11 @@ class ResetPasswordViaEmailController extends GetxController {
       formKey.currentState!.save();
 
       if (emailEC.text.isEmpty) {
-        ApiProcessorController.errorSnack("Please enter your email");
+        ApiProcessorController.warningSnack("Please enter your email");
         setFormIsInvalid();
         return;
       } else if (isEmailValid.value == false) {
-        ApiProcessorController.errorSnack("Please enter a valid email");
+        ApiProcessorController.warningSnack("Please enter a valid email");
         setFormIsInvalid();
         return;
       }
@@ -145,7 +145,7 @@ class ResetPasswordViaEmailController extends GetxController {
             transition: Get.defaultTransition,
           );
         } else {
-          ApiProcessorController.errorSnack(responseJson["message"]);
+          ApiProcessorController.warningSnack(responseJson["message"]);
           log("Request failed with status: ${response.statusCode}");
           log("Response body: ${response.body}");
         }

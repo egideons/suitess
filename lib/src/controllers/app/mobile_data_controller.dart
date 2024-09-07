@@ -227,25 +227,26 @@ class MobileDataController extends GetxController {
     if (formKey.currentState!.validate()) {
       formKey.currentState!.save();
       if (selectedBiller.value.isEmpty) {
-        ApiProcessorController.errorSnack("Please select a network provider");
+        ApiProcessorController.warningSnack("Please select a network provider");
         return;
       } else if (billerEC.text.isEmpty) {
-        ApiProcessorController.errorSnack("Please select a network provider");
+        ApiProcessorController.warningSnack("Please select a network provider");
         return;
       } else if (selectedMobileDataPlan.value.isEmpty) {
-        ApiProcessorController.errorSnack("Please select a data plan");
+        ApiProcessorController.warningSnack("Please select a data plan");
         return;
       } else if (phoneNumberEC.text.isEmpty) {
-        ApiProcessorController.errorSnack("Please enter a phone number");
+        ApiProcessorController.warningSnack("Please enter a phone number");
         return;
       } else if (isPhoneNumberValid.value == false) {
-        ApiProcessorController.errorSnack("Please enter a valid phone number");
+        ApiProcessorController.warningSnack(
+            "Please enter a valid phone number");
         return;
       } else if (amountEC.text.isEmpty) {
-        ApiProcessorController.errorSnack("Please enter an amount");
+        ApiProcessorController.warningSnack("Please enter an amount");
         return;
       } else if (descriptionEC.text.isEmpty) {
-        ApiProcessorController.errorSnack("Please enter a description");
+        ApiProcessorController.warningSnack("Please enter a description");
         return;
       }
     }

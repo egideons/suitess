@@ -103,19 +103,20 @@ class WalletIntroController extends GetxController {
     if (formKey.currentState!.validate()) {
       formKey.currentState!.save();
       if (bvnEC.text.isEmpty) {
-        ApiProcessorController.errorSnack("Please enter your BVN");
+        ApiProcessorController.warningSnack("Please enter your BVN");
         return;
       } else if (bvnEC.text.length != 11) {
-        ApiProcessorController.errorSnack("Please enter a valid BVN");
+        ApiProcessorController.warningSnack("Please enter a valid BVN");
         return;
       } else if (phoneNumberEC.text.isEmpty) {
-        ApiProcessorController.errorSnack("Please enter your phone number");
+        ApiProcessorController.warningSnack("Please enter your phone number");
         return;
       } else if (isPhoneNumberValid.value == false) {
-        ApiProcessorController.errorSnack("Please enter a valid phone number");
+        ApiProcessorController.warningSnack(
+            "Please enter a valid phone number");
         return;
       } else if (dobEC.text.isEmpty) {
-        ApiProcessorController.errorSnack("Please select your Date of Birth");
+        ApiProcessorController.warningSnack("Please select your Date of Birth");
         return;
       }
 

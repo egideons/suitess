@@ -22,6 +22,8 @@ class ApiProcessorController extends GetxController {
   }
 
   static void successSnack(msg) {
+    var colorScheme = Theme.of(Get.context!).colorScheme;
+    var media = MediaQuery.of(Get.context!).size;
     Get.showSnackbar(
       GetSnackBar(
         // titleText: SizedBox(
@@ -37,50 +39,59 @@ class ApiProcessorController extends GetxController {
         //     ),
         //   ),
         // ),
-        messageText: SizedBox(
-          width: Get.width,
-          child: Text(
-            msg,
-            overflow: TextOverflow.ellipsis,
-            maxLines: 4,
-            style: defaultTextStyle(
-              color: kLightBackgroundColor,
-              fontSize: 12.0,
-              fontWeight: FontWeight.w600,
-            ),
+        messageText: Text(
+          msg,
+          overflow: TextOverflow.ellipsis,
+          maxLines: 10,
+          style: defaultTextStyle(
+            color: kSuccessColor,
+            fontSize: 12.0,
+            fontWeight: FontWeight.w600,
           ),
         ),
         icon: Icon(
           Icons.check_circle,
           size: 16,
-          color: kLightBackgroundColor,
+          color: kSuccessColor,
         ),
         shouldIconPulse: true,
         isDismissible: true,
-        backgroundColor: kSuccessColor,
+        backgroundColor: colorScheme.surface,
         barBlur: 2.0,
         borderRadius: 10,
         snackPosition: SnackPosition.TOP,
+        maxWidth: media.width - 100,
+        duration: const Duration(seconds: 2),
+        boxShadows: [
+          BoxShadow(
+            color: colorScheme.inversePrimary.withOpacity(.2),
+            offset: const Offset(0, 4),
+            blurRadius: 10,
+            spreadRadius: 2,
+          ),
+        ],
         // backgroundGradient: LinearGradient(
         //   colors: [kSuccessColor, kSuccessColor.withOpacity(0.6)],
         // ),
-        margin: const EdgeInsets.all(10),
-        duration: const Duration(seconds: 2),
-        mainButton: IconButton(
-          onPressed: () {
-            Get.back();
-          },
-          color: kLightBackgroundColor,
-          icon: const Icon(
-            Icons.cancel,
-            size: 14,
-          ),
-        ),
+        // margin: const EdgeInsets.all(60),
+        // mainButton: IconButton(
+        //   onPressed: () {
+        //     Get.back();
+        //   },
+        //   color: kLightBackgroundColor,
+        //   icon: const Icon(
+        //     Icons.cancel,
+        //     size: 14,
+        //   ),
+        // ),
       ),
     );
   }
 
   static void errorSnack(msg) {
+    var colorScheme = Theme.of(Get.context!).colorScheme;
+    var media = MediaQuery.of(Get.context!).size;
+
     Get.showSnackbar(
       GetSnackBar(
         // titleText: SizedBox(
@@ -97,46 +108,122 @@ class ApiProcessorController extends GetxController {
         //     ),
         //   ),
         // ),
-        messageText: SizedBox(
-          width: Get.width,
-          child: Text(
-            msg,
-            overflow: TextOverflow.ellipsis,
-            maxLines: 4,
-            style: defaultTextStyle(
-              color: kLightBackgroundColor,
-              fontSize: 14.0,
-              fontWeight: FontWeight.w600,
-              letterSpacing: -0.40,
-            ),
+        messageText: Text(
+          msg,
+          overflow: TextOverflow.ellipsis,
+          maxLines: 4,
+          style: defaultTextStyle(
+            color: kErrorColor,
+            fontSize: 14.0,
+            fontWeight: FontWeight.w600,
+            letterSpacing: -0.40,
           ),
         ),
         icon: Icon(
           Icons.error_rounded,
           size: 18,
-          color: kLightBackgroundColor,
+          color: kErrorColor,
         ),
         shouldIconPulse: true,
         isDismissible: true,
         barBlur: 2.0,
         borderRadius: 10,
         snackPosition: SnackPosition.TOP,
+        maxWidth: media.width - 100,
+        backgroundColor: colorScheme.surface,
+        duration: const Duration(seconds: 2),
+        boxShadows: [
+          BoxShadow(
+            color: colorScheme.inversePrimary.withOpacity(.2),
+            offset: const Offset(0, 4),
+            blurRadius: 10,
+            spreadRadius: 2,
+          ),
+        ],
         // backgroundGradient: LinearGradient(
         //   colors: [kSuccessColor, kSuccessColor.withOpacity(0.6)],
         // ),
-        margin: const EdgeInsets.all(10),
-        backgroundColor: kErrorColor,
-        duration: const Duration(seconds: 2),
-        mainButton: IconButton(
-          onPressed: () {
-            Get.back();
-          },
-          icon: Icon(
-            Icons.cancel,
-            size: 14,
-            color: kLightBackgroundColor,
+        // margin: const EdgeInsets.all(60),
+        // mainButton: IconButton(
+        //   onPressed: () {
+        //     Get.back();
+        //   },
+        //   icon: Icon(
+        //     Icons.cancel,
+        //     size: 14,
+        //     color: kErrorColor,
+        //   ),
+        // ),
+      ),
+    );
+  }
+
+  static void warningSnack(msg) {
+    var colorScheme = Theme.of(Get.context!).colorScheme;
+    var media = MediaQuery.of(Get.context!).size;
+
+    Get.showSnackbar(
+      GetSnackBar(
+        // titleText: SizedBox(
+        //   width: Get.width,
+        //   child: Text(
+        //     msg,
+        //     overflow: TextOverflow.ellipsis,
+        //     maxLines: 4,
+        //     style: defaultTextStyle(
+        //       color: kLightBackgroundColor,
+        //       fontSize: 14.0,
+        //       fontWeight: FontWeight.w600,
+        //       letterSpacing: -0.40,
+        //     ),
+        //   ),
+        // ),
+        messageText: Text(
+          msg,
+          overflow: TextOverflow.ellipsis,
+          maxLines: 4,
+          style: defaultTextStyle(
+            color: kWarningColor,
+            fontSize: 14.0,
+            fontWeight: FontWeight.w600,
+            letterSpacing: -0.40,
           ),
         ),
+        icon: Icon(
+          Icons.warning_rounded,
+          size: 18,
+          color: kWarningColor,
+        ),
+        shouldIconPulse: true,
+        isDismissible: true,
+        barBlur: 2.0,
+        borderRadius: 10,
+        snackPosition: SnackPosition.TOP,
+        maxWidth: media.width - 100,
+        backgroundColor: colorScheme.surface,
+        duration: const Duration(seconds: 2),
+        boxShadows: [
+          BoxShadow(
+            color: colorScheme.inversePrimary.withOpacity(.2),
+            offset: const Offset(0, 4),
+            blurRadius: 10,
+            spreadRadius: 2,
+          ),
+        ],
+        // backgroundGradient: LinearGradient(
+        //   colors: [kSuccessColor, kSuccessColor.withOpacity(0.6)],
+        // ),
+        // margin: const EdgeInsets.all(60),
+        // mainButton: IconButton(
+        //   onPressed: () {
+        //     Get.back();
+        //   },
+        //   icon: Icon(
+        //     Icons.cancel,
+        //     size: 14,
+        //     color: kWarningColor,
+        //   ),
+        // ),
       ),
     );
   }

@@ -104,13 +104,13 @@ class ResetPasswordController extends GetxController {
       formKey.currentState!.save();
 
       if (passwordEC.text.isEmpty) {
-        ApiProcessorController.errorSnack("Please enter your password");
+        ApiProcessorController.warningSnack("Please enter your password");
         return;
       } else if (confirmPasswordEC.text.isEmpty) {
-        ApiProcessorController.errorSnack("Please confirm your password");
+        ApiProcessorController.warningSnack("Please confirm your password");
         return;
       } else if (confirmPasswordEC.text != passwordEC.text) {
-        ApiProcessorController.errorSnack("Passwords do not match");
+        ApiProcessorController.warningSnack("Passwords do not match");
         return;
       }
       isLoading.value = true;
@@ -184,7 +184,7 @@ class ResetPasswordController extends GetxController {
               transition: Get.defaultTransition,
             );
           } else {
-            ApiProcessorController.errorSnack(
+            ApiProcessorController.warningSnack(
                 resetPasswordResponse.value.message);
             log("Request failed with status: ${response.statusCode}");
             log("Response body: ${response.body}");

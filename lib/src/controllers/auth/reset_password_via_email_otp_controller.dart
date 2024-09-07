@@ -300,7 +300,7 @@ class ResetPasswordViaEmailOTPController extends GetxController {
           },
         );
       } else {
-        ApiProcessorController.errorSnack(otpResponse.value.message);
+        ApiProcessorController.warningSnack(otpResponse.value.message);
         log("Request failed with status: ${response.statusCode}");
         log("Response body: ${response.body}");
       }

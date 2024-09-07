@@ -302,19 +302,19 @@ class BankTransferController extends GetxController {
     if (formKey.currentState!.validate()) {
       formKey.currentState!.save();
       if (selectedBank.value.isEmpty) {
-        ApiProcessorController.errorSnack("Please select a bank");
+        ApiProcessorController.warningSnack("Please select a bank");
         return;
       } else if (accountNumberEC.text.isEmpty) {
-        ApiProcessorController.errorSnack("Please enter a bank number");
+        ApiProcessorController.warningSnack("Please enter a bank number");
         return;
       } else if (amountEC.text.isEmpty) {
-        ApiProcessorController.errorSnack("Please enter an amount");
+        ApiProcessorController.warningSnack("Please enter an amount");
         return;
       } else if (double.tryParse(unformattedAmountText.value)! <= 100) {
-        ApiProcessorController.errorSnack("The amount is too small!");
+        ApiProcessorController.warningSnack("The amount is too small!");
         return;
       } else if (descriptionEC.text.isEmpty) {
-        ApiProcessorController.errorSnack("Please enter a description");
+        ApiProcessorController.warningSnack("Please enter a description");
         return;
       }
     }

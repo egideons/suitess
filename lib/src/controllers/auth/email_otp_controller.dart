@@ -74,7 +74,6 @@ class EmailOTPController extends GetxController {
     if (value.length == 1) {
       FocusScope.of(context).nextFocus();
     }
-    update();
   }
 
   pin2Onchanged(value, context) {
@@ -85,7 +84,6 @@ class EmailOTPController extends GetxController {
     if (value.length == 1) {
       FocusScope.of(context).nextFocus();
     }
-    update();
   }
 
   pin3Onchanged(value, context) {
@@ -96,7 +94,6 @@ class EmailOTPController extends GetxController {
     if (value.length == 1) {
       FocusScope.of(context).nextFocus();
     }
-    update();
   }
 
   pin4Onchanged(value, context) {
@@ -107,7 +104,6 @@ class EmailOTPController extends GetxController {
     if (value.length == 1) {
       FocusScope.of(context).nextFocus();
     }
-    update();
   }
 
   pin5Onchanged(value, context) {
@@ -118,7 +114,6 @@ class EmailOTPController extends GetxController {
     if (value.length == 1) {
       FocusScope.of(context).nextFocus();
     }
-    update();
   }
 
   pin6Onchanged(value, context) {
@@ -129,10 +124,8 @@ class EmailOTPController extends GetxController {
     if (value.length == 1) {
       FocusScope.of(context).nearestScope;
       setFormIsValid();
-      update();
       return;
     }
-    update();
   }
 
   //================= Start Timer ======================\\
@@ -165,8 +158,6 @@ class EmailOTPController extends GetxController {
   void requestOTP() async {
     secondsRemaining.value = 30;
     timerComplete.value = false;
-    update();
-
     var url = ApiUrl.authBaseUrl + ApiUrl.auth + ApiUrl.sendEmailOTP;
 
     Map data = {
@@ -185,7 +176,6 @@ class EmailOTPController extends GetxController {
 
     if (response == null) {
       isLoading.value = false;
-      update();
       return;
     }
 
@@ -230,13 +220,12 @@ class EmailOTPController extends GetxController {
   onSubmitted(value) {
     if (formIsValid.isTrue) {
       submitOTP();
-      update();
     }
   }
 
   //=========== Navigation ===========\\
   sendToPhone() {
-    // ApiProcessorController.errorSnack("This option is not yet available");
+    // ApiProcessorController.warningSnack("This option is not yet available");
     Get.off(
       () => PhoneOTP(
         userPhoneNumber: userPhoneNumber,
@@ -259,8 +248,6 @@ class EmailOTPController extends GetxController {
   //================= Submit OTP ======================\\
   Future<void> submitOTP() async {
     isLoading.value = true;
-    update();
-
     //Pause the timer
     pauseTimer();
     timerComplete.value = false;
@@ -300,9 +287,9 @@ class EmailOTPController extends GetxController {
     // );
     if (response == null) {
       isLoading.value = false;
-      update();
       return;
     }
+
     try {
       // Convert to json
       dynamic responseJson;
@@ -316,7 +303,7 @@ class EmailOTPController extends GetxController {
 
       if (response.statusCode == 200) {
         ApiProcessorController.successSnack(
-          "Signup successful",
+          "Verification successful",
         );
         await loginUser();
 
@@ -330,23 +317,19 @@ class EmailOTPController extends GetxController {
           transition: Get.defaultTransition,
         );
       } else {
-        ApiProcessorController.errorSnack(otpResponse.value.message);
+        ApiProcessorController.warningSnack(otpResponse.value.message);
         log("Request failed with status: ${response.statusCode}");
         log("Response body: ${response.body}");
         isLoading.value = false;
-        update();
         return;
       }
     } catch (e) {
       log(e.toString());
       isLoading.value = false;
-      update();
       return;
     }
 
     isLoading.value = false;
-    update();
-
     //Continue the timer and enable resend button
     startTimer();
   }
@@ -374,7 +357,6 @@ class EmailOTPController extends GetxController {
 
     if (response == null) {
       isLoading.value = false;
-      update();
       return;
     }
 

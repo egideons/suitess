@@ -80,11 +80,12 @@ class ResetPasswordViaSMSController extends GetxController {
       formKey.currentState!.save();
 
       if (phoneNumberEC.text.isEmpty) {
-        ApiProcessorController.errorSnack("Please enter your phone number");
+        ApiProcessorController.warningSnack("Please enter your phone number");
         setFormIsInvalid();
         return;
       } else if (isPhoneNumberValid.value == false) {
-        ApiProcessorController.errorSnack("Please enter a valid phone number");
+        ApiProcessorController.warningSnack(
+            "Please enter a valid phone number");
         setFormIsInvalid();
         return;
       }
@@ -151,7 +152,7 @@ class ResetPasswordViaSMSController extends GetxController {
             transition: Get.defaultTransition,
           );
         } else {
-          ApiProcessorController.errorSnack(responseMessage.value);
+          ApiProcessorController.warningSnack(responseMessage.value);
           log("Request failed with status: ${response.statusCode}");
           log("Response body: ${response.body}");
         }

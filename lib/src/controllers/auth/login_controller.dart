@@ -103,12 +103,12 @@ class LoginController extends GetxController {
       if (emailEC.text.isEmpty) {
         setFormIsInvalid();
         update();
-        ApiProcessorController.errorSnack("Please enter your email");
+        ApiProcessorController.warningSnack("Please enter your email");
         return;
       } else if (passwordEC.text.isEmpty) {
         setFormIsInvalid();
         update();
-        ApiProcessorController.errorSnack("Please enter your password");
+        ApiProcessorController.warningSnack("Please enter your password");
         return;
       }
 
@@ -160,7 +160,12 @@ class LoginController extends GetxController {
           if (rememberMe.value == true) {
             //Save state that the user has logged in
             prefs.setBool("isLoggedIn", true);
+          } else {
+            prefs.setBool("isLoggedIn", false);
           }
+
+          prefs.setBool("hasBeenVerifiedEmailOnSignup", true);
+
           //Save state that the user token
           prefs.setString(
             "userToken",
@@ -179,7 +184,7 @@ class LoginController extends GetxController {
             transition: Get.defaultTransition,
           );
         } else {
-          ApiProcessorController.errorSnack(responseMessage.value);
+          ApiProcessorController.warningSnack(responseMessage.value);
           log("Request failed with status: ${response.statusCode}");
           log("Response body: ${response.body}");
         }
@@ -248,18 +253,18 @@ class LoginController extends GetxController {
       //       transition: Get.defaultTransition,
       //     );
       //   } on SocketException {
-      //     ApiProcessorController.errorSnack("Please connect to the internet");
+      //     ApiProcessorController.warningSnack("Please connect to the internet");
       //   } on PlatformException catch (e) {
       //     // Handle specific platform exceptions
       //     log("Google sign-in failed: ${e.message}");
-      //     ApiProcessorController.errorSnack("$e");
+      //     ApiProcessorController.warningSnack("$e");
       //     // You can display an error message to the user or handle the error accordingly
       //     isLoadingGoogleLogin.value = false;
       //     update();
       //   } catch (error) {
       //     // Handle other types of errors
       //     log("Error during Google sign-in: $error");
-      //     ApiProcessorController.errorSnack("$error");
+      //     ApiProcessorController.warningSnack("$error");
       //     // You can display an error message to the user or handle the error accordingly
       //     isLoadingGoogleLogin.value = false;
       //     update();
@@ -298,7 +303,7 @@ class LoginController extends GetxController {
       isLoadingGoogleLogin.value = false;
       update();
     } on SocketException {
-      ApiProcessorController.errorSnack("Please connect to the internet");
+      ApiProcessorController.warningSnack("Please connect to the internet");
     } on PlatformException catch (e) {
       // Handle specific platform exceptions
       log("Google sign-in failed: ${e.message}");
@@ -309,7 +314,7 @@ class LoginController extends GetxController {
     } catch (error) {
       // Handle other types of errors
       log("Error during Google sign-in: $error");
-      ApiProcessorController.errorSnack("$error");
+      ApiProcessorController.warningSnack("$error");
       // You can display an error message to the user or handle the error accordingly
       isLoadingGoogleLogin.value = false;
       update();

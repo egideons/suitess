@@ -26,7 +26,7 @@ class DioClientService {
         ),
       );
     } on SocketException {
-      ApiProcessorController.errorSnack("Please connect to the internet");
+      ApiProcessorController.warningSnack("Please connect to the internet");
       return null;
     } on DioException catch (e) {
       // Handle Dio exceptions
@@ -35,13 +35,13 @@ class DioClientService {
       if (e.message!.contains("The connection errored: Failed host lookup:")) {
         log("Dio Request Options Error: ${e.requestOptions}");
         log("Dio Error Message: ${e.message}");
-        ApiProcessorController.errorSnack("Please connect to the internet");
+        ApiProcessorController.warningSnack("Please connect to the internet");
       }
       // The request was made but there was no error message
       else if (e.message == null) {
         log("Dio Request Options Error: ${e.requestOptions}");
         log("Dio Error Message: ${e.message}");
-        ApiProcessorController.errorSnack(
+        ApiProcessorController.warningSnack(
           "Please check your internet connection",
         );
       }
@@ -68,7 +68,7 @@ class DioClientService {
         ),
       );
     } on SocketException {
-      ApiProcessorController.errorSnack("Please connect to the internet");
+      ApiProcessorController.warningSnack("Please connect to the internet");
       return null;
     } on DioException catch (e) {
       // Handle Dio exceptions
@@ -77,13 +77,13 @@ class DioClientService {
       if (e.message!.contains("The connection errored: Failed host lookup:")) {
         log("Dio Request Options Error: ${e.requestOptions}");
         log("Dio Error Message: ${e.message}");
-        ApiProcessorController.errorSnack("Please connect to the internet");
+        ApiProcessorController.warningSnack("Please connect to the internet");
       }
       // The request was made but there was no error message
       else if (e.message == null) {
         log("Dio Request Options Error: ${e.requestOptions}");
         log("Dio Error Message: ${e.message}");
-        ApiProcessorController.errorSnack(
+        ApiProcessorController.warningSnack(
             "Please check your internet connection");
       }
       return null; // Return null in the catch block if an exception occurs

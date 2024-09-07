@@ -1,11 +1,17 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
 
+import '../../../app/auth/login/screen/login.dart';
 import '../../../app/screens/profile/views/password/content/change_password_modal_sheet.dart';
+import '../../../main.dart';
 import '../../constants/consts.dart';
+import '../../models/auth/reset_password_response_model.dart';
 import '../../services/api/api_url.dart';
+import '../../services/client/http_client_service.dart';
 import '../others/api_processor_controller.dart';
 
 class PasswordSettingsController extends GetxController {
@@ -13,8 +19,10 @@ class PasswordSettingsController extends GetxController {
     return Get.find<PasswordSettingsController>();
   }
 
-  //=========== Form Key ===========\\
+  //=========== Variables ===========\\
   final formKey = GlobalKey<FormState>();
+  var resetPasswordResponse = ResetPasswordResponseModel.fromJson(null).obs;
+  var userToken = prefs.getString("userToken");
 
   //=========== Controllers ===========\\
   final currentPasswordEC = TextEditingController();
@@ -121,13 +129,13 @@ class PasswordSettingsController extends GetxController {
       formKey.currentState!.save();
 
       if (passwordEC.text.isEmpty) {
-        ApiProcessorController.errorSnack("Please enter your password");
+        ApiProcessorController.warningSnack("Please enter your password");
         return;
       } else if (confirmPasswordEC.text.isEmpty) {
-        ApiProcessorController.errorSnack("Please confirm your password");
+        ApiProcessorController.warningSnack("Please confirm your password");
         return;
       } else if (confirmPasswordEC.text != passwordEC.text) {
-        ApiProcessorController.errorSnack("Passwords do not match");
+        ApiProcessorController.warningSnack("Passwords do not match");
         return;
       }
       isLoading.value = true;
@@ -144,56 +152,57 @@ class PasswordSettingsController extends GetxController {
       log("This is the phone otp Data: $data");
 
       //HTTP Client Service
-      // http.Response? response =
-      //     await HttpClientService.postRequest(url, null, data);
+      http.Response? response =
+          await HttpClientService.postRequest(url, userToken, data);
 
       //Dio Client Service
       // var response = await DioClientService.postRequest(
       //   url,
       //   data,
       // );
-      // if (response == null) {
-      //   isLoading.value = false;
-      //
-      //   return;
-      // }
+      if (response == null) {
+        isLoading.value = false;
+
+        return;
+      }
 
       ApiProcessorController.successSnack(
         "Password reset successfully \n(FAKE RESPONSE MESSAGE!!)",
       );
 
-      // try {
-      //   // Convert to json
-      //   dynamic responseJson;
-      //   responseJson = jsonDecode(response.body);
+      try {
+        // Convert to json
+        dynamic responseJson;
+        responseJson = jsonDecode(response.body);
 
-      //   log("This is the response body ====> ${response.body}");
-      //   // Map the response json to the model provided
-      //   // resetPasswordResponse.value =
-      //   //     ResetPasswordResponseModel.fromJson(responseJson);
-      //   if (response.statusCode == 200) {
-      //     ApiProcessorController.successSnack(
-      //       "Password reset successfully",
-      //     );
+        log("This is the response body ====> ${response.body}");
+        // Map the response json to the model provided
+        resetPasswordResponse.value =
+            ResetPasswordResponseModel.fromJson(responseJson);
+        if (response.statusCode == 200) {
+          ApiProcessorController.successSnack(
+            "Password reset successfully",
+          );
 
-      //     Get.offAll(
-      //       () => const Login(),
-      //       routeName: "/login",
-      //       fullscreenDialog: true,
-      //       curve: Curves.easeInOut,
-      //       predicate: (routes) => false,
-      //       popGesture: false,
-      //       transition: Get.defaultTransition,
-      //     );
-      //   } else {
-      //     ApiProcessorController.errorSnack(
-      //         resetPasswordResponse.value.message);
-      //     log("Request failed with status: ${response.statusCode}");
-      //     log("Response body: ${response.body}");
-      //   }
-      // } catch (e) {
-      //   log(e.toString());
-      // }
+          Get.offAll(
+            () => const Login(),
+            routeName: "/login",
+            fullscreenDialog: true,
+            curve: Curves.easeInOut,
+            predicate: (routes) => false,
+            popGesture: false,
+            transition: Get.defaultTransition,
+          );
+        } else {
+          ApiProcessorController.warningSnack(
+            resetPasswordResponse.value.message,
+          );
+          log("Request failed with status: ${response.statusCode}");
+          log("Response body: ${response.body}");
+        }
+      } catch (e) {
+        log(e.toString());
+      }
 
       isLoading.value = false;
     }

@@ -124,7 +124,7 @@ class WalletScreenController extends GetxController {
   }
 
   goToElectricity() async {
-    ApiProcessorController.errorSnack("This option is not yet available");
+    ApiProcessorController.warningSnack("This option is not yet available");
     // Get.toNamed(
     //   Routes.electricityBill,
     //   preventDuplicates: true,

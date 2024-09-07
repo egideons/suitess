@@ -9,6 +9,7 @@ import 'package:suitess/app/kyc/kyc_add_location/screen/kyc_add_location.dart';
 
 import '../../../app/auth/email_otp/screen/email_otp.dart';
 import '../../../main.dart';
+import '../../models/auth/login_response_model.dart';
 import '../../models/auth/verify_otp_response_model.dart';
 import '../../services/api/api_url.dart';
 import '../../services/client/dio_client_service.dart';
@@ -29,9 +30,13 @@ class PhoneOTPController extends GetxController {
 
   //=========== Variables ===========\\
   var otpResponse = VerifyOTPResponseModel.fromJson(null).obs;
+  var loginResponse = LoginResponseModel.fromJson(null).obs;
+  var loginResponseMessage = "".obs;
+
   late Timer _timer;
   var userEmail = Get.arguments?['email'] ?? "";
   var userPhoneNumber = Get.arguments?['phoneNumber'] ?? "";
+  var userPassword = Get.arguments?["password"] ?? "";
 
   //=========== Form Key ===========\\
 
@@ -69,7 +74,6 @@ class PhoneOTPController extends GetxController {
     if (value.length == 1) {
       FocusScope.of(context).nextFocus();
     }
-    update();
   }
 
   pin2Onchanged(value, context) {
@@ -80,7 +84,6 @@ class PhoneOTPController extends GetxController {
     if (value.length == 1) {
       FocusScope.of(context).nextFocus();
     }
-    update();
   }
 
   pin3Onchanged(value, context) {
@@ -91,7 +94,6 @@ class PhoneOTPController extends GetxController {
     if (value.length == 1) {
       FocusScope.of(context).nextFocus();
     }
-    update();
   }
 
   pin4Onchanged(value, context) {
@@ -102,7 +104,6 @@ class PhoneOTPController extends GetxController {
     if (value.length == 1) {
       FocusScope.of(context).nextFocus();
     }
-    update();
   }
 
   pin5Onchanged(value, context) {
@@ -113,7 +114,6 @@ class PhoneOTPController extends GetxController {
     if (value.length == 1) {
       FocusScope.of(context).nextFocus();
     }
-    update();
   }
 
   pin6Onchanged(value, context) {
@@ -124,10 +124,8 @@ class PhoneOTPController extends GetxController {
     if (value.length == 1) {
       FocusScope.of(context).nearestScope;
       setFormIsValid();
-      update();
       return;
     }
-    update();
   }
 
   //================= Start Timer ======================\\
@@ -160,8 +158,6 @@ class PhoneOTPController extends GetxController {
   void requestOTP() async {
     secondsRemaining.value = 30;
     timerComplete.value = false;
-    update();
-
     var url = ApiUrl.authBaseUrl + ApiUrl.auth + ApiUrl.sendPhoneOTP;
 
     Map data = {
@@ -179,7 +175,6 @@ class PhoneOTPController extends GetxController {
 
     if (response == null) {
       isLoading.value = false;
-      update();
       return;
     }
 
@@ -223,7 +218,6 @@ class PhoneOTPController extends GetxController {
   onSubmitted(value) {
     if (formIsValid.isTrue) {
       submitOTP();
-      update();
     }
   }
 
@@ -237,6 +231,7 @@ class PhoneOTPController extends GetxController {
       arguments: {
         "email": userEmail,
         "phoneNumber": userPhoneNumber,
+        "password": userPassword,
       },
       routeName: "/email-otp",
       fullscreenDialog: true,
@@ -250,8 +245,6 @@ class PhoneOTPController extends GetxController {
   //================= Send OTP ======================\\
   Future<void> submitOTP() async {
     isLoading.value = true;
-    update();
-
     //Pause the timer
     pauseTimer();
     timerComplete.value = false;
@@ -264,6 +257,10 @@ class PhoneOTPController extends GetxController {
         pin4EC.text +
         pin5EC.text +
         pin6EC.text;
+
+    log("This is the user email:$userEmail");
+    log("This is the user phone numberq:$userPhoneNumber");
+    log("This is the user password:$userPassword");
 
     Map data = {
       "phone": userPhoneNumber,
@@ -286,7 +283,6 @@ class PhoneOTPController extends GetxController {
     // );
     if (response == null) {
       isLoading.value = false;
-      update();
       return;
     }
 
@@ -302,12 +298,11 @@ class PhoneOTPController extends GetxController {
       otpResponse.value = VerifyOTPResponseModel.fromJson(responseJson);
 
       if (response.statusCode == 200) {
-        //Save state that the user has logged in
-        prefs.setBool("isLoggedIn", true);
-
         ApiProcessorController.successSnack("Verification successful");
 
-        Get.offAll(
+        await loginUser();
+
+        await Get.offAll(
           () => const KycAddLocation(),
           routeName: "/kyc-add-location",
           fullscreenDialog: true,
@@ -317,24 +312,77 @@ class PhoneOTPController extends GetxController {
           transition: Get.defaultTransition,
         );
       } else {
-        ApiProcessorController.errorSnack(otpResponse.value.message);
+        ApiProcessorController.warningSnack(otpResponse.value.message);
         log("Request failed with status: ${response.statusCode}");
         log("Response body: ${response.body}");
         isLoading.value = false;
-        update();
         return;
       }
     } catch (e) {
       log(e.toString());
       isLoading.value = false;
-      update();
       return;
     }
 
     isLoading.value = false;
-    update();
-
     //Continue the timer and enable resend button
     startTimer();
+  }
+
+  Future<void> loginUser() async {
+    var url = ApiUrl.authBaseUrl + ApiUrl.auth + ApiUrl.login;
+
+    Map data = {
+      "email": userEmail,
+      "password": userPassword,
+    };
+
+    log("This is the Url: $url");
+    log("This is the login data: $data");
+
+    //HTTP Client Service
+    http.Response? response =
+        await HttpClientService.postRequest(url, null, data);
+
+    //Dio Client Service
+    // var response = await DioClientService.postRequest(
+    //   url,
+    //   data,
+    // );
+
+    if (response == null) {
+      isLoading.value = false;
+      return;
+    }
+
+    try {
+      // Convert to json
+      dynamic responseJson;
+
+      responseJson = jsonDecode(response.body);
+
+      log("This is the response body ====> ${response.body}");
+
+      //Map the response json to the model provided
+      loginResponse.value = LoginResponseModel.fromJson(responseJson);
+      loginResponseMessage.value = loginResponse.value.message;
+
+      if (response.statusCode == 200) {
+        prefs.setBool("isLoggedIn", true);
+
+        //Save state that the user token
+        prefs.setString(
+          "userToken",
+          loginResponse.value.data.token,
+        );
+
+        log("User has logged in successfully");
+      } else {
+        log("Request failed with status: ${response.statusCode}");
+        log("Response body: ${response.body}");
+      }
+    } catch (e) {
+      log(e.toString());
+    }
   }
 }
