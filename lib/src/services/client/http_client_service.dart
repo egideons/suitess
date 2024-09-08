@@ -55,7 +55,7 @@ class HttpClientService {
   ]) async {
     http.Response? response;
     try {
-      log("This is the http put client service data: $data");
+      log("This is the http client service data: $data");
 
       response = await http
           .put(
@@ -68,7 +68,7 @@ class HttpClientService {
             body: data,
           )
           .timeout(const Duration(seconds: 20));
-      log("This is the http put client service response body: ${response.body}");
+      log("This is the http client service response body: ${response.body}");
     } catch (e) {
       response = null;
       log(e.toString());
@@ -81,6 +81,9 @@ class HttpClientService {
     String? token,
   ]) async {
     http.Response? response;
+
+    log("This is the http client service url: $url");
+
     try {
       response = await http.get(
         Uri.parse(url!),
@@ -89,6 +92,7 @@ class HttpClientService {
           HttpHeaders.authorizationHeader: "Bearer $token",
         },
       );
+      log("This is the http client service response body: ${response.statusCode}");
     } catch (e) {
       response = null;
       log(e.toString());

@@ -1,8 +1,12 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:suitess/app/screens/profile/content/select_profile_pic_modal.dart';
 
+import '../../../app/screens/profile/content/uploading_profile_pic_modal.dart';
 import '../../../app/splash/loading/screen/loading_screen.dart';
 import '../../../main.dart';
 import '../auth/user_controller.dart';
@@ -30,11 +34,10 @@ class ProfileScreenController extends GetxController {
   var isLoading = false.obs;
   var hasProperties = false.obs;
   var isScrollToTopBtnVisible = false.obs;
+  var cameraPermissionIsGranted = false.obs;
 
   //================ controllers =================\\
-
   var scrollController = ScrollController();
-  var searchController = TextEditingController();
 
 //================ Scroll to Top =================//
   void scrollToTop() {
@@ -58,7 +61,89 @@ class ProfileScreenController extends GetxController {
   }
 
 //================ Upload Profile Picture ==================\\
+  final ImagePicker picker = ImagePicker();
+  XFile? selectedLogoImage;
+
   showUploadProfilePicModal() {
+    var media = MediaQuery.of(Get.context!).size;
+
+    showModalBottomSheet(
+      context: Get.context!,
+      isScrollControlled: true,
+      isDismissible: true,
+      enableDrag: true,
+      useSafeArea: true,
+      showDragHandle: true,
+      sheetAnimationStyle: AnimationStyle(curve: Curves.easeInOut),
+      constraints:
+          BoxConstraints(maxHeight: media.height / 3.2, maxWidth: media.width),
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(12),
+          topRight: Radius.circular(12),
+        ),
+      ),
+      builder: (context) {
+        return GestureDetector(
+          onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
+          child: const SelectProfilePicModal(),
+        );
+      },
+    );
+  }
+
+  requestCameraPermission() async {
+    try {
+      log('Requesting camera permission');
+      PermissionStatus status = await Permission.camera.request();
+      log('Permission status: $status');
+
+      if (status.isGranted) {
+        cameraPermissionIsGranted.value = true;
+        update();
+        uploadProfilePicWithCamera();
+      } else if (status.isDenied) {
+        await Permission.camera.request();
+      } else if (status.isPermanentlyDenied) {
+        openAppSettings();
+      }
+    } catch (e) {
+      log('Error while requesting camera permission: $e');
+    }
+  }
+
+  requestGalleryPermission() async {
+    PermissionStatus status = await Permission.mediaLibrary.request();
+
+    if (status.isGranted) {
+      cameraPermissionIsGranted.value = true;
+      update();
+      uploadProfilePicWithGallery();
+    }
+    if (status.isDenied) {
+      Permission.location.request();
+    } else if (status.isPermanentlyDenied) {
+      openAppSettings();
+    }
+  }
+
+  uploadProfilePicWithCamera() async {
+    final XFile? image = await picker.pickImage(source: ImageSource.camera);
+    if (image != null) {
+      selectedLogoImage = image;
+      update();
+    }
+  }
+
+  uploadProfilePicWithGallery() async {
+    final XFile? image = await picker.pickImage(source: ImageSource.gallery);
+    if (image != null) {
+      selectedLogoImage = image;
+      update();
+    }
+  }
+
+  showUploadingProfilePicModal() {
     var media = MediaQuery.of(Get.context!).size;
 
     showModalBottomSheet(
@@ -80,29 +165,10 @@ class ProfileScreenController extends GetxController {
       builder: (context) {
         return GestureDetector(
           onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
-          child: const SelectProfilePicModal(),
+          child: const UploadingProfilePicModal(),
         );
       },
     );
-  }
-
-  final ImagePicker picker = ImagePicker();
-  XFile? selectedLogoImage;
-
-  uploadProfilePicWithCamera() async {
-    final XFile? image = await picker.pickImage(source: ImageSource.camera);
-    if (image != null) {
-      selectedLogoImage = image;
-      update();
-    }
-  }
-
-  uploadProfilePicWithGallery() async {
-    final XFile? image = await picker.pickImage(source: ImageSource.gallery);
-    if (image != null) {
-      selectedLogoImage = image;
-      update();
-    }
   }
 
 //================ Logout ================\\

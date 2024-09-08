@@ -66,11 +66,11 @@ class UserData {
     json ??= {};
     return UserData(
       id: json['id'] ?? 0,
-      fullname: json['fullname'] ?? "",
-      firstName: json['first_name'] ?? "",
-      lastName: json['last_name'] ?? "",
-      email: json['email'] ?? "",
-      phone: json['phone'] ?? "",
+      fullname: json['fullname'] ?? "n/A",
+      firstName: json['first_name'] ?? "n/A",
+      lastName: json['last_name'] ?? "n/A",
+      email: json['email'] ?? "n/A",
+      phone: json['phone'] ?? "n/A",
       passwordChangedAt: json['password_changed_at'] ?? "",
       profileImage: json['profile_image'] ?? "",
       providerName: json['provider_name'] ?? "",

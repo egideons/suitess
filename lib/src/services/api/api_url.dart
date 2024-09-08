@@ -17,7 +17,7 @@ class ApiUrl {
   static const updatePassword = "/settings/password/update";
 
   //============= User Profile ================\\
-  static const getUserProfile = "/settings/profile?=";
+  static const getUserProfile = "/settings/profile";
 
   //=============== Business ====================\\
 }

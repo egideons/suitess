@@ -24,14 +24,15 @@ class UserController extends GetxController {
     http.Response? response =
         await HttpClientService.getRequest(url, userToken);
 
-    //Dio Client Service
-    // var response = await DioClientService.postRequest(
+    // //Dio Client Service
+    // var response = await DioClientService.getRequest(
     //   url,
-    //   data,
+    //   token: userToken,
     // );
 
     if (response == null) {
       isLoading.value = false;
+      log("The response is null");
       return;
     }
 

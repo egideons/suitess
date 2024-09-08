@@ -18,6 +18,8 @@ class LoadingController extends GetxController {
     isLoading.value = true;
     update();
 
+    await UserController.instance.getUserProfile();
+
     await Get.offAll(
       () => const BottomNavigationView(),
       routeName: "/bottom-navigation-view",

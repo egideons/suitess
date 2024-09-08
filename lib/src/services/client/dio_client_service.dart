@@ -53,13 +53,15 @@ class DioClientService {
     return response; // Return the response in the try block
   }
 
-  static Future<Response?> getRequest(String url, {Object? data}) async {
+  static Future<Response?> getRequest(String url,
+      {Object? data, String? token}) async {
     Response? response;
     try {
       response = await dio.getUri(
         Uri.parse(url),
         data: data,
         options: Options(
+          headers: {"Authorization": "Bearer $token"},
           contentType: contentType,
           receiveTimeout: const Duration(seconds: 10),
           sendTimeout: const Duration(seconds: 10),
@@ -67,6 +69,7 @@ class DioClientService {
           receiveDataWhenStatusError: true,
         ),
       );
+      log(response.data);
     } on SocketException {
       ApiProcessorController.warningSnack("Please connect to the internet");
       return null;

@@ -17,7 +17,7 @@ class SelectProfilePicModal extends GetView<ProfileScreenController> {
 
     return Container(
       width: media.width,
-      padding: const EdgeInsets.all(10),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       decoration: const ShapeDecoration(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
@@ -44,14 +44,14 @@ class SelectProfilePicModal extends GetView<ProfileScreenController> {
             children: [
               uploadProfilePicOption(
                 colorScheme,
-                onTap: controller.uploadProfilePicWithCamera,
+                onTap: controller.requestCameraPermission,
                 icon: Assets.cameraOutlineSvg,
                 label: "Camera",
               ),
               kWidthSizedBox,
               uploadProfilePicOption(
                 colorScheme,
-                onTap: controller.uploadProfilePicWithGallery,
+                onTap: controller.requestGalleryPermission,
                 icon: Assets.imageOutlineSvg,
                 label: "Gallery",
               ),
@@ -81,7 +81,7 @@ class SelectProfilePicModal extends GetView<ProfileScreenController> {
                 borderRadius: BorderRadius.circular(100),
                 side: BorderSide(
                   width: 0.5,
-                  color: colorScheme.primary,
+                  color: colorScheme.inversePrimary,
                 ),
               ),
             ),

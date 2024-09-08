@@ -10,10 +10,19 @@ import '../../../app/screens/wallet_intro/screen/wallet_intro_screen.dart';
 import '../../../main.dart';
 import '../../../theme/colors.dart';
 import '../../constants/assets.dart';
+import '../auth/user_controller.dart';
 
 class BottomNavigationController extends GetxController {
   static BottomNavigationController get instance {
     return Get.find<BottomNavigationController>();
+  }
+
+  @override
+  void onInit() {
+    super.onInit();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      UserController.instance.getUserProfile();
+    });
   }
 
   var isLoading = false.obs;
