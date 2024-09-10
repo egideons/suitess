@@ -14,11 +14,14 @@ class UserController extends GetxController {
   static UserController get instance => Get.find<UserController>();
 
   var userModel = UserModel.fromJson(null).obs;
-  var userToken = prefs.getString("userToken");
   var isLoading = false.obs;
 
   Future<void> getUserProfile() async {
-    var url = ApiUrl.authBaseUrl + ApiUrl.auth + ApiUrl.getUserProfile;
+    isLoading.value = true;
+
+    var url = ApiUrl.authBaseUrl + ApiUrl.auth + ApiUrl.profile;
+    var userToken = prefs.getString("userToken");
+    log("This is the user token: $userToken");
 
     //HTTP Client Service
     http.Response? response =
@@ -51,6 +54,7 @@ class UserController extends GetxController {
     } catch (e) {
       log(e.toString());
     }
+    isLoading.value = false;
   }
 
   // Save user data to SharedPreferences as a JSON string

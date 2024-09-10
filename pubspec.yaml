@@ -35,6 +35,8 @@ dependencies:
   dotted_border:
   skeletonizer:
   permission_handler:
+  path_provider:
+  http_parser:
 
 dev_dependencies:
   flutter_test:

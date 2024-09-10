@@ -123,7 +123,7 @@ class LoginController extends GetxController {
       };
 
       log("This is the Url: $url");
-      log("This is the phone otp Data: $data");
+      log("This is the login Data: $data");
 
       //HTTP Client Service
       http.Response? response =
@@ -147,16 +147,13 @@ class LoginController extends GetxController {
 
         responseJson = jsonDecode(response.body);
 
-        log("This is the response body ====> ${response.body}");
+        // log("This is the response body ====> ${response.body}");
 
         //Map the response json to the model provided
         loginResponse.value = LoginResponseModel.fromJson(responseJson);
         responseMessage.value = loginResponse.value.message;
 
         if (response.statusCode == 200) {
-          //Display Snackbar
-          ApiProcessorController.successSnack("Login successful");
-
           if (rememberMe.value == true) {
             //Save state that the user has logged in
             prefs.setBool("isLoggedIn", true);
@@ -167,10 +164,16 @@ class LoginController extends GetxController {
           prefs.setBool("hasNotBeenVerifiedEmailOnSignup", false);
 
           //Save state that the user token
-          prefs.setString(
-            "userToken",
-            loginResponse.value.data.token,
-          );
+          await prefs.setString("userToken", loginResponse.value.data.token);
+
+          var userToken = prefs.getString("userToken");
+
+          log("This is the user token: $userToken");
+
+          await Future.delayed(const Duration(seconds: 3));
+
+          //Display Snackbar
+          ApiProcessorController.successSnack("Login successful");
 
           await Get.offAll(
             () => LoadingScreen(

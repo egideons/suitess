@@ -12,6 +12,21 @@ class HomeScreenController extends GetxController {
     return Get.find<HomeScreenController>();
   }
 
+  @override
+  void onInit() {
+    super.onInit();
+    scrollController.addListener(_scrollListener);
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await UserController.instance.getUserProfile();
+    });
+  }
+
+  @override
+  void onClose() {
+    super.onClose();
+    scrollController.dispose();
+  }
+
   //================ variables =================\\
   var isRefreshing = false.obs;
 
@@ -43,18 +58,6 @@ class HomeScreenController extends GetxController {
     availableAgentsIsVisible.value = false;
     update();
     log("Available agents are visible: ${availableAgentsIsVisible.value}");
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-    scrollController.dispose();
-  }
-
-  @override
-  void onInit() {
-    super.onInit();
-    scrollController.addListener(_scrollListener);
   }
 
   //================ Handle refresh ================\\

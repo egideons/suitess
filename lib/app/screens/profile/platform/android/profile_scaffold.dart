@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -30,303 +32,341 @@ class ProfileScreenScaffold extends GetView<ProfileScreenController> {
           child: GetBuilder<ProfileScreenController>(
             init: ProfileScreenController(),
             builder: (controller) {
-              return Center(
-                child: ListView(
-                  controller: controller.scrollController,
-                  padding: const EdgeInsets.all(10),
-                  children: [
-                    Center(
-                      child: Column(
+              return ListView(
+                controller: controller.scrollController,
+                padding: const EdgeInsets.all(10),
+                children: [
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Stack(
                         children: [
-                          Stack(
-                            children: [
-                              circleAvatarImage(
-                                colorScheme,
-                                height: 120,
-                                imageText: user!.firstName!.isEmpty
-                                    ? ""
-                                    : getNameInitials(user.fullname!),
-                              ),
-                              Positioned(
-                                bottom: 0,
-                                right: 0,
-                                child: Container(
-                                  padding: const EdgeInsets.all(8),
-                                  decoration: BoxDecoration(
-                                    color: kAccentColor,
-                                    shape: BoxShape.circle,
-                                    border: Border.all(
-                                      width: 2,
-                                      color: kLightBackgroundColor,
-                                    ),
-                                  ),
-                                  child: InkWell(
-                                    onTap: controller.showUploadProfilePicModal,
-                                    borderRadius: BorderRadius.circular(20),
-                                    child: SvgPicture.asset(
-                                      Assets.cameraOutlineSvg,
-                                      color: kLightBackgroundColor,
-                                    ),
+                          controller.selectedProfileImage == null
+                              ? circleAvatarImage(
+                                  colorScheme,
+                                  height: 120,
+                                  imageText: user!.firstName!.isEmpty
+                                      ? ""
+                                      : getNameInitials(user.fullname!),
+                                )
+                              : circleAvatarImage(
+                                  colorScheme,
+                                  height: 120,
+                                  foregroundImage: FileImage(
+                                    File(controller.selectedProfileImage!.path),
                                   ),
                                 ),
+                          Positioned(
+                            bottom: 0,
+                            right: 0,
+                            child: Container(
+                              padding: const EdgeInsets.all(8),
+                              decoration: BoxDecoration(
+                                color: kAccentColor,
+                                shape: BoxShape.circle,
+                                border: Border.all(
+                                  width: 2,
+                                  color: kLightBackgroundColor,
+                                ),
                               ),
-                            ],
-                          ),
-                          kSizedBox,
-                          Text(
-                            user.fullname!,
-                            textAlign: TextAlign.center,
-                            overflow: TextOverflow.ellipsis,
-                            style: defaultTextStyle(
-                              color: kTextBoldHeadingColor,
-                              fontSize: 20,
-                              fontWeight: FontWeight.w600,
+                              child: Obx(
+                                () {
+                                  return controller.isUploadingProfilePic.value
+                                      ? SizedBox(
+                                          height: 24,
+                                          width: 24,
+                                          child: CircularProgressIndicator(
+                                            color: colorScheme.surface,
+                                          ),
+                                        )
+                                      : InkWell(
+                                          onTap: controller
+                                                          .selectedProfileImage ==
+                                                      null ||
+                                                  controller
+                                                      .profilePicIsUploaded
+                                                      .isTrue
+                                              ? controller
+                                                  .showUploadProfilePicModal
+                                              : controller.uploadProfilePic,
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          child:
+                                              controller.selectedProfileImage ==
+                                                          null ||
+                                                      controller
+                                                          .profilePicIsUploaded
+                                                          .isTrue
+                                                  ? SvgPicture.asset(
+                                                      Assets.cameraOutlineSvg,
+                                                      color:
+                                                          kLightBackgroundColor,
+                                                    )
+                                                  : Icon(
+                                                      Icons.check,
+                                                      color:
+                                                          kLightBackgroundColor,
+                                                    ),
+                                        );
+                                },
+                              ),
                             ),
                           ),
-                          kHalfSizedBox,
-                          Text(
-                            "UID: 2102446421",
-                            textAlign: TextAlign.center,
-                            overflow: TextOverflow.ellipsis,
-                            style: defaultTextStyle(
-                              color: colorScheme.inversePrimary,
-                              fontSize: 12,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
                         ],
                       ),
-                    ),
-                    kSizedBox,
-                    profileSectionHeader(title: "Account Information"),
-                    kHalfSizedBox,
-                    Container(
-                      decoration: ShapeDecoration(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          side: BorderSide(
-                            width: 1,
-                            color: colorScheme.inversePrimary.withOpacity(.4),
-                          ),
+                      kSizedBox,
+                      Text(
+                        user!.fullname!,
+                        textAlign: TextAlign.center,
+                        overflow: TextOverflow.ellipsis,
+                        style: defaultTextStyle(
+                          color: kTextBoldHeadingColor,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w600,
                         ),
                       ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const SizedBox(height: 5),
-                          profileNavOption(
-                            colorScheme,
-                            title: "Contact Details",
-                            nav: () {
-                              Get.toNamed(
-                                Routes.contactDetails,
-                                preventDuplicates: true,
-                              );
-                            },
-                          ),
-                          Divider(
-                            color: colorScheme.inversePrimary.withOpacity(.4),
-                          ),
-                          const SizedBox(height: 5),
-                          profileNavOption(
-                            colorScheme,
-                            title: "Password",
-                            nav: () {
-                              Get.toNamed(
-                                Routes.passwordSettings,
-                                preventDuplicates: true,
-                              );
-                            },
-                          ),
-                          Divider(
-                            color: colorScheme.inversePrimary.withOpacity(.4),
-                          ),
-                          const SizedBox(height: 5),
-                          profileNavOption(
-                            colorScheme,
-                            title: "Wallet Information",
-                            nav: () {
-                              Get.toNamed(
-                                Routes.walletInformation,
-                                preventDuplicates: true,
-                              );
-                            },
-                          ),
-                        ],
-                      ),
-                    ),
-                    kSizedBox,
-                    profileSectionHeader(title: "My Properties"),
-                    kHalfSizedBox,
-                    Container(
-                      decoration: ShapeDecoration(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          side: BorderSide(
-                            width: 1,
-                            color: colorScheme.inversePrimary.withOpacity(.4),
-                          ),
+                      kHalfSizedBox,
+                      Text(
+                        "UID: 2102446421",
+                        textAlign: TextAlign.center,
+                        overflow: TextOverflow.ellipsis,
+                        style: defaultTextStyle(
+                          color: colorScheme.inversePrimary,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w500,
                         ),
                       ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const SizedBox(height: 5),
-                          profileNavOption(
-                            colorScheme,
-                            title: "My Business",
-                            nav: () {
-                              // Get.toNamed(
-                              //   Routes.myBusiness,
-                              //   preventDuplicates: true,
-                              // );
-                            },
-                          ),
-                          Divider(
-                            color: colorScheme.inversePrimary.withOpacity(.4),
-                          ),
-                          const SizedBox(height: 5),
-                          profileNavOption(
-                            colorScheme,
-                            title: "Recently Viewed",
-                            nav: () {
-                              // Get.toNamed(
-                              //   Routes.recentlyViewed,
-                              //   preventDuplicates: true,
-                              // );
-                            },
-                          ),
-                          Divider(
-                            color: colorScheme.inversePrimary.withOpacity(.4),
-                          ),
-                          const SizedBox(height: 5),
-                          profileNavOption(
-                            colorScheme,
-                            title: "Scheduled Appointments",
-                            nav: () {
-                              // Get.toNamed(
-                              //   Routes.scheduledAppointments,
-                              //   preventDuplicates: true,
-                              // );
-                            },
-                          ),
-                          Divider(
-                            color: colorScheme.inversePrimary.withOpacity(.4),
-                          ),
-                          const SizedBox(height: 5),
-                          profileNavOption(
-                            colorScheme,
-                            title: "Transactions and Offers",
-                            nav: () {
-                              // Get.toNamed(
-                              //   Routes.transactionsAndOffers,
-                              //   preventDuplicates: true,
-                              // );
-                            },
-                          ),
-                        ],
-                      ),
-                    ),
-                    kSizedBox,
-                    profileSectionHeader(title: "Preferences and Settings"),
-                    kHalfSizedBox,
-                    Container(
-                      decoration: ShapeDecoration(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          side: BorderSide(
-                            width: 1,
-                            color: colorScheme.inversePrimary.withOpacity(.4),
-                          ),
+                    ],
+                  ),
+                  kSizedBox,
+                  profileSectionHeader(title: "Account Information"),
+                  kHalfSizedBox,
+                  Container(
+                    decoration: ShapeDecoration(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        side: BorderSide(
+                          width: 1,
+                          color: colorScheme.inversePrimary.withOpacity(.4),
                         ),
                       ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const SizedBox(height: 5),
-                          profileNavOption(
-                            colorScheme,
-                            title: "Notifications",
-                            nav: () {
-                              Get.toNamed(
-                                Routes.notificationsSettings,
-                                preventDuplicates: true,
-                              );
-                            },
-                          ),
-                          Divider(
-                            color: colorScheme.inversePrimary.withOpacity(.4),
-                          ),
-                          const SizedBox(height: 5),
-                          profileNavOption(
-                            colorScheme,
-                            title: "Privacy and Security",
-                            nav: () {
-                              Get.toNamed(
-                                Routes.privacyAndSecurity,
-                                preventDuplicates: true,
-                              );
-                            },
-                          ),
-                        ],
-                      ),
                     ),
-                    kSizedBox,
-                    profileSectionHeader(title: "System"),
-                    kHalfSizedBox,
-                    Container(
-                      decoration: ShapeDecoration(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          side: BorderSide(
-                            width: 1,
-                            color: colorScheme.inversePrimary.withOpacity(.4),
-                          ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const SizedBox(height: 5),
+                        profileNavOption(
+                          colorScheme,
+                          title: "Contact Details",
+                          nav: () {
+                            Get.toNamed(
+                              Routes.contactDetails,
+                              preventDuplicates: true,
+                            );
+                          },
+                        ),
+                        Divider(
+                          color: colorScheme.inversePrimary.withOpacity(.4),
+                        ),
+                        const SizedBox(height: 5),
+                        profileNavOption(
+                          colorScheme,
+                          title: "Password",
+                          nav: () {
+                            Get.toNamed(
+                              Routes.passwordSettings,
+                              preventDuplicates: true,
+                            );
+                          },
+                        ),
+                        Divider(
+                          color: colorScheme.inversePrimary.withOpacity(.4),
+                        ),
+                        const SizedBox(height: 5),
+                        profileNavOption(
+                          colorScheme,
+                          title: "Wallet Information",
+                          nav: () {
+                            Get.toNamed(
+                              Routes.walletInformation,
+                              preventDuplicates: true,
+                            );
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                  kSizedBox,
+                  profileSectionHeader(title: "My Properties"),
+                  kHalfSizedBox,
+                  Container(
+                    decoration: ShapeDecoration(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        side: BorderSide(
+                          width: 1,
+                          color: colorScheme.inversePrimary.withOpacity(.4),
                         ),
                       ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const SizedBox(height: 5),
-                          profileNavOption(
-                            colorScheme,
-                            title: "FAQs",
-                            nav: () {
-                              Get.toNamed(
-                                Routes.faqs,
-                                preventDuplicates: true,
-                              );
-                            },
-                          ),
-                          Divider(
-                            color: colorScheme.inversePrimary.withOpacity(.4),
-                          ),
-                          const SizedBox(height: 5),
-                          profileNavOption(
-                            colorScheme,
-                            title: "Support and Feedback",
-                            nav: () {
-                              Get.toNamed(
-                                Routes.supportAndFeedback,
-                                preventDuplicates: true,
-                              );
-                            },
-                          ),
-                        ],
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const SizedBox(height: 5),
+                        profileNavOption(
+                          colorScheme,
+                          title: "My Business",
+                          nav: () {
+                            // Get.toNamed(
+                            //   Routes.myBusiness,
+                            //   preventDuplicates: true,
+                            // );
+                          },
+                        ),
+                        Divider(
+                          color: colorScheme.inversePrimary.withOpacity(.4),
+                        ),
+                        const SizedBox(height: 5),
+                        profileNavOption(
+                          colorScheme,
+                          title: "Recently Viewed",
+                          nav: () {
+                            // Get.toNamed(
+                            //   Routes.recentlyViewed,
+                            //   preventDuplicates: true,
+                            // );
+                          },
+                        ),
+                        Divider(
+                          color: colorScheme.inversePrimary.withOpacity(.4),
+                        ),
+                        const SizedBox(height: 5),
+                        profileNavOption(
+                          colorScheme,
+                          title: "Scheduled Appointments",
+                          nav: () {
+                            // Get.toNamed(
+                            //   Routes.scheduledAppointments,
+                            //   preventDuplicates: true,
+                            // );
+                          },
+                        ),
+                        Divider(
+                          color: colorScheme.inversePrimary.withOpacity(.4),
+                        ),
+                        const SizedBox(height: 5),
+                        profileNavOption(
+                          colorScheme,
+                          title: "Transactions and Offers",
+                          nav: () {
+                            // Get.toNamed(
+                            //   Routes.transactionsAndOffers,
+                            //   preventDuplicates: true,
+                            // );
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                  kSizedBox,
+                  profileSectionHeader(title: "Preferences and Settings"),
+                  kHalfSizedBox,
+                  Container(
+                    decoration: ShapeDecoration(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        side: BorderSide(
+                          width: 1,
+                          color: colorScheme.inversePrimary.withOpacity(.4),
+                        ),
                       ),
                     ),
-                    kSizedBox,
-                    AndroidElevatedButton(
-                      title: "Logout",
-                      isRowVisible: true,
-                      isSwitched: true,
-                      buttonIcon: Icons.logout,
-                      buttonIconColor: kLightBackgroundColor,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      onPressed: controller.logout,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const SizedBox(height: 5),
+                        profileNavOption(
+                          colorScheme,
+                          title: "Notifications",
+                          nav: () {
+                            Get.toNamed(
+                              Routes.notificationsSettings,
+                              preventDuplicates: true,
+                            );
+                          },
+                        ),
+                        Divider(
+                          color: colorScheme.inversePrimary.withOpacity(.4),
+                        ),
+                        const SizedBox(height: 5),
+                        profileNavOption(
+                          colorScheme,
+                          title: "Privacy and Security",
+                          nav: () {
+                            Get.toNamed(
+                              Routes.privacyAndSecurity,
+                              preventDuplicates: true,
+                            );
+                          },
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                  kSizedBox,
+                  profileSectionHeader(title: "System"),
+                  kHalfSizedBox,
+                  Container(
+                    decoration: ShapeDecoration(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        side: BorderSide(
+                          width: 1,
+                          color: colorScheme.inversePrimary.withOpacity(.4),
+                        ),
+                      ),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const SizedBox(height: 5),
+                        profileNavOption(
+                          colorScheme,
+                          title: "FAQs",
+                          nav: () {
+                            Get.toNamed(
+                              Routes.faqs,
+                              preventDuplicates: true,
+                            );
+                          },
+                        ),
+                        Divider(
+                          color: colorScheme.inversePrimary.withOpacity(.4),
+                        ),
+                        const SizedBox(height: 5),
+                        profileNavOption(
+                          colorScheme,
+                          title: "Support and Feedback",
+                          nav: () {
+                            Get.toNamed(
+                              Routes.supportAndFeedback,
+                              preventDuplicates: true,
+                            );
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                  kSizedBox,
+                  AndroidElevatedButton(
+                    title: "Logout",
+                    isRowVisible: true,
+                    isSwitched: true,
+                    buttonIcon: Icons.logout,
+                    buttonIconColor: kLightBackgroundColor,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    onPressed: controller.logout,
+                  ),
+                ],
               );
             },
           ),

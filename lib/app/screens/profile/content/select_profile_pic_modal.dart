@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:suitess/src/constants/consts.dart';
 
 import '../../../../src/constants/assets.dart';
 import '../../../../src/controllers/app/profile_screen_controller.dart';
 import '../../../../theme/colors.dart';
+import 'upload_profile_pic_option.dart';
 
 class SelectProfilePicModal extends GetView<ProfileScreenController> {
   const SelectProfilePicModal({super.key});
@@ -28,7 +28,7 @@ class SelectProfilePicModal extends GetView<ProfileScreenController> {
       ),
       child: Column(
         mainAxisSize: MainAxisSize.max,
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
             "Upload profile picture",
@@ -40,7 +40,7 @@ class SelectProfilePicModal extends GetView<ProfileScreenController> {
           ),
           kSizedBox,
           Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               uploadProfilePicOption(
                 colorScheme,
@@ -59,50 +59,6 @@ class SelectProfilePicModal extends GetView<ProfileScreenController> {
           ),
         ],
       ),
-    );
-  }
-
-  uploadProfilePicOption(
-    ColorScheme colorScheme, {
-    void Function()? onTap,
-    String? icon,
-    String? label,
-  }) {
-    return Column(
-      children: [
-        InkWell(
-          onTap: onTap ?? () {},
-          borderRadius: BorderRadius.circular(100),
-          child: Container(
-            height: 60,
-            width: 60,
-            decoration: ShapeDecoration(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(100),
-                side: BorderSide(
-                  width: 0.5,
-                  color: colorScheme.inversePrimary,
-                ),
-              ),
-            ),
-            child: Center(
-              child: SvgPicture.asset(
-                icon ?? "",
-                color: kAccentColor,
-              ),
-            ),
-          ),
-        ),
-        kHalfSizedBox,
-        Text(
-          label ?? "",
-          style: defaultTextStyle(
-            color: kTextBoldHeadingColor,
-            fontSize: 14,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-      ],
     );
   }
 }
