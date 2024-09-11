@@ -61,7 +61,7 @@ class CheckoutPropertyController extends GetxController {
   goHome() async {
     await Get.offAll(
       () => LoadingScreen(
-        loadData: LoadingController.instance.loadBottomNavgiationView,
+        loadData: LoadingController.instance.loadHome,
       ),
       routeName: "/bottom-navigation-view",
       fullscreenDialog: true,

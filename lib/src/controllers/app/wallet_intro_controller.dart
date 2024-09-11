@@ -131,7 +131,7 @@ class WalletIntroController extends GetxController {
         () => LoadingScreen(
           loadData: LoadingController.instance.loadWalletTab,
         ),
-        routeName: "/bottom-navigation-view",
+        routeName: "/loading-screen",
         fullscreenDialog: true,
         curve: Curves.easeInOut,
         predicate: (routes) => false,

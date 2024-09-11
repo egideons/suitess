@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:suitess/main.dart';
 import 'package:suitess/src/constants/assets.dart';
 import 'package:suitess/src/constants/consts.dart';
 import 'package:suitess/src/routes/routes.dart';
@@ -23,6 +24,7 @@ class ProfileScreenScaffold extends GetView<ProfileScreenController> {
     // var media = MediaQuery.of(context).size;
     var colorScheme = Theme.of(context).colorScheme;
     var user = UserController.instance.userModel.value.data;
+    var hasBusiness = prefs.getBool("hasBusiness") ?? false;
 
     return Scaffold(
       backgroundColor: colorScheme.surface,
@@ -217,10 +219,15 @@ class ProfileScreenScaffold extends GetView<ProfileScreenController> {
                           colorScheme,
                           title: "My Business",
                           nav: () {
-                            // Get.toNamed(
-                            //   Routes.myBusiness,
-                            //   preventDuplicates: true,
-                            // );
+                            hasBusiness
+                                ? Get.toNamed(
+                                    Routes.myBusiness,
+                                    preventDuplicates: true,
+                                  )
+                                : Get.toNamed(
+                                    Routes.businessIntro,
+                                    preventDuplicates: true,
+                                  );
                           },
                         ),
                         Divider(

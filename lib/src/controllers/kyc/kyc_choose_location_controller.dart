@@ -382,7 +382,7 @@ class KycAddLocationController extends GetxController {
 
       await Get.offAll(
         () => LoadingScreen(
-          loadData: LoadingController.instance.loadBottomNavgiationView,
+          loadData: LoadingController.instance.loadHome,
         ),
         routeName: "/loading-screen",
         fullscreenDialog: true,
@@ -399,7 +399,7 @@ class KycAddLocationController extends GetxController {
   skipPage() async {
     await Get.offAll(
       () => LoadingScreen(
-        loadData: LoadingController.instance.loadBottomNavgiationView,
+        loadData: LoadingController.instance.loadHome,
       ),
       routeName: "/loading-screen",
       fullscreenDialog: true,

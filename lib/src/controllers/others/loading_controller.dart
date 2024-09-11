@@ -15,7 +15,7 @@ class LoadingController extends GetxController {
   var isLoading = false.obs;
 
 //============= Load BottomNavView =============\\
-  loadBottomNavgiationView() async {
+  loadHome() async {
     isLoading.value = true;
     update();
 
@@ -23,7 +23,7 @@ class LoadingController extends GetxController {
 
     await Get.offAll(
       () => const BottomNavigationView(),
-      routeName: "/bottom-navigation-view",
+      routeName: "/home",
       fullscreenDialog: true,
       curve: Curves.easeInOut,
       predicate: (routes) => false,
@@ -41,13 +41,31 @@ class LoadingController extends GetxController {
 
     await Get.offAll(
       () => const BottomNavigationView(currentIndex: 1),
-      routeName: "/bottom-navigation-view",
+      routeName: "/wallet",
       fullscreenDialog: true,
       curve: Curves.easeInOut,
       predicate: (routes) => false,
       popGesture: false,
       transition: Get.defaultTransition,
     );
+
+    isLoading.value = true;
+    update();
+  }
+
+  loadMyBusiness() async {
+    isLoading.value = true;
+    update();
+
+    // await Get.off(
+    //   () => const MyBusinessScreen(),
+    //   routeName: "/my-business",
+    //   fullscreenDialog: true,
+    //   curve: Curves.easeInOut,
+    //   preventDuplicates: true,
+    //   popGesture: false,
+    //   transition: Get.defaultTransition,
+    // );
 
     isLoading.value = true;
     update();

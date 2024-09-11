@@ -60,6 +60,9 @@ class Assets {
   static const goldBadge3DSvg = "assets/icons/svg/3d-gold_badge.svg";
   static const imageOutlineSvg = "assets/icons/svg/image-outline.svg";
   static const imageFilledSvg = "assets/icons/svg/image-filled.svg";
+  static const building03FilledSvg = "assets/icons/svg/building_03-filled.svg";
+  static const briefcaseDollarFilledSvg =
+      "assets/icons/svg/briefcase-dollar-filled.svg";
 
 //=================== Images ===================\\
 

@@ -22,6 +22,7 @@ import '../../app/bottom_nav_view/screen/bottom_navigation_view.dart';
 import '../../app/kyc/kyc_bvn/screen/kyc_bvn.dart';
 import '../../app/kyc/kyc_bvn_otp/screen/kyc_bvn_otp.dart';
 import '../../app/kyc/kyc_nin/screen/kyc_nin.dart';
+import '../../app/my _business/business_intro/screen/business_intro_screen.dart';
 import '../../app/screens/bid_details/screen/bid_details.dart';
 import '../../app/screens/chat/screen/chat_screen.dart';
 import '../../app/screens/messages/screen/messages_screen.dart';
@@ -119,6 +120,7 @@ class Routes {
   static const passwordSettings = "/password-settings";
   static const walletInformation = "/wallet-information";
   static const accountType = "/account-type";
+  static const businessIntro = "/business-intro";
   static const myBusiness = "/my-business";
   static const recentlyViewed = "/recently-viewed";
   static const scheduledAppointments = "/scheduled-appointments";
@@ -155,27 +157,30 @@ class Routes {
         name: resetPasswordViaSmsOTP,
         page: () => const ResetPasswordViaSMSOTP()),
     GetPage(name: resetPassword, page: () => const ResetPassword()),
-
-    //KYC Pages
     GetPage(name: kycAddLocation, page: () => const KycAddLocation()),
     GetPage(name: kycBvn, page: () => const KycBvn()),
     GetPage(name: kycBvnOTP, page: () => const KycBvnOTP()),
     GetPage(name: kycNin, page: () => const KycNIN()),
     GetPage(name: kyProfilePhoto, page: () => const KycProfilePhoto()),
 
-    //Main App Section
+    //Home Section
     GetPage(name: bottomNavView, page: () => const BottomNavigationView()),
     GetPage(name: homeScreen, page: () => const HomeScreen()),
     GetPage(name: notificationsScreen, page: () => const NotificationsScreen()),
     GetPage(name: viewProperty, page: () => const ViewProperty()),
+    GetPage(name: bidDetails, page: () => const BidDetails()),
     GetPage(name: bookAppointment, page: () => const BookAppointmentScreen()),
     GetPage(name: purchaseProperty, page: () => const PurchasePropertyScreen()),
     GetPage(name: checkoutProperty, page: () => const CheckoutPropertyScreen()),
     GetPage(name: successScreen, page: () => const SuccessScreen()),
     GetPage(name: searchScreen, page: () => const SearchScreen()),
+
+    //Messages Section
     GetPage(name: messagesScreen, page: () => const MessagesScreen()),
     GetPage(name: chatScreen, page: () => const ChatScreen()),
     // GetPage(name: callScreen, page: () => const CallScreen()),
+
+    //Wallet Section
     GetPage(name: walletIntroScreen, page: () => const WalletIntroScreen()),
     GetPage(name: walletScreen, page: () => const WalletScreen()),
     GetPage(name: transferOptions, page: () => const TransferOptions()),
@@ -183,6 +188,8 @@ class Routes {
     GetPage(name: bankTransfer, page: () => const BankTransferScreen()),
     GetPage(name: airtimePurchase, page: () => const AirtimePurchaseScreen()),
     GetPage(name: mobileData, page: () => const MobileDataScreen()),
+
+    //Profile Section
     GetPage(name: profileScreen, page: () => const ProfileScreen()),
     GetPage(name: contactDetails, page: () => const ContactDetails()),
     GetPage(name: passwordSettings, page: () => const PasswordSettingsScreen()),
@@ -206,8 +213,9 @@ class Routes {
       page: () => const SupportAndFeedbackScreen(),
     ),
 
+    //Business Section
+    GetPage(name: businessIntro, page: () => const BusinessIntroScreen()),
+    // GetPage(name: myBusiness, page: () => const MyBusinessScreen()),
     GetPage(name: landLordAddProperty, page: () => const LandLordAddProperty()),
-    GetPage(name: viewProperty, page: () => const ViewProperty()),
-    GetPage(name: bidDetails, page: () => const BidDetails()),
   ];
 }
