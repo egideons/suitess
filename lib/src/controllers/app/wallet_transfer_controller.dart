@@ -124,10 +124,11 @@ class WalletTransferController extends GetxController {
   }
 
   //================ Scroll to Top =================//
-  void scrollToTop() {
-    scrollController.animateTo(0,
-        duration: const Duration(seconds: 1), curve: Curves.fastOutSlowIn);
-  }
+  void scrollToTop() => scrollController.animateTo(
+        0,
+        duration: const Duration(seconds: 1),
+        curve: Curves.fastOutSlowIn,
+      );
 
 //Wallet Onchanged
   walletOnChanged(String value) async {

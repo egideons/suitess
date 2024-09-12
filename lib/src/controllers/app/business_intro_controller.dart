@@ -29,18 +29,25 @@ class BusinessIntroController extends GetxController {
   //================== Keys ====================\\
   final formKey = GlobalKey<FormState>();
 
-  //================ variables =================\\
+  //================ Variables =================\\
   var isScrollToTopBtnVisible = false.obs;
 
-  //================ controllers =================\\
+  //================ Fontrollers =================\\
+  var businessNameEC = TextEditingController();
+  var businessTINEC = TextEditingController();
   var pageController = PageController();
   var scrollController = ScrollController();
 
+  //================ Focus Nodes =================\\
+  var businessNameFN = FocusNode();
+  var businessTINFN = FocusNode();
+
 //================ Scroll to Top =================//
-  void scrollToTop() {
-    scrollController.animateTo(0,
-        duration: const Duration(seconds: 1), curve: Curves.fastOutSlowIn);
-  }
+  void scrollToTop() => scrollController.animateTo(
+        0,
+        duration: const Duration(seconds: 1),
+        curve: Curves.fastOutSlowIn,
+      );
 
 //================ Scroll Listener =================//
 

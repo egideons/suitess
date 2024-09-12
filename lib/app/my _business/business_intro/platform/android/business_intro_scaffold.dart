@@ -55,7 +55,7 @@ class BusinessIntroScaffold extends GetView<BusinessIntroController> {
             ),
           ),
           kSizedBox,
-          businessCategory(
+          businessCategoryOption(
             colorScheme,
             image: Assets.landsAndPropertiesPng,
             title: "Lands and Properties",
@@ -63,7 +63,7 @@ class BusinessIntroScaffold extends GetView<BusinessIntroController> {
                 "Advertise and manage sales, rentals, or leases for lands, apartments, workspaces, shops, and more.",
           ),
           kSizedBox,
-          businessCategory(
+          businessCategoryOption(
             colorScheme,
             image: Assets.hotelBuildingPng,
             title: "Hotel Management",
@@ -76,7 +76,7 @@ class BusinessIntroScaffold extends GetView<BusinessIntroController> {
     );
   }
 
-  businessCategory(
+  businessCategoryOption(
     ColorScheme colorScheme, {
     void Function()? onTap,
     String? image,

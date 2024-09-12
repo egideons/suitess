@@ -73,10 +73,11 @@ class HomeScreenController extends GetxController {
   }
 
   //================ Scroll to Top =================//
-  void scrollToTop() {
-    scrollController.animateTo(0,
-        duration: const Duration(seconds: 1), curve: Curves.fastOutSlowIn);
-  }
+  void scrollToTop() => scrollController.animateTo(
+        0,
+        duration: const Duration(seconds: 1),
+        curve: Curves.fastOutSlowIn,
+      );
 
   void selectPropertyCategory(int index) {
     for (int i = 0; i < propertyCategories.length; i++) {
