@@ -94,6 +94,9 @@ class Assets {
   static const duplex4 = "assets/images/png/duplex4.png";
   static const visaPng = "assets/images/png/visa.png";
   static const mastercardPng = "assets/images/png/mastercard.png";
+  static const hotelBuildingPng = "assets/images/png/hotel_building.png";
+  static const landsAndPropertiesPng =
+      "assets/images/png/lands_and_properties.png";
 
 //======== SVG =========\\
   static const onboarding1Svg = "assets/images/svg/onboarding_1.svg";

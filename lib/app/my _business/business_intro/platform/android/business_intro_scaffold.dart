@@ -1,13 +1,11 @@
-import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 import '../../../../../src/constants/assets.dart';
 import '../../../../../src/constants/consts.dart';
 import '../../../../../src/controllers/app/business_intro_controller.dart';
-import '../../../../../src/utils/buttons/android/android_elevated_button.dart';
 import '../../../../../theme/colors.dart';
+import '../../content/business_intro_page_1.dart';
 
 class BusinessIntroScaffold extends GetView<BusinessIntroController> {
   const BusinessIntroScaffold({super.key});
@@ -23,67 +21,122 @@ class BusinessIntroScaffold extends GetView<BusinessIntroController> {
         physics: const NeverScrollableScrollPhysics(),
         children: [
           businessIntroPage1(colorScheme, controller),
+          businessIntroPage2(colorScheme, controller),
+          businessIntroPage3(colorScheme, controller),
         ],
       ),
     );
   }
 
-  businessIntroPage1(
-      ColorScheme colorScheme, BusinessIntroController controller) {
-    return Column(
-      children: [
-        Expanded(
-          child: Container(
-            decoration: BoxDecoration(color: kGreenFrameBackgroundColor),
-            child: Center(
-              child: FadeInDown(
-                child: SvgPicture.asset(
-                  Assets.briefcaseDollarFilledSvg,
-                  color: kAccentColor,
-                  height: 120,
-                  width: 120,
-                ),
-              ),
+  businessIntroPage2(
+    ColorScheme colorScheme,
+    BusinessIntroController controller,
+  ) {
+    return Container(
+      padding: const EdgeInsets.all(10),
+      decoration: ShapeDecoration(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+          side: BorderSide(
+            width: .5,
+            color: colorScheme.inversePrimary.withOpacity(.4),
+          ),
+        ),
+      ),
+      child: Column(
+        children: [
+          Text(
+            "Choose your preferred business category",
+            textAlign: TextAlign.center,
+            style: defaultTextStyle(
+              color: kTextBoldHeadingColor,
+              fontSize: 18,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          kSizedBox,
+          businessCategory(
+            colorScheme,
+            image: Assets.landsAndPropertiesPng,
+            title: "Lands and Properties",
+            subtitle:
+                "Advertise and manage sales, rentals, or leases for lands, apartments, workspaces, shops, and more.",
+          ),
+          kSizedBox,
+          businessCategory(
+            colorScheme,
+            image: Assets.hotelBuildingPng,
+            title: "Hotel Management",
+            subtitle:
+                "List your hotels for bookings and manage all your hotel activities effortlessly.",
+          ),
+          kSizedBox,
+        ],
+      ),
+    );
+  }
+
+  businessCategory(
+    ColorScheme colorScheme, {
+    void Function()? onTap,
+    String? image,
+    String? title,
+    String? subtitle,
+  }) {
+    return InkWell(
+      onTap: onTap ?? () {},
+      borderRadius: BorderRadius.circular(10),
+      child: Container(
+        padding: const EdgeInsets.all(10),
+        decoration: ShapeDecoration(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+            side: BorderSide(
+              width: .5,
+              color: colorScheme.inversePrimary.withOpacity(.4),
             ),
           ),
         ),
-        Container(
-          decoration: BoxDecoration(color: colorScheme.surface),
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 60),
-          child: FadeInUp(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
+        child: Row(
+          children: [
+            Image.asset(image ?? Assets.landsAndPropertiesPng),
+            Column(
               children: [
                 Text(
-                  "Ready to Start Your Business?",
-                  textAlign: TextAlign.center,
-                  style: defaultTextStyle(
-                    color: kTextBoldHeadingColor,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                kSizedBox,
-                Text(
-                  "Create your business with us today and start managing hotels, advertising, and selling lands and properties",
-                  maxLines: 10,
-                  textAlign: TextAlign.center,
+                  title ?? "",
+                  textAlign: TextAlign.start,
                   style: defaultTextStyle(
                     color: kTextBoldHeadingColor,
                     fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                Text(
+                  subtitle ?? "",
+                  textAlign: TextAlign.start,
+                  style: defaultTextStyle(
+                    color: kTextBoldHeadingColor,
+                    fontSize: 12,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
-                kBigSizedBox,
-                AndroidElevatedButton(
-                  title: "Get Started",
-                  onPressed: controller.navigateToPage2,
-                )
               ],
             ),
-          ),
+          ],
         ),
-      ],
+      ),
+    );
+  }
+
+  businessIntroPage3(
+    ColorScheme colorScheme,
+    BusinessIntroController controller,
+  ) {
+    return Form(
+      key: controller.formKey,
+      child: const Column(
+        children: [],
+      ),
     );
   }
 }

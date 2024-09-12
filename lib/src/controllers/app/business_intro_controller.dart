@@ -64,6 +64,14 @@ class BusinessIntroController extends GetxController {
     );
   }
 
+  navigateToPage3() {
+    pageController.animateToPage(
+      2,
+      duration: const Duration(milliseconds: 500),
+      curve: Curves.easeInOut,
+    );
+  }
+
   Future<void> submitForm() async {
     if (formKey.currentState!.validate()) {
       formKey.currentState!.save();

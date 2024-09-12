@@ -182,6 +182,8 @@ class SignupController extends GetxController {
 
       Map signupData = {
         "fullname": "${firstNameEC.text} ${lastNameEC.text}",
+        "first_name": firstNameEC.text,
+        "last_name": lastNameEC.text,
         "phone": phoneNumberEC.text,
         "email": emailEC.text,
         "password": passwordEC.text,

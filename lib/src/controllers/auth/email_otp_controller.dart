@@ -61,6 +61,7 @@ class EmailOTPController extends GetxController {
   //=========== Booleans ===========\\
   var secondsRemaining = 30.obs;
   var isLoading = false.obs;
+  var isLoggingIn = false.obs;
   var formIsValid = false.obs;
   var timerComplete = false.obs;
 
@@ -302,11 +303,22 @@ class EmailOTPController extends GetxController {
       otpResponse.value = VerifyOTPResponseModel.fromJson(responseJson);
 
       if (response.statusCode == 200) {
+        // Attempt to log the user in
+        bool loginSuccess = await loginUser();
+
+        // Check if loginUser returned false
+        if (!loginSuccess) {
+          ApiProcessorController.errorSnack(
+            "Verification failed, please try again later.",
+          );
+          // Ensure loading state is updated before returning
+          isLoading.value = false;
+          return;
+        }
+
         ApiProcessorController.successSnack(
           "Verification successful",
         );
-        await loginUser();
-
         await Get.offAll(
           () => const KycAddLocation(),
           routeName: "/kyc-add-location",
@@ -334,7 +346,7 @@ class EmailOTPController extends GetxController {
     startTimer();
   }
 
-  Future<void> loginUser() async {
+  Future<bool> loginUser() async {
     var url = ApiUrl.authBaseUrl + ApiUrl.auth + ApiUrl.login;
 
     Map data = {
@@ -356,8 +368,8 @@ class EmailOTPController extends GetxController {
     // );
 
     if (response == null) {
-      isLoading.value = false;
-      return;
+      isLoggingIn.value = false;
+      return false;
     }
 
     try {
@@ -382,12 +394,18 @@ class EmailOTPController extends GetxController {
         );
 
         log("User has logged in successfully");
+        isLoggingIn.value = false;
+        return true;
       } else {
         log("Request failed with status: ${response.statusCode}");
         log("Response body: ${response.body}");
+        isLoggingIn.value = false;
+        return false;
       }
     } catch (e) {
       log(e.toString());
+      isLoggingIn.value = false;
+      return false;
     }
   }
 }
