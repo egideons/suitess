@@ -63,6 +63,13 @@ class BusinessIntroController extends GetxController {
   }
 
   //=========== Page 1 ============\\
+  navigateToPreviousPage() {
+    pageController.previousPage(
+      duration: const Duration(milliseconds: 500),
+      curve: Curves.easeInOut,
+    );
+  }
+
   navigateToPage2() {
     pageController.animateToPage(
       1,

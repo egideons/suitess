@@ -297,17 +297,17 @@ class LoginController extends GetxController {
 
       prefs.setBool("hasBeenVerifiedEmailOnSignup", true);
 
-      // await Get.offAll(
-      //   () => LoadingScreen(
-      //     loadData: LoadingController.instance.loadHome,
-      //   ),
-      //   routeName: "/loading-screen",
-      //   fullscreenDialog: true,
-      //   curve: Curves.easeInOut,
-      //   predicate: (routes) => false,
-      //   popGesture: false,
-      //   transition: Get.defaultTransition,
-      // );
+      await Get.offAll(
+        () => LoadingScreen(
+          loadData: LoadingController.instance.loadHome,
+        ),
+        routeName: "/loading-screen",
+        fullscreenDialog: true,
+        curve: Curves.easeInOut,
+        predicate: (routes) => false,
+        popGesture: false,
+        transition: Get.defaultTransition,
+      );
 
       isLoadingGoogleLogin.value = false;
       update();
