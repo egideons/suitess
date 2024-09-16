@@ -67,7 +67,6 @@ class HomeScreenScaffold extends GetView<HomeScreenController> {
           backgroundColor: colorScheme.surface,
           color: colorScheme.inversePrimary,
           child: Scrollbar(
-            controller: controller.scrollController,
             child: GetBuilder<HomeScreenController>(
               init: HomeScreenController(),
               builder: (controller) {

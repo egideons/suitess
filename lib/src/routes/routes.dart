@@ -3,6 +3,7 @@ import 'package:suitess/app/auth/email_otp/screen/email_otp.dart';
 import 'package:suitess/app/auth/signup/screen/signup.dart';
 import 'package:suitess/app/kyc/kyc_add_location/screen/kyc_add_location.dart';
 import 'package:suitess/app/kyc/kyc_profile_photo/screen/kyc_profile_photo.dart';
+import 'package:suitess/app/my%20_business/lands_and_properties/properties_home/screen/lands_and_properties_screen.dart';
 import 'package:suitess/app/onboarding/screen/onboarding.dart';
 import 'package:suitess/app/screens/home/screen/home_screen.dart';
 import 'package:suitess/app/screens/notifications/screen/notifications.dart';
@@ -121,7 +122,8 @@ class Routes {
   static const walletInformation = "/wallet-information";
   static const accountType = "/account-type";
   static const businessIntro = "/business-intro";
-  static const myBusiness = "/my-business";
+  static const landsAndProperties = "/lands-and-properties";
+  static const hotelManagement = "/hotel-management";
   static const recentlyViewed = "/recently-viewed";
   static const scheduledAppointments = "/scheduled-appointments";
   static const transactionsAndOffers = "/transactions-and-offers";
@@ -215,7 +217,11 @@ class Routes {
 
     //Business Section
     GetPage(name: businessIntro, page: () => const BusinessIntroScreen()),
-    // GetPage(name: myBusiness, page: () => const MyBusinessScreen()),
+    GetPage(
+      name: landsAndProperties,
+      page: () => const LandsAndPropertiesScreen(),
+    ),
+    // GetPage(name: hotelManagement, page: () => const HotelManagementScreen()),
     GetPage(name: landLordAddProperty, page: () => const LandLordAddProperty()),
   ];
 }

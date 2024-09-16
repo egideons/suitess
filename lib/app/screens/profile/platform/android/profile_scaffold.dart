@@ -25,6 +25,8 @@ class ProfileScreenScaffold extends GetView<ProfileScreenController> {
     var colorScheme = Theme.of(context).colorScheme;
     var user = UserController.instance.userModel.value.data;
     var hasBusiness = prefs.getBool("hasBusiness") ?? false;
+    var businessIsLandsAndProperties =
+        prefs.getBool("businessIsLandsAndProperties") ?? false;
 
     return Scaffold(
       backgroundColor: colorScheme.surface,
@@ -219,15 +221,22 @@ class ProfileScreenScaffold extends GetView<ProfileScreenController> {
                           colorScheme,
                           title: "My Business",
                           nav: () {
-                            hasBusiness
-                                ? Get.toNamed(
-                                    Routes.myBusiness,
-                                    preventDuplicates: true,
-                                  )
-                                : Get.toNamed(
-                                    Routes.businessIntro,
-                                    preventDuplicates: true,
-                                  );
+                            if (hasBusiness) {
+                              businessIsLandsAndProperties
+                                  ? Get.toNamed(
+                                      Routes.landsAndProperties,
+                                      preventDuplicates: true,
+                                    )
+                                  : Get.toNamed(
+                                      Routes.hotelManagement,
+                                      preventDuplicates: true,
+                                    );
+                            } else {
+                              Get.toNamed(
+                                Routes.businessIntro,
+                                preventDuplicates: true,
+                              );
+                            }
                           },
                         ),
                         Divider(

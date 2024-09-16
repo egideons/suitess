@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:suitess/app/my%20_business/lands_and_properties/properties_home/screen/lands_and_properties_screen.dart';
 
 import '../../../app/auth/login/screen/login.dart';
 import '../../../app/bottom_nav_view/screen/bottom_navigation_view.dart';
@@ -53,7 +54,25 @@ class LoadingController extends GetxController {
     update();
   }
 
-  loadMyBusiness() async {
+  loadLandsAndProperties() async {
+    isLoading.value = true;
+    update();
+
+    await Get.off(
+      () => const LandsAndPropertiesScreen(),
+      routeName: "/lands-and-properties",
+      fullscreenDialog: true,
+      curve: Curves.easeInOut,
+      preventDuplicates: true,
+      popGesture: false,
+      transition: Get.defaultTransition,
+    );
+
+    isLoading.value = true;
+    update();
+  }
+
+  loadHotelManagement() async {
     isLoading.value = true;
     update();
 

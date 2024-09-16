@@ -2,7 +2,6 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:suitess/app/screens/profile/content/select_profile_pic_modal.dart';
@@ -171,10 +170,10 @@ class ProfileScreenController extends GetxController {
     var userToken = prefs.getString("userToken") ?? "";
 
     //HTTP Client Service
-    var streamedResponse = await HttpClientService.putRequestWithFile(
-      url,
-      userToken,
-      selectedProfileImage!,
+    var streamedResponse = await HttpClientService.updateProfile(
+      url: url,
+      token: userToken,
+      profileImage: selectedProfileImage,
     );
 
     if (streamedResponse == null) {
@@ -183,14 +182,11 @@ class ProfileScreenController extends GetxController {
       return;
     }
 
-    // Convert the streamed response to a regular response to read the body
-    var response = await http.Response.fromStream(streamedResponse);
-
     // Log the status code and response body
-    log("Response status code: ${response.statusCode}");
-    log("Response body: ${response.body}");
+    log("Response status code: ${streamedResponse.statusCode}");
+    log("Response body: ${streamedResponse.body}");
 
-    if (response.statusCode == 200) {
+    if (streamedResponse.statusCode == 200) {
       profilePicIsUploaded.value = true;
       ApiProcessorController.successSnack(
         "Profile picture uploaded successfully",

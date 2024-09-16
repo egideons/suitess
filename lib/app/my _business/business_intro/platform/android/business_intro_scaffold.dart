@@ -21,7 +21,7 @@ class BusinessIntroScaffold extends GetView<BusinessIntroController> {
         children: [
           businessIntroPage1(colorScheme, controller),
           businessIntroPage2(media, colorScheme, controller),
-          businessIntroPage3(colorScheme, controller),
+          businessIntroPage3(media, colorScheme, controller),
         ],
       ),
     );

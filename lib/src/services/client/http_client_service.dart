@@ -5,6 +5,7 @@ import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:http_parser/http_parser.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:path/path.dart';
 
 String header = "application/json";
 const content = "application/x-www-form-urlencoded";
@@ -102,14 +103,14 @@ class HttpClientService {
     return response;
   }
 
-  static Future<http.StreamedResponse?> putRequestWithFile(
+  static Future<http.StreamedResponse?> uploadProfilePicture(
     String url,
     String token,
     XFile file,
   ) async {
     http.StreamedResponse? response;
     try {
-      var request = http.MultipartRequest('PUT', Uri.parse(url));
+      var request = http.MultipartRequest('POST', Uri.parse(url));
       request.headers.addAll({
         HttpHeaders.authorizationHeader: "Bearer $token",
         HttpHeaders.contentTypeHeader: "multipart/form-data",
@@ -132,5 +133,60 @@ class HttpClientService {
       log("Error uploading profile image: $e");
     }
     return response;
+  }
+
+  static Future<http.Response?> updateProfile({
+    required String url,
+    required String token,
+    XFile? profileImage,
+    String? businessName,
+    String? address,
+    String? phone,
+  }) async {
+    try {
+      var request = http.MultipartRequest('POST', Uri.parse(url));
+
+      // Add the authorization token
+      request.headers[HttpHeaders.authorizationHeader] = 'Bearer $token';
+
+      // Add the text fields
+      if (businessName != null) {
+        request.fields['business_name'] = businessName;
+      }
+      if (address != null) {
+        request.fields['address'] = address;
+      }
+      if (phone != null) {
+        request.fields['phone'] = phone;
+      }
+
+      // Add the profile image file if provided
+      if (profileImage != null) {
+        var stream = http.ByteStream(profileImage.openRead());
+        var length = await profileImage.length();
+        var multipartFile = http.MultipartFile(
+          'profile_image', // The key for the image field
+          stream,
+          length,
+          filename: basename(profileImage.path),
+          contentType: MediaType(
+            'image',
+            'jpeg',
+          ), // Or 'png', depending on the file type
+        );
+        request.files.add(multipartFile);
+      }
+
+      // Send the request
+      var streamedResponse = await request.send();
+      var response = await http.Response.fromStream(streamedResponse);
+
+      log("This is the response body ===> ${response.body}");
+
+      return response;
+    } catch (e) {
+      log("Error occurred: $e");
+      return null;
+    }
   }
 }

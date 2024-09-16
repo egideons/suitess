@@ -286,28 +286,28 @@ class LoginController extends GetxController {
 
       // await FirebaseAuth.instance.signInWithCredential(credential);
 
-      ApiProcessorController.successSnack("Login successful");
+      // ApiProcessorController.successSnack("Login successful");
 
-      if (rememberMe.value == true) {
-        //Save state that the user has logged in
-        prefs.setBool("isLoggedIn", true);
-      } else {
-        prefs.setBool("isLoggedIn", false);
-      }
+      // if (rememberMe.value == true) {
+      //   //Save state that the user has logged in
+      //   prefs.setBool("isLoggedIn", true);
+      // } else {
+      //   prefs.setBool("isLoggedIn", false);
+      // }
 
-      prefs.setBool("hasBeenVerifiedEmailOnSignup", true);
+      // prefs.setBool("hasBeenVerifiedEmailOnSignup", true);
 
-      await Get.offAll(
-        () => LoadingScreen(
-          loadData: LoadingController.instance.loadHome,
-        ),
-        routeName: "/loading-screen",
-        fullscreenDialog: true,
-        curve: Curves.easeInOut,
-        predicate: (routes) => false,
-        popGesture: false,
-        transition: Get.defaultTransition,
-      );
+      // await Get.offAll(
+      //   () => LoadingScreen(
+      //     loadData: LoadingController.instance.loadHome,
+      //   ),
+      //   routeName: "/loading-screen",
+      //   fullscreenDialog: true,
+      //   curve: Curves.easeInOut,
+      //   predicate: (routes) => false,
+      //   popGesture: false,
+      //   transition: Get.defaultTransition,
+      // );
 
       isLoadingGoogleLogin.value = false;
       update();

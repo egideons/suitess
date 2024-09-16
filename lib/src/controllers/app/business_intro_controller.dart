@@ -2,6 +2,9 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:suitess/app/splash/loading/screen/loading_screen.dart';
+import 'package:suitess/main.dart';
+import 'package:suitess/src/controllers/others/loading_controller.dart';
 
 import '../others/api_processor_controller.dart';
 
@@ -25,6 +28,7 @@ class BusinessIntroController extends GetxController {
   //================== Booleans ====================\\
   var isFormValid = false.obs;
   var isLoading = false.obs;
+  var businessIsLandsAndProperties = false.obs;
 
   //================== Keys ====================\\
   final formKey = GlobalKey<FormState>();
@@ -78,55 +82,126 @@ class BusinessIntroController extends GetxController {
     );
   }
 
-  navigateToPage3() {
-    pageController.animateToPage(
-      2,
-      duration: const Duration(milliseconds: 500),
-      curve: Curves.easeInOut,
-    );
+  navigateToPage3(bool value) {
+    businessIsLandsAndProperties.value = value;
+
+    log("Selected option is lands and properties: $value");
+    log("Selected option is lands and properties: ${businessIsLandsAndProperties.value}");
+
+    if (businessIsLandsAndProperties.value == true) {
+      pageController.animateToPage(
+        2,
+        duration: const Duration(milliseconds: 500),
+        curve: Curves.easeInOut,
+      );
+    } else {
+      ApiProcessorController.warningSnack("This option is not yet available");
+    }
+  }
+
+  onFieldSubmitted(value) {
+    submitForm();
   }
 
   Future<void> submitForm() async {
     if (formKey.currentState!.validate()) {
       formKey.currentState!.save();
-      // if (bvnEC.text.isEmpty) {
-      //   ApiProcessorController.warningSnack("Please enter your BVN");
-      //   return;
-      // } else if (bvnEC.text.length != 11) {
-      //   ApiProcessorController.warningSnack("Please enter a valid BVN");
-      //   return;
-      // } else if (phoneNumberEC.text.isEmpty) {
-      //   ApiProcessorController.warningSnack("Please enter your phone number");
-      //   return;
-      // } else if (isPhoneNumberValid.value == false) {
-      //   ApiProcessorController.warningSnack(
-      //       "Please enter a valid phone number");
-      //   return;
-      // } else if (dobEC.text.isEmpty) {
-      //   ApiProcessorController.warningSnack("Please select your Date of Birth");
+      if (businessNameEC.text.isEmpty) {
+        ApiProcessorController.warningSnack("Please enter your business name");
+        return;
+      } else if (businessNameEC.text.length < 3) {
+        ApiProcessorController.warningSnack(
+          "Please enter a valid business name",
+        );
+        return;
+      }
+
+      isLoading.value = true;
+
+      await Future.delayed(const Duration(seconds: 1));
+
+      if (businessIsLandsAndProperties.value == true) {
+        goToLandsAndProperties();
+      } else {
+        goToHotelManagement();
+      }
+
+      // // URL and token for the request
+      // var url = ApiUrl.authBaseUrl + ApiUrl.auth + ApiUrl.profile;
+      // var userToken = prefs.getString("userToken") ?? "";
+
+      // //HTTP Client Service
+      // var streamedResponse = await HttpClientService.updateProfile(
+      //   url: url,
+      //   token: userToken,
+      //   businessName: businessNameEC.text,
+      // );
+
+      // if (streamedResponse == null) {
+      //   isLoading.value = false;
+      //   ApiProcessorController.errorSnack("Failed to create business");
       //   return;
       // }
 
-      log("Got here");
+      // // Log the status code and response body
+      // log("Response status code: ${streamedResponse.statusCode}");
+      // log("Response body: ${streamedResponse.body}");
 
-      isLoading.value = true;
-      await Future.delayed(const Duration(seconds: 3));
+      // if (streamedResponse.statusCode == 200) {
+      //   ApiProcessorController.successSnack("Business created successfully");
 
-      ApiProcessorController.successSnack("Business created successfully");
+      //   if (businessIsLandsAndProperties.value == true) {
+      //     goToLandsAndProperties();
+      //   } else {
+      //     goToHotelManagement();
+      //   }
+      //   // await UserController.instance.getUserProfile();
+      // } else {
+      //   ApiProcessorController.errorSnack("Failed to create business");
+      // }
+
       isLoading.value = false;
-
-      // prefs.setBool("hasBusiness", true);
-
-      // await Get.off(
-      //   () => LoadingScreen(
-      //     loadData: LoadingController.instance.loadMyBusiness,
-      //   ),
-      //   routeName: "/loading-screen",
-      //   fullscreenDialog: true,
-      //   curve: Curves.easeInOut,
-      //   popGesture: false,
-      //   transition: Get.defaultTransition,
-      // );
     }
+  }
+
+  goToLandsAndProperties() async {
+    prefs.setBool("hasBusiness", true);
+    prefs.setBool(
+      "businessIsLandsAndProperties",
+      businessIsLandsAndProperties.value,
+    );
+    prefs.setString("nameOfBusiness", businessNameEC.text);
+
+    await Get.off(
+      () => LoadingScreen(
+        loadData: LoadingController.instance.loadLandsAndProperties,
+      ),
+      routeName: "/loading-screen",
+      fullscreenDialog: true,
+      curve: Curves.easeInOut,
+      popGesture: false,
+      transition: Get.defaultTransition,
+    );
+  }
+
+  goToHotelManagement() async {
+    ApiProcessorController.errorSnack("This option is not yet available");
+    // prefs.setBool("hasBusiness", true);
+    // prefs.setBool(
+    //   "businessIsLandsAndProperties",
+    //   businessIsLandsAndProperties.value,
+    // );
+    // prefs.setString("nameOfBusiness", businessNameEC.text);
+
+    // await Get.off(
+    //   () => LoadingScreen(
+    //     loadData: LoadingController.instance.loadHotelManagement,
+    //   ),
+    //   routeName: "/loading-screen",
+    //   fullscreenDialog: true,
+    //   curve: Curves.easeInOut,
+    //   popGesture: false,
+    //   transition: Get.defaultTransition,
+    // );
   }
 }
