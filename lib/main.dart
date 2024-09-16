@@ -36,13 +36,13 @@ void main() async {
     if (!kReleaseMode) return;
   };
 
-  runApp(const MyApp());
+  runApp(const SuitessApp());
 }
 
 late SharedPreferences prefs;
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class SuitessApp extends StatelessWidget {
+  const SuitessApp({super.key});
 
   // This widget is the root of your application.
   @override
