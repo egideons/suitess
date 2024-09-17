@@ -263,10 +263,7 @@ class AddPropertyController extends GetxController {
       }
 
       try {
-        // Convert to json
-        dynamic responseJson;
-
-        responseJson = jsonDecode(response.body);
+        var responseJson = jsonDecode(response.body);
 
         log("This is the response body ====> ${response.body}");
 

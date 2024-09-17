@@ -32,6 +32,7 @@ class AddPropertyScaffold extends GetView<AddPropertyController> {
       body: SafeArea(
         child: Scrollbar(
           child: ListView(
+            controller: controller.scrollController,
             padding: const EdgeInsets.all(10),
             children: [
               addPropertyForm(colorScheme, media, controller),
