@@ -3,6 +3,7 @@ import 'package:suitess/app/auth/email_otp/screen/email_otp.dart';
 import 'package:suitess/app/auth/signup/screen/signup.dart';
 import 'package:suitess/app/kyc/kyc_add_location/screen/kyc_add_location.dart';
 import 'package:suitess/app/kyc/kyc_profile_photo/screen/kyc_profile_photo.dart';
+import 'package:suitess/app/my%20_business/lands_and_properties/add_property/screen/add_property_screen.dart';
 import 'package:suitess/app/my%20_business/lands_and_properties/properties_home/screen/lands_and_properties_screen.dart';
 import 'package:suitess/app/onboarding/screen/onboarding.dart';
 import 'package:suitess/app/screens/home/screen/home_screen.dart';
@@ -93,11 +94,7 @@ class Routes {
   static const purchaseProperty = "/purchase-property";
   static const checkoutProperty = "/checkout-property";
   static const searchScreen = "/search";
-  static const landLordWallet = "/landlord-wallet";
-  static const landLordChat = "/landlord-chat";
-  static const landLordProfile = "/landlord-profile";
-  static const landLordAddProperty = "/landlord-add-property";
-  static const bidDetails = "/landlord-bid-details";
+  static const bidDetails = "/bid-details";
 
   //Wallet Section
   static const walletIntroScreen = "/wallet-intro";
@@ -130,6 +127,10 @@ class Routes {
   static const privacyAndSecurity = "/privacy-and-security";
   static const faqs = "/faqs";
   static const supportAndFeedback = "/support-and-feedback";
+
+  //Business Section
+  static const addProperty = "/add-property";
+  static const updateProperty = "/update-property";
 
   //========================= GET PAGES ==========================\\
   static final getPages = [
@@ -220,6 +221,8 @@ class Routes {
       name: landsAndProperties,
       page: () => const LandsAndPropertiesScreen(),
     ),
+    GetPage(name: addProperty, page: () => const AddPropertyScreen()),
+    // GetPage(name: updateProperty, page: () => const UpdatePropertyScreen()),
     // GetPage(name: hotelManagement, page: () => const HotelManagementScreen()),
     // GetPage(name: landLordAddProperty, page: () => const LandLordAddProperty()),
   ];

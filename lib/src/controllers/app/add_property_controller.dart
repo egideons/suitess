@@ -1,22 +1,15 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:suitess/main.dart';
 
-import '../../routes/routes.dart';
-import '../auth/user_controller.dart';
-
-class LandsAndPropertiesController extends GetxController {
-  static LandsAndPropertiesController get instance {
-    return Get.find<LandsAndPropertiesController>();
+class AddPropertyController extends GetxController {
+  static AddPropertyController get instance {
+    return Get.find<AddPropertyController>();
   }
 
   @override
   void onInit() {
     super.onInit();
     scrollController.addListener(_scrollListener);
-    WidgetsBinding.instance.addPostFrameCallback((_) async {
-      await UserController.instance.getUserProfile();
-    });
   }
 
   @override
@@ -28,26 +21,9 @@ class LandsAndPropertiesController extends GetxController {
   //================ variables =================\\
   var isScrollToTopBtnVisible = false.obs;
   var isRefreshing = false.obs;
-  var hasProperties = false.obs;
-  var hasNotifications = true.obs;
-  var businessName = prefs.getString("businessName") ?? "";
-  var verifyAccountBannerIsVisible = true.obs;
 
   //================ controllers =================\\
-
   var scrollController = ScrollController();
-
-  //================ Handle refresh ================\\
-
-  Future<void> onRefresh() async {
-    isRefreshing.value = true;
-    update();
-
-    await UserController.instance.getUserProfile();
-
-    isRefreshing.value = false;
-    update();
-  }
 
   //================ Scroll to Top =================//
   void scrollToTop() => scrollController.animateTo(
@@ -69,15 +45,5 @@ class LandsAndPropertiesController extends GetxController {
       isScrollToTopBtnVisible.value = false;
       update();
     }
-  }
-
-  void verifyAccount() {}
-
-  void removeVerifyAccountBanner() {
-    verifyAccountBannerIsVisible.value = false;
-  }
-
-  addProperty() {
-    Get.toNamed(Routes.addProperty, preventDuplicates: true);
   }
 }
