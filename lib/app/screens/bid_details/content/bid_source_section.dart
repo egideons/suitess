@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../src/constants/consts.dart';
-import '../../../../src/controllers/app/landlord_bid_detail_controller.dart';
+import '../../../../src/controllers/app/bid_details_controller.dart';
 import '../../../../src/utils/components/circle_avatar_image.dart';
 import '../../../../theme/colors.dart';
 

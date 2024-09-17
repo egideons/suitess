@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:suitess/src/controllers/others/api_processor_controller.dart';
 
 class AddPropertyController extends GetxController {
   static AddPropertyController get instance {
@@ -20,10 +23,40 @@ class AddPropertyController extends GetxController {
 
   //================ variables =================\\
   var isScrollToTopBtnVisible = false.obs;
-  var isRefreshing = false.obs;
+  var isNegotiable = true.obs;
+  var isLoading = false.obs;
+  var state = "".obs;
+  var formkey = GlobalKey<FormState>();
 
   //================ controllers =================\\
   var scrollController = ScrollController();
+
+  var propertyTitleEC = TextEditingController();
+  var propertyTypeEC = TextEditingController();
+  var propertyCategoryEC = TextEditingController();
+  var propertyUnitsEC = TextEditingController();
+  var propertySqrFtEC = TextEditingController();
+  var propertyRoomsEC = TextEditingController();
+  var propertyBathsEC = TextEditingController();
+  var propertyPricingEC = TextEditingController();
+  var propertyDescriptionEC = TextEditingController();
+  var propertyAddressEC = TextEditingController();
+  var propertyStateEC = TextEditingController();
+  var propertyLocalityEC = TextEditingController();
+
+  //================ Focus Nodes =================\\
+  var propertyTitleFN = FocusNode();
+  var propertyTypeFN = FocusNode();
+  var propertyCategoryFN = FocusNode();
+  var propertyUnitsFN = FocusNode();
+  var propertySqrFtFN = FocusNode();
+  var propertyRoomsFN = FocusNode();
+  var propertyBathsFN = FocusNode();
+  var propertyPricingFN = FocusNode();
+  var propertyDescriptionFN = FocusNode();
+  var propertyAddressFN = FocusNode();
+  var propertyStateFN = FocusNode();
+  var propertyLocalityFN = FocusNode();
 
   //================ Scroll to Top =================//
   void scrollToTop() => scrollController.animateTo(
@@ -38,12 +71,155 @@ class AddPropertyController extends GetxController {
     //========= Show action button ========//
     if (scrollController.position.pixels >= 150) {
       isScrollToTopBtnVisible.value = true;
-      update();
     }
     //========= Hide action button ========//
     else if (scrollController.position.pixels < 150) {
       isScrollToTopBtnVisible.value = false;
-      update();
+    }
+  }
+
+  //=========== Property Types ===============\\
+  var propertyTypes = <String>[
+    "Flats and Apartments",
+    "Commercial Properties",
+    "Shortlets",
+    "Workspace",
+    "Lands",
+  ];
+
+  void setSelectedPropertyType(String? propertyType) {
+    if (propertyType != null) {
+      propertyTypeEC.text = propertyType;
+      log("Selected Property type: ${propertyTypeEC.text}");
+    }
+  }
+
+  //=========== Property categories ===============\\
+  var propertyCategories = <String>[
+    "Rent",
+    "Lease",
+    "Sale",
+  ];
+
+  void setSelectedPropertyCategory(String? propertyCategory) {
+    if (propertyCategory != null) {
+      propertyCategoryEC.text = propertyCategory;
+      log("Selected Property category: ${propertyCategoryEC.text}");
+    }
+  }
+
+  //=========== Property states ===============\\
+  var propertyStates = <String>[
+    "Abia",
+    "Adamawa",
+    "Akwa Ibom",
+    "Anambra",
+    "Bauchi",
+    "Bayelsa",
+    "Benue",
+    "Borno",
+    "Cross River",
+    "Delta",
+    "Ebonyi",
+    "Edo",
+    "Ekiti",
+    "Enugu",
+    "FCT-Abuja",
+    "Gombe",
+    "Imo",
+    "Jigawa",
+    "Kaduna",
+    "Kano",
+    "Katsina",
+    "Kebbi",
+    "Kogi",
+    "Kwara",
+    "Lagos",
+    "Nasarawa",
+    "Niger",
+    "Ogun",
+    "Ondo",
+    "Osun",
+    "Oyo",
+    "Plateau",
+    "Rivers",
+    "Sokoto",
+    "Taraba",
+    "Yobe",
+    "Zamfara",
+  ];
+
+  void setSelectedPropertyState(String? propertyState) {
+    if (propertyState != null) {
+      propertyStateEC.text = propertyState;
+      log("Selected state: ${propertyStateEC.text}");
+    }
+  }
+
+  Future<void> submitForm() async {
+    if (formkey.currentState!.validate()) {
+      formkey.currentState!.save();
+
+      if (propertyTitleEC.text.isEmpty) {
+        ApiProcessorController.warningSnack(
+          "Please enter the title",
+        );
+        return;
+      } else if (propertyTitleEC.text.length < 3) {
+        ApiProcessorController.warningSnack(
+          "Please enter a valid title",
+        );
+        return;
+      } else if (propertyTypeEC.text.isEmpty) {
+        ApiProcessorController.warningSnack(
+          "Please select a property type",
+        );
+        return;
+      } else if (propertyUnitsEC.text.isEmpty) {
+        ApiProcessorController.warningSnack(
+          "Please enter the number of units",
+        );
+        return;
+      } else if (propertyCategoryEC.text.isEmpty) {
+        ApiProcessorController.warningSnack(
+          "Please select a category",
+        );
+        return;
+      }
+      if (propertySqrFtEC.text.isEmpty) {
+        ApiProcessorController.errorSnack(
+          "Please enter the Square Ft",
+        );
+        return;
+      } else if (propertyPricingEC.text.isEmpty) {
+        ApiProcessorController.errorSnack(
+          "Please enter the pricing",
+        );
+        return;
+      } else if (propertyDescriptionEC.text.isEmpty) {
+        ApiProcessorController.errorSnack(
+          "Please enter the description",
+        );
+        return;
+      } else if (propertyAddressEC.text.isEmpty) {
+        ApiProcessorController.errorSnack(
+          "Please enter the address",
+        );
+        return;
+      } else if (propertyStateEC.text.isEmpty) {
+        ApiProcessorController.errorSnack(
+          "Please select a state",
+        );
+        return;
+      } else if (propertyLocalityEC.text.isEmpty) {
+        ApiProcessorController.errorSnack(
+          "Please enter the locality",
+        );
+        return;
+      }
+      isLoading.value = true;
+      await Future.delayed(const Duration(seconds: 3));
+      isLoading.value = false;
     }
   }
 }

@@ -89,7 +89,7 @@ class LoginScaffold extends GetView<LoginController> {
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
-                                  Checkbox(
+                                  Checkbox.adaptive(
                                     value: loginController.rememberMe.value,
                                     activeColor: kAccentColor,
                                     checkColor: kWhiteBackgroundColor,
@@ -314,7 +314,7 @@ class LoginScaffold extends GetView<LoginController> {
                               mainAxisSize: MainAxisSize.min,
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                Checkbox(
+                                Checkbox.adaptive(
                                   value: loginController.rememberMe.value,
                                   activeColor: kAccentColor,
                                   checkColor: kWhiteBackgroundColor,

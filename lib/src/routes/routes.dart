@@ -25,7 +25,7 @@ import '../../app/kyc/kyc_bvn/screen/kyc_bvn.dart';
 import '../../app/kyc/kyc_bvn_otp/screen/kyc_bvn_otp.dart';
 import '../../app/kyc/kyc_nin/screen/kyc_nin.dart';
 import '../../app/my _business/business_intro/screen/business_intro_screen.dart';
-import '../../app/screens/bid_details/screen/bid_details.dart';
+import '../../app/screens/bid_details/screen/bid_details_screen.dart';
 import '../../app/screens/chat/screen/chat_screen.dart';
 import '../../app/screens/messages/screen/messages_screen.dart';
 import '../../app/screens/profile/views/account_type/screen/account_type_screen.dart';
@@ -94,7 +94,7 @@ class Routes {
   static const purchaseProperty = "/purchase-property";
   static const checkoutProperty = "/checkout-property";
   static const searchScreen = "/search";
-  static const bidDetails = "/bid-details";
+  static const bidDetailsScreen = "/bid-details";
 
   //Wallet Section
   static const walletIntroScreen = "/wallet-intro";
@@ -170,7 +170,7 @@ class Routes {
     GetPage(name: homeScreen, page: () => const HomeScreen()),
     GetPage(name: notificationsScreen, page: () => const NotificationsScreen()),
     GetPage(name: viewProperty, page: () => const ViewProperty()),
-    GetPage(name: bidDetails, page: () => const BidDetails()),
+    GetPage(name: bidDetailsScreen, page: () => const BidDetailsScreen()),
     GetPage(name: bookAppointment, page: () => const BookAppointmentScreen()),
     GetPage(name: purchaseProperty, page: () => const PurchasePropertyScreen()),
     GetPage(name: checkoutProperty, page: () => const CheckoutPropertyScreen()),

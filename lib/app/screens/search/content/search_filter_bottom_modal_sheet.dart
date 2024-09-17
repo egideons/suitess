@@ -315,7 +315,9 @@ class SearchFilterBottomModalSheet extends GetView<SearchScreenController> {
                   kBigSizedBox,
                   AndroidOutlinedButton(
                     title: "Reset filters",
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.close(0);
+                    },
                     borderColor: kAccentColor,
                     textColor: kAccentColor,
                     borderWidth: 1,
@@ -323,7 +325,9 @@ class SearchFilterBottomModalSheet extends GetView<SearchScreenController> {
                   kHalfSizedBox,
                   AndroidElevatedButton(
                     title: "Apply",
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.close(0);
+                    },
                   ),
                 ],
               ),

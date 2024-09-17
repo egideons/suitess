@@ -17,6 +17,11 @@ filterScreenLocationDropDown(
     expandedInsets: const EdgeInsets.all(0),
     onSelected: controller.setSelectedLocation,
     inputDecorationTheme: InputDecorationTheme(
+      hintStyle: defaultTextStyle(
+        color: kFormFieldLabelTextColor,
+        fontSize: 14,
+        fontWeight: FontWeight.w500,
+      ),
       enabledBorder: OutlineInputBorder(
         borderSide: BorderSide(
           color: colorScheme.inversePrimary.withOpacity(.2),

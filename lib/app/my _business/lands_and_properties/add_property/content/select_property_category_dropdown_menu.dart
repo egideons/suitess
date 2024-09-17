@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:suitess/src/controllers/app/add_property_controller.dart';
+import 'package:suitess/theme/colors.dart';
 
-import '../../../../src/constants/consts.dart';
-import '../../../../src/controllers/app/search_screen_controller.dart';
-import '../../../../theme/colors.dart';
+import '../../../../../src/constants/consts.dart';
 
-filterScreenAdvertCategoryDropDown(
+selectPropertyCategoryDropdownMenu(
   Size media,
   ColorScheme colorScheme,
-  SearchScreenController controller,
+  AddPropertyController controller,
 ) {
   return DropdownMenu(
-    controller: controller.searchFilterAdvertCategoryEC,
-    hintText: "Select a category",
+    controller: controller.propertyCategoryEC,
+    hintText: "Category",
     menuHeight: media.height * .6,
     width: media.width,
     expandedInsets: const EdgeInsets.all(0),
-    onSelected: controller.setSelectedLocation,
+    onSelected: controller.setSelectedPropertyCategory,
     inputDecorationTheme: InputDecorationTheme(
       hintStyle: defaultTextStyle(
         color: kFormFieldLabelTextColor,
@@ -41,13 +41,12 @@ filterScreenAdvertCategoryDropDown(
       color: kTextGreyColor,
       fontWeight: FontWeight.w400,
     ),
-    dropdownMenuEntries:
-        controller.searchFilterScreenAdvertCategories.map((String advert) {
+    dropdownMenuEntries: controller.propertyCategories.map((String category) {
       return DropdownMenuEntry<String>(
-        value: advert,
-        label: advert,
+        value: category,
+        label: category,
         labelWidget: Text(
-          advert,
+          category,
           style: defaultTextStyle(
             fontSize: 14,
             color: kTextGreyColor,

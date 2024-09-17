@@ -108,7 +108,7 @@ class ViewPropertyController extends GetxController {
 
 //================ Navigation =================//
   toBidDetailsScreen() async {
-    await Get.toNamed(Routes.bidDetails, preventDuplicates: true);
+    await Get.toNamed(Routes.bidDetailsScreen, preventDuplicates: true);
   }
 
   toPurchaseProperty() async {
