@@ -34,7 +34,6 @@ import '../../app/screens/profile/views/password_settings/screen/password_settin
 import '../../app/screens/profile/views/privacy_and_security/screen/privacy_and_security_screen.dart';
 import '../../app/screens/profile/views/support_and_feedback/screen/support_and_feedback_screen.dart';
 import '../../app/screens/profile/views/wallet_information/screen/wallet_information_screen.dart';
-import '../../app/screens/property/add_property/screen/landlord_add_property.dart';
 import '../../app/screens/property/book_appointment/screen/book_appointment_screen.dart';
 import '../../app/screens/property/checkout_property/screen/checkout_property_screen.dart';
 import '../../app/screens/property/purchase_property/screen/purchase_property_screen.dart';
@@ -222,6 +221,6 @@ class Routes {
       page: () => const LandsAndPropertiesScreen(),
     ),
     // GetPage(name: hotelManagement, page: () => const HotelManagementScreen()),
-    GetPage(name: landLordAddProperty, page: () => const LandLordAddProperty()),
+    // GetPage(name: landLordAddProperty, page: () => const LandLordAddProperty()),
   ];
 }

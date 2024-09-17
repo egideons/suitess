@@ -33,7 +33,7 @@ toggleOption(
           activeColor: kAccentColor,
           thumbColor: WidgetStatePropertyAll(
             value ?? false
-                ? kLightBackgroundColor
+                ? kWhiteBackgroundColor
                 : colorScheme.inversePrimary.withOpacity(.6),
           ),
           activeTrackColor: kAccentColor,

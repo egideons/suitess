@@ -63,6 +63,7 @@ class Assets {
   static const building03FilledSvg = "assets/icons/svg/building_03-filled.svg";
   static const briefcaseDollarFilledSvg =
       "assets/icons/svg/briefcase-dollar-filled.svg";
+  static const cloudOffFilledSvg = "assets/icons/svg/cloud-off-filled.svg";
 
 //=================== Images ===================\\
 

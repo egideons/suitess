@@ -21,7 +21,7 @@ class SupportAndFeedbackScaffold extends GetView<SupportAndFeedbackController> {
             ? FloatingActionButton.small(
                 onPressed: controller.scrollToTop,
                 backgroundColor: kAccentColor,
-                foregroundColor: kLightBackgroundColor,
+                foregroundColor: kWhiteBackgroundColor,
                 child: const Icon(Icons.keyboard_arrow_up),
               )
             : const SizedBox(),

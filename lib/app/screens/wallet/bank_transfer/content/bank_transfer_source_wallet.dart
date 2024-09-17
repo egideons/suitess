@@ -62,7 +62,7 @@ bankTransferSourceWallet(
                           children: [
                             SvgPicture.asset(
                               Assets.walletFilledIconSvg,
-                              color: kLightBackgroundColor,
+                              color: kWhiteBackgroundColor,
                             ),
                             Text(
                               "Available balance",
@@ -141,7 +141,7 @@ bankTransferSourceWallet(
                   paintStyle: PaintingStyle.fill,
                   strokeWidth: 1.0,
                   type: WormType.thinUnderground,
-                  dotColor: kLightBackgroundColor.withOpacity(.2),
+                  dotColor: kWhiteBackgroundColor.withOpacity(.2),
                   activeDotColor: colorScheme.surface,
                 ),
               ),

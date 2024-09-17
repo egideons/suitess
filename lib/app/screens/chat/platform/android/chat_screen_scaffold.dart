@@ -69,7 +69,7 @@ class ChatScreenScaffold extends GetView<ChatController> {
             ? FloatingActionButton.small(
                 onPressed: controller.jumpTopBottom,
                 backgroundColor: kAccentColor,
-                foregroundColor: kLightBackgroundColor,
+                foregroundColor: kWhiteBackgroundColor,
                 child: const Icon(Icons.keyboard_arrow_down),
               )
             : const SizedBox(),

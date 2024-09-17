@@ -252,7 +252,7 @@ class SearchFilterBottomModalSheet extends GetView<SearchScreenController> {
                                 controller.toggleFurnishOption(option),
                             dense: true,
                             contentPadding: const EdgeInsets.all(0),
-                            checkColor: kLightBackgroundColor,
+                            checkColor: kWhiteBackgroundColor,
                             visualDensity: const VisualDensity(
                               horizontal: -4,
                               vertical: -4,
@@ -292,7 +292,7 @@ class SearchFilterBottomModalSheet extends GetView<SearchScreenController> {
                                 controller.toggleConditionOption(option),
                             dense: true,
                             contentPadding: const EdgeInsets.all(0),
-                            checkColor: kLightBackgroundColor,
+                            checkColor: kWhiteBackgroundColor,
                             controlAffinity: ListTileControlAffinity.leading,
                             visualDensity: const VisualDensity(
                               horizontal: -4,

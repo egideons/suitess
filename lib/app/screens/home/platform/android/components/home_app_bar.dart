@@ -75,7 +75,7 @@ homeAppBar(
       //         "P",
       //         style: defaultTextStyle(
       //           fontSize: 32.0,
-      //           color: kLightBackgroundColor,
+      //           color: kWhiteBackgroundColor,
       //         ),
       //       ),
       //     ),

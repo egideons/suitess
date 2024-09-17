@@ -16,9 +16,11 @@ landsAndPropertiesAppBar(
 }) {
   return AppBar(
     backgroundColor: colorScheme.surface,
-    automaticallyImplyLeading: true,
+    automaticallyImplyLeading: false,
+    leadingWidth: 0,
     elevation: 0,
     scrolledUnderElevation: 0,
+    leading: const SizedBox(),
     title: InkWell(
       onTap: toLocation ?? () {},
       borderRadius: BorderRadius.circular(24),
@@ -75,7 +77,7 @@ landsAndPropertiesAppBar(
       //         "P",
       //         style: defaultTextStyle(
       //           fontSize: 32.0,
-      //           color: kLightBackgroundColor,
+      //           color: kWhiteBackgroundColor,
       //         ),
       //       ),
       //     ),

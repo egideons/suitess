@@ -70,7 +70,7 @@ class ProfileScreenScaffold extends GetView<ProfileScreenController> {
                                 shape: BoxShape.circle,
                                 border: Border.all(
                                   width: 2,
-                                  color: kLightBackgroundColor,
+                                  color: kWhiteBackgroundColor,
                                 ),
                               ),
                               child: Obx(
@@ -104,12 +104,12 @@ class ProfileScreenScaffold extends GetView<ProfileScreenController> {
                                                   ? SvgPicture.asset(
                                                       Assets.cameraOutlineSvg,
                                                       color:
-                                                          kLightBackgroundColor,
+                                                          kWhiteBackgroundColor,
                                                     )
                                                   : Icon(
                                                       Icons.check,
                                                       color:
-                                                          kLightBackgroundColor,
+                                                          kWhiteBackgroundColor,
                                                     ),
                                         );
                                 },
@@ -378,7 +378,7 @@ class ProfileScreenScaffold extends GetView<ProfileScreenController> {
                     isRowVisible: true,
                     isSwitched: true,
                     buttonIcon: Icons.logout,
-                    buttonIconColor: kLightBackgroundColor,
+                    buttonIconColor: kWhiteBackgroundColor,
                     mainAxisAlignment: MainAxisAlignment.center,
                     onPressed: controller.logout,
                   ),

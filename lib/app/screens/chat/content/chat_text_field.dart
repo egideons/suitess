@@ -60,7 +60,7 @@ chatTextField(
                 ),
                 icon: SvgPicture.asset(
                   Assets.arrowUpSvg,
-                  color: kLightBackgroundColor,
+                  color: kWhiteBackgroundColor,
                 ),
               );
             },

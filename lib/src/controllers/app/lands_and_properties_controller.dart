@@ -25,11 +25,12 @@ class LandsAndPropertiesController extends GetxController {
   }
 
   //================ variables =================\\
+  var isScrollToTopBtnVisible = false.obs;
   var isRefreshing = false.obs;
   var hasProperties = false.obs;
   var hasNotifications = true.obs;
-  var isScrollToTopBtnVisible = false.obs;
   var businessName = prefs.getString("businessName") ?? "";
+  var verifyAccountBannerIsVisible = true.obs;
 
   //================ controllers =================\\
 
@@ -68,4 +69,12 @@ class LandsAndPropertiesController extends GetxController {
       update();
     }
   }
+
+  void verifyAccount() {}
+
+  void removeVerifyAccountBanner() {
+    verifyAccountBannerIsVisible.value = false;
+  }
+
+  addProperty() async {}
 }

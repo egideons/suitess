@@ -38,7 +38,7 @@ class WalletScaffold extends GetView<WalletScreenController> {
             ? FloatingActionButton.small(
                 onPressed: controller.scrollToTop,
                 backgroundColor: kAccentColor,
-                foregroundColor: kLightBackgroundColor,
+                foregroundColor: kWhiteBackgroundColor,
                 child: const Icon(Icons.keyboard_arrow_up),
               )
             : const SizedBox(),

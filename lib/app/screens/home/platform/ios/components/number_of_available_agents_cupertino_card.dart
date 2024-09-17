@@ -38,13 +38,13 @@ Widget homeScreenNoOfAvailableAgentsCupertinoCard(
           Container(
             padding: const EdgeInsets.all(10),
             decoration: ShapeDecoration(
-              color: kLightBackgroundColor.withOpacity(0.4),
+              color: kWhiteBackgroundColor.withOpacity(0.4),
               shape: const CircleBorder(),
             ),
             child: Center(
               child: Icon(
                 Iconsax.profile_2user5,
-                color: kLightBackgroundColor,
+                color: kWhiteBackgroundColor,
               ),
             ),
           ),
