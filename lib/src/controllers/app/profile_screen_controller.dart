@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -185,17 +186,21 @@ class ProfileScreenController extends GetxController {
     // Log the status code and response body
     log("Response status code: ${streamedResponse.statusCode}");
     log("Response body: ${streamedResponse.body}");
-
-    if (streamedResponse.statusCode == 200) {
-      profilePicIsUploaded.value = true;
-      ApiProcessorController.successSnack(
-        "Profile picture uploaded successfully",
-      );
-      await UserController.instance.getUserProfile();
-    } else {
-      ApiProcessorController.errorSnack("Failed to upload profile picture");
+    try {
+      if (streamedResponse.statusCode == 200) {
+        profilePicIsUploaded.value = true;
+        ApiProcessorController.successSnack(
+          "Profile picture uploaded successfully",
+        );
+        await UserController.instance.getUserProfile();
+      } else {
+        ApiProcessorController.errorSnack("Failed to upload profile picture");
+      }
+    } on SocketException {
+      ApiProcessorController.errorSnack("Please connect to the internet");
+    } catch (e) {
+      log(e.toString());
     }
-
     isUploadingProfilePic.value = false;
   }
 

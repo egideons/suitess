@@ -207,7 +207,7 @@ class LoginCupertinoScaffold extends GetView<LoginController> {
                             Icon(
                               Icons.key,
                               color: loginController.isLoading.value
-                                  ? kLightBackgroundColor
+                                  ? kWhiteBackgroundColor
                                   : kErrorColor.withOpacity(0.4),
                               size: 12,
                             ),
@@ -216,7 +216,7 @@ class LoginCupertinoScaffold extends GetView<LoginController> {
                               "Forgot Password",
                               style: defaultTextStyle(
                                 color: loginController.isLoading.value
-                                    ? kLightBackgroundColor
+                                    ? kWhiteBackgroundColor
                                     : kErrorColor.withOpacity(0.4),
                               ),
                             ),

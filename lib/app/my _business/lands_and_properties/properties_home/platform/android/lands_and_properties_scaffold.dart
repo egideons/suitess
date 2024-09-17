@@ -46,16 +46,17 @@ class LandsAndPropertiesScaffold extends GetView<LandsAndPropertiesController> {
               children: [
                 Obx(
                   () {
-                    return controller.verifyAccountBannerIsVisible.value == true
-                        ? verifyAccountContainer(controller)
+                    return controller.verifyAccountBannerIsVisible.value
+                        ? Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              verifyAccountContainer(controller),
+                              kBigSizedBox,
+                            ],
+                          )
                         : const SizedBox();
                   },
                 ),
-                Obx(() {
-                  return controller.verifyAccountBannerIsVisible.value == true
-                      ? kBigSizedBox
-                      : const SizedBox();
-                }),
                 Text(
                   "My Properties",
                   style: defaultTextStyle(

@@ -29,7 +29,7 @@ chatSection(
                   color: kAccentColor,
                   shape: CircleBorder(
                     side: BorderSide(
-                      color: kLightBackgroundColor,
+                      color: kWhiteBackgroundColor,
                       width: 2,
                     ),
                   ),

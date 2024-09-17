@@ -39,7 +39,7 @@ Widget propertyDetailCupertinoButton(
                     textAlign: TextAlign.start,
                     overflow: TextOverflow.ellipsis,
                     style: defaultTextStyle(
-                      color: kLightBackgroundColor,
+                      color: kWhiteBackgroundColor,
                       fontWeight: FontWeight.w700,
                       fontSize: 14.0,
                     ),
@@ -52,7 +52,7 @@ Widget propertyDetailCupertinoButton(
                     textAlign: TextAlign.start,
                     overflow: TextOverflow.ellipsis,
                     style: defaultTextStyle(
-                      color: kLightBackgroundColor.withOpacity(0.8),
+                      color: kWhiteBackgroundColor.withOpacity(0.8),
                       fontWeight: FontWeight.w700,
                       fontSize: 10.0,
                     ),
@@ -64,7 +64,7 @@ Widget propertyDetailCupertinoButton(
         ),
         Icon(
           Iconsax.arrow_right,
-          color: kLightBackgroundColor,
+          color: kWhiteBackgroundColor,
         ),
       ],
     ),

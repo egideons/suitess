@@ -8,8 +8,8 @@ import 'colors.dart';
 CupertinoThemeData? iOSLightTheme = CupertinoThemeData(
   brightness: Brightness.light,
   applyThemeToAll: true,
-  scaffoldBackgroundColor: kLightBackgroundColor,
-  barBackgroundColor: kLightBackgroundColor,
+  scaffoldBackgroundColor: kWhiteBackgroundColor,
+  barBackgroundColor: kWhiteBackgroundColor,
   textTheme: CupertinoTextThemeData(
     textStyle: defaultTextStyle(),
   ),
@@ -98,7 +98,7 @@ ThemeData androidLightTheme = ThemeData(
   ),
   // textTheme: GoogleFonts.montserratAlternatesTextTheme(Typography.dense2021),
   colorScheme: ColorScheme.light(
-    surface: kLightBackgroundColor,
+    surface: kWhiteBackgroundColor,
     primary: kDarkBackgroundColor,
     inversePrimary: kGreyColor,
     secondary: kAccentColor,
@@ -180,7 +180,7 @@ ThemeData androidDarkTheme = ThemeData(
   // textTheme: GoogleFonts.montserratAlternatesTextTheme(Typography.dense2021),
   colorScheme: ColorScheme.dark(
     surface: kDarkBackgroundColor,
-    primary: kLightBackgroundColor,
+    primary: kWhiteBackgroundColor,
     inversePrimary: kDarkGreyColor,
     secondary: kAccentColor,
     brightness: Brightness.dark,

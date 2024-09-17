@@ -21,7 +21,7 @@ class ApiProcessorController extends GetxController {
     }
   }
 
-  static void successSnack(msg) {
+  static void successSnack(String? msg) {
     var colorScheme = Theme.of(Get.context!).colorScheme;
     var media = MediaQuery.of(Get.context!).size;
     Get.showSnackbar(
@@ -33,14 +33,14 @@ class ApiProcessorController extends GetxController {
         //     overflow: TextOverflow.ellipsis,
         //     maxLines: 4,
         //     style: defaultTextStyle(
-        //       color: kLightBackgroundColor,
+        //       color: kWhiteBackgroundColor,
         //       fontSize: 14.0,
         //       fontWeight: FontWeight.w600,
         //     ),
         //   ),
         // ),
         messageText: Text(
-          msg,
+          msg ?? "",
           overflow: TextOverflow.ellipsis,
           maxLines: 10,
           style: defaultTextStyle(
@@ -78,7 +78,7 @@ class ApiProcessorController extends GetxController {
         //   onPressed: () {
         //     Get.back();
         //   },
-        //   color: kLightBackgroundColor,
+        //   color: kWhiteBackgroundColor,
         //   icon: const Icon(
         //     Icons.cancel,
         //     size: 14,
@@ -88,7 +88,7 @@ class ApiProcessorController extends GetxController {
     );
   }
 
-  static void errorSnack(msg) {
+  static void errorSnack(String? msg) {
     var colorScheme = Theme.of(Get.context!).colorScheme;
     var media = MediaQuery.of(Get.context!).size;
 
@@ -101,7 +101,7 @@ class ApiProcessorController extends GetxController {
         //     overflow: TextOverflow.ellipsis,
         //     maxLines: 4,
         //     style: defaultTextStyle(
-        //       color: kLightBackgroundColor,
+        //       color: kWhiteBackgroundColor,
         //       fontSize: 14.0,
         //       fontWeight: FontWeight.w600,
         //       letterSpacing: -0.40,
@@ -109,7 +109,7 @@ class ApiProcessorController extends GetxController {
         //   ),
         // ),
         messageText: Text(
-          msg,
+          msg ?? "",
           overflow: TextOverflow.ellipsis,
           maxLines: 4,
           style: defaultTextStyle(
@@ -158,7 +158,7 @@ class ApiProcessorController extends GetxController {
     );
   }
 
-  static void warningSnack(msg) {
+  static void warningSnack(String? msg) {
     var colorScheme = Theme.of(Get.context!).colorScheme;
     var media = MediaQuery.of(Get.context!).size;
 
@@ -171,7 +171,7 @@ class ApiProcessorController extends GetxController {
         //     overflow: TextOverflow.ellipsis,
         //     maxLines: 4,
         //     style: defaultTextStyle(
-        //       color: kLightBackgroundColor,
+        //       color: kWhiteBackgroundColor,
         //       fontSize: 14.0,
         //       fontWeight: FontWeight.w600,
         //       letterSpacing: -0.40,
@@ -179,7 +179,7 @@ class ApiProcessorController extends GetxController {
         //   ),
         // ),
         messageText: Text(
-          msg,
+          msg ?? "",
           overflow: TextOverflow.ellipsis,
           maxLines: 4,
           style: defaultTextStyle(

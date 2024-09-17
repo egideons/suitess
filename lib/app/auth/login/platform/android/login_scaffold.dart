@@ -92,7 +92,7 @@ class LoginScaffold extends GetView<LoginController> {
                                   Checkbox(
                                     value: loginController.rememberMe.value,
                                     activeColor: kAccentColor,
-                                    checkColor: kLightBackgroundColor,
+                                    checkColor: kWhiteBackgroundColor,
                                     side: BorderSide(
                                       width: .6,
                                       color: colorScheme.primary,
@@ -317,7 +317,7 @@ class LoginScaffold extends GetView<LoginController> {
                                 Checkbox(
                                   value: loginController.rememberMe.value,
                                   activeColor: kAccentColor,
-                                  checkColor: kLightBackgroundColor,
+                                  checkColor: kWhiteBackgroundColor,
                                   side: BorderSide(
                                     width: .6,
                                     color: colorScheme.primary,

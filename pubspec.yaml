@@ -37,6 +37,7 @@ dependencies:
   permission_handler:
   path_provider:
   http_parser:
+  connectivity_plus: ^6.0.5
 
 dev_dependencies:
   flutter_test:
