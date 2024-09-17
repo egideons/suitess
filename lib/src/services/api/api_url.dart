@@ -20,4 +20,6 @@ class ApiUrl {
   static const profile = "/settings/profile";
 
   //=============== Business ====================\\
+  static const business = "/api/v1/business";
+  static const createPropertyBusiness = "/1/create";
 }

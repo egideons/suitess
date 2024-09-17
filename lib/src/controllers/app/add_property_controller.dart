@@ -1,8 +1,14 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
+import 'package:suitess/main.dart';
 import 'package:suitess/src/controllers/others/api_processor_controller.dart';
+
+import '../../services/api/api_url.dart';
+import '../../services/client/http_client_service.dart';
 
 class AddPropertyController extends GetxController {
   static AddPropertyController get instance {
@@ -26,6 +32,7 @@ class AddPropertyController extends GetxController {
   var isNegotiable = true.obs;
   var isLoading = false.obs;
   var state = "".obs;
+  var responseMessage = "".obs;
   var formkey = GlobalKey<FormState>();
 
   //================ controllers =================\\
@@ -80,7 +87,8 @@ class AddPropertyController extends GetxController {
 
   //=========== Property Types ===============\\
   var propertyTypes = <String>[
-    "Flats and Apartments",
+    "Flat",
+    "Apartment",
     "Commercial Properties",
     "Shortlets",
     "Workspace",
@@ -217,8 +225,67 @@ class AddPropertyController extends GetxController {
         );
         return;
       }
+
       isLoading.value = true;
-      await Future.delayed(const Duration(seconds: 3));
+
+      var url = ApiUrl.businessBaseUrl +
+          ApiUrl.business +
+          ApiUrl.createPropertyBusiness;
+
+      var userToken = prefs.getString("userToken") ?? "";
+
+      Map data = {
+        "title": propertyTitleEC.text,
+        "type": propertyTypeEC.text,
+        "ads_type": propertyCategoryEC.text,
+        "square_feet": propertySqrFtEC.text,
+        "rooms": propertyRoomsEC.text,
+        "bathrooms": propertyBathsEC.text,
+        "price": propertyPricingEC.text,
+        "description": propertyDescriptionEC.text,
+        "negotiable": isNegotiable.value,
+        "address": propertyAddressEC.text,
+        "state": propertyStateEC.text,
+        "locality": propertyLocalityEC.text
+      };
+
+      log("This is the Url: $url");
+      log("This is the Data: $data");
+
+      //HTTP Client Service
+      http.Response? response =
+          await HttpClientService.postRequest(url, userToken, data);
+
+      if (response == null) {
+        isLoading.value = false;
+        update();
+        return;
+      }
+
+      try {
+        // Convert to json
+        dynamic responseJson;
+
+        responseJson = jsonDecode(response.body);
+
+        log("This is the response body ====> ${response.body}");
+
+        //Map the response json to the model provided
+        // addPropertyResponse.value = addPropertyResponseModel.fromJson(responseJson);
+        // responseMessage.value = addPropertyResponse.value.message;
+
+        if (response.statusCode == 200) {
+          //Display Snackbar
+          ApiProcessorController.successSnack("Successful");
+        } else {
+          // ApiProcessorController.warningSnack(responseMessage.value);
+          log("Request failed with status: ${response.statusCode}");
+          log("Response body: ${response.body}");
+        }
+      } catch (e) {
+        log(e.toString());
+      }
+
       isLoading.value = false;
     }
   }
