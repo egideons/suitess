@@ -154,7 +154,7 @@ addPropertyForm(
         formFieldContainer(
           colorScheme,
           media,
-          containerHeight: 80,
+          containerHeight: 120,
           child: Align(
             alignment: Alignment.topLeft,
             child: AndroidTextFormField(
@@ -163,6 +163,7 @@ addPropertyForm(
               focusNode: controller.propertyDescriptionFN,
               textInputAction: TextInputAction.newline,
               textCapitalization: TextCapitalization.sentences,
+              maxLines: 100,
               keyboardType: TextInputType.multiline,
               validator: (value) {
                 return null;
@@ -216,7 +217,7 @@ addPropertyForm(
                   labelText: "Locality",
                   controller: controller.propertyLocalityEC,
                   focusNode: controller.propertyLocalityFN,
-                  textInputAction: TextInputAction.next,
+                  textInputAction: TextInputAction.done,
                   textCapitalization: TextCapitalization.sentences,
                   keyboardType: TextInputType.text,
                   validator: (value) {

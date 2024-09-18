@@ -19,12 +19,15 @@ class AddPropertyController extends GetxController {
   void onInit() {
     super.onInit();
     scrollController.addListener(_scrollListener);
+    propertyPricingEC.addListener(formatAmount);
   }
 
   @override
   void onClose() {
     super.onClose();
     scrollController.dispose();
+    propertyPricingEC.removeListener(formatAmount);
+    propertyPricingEC.dispose();
   }
 
   //================ variables =================\\
@@ -33,6 +36,7 @@ class AddPropertyController extends GetxController {
   var isLoading = false.obs;
   var state = "".obs;
   var responseMessage = "".obs;
+  var unformattedAmountText = "".obs;
   var formkey = GlobalKey<FormState>();
 
   //================ controllers =================\\
@@ -114,6 +118,38 @@ class AddPropertyController extends GetxController {
       propertyCategoryEC.text = propertyCategory;
       log("Selected Property category: ${propertyCategoryEC.text}");
     }
+  }
+
+  void formatAmount() {
+    // Get the current value
+    String currentValue = propertyPricingEC.text;
+
+    // Remove any commas to get the unformatted value
+    String rawValue = currentValue.replaceAll(',', '');
+
+    // Store the unformatted value
+    unformattedAmountText.value = rawValue;
+
+    // Check if it's a valid number
+    if (rawValue.isNotEmpty && double.tryParse(rawValue) != null) {
+      // Format the number with commas
+      String formattedValue = formatWithCommas(rawValue);
+
+      // Update the text controller with the formatted value
+      propertyPricingEC.value = propertyPricingEC.value.copyWith(
+        text: formattedValue,
+        selection: TextSelection.collapsed(offset: formattedValue.length),
+      );
+    }
+  }
+
+  String formatWithCommas(String value) {
+    // Convert the value to a number
+    final number = double.parse(value);
+
+    // Format the number with commas
+    return number.toStringAsFixed(0).replaceAllMapped(
+        RegExp(r'(\d)(?=(\d{3})+(?!\d))'), (Match match) => '${match[1]},');
   }
 
   //=========== Property states ===============\\
@@ -267,6 +303,8 @@ class AddPropertyController extends GetxController {
 
         log("This is the response body ====> ${response.body}");
 
+        responseMessage.value = responseJson["message"];
+
         //Map the response json to the model provided
         // addPropertyResponse.value = addPropertyResponseModel.fromJson(responseJson);
         // responseMessage.value = addPropertyResponse.value.message;
@@ -275,7 +313,7 @@ class AddPropertyController extends GetxController {
           //Display Snackbar
           ApiProcessorController.successSnack("Successful");
         } else {
-          // ApiProcessorController.warningSnack(responseMessage.value);
+          ApiProcessorController.warningSnack(responseMessage.value);
           log("Request failed with status: ${response.statusCode}");
           log("Response body: ${response.body}");
         }
