@@ -262,7 +262,7 @@ class SignupCupertinoScaffold extends GetView<SignupController> {
                                   style: defaultTextStyle(
                                     color: signupController.isLoading.value
                                         ? colorScheme.inversePrimary
-                                        : kAccentColor,
+                                        : colorScheme.secondary,
                                     fontSize: 14.0,
                                     fontWeight: FontWeight.w500,
                                   ),

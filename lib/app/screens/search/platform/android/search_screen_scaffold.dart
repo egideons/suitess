@@ -22,7 +22,7 @@ class SearchScreenScaffold extends GetView<SearchScreenController> {
         () => controller.isScrollToTopBtnVisible.value
             ? FloatingActionButton.small(
                 onPressed: controller.scrollToTop,
-                backgroundColor: kAccentColor,
+                backgroundColor: colorScheme.secondary,
                 foregroundColor: kWhiteBackgroundColor,
                 child: const Icon(Icons.keyboard_arrow_up),
               )
@@ -81,6 +81,7 @@ class SearchScreenScaffold extends GetView<SearchScreenController> {
                           child: SizedBox(),
                         ),
                         title: searchResultsAndFilter(
+                          colorScheme,
                           492,
                           () {
                             controller.showSearchFilterBottomModalSheet(

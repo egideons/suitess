@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
-import 'package:suitess/theme/colors.dart';
 
 import '../../../../src/constants/assets.dart';
 import '../../../../src/constants/consts.dart';
@@ -36,7 +35,7 @@ Widget congratulationsSplashScreenContent({media, colorScheme}) {
                   maxLines: 6,
                   style: defaultTextStyle(
                     fontSize: 24.0,
-                    color: kAccentColor,
+                    color: colorScheme.secondary,
                   ),
                 ),
               ),

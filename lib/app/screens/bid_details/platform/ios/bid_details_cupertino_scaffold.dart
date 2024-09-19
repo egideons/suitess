@@ -78,7 +78,7 @@ class BidDetailsCupertinoScaffold extends GetView<BidDetailsController> {
                         ? const SizedBox()
                         : CupertinoElevatedButton(
                             title: "Done",
-                            buttonColor: kAccentColor,
+                            buttonColor: colorScheme.secondary,
                             onPressed: () {
                               Get.back();
                             },

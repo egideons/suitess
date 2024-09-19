@@ -340,7 +340,7 @@ class LoginCupertinoScaffold extends GetView<LoginController> {
                         style: defaultTextStyle(
                           color: loginController.isLoading.value
                               ? colorScheme.inversePrimary
-                              : kAccentColor,
+                              : colorScheme.secondary,
                           fontSize: 16.0,
                         ),
                       ),

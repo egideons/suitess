@@ -29,7 +29,7 @@ propertyGallery(ColorScheme colorScheme, {Function()? viewAll}) {
           child: Text(
             "View all",
             style: defaultTextStyle(
-              color: kAccentColor,
+              color: colorScheme.secondary,
               fontSize: 14.0,
               fontWeight: FontWeight.w600,
             ),

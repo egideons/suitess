@@ -7,6 +7,7 @@ import '../../../../../theme/colors.dart';
 
 recentTransaction(
   Size media,
+  ColorScheme colorScheme,
   void Function()? onTap, {
   String? title,
   DateTime? dateTime,
@@ -34,7 +35,7 @@ recentTransaction(
                   ),
                   child: SvgPicture.asset(
                     isIncome == true ? Assets.arrowDownSvg : Assets.arrowUpSvg,
-                    color: kAccentColor,
+                    color: colorScheme.secondary,
                   ),
                 ),
                 kSmallWidthSizedBox,
@@ -101,7 +102,7 @@ recentTransaction(
                   textAlign: TextAlign.end,
                   style: defaultTextStyle(
                     color: isSuccessful == true
-                        ? kAccentColor
+                        ? colorScheme.secondary
                         : isCancelled == true
                             ? kErrorColor
                             : kPendingColor,

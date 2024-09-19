@@ -38,13 +38,13 @@ toggleOption(ColorScheme colorScheme,
               value: value ?? false,
               onChanged: onChanged ?? (value) {},
               materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-              activeColor: kAccentColor,
+              activeColor: colorScheme.secondary,
               thumbColor: WidgetStatePropertyAll(
                 value ?? false
                     ? kWhiteBackgroundColor
                     : colorScheme.inversePrimary.withOpacity(.6),
               ),
-              activeTrackColor: kAccentColor,
+              activeTrackColor: colorScheme.secondary,
               inactiveTrackColor: colorScheme.inversePrimary.withOpacity(.2),
               trackOutlineColor: WidgetStatePropertyAll(
                 colorScheme.inversePrimary.withOpacity(.2),

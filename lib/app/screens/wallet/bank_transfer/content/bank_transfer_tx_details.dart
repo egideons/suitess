@@ -193,8 +193,8 @@ class BankTransferTxDetails extends GetView<BankTransferController> {
                       onPressed: () {
                         Get.close(0);
                       },
-                      borderColor: kAccentColor,
-                      textColor: kAccentColor,
+                      borderColor: colorScheme.secondary,
+                      textColor: colorScheme.secondary,
                       borderWidth: 1,
                     ),
                     kSizedBox,

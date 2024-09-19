@@ -33,12 +33,12 @@ reviewsHeader(ColorScheme colorScheme,
             children: [
               SvgPicture.asset(
                 Assets.penOutlineSvg,
-                color: kAccentColor,
+                color: colorScheme.secondary,
               ),
               Text(
                 "Write Review",
                 style: defaultTextStyle(
-                  color: kAccentColor,
+                  color: colorScheme.secondary,
                   fontSize: 14.0,
                   fontWeight: FontWeight.w600,
                 ),

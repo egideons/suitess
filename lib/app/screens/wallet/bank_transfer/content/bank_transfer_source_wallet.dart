@@ -26,7 +26,7 @@ bankTransferSourceWallet(
             BoxShadow(
               blurRadius: 7,
               spreadRadius: 0,
-              color: kAccentColor.withOpacity(.2),
+              color: colorScheme.secondary.withOpacity(.2),
               offset: const Offset(0, 10),
             )
           ],

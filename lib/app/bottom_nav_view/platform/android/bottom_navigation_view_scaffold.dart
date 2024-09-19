@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:suitess/src/constants/consts.dart';
-import 'package:suitess/theme/colors.dart';
 
 import '../../../../src/controllers/app/bottom_navigation_controller.dart';
 
@@ -36,14 +35,14 @@ class BottomNavigationViewScaffold extends GetView<BottomNavigationController> {
             mouseCursor: SystemMouseCursors.click,
             type: BottomNavigationBarType.fixed,
             showSelectedLabels: true,
-            selectedItemColor: kAccentColor,
+            selectedItemColor: colorScheme.secondary,
             showUnselectedLabels: true,
             unselectedItemColor: colorScheme.inversePrimary,
             selectedFontSize: 12,
             unselectedFontSize: 12,
 
-            selectedIconTheme: IconThemeData(color: kAccentColor),
-            selectedLabelStyle: defaultTextStyle(color: kAccentColor),
+            selectedIconTheme: IconThemeData(color: colorScheme.secondary),
+            selectedLabelStyle: defaultTextStyle(color: colorScheme.secondary),
           );
         },
       ),

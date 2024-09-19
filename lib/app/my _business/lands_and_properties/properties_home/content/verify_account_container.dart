@@ -24,7 +24,7 @@ verifyAccountContainer(LandsAndPropertiesController controller) {
           child: Text(
             "Verify account",
             style: defaultTextStyle(
-              color: kAccentColor,
+              color: colorScheme.secondary,
               fontSize: 14,
               fontWeight: FontWeight.w600,
             ),
@@ -32,7 +32,7 @@ verifyAccountContainer(LandsAndPropertiesController controller) {
         ),
         IconButton(
           onPressed: controller.removeVerifyAccountBanner,
-          icon: Icon(Icons.close, color: kAccentColor),
+          icon: Icon(Icons.close, color: colorScheme.secondary),
         ),
       ],
     ),

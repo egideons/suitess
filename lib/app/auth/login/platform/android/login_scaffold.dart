@@ -91,7 +91,7 @@ class LoginScaffold extends GetView<LoginController> {
                                 children: [
                                   Checkbox.adaptive(
                                     value: loginController.rememberMe.value,
-                                    activeColor: kAccentColor,
+                                    activeColor: colorScheme.secondary,
                                     checkColor: kWhiteBackgroundColor,
                                     side: BorderSide(
                                       width: .6,
@@ -175,7 +175,7 @@ class LoginScaffold extends GetView<LoginController> {
                                   style: defaultTextStyle(
                                     color: loginController.isLoading.value
                                         ? colorScheme.inversePrimary
-                                        : kAccentColor,
+                                        : colorScheme.secondary,
                                     fontSize: 14.0,
                                   ),
                                 ),
@@ -316,7 +316,7 @@ class LoginScaffold extends GetView<LoginController> {
                               children: [
                                 Checkbox.adaptive(
                                   value: loginController.rememberMe.value,
-                                  activeColor: kAccentColor,
+                                  activeColor: colorScheme.secondary,
                                   checkColor: kWhiteBackgroundColor,
                                   side: BorderSide(
                                     width: .6,
@@ -401,7 +401,7 @@ class LoginScaffold extends GetView<LoginController> {
                                 style: defaultTextStyle(
                                   color: loginController.isLoading.value
                                       ? colorScheme.inversePrimary
-                                      : kAccentColor,
+                                      : colorScheme.secondary,
                                   fontSize: 14.0,
                                 ),
                               ),

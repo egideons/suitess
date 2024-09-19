@@ -32,7 +32,7 @@ class SuccessScaffold extends GetView<SuccessScreenController> {
             Center(
               child: Icon(
                 Icons.check_circle_rounded,
-                color: kAccentColor,
+                color: colorScheme.secondary,
                 size: media.height * .28,
               ),
             ),

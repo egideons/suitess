@@ -59,7 +59,7 @@ class NotificationsCupertinoScaffold extends GetView<NotificationsController> {
                               children: [
                                 Icon(
                                   Iconsax.notification5,
-                                  color: kAccentColor,
+                                  color: colorScheme.secondary,
                                   size: media.height / 4,
                                 ),
                                 kSizedBox,

@@ -31,7 +31,7 @@ class BankTransferScaffold extends GetView<BankTransferController> {
       //   () => controller.isScrollToTopBtnVisible.value
       //       ? FloatingActionButton.small(
       //           onPressed: controller.scrollToTop,
-      //           backgroundColor: kAccentColor,
+      //           backgroundColor: colorScheme.secondary,
       //           foregroundColor: kWhiteBackgroundColor,
       //           child: const Icon(Icons.keyboard_arrow_up),
       //         )
@@ -118,7 +118,7 @@ class BankTransferScaffold extends GetView<BankTransferController> {
                                     "Choose Beneficiary",
                                     textAlign: TextAlign.start,
                                     style: defaultTextStyle(
-                                      color: kAccentColor,
+                                      color: colorScheme.secondary,
                                       fontSize: 14,
                                       fontWeight: FontWeight.w500,
                                     ),
@@ -126,7 +126,7 @@ class BankTransferScaffold extends GetView<BankTransferController> {
                                   kSmallWidthSizedBox,
                                   Icon(
                                     Icons.chevron_right,
-                                    color: kAccentColor,
+                                    color: colorScheme.secondary,
                                   ),
                                 ],
                               ),

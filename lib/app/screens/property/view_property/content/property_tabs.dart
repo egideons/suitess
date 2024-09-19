@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../../../../src/constants/consts.dart';
 import '../../../../../src/controllers/app/view_property_controller.dart';
-import '../../../../../theme/colors.dart';
 
 viewPropertyTabs(
     ViewPropertyController controller, int index, ColorScheme colorScheme) {
@@ -20,7 +19,7 @@ viewPropertyTabs(
             style: defaultTextStyle(
               fontSize: 12,
               color: controller.propertyTabs[index].isSelected
-                  ? kAccentColor
+                  ? colorScheme.secondary
                   : colorScheme.inversePrimary.withOpacity(.6),
               fontWeight: FontWeight.w800,
             ),
@@ -33,7 +32,7 @@ viewPropertyTabs(
             height: 5,
             decoration: ShapeDecoration(
               color: controller.propertyTabs[index].isSelected
-                  ? kAccentColor
+                  ? colorScheme.secondary
                   : colorScheme.surface,
               shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.only(

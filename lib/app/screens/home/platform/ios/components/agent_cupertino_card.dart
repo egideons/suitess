@@ -25,7 +25,7 @@ Widget landLordAgentBidCupertinoCard(
     curve: Curves.easeInOut,
     padding: const EdgeInsets.all(20),
     decoration: ShapeDecoration(
-      color: kAccentColor.withOpacity(0.2),
+      color: colorScheme.secondary.withOpacity(0.2),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(24),
       ),
@@ -84,7 +84,7 @@ Widget landLordAgentBidCupertinoCard(
         Container(
           padding: const EdgeInsets.all(10),
           decoration: ShapeDecoration(
-            color: kAccentColor,
+            color: colorScheme.secondary,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(16),
             ),

@@ -6,7 +6,10 @@ import '../../../../../src/constants/consts.dart';
 import '../../../../../src/controllers/app/book_appointment_controller.dart';
 import '../../../../../theme/colors.dart';
 
-bookAppointmentCalender(BookAppointmentController controller) {
+bookAppointmentCalender(
+  BookAppointmentController controller,
+  ColorScheme colorScheme,
+) {
   return TableCalendar(
     firstDay: DateTime.utc(1940, 01, 01),
     lastDay: DateTime.utc(2124, 12, 31),
@@ -46,13 +49,13 @@ bookAppointmentCalender(BookAppointmentController controller) {
         color: kTextBoldHeadingColor,
       ),
       todayDecoration: ShapeDecoration(
-        color: kAccentColor.withOpacity(.4),
+        color: colorScheme.secondary.withOpacity(.4),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(4),
         ),
       ),
       selectedDecoration: ShapeDecoration(
-        color: kAccentColor,
+        color: colorScheme.secondary,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(4),
         ),

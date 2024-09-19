@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../../../../../src/constants/consts.dart';
 import '../../../../../src/controllers/app/view_property_controller.dart';
 import '../../../../../src/utils/buttons/android/android_outlined_button.dart';
-import '../../../../../theme/colors.dart';
 import 'property_description.dart';
 import 'property_facilities.dart';
 import 'property_gallery.dart';
@@ -70,8 +69,8 @@ aboutTab(
       kSizedBox,
       AndroidOutlinedButton(
         title: "Purchase Property",
-        textColor: kAccentColor,
-        borderColor: kAccentColor,
+        textColor: colorScheme.secondary,
+        borderColor: colorScheme.secondary,
         borderWidth: 1,
         onPressed: controller.toPurchaseProperty,
       ),

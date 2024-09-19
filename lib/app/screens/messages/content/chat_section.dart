@@ -26,7 +26,7 @@ chatSection(
                 height: 12,
                 width: 12,
                 decoration: ShapeDecoration(
-                  color: kAccentColor,
+                  color: colorScheme.secondary,
                   shape: CircleBorder(
                     side: BorderSide(
                       color: kWhiteBackgroundColor,
@@ -80,7 +80,7 @@ chatSection(
                     height: 22,
                     width: 22,
                     decoration: ShapeDecoration(
-                      color: kAccentColor,
+                      color: colorScheme.secondary,
                       shape: const CircleBorder(),
                     ),
                     child: Center(

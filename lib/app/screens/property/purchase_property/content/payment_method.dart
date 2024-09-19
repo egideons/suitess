@@ -28,7 +28,7 @@ paymentMethod(
         children: [
           SvgPicture.asset(
             icon ?? "",
-            color: kAccentColor,
+            color: colorScheme.secondary,
           ),
           kHalfWidthSizedBox,
           Text(

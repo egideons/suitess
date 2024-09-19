@@ -54,7 +54,7 @@ class ContactDetailsScaffold extends GetView<ContactDetailsScreenController> {
                           colorScheme,
                           title: "Phone",
                           detail: user.phone ?? "Phone Number",
-                          editFunction: () {},
+                          editFunction: controller.showEditPhoneNumberDialog,
                         ),
                         Divider(
                           color: colorScheme.inversePrimary.withOpacity(.4),
@@ -63,7 +63,7 @@ class ContactDetailsScaffold extends GetView<ContactDetailsScreenController> {
                           colorScheme,
                           title: "Address",
                           detail: "",
-                          editFunction: () {},
+                          editFunction: controller.showEditAddressDialog,
                         ),
                         Divider(
                           color: colorScheme.inversePrimary.withOpacity(.4),
@@ -72,7 +72,7 @@ class ContactDetailsScaffold extends GetView<ContactDetailsScreenController> {
                           colorScheme,
                           title: "Business name / Username",
                           detail: "",
-                          editFunction: () {},
+                          editFunction: controller.showEditBusinessNameDialog,
                         ),
                       ],
                     ),

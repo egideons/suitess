@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:readmore/readmore.dart';
 import 'package:suitess/src/constants/consts.dart';
 import 'package:suitess/src/utils/components/responsive_constants.dart';
-import 'package:suitess/theme/colors.dart';
 
 notificationWidget(
   ColorScheme colorScheme,
@@ -93,7 +92,7 @@ notificationWidget(
                         "View",
                         textAlign: TextAlign.start,
                         style: defaultTextStyle(
-                          color: kAccentColor,
+                          color: colorScheme.secondary,
                           fontWeight: FontWeight.normal,
                           fontSize: 10,
                         ),
@@ -114,7 +113,7 @@ notificationWidget(
                         "Clear",
                         textAlign: TextAlign.start,
                         style: defaultTextStyle(
-                          color: kAccentColor,
+                          color: colorScheme.secondary,
                           fontWeight: FontWeight.normal,
                           fontSize: 10,
                         ),

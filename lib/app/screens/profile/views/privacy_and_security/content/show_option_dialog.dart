@@ -38,7 +38,7 @@ showOptionDialog(
             trailing: isPublic ?? false
                 ? Icon(
                     Icons.check,
-                    color: kAccentColor,
+                    color: colorScheme.secondary,
                   )
                 : const SizedBox(),
           ),
@@ -61,7 +61,7 @@ showOptionDialog(
             trailing: isPrivate ?? false
                 ? Icon(
                     Icons.check,
-                    color: kAccentColor,
+                    color: colorScheme.secondary,
                   )
                 : const SizedBox(),
           ),

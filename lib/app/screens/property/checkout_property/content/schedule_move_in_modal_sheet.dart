@@ -69,7 +69,7 @@ class ScheduleMoveInModalSheet extends GetView<CheckoutPropertyController> {
                         )
                       ],
                     ),
-                    child: scheduleMoveInDateCalendar(controller),
+                    child: scheduleMoveInDateCalendar(controller, colorScheme),
                   ),
                   kSizedBox,
                   Container(
@@ -106,7 +106,7 @@ class ScheduleMoveInModalSheet extends GetView<CheckoutPropertyController> {
                           recognizer: TapGestureRecognizer()..onTap = () {},
                           text: "Contact Support",
                           style: defaultTextStyle(
-                            color: kAccentColor,
+                            color: colorScheme.secondary,
                             fontWeight: FontWeight.w600,
                             fontSize: 14,
                           ),

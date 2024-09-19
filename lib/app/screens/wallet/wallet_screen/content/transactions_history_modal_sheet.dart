@@ -38,14 +38,14 @@ class TransactionsHistoryModalSheet extends GetView<WalletScreenController> {
                   children: [
                     SvgPicture.asset(
                       Assets.searchFilterSvg,
-                      color: kAccentColor,
+                      color: colorScheme.secondary,
                     ),
                     kHalfWidthSizedBox,
                     Text(
                       "Filter",
                       textAlign: TextAlign.center,
                       style: defaultTextStyle(
-                        color: kAccentColor,
+                        color: colorScheme.secondary,
                         fontSize: 14,
                         fontWeight: FontWeight.w500,
                       ),
@@ -94,6 +94,7 @@ class TransactionsHistoryModalSheet extends GetView<WalletScreenController> {
                         itemBuilder: (context, index) {
                           return recentTransaction(
                             media,
+                            colorScheme,
                             () {},
                             title: "Alonso Diobi",
                             dateTime: DateTime.now(),

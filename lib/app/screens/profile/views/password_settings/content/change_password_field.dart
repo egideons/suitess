@@ -45,7 +45,7 @@ changePassword(
               textAlign: TextAlign.start,
               overflow: TextOverflow.ellipsis,
               style: defaultTextStyle(
-                color: kAccentColor,
+                color: colorScheme.secondary,
                 fontSize: 12,
                 fontWeight: FontWeight.w600,
               ),

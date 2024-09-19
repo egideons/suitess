@@ -65,7 +65,7 @@ class SearchFilterBottomModalSheet extends GetView<SearchScreenController> {
                             ),
                             decoration: ShapeDecoration(
                               color: controller.propertyType[index].isSelected
-                                  ? kAccentColor
+                                  ? colorScheme.secondary
                                   : kGreyColor.withOpacity(.1),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(4),
@@ -214,8 +214,8 @@ class SearchFilterBottomModalSheet extends GetView<SearchScreenController> {
                           groupValue: controller.selectedFilter.value,
                           contentPadding: const EdgeInsets.all(0),
                           dense: true,
-                          activeColor: kAccentColor,
-                          hoverColor: kAccentColor,
+                          activeColor: colorScheme.secondary,
+                          hoverColor: colorScheme.secondary,
                           visualDensity:
                               const VisualDensity(horizontal: -4, vertical: -4),
                           onChanged:
@@ -258,7 +258,7 @@ class SearchFilterBottomModalSheet extends GetView<SearchScreenController> {
                               vertical: -4,
                             ),
                             controlAffinity: ListTileControlAffinity.leading,
-                            activeColor: kAccentColor,
+                            activeColor: colorScheme.secondary,
                             title: Text(
                               controller.getFurnishOptionText(option),
                               style: defaultTextStyle(
@@ -298,7 +298,7 @@ class SearchFilterBottomModalSheet extends GetView<SearchScreenController> {
                               horizontal: -4,
                               vertical: -4,
                             ),
-                            activeColor: kAccentColor,
+                            activeColor: colorScheme.secondary,
                             title: Text(
                               controller.getConditionOptionText(option),
                               style: defaultTextStyle(
@@ -318,8 +318,8 @@ class SearchFilterBottomModalSheet extends GetView<SearchScreenController> {
                     onPressed: () {
                       Get.close(0);
                     },
-                    borderColor: kAccentColor,
-                    textColor: kAccentColor,
+                    borderColor: colorScheme.secondary,
+                    textColor: colorScheme.secondary,
                     borderWidth: 1,
                   ),
                   kHalfSizedBox,

@@ -77,7 +77,7 @@ class CheckoutPropertyCongratulationsModalSheet
                       textAlign: TextAlign.center,
                       maxLines: 10,
                       style: defaultTextStyle(
-                        color: kAccentColor,
+                        color: colorScheme.secondary,
                         fontWeight: FontWeight.w600,
                         fontSize: 14,
                       ),

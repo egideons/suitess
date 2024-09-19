@@ -163,7 +163,7 @@ class BankTransferTxPin extends GetView<BankTransferController> {
                         "Forgot Pin?",
                         textAlign: TextAlign.start,
                         style: defaultTextStyle(
-                          color: kAccentColor,
+                          color: colorScheme.secondary,
                           fontSize: 14,
                           fontWeight: FontWeight.w600,
                         ),

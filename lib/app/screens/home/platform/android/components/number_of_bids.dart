@@ -14,13 +14,13 @@ numberOfBids(
     child: Container(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       decoration: ShapeDecoration(
-        color: kAccentColor,
+        color: colorScheme.secondary,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8),
         ),
         shadows: [
           BoxShadow(
-            color: kAccentColor.withOpacity(.4),
+            color: colorScheme.secondary.withOpacity(.4),
             offset: const Offset(0, -15),
             spreadRadius: -10,
           ),

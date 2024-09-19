@@ -40,7 +40,7 @@ quickActionCard(
         children: [
           SvgPicture.asset(
             svgIcon ?? "",
-            color: kAccentColor,
+            color: colorScheme.secondary,
           ),
           kHalfSizedBox,
           Text(

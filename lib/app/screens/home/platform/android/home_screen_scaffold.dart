@@ -55,7 +55,7 @@ class HomeScreenScaffold extends GetView<HomeScreenController> {
         () => controller.isScrollToTopBtnVisible.value
             ? FloatingActionButton.small(
                 onPressed: controller.scrollToTop,
-                backgroundColor: kAccentColor,
+                backgroundColor: colorScheme.secondary,
                 foregroundColor: kWhiteBackgroundColor,
                 child: const Icon(Icons.keyboard_arrow_up),
               )
@@ -127,7 +127,8 @@ class HomeScreenScaffold extends GetView<HomeScreenController> {
                                           color: controller
                                                   .propertyCategories[index]
                                                   .isSelected
-                                              ? kAccentColor.withOpacity(.4)
+                                              ? colorScheme.secondary
+                                                  .withOpacity(.4)
                                               : colorScheme.surface,
                                           shape: RoundedRectangleBorder(
                                             borderRadius:
@@ -142,7 +143,7 @@ class HomeScreenScaffold extends GetView<HomeScreenController> {
                                             color: controller
                                                     .propertyCategories[index]
                                                     .isSelected
-                                                ? kAccentColor
+                                                ? colorScheme.secondary
                                                 : colorScheme.inversePrimary,
                                           ),
                                         ),

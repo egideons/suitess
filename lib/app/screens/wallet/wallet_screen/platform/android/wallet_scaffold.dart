@@ -37,7 +37,7 @@ class WalletScaffold extends GetView<WalletScreenController> {
         () => controller.isScrollToTopBtnVisible.value
             ? FloatingActionButton.small(
                 onPressed: controller.scrollToTop,
-                backgroundColor: kAccentColor,
+                backgroundColor: colorScheme.secondary,
                 foregroundColor: kWhiteBackgroundColor,
                 child: const Icon(Icons.keyboard_arrow_up),
               )
@@ -53,6 +53,7 @@ class WalletScaffold extends GetView<WalletScreenController> {
               Row(
                 children: [
                   walletCard(
+                    colorScheme,
                     controller,
                     walletBalance: "2,372,054.02",
                     acctNumber: "0059908243",
@@ -134,7 +135,7 @@ class WalletScaffold extends GetView<WalletScreenController> {
                       "View all",
                       textAlign: TextAlign.start,
                       style: defaultTextStyle(
-                        color: kAccentColor,
+                        color: colorScheme.secondary,
                         fontSize: 14,
                         fontWeight: FontWeight.w500,
                       ),
@@ -161,6 +162,7 @@ class WalletScaffold extends GetView<WalletScreenController> {
                   itemBuilder: (context, index) {
                     return recentTransaction(
                       media,
+                      colorScheme,
                       () {},
                       title: "Alonso Diobi",
                       dateTime: DateTime.now(),

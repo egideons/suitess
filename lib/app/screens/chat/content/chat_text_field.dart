@@ -55,7 +55,7 @@ chatTextField(
                   backgroundColor: WidgetStatePropertyAll(
                     controller.canSubmit.isFalse
                         ? colorScheme.inversePrimary
-                        : kAccentColor,
+                        : colorScheme.secondary,
                   ),
                 ),
                 icon: SvgPicture.asset(

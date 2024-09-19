@@ -23,7 +23,7 @@ class AddPropertyScaffold extends GetView<AddPropertyController> {
         () => controller.isScrollToTopBtnVisible.value
             ? FloatingActionButton.small(
                 onPressed: controller.scrollToTop,
-                backgroundColor: kAccentColor,
+                backgroundColor: colorScheme.secondary,
                 foregroundColor: kWhiteBackgroundColor,
                 child: const Icon(Icons.keyboard_arrow_up),
               )
@@ -39,8 +39,8 @@ class AddPropertyScaffold extends GetView<AddPropertyController> {
               kSizedBox,
               AndroidOutlinedButton(
                   title: "Cancel",
-                  borderColor: kAccentColor,
-                  textColor: kAccentColor,
+                  borderColor: colorScheme.secondary,
+                  textColor: colorScheme.secondary,
                   borderWidth: 1,
                   onPressed: () {
                     Get.back();

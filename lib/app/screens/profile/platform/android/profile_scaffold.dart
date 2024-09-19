@@ -66,7 +66,7 @@ class ProfileScreenScaffold extends GetView<ProfileScreenController> {
                             child: Container(
                               padding: const EdgeInsets.all(8),
                               decoration: BoxDecoration(
-                                color: kAccentColor,
+                                color: colorScheme.secondary,
                                 shape: BoxShape.circle,
                                 border: Border.all(
                                   width: 2,

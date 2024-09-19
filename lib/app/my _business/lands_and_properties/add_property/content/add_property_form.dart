@@ -122,7 +122,7 @@ addPropertyForm(
         Obx(() {
           return CheckboxListTile(
             value: controller.isNegotiable.value,
-            activeColor: kAccentColor,
+            activeColor: colorScheme.secondary,
             checkColor: kWhiteBackgroundColor,
             dense: true,
             contentPadding: const EdgeInsets.all(0),

@@ -6,6 +6,7 @@ import '../../../../src/constants/consts.dart';
 import '../../../../theme/colors.dart';
 
 searchResultsAndFilter(
+  ColorScheme colorScheme,
   int? numOfResults,
   void Function()? filter,
 ) {
@@ -30,14 +31,14 @@ searchResultsAndFilter(
           children: [
             SvgPicture.asset(
               Assets.searchFilterSvg,
-              color: kAccentColor,
+              color: colorScheme.secondary,
             ),
             kHalfWidthSizedBox,
             Text(
               "Filter",
               textAlign: TextAlign.center,
               style: defaultTextStyle(
-                color: kAccentColor,
+                color: colorScheme.secondary,
                 fontSize: 14,
                 fontWeight: FontWeight.w500,
               ),

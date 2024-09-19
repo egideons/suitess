@@ -1,5 +1,10 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:suitess/src/controllers/others/api_processor_controller.dart';
+
+import '../../../app/screens/profile/views/contact_details/edit_contact_phone_otp/phone_otp/content/edit_address_dialog.dart';
+import '../../../app/screens/profile/views/contact_details/edit_contact_phone_otp/phone_otp/content/edit_phone_number_dialog.dart';
+import '../../constants/consts.dart';
 
 class ContactDetailsScreenController extends GetxController {
   static ContactDetailsScreenController get instance {
@@ -19,14 +24,30 @@ class ContactDetailsScreenController extends GetxController {
   }
 
   //================ variables =================\\
-  var isRefreshing = false.obs;
+  var phoneFormKey = GlobalKey<FormState>();
+  var addressFormKey = GlobalKey<FormState>();
+  var businessNameFormKey = GlobalKey<FormState>();
+
+  //================ Booleans =================\\
+  var isSavingPhoneNumber = false.obs;
+  var isSavingAddress = false.obs;
+  var isSavingBusinessName = false.obs;
   var hasProperties = false.obs;
   var isScrollToTopBtnVisible = false.obs;
+  var mapSuggestionsIsVisible = false.obs;
 
   //================ controllers =================\\
 
   var scrollController = ScrollController();
-  var searchController = TextEditingController();
+  var phoneNumberEC = TextEditingController();
+  var addressEC = TextEditingController();
+  var businessNameEC = TextEditingController();
+
+  //================ Focus Nodes =================\\
+
+  var phoneNumberFN = FocusNode();
+  var addressFN = FocusNode();
+  var businessNameFN = FocusNode();
 
 //================ Scroll to Top =================//
   void scrollToTop() => scrollController.animateTo(
@@ -50,17 +71,107 @@ class ContactDetailsScreenController extends GetxController {
     }
   }
 
-//================ Handle refresh ================\\
+  //================= Edit Phone Number ===================//
 
-  Future<void> onRefresh() async {
-    isRefreshing.value = true;
-    update();
+  void showEditPhoneNumberDialog() {
+    ApiProcessorController.warningSnack(
+      "This option is not yet available.\nPhone OTP is not functional",
+    );
 
-    await Future.delayed(const Duration(seconds: 2));
+    var media = MediaQuery.of(Get.context!).size;
+    var colorScheme = Theme.of(Get.context!).colorScheme;
+    var controller = ContactDetailsScreenController.instance;
 
-    isRefreshing.value = false;
-    update();
+    // showDialog(
+    //   context: Get.context!,
+    //   useSafeArea: true,
+    //   barrierDismissible: true,
+    //   builder: (context) {
+    //     return GestureDetector(
+    //       onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
+    //       child: editPhoneNumberDialog(media, colorScheme, controller),
+    //     );
+    //   },
+    // );
   }
 
-  //=================  ===================//
+  Future<void> savePhoneNumber() async {
+    if (phoneFormKey.currentState!.validate()) {
+      var phoneNumberRegExp = RegExp(mobilePattern);
+
+      if (phoneNumberEC.text.isEmpty) {
+        ApiProcessorController.warningSnack("Please enter your phone number");
+        return;
+      } else if (!phoneNumberRegExp.hasMatch(phoneNumberEC.text)) {
+        ApiProcessorController.warningSnack(
+          "Please enter a valid phone number",
+        );
+        return;
+      }
+
+      isSavingPhoneNumber.value = true;
+      await Future.delayed(const Duration(seconds: 3));
+      isSavingPhoneNumber.value = false;
+    }
+  }
+
+  //================= Edit Address ===================//
+
+  void showEditAddressDialog() {
+    var media = MediaQuery.of(Get.context!).size;
+    var colorScheme = Theme.of(Get.context!).colorScheme;
+    var controller = ContactDetailsScreenController.instance;
+
+    showDialog(
+      context: Get.context!,
+      useSafeArea: true,
+      barrierDismissible: true,
+      builder: (context) {
+        return GestureDetector(
+          onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
+          child: editAddressDialog(media, colorScheme, controller),
+        );
+      },
+    );
+  }
+
+  addressOnChanged(String value) {
+    if (value.isEmpty) {
+      mapSuggestionsIsVisible.value = false;
+    } else {
+      mapSuggestionsIsVisible.value = true;
+    }
+  }
+
+  Future<void> saveAddress() async {
+    isSavingAddress.value = true;
+    await Future.delayed(const Duration(seconds: 3));
+    isSavingAddress.value = false;
+  }
+
+  //================= Edit Business Name ===================//
+
+  void showEditBusinessNameDialog() {
+    var media = MediaQuery.of(Get.context!).size;
+    var colorScheme = Theme.of(Get.context!).colorScheme;
+    var controller = ContactDetailsScreenController.instance;
+
+    showDialog(
+      context: Get.context!,
+      useSafeArea: true,
+      barrierDismissible: true,
+      builder: (context) {
+        return GestureDetector(
+          onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
+          child: editPhoneNumberDialog(media, colorScheme, controller),
+        );
+      },
+    );
+  }
+
+  Future<void> saveBusinessName() async {
+    isSavingBusinessName.value = true;
+    await Future.delayed(const Duration(seconds: 3));
+    isSavingBusinessName.value = false;
+  }
 }

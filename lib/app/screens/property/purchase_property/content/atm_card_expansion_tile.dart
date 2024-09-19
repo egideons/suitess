@@ -28,7 +28,7 @@ atmCardExpansionTile(ColorScheme colorScheme, {List<Widget>? children}) {
         children: [
           SvgPicture.asset(
             Assets.creditCardFilledSvg,
-            color: kAccentColor,
+            color: colorScheme.secondary,
           ),
           kHalfWidthSizedBox,
           Text(

@@ -30,7 +30,7 @@ uploadProfilePicOption(
           child: Center(
             child: SvgPicture.asset(
               icon ?? "",
-              color: kAccentColor,
+              color: colorScheme.secondary,
             ),
           ),
         ),

@@ -8,6 +8,7 @@ import '../../../../../src/controllers/app/wallet_screen_controller.dart';
 import '../../../../../theme/colors.dart';
 
 walletCard(
+  ColorScheme colorScheme,
   WalletScreenController controller, {
   String? walletBalance,
   String? acctNumber,
@@ -29,7 +30,7 @@ walletCard(
               BoxShadow(
                 blurRadius: 7,
                 spreadRadius: 0,
-                color: kAccentColor.withOpacity(.2),
+                color: colorScheme.secondary.withOpacity(.2),
                 offset: const Offset(0, 10),
               )
             ],

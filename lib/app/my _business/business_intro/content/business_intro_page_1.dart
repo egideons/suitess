@@ -21,7 +21,7 @@ businessIntroPage1(
             child: FadeInDown(
               child: SvgPicture.asset(
                 Assets.briefcaseDollarFilledSvg,
-                color: kAccentColor,
+                color: colorScheme.secondary,
                 height: 120,
                 width: 120,
               ),

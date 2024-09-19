@@ -163,7 +163,7 @@ class AirtimePurchasePin extends GetView<AirtimePurchaseController> {
                         "Forgot Pin?",
                         textAlign: TextAlign.start,
                         style: defaultTextStyle(
-                          color: kAccentColor,
+                          color: colorScheme.secondary,
                           fontSize: 14,
                           fontWeight: FontWeight.w600,
                         ),

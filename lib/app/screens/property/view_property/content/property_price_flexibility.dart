@@ -3,7 +3,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../../src/constants/assets.dart';
 import '../../../../../src/constants/consts.dart';
-import '../../../../../theme/colors.dart';
 
 priceFlexibility(ColorScheme colorScheme, {bool? isNegotiable}) {
   return Row(
@@ -43,7 +42,7 @@ priceFlexibility(ColorScheme colorScheme, {bool? isNegotiable}) {
                   minHeight: 10,
                   backgroundColor: colorScheme.inversePrimary.withOpacity(0.2),
                   valueColor: AlwaysStoppedAnimation<Color>(
-                    kAccentColor,
+                    colorScheme.secondary,
                   ),
                 ),
               ),

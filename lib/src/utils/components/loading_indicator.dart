@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:suitess/theme/colors.dart';
 
-Widget loadingIndicator({media}) {
+Widget loadingIndicator(
+  Size? media,
+  ColorScheme colorScheme,
+) {
   return SizedBox(
-    width: media.width,
+    width: media!.width,
     height: 2,
-    child: LinearProgressIndicator(color: kAccentColor),
+    child: LinearProgressIndicator(color: colorScheme.secondary),
   );
 }

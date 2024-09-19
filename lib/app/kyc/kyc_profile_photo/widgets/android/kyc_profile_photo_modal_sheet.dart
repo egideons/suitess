@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:suitess/src/constants/consts.dart';
-import 'package:suitess/theme/colors.dart';
 
 kycProfilePhotoModalSheet(context, media, colorScheme, controller) {
   return showModalBottomSheet(
@@ -44,7 +43,7 @@ kycProfilePhotoModalSheet(context, media, colorScheme, controller) {
                     child: Center(
                       child: Icon(
                         Icons.camera,
-                        color: kAccentColor,
+                        color: colorScheme.secondary,
                       ),
                     ),
                   ),
@@ -83,7 +82,7 @@ kycProfilePhotoModalSheet(context, media, colorScheme, controller) {
                     child: Center(
                       child: Icon(
                         Icons.image,
-                        color: kAccentColor,
+                        color: colorScheme.secondary,
                       ),
                     ),
                   ),

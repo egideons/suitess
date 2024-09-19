@@ -31,7 +31,7 @@ class WalletTransferScaffold extends GetView<WalletTransferController> {
       //   () => controller.isScrollToTopBtnVisible.value
       //       ? FloatingActionButton.small(
       //           onPressed: controller.scrollToTop,
-      //           backgroundColor: kAccentColor,
+      //           backgroundColor: colorScheme.secondary,
       //           foregroundColor: kWhiteBackgroundColor,
       //           child: const Icon(Icons.keyboard_arrow_up),
       //         )

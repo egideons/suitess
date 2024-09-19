@@ -37,7 +37,7 @@ incomeDebitCard(
               children: [
                 SvgPicture.asset(
                   Assets.arrowDownSvg,
-                  color: kAccentColor,
+                  color: colorScheme.secondary,
                 ),
                 kSmallWidthSizedBox,
                 Column(
@@ -46,7 +46,7 @@ incomeDebitCard(
                     Text(
                       "Income",
                       style: defaultTextStyle(
-                        color: kAccentColor,
+                        color: colorScheme.secondary,
                         fontSize: 12,
                         fontWeight: FontWeight.w400,
                       ),

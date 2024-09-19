@@ -68,7 +68,7 @@ class ChatScreenScaffold extends GetView<ChatController> {
         () => controller.isScrollToBottomBtnVisible.value
             ? FloatingActionButton.small(
                 onPressed: controller.jumpTopBottom,
-                backgroundColor: kAccentColor,
+                backgroundColor: colorScheme.secondary,
                 foregroundColor: kWhiteBackgroundColor,
                 child: const Icon(Icons.keyboard_arrow_down),
               )

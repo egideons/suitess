@@ -57,7 +57,7 @@ class BookAppointmentScaffold extends GetView<BookAppointmentController> {
                         )
                       ],
                     ),
-                    child: bookAppointmentCalender(controller),
+                    child: bookAppointmentCalender(controller, colorScheme),
                   ),
                   kSizedBox,
                   Text(
@@ -90,7 +90,7 @@ class BookAppointmentScaffold extends GetView<BookAppointmentController> {
                             ),
                             decoration: ShapeDecoration(
                               color: timeOfDayModel.isSelected
-                                  ? kAccentColor
+                                  ? colorScheme.secondary
                                   : kGreyColor.withOpacity(.1),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(4),

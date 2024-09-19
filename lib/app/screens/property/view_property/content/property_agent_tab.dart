@@ -67,7 +67,7 @@ agentTab(
                       padding: const EdgeInsets.all(8.0),
                       child: SvgPicture.asset(
                         Assets.chatFilledIconSvg,
-                        color: kAccentColor,
+                        color: colorScheme.secondary,
                       ),
                     ),
                   ),
@@ -91,7 +91,7 @@ agentTab(
                       padding: const EdgeInsets.all(8.0),
                       child: SvgPicture.asset(
                         Assets.phoneFilledSvg,
-                        color: kAccentColor,
+                        color: colorScheme.secondary,
                       ),
                     ),
                   ),

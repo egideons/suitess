@@ -8,7 +8,6 @@ import '../../../app/screens/messages/screen/messages_screen.dart';
 import '../../../app/screens/wallet/wallet_screen/screen/wallet_screen.dart';
 import '../../../app/screens/wallet_intro/screen/wallet_intro_screen.dart';
 import '../../../main.dart';
-import '../../../theme/colors.dart';
 import '../../constants/assets.dart';
 
 class BottomNavigationController extends GetxController {
@@ -41,7 +40,7 @@ class BottomNavigationController extends GetxController {
           ),
           activeIcon: SvgPicture.asset(
             Assets.homeFilledIconSvg,
-            color: kAccentColor,
+            color: colorScheme.secondary,
             fit: BoxFit.cover,
           ),
         ),
@@ -53,7 +52,7 @@ class BottomNavigationController extends GetxController {
             fit: BoxFit.cover,
           ),
           activeIcon: SvgPicture.asset(
-            color: kAccentColor,
+            color: colorScheme.secondary,
             Assets.walletFilledIconSvg,
             fit: BoxFit.cover,
           ),
@@ -67,7 +66,7 @@ class BottomNavigationController extends GetxController {
           ),
           activeIcon: SvgPicture.asset(
             Assets.chatFilledIconSvg,
-            color: kAccentColor,
+            color: colorScheme.secondary,
             fit: BoxFit.cover,
           ),
         ),
@@ -80,7 +79,7 @@ class BottomNavigationController extends GetxController {
           ),
           activeIcon: SvgPicture.asset(
             Assets.userFilledIconSvg,
-            color: kAccentColor,
+            color: colorScheme.secondary,
             fit: BoxFit.cover,
           ),
         ),
