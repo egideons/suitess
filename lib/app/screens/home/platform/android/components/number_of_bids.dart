@@ -4,7 +4,8 @@ import '../../../../../../src/constants/consts.dart';
 import '../../../../../../theme/colors.dart';
 
 numberOfBids(
-  Size media, {
+  Size media,
+  ColorScheme colorScheme, {
   Function()? viewAll,
   int? noOfAgents,
 }) {

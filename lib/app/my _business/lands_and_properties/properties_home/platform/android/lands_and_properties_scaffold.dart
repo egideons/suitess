@@ -50,7 +50,7 @@ class LandsAndPropertiesScaffold extends GetView<LandsAndPropertiesController> {
                         ? Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              verifyAccountContainer(controller),
+                              verifyAccountContainer(controller, colorScheme),
                               kBigSizedBox,
                             ],
                           )

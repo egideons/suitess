@@ -96,6 +96,7 @@ class HomeScreenScaffold extends GetView<HomeScreenController> {
                               kHalfSizedBox,
                               numberOfBids(
                                 media,
+                                colorScheme,
                                 viewAll: controller.goToBids,
                               ),
                               kSizedBox,

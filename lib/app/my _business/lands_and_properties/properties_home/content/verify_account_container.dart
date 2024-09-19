@@ -4,7 +4,10 @@ import '../../../../../src/constants/consts.dart';
 import '../../../../../src/controllers/app/lands_and_properties_controller.dart';
 import '../../../../../theme/colors.dart';
 
-verifyAccountContainer(LandsAndPropertiesController controller) {
+verifyAccountContainer(
+  LandsAndPropertiesController controller,
+  ColorScheme colorScheme,
+) {
   return AnimatedContainer(
     duration: const Duration(milliseconds: 500),
     curve: Curves.easeInOut,
