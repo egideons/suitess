@@ -7,6 +7,7 @@ import 'package:suitess/main.dart';
 import 'package:suitess/src/constants/assets.dart';
 import 'package:suitess/src/constants/consts.dart';
 import 'package:suitess/src/routes/routes.dart';
+import 'package:suitess/src/services/api/api_url.dart';
 import 'package:suitess/src/utils/buttons/android/android_elevated_button.dart';
 import 'package:suitess/src/utils/components/circle_avatar_image.dart';
 import 'package:suitess/theme/colors.dart';
@@ -55,7 +56,13 @@ class ProfileScreenScaffold extends GetView<ProfileScreenController> {
                                     ? circleAvatarImage(
                                         colorScheme,
                                         height: 120,
-                                        imageText: user!.firstName!.isEmpty
+                                        foregroundImage:
+                                            user!.profileImage!.isEmpty
+                                                ? null
+                                                : NetworkImage(
+                                                    "${ApiUrl.authBaseUrl}/${user.profileImage!}",
+                                                  ),
+                                        imageText: user.firstName!.isEmpty
                                             ? ""
                                             : getNameInitials(user.fullname!),
                                       )
@@ -266,16 +273,21 @@ class ProfileScreenScaffold extends GetView<ProfileScreenController> {
                             colorScheme,
                             title: "My Business",
                             nav: () {
-                              if (hasBusiness) {
-                                businessIsLandsAndProperties
-                                    ? Get.toNamed(
-                                        Routes.landsAndProperties,
-                                        preventDuplicates: true,
-                                      )
-                                    : Get.toNamed(
-                                        Routes.hotelManagement,
-                                        preventDuplicates: true,
-                                      );
+                              if (hasBusiness ||
+                                  user.settings!.username!.isNotEmpty) {
+                                Get.toNamed(
+                                  Routes.landsAndProperties,
+                                  preventDuplicates: true,
+                                );
+                                // businessIsLandsAndProperties
+                                //     ? Get.toNamed(
+                                //         Routes.landsAndProperties,
+                                //         preventDuplicates: true,
+                                //       )
+                                //     : Get.toNamed(
+                                //         Routes.hotelManagement,
+                                //         preventDuplicates: true,
+                                //       );
                               } else {
                                 Get.toNamed(
                                   Routes.businessIntro,

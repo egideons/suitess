@@ -8,7 +8,7 @@ import 'package:suitess/theme/colors.dart';
 
 import '../../../../../../../../src/constants/consts.dart';
 
-editBusinessNameDialog(
+editUserNameDialog(
   Size media,
   ColorScheme colorScheme,
   ContactDetailsScreenController controller,
@@ -56,19 +56,19 @@ editBusinessNameDialog(
                     ),
                     kSizedBox,
                     Form(
-                      key: controller.businessNameFormKey,
+                      key: controller.userNameFormKey,
                       child: formFieldContainer(
                         colorScheme,
                         media,
                         containerHeight: 55,
                         child: AndroidTextFormField(
                           labelText: "Business name",
-                          controller: controller.businessNameEC,
+                          controller: controller.userNameEC,
                           focusNode: controller.businessNameFN,
                           textInputAction: TextInputAction.done,
                           textCapitalization: TextCapitalization.sentences,
                           keyboardType: TextInputType.name,
-                          onFieldSubmitted: controller.businessNameOnSubmitted,
+                          onFieldSubmitted: controller.userNameOnSubmitted,
                           validator: (value) {
                             return null;
                           },
@@ -80,8 +80,8 @@ editBusinessNameDialog(
                       () {
                         return AndroidElevatedButton(
                           title: "Save",
-                          isLoading: controller.isSavingBusinessName.value,
-                          onPressed: controller.saveBusinessName,
+                          isLoading: controller.isSavingUserName.value,
+                          onPressed: controller.saveUserName,
                         );
                       },
                     ),

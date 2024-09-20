@@ -23,6 +23,9 @@ class ContactDetailsScreenController extends GetxController {
   void onInit() {
     super.onInit();
     scrollController.addListener(_scrollListener);
+    phoneNumberEC.text = user!.phone ?? "";
+    addressEC.text = user!.settings!.address ?? "";
+    userNameEC.text = user!.settings!.username ?? "";
   }
 
   @override
@@ -34,12 +37,13 @@ class ContactDetailsScreenController extends GetxController {
   //================ variables =================\\
   var phoneFormKey = GlobalKey<FormState>();
   var addressFormKey = GlobalKey<FormState>();
-  var businessNameFormKey = GlobalKey<FormState>();
+  var userNameFormKey = GlobalKey<FormState>();
+  var user = UserController.instance.userModel.value.data;
 
   //================ Booleans =================\\
   var isSavingPhoneNumber = false.obs;
   var isSavingAddress = false.obs;
-  var isSavingBusinessName = false.obs;
+  var isSavingUserName = false.obs;
   var hasProperties = false.obs;
   var isScrollToTopBtnVisible = false.obs;
   var adderessClearButtonIsVisible = false.obs;
@@ -50,7 +54,7 @@ class ContactDetailsScreenController extends GetxController {
   var scrollController = ScrollController();
   var phoneNumberEC = TextEditingController();
   var addressEC = TextEditingController();
-  var businessNameEC = TextEditingController();
+  var userNameEC = TextEditingController();
 
   //================ Focus Nodes =================\\
 
@@ -195,7 +199,7 @@ class ContactDetailsScreenController extends GetxController {
 
   //================= Edit Business Name ===================//
 
-  void showEditBusinessNameDialog() {
+  void showEditUserNameDialog() {
     var media = MediaQuery.of(Get.context!).size;
     var colorScheme = Theme.of(Get.context!).colorScheme;
     var controller = ContactDetailsScreenController.instance;
@@ -207,29 +211,29 @@ class ContactDetailsScreenController extends GetxController {
       builder: (context) {
         return GestureDetector(
           onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
-          child: editBusinessNameDialog(media, colorScheme, controller),
+          child: editUserNameDialog(media, colorScheme, controller),
         );
       },
     );
   }
 
-  businessNameOnSubmitted(String value) {
-    saveBusinessName();
+  userNameOnSubmitted(String value) {
+    saveUserName();
   }
 
-  Future<void> saveBusinessName() async {
-    if (businessNameFormKey.currentState!.validate()) {
-      if (businessNameEC.text.isEmpty) {
-        ApiProcessorController.warningSnack("Please enter your business name");
+  Future<void> saveUserName() async {
+    if (userNameFormKey.currentState!.validate()) {
+      if (userNameEC.text.isEmpty) {
+        ApiProcessorController.warningSnack("Please enter your username");
         return;
-      } else if (businessNameEC.text.length < 3) {
+      } else if (userNameEC.text.length < 3) {
         ApiProcessorController.warningSnack(
           "Name must be more than 3 characters",
         );
         return;
       }
 
-      isSavingBusinessName.value = true;
+      isSavingUserName.value = true;
 
       // URL and token for the request
       var url = ApiUrl.authBaseUrl + ApiUrl.auth + ApiUrl.profile;
@@ -239,11 +243,11 @@ class ContactDetailsScreenController extends GetxController {
       var streamedResponse = await HttpClientService.updateProfile(
         url: url,
         token: userToken,
-        businessName: businessNameEC.text,
+        businessName: userNameEC.text,
       );
 
       if (streamedResponse == null) {
-        isSavingBusinessName.value = false;
+        isSavingUserName.value = false;
         return;
       }
 
@@ -259,6 +263,7 @@ class ContactDetailsScreenController extends GetxController {
             "Business name updated successfully",
           );
           await UserController.instance.getUserProfile();
+          Get.close(0);
         } else {
           ApiProcessorController.errorSnack(responseJson["message"]);
         }
@@ -268,7 +273,7 @@ class ContactDetailsScreenController extends GetxController {
         log(e.toString());
       }
 
-      isSavingBusinessName.value = false;
+      isSavingUserName.value = false;
     }
   }
 }

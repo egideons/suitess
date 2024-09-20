@@ -150,7 +150,9 @@ class HttpClientService {
       request.headers[HttpHeaders.authorizationHeader] = 'Bearer $token';
 
       // Add the text fields
+      // if (userName != null) {
       if (businessName != null) {
+        // request.fields['user_name'] = userName;
         request.fields['business_name'] = businessName;
       }
       if (address != null) {

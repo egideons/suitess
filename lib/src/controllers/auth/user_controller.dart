@@ -41,11 +41,11 @@ class UserController extends GetxController {
 
     try {
       // Convert to json
-      dynamic responseJson;
-      responseJson = jsonDecode(response.body);
+      var responseJson = jsonDecode(response.body);
 
       if (response.statusCode == 200) {
         userModel.value = UserModel.fromJson(responseJson);
+        // log("This is the user model ====> $responseJson");
         log("This is the user model ====> ${jsonEncode(userModel.value)}");
       } else {
         log("Request failed with status: ${response.statusCode}");

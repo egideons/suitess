@@ -45,7 +45,7 @@ class ContactDetailsScaffold extends GetView<ContactDetailsScreenController> {
                       children: [
                         emailSection(
                           colorScheme,
-                          userEmail: user!.email ?? "Email",
+                          userEmail: user!.email,
                         ),
                         Divider(
                           color: colorScheme.inversePrimary.withOpacity(.4),
@@ -53,7 +53,7 @@ class ContactDetailsScaffold extends GetView<ContactDetailsScreenController> {
                         editDetail(
                           colorScheme,
                           title: "Phone",
-                          detail: user.phone ?? "Phone Number",
+                          detail: user.phone,
                           editFunction: controller.showEditPhoneNumberDialog,
                         ),
                         Divider(
@@ -62,7 +62,7 @@ class ContactDetailsScaffold extends GetView<ContactDetailsScreenController> {
                         editDetail(
                           colorScheme,
                           title: "Address",
-                          detail: "",
+                          detail: user.settings!.address,
                           editFunction: controller.showEditAddressDialog,
                         ),
                         Divider(
@@ -70,9 +70,9 @@ class ContactDetailsScaffold extends GetView<ContactDetailsScreenController> {
                         ),
                         editDetail(
                           colorScheme,
-                          title: "Business name / Username",
-                          detail: "",
-                          editFunction: controller.showEditBusinessNameDialog,
+                          title: "Username",
+                          detail: user.settings!.username,
+                          editFunction: controller.showEditUserNameDialog,
                         ),
                       ],
                     ),
