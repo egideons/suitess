@@ -10,6 +10,7 @@ Color kGreenFrameBackgroundColor = const Color(0xFF41B696).withOpacity(.12);
 Color kDarkGreyColor = Colors.grey.shade800;
 Color kDebitColor = const Color(0xFFD20031);
 Color kErrorColor = Colors.red;
+Color kFrameBackgroundColor = const Color(0xFFC2C2C2).withOpacity(.4);
 
 Color kFormFieldTextColor = const Color(0xFF2D2D2D);
 Color kFormFieldLabelTextColor = kFormFieldTextColor.withOpacity(.5);

@@ -56,7 +56,7 @@ editBusinessNameDialog(
                     ),
                     kSizedBox,
                     Form(
-                      key: controller.phoneFormKey,
+                      key: controller.businessNameFormKey,
                       child: formFieldContainer(
                         colorScheme,
                         media,
@@ -68,6 +68,7 @@ editBusinessNameDialog(
                           textInputAction: TextInputAction.done,
                           textCapitalization: TextCapitalization.sentences,
                           keyboardType: TextInputType.name,
+                          onFieldSubmitted: controller.businessNameOnSubmitted,
                           validator: (value) {
                             return null;
                           },

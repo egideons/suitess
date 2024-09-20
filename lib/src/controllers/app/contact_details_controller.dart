@@ -1,10 +1,18 @@
+import 'dart:convert';
+import 'dart:developer';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:suitess/app/screens/profile/views/contact_details/edit_contact_phone_otp/phone_otp/content/edit_business_name_dialog.dart';
+import 'package:suitess/main.dart';
 import 'package:suitess/src/controllers/others/api_processor_controller.dart';
+import 'package:suitess/src/services/api/api_url.dart';
+import 'package:suitess/src/services/client/http_client_service.dart';
 
 import '../../../app/screens/profile/views/contact_details/edit_contact_phone_otp/phone_otp/content/edit_address_dialog.dart';
-import '../../../app/screens/profile/views/contact_details/edit_contact_phone_otp/phone_otp/content/edit_phone_number_dialog.dart';
 import '../../constants/consts.dart';
+import '../auth/user_controller.dart';
 
 class ContactDetailsScreenController extends GetxController {
   static ContactDetailsScreenController get instance {
@@ -34,6 +42,7 @@ class ContactDetailsScreenController extends GetxController {
   var isSavingBusinessName = false.obs;
   var hasProperties = false.obs;
   var isScrollToTopBtnVisible = false.obs;
+  var adderessClearButtonIsVisible = false.obs;
   var mapSuggestionsIsVisible = false.obs;
 
   //================ controllers =================\\
@@ -78,9 +87,9 @@ class ContactDetailsScreenController extends GetxController {
       "This option is not yet available.\nPhone OTP is not functional",
     );
 
-    var media = MediaQuery.of(Get.context!).size;
-    var colorScheme = Theme.of(Get.context!).colorScheme;
-    var controller = ContactDetailsScreenController.instance;
+    // var media = MediaQuery.of(Get.context!).size;
+    // var colorScheme = Theme.of(Get.context!).colorScheme;
+    // var controller = ContactDetailsScreenController.instance;
 
     // showDialog(
     //   context: Get.context!,
@@ -93,6 +102,10 @@ class ContactDetailsScreenController extends GetxController {
     //     );
     //   },
     // );
+  }
+
+  phoneNumberOnSubmitted(String value) {
+    savePhoneNumber();
   }
 
   Future<void> savePhoneNumber() async {
@@ -137,16 +150,47 @@ class ContactDetailsScreenController extends GetxController {
 
   addressOnChanged(String value) {
     if (value.isEmpty) {
+      adderessClearButtonIsVisible.value = false;
       mapSuggestionsIsVisible.value = false;
     } else {
+      adderessClearButtonIsVisible.value = true;
       mapSuggestionsIsVisible.value = true;
     }
   }
 
+  clearAddressTextField() {
+    addressEC.clear();
+    adderessClearButtonIsVisible.value = false;
+    mapSuggestionsIsVisible.value = false;
+  }
+
+  selectAddressSuggestion() {
+    addressEC.text = "Enugu, Nigeria";
+  }
+
+  loadGoogleMaps() async {
+    ApiProcessorController.warningSnack("Google maps is not available");
+  }
+
   Future<void> saveAddress() async {
-    isSavingAddress.value = true;
-    await Future.delayed(const Duration(seconds: 3));
-    isSavingAddress.value = false;
+    if (addressFormKey.currentState!.validate()) {
+      if (addressEC.text.isEmpty) {
+        ApiProcessorController.warningSnack("Please enter your phone number");
+        return;
+      } else if (addressEC.text.length < 3) {
+        ApiProcessorController.warningSnack(
+          "Please enter a valid address",
+        );
+        return;
+      }
+
+      isSavingAddress.value = true;
+      await Future.delayed(const Duration(seconds: 3));
+      ApiProcessorController.warningSnack(
+        "Location Service is not yet available",
+      );
+      isSavingAddress.value = false;
+    }
   }
 
   //================= Edit Business Name ===================//
@@ -163,15 +207,68 @@ class ContactDetailsScreenController extends GetxController {
       builder: (context) {
         return GestureDetector(
           onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
-          child: editPhoneNumberDialog(media, colorScheme, controller),
+          child: editBusinessNameDialog(media, colorScheme, controller),
         );
       },
     );
   }
 
+  businessNameOnSubmitted(String value) {
+    saveBusinessName();
+  }
+
   Future<void> saveBusinessName() async {
-    isSavingBusinessName.value = true;
-    await Future.delayed(const Duration(seconds: 3));
-    isSavingBusinessName.value = false;
+    if (businessNameFormKey.currentState!.validate()) {
+      if (businessNameEC.text.isEmpty) {
+        ApiProcessorController.warningSnack("Please enter your business name");
+        return;
+      } else if (businessNameEC.text.length < 3) {
+        ApiProcessorController.warningSnack(
+          "Name must be more than 3 characters",
+        );
+        return;
+      }
+
+      isSavingBusinessName.value = true;
+
+      // URL and token for the request
+      var url = ApiUrl.authBaseUrl + ApiUrl.auth + ApiUrl.profile;
+      var userToken = prefs.getString("userToken") ?? "";
+
+      //HTTP Client Service
+      var streamedResponse = await HttpClientService.updateProfile(
+        url: url,
+        token: userToken,
+        businessName: businessNameEC.text,
+      );
+
+      if (streamedResponse == null) {
+        isSavingBusinessName.value = false;
+        return;
+      }
+
+      // Log the status code and response body
+      log("Response status code: ${streamedResponse.statusCode}");
+      log("Response body: ${streamedResponse.body}");
+
+      var responseJson = jsonDecode(streamedResponse.body);
+
+      try {
+        if (streamedResponse.statusCode == 200) {
+          ApiProcessorController.successSnack(
+            "Business name updated successfully",
+          );
+          await UserController.instance.getUserProfile();
+        } else {
+          ApiProcessorController.errorSnack(responseJson["message"]);
+        }
+      } on SocketException {
+        ApiProcessorController.errorSnack("Please connect to the internet");
+      } catch (e) {
+        log(e.toString());
+      }
+
+      isSavingBusinessName.value = false;
+    }
   }
 }

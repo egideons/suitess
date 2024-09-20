@@ -5,6 +5,7 @@ import 'package:suitess/app/kyc/kyc_add_location/screen/kyc_add_location.dart';
 import 'package:suitess/app/kyc/kyc_profile_photo/screen/kyc_profile_photo.dart';
 import 'package:suitess/app/my%20_business/lands_and_properties/add_property/screen/add_property_screen.dart';
 import 'package:suitess/app/my%20_business/lands_and_properties/properties_home/screen/lands_and_properties_screen.dart';
+import 'package:suitess/app/my%20_business/lands_and_properties/upload_property_images/screen/upload_property_images_screen.dart';
 import 'package:suitess/app/onboarding/screen/onboarding.dart';
 import 'package:suitess/app/screens/home/screen/home_screen.dart';
 import 'package:suitess/app/screens/notifications/screen/notifications.dart';
@@ -130,6 +131,7 @@ class Routes {
 
   //Business Section
   static const addProperty = "/add-property";
+  static const uploadPropertyImages = "/upload-property-images";
   static const updateProperty = "/update-property";
 
   //========================= GET PAGES ==========================\\
@@ -222,6 +224,10 @@ class Routes {
       page: () => const LandsAndPropertiesScreen(),
     ),
     GetPage(name: addProperty, page: () => const AddPropertyScreen()),
+    GetPage(
+      name: uploadPropertyImages,
+      page: () => const UploadPropertyImagesScreen(),
+    ),
     // GetPage(name: updateProperty, page: () => const UpdatePropertyScreen()),
     // GetPage(name: hotelManagement, page: () => const HotelManagementScreen()),
     // GetPage(name: landLordAddProperty, page: () => const LandLordAddProperty()),

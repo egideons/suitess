@@ -1,14 +1,8 @@
-import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:http/http.dart' as http;
-import 'package:suitess/main.dart';
-import 'package:suitess/src/controllers/others/api_processor_controller.dart';
-
-import '../../services/api/api_url.dart';
-import '../../services/client/http_client_service.dart';
+import 'package:suitess/src/routes/routes.dart';
 
 class AddPropertyController extends GetxController {
   static AddPropertyController get instance {
@@ -201,6 +195,9 @@ class AddPropertyController extends GetxController {
   }
 
   Future<void> submitForm() async {
+    Get.toNamed(Routes.uploadPropertyImages, preventDuplicates: true);
+
+/* 
     if (formkey.currentState!.validate()) {
       formkey.currentState!.save();
 
@@ -268,7 +265,7 @@ class AddPropertyController extends GetxController {
           ApiUrl.business +
           ApiUrl.createPropertyBusiness;
 
-      var userToken = prefs.getString("userToken") ?? "";
+      // var userToken = prefs.getString("userToken") ?? "";
 
       Map data = {
         "title": propertyTitleEC.text,
@@ -287,6 +284,7 @@ class AddPropertyController extends GetxController {
 
       log("This is the Url: $url");
       log("This is the Data: $data");
+
 
       //HTTP Client Service
       http.Response? response =
@@ -312,6 +310,9 @@ class AddPropertyController extends GetxController {
         if (response.statusCode == 200) {
           //Display Snackbar
           ApiProcessorController.successSnack("Successful");
+
+          //Navigate to next screen
+          Get.toNamed(Routes.uploadPropertyImages, preventDuplicates: true);
         } else {
           ApiProcessorController.warningSnack(responseMessage.value);
           log("Request failed with status: ${response.statusCode}");
@@ -323,5 +324,6 @@ class AddPropertyController extends GetxController {
 
       isLoading.value = false;
     }
+    */
   }
 }

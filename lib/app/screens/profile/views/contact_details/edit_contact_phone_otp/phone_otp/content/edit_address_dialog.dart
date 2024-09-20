@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:suitess/app/screens/profile/views/contact_details/edit_contact_phone_otp/phone_otp/content/address_suggestion.dart';
 import 'package:suitess/src/controllers/app/contact_details_controller.dart';
 import 'package:suitess/src/utils/buttons/android/android_elevated_button.dart';
@@ -15,7 +16,7 @@ editAddressDialog(
   ContactDetailsScreenController controller,
 ) {
   return Padding(
-    padding: const EdgeInsets.symmetric(vertical: 60),
+    padding: const EdgeInsets.only(top: 20),
     child: Container(
       decoration: ShapeDecoration(
         shape: RoundedRectangleBorder(
@@ -57,46 +58,92 @@ editAddressDialog(
                     ),
                     kSizedBox,
                     Form(
-                      key: controller.phoneFormKey,
+                      key: controller.addressFormKey,
                       child: formFieldContainer(
                         colorScheme,
                         media,
                         containerHeight: 55,
-                        child: AndroidTextFormField(
-                          labelText: "Address",
-                          controller: controller.addressEC,
-                          focusNode: controller.addressFN,
-                          textInputAction: TextInputAction.done,
-                          textCapitalization: TextCapitalization.sentences,
-                          keyboardType: TextInputType.streetAddress,
-                          onChanged: controller.addressOnChanged,
-                          validator: (value) {
-                            return null;
-                          },
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: AndroidTextFormField(
+                                labelText: "Address",
+                                controller: controller.addressEC,
+                                focusNode: controller.addressFN,
+                                textInputAction: TextInputAction.done,
+                                textCapitalization:
+                                    TextCapitalization.sentences,
+                                keyboardType: TextInputType.streetAddress,
+                                onChanged: controller.addressOnChanged,
+                                suffixIcon: Obx(() {
+                                  return controller
+                                          .adderessClearButtonIsVisible.value
+                                      ? IconButton(
+                                          onPressed:
+                                              controller.clearAddressTextField,
+                                          icon: Icon(
+                                            Icons.cancel,
+                                            color: colorScheme.inversePrimary,
+                                            size: 14,
+                                          ),
+                                        )
+                                      : const SizedBox();
+                                }),
+                                validator: (value) {
+                                  return null;
+                                },
+                              ),
+                            ),
+                            kHalfWidthSizedBox,
+                            IconButton(
+                              onPressed: controller.loadGoogleMaps,
+                              icon: Icon(
+                                Iconsax.map5,
+                                color: colorScheme.secondary,
+                                size: 24,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ),
                     Obx(() {
                       return controller.mapSuggestionsIsVisible.value
                           ? SizedBox(
-                              height: 200,
+                              height: 300,
                               child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   kSizedBox,
+                                  Text(
+                                    "Suggestions",
+                                    textAlign: TextAlign.start,
+                                    style: defaultTextStyle(
+                                      color: kTextBoldHeadingColor,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                  kSizedBox,
                                   Expanded(
-                                    child: ListView.separated(
-                                      itemCount: 20,
-                                      shrinkWrap: true,
-                                      physics: const BouncingScrollPhysics(),
-                                      separatorBuilder: (context, index) =>
-                                          kSmallSizedBox,
-                                      itemBuilder: (context, index) {
-                                        return addressSuggestion(
-                                          media,
-                                          colorScheme,
-                                          controller,
-                                        );
-                                      },
+                                    child: Scrollbar(
+                                      child: ListView.separated(
+                                        itemCount: 20,
+                                        shrinkWrap: true,
+                                        padding: const EdgeInsets.symmetric(
+                                          horizontal: 4,
+                                        ),
+                                        physics: const BouncingScrollPhysics(),
+                                        separatorBuilder: (context, index) =>
+                                            kHalfSizedBox,
+                                        itemBuilder: (context, index) {
+                                          return addressSuggestion(
+                                            media,
+                                            colorScheme,
+                                            controller,
+                                          );
+                                        },
+                                      ),
                                     ),
                                   ),
                                 ],

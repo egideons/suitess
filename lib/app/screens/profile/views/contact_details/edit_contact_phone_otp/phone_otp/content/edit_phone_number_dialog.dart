@@ -68,6 +68,7 @@ editPhoneNumberDialog(
                           textInputAction: TextInputAction.done,
                           textCapitalization: TextCapitalization.none,
                           keyboardType: TextInputType.phone,
+                          onFieldSubmitted: controller.phoneNumberOnSubmitted,
                           validator: (value) {
                             return null;
                           },

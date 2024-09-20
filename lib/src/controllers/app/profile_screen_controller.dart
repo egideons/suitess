@@ -42,6 +42,7 @@ class ProfileScreenController extends GetxController {
   var hasProperties = false.obs;
   var isScrollToTopBtnVisible = false.obs;
   var cameraPermissionIsGranted = false.obs;
+  var profilePicUploadIsCanceled = false.obs;
 
   //================ controllers =================\\
   var scrollController = ScrollController();
@@ -142,6 +143,8 @@ class ProfileScreenController extends GetxController {
     final XFile? image = await picker.pickImage(source: ImageSource.camera);
     if (image != null) {
       selectedProfileImage = image;
+      profilePicUploadIsCanceled.value = false;
+
       update();
     }
   }
@@ -150,17 +153,23 @@ class ProfileScreenController extends GetxController {
     final XFile? image = await picker.pickImage(source: ImageSource.gallery);
     if (image != null) {
       selectedProfileImage = image;
+      profilePicUploadIsCanceled.value = false;
+
       update();
     }
   }
 
+  cancelUpload() {
+    profilePicUploadIsCanceled.value = true;
+  }
+
   Future<void> uploadProfilePic() async {
     if (selectedProfileImage == null) {
-      ApiProcessorController.errorSnack("No image selected");
+      ApiProcessorController.warningSnack("No image selected");
       return;
     }
     if (await checkXFileSize(selectedProfileImage)) {
-      ApiProcessorController.errorSnack("Image size must not exceed 5mb");
+      ApiProcessorController.warningSnack("Image size must not exceed 5mb");
       return;
     }
 
@@ -179,7 +188,7 @@ class ProfileScreenController extends GetxController {
 
     if (streamedResponse == null) {
       isUploadingProfilePic.value = false;
-      ApiProcessorController.errorSnack("Failed to upload profile picture");
+      ApiProcessorController.warningSnack("Failed to upload profile picture");
       return;
     }
 
@@ -194,10 +203,10 @@ class ProfileScreenController extends GetxController {
         );
         await UserController.instance.getUserProfile();
       } else {
-        ApiProcessorController.errorSnack("Failed to upload profile picture");
+        ApiProcessorController.warningSnack("Failed to upload profile picture");
       }
     } on SocketException {
-      ApiProcessorController.errorSnack("Please connect to the internet");
+      ApiProcessorController.warningSnack("Please connect to the internet");
     } catch (e) {
       log(e.toString());
     }
