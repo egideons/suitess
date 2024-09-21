@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:suitess/src/controllers/app/homescreen_controller.dart';
+import 'package:suitess/src/controllers/app/home_screen_controller.dart';
 
 import '../../../../../../src/constants/assets.dart';
 import '../../../../../../src/constants/consts.dart';

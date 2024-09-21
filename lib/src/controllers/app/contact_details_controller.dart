@@ -243,6 +243,7 @@ class ContactDetailsScreenController extends GetxController {
       var streamedResponse = await HttpClientService.updateProfile(
         url: url,
         token: userToken,
+        // userName: userNameEC.text,
         businessName: userNameEC.text,
       );
 
@@ -260,7 +261,7 @@ class ContactDetailsScreenController extends GetxController {
       try {
         if (streamedResponse.statusCode == 200) {
           ApiProcessorController.successSnack(
-            "Business name updated successfully",
+            "Username updated successfully",
           );
           await UserController.instance.getUserProfile();
           Get.close(0);

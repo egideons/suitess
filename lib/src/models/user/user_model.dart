@@ -139,7 +139,7 @@ class Settings {
       address: json['address'] ?? "n/A",
       geoLocation: json['geo_location'] ?? "n/A",
       username: json['username'] ?? "n/A",
-      createdAt: json['created_at'],
+      createdAt: json['created_at'] ?? "",
       updatedAt: json['updated_at'] ?? "",
     );
   }

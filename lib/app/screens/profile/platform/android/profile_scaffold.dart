@@ -60,7 +60,7 @@ class ProfileScreenScaffold extends GetView<ProfileScreenController> {
                                             user!.profileImage!.isEmpty
                                                 ? null
                                                 : NetworkImage(
-                                                    "${ApiUrl.authBaseUrl}/${user.profileImage!}",
+                                                    "${ApiUrl.authBaseUrl}/storage/${user.profileImage!}",
                                                   ),
                                         imageText: user.firstName!.isEmpty
                                             ? ""
@@ -70,8 +70,10 @@ class ProfileScreenScaffold extends GetView<ProfileScreenController> {
                                         colorScheme,
                                         height: 120,
                                         foregroundImage: FileImage(
-                                          File(controller
-                                              .selectedProfileImage!.path),
+                                          File(
+                                            controller
+                                                .selectedProfileImage!.path,
+                                          ),
                                         ),
                                       ),
                                 controller.selectedProfileImage == null ||
@@ -183,7 +185,8 @@ class ProfileScreenScaffold extends GetView<ProfileScreenController> {
                         ),
                         kHalfSizedBox,
                         Text(
-                          "UID: 2102446421",
+                          // "UID: ${user.uid}",
+                          "UID: ${user.settings!.userId}",
                           textAlign: TextAlign.center,
                           overflow: TextOverflow.ellipsis,
                           style: defaultTextStyle(

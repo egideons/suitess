@@ -4,7 +4,7 @@ import 'package:suitess/src/utils/components/responsive_constants.dart';
 
 import '../../../../../../src/constants/assets.dart';
 import '../../../../../../src/constants/consts.dart';
-import '../../../../../../src/controllers/app/homescreen_controller.dart';
+import '../../../../../../src/controllers/app/home_screen_controller.dart';
 import '../../../../../../src/utils/components/notification_bell_icon.dart';
 
 homeAppBar(

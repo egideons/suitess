@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:suitess/app/screens/home/platform/android/home_screen_scaffold.dart';
-import 'package:suitess/src/controllers/app/homescreen_controller.dart';
+import 'package:suitess/src/controllers/app/home_screen_controller.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

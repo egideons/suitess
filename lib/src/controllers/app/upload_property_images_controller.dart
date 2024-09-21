@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
 class UploadPropertyImagesController extends GetxController {
   static UploadPropertyImagesController get instance {
@@ -44,6 +47,24 @@ class UploadPropertyImagesController extends GetxController {
     else if (scrollController.position.pixels < 150) {
       isScrollToTopBtnVisible.value = false;
     }
+  }
+
+  //================ Image Picker =================//
+  final ImagePicker _picker = ImagePicker();
+  var images = <File>[].obs; // Observable list of File images
+
+  // Function to pick multiple images
+  Future<void> pickImages() async {
+    final List<XFile> pickedFiles = await _picker.pickMultiImage();
+
+    if (pickedFiles.isNotEmpty) {
+      images.addAll(pickedFiles.map((xfile) => File(xfile.path)).toList());
+    }
+  }
+
+  // Function to delete an image by index
+  void deleteImage(int index) {
+    images.removeAt(index);
   }
 
   Future<void> publish() async {

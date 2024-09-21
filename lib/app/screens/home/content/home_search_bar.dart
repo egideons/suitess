@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../src/constants/assets.dart';
 import '../../../../src/constants/consts.dart';
-import '../../../../src/controllers/app/homescreen_controller.dart';
+import '../../../../src/controllers/app/home_screen_controller.dart';
 import '../../../../theme/colors.dart';
 
 homeSearchBar(

@@ -5,14 +5,14 @@ import 'package:suitess/src/constants/assets.dart';
 import 'package:suitess/theme/colors.dart';
 
 import '../../../../../src/constants/consts.dart';
-import '../../../../../src/controllers/app/homescreen_controller.dart';
+import '../../../../../src/controllers/app/home_screen_controller.dart';
+import '../../../../../src/controllers/auth/user_controller.dart';
 import '../../../../../src/routes/routes.dart';
 import '../../content/sliver_search_app_bar.dart';
 import '../../content/sliver_typewriter_app_bar.dart';
 import 'components/alert_message.dart';
 import 'components/filter_properties_nearby.dart';
 import 'components/home_app_bar.dart';
-import 'components/number_of_bids.dart';
 import 'components/property_container.dart';
 
 class HomeScreenScaffold extends GetView<HomeScreenController> {
@@ -22,6 +22,7 @@ class HomeScreenScaffold extends GetView<HomeScreenController> {
   Widget build(BuildContext context) {
     var media = MediaQuery.of(context).size;
     var colorScheme = Theme.of(context).colorScheme;
+    var user = UserController.instance.userModel.value.data;
 
     // if (deviceType(media.width) > 2) {
     //   return Scaffold(
@@ -48,7 +49,7 @@ class HomeScreenScaffold extends GetView<HomeScreenController> {
       appBar: homeAppBar(
         colorScheme,
         media,
-        "Enugu, Nigeria.",
+        user!.settings!.address!,
         controller,
       ),
       floatingActionButton: Obx(
@@ -93,12 +94,12 @@ class HomeScreenScaffold extends GetView<HomeScreenController> {
                                       message: "KYC not verified",
                                     )
                                   : const SizedBox(),
-                              kHalfSizedBox,
-                              numberOfBids(
-                                media,
-                                colorScheme,
-                                viewAll: controller.goToBids,
-                              ),
+                              // kHalfSizedBox,
+                              // numberOfBids(
+                              //   media,
+                              //   colorScheme,
+                              //   viewAll: controller.goToBids,
+                              // ),
                               kSizedBox,
                               filterPropertiesNearby(
                                 () {},
