@@ -17,11 +17,19 @@ class BusinessIntroController extends GetxController {
   void onInit() {
     super.onInit();
     scrollController.addListener(_scrollListener);
+    pageController = PageController();
+
+    // Listen for page changes and update currentPage
+    pageController.addListener(() {
+      currentPage.value = pageController.page?.round() ?? 0;
+      log("Current Page: ${currentPage.value}");
+    });
   }
 
   @override
   void onClose() {
     super.onClose();
+    pageController.dispose();
     scrollController.dispose();
   }
 
@@ -29,18 +37,20 @@ class BusinessIntroController extends GetxController {
   var isFormValid = false.obs;
   var isLoading = false.obs;
   var businessIsLandsAndProperties = false.obs;
+  var isScrollToTopBtnVisible = false.obs;
 
   //================== Keys ====================\\
   final formKey = GlobalKey<FormState>();
 
   //================ Variables =================\\
-  var isScrollToTopBtnVisible = false.obs;
+  var currentPage = 0.obs;
 
-  //================ Fontrollers =================\\
-  var businessNameEC = TextEditingController();
-  var businessTINEC = TextEditingController();
+  //================ Controllers =================\\
   var pageController = PageController();
   var scrollController = ScrollController();
+
+  var businessNameEC = TextEditingController();
+  var businessTINEC = TextEditingController();
 
   //================ Focus Nodes =================\\
   var businessNameFN = FocusNode();
@@ -66,6 +76,18 @@ class BusinessIntroController extends GetxController {
     }
   }
 
+  Future<bool> handleBackNavigation() async {
+    if (currentPage.value > 0) {
+      // If not on the first page, go to the previous page
+      pageController.previousPage(
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+      );
+      return false; // Prevents the default back action
+    }
+    return true; // Allows the default back action (e.g. closing the app)
+  }
+
   //=========== Page 1 ============\\
   navigateToPreviousPage() {
     pageController.previousPage(
@@ -74,6 +96,7 @@ class BusinessIntroController extends GetxController {
     );
   }
 
+  //=========== Page 2 ============\\
   navigateToPage2() {
     pageController.animateToPage(
       1,

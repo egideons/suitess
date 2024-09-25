@@ -15,60 +15,73 @@ walletIntroPage2(
   return GetBuilder<WalletIntroController>(
     init: WalletIntroController(),
     builder: (controller) {
-      return ListView(
-        padding: const EdgeInsets.symmetric(vertical: 80, horizontal: 10),
+      return Column(
         children: [
-          FadeInDown(
-            child: Column(
+          kBigSizedBox,
+          Align(
+            alignment: Alignment.topLeft,
+            child: IconButton(
+              onPressed: controller.goBackToPage0,
+              tooltip: "Go back",
+              icon: const Icon(Icons.chevron_left),
+            ),
+          ),
+          Expanded(
+            child: ListView(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
               children: [
-                Text(
-                  "Welcome to",
-                  textAlign: TextAlign.center,
-                  style: defaultTextStyle(
-                    color: kTextBoldHeadingColor,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600,
+                FadeInDown(
+                  child: Column(
+                    children: [
+                      Text(
+                        "Welcome to",
+                        textAlign: TextAlign.center,
+                        style: defaultTextStyle(
+                          color: kTextBoldHeadingColor,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      kSizedBox,
+                      SvgPicture.asset(Assets.walletIntro2Svg),
+                      kSizedBox,
+                      Text(
+                        "Suitess Wallet",
+                        textAlign: TextAlign.center,
+                        style: defaultTextStyle(
+                          color: kTextBoldHeadingColor,
+                          fontSize: 24,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      kSizedBox,
+                      Text(
+                        "To activate your wallet and manage your funds, provide details below.",
+                        textAlign: TextAlign.center,
+                        maxLines: 10,
+                        style: defaultTextStyle(
+                          color: kTextBoldHeadingColor,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-                kSizedBox,
-                SvgPicture.asset(Assets.walletIntro2Svg),
-                kSizedBox,
-                Text(
-                  "Suitess Wallet",
-                  textAlign: TextAlign.center,
-                  style: defaultTextStyle(
-                    color: kTextBoldHeadingColor,
-                    fontSize: 24,
-                    fontWeight: FontWeight.w600,
-                  ),
+                kBigSizedBox,
+                FadeInUp(
+                  child: walletIntroPage2Form(colorScheme, media, controller),
                 ),
-                kSizedBox,
-                Text(
-                  "To activate your wallet and manage your funds, provide details below.",
-                  textAlign: TextAlign.center,
-                  maxLines: 10,
-                  style: defaultTextStyle(
-                    color: kTextBoldHeadingColor,
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500,
+                FadeIn(
+                  child: Obx(
+                    () => AndroidElevatedButton(
+                      title: "Next",
+                      isLoading: controller.isLoading.value,
+                      onPressed: controller.submitKYCForm,
+                    ),
                   ),
                 ),
               ],
-            ),
-          ),
-          kBigSizedBox,
-          FadeInUp(
-              child: Form(
-            key: controller.formKey,
-            child: walletIntroPage2Form(colorScheme, media, controller),
-          )),
-          FadeIn(
-            child: Obx(
-              () => AndroidElevatedButton(
-                title: "Submit",
-                isLoading: controller.isLoading.value,
-                onPressed: controller.submitForm,
-              ),
             ),
           ),
         ],

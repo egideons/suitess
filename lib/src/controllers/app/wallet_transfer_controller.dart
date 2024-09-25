@@ -111,12 +111,10 @@ class WalletTransferController extends GetxController {
 
   Future<void> onRefresh() async {
     isRefreshing.value = true;
-    update();
 
     await Future.delayed(const Duration(seconds: 2));
 
     isRefreshing.value = false;
-    update();
   }
 
   onTxPinSubmitted(value) {
@@ -213,14 +211,12 @@ class WalletTransferController extends GetxController {
     }
 
     isSubmitting.value = true;
-    update();
 
     await Future.delayed(const Duration(milliseconds: 300));
 
     await showWalletTransferTxDetailsModalSheet();
 
     isSubmitting.value = false;
-    update();
   }
 
   Future<void> submitTxPin() async {
@@ -248,7 +244,6 @@ class WalletTransferController extends GetxController {
     if (value.length == 1) {
       FocusScope.of(context).nextFocus();
     }
-    update();
   }
 
   txPin2Onchanged(value, context) {
@@ -258,7 +253,6 @@ class WalletTransferController extends GetxController {
     if (value.length == 1) {
       FocusScope.of(context).nextFocus();
     }
-    update();
   }
 
   txPin3Onchanged(value, context) {
@@ -268,7 +262,6 @@ class WalletTransferController extends GetxController {
     if (value.length == 1) {
       FocusScope.of(context).nextFocus();
     }
-    update();
   }
 
   txPin4Onchanged(value, context) {
@@ -278,10 +271,8 @@ class WalletTransferController extends GetxController {
     if (value.length == 1) {
       FocusScope.of(context).nearestScope;
 
-      update();
       return;
     }
-    update();
   }
 
   //================ Scroll Listener =================//
@@ -290,12 +281,10 @@ class WalletTransferController extends GetxController {
     //========= Show action button ========//
     if (scrollController.position.pixels >= 150) {
       isScrollToTopBtnVisible.value = true;
-      update();
     }
     //========= Hide action button ========//
     else if (scrollController.position.pixels < 150) {
       isScrollToTopBtnVisible.value = false;
-      update();
     }
   }
 }

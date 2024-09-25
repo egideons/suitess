@@ -13,16 +13,19 @@ class WalletIntroScaffold extends GetView<WalletIntroController> {
   Widget build(BuildContext context) {
     var media = MediaQuery.of(context).size;
     var colorScheme = Theme.of(context).colorScheme;
-    return Scaffold(
-      backgroundColor: colorScheme.surface,
-      body: PageView(
-        controller: controller.pageController,
-        physics: const NeverScrollableScrollPhysics(),
-        children: [
-          walletIntroPage1(colorScheme, controller),
-          walletIntroPage2(colorScheme, media, controller),
-          walletIntroPage3(colorScheme, media, controller),
-        ],
+    return WillPopScope(
+      onWillPop: controller.handleBackNavigation,
+      child: Scaffold(
+        backgroundColor: colorScheme.surface,
+        body: PageView(
+          controller: controller.pageController,
+          physics: const NeverScrollableScrollPhysics(),
+          children: [
+            walletIntroPage1(colorScheme, controller),
+            walletIntroPage2(colorScheme, media, controller),
+            walletIntroPage3(context, colorScheme, media, controller),
+          ],
+        ),
       ),
     );
   }

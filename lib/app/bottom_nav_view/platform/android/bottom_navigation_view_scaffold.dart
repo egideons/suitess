@@ -16,15 +16,16 @@ class BottomNavigationViewScaffold extends GetView<BottomNavigationController> {
     // Set the initial index when the widget is built
     controller.navCurrentIndex.value = currentIndex;
 
-    return Scaffold(
-      backgroundColor: colorScheme.surface,
-      body: Obx(
-        () => controller
-            .navScreens(colorScheme)[controller.navCurrentIndex.value],
-      ),
-      bottomNavigationBar: Obx(
-        () {
-          return BottomNavigationBar(
+    return Obx(() {
+      if (controller.navCurrentIndex.value == 1 &&
+          !controller.userHasViewedWalletIntro) {
+        return Scaffold(
+          backgroundColor: colorScheme.surface,
+          body: Obx(
+            () => controller
+                .navScreens(colorScheme)[controller.navCurrentIndex.value],
+          ),
+          bottomNavigationBar: BottomNavigationBar(
             items: controller.bottomNavItems(colorScheme),
             onTap: (index) => controller.navCurrentIndex.value = index,
             currentIndex: controller.navCurrentIndex.value,
@@ -43,9 +44,42 @@ class BottomNavigationViewScaffold extends GetView<BottomNavigationController> {
 
             selectedIconTheme: IconThemeData(color: colorScheme.secondary),
             selectedLabelStyle: defaultTextStyle(color: colorScheme.secondary),
-          );
-        },
-      ),
-    );
+          ),
+        );
+      } else {
+        return WillPopScope(
+          onWillPop:
+              controller.handleBackNavigation, // Call back navigation handler
+          child: Scaffold(
+            backgroundColor: colorScheme.surface,
+            body: Obx(
+              () => controller
+                  .navScreens(colorScheme)[controller.navCurrentIndex.value],
+            ),
+            bottomNavigationBar: BottomNavigationBar(
+              items: controller.bottomNavItems(colorScheme),
+              onTap: (index) => controller.navCurrentIndex.value = index,
+              currentIndex: controller.navCurrentIndex.value,
+              backgroundColor: colorScheme.surface,
+              enableFeedback: true,
+              elevation: 20,
+              // landscapeLayout: BottomNavigationBarLandscapeLayout.linear,
+              mouseCursor: SystemMouseCursors.click,
+              type: BottomNavigationBarType.fixed,
+              showSelectedLabels: true,
+              selectedItemColor: colorScheme.secondary,
+              showUnselectedLabels: true,
+              unselectedItemColor: colorScheme.inversePrimary,
+              selectedFontSize: 12,
+              unselectedFontSize: 12,
+
+              selectedIconTheme: IconThemeData(color: colorScheme.secondary),
+              selectedLabelStyle:
+                  defaultTextStyle(color: colorScheme.secondary),
+            ),
+          ),
+        );
+      }
+    });
   }
 }

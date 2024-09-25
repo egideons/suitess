@@ -13,16 +13,19 @@ class BusinessIntroScaffold extends GetView<BusinessIntroController> {
   Widget build(BuildContext context) {
     var media = MediaQuery.of(context).size;
     var colorScheme = Theme.of(context).colorScheme;
-    return Scaffold(
-      backgroundColor: colorScheme.surface,
-      body: PageView(
-        controller: controller.pageController,
-        physics: const NeverScrollableScrollPhysics(),
-        children: [
-          businessIntroPage1(colorScheme, controller),
-          businessIntroPage2(media, colorScheme, controller),
-          businessIntroPage3(media, colorScheme, controller),
-        ],
+    return WillPopScope(
+      onWillPop: controller.handleBackNavigation,
+      child: Scaffold(
+        backgroundColor: colorScheme.surface,
+        body: PageView(
+          controller: controller.pageController,
+          physics: const NeverScrollableScrollPhysics(),
+          children: [
+            businessIntroPage1(colorScheme, controller),
+            businessIntroPage2(media, colorScheme, controller),
+            businessIntroPage3(media, colorScheme, controller),
+          ],
+        ),
       ),
     );
   }

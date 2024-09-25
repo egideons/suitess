@@ -19,6 +19,16 @@ class BottomNavigationController extends GetxController {
   var navCurrentIndex = 0.obs;
   var userHasViewedWalletIntro = prefs.getBool("hasViewedWalletIntro") ?? false;
 
+  // Method to handle back navigation
+  Future<bool> handleBackNavigation() async {
+    if (navCurrentIndex.value != 0) {
+      // If not on the first tab, navigate back to the Home tab
+      navCurrentIndex.value = 0;
+      return false; // Prevent app from closing
+    }
+    return true; // Allow app to close if already on the first tab
+  }
+
   //=============== LANDLORD SCREENS ================\\
   navScreens(colorScheme) => [
         const HomeScreen(),
