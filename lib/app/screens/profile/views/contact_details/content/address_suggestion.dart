@@ -3,7 +3,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:suitess/src/constants/consts.dart';
 import 'package:suitess/theme/colors.dart';
 
-import '../../../../../../../../src/controllers/app/contact_details_controller.dart';
+import '../../../../../../src/controllers/app/contact_details_controller.dart';
 
 addressSuggestion(
   Size media,

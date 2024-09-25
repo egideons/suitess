@@ -6,7 +6,7 @@ import 'package:suitess/src/utils/containers/form_field_container.dart';
 import 'package:suitess/src/utils/text_form_fields/android/android_textformfield.dart';
 import 'package:suitess/theme/colors.dart';
 
-import '../../../../../../../../src/constants/consts.dart';
+import '../../../../../../src/constants/consts.dart';
 
 editPhoneNumberDialog(
   Size media,

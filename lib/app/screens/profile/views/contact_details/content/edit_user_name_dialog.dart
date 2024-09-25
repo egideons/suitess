@@ -6,7 +6,7 @@ import 'package:suitess/src/utils/containers/form_field_container.dart';
 import 'package:suitess/src/utils/text_form_fields/android/android_textformfield.dart';
 import 'package:suitess/theme/colors.dart';
 
-import '../../../../../../../../src/constants/consts.dart';
+import '../../../../../../src/constants/consts.dart';
 
 editUserNameDialog(
   Size media,
@@ -46,7 +46,7 @@ editUserNameDialog(
                   padding: const EdgeInsets.all(10),
                   children: [
                     Text(
-                      "Business Name",
+                      "User Name",
                       textAlign: TextAlign.center,
                       style: defaultTextStyle(
                         color: kTextBoldHeadingColor,
@@ -62,7 +62,7 @@ editUserNameDialog(
                         media,
                         containerHeight: 55,
                         child: AndroidTextFormField(
-                          labelText: "Business name",
+                          labelText: "Username",
                           controller: controller.userNameEC,
                           focusNode: controller.businessNameFN,
                           textInputAction: TextInputAction.done,

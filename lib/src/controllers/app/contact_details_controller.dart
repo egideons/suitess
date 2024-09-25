@@ -4,13 +4,13 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:suitess/app/screens/profile/views/contact_details/edit_contact_phone_otp/phone_otp/content/edit_business_name_dialog.dart';
+import 'package:suitess/app/screens/profile/views/contact_details/content/edit_user_name_dialog.dart';
 import 'package:suitess/main.dart';
 import 'package:suitess/src/controllers/others/api_processor_controller.dart';
 import 'package:suitess/src/services/api/api_url.dart';
 import 'package:suitess/src/services/client/http_client_service.dart';
 
-import '../../../app/screens/profile/views/contact_details/edit_contact_phone_otp/phone_otp/content/edit_address_dialog.dart';
+import '../../../app/screens/profile/views/contact_details/content/edit_address_dialog.dart';
 import '../../constants/consts.dart';
 import '../auth/user_controller.dart';
 

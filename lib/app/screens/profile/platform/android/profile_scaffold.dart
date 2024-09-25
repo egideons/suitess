@@ -26,8 +26,8 @@ class ProfileScreenScaffold extends GetView<ProfileScreenController> {
     var colorScheme = Theme.of(context).colorScheme;
     var user = UserController.instance.userModel.value.data;
     var hasBusiness = prefs.getBool("hasBusiness") ?? false;
-    var businessIsLandsAndProperties =
-        prefs.getBool("businessIsLandsAndProperties") ?? false;
+    // var businessIsLandsAndProperties =
+    //     prefs.getBool("businessIsLandsAndProperties") ?? false;
 
     return Scaffold(
       backgroundColor: colorScheme.surface,
