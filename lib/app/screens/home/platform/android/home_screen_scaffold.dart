@@ -100,7 +100,7 @@ class HomeScreenScaffold extends GetView<HomeScreenController> {
                               //   colorScheme,
                               //   viewAll: controller.goToBids,
                               // ),
-                              kSizedBox,
+                              // kSizedBox,
                               filterPropertiesNearby(
                                 () {},
                                 colorScheme,
