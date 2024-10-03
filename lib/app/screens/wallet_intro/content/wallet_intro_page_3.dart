@@ -61,7 +61,11 @@ walletIntroPage3(
                 SizedBox(height: media.height * .12),
                 FadeInUp(
                   child: walletIntroPage3Form(
-                      controller, colorScheme, media, context),
+                    controller,
+                    colorScheme,
+                    media,
+                    context,
+                  ),
                 ),
                 kSizedBox,
                 FadeIn(

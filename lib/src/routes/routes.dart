@@ -12,6 +12,7 @@ import 'package:suitess/app/screens/notifications/screen/notifications.dart';
 import 'package:suitess/app/screens/profile/screen/profile_screen.dart';
 import 'package:suitess/app/screens/profile/views/contact_details/screen/contact_details.dart';
 import 'package:suitess/app/screens/property/view_property/screen/view_property.dart';
+import 'package:suitess/app/screens/wallet/reset_tx_pin_options/reset_tx_pin/screen/reset_tx_pin.dart';
 import 'package:suitess/app/screens/wallet/reset_tx_pin_options/reset_tx_pin_otp/screen/reset_tx_pin_otp.dart';
 import 'package:suitess/app/screens/wallet/reset_tx_pin_options/via_email/screen/reset_tx_pin_via_email.dart';
 import 'package:suitess/app/screens/wallet/reset_tx_pin_options/via_sms/screen/reset_tx_pin_via_sms.dart';
@@ -202,7 +203,7 @@ class Routes {
     GetPage(name: resetTxPinViaEmail, page: () => const ResetTxPinViaEmail()),
     GetPage(name: resetTxPinViaSms, page: () => const ResetTxPinViaSms()),
     GetPage(name: resetTxPinOTP, page: () => const ResetTxPinOTP()),
-    // GetPage(name: resetTxPin, page: () => const ResetTxPin()),
+    GetPage(name: resetTxPin, page: () => const ResetTxPin()),
     GetPage(name: resetTxPin, page: () => const MobileDataScreen()),
 
     //Profile Section

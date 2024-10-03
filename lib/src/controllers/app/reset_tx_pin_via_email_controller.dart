@@ -64,8 +64,6 @@ class ResetTxPinViaEmailController extends GetxController {
       isEmailValid.value = true;
       setFormIsValid();
     }
-
-    update();
   }
 
   setFormIsValid() {
@@ -130,7 +128,7 @@ class ResetTxPinViaEmailController extends GetxController {
 
       if (response == null) {
         isLoading.value = false;
-        update();
+
         return;
       }
 
@@ -147,8 +145,12 @@ class ResetTxPinViaEmailController extends GetxController {
           ApiProcessorController.successSnack(
             "An OTP has been sent to your email",
           );
+
+          await Future.delayed(const Duration(seconds: 3));
+
           await Get.to(
             () => const ResetTxPinOTP(),
+            arguments: {"resetOptionIsEmail": true},
             routeName: "/reset-tx-pin-otp",
             fullscreenDialog: true,
             curve: Curves.easeInOut,

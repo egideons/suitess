@@ -142,6 +142,9 @@ class ResetPasswordViaSMSController extends GetxController {
           ApiProcessorController.successSnack(
             "An OTP has been sent to your phone number",
           );
+
+          await Future.delayed(const Duration(seconds: 3));
+
           await Get.to(
             () => ResetPasswordViaSMSOTP(userPhoneNumber: phoneNumberEC.text),
             routeName: "/reset-password-via-sms-otp",

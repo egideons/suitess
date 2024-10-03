@@ -5,6 +5,8 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:suitess/src/controllers/auth/user_controller.dart';
+import 'package:suitess/src/models/user/user_model.dart';
 
 import '../../models/auth/verify_otp_response_model.dart';
 import '../../routes/routes.dart';
@@ -28,14 +30,15 @@ class ResetTxPinOTPController extends GetxController {
   //=========== Variables ===========\\
   var otpResponse = VerifyOTPResponseModel.fromJson(null).obs;
   late Timer _timer;
-  var resetOptionIsEmail = true.obs;
+  var resetOptionIsEmail = Get.arguments?["resetOptionIsEmail"] ?? true;
+  var user =
+      UserController.instance.userModel.value.data ?? UserData.fromJson(null);
 
   //=========== Form Key ===========\\
 
   final formKey = GlobalKey<FormState>();
 
   //=========== Controllers ===========\\
-  final emailEC = TextEditingController();
   final pin1EC = TextEditingController();
   final pin2EC = TextEditingController();
   final pin3EC = TextEditingController();
@@ -122,7 +125,7 @@ class ResetTxPinOTPController extends GetxController {
     if (value.length == 1) {
       FocusScope.of(context).nearestScope;
       setFormIsValid();
-      update();
+
       return;
     }
     update();
@@ -155,7 +158,7 @@ class ResetTxPinOTPController extends GetxController {
   }
 
   //================= Resend OTP ======================\\
-  void requestOTP() async {
+  void requestOTPViaEmail() async {
     secondsRemaining.value = 60;
     timerComplete.value = false;
     update();
@@ -164,7 +167,7 @@ class ResetTxPinOTPController extends GetxController {
 
     Map data = {
       "type": "email",
-      "email": emailEC.text,
+      "email": user.email,
     };
 
     log("This is the Url: $url");
@@ -178,7 +181,7 @@ class ResetTxPinOTPController extends GetxController {
 
     if (response == null) {
       isLoading.value = false;
-      update();
+
       return;
     }
 
@@ -209,6 +212,60 @@ class ResetTxPinOTPController extends GetxController {
     }
   }
 
+  void requestOTPViaPhone() async {
+    secondsRemaining.value = 60;
+    timerComplete.value = false;
+    update();
+
+    var url = ApiUrl.authBaseUrl + ApiUrl.auth + ApiUrl.resetPasswordOTP;
+
+    Map data = {
+      "type": "phone",
+      "phone": user.phone,
+    };
+
+    log("This is the Url: $url");
+    log("This is the OTP Data: $data");
+
+    // Client service
+    var response = await DioClientService.postRequest(
+      url,
+      data,
+    );
+
+    if (response == null) {
+      isLoading.value = false;
+
+      return;
+    }
+
+    try {
+      // Convert to json
+      dynamic responseJson;
+      if (response.data is String) {
+        responseJson = jsonDecode(response.data);
+      } else {
+        responseJson = response.data;
+      }
+
+      log("This is the response body ====> ${response.data}");
+
+      //Map the response json to the model provided
+      otpResponse.value = VerifyOTPResponseModel.fromJson(responseJson);
+      if (response.statusCode == 200) {
+        ApiProcessorController.successSnack(
+          "An OTP has been sent to your mobile number",
+        );
+        startTimer();
+      } else {
+        log("Request failed with status: ${response.statusCode}");
+        log("Response body: ${response.data}");
+      }
+    } catch (e) {
+      log(e.toString());
+    }
+  }
+
   //================= Set form validity ======================\\
 
   setFormIsValid() {
@@ -222,13 +279,16 @@ class ResetTxPinOTPController extends GetxController {
   //=========== on Submitted ===========\\
   onSubmitted(value) {
     if (formIsValid.isTrue) {
-      submitOTP();
-      update();
+      if (resetOptionIsEmail == true) {
+        submitOTPViaEmail();
+      } else {
+        submitOTPViaPhone();
+      }
     }
   }
 
   //================= Send OTP ======================\\
-  Future<void> submitOTP() async {
+  Future<void> submitOTPViaEmail() async {
     isLoading.value = true;
     update();
 
@@ -247,7 +307,7 @@ class ResetTxPinOTPController extends GetxController {
 
     Map data = {
       "type": "email",
-      "email": emailEC.text,
+      "email": user.email,
       "otp": otpCode,
       "purpose": "reset",
     };
@@ -269,13 +329,117 @@ class ResetTxPinOTPController extends GetxController {
       if (secondsRemaining.value == 60) {
         secondsRemaining.value = 0;
         //Continue the timer and enable resend button
-        update();
+
         startTimer();
         return;
       }
       //Continue the timer and enable resend button
       startTimer();
-      update();
+
+      return;
+    }
+
+    // try {
+    //   // Convert to json
+    //   dynamic responseJson;
+    //   responseJson = jsonDecode(response.body);
+
+    //   log("This is the response body ====> ${response.body}");
+
+    //   //Map the response json to the model provided
+    //   otpResponse.value = VerifyOTPResponseModel.fromJson(responseJson);
+    //   if (response.statusCode == 200) {
+    //     ApiProcessorController.successSnack("OTP verification successful");
+    //     Get.toNamed(
+    //       Routes.resetTxPin,
+    //       preventDuplicates: true,
+    //       parameters: {
+    //         "type": "email",
+    //         "otpCode": otpCode,
+    //         "email": user.email??"",
+    //       },
+    //     );
+    //   } else {
+    //     ApiProcessorController.warningSnack(otpResponse.value.message);
+    //     log("Request failed with status: ${response.statusCode}");
+    //     log("Response body: ${response.body}");
+    //   }
+    // } catch (e) {
+    //   log(e.toString());
+    // }
+    ApiProcessorController.successSnack("OTP verification successful");
+    Get.toNamed(
+      Routes.resetTxPin,
+      preventDuplicates: true,
+      parameters: {
+        "type": "email",
+        "otpCode": otpCode,
+        "email": user.email ?? "",
+      },
+    );
+    isLoading.value = false;
+    update();
+
+    if (secondsRemaining.value == 0) {
+      secondsRemaining.value = 60;
+      //Continue the timer and enable resend button
+      startTimer();
+      return;
+    }
+    //Continue the timer and enable resend button
+    startTimer();
+    update();
+    return;
+  }
+
+  Future<void> submitOTPViaPhone() async {
+    isLoading.value = true;
+    update();
+
+    //Pause the timer
+    pauseTimer();
+    timerComplete.value = false;
+
+    var url = ApiUrl.authBaseUrl + ApiUrl.auth + ApiUrl.resetPasswordOTPVerify;
+
+    var otpCode = pin1EC.text +
+        pin2EC.text +
+        pin3EC.text +
+        pin4EC.text +
+        pin5EC.text +
+        pin6EC.text;
+
+    Map data = {
+      "type": "phone",
+      "email": user.phone,
+      "otp": otpCode,
+      "purpose": "reset",
+    };
+
+    log("This is the Url: $url");
+    log("This is the phone otp Data: $data");
+
+//HTTP Client Service
+    http.Response? response =
+        await HttpClientService.postRequest(url, null, data);
+
+    //Dio Client Service
+    // var response = await DioClientService.postRequest(
+    //   url,
+    //   data,
+    // );
+    if (response == null) {
+      isLoading.value = false;
+      if (secondsRemaining.value == 60) {
+        secondsRemaining.value = 0;
+        //Continue the timer and enable resend button
+
+        startTimer();
+        return;
+      }
+      //Continue the timer and enable resend button
+      startTimer();
+
       return;
     }
 
@@ -289,15 +453,15 @@ class ResetTxPinOTPController extends GetxController {
       //Map the response json to the model provided
       otpResponse.value = VerifyOTPResponseModel.fromJson(responseJson);
       if (response.statusCode == 200) {
-        ApiProcessorController.successSnack("OTP verification successful");
+        ApiProcessorController.successSnack("verification successful");
         Get.toNamed(
-          Routes.resetPassword,
+          Routes.resetTxPin,
           preventDuplicates: true,
-          arguments: {"isPhoneOTP": false},
+          arguments: {"isPhoneOTP": true},
           parameters: {
-            "type": "email",
+            "type": "phone",
             "otpCode": otpCode,
-            "email": emailEC.text,
+            // "email": emailEC.text,
           },
         );
       } else {

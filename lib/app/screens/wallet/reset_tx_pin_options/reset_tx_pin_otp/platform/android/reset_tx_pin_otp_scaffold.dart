@@ -13,16 +13,12 @@ import 'package:suitess/src/utils/components/responsive_constants.dart';
 import 'package:suitess/theme/colors.dart';
 
 class ResetTxPinOTPScaffold extends GetView<ResetTxPinOTPController> {
-  const ResetTxPinOTPScaffold({this.resetOptionIsEmail, super.key});
-
-  final bool? resetOptionIsEmail;
+  const ResetTxPinOTPScaffold({super.key});
 
   @override
   Widget build(BuildContext context) {
     var media = MediaQuery.of(context).size;
     var colorScheme = Theme.of(context).colorScheme;
-
-    controller.resetOptionIsEmail.value = resetOptionIsEmail ?? true;
 
     //Large screens or Mobile Landscape mode
     if (deviceType(media.width) > 1) {
@@ -65,7 +61,9 @@ class ResetTxPinOTPScaffold extends GetView<ResetTxPinOTPController> {
                         colorScheme: colorScheme,
                         media: media,
                         title: "Enter Verification Code",
-                        subtitle: "Enter the 6-digit OTP sent to your email",
+                        subtitle: controller.resetOptionIsEmail == true
+                            ? "We’ve sent a verification code to your email address. Please enter code below to continue."
+                            : "We’ve sent a verification code to your mobile number. Please enter code below to continue.",
                       ),
                     ],
                   ),
@@ -104,7 +102,9 @@ class ResetTxPinOTPScaffold extends GetView<ResetTxPinOTPController> {
                           Obx(
                             () => InkWell(
                               onTap: controller.timerComplete.isTrue
-                                  ? controller.requestOTP
+                                  ? controller.resetOptionIsEmail
+                                      ? controller.requestOTPViaEmail
+                                      : controller.requestOTPViaPhone
                                   : null,
                               child: AnimatedDefaultTextStyle(
                                 duration: const Duration(milliseconds: 300),
@@ -145,7 +145,9 @@ class ResetTxPinOTPScaffold extends GetView<ResetTxPinOTPController> {
                                 controller.isLoading.value ? true : false,
                             disable:
                                 controller.formIsValid.value ? false : true,
-                            onPressed: controller.submitOTP,
+                            onPressed: controller.resetOptionIsEmail == true
+                                ? controller.submitOTPViaEmail
+                                : controller.submitOTPViaPhone,
                           );
                         },
                       ),
@@ -183,13 +185,16 @@ class ResetTxPinOTPScaffold extends GetView<ResetTxPinOTPController> {
             fit: BoxFit.fitHeight,
             height: media.height * .2,
           ),
+          kSizedBox,
           resetTxPinOTPPageHeader(
             colorScheme: colorScheme,
             media: media,
-            title: "OTP Verification",
-            subtitle: "Enter the 6-digit OTP sent to your email",
+            title: "Enter Verification Code",
+            subtitle: controller.resetOptionIsEmail == true
+                ? "We’ve sent a verification code to your email address. Please enter code below to continue."
+                : "We’ve sent a verification code to your mobile number. Please enter code below to continue.",
           ),
-          const SizedBox(height: kDefaultPadding * 2),
+          kBigSizedBox,
           resetTxPinOTPFormMobile(
             controller,
             media,
@@ -202,7 +207,9 @@ class ResetTxPinOTPScaffold extends GetView<ResetTxPinOTPController> {
               Obx(
                 () => InkWell(
                   onTap: controller.timerComplete.isTrue
-                      ? controller.requestOTP
+                      ? controller.resetOptionIsEmail
+                          ? controller.requestOTPViaEmail
+                          : controller.requestOTPViaPhone
                       : null,
                   child: AnimatedDefaultTextStyle(
                     duration: const Duration(milliseconds: 300),
@@ -241,7 +248,9 @@ class ResetTxPinOTPScaffold extends GetView<ResetTxPinOTPController> {
                 title: "Verify",
                 isLoading: controller.isLoading.value ? true : false,
                 disable: controller.formIsValid.value ? false : true,
-                onPressed: controller.submitOTP,
+                onPressed: controller.resetOptionIsEmail == true
+                    ? controller.submitOTPViaEmail
+                    : controller.submitOTPViaPhone,
               );
             },
           ),

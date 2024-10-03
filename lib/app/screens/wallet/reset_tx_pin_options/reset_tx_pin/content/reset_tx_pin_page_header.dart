@@ -1,32 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:suitess/src/constants/consts.dart';
 
-resetTxPinOTPPageHeader({
-  ColorScheme? colorScheme,
-  Size? media,
-  String? title,
-  String? subtitle,
-}) {
+resetTxPinPageHeader(ColorScheme colorScheme, Size media) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.center,
     children: [
       Container(
         alignment: Alignment.center,
         child: Text(
-          title ?? "",
+          "Set New Pin",
           overflow: TextOverflow.ellipsis,
           textAlign: TextAlign.center,
           style: defaultTextStyle(
             fontSize: 24.0,
-            color: colorScheme!.primary,
+            color: colorScheme.primary,
           ),
         ),
       ),
       kSizedBox,
       SizedBox(
-        width: media!.width - 40,
+        width: media.width - 40,
         child: Text(
-          subtitle ?? "",
+          "Your new pin must be different from the previously used pin.",
           maxLines: 10,
           textAlign: TextAlign.center,
           style: defaultTextStyle(

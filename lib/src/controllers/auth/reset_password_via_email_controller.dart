@@ -135,6 +135,7 @@ class ResetPasswordViaEmailController extends GetxController {
           ApiProcessorController.successSnack(
             "An OTP has been sent to your email",
           );
+          await Future.delayed(const Duration(seconds: 3));
           await Get.to(
             () => ResetPasswordViaEmailOTP(userEmail: emailEC.text),
             routeName: "/reset-password-via-email-otp",
