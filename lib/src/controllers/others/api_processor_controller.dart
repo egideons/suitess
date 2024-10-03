@@ -60,7 +60,7 @@ class ApiProcessorController extends GetxController {
         barBlur: 2.0,
         borderRadius: 10,
         snackPosition: SnackPosition.TOP,
-        maxWidth: media.width - 100,
+        maxWidth: media.width - 40,
         duration: const Duration(seconds: 2),
         boxShadows: [
           BoxShadow(
@@ -129,7 +129,7 @@ class ApiProcessorController extends GetxController {
         barBlur: 2.0,
         borderRadius: 10,
         snackPosition: SnackPosition.TOP,
-        maxWidth: media.width - 100,
+        maxWidth: media.width - 40,
         backgroundColor: colorScheme.surface,
         duration: const Duration(seconds: 2),
         boxShadows: [
@@ -199,7 +199,7 @@ class ApiProcessorController extends GetxController {
         barBlur: 2.0,
         borderRadius: 10,
         snackPosition: SnackPosition.TOP,
-        maxWidth: media.width - 100,
+        maxWidth: media.width - 40,
         backgroundColor: colorScheme.surface,
         duration: const Duration(seconds: 2),
         boxShadows: [

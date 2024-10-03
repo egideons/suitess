@@ -4,6 +4,8 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:suitess/src/controllers/auth/user_controller.dart';
+import 'package:suitess/src/models/user/user_model.dart';
 
 import '../../../app/auth/reset_password_otp/via_sms/screen/reset_password_via_sms_otp.dart';
 import '../../constants/consts.dart';
@@ -21,10 +23,19 @@ class ResetTxPinViaSmsController extends GetxController {
   @override
   void onInit() {
     phoneNumberFN.requestFocus();
+    phoneNumberEC.text = user.phone ?? "";
+    if (phoneNumberEC.text.isNotEmpty &&
+        phoneNumberEC.text == user.phone &&
+        user.phone! != "n/A") {
+      isPhoneNumberValid.value = true;
+      setFormIsValid();
+    }
     super.onInit();
   }
 
   var otpResponse = VerifyOTPResponseModel.fromJson(null).obs;
+  var user =
+      UserController.instance.userModel.value.data ?? UserData.fromJson(null);
 
   //=========== Form Key ===========\\
   final formKey = GlobalKey<FormState>();
@@ -65,7 +76,7 @@ class ResetTxPinViaSmsController extends GetxController {
   }
 
   navigateToEmail() async {
-    Get.offNamed(Routes.resetPasswordViaEmail, preventDuplicates: true);
+    Get.offNamed(Routes.resetTxPinViaEmail, preventDuplicates: true);
   }
 
   //=========== Login Methods ===========\\

@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:suitess/src/routes/routes.dart';
 
 import '../../../app/screens/wallet/wallet_transfer/content/wallet_transfer_tx_details.dart';
 import '../../../app/screens/wallet/wallet_transfer/content/wallet_transfer_tx_pin.dart';
@@ -14,6 +15,40 @@ class WalletTransferController extends GetxController {
   static WalletTransferController get instance {
     return Get.find<WalletTransferController>();
   }
+
+  @override
+  void onClose() {
+    super.onClose();
+    scrollController.dispose();
+    amountEC.removeListener(formatAmount);
+    amountEC.dispose();
+  }
+
+  @override
+  void onInit() {
+    super.onInit();
+    scrollController.addListener(_scrollListener);
+    amountEC.addListener(formatAmount);
+  }
+  //================ Scroll Listener =================//
+
+  void _scrollListener() {
+    //========= Show action button ========//
+    if (scrollController.position.pixels >= 150) {
+      isScrollToTopBtnVisible.value = true;
+    }
+    //========= Hide action button ========//
+    else if (scrollController.position.pixels < 150) {
+      isScrollToTopBtnVisible.value = false;
+    }
+  }
+
+  //================ Scroll to Top =================//
+  void scrollToTop() => scrollController.animateTo(
+        0,
+        duration: const Duration(seconds: 1),
+        curve: Curves.fastOutSlowIn,
+      );
 
   //================ variables =================\\
   var isRefreshing = false.obs;
@@ -60,10 +95,6 @@ class WalletTransferController extends GetxController {
   var txPin3FN = FocusNode();
   var txPin4FN = FocusNode();
 
-  Future<void> confirmTxDetails() async {
-    await showWalletTransferTxPinModalSheet();
-  }
-
   void formatAmount() {
     // Get the current value
     String currentValue = amountEC.text;
@@ -87,48 +118,46 @@ class WalletTransferController extends GetxController {
     }
   }
 
-  @override
-  void onClose() {
-    super.onClose();
-    scrollController.dispose();
-    amountEC.removeListener(formatAmount);
-    amountEC.dispose();
+  //================= Transaction Pins Onchanged ======================\\
+  txPin1Onchanged(value, context) {
+    if (value.isEmpty) {
+      return;
+    }
+    if (value.length == 1) {
+      FocusScope.of(context).nextFocus();
+    }
   }
 
-  //================  On FieldSubmitted =================//
-  onFieldSubmitted(value) {
-    submitForm();
+  txPin2Onchanged(value, context) {
+    if (value.isEmpty) {
+      FocusScope.of(context).previousFocus();
+    }
+    if (value.length == 1) {
+      FocusScope.of(context).nextFocus();
+    }
   }
 
-  @override
-  void onInit() {
-    super.onInit();
-    scrollController.addListener(_scrollListener);
-    amountEC.addListener(formatAmount);
+  txPin3Onchanged(value, context) {
+    if (value.isEmpty) {
+      FocusScope.of(context).previousFocus();
+    }
+    if (value.length == 1) {
+      FocusScope.of(context).nextFocus();
+    }
   }
 
-  //================ Handle refresh ================\\
+  txPin4Onchanged(value, context) {
+    if (value.isEmpty) {
+      FocusScope.of(context).previousFocus();
+    }
+    if (value.length == 1) {
+      FocusScope.of(context).nearestScope;
 
-  Future<void> onRefresh() async {
-    isRefreshing.value = true;
-
-    await Future.delayed(const Duration(seconds: 2));
-
-    isRefreshing.value = false;
+      return;
+    }
   }
 
-  onTxPinSubmitted(value) {
-    submitTxPin();
-  }
-
-  //================ Scroll to Top =================//
-  void scrollToTop() => scrollController.animateTo(
-        0,
-        duration: const Duration(seconds: 1),
-        curve: Curves.fastOutSlowIn,
-      );
-
-//Wallet Onchanged
+  //Wallet Onchanged
   walletOnChanged(String value) async {
     if (value.isEmpty) {
       beneficiaryName.value = "";
@@ -178,7 +207,6 @@ class WalletTransferController extends GetxController {
       isDismissible: true,
       enableDrag: true,
       //  useSafeArea: true,
-
       constraints:
           BoxConstraints(maxHeight: media.height / 1.4, maxWidth: media.width),
       builder: (context) {
@@ -188,6 +216,19 @@ class WalletTransferController extends GetxController {
         );
       },
     );
+  }
+
+  //================  On FieldSubmitted =================//
+  onTxPinSubmitted(value) {
+    submitTxPin();
+  }
+
+  onFieldSubmitted(value) {
+    submitForm();
+  }
+
+  Future<void> confirmTxDetails() async {
+    await showWalletTransferTxPinModalSheet();
   }
 
   //================  Submit form =================//
@@ -236,55 +277,7 @@ class WalletTransferController extends GetxController {
     );
   }
 
-  //================= Transaction Pins Onchanged ======================\\
-  txPin1Onchanged(value, context) {
-    if (value.isEmpty) {
-      return;
-    }
-    if (value.length == 1) {
-      FocusScope.of(context).nextFocus();
-    }
-  }
-
-  txPin2Onchanged(value, context) {
-    if (value.isEmpty) {
-      FocusScope.of(context).previousFocus();
-    }
-    if (value.length == 1) {
-      FocusScope.of(context).nextFocus();
-    }
-  }
-
-  txPin3Onchanged(value, context) {
-    if (value.isEmpty) {
-      FocusScope.of(context).previousFocus();
-    }
-    if (value.length == 1) {
-      FocusScope.of(context).nextFocus();
-    }
-  }
-
-  txPin4Onchanged(value, context) {
-    if (value.isEmpty) {
-      FocusScope.of(context).previousFocus();
-    }
-    if (value.length == 1) {
-      FocusScope.of(context).nearestScope;
-
-      return;
-    }
-  }
-
-  //================ Scroll Listener =================//
-
-  void _scrollListener() {
-    //========= Show action button ========//
-    if (scrollController.position.pixels >= 150) {
-      isScrollToTopBtnVisible.value = true;
-    }
-    //========= Hide action button ========//
-    else if (scrollController.position.pixels < 150) {
-      isScrollToTopBtnVisible.value = false;
-    }
+  goToResetPin() {
+    Get.toNamed(Routes.resetTxPinViaEmail, preventDuplicates: true);
   }
 }

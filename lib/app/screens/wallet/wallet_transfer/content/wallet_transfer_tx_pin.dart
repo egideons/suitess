@@ -158,7 +158,7 @@ class WalletTransferTxPin extends GetView<WalletTransferController> {
                     ),
                     kSizedBox,
                     TextButton(
-                      onPressed: () {},
+                      onPressed: controller.goToResetPin,
                       child: Text(
                         "Forgot Pin?",
                         textAlign: TextAlign.start,

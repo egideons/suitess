@@ -14,7 +14,7 @@ resetTxPinOptionHeader(
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
       Text(
-        "Reset Transaction Pin",
+        "Reset Pin",
         textAlign: TextAlign.center,
         overflow: TextOverflow.ellipsis,
         style: defaultTextStyle(
@@ -27,7 +27,8 @@ resetTxPinOptionHeader(
         maxLines: 4,
         textAlign: TextAlign.center,
         TextSpan(
-          text: "Enter your registered $registeredOption to receive an otp.\n",
+          text:
+              "We will send a verification code to your registered $registeredOption. ",
           style: defaultTextStyle(
             color: colorScheme.primary,
             fontWeight: FontWeight.w400,

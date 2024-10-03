@@ -58,7 +58,7 @@ class ResetTxPinViaEmailScaffold extends GetView<ResetTxPinViaEmailController> {
                       resetTxPinOptionHeader(
                         colorScheme,
                         controller,
-                        registeredOption: "email",
+                        registeredOption: "email address",
                         resetOption: "SMS",
                         resetVia: controller.navigateToSMS,
                       ),
@@ -172,7 +172,7 @@ class ResetTxPinViaEmailScaffold extends GetView<ResetTxPinViaEmailController> {
             resetTxPinOptionHeader(
               colorScheme,
               controller,
-              registeredOption: "email",
+              registeredOption: "email address",
               resetOption: "SMS",
               resetVia: controller.navigateToSMS,
             ),

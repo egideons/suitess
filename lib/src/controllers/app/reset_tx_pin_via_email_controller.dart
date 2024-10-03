@@ -4,8 +4,10 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:suitess/app/screens/wallet/reset_tx_pin_options/reset_tx_pin_otp/screen/reset_tx_pin_otp.dart';
+import 'package:suitess/src/controllers/auth/user_controller.dart';
+import 'package:suitess/src/models/user/user_model.dart';
 
-import '../../../app/auth/reset_password_otp/via_email/screen/reset_password_via_email_otp.dart';
 import '../../constants/consts.dart';
 import '../../models/auth/verify_otp_response_model.dart';
 import '../../services/api/api_url.dart';
@@ -20,16 +22,25 @@ class ResetTxPinViaEmailController extends GetxController {
   @override
   void onInit() {
     emailFN.requestFocus();
+    emailEC.text = user.email ?? "";
+    if (emailEC.text.isNotEmpty &&
+        emailEC.text == user.email &&
+        user.email!.isNotEmpty) {
+      isEmailValid.value = true;
+      setFormIsValid();
+    }
     super.onInit();
   }
 
   var otpResponse = VerifyOTPResponseModel.fromJson(null).obs;
+  var user =
+      UserController.instance.userModel.value.data ?? UserData.fromJson(null);
 
   //=========== Form Key ===========\\
   final formKey = GlobalKey<FormState>();
 
   //=========== Controllers ===========\\
-  final emailEC = TextEditingController();
+  var emailEC = TextEditingController();
 
   //=========== Focus nodes ===========\\
   final emailFN = FocusNode();
@@ -45,6 +56,7 @@ class ResetTxPinViaEmailController extends GetxController {
 
   emailOnChanged(value) {
     var emailRegExp = RegExp(emailPattern);
+
     if (!emailRegExp.hasMatch(emailEC.text)) {
       isEmailValid.value = false;
       setFormIsInvalid();
@@ -69,7 +81,7 @@ class ResetTxPinViaEmailController extends GetxController {
       "This option is not yet available,\nPlease reset via email",
     );
 
-    // Get.offNamed(Routes.resetPasswordViaSms, preventDuplicates: true);
+    // Get.offNamed(Routes.resetTxPinViaSms, preventDuplicates: true);
   }
 
   //=========== Login Methods ===========\\
@@ -136,8 +148,8 @@ class ResetTxPinViaEmailController extends GetxController {
             "An OTP has been sent to your email",
           );
           await Get.to(
-            () => ResetPasswordViaEmailOTP(userEmail: emailEC.text),
-            routeName: "/reset-password-via-email-otp",
+            () => const ResetTxPinOTP(),
+            routeName: "/reset-tx-pin-otp",
             fullscreenDialog: true,
             curve: Curves.easeInOut,
             preventDuplicates: true,

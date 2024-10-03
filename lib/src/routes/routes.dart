@@ -12,6 +12,9 @@ import 'package:suitess/app/screens/notifications/screen/notifications.dart';
 import 'package:suitess/app/screens/profile/screen/profile_screen.dart';
 import 'package:suitess/app/screens/profile/views/contact_details/screen/contact_details.dart';
 import 'package:suitess/app/screens/property/view_property/screen/view_property.dart';
+import 'package:suitess/app/screens/wallet/reset_tx_pin_options/reset_tx_pin_otp/screen/reset_tx_pin_otp.dart';
+import 'package:suitess/app/screens/wallet/reset_tx_pin_options/via_email/screen/reset_tx_pin_via_email.dart';
+import 'package:suitess/app/screens/wallet/reset_tx_pin_options/via_sms/screen/reset_tx_pin_via_sms.dart';
 import 'package:suitess/app/splash/startup/screen/startup_splash.dart';
 
 import '../../app/auth/login/screen/login.dart';
@@ -106,6 +109,10 @@ class Routes {
   static const airtimePurchase = "/airtime-purchase";
   static const mobileData = "/mobile-data";
   static const electricityBill = "/electricity-bill";
+  static const resetTxPin = "/reset-tx-pin";
+  static const resetTxPinViaEmail = "/reset-tx-pin-via-email";
+  static const resetTxPinViaSms = "/reset-tx-pin-via-sms";
+  static const resetTxPinOTP = "/reset-tx-pin-otp";
 
   //Messages Section
   static const messagesScreen = "/messages";
@@ -192,6 +199,11 @@ class Routes {
     GetPage(name: bankTransfer, page: () => const BankTransferScreen()),
     GetPage(name: airtimePurchase, page: () => const AirtimePurchaseScreen()),
     GetPage(name: mobileData, page: () => const MobileDataScreen()),
+    GetPage(name: resetTxPinViaEmail, page: () => const ResetTxPinViaEmail()),
+    GetPage(name: resetTxPinViaSms, page: () => const ResetTxPinViaSms()),
+    GetPage(name: resetTxPinOTP, page: () => const ResetTxPinOTP()),
+    // GetPage(name: resetTxPin, page: () => const ResetTxPin()),
+    GetPage(name: resetTxPin, page: () => const MobileDataScreen()),
 
     //Profile Section
     GetPage(name: profileScreen, page: () => const ProfileScreen()),

@@ -86,7 +86,8 @@ class WalletTransferScaffold extends GetView<WalletTransferController> {
                         textCapitalization: TextCapitalization.none,
                         keyboardType: TextInputType.number,
                         inputFormatters: [
-                          FilteringTextInputFormatter.digitsOnly
+                          FilteringTextInputFormatter.digitsOnly,
+                          LengthLimitingTextInputFormatter(10)
                         ],
                       ),
                     ),

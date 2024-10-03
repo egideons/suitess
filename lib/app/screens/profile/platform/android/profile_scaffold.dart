@@ -60,7 +60,7 @@ class ProfileScreenScaffold extends GetView<ProfileScreenController> {
                                             user!.profileImage!.isEmpty
                                                 ? null
                                                 : NetworkImage(
-                                                    "${ApiUrl.authBaseUrl}/storage/${user.profileImage!}",
+                                                    "${ApiUrl.authBaseUrl}/public/storage/${user.profileImage!}",
                                                   ),
                                         imageText: user.firstName!.isEmpty
                                             ? ""
