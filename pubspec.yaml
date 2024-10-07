@@ -8,8 +8,8 @@ environment:
   sdk: ">=3.4.4 <4.0.0"
 dependencies:
   flutter:
-    sdk: flutter
   cupertino_icons:
+    sdk: flutter
   iconsax: ^0.0.8
   flutter_svg:
   get:

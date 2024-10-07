@@ -21,6 +21,11 @@ void main() async {
     SystemUiOverlayStyle(statusBarColor: kTransparentColor),
   );
   WidgetsFlutterBinding.ensureInitialized();
+  // Lock device orientation to portrait up
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+  ]);
+
   // await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   prefs = await SharedPreferences.getInstance();
