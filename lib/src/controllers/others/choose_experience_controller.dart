@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:suitess/app/splash/loading/screen/loading_screen.dart';
+import 'package:suitess/app/android/splash/loading/screen/loading_screen.dart';
 import 'package:suitess/src/controllers/others/loading_controller.dart';
 
 class ChooseExperienceController extends GetxController {

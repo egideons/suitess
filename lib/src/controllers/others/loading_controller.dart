@@ -1,9 +1,9 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:suitess/app/my%20_business/lands_and_properties/properties_home/screen/lands_and_properties_screen.dart';
+import 'package:suitess/app/android/my%20_business/lands_and_properties/properties_home/screen/lands_and_properties_screen.dart';
 
-import '../../../app/auth/login/screen/login.dart';
-import '../../../app/bottom_nav_view/screen/bottom_navigation_view.dart';
+import '../../../app/android/auth/login/screen/login.dart';
+import '../../../app/android/bottom_nav_view/screen/bottom_navigation_view.dart';
 import '../../../main.dart';
 import '../auth/user_controller.dart';
 

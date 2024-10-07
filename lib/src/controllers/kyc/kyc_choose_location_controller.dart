@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../app/splash/loading/screen/loading_screen.dart';
+import '../../../app/android/splash/loading/screen/loading_screen.dart';
 import '../../../main.dart';
 import '../../constants/consts.dart';
 import '../others/api_processor_controller.dart';

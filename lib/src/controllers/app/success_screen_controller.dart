@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:suitess/app/splash/loading/screen/loading_screen.dart';
+import 'package:suitess/app/android/splash/loading/screen/loading_screen.dart';
 
 import '../others/loading_controller.dart';
 

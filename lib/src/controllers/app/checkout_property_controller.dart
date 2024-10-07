@@ -3,10 +3,10 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../app/screens/property/checkout_property/content/checkout_property_congratulations_modal_sheet.dart';
-import '../../../app/screens/property/checkout_property/content/schedule_move_in_congratulations_modal_sheet.dart';
-import '../../../app/screens/property/checkout_property/content/schedule_move_in_modal_sheet.dart';
-import '../../../app/splash/loading/screen/loading_screen.dart';
+import '../../../app/android/screens/property/checkout_property/content/checkout_property_congratulations_modal_sheet.dart';
+import '../../../app/android/screens/property/checkout_property/content/schedule_move_in_congratulations_modal_sheet.dart';
+import '../../../app/android/screens/property/checkout_property/content/schedule_move_in_modal_sheet.dart';
+import '../../../app/android/splash/loading/screen/loading_screen.dart';
 import '../../models/property/time_appointment_model.dart';
 import '../others/loading_controller.dart';
 

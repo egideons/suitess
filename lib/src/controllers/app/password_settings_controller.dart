@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
-import '../../../app/auth/login/screen/login.dart';
-import '../../../app/screens/profile/views/password_settings/content/change_password_modal_sheet.dart';
+import '../../../app/android/auth/login/screen/login.dart';
+import '../../../app/android/screens/profile/views/password_settings/content/change_password_modal_sheet.dart';
 import '../../../main.dart';
 import '../../constants/consts.dart';
 import '../../models/auth/update_password_response_model.dart';

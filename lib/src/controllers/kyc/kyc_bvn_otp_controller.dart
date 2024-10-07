@@ -4,7 +4,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../app/kyc/kyc_nin/screen/kyc_nin.dart';
+import '../../../app/android/kyc/kyc_nin/screen/kyc_nin.dart';
 import '../others/api_processor_controller.dart';
 
 class KycBvnOTPController extends GetxController {

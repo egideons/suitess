@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 
 import '../../constants/assets.dart';
 
-Widget pageBackground(Size media, ColorScheme colorScheme) {
+pageBackground(Size media, ColorScheme colorScheme) {
   return Container(
     height: media.height,
     width: media.width,

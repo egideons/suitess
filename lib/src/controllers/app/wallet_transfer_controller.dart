@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:suitess/src/routes/routes.dart';
 
-import '../../../app/screens/wallet/wallet_transfer/content/wallet_transfer_tx_details.dart';
-import '../../../app/screens/wallet/wallet_transfer/content/wallet_transfer_tx_pin.dart';
-import '../../../app/splash/successful/screen/success_screen.dart';
+import '../../../app/android/screens/wallet/wallet_transfer/content/wallet_transfer_tx_details.dart';
+import '../../../app/android/screens/wallet/wallet_transfer/content/wallet_transfer_tx_pin.dart';
+import '../../../app/android/splash/successful/screen/success_screen.dart';
 import '../../constants/consts.dart';
 import '../../models/wallet/source_account_model.dart';
 import '../others/api_processor_controller.dart';

@@ -2,12 +2,12 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:suitess/app/auth/signup/screen/signup.dart';
+import 'package:suitess/app/android/auth/signup/screen/signup.dart';
 
-import '../../../app/auth/email_otp/screen/email_otp.dart';
-import '../../../app/auth/login/screen/login.dart';
-import '../../../app/bottom_nav_view/screen/bottom_navigation_view.dart';
-import '../../../app/onboarding/screen/onboarding.dart';
+import '../../../app/android/auth/email_otp/screen/email_otp.dart';
+import '../../../app/android/auth/login/screen/login.dart';
+import '../../../app/android/bottom_nav_view/screen/bottom_navigation_view.dart';
+import '../../../app/android/onboarding/screen/onboarding.dart';
 import '../../../main.dart';
 import 'user_controller.dart';
 

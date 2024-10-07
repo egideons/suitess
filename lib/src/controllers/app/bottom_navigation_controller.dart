@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:suitess/app/screens/home/screen/home_screen.dart';
-import 'package:suitess/app/screens/profile/screen/profile_screen.dart';
+import 'package:suitess/app/android/screens/home/screen/home_screen.dart';
+import 'package:suitess/app/android/screens/profile/screen/profile_screen.dart';
 
-import '../../../app/screens/messages/screen/messages_screen.dart';
-import '../../../app/screens/wallet/wallet_screen/screen/wallet_screen.dart';
-import '../../../app/screens/wallet_intro/screen/wallet_intro_screen.dart';
+import '../../../app/android/screens/messages/screen/messages_screen.dart';
+import '../../../app/android/screens/wallet/wallet_screen/screen/wallet_screen.dart';
+import '../../../app/android/screens/wallet_intro/screen/wallet_intro_screen.dart';
 import '../../../main.dart';
 import '../../constants/assets.dart';
 

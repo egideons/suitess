@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../app/screens/wallet/airtime_purchase/content/airtime_purchase_pin.dart';
-import '../../../app/screens/wallet/airtime_purchase/content/list_of_airtime_billers_modal.dart';
-import '../../../app/splash/successful/screen/success_screen.dart';
+import '../../../app/android/screens/wallet/airtime_purchase/content/airtime_purchase_pin.dart';
+import '../../../app/android/screens/wallet/airtime_purchase/content/list_of_airtime_billers_modal.dart';
+import '../../../app/android/splash/successful/screen/success_screen.dart';
 import '../../constants/consts.dart';
 import '../../models/network_providers/airtime_biller_model.dart';
 import '../others/api_processor_controller.dart';

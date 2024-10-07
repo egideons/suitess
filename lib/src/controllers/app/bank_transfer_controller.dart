@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:suitess/src/models/bank/bank_model.dart';
 
-import '../../../app/screens/wallet/bank_transfer/content/bank_transfer_tx_details.dart';
-import '../../../app/screens/wallet/bank_transfer/content/bank_transfer_tx_pin.dart';
-import '../../../app/screens/wallet/bank_transfer/content/list_of_banks_modal.dart';
-import '../../../app/screens/wallet/bank_transfer/content/list_of_beneficiaries_modal.dart';
-import '../../../app/splash/successful/screen/success_screen.dart';
+import '../../../app/android/screens/wallet/bank_transfer/content/bank_transfer_tx_details.dart';
+import '../../../app/android/screens/wallet/bank_transfer/content/bank_transfer_tx_pin.dart';
+import '../../../app/android/screens/wallet/bank_transfer/content/list_of_banks_modal.dart';
+import '../../../app/android/screens/wallet/bank_transfer/content/list_of_beneficiaries_modal.dart';
+import '../../../app/android/splash/successful/screen/success_screen.dart';
 import '../../models/bank/beneficiary_model.dart';
 import '../../models/wallet/source_account_model.dart';
 import '../others/api_processor_controller.dart';

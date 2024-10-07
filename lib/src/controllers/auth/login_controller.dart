@@ -7,8 +7,8 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
-import '../../../app/auth/signup/screen/signup.dart';
-import '../../../app/splash/loading/screen/loading_screen.dart';
+import '../../../app/android/auth/signup/screen/signup.dart';
+import '../../../app/android/splash/loading/screen/loading_screen.dart';
 import '../../../main.dart';
 import '../../constants/consts.dart';
 import '../../models/auth/login_response_model.dart';

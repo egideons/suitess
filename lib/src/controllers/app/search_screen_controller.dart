@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../app/screens/search/content/search_filter_bottom_modal_sheet.dart';
+import '../../../app/android/screens/search/content/search_filter_bottom_modal_sheet.dart';
 import '../../models/property/property_category_model.dart';
 
 class SearchScreenController extends GetxController {

@@ -9,8 +9,8 @@ import 'package:http/http.dart' as http;
 import 'package:suitess/main.dart';
 import 'package:suitess/src/controllers/others/api_processor_controller.dart';
 
-import '../../../app/auth/email_otp/screen/email_otp.dart';
-import '../../../app/auth/login/screen/login.dart';
+import '../../../app/android/auth/email_otp/screen/email_otp.dart';
+import '../../../app/android/auth/login/screen/login.dart';
 import '../../constants/consts.dart';
 import '../../models/auth/signup_response_model.dart';
 import '../../services/api/api_url.dart';

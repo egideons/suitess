@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:suitess/src/controllers/others/api_processor_controller.dart';
 
-import '../../../app/auth/login/screen/login.dart';
+import '../../../app/android/auth/login/screen/login.dart';
 import '../../constants/consts.dart';
 import '../../models/auth/reset_password_response_model.dart';
 import '../../services/api/api_url.dart';
