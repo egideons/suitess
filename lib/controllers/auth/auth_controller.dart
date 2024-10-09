@@ -8,7 +8,7 @@ import '../../../main.dart';
 import '../../../views/android/auth/email_otp/screen/android_email_otp.dart';
 import '../../../views/android/auth/login/screen/android_login.dart';
 import '../../../views/android/bottom_nav_view/screen/android_bottom_navigation_view.dart';
-import '../../../views/android/onboarding/screen/onboarding.dart';
+import '../../views/android/onboarding/screen/onboarding_screen.dart';
 import 'user_controller.dart';
 
 class AuthController extends GetxController {
@@ -91,7 +91,7 @@ class AuthController extends GetxController {
       );
     } else {
       await Get.offAll(
-        () => const Onboarding(),
+        () => const AndroidOnboardingScreen(),
         routeName: "/onboarding",
         fullscreenDialog: true,
         curve: Curves.easeInOut,

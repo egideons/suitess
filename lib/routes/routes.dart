@@ -14,7 +14,7 @@ import 'package:suitess/views/android/kyc/kyc_bvn/screen/android_kyc_bvn.dart';
 import 'package:suitess/views/android/kyc/kyc_bvn_otp/screen/android_kyc_bvn_otp.dart';
 import 'package:suitess/views/android/kyc/kyc_nin/screen/android_kyc_nin_screen.dart';
 import 'package:suitess/views/android/kyc/kyc_profile_photo/screen/android_kyc_profile_photo_screen.dart';
-import 'package:suitess/views/android/onboarding/screen/onboarding.dart';
+import 'package:suitess/views/android/onboarding/screen/onboarding_screen.dart';
 import 'package:suitess/views/android/screens/bid_details/screen/bid_details_screen.dart';
 import 'package:suitess/views/android/screens/chat/screen/chat_screen.dart';
 import 'package:suitess/views/android/screens/home/screen/home_screen.dart';
@@ -63,7 +63,7 @@ class Routes {
 
   static const successScreen = "/success-screen";
 
-  //Onboarding
+  //AndroidOnboardingScreen
   static const onboarding = "/onboarding";
 
   //Locked Screen
@@ -153,7 +153,7 @@ class Routes {
     GetPage(name: loadingScreen, page: () => const LoadingScreen()),
 
     //Auth Pages
-    GetPage(name: onboarding, page: () => const Onboarding()),
+    GetPage(name: onboarding, page: () => const AndroidOnboardingScreen()),
     GetPage(name: signup, page: () => const AndroidSignupScreen()),
     GetPage(name: login, page: () => const AndroidLoginScreen()),
     GetPage(name: emailOTP, page: () => const AndroidEmailOTP()),

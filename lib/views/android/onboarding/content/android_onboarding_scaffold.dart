@@ -1,26 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:suitess/views/android/onboarding/content/android_onboarding_page_content.dart';
 
-import '../../../../../controllers/others/onboarding_controller.dart';
-import '../../content/onboarding_android_page_content.dart';
+import '../../../../controllers/others/onboarding_controller.dart';
 
-class OnboardingAndroidScaffold extends GetView<OnboardingController> {
-  const OnboardingAndroidScaffold({super.key});
+class AndroidOnboardingScaffold extends GetView<OnboardingController> {
+  const AndroidOnboardingScaffold({super.key});
 
   @override
   Widget build(BuildContext context) {
     var media = MediaQuery.of(context).size;
     var colorScheme = Theme.of(context).colorScheme;
 
-    // final controller = OnboardingController.instance;
-
     return Scaffold(
       backgroundColor: colorScheme.surface,
-      appBar: AppBar(
-        toolbarHeight: media.height * .004,
-      ),
+      appBar: AppBar(toolbarHeight: media.height * .004),
       body: SafeArea(
-        child: onboardingAndroidPageContent(
+        child: androidOnboardingPageContent(
           media: media,
           colorScheme: colorScheme,
           controller: controller,

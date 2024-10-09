@@ -9,7 +9,7 @@ import '../../../../constants/consts.dart';
 import '../../../../controllers/others/onboarding_controller.dart';
 import '../../../../theme/colors.dart';
 
-onboardingAndroidPageContent({
+androidOnboardingPageContent({
   OnboardingController? controller,
   ColorScheme? colorScheme,
   Size? media,
