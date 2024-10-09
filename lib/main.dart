@@ -4,27 +4,27 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:suitess/src/controllers/others/loading_controller.dart';
+import 'package:suitess/controllers/auth/user_controller.dart';
+import 'package:suitess/controllers/others/connectivity_status_controller.dart';
+import 'package:suitess/controllers/others/loading_controller.dart';
+import 'package:suitess/controllers/others/theme_controller.dart';
+import 'package:suitess/utils/components/app_error_widget.dart';
 
-import 'src/controllers/auth/user_controller.dart';
-import 'src/controllers/others/connectivity_status_controller.dart';
-import 'src/controllers/others/theme_controller.dart';
 import 'src/routes/routes.dart';
-import 'src/utils/components/app_error_widget.dart';
 import 'theme/app_theme.dart';
 import 'theme/colors.dart';
 
 void main() async {
+  await dotenv.load(fileName: ".env");
   SystemChrome.setSystemUIOverlayStyle(
     SystemUiOverlayStyle(statusBarColor: kTransparentColor),
   );
   WidgetsFlutterBinding.ensureInitialized();
   // Lock device orientation to portrait up
-  await SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-  ]);
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
   // await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
