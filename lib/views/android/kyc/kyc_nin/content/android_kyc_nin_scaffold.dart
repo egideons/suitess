@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:suitess/app/android/auth/components/auth_app_bar.dart';
-import 'package:suitess/src/utils/buttons/android/android_elevated_button.dart';
+import 'package:suitess/utils/buttons/android/android_elevated_button.dart';
+import 'package:suitess/views/android/auth/components/auth_app_bar.dart';
 
-import '../../../../../src/constants/consts.dart';
-import '../../../../../src/controllers/kyc/kyc_nin_controller.dart';
-import '../../../../../src/utils/containers/form_field_container.dart';
-import '../../../../../src/utils/text_form_fields/ios/cupertino_text_field.dart';
+import '../../../../../constants/consts.dart';
+import '../../../../../controllers/kyc/kyc_nin_controller.dart';
 import '../../../../../theme/colors.dart';
+import '../../../../../utils/containers/form_field_container.dart';
+import '../../../../../utils/text_form_fields/ios/cupertino_text_field.dart';
 import 'android_kyc_nin_page_header.dart';
 
 class AndroidKycNinScaffold extends GetView<KycNINController> {

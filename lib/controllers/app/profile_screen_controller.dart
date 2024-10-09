@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:suitess/app/android/screens/profile/content/select_profile_pic_modal.dart';
+import 'package:suitess/views/android/screens/profile/content/select_profile_pic_modal.dart';
+import 'package:suitess/views/android/splash/loading/screen/loading_screen.dart';
 
-import '../../../app/android/splash/loading/screen/loading_screen.dart';
 import '../../../main.dart';
 import '../../constants/consts.dart';
 import '../../services/api/api_url.dart';

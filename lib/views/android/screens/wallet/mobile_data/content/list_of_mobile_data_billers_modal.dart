@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:suitess/src/utils/components/my_app_bar.dart';
+import 'package:suitess/utils/components/my_app_bar.dart';
 
-import '../../../../../../src/constants/assets.dart';
-import '../../../../../../src/constants/consts.dart';
-import '../../../../../../src/controllers/app/mobile_data_controller.dart';
+import '../../../../../../constants/assets.dart';
+import '../../../../../../constants/consts.dart';
+import '../../../../../../controllers/app/mobile_data_controller.dart';
 import '../../../../../../theme/colors.dart';
 
 class ListOfMobileDataBillersModal extends GetView<MobileDataController> {

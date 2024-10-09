@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../../../../src/controllers/auth/login_controller.dart';
+import '../../../../../../../controllers/auth/login_controller.dart';
 import '../content/android_login_scaffold.dart';
 
 class AndroidLoginScreen extends StatelessWidget {

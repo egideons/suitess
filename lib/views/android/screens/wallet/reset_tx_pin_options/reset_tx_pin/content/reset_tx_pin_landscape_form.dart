@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:suitess/src/controllers/app/reset_tx_pin_controller.dart';
-import 'package:suitess/src/utils/containers/form_field_container.dart';
-import 'package:suitess/src/utils/text_form_fields/android/android_textformfield.dart';
+import 'package:suitess/controllers/app/reset_tx_pin_controller.dart';
+import 'package:suitess/utils/containers/form_field_container.dart';
+import 'package:suitess/utils/text_form_fields/android/android_textformfield.dart';
 
 resetTxPinLandscapeForm(
   ResetTxPinController controller,

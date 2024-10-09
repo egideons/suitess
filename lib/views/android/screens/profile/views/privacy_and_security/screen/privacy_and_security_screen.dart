@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../../../../src/controllers/app/privacy_and_security_controller.dart';
+import '../../../../../../../controllers/app/privacy_and_security_controller.dart';
 import '../platform/android/privacy_and_security_scaffold.dart';
 
 class PrivacyAndSecurityScreen extends StatelessWidget {

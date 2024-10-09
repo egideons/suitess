@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../../../src/controllers/app/mobile_data_controller.dart';
+import '../../../../../../controllers/app/mobile_data_controller.dart';
 import '../platform/android/mobile_data_scaffold.dart';
 
 class MobileDataScreen extends StatelessWidget {

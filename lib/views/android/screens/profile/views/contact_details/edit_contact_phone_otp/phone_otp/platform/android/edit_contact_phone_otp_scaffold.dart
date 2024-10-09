@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:suitess/app/android/auth/phone_otp/content/android_phone_otp_page_header.dart';
-import 'package:suitess/app/android/screens/profile/views/contact_details/edit_contact_phone_otp/phone_otp/content/phone_otp_form_landscape.dart';
-import 'package:suitess/app/android/screens/profile/views/contact_details/edit_contact_phone_otp/phone_otp/content/phone_otp_form_mobile.dart';
-import 'package:suitess/src/utils/buttons/android/android_elevated_button.dart';
-import 'package:suitess/src/utils/components/responsive_constants.dart';
+import 'package:suitess/utils/buttons/android/android_elevated_button.dart';
+import 'package:suitess/utils/components/responsive_constants.dart';
+import 'package:suitess/views/android/auth/phone_otp/content/android_phone_otp_page_header.dart';
+import 'package:suitess/views/android/screens/profile/views/contact_details/edit_contact_phone_otp/phone_otp/content/phone_otp_form_landscape.dart';
+import 'package:suitess/views/android/screens/profile/views/contact_details/edit_contact_phone_otp/phone_otp/content/phone_otp_form_mobile.dart';
 
-import '../../../../../../../../../../src/constants/assets.dart';
-import '../../../../../../../../../../src/constants/consts.dart';
-import '../../../../../../../../../../src/controllers/auth/edit_contact_phone_otp_controller.dart';
+import '../../../../../../../../../../constants/assets.dart';
+import '../../../../../../../../../../constants/consts.dart';
+import '../../../../../../../../../../controllers/auth/edit_contact_phone_otp_controller.dart';
 import '../../../../../../../../../../theme/colors.dart';
 
 class EditContactPhoneOtpScaffold

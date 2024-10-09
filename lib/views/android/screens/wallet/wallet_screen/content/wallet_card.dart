@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
-import '../../../../../../src/constants/assets.dart';
-import '../../../../../../src/constants/consts.dart';
-import '../../../../../../src/controllers/app/wallet_screen_controller.dart';
+import '../../../../../../constants/assets.dart';
+import '../../../../../../constants/consts.dart';
+import '../../../../../../controllers/app/wallet_screen_controller.dart';
 import '../../../../../../theme/colors.dart';
 
 walletCard(

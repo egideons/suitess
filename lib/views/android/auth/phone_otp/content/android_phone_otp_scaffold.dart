@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:suitess/app/android/auth/phone_otp/content/android_phone_otp_page_header.dart';
-import 'package:suitess/src/utils/buttons/android/android_elevated_button.dart';
-import 'package:suitess/src/utils/components/responsive_constants.dart';
+import 'package:suitess/utils/buttons/android/android_elevated_button.dart';
+import 'package:suitess/utils/components/responsive_constants.dart';
+import 'package:suitess/views/android/auth/phone_otp/content/android_phone_otp_page_header.dart';
 
-import '../../../../../src/constants/assets.dart';
-import '../../../../../src/constants/consts.dart';
-import '../../../../../src/controllers/auth/phone_otp_controller.dart';
+import '../../../../../constants/assets.dart';
+import '../../../../../constants/consts.dart';
+import '../../../../../controllers/auth/phone_otp_controller.dart';
 import '../../../../../theme/colors.dart';
 import 'android_phone_otp_form_landscape.dart';
 import 'android_phone_otp_form_mobile.dart';

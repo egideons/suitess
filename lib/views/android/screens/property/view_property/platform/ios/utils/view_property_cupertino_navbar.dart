@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:iconsax/iconsax.dart';
 
-import '../../../../../../../../src/utils/components/responsive_constants.dart';
 import '../../../../../../../../theme/colors.dart';
+import '../../../../../../../../utils/components/responsive_constants.dart';
 
 viewPropertyCupertinoNavBar(
   colorScheme,

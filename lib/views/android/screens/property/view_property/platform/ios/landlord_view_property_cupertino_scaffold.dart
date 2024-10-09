@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:suitess/theme/colors.dart';
 
-import '../../../../../../../src/constants/consts.dart';
-import '../../../../../../../src/controllers/app/view_property_controller.dart';
-import '../../../../../../../src/utils/buttons/ios/scroll_to_top_cupertino_button.dart';
+import '../../../../../../../constants/consts.dart';
+import '../../../../../../../controllers/app/view_property_controller.dart';
+import '../../../../../../../utils/buttons/ios/scroll_to_top_cupertino_button.dart';
 import 'utils/view_property_cupertino_edit_button.dart';
 import 'utils/view_property_cupertino_navbar.dart';
 

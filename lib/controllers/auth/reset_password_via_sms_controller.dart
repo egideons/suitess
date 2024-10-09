@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
-import '../../../app/android/auth/reset_password_otp/via_sms/screen/android_reset_password_via_sms_otp.dart';
+import '../../../views/android/auth/reset_password_otp/via_sms/screen/android_reset_password_via_sms_otp.dart';
 import '../../constants/consts.dart';
 import '../../models/auth/verify_otp_response_model.dart';
 import '../../routes/routes.dart';

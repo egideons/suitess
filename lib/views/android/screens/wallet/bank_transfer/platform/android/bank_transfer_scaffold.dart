@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:suitess/src/utils/containers/form_field_container.dart';
+import 'package:suitess/utils/containers/form_field_container.dart';
 
-import '../../../../../../../src/constants/consts.dart';
-import '../../../../../../../src/controllers/app/bank_transfer_controller.dart';
-import '../../../../../../../src/utils/buttons/android/android_elevated_button.dart';
-import '../../../../../../../src/utils/components/my_app_bar.dart';
-import '../../../../../../../src/utils/text_form_fields/android/android_textformfield.dart';
+import '../../../../../../../constants/consts.dart';
+import '../../../../../../../controllers/app/bank_transfer_controller.dart';
 import '../../../../../../../theme/colors.dart';
+import '../../../../../../../utils/buttons/android/android_elevated_button.dart';
+import '../../../../../../../utils/components/my_app_bar.dart';
+import '../../../../../../../utils/text_form_fields/android/android_textformfield.dart';
 import '../../content/bank_transfer_source_wallet.dart';
 
 class BankTransferScaffold extends GetView<BankTransferController> {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:readmore/readmore.dart';
 
-import '../../../../../../../src/constants/consts.dart';
+import '../../../../../../../constants/consts.dart';
 import '../../../../../../../theme/colors.dart';
 
 supportAndFeedbackExpansionTile(ColorScheme colorScheme,

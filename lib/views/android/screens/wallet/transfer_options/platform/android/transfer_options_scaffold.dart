@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
-import '../../../../../../../src/constants/assets.dart';
-import '../../../../../../../src/constants/consts.dart';
-import '../../../../../../../src/routes/routes.dart';
-import '../../../../../../../src/utils/components/my_app_bar.dart';
+import '../../../../../../../constants/assets.dart';
+import '../../../../../../../constants/consts.dart';
+import '../../../../../../../routes/routes.dart';
 import '../../../../../../../theme/colors.dart';
+import '../../../../../../../utils/components/my_app_bar.dart';
 import '../../content/transfer_option.dart';
 
 class TransferOptionsScaffold extends StatelessWidget {

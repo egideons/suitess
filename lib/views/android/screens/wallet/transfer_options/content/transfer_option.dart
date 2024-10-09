@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../../../../src/constants/consts.dart';
+import '../../../../../../constants/consts.dart';
 import '../../../../../../theme/colors.dart';
 
 transferOption(

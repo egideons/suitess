@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
-import '../../../../../src/constants/assets.dart';
-import '../../../../../src/constants/consts.dart';
+import '../../../../../constants/assets.dart';
+import '../../../../../constants/consts.dart';
 
 Widget congratulationsSplashScreenContent({media, colorScheme}) {
   return Container(

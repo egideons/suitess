@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/route_manager.dart';
-import 'package:suitess/src/constants/consts.dart';
+import 'package:suitess/constants/consts.dart';
 
 import '../../../theme/colors.dart';
 

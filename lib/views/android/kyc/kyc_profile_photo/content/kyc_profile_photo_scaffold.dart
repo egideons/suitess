@@ -2,14 +2,14 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:suitess/app/android/auth/components/auth_app_bar.dart';
-import 'package:suitess/app/android/kyc/kyc_profile_photo/content/android_kyc_profile_photo_page_header.dart';
-import 'package:suitess/src/controllers/kyc/kyc_profile_photo_controller.dart';
-import 'package:suitess/src/utils/buttons/android/android_elevated_button.dart';
-import 'package:suitess/src/utils/containers/form_field_container.dart';
+import 'package:suitess/controllers/kyc/kyc_profile_photo_controller.dart';
 import 'package:suitess/theme/colors.dart';
+import 'package:suitess/utils/buttons/android/android_elevated_button.dart';
+import 'package:suitess/utils/containers/form_field_container.dart';
+import 'package:suitess/views/android/auth/components/auth_app_bar.dart';
+import 'package:suitess/views/android/kyc/kyc_profile_photo/content/android_kyc_profile_photo_page_header.dart';
 
-import '../../../../../src/constants/consts.dart';
+import '../../../../../constants/consts.dart';
 import 'android_kyc_profile_photo_modal_sheet.dart';
 
 class AndroidKycProfilePhotoScaffold

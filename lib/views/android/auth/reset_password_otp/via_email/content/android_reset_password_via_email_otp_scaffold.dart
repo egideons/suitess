@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:suitess/src/controllers/auth/reset_password_via_email_otp_controller.dart';
-import 'package:suitess/src/utils/buttons/android/android_elevated_button.dart';
+import 'package:suitess/controllers/auth/reset_password_via_email_otp_controller.dart';
+import 'package:suitess/utils/buttons/android/android_elevated_button.dart';
 
-import '../../../../../../src/constants/assets.dart';
-import '../../../../../../src/constants/consts.dart';
-import '../../../../../../src/utils/components/responsive_constants.dart';
+import '../../../../../../constants/assets.dart';
+import '../../../../../../constants/consts.dart';
 import '../../../../../../theme/colors.dart';
+import '../../../../../../utils/components/responsive_constants.dart';
 import 'android_reset_password_via_email_otp_form_landscape.dart';
 import 'android_reset_password_via_email_otp_form_mobile.dart';
 import 'android_reset_password_via_email_otp_page_header.dart';

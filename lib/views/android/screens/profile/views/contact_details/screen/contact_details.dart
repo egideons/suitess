@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../../../../src/controllers/app/contact_details_controller.dart';
+import '../../../../../../../controllers/app/contact_details_controller.dart';
 import '../platform/android/contact_details_scaffold.dart';
 
 class ContactDetails extends StatelessWidget {

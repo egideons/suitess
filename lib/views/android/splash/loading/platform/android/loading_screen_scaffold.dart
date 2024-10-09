@@ -2,9 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:suitess/app/android/splash/loading/content/loading_screen_content.dart';
+import 'package:suitess/views/android/splash/loading/content/loading_screen_content.dart';
 
-import '../../../../../../src/controllers/others/loading_controller.dart';
+import '../../../../../../controllers/others/loading_controller.dart';
 
 class LoadingScreenScaffold extends GetView<LoadingController> {
   final void Function()? loadData;

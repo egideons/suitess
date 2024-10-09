@@ -2,11 +2,11 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../../../src/constants/assets.dart';
-import '../../../../../src/constants/consts.dart';
-import '../../../../../src/controllers/app/wallet_intro_controller.dart';
-import '../../../../../src/utils/buttons/android/android_elevated_button.dart';
+import '../../../../../constants/assets.dart';
+import '../../../../../constants/consts.dart';
+import '../../../../../controllers/app/wallet_intro_controller.dart';
 import '../../../../../theme/colors.dart';
+import '../../../../../utils/buttons/android/android_elevated_button.dart';
 
 walletIntroPage1(ColorScheme colorScheme, WalletIntroController controller) {
   return Column(

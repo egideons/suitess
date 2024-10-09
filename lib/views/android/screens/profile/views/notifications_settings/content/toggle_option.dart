@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../../../src/constants/consts.dart';
-import '../../../../../../../src/controllers/app/notifications_settings_controller.dart';
+import '../../../../../../../constants/consts.dart';
+import '../../../../../../../controllers/app/notifications_settings_controller.dart';
 import '../../../../../../../theme/colors.dart';
 
 toggleOption(

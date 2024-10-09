@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:suitess/src/constants/assets.dart';
-import 'package:suitess/src/utils/components/responsive_constants.dart';
+import 'package:suitess/constants/assets.dart';
+import 'package:suitess/utils/components/responsive_constants.dart';
 
-import '../../../../../../../src/constants/consts.dart';
-import '../../../../../../../src/utils/buttons/android/android_elevated_button.dart';
-import '../../../../../../../src/utils/containers/form_field_container.dart';
-import '../../../../../../../src/utils/text_form_fields/android/android_textformfield.dart';
-import '../../../../../../src/controllers/auth/reset_password_via_sms_controller.dart';
+import '../../../../../../../constants/consts.dart';
+import '../../../../../../../utils/buttons/android/android_elevated_button.dart';
+import '../../../../../../../utils/containers/form_field_container.dart';
+import '../../../../../../../utils/text_form_fields/android/android_textformfield.dart';
+import '../../../../../../controllers/auth/reset_password_via_sms_controller.dart';
 import '../../content/android_reset_password_option_header.dart';
 
 class AndroidResetPasswordViaSMSScaffold

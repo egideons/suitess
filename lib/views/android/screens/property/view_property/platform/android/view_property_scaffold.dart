@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:suitess/src/constants/consts.dart';
-import 'package:suitess/src/controllers/app/view_property_controller.dart';
+import 'package:suitess/constants/consts.dart';
+import 'package:suitess/controllers/app/view_property_controller.dart';
 
-import '../../../../../../../src/utils/buttons/android/android_elevated_button.dart';
 import '../../../../../../../theme/colors.dart';
+import '../../../../../../../utils/buttons/android/android_elevated_button.dart';
 import '../../content/property_about_tab.dart';
 import '../../content/property_agent_tab.dart';
 import '../../content/property_app_bar.dart';

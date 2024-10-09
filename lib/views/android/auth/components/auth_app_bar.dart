@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../src/constants/consts.dart';
+import '../../../../constants/consts.dart';
 import '../../../../theme/colors.dart';
 
 androidAuthAppBar(

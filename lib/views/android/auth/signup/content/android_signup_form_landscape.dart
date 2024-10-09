@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
-import '../../../../../src/constants/consts.dart';
-import '../../../../../src/controllers/auth/signup_controller.dart';
-import '../../../../../src/utils/containers/form_field_container.dart';
-import '../../../../../src/utils/text_form_fields/android/android_textformfield.dart';
+import '../../../../../constants/consts.dart';
+import '../../../../../controllers/auth/signup_controller.dart';
 import '../../../../../theme/colors.dart';
+import '../../../../../utils/containers/form_field_container.dart';
+import '../../../../../utils/text_form_fields/android/android_textformfield.dart';
 
 androidSignupFormLandscape(
   SignupController signupController,

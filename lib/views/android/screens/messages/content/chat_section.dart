@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../src/constants/consts.dart';
-import '../../../../../src/utils/components/circle_avatar_image.dart';
+import '../../../../../constants/consts.dart';
 import '../../../../../theme/colors.dart';
+import '../../../../../utils/components/circle_avatar_image.dart';
 
 chatSection(
   ColorScheme colorScheme, {

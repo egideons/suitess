@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:suitess/src/utils/components/my_app_bar.dart';
+import 'package:suitess/utils/components/my_app_bar.dart';
 
-import '../../../../../../src/constants/assets.dart';
-import '../../../../../../src/constants/consts.dart';
-import '../../../../../../src/controllers/app/messages_controller.dart';
+import '../../../../../../constants/assets.dart';
+import '../../../../../../constants/consts.dart';
+import '../../../../../../controllers/app/messages_controller.dart';
 import '../../../../../../theme/colors.dart';
 import '../../content/chat_section.dart';
 

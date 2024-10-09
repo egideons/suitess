@@ -4,10 +4,10 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:suitess/src/controllers/auth/user_controller.dart';
-import 'package:suitess/src/models/user/user_model.dart';
+import 'package:suitess/controllers/auth/user_controller.dart';
+import 'package:suitess/models/user/user_model.dart';
 
-import '../../../app/android/auth/reset_password_otp/via_sms/screen/android_reset_password_via_sms_otp.dart';
+import '../../../views/android/auth/reset_password_otp/via_sms/screen/android_reset_password_via_sms_otp.dart';
 import '../../constants/consts.dart';
 import '../../models/auth/verify_otp_response_model.dart';
 import '../../routes/routes.dart';

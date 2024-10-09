@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../../src/constants/consts.dart';
-import '../../../../../../src/controllers/app/view_property_controller.dart';
+import '../../../../../../constants/consts.dart';
+import '../../../../../../controllers/app/view_property_controller.dart';
 
 viewPropertyTabs(
     ViewPropertyController controller, int index, ColorScheme colorScheme) {

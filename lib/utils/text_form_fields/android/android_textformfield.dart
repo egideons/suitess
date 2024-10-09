@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:suitess/src/constants/consts.dart';
+import 'package:suitess/constants/consts.dart';
 
 import '../../../../theme/colors.dart';
 

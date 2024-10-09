@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../../../../../src/controllers/app/faqs_controller.dart';
-import '../../../../../../../../src/utils/components/my_app_bar.dart';
+import '../../../../../../../../controllers/app/faqs_controller.dart';
 import '../../../../../../../../theme/colors.dart';
+import '../../../../../../../../utils/components/my_app_bar.dart';
 import '../../content/expansion_tile.dart';
 
 class FaqsScaffold extends GetView<FaqsController> {

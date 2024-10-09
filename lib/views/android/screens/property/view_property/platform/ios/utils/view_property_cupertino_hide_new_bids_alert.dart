@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-import '../../../../../../../../src/constants/consts.dart';
+import '../../../../../../../../constants/consts.dart';
 import '../../../../../../../../theme/colors.dart';
 
 Widget viewPropertyCupertinoHideNewBidsAlert(

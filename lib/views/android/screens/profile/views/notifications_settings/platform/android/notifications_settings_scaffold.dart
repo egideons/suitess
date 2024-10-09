@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:suitess/src/utils/components/my_app_bar.dart';
+import 'package:suitess/utils/components/my_app_bar.dart';
 
-import '../../../../../../../../src/constants/consts.dart';
-import '../../../../../../../../src/controllers/app/notifications_settings_controller.dart';
+import '../../../../../../../../constants/consts.dart';
+import '../../../../../../../../controllers/app/notifications_settings_controller.dart';
 import '../../../../../../../../theme/colors.dart';
 import '../../content/common_settings.dart';
 import '../../content/system_and_service_settings.dart';

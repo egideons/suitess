@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:suitess/src/controllers/kyc/kyc_choose_location_controller.dart';
+import 'package:suitess/controllers/kyc/kyc_choose_location_controller.dart';
 
 import '../content/android_kyc_add_location_scaffold.dart';
 

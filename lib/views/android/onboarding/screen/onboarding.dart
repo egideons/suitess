@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../src/controllers/others/onboarding_controller.dart';
+import '../../../../controllers/others/onboarding_controller.dart';
 import '../platform/android/onboarding_android_scaffold.dart';
 import '../platform/ios/onboarding_cupertino_scaffold.dart';
 

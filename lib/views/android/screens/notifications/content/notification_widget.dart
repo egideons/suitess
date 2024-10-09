@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:readmore/readmore.dart';
-import 'package:suitess/src/constants/consts.dart';
-import 'package:suitess/src/utils/components/responsive_constants.dart';
+import 'package:suitess/constants/consts.dart';
+import 'package:suitess/utils/components/responsive_constants.dart';
 
 notificationWidget(
   ColorScheme colorScheme,

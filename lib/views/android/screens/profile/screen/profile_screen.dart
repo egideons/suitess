@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../../src/controllers/app/profile_screen_controller.dart';
+import '../../../../../controllers/app/profile_screen_controller.dart';
 import '../platform/android/profile_scaffold.dart';
 
 class ProfileScreen extends StatelessWidget {

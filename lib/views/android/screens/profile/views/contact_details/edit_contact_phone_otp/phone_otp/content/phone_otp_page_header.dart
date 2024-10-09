@@ -2,7 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:suitess/theme/colors.dart';
 
-import '../../../../../../../../../src/constants/consts.dart';
+import '../../../../../../../../../constants/consts.dart';
 
 editContactPhoneOTPPageHeader({
   ColorScheme? colorScheme,

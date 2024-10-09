@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../../src/controllers/auth/email_otp_controller.dart';
+import '../../../../../controllers/auth/email_otp_controller.dart';
 import '../content/android_email_otp_scaffold.dart';
 
 class AndroidEmailOTP extends StatelessWidget {

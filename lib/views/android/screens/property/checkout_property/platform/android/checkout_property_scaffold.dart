@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:suitess/src/constants/consts.dart';
-import 'package:suitess/src/utils/components/my_app_bar.dart';
+import 'package:suitess/constants/consts.dart';
 import 'package:suitess/theme/colors.dart';
+import 'package:suitess/utils/components/my_app_bar.dart';
 
-import '../../../../../../../src/controllers/app/checkout_property_controller.dart';
-import '../../../../../../../src/utils/buttons/android/android_elevated_button.dart';
+import '../../../../../../../controllers/app/checkout_property_controller.dart';
+import '../../../../../../../utils/buttons/android/android_elevated_button.dart';
 import '../../content/reference_checkout_apartment.dart';
 
 class CheckoutPropertyScaffold extends GetView<CheckoutPropertyController> {

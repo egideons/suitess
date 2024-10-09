@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../../../src/constants/consts.dart';
-import '../../../../../../src/controllers/app/bank_transfer_controller.dart';
-import '../../../../../../src/utils/buttons/android/android_elevated_button.dart';
-import '../../../../../../src/utils/buttons/android/android_outlined_button.dart';
+import '../../../../../../constants/consts.dart';
+import '../../../../../../controllers/app/bank_transfer_controller.dart';
 import '../../../../../../theme/colors.dart';
+import '../../../../../../utils/buttons/android/android_elevated_button.dart';
+import '../../../../../../utils/buttons/android/android_outlined_button.dart';
 import 'bank_transfer_tx_detail.dart';
 
 class BankTransferTxDetails extends GetView<BankTransferController> {

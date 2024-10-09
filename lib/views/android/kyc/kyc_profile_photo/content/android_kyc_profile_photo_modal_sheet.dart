@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:suitess/src/constants/consts.dart';
-import 'package:suitess/src/controllers/kyc/kyc_profile_photo_controller.dart';
+import 'package:suitess/constants/consts.dart';
+import 'package:suitess/controllers/kyc/kyc_profile_photo_controller.dart';
 
 androidKycProfilePhotoModalSheet(
   BuildContext context,

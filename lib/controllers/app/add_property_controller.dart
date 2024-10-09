@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:suitess/src/routes/routes.dart';
+import 'package:suitess/routes/routes.dart';
 
 class AddPropertyController extends GetxController {
   static AddPropertyController get instance {

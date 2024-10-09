@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:suitess/src/utils/components/my_app_bar.dart';
+import 'package:suitess/utils/components/my_app_bar.dart';
 
-import '../../../../../../src/constants/assets.dart';
-import '../../../../../../src/constants/consts.dart';
-import '../../../../../../src/controllers/app/bank_transfer_controller.dart';
+import '../../../../../../constants/assets.dart';
+import '../../../../../../constants/consts.dart';
+import '../../../../../../controllers/app/bank_transfer_controller.dart';
 import '../../../../../../theme/colors.dart';
 
 class ListOfBanksModal extends GetView<BankTransferController> {

@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
-import '../../../../../src/constants/assets.dart';
-import '../../../../../src/controllers/app/chat_controller.dart';
-import '../../../../../src/utils/containers/form_field_container.dart';
-import '../../../../../src/utils/text_form_fields/android/android_textformfield.dart';
+import '../../../../../constants/assets.dart';
+import '../../../../../controllers/app/chat_controller.dart';
 import '../../../../../theme/colors.dart';
+import '../../../../../utils/containers/form_field_container.dart';
+import '../../../../../utils/text_form_fields/android/android_textformfield.dart';
 
 chatTextField(
   ColorScheme colorScheme,

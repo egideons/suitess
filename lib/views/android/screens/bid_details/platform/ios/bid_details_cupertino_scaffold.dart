@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:suitess/app/android/screens/bid_details/platform/ios/utils/bid_details_cupertino_navbar.dart';
-import 'package:suitess/src/constants/consts.dart';
-import 'package:suitess/src/controllers/app/bid_details_controller.dart';
+import 'package:suitess/constants/consts.dart';
+import 'package:suitess/controllers/app/bid_details_controller.dart';
 import 'package:suitess/theme/colors.dart';
+import 'package:suitess/views/android/screens/bid_details/platform/ios/utils/bid_details_cupertino_navbar.dart';
 
-import '../../../../../../src/utils/buttons/ios/cupertino_elevated_button.dart';
+import '../../../../../../utils/buttons/ios/cupertino_elevated_button.dart';
 import '../../content/bid_source_section.dart';
 import '../../content/price_details_section.dart';
 import 'utils/property_details_cupertino_button.dart';

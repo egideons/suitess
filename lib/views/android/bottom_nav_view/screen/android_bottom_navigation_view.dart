@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/instance_manager.dart';
-import 'package:suitess/src/controllers/app/bottom_navigation_controller.dart';
+import 'package:suitess/controllers/app/bottom_navigation_controller.dart';
 
 import '../content/android_bottom_navigation_view_scaffold.dart';
 

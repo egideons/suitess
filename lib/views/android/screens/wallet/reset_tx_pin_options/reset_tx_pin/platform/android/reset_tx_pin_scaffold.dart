@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:suitess/app/android/screens/wallet/reset_tx_pin_options/reset_tx_pin/content/reset_tx_pin_landscape_form.dart';
-import 'package:suitess/app/android/screens/wallet/reset_tx_pin_options/reset_tx_pin/content/reset_tx_pin_page_header.dart';
-import 'package:suitess/src/constants/assets.dart';
-import 'package:suitess/src/constants/consts.dart';
-import 'package:suitess/src/controllers/app/reset_tx_pin_controller.dart';
-import 'package:suitess/src/utils/buttons/android/android_elevated_button.dart';
-import 'package:suitess/src/utils/components/my_app_bar.dart';
-import 'package:suitess/src/utils/components/responsive_constants.dart';
+import 'package:suitess/constants/assets.dart';
+import 'package:suitess/constants/consts.dart';
+import 'package:suitess/controllers/app/reset_tx_pin_controller.dart';
+import 'package:suitess/utils/buttons/android/android_elevated_button.dart';
+import 'package:suitess/utils/components/my_app_bar.dart';
+import 'package:suitess/utils/components/responsive_constants.dart';
+import 'package:suitess/views/android/screens/wallet/reset_tx_pin_options/reset_tx_pin/content/reset_tx_pin_landscape_form.dart';
+import 'package:suitess/views/android/screens/wallet/reset_tx_pin_options/reset_tx_pin/content/reset_tx_pin_page_header.dart';
 
 class ResetTxPinScaffold extends GetView<ResetTxPinController> {
   const ResetTxPinScaffold({super.key});

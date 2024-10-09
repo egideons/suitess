@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:suitess/src/controllers/app/home_screen_controller.dart';
+import 'package:suitess/controllers/app/home_screen_controller.dart';
 
-import '../../../../../../../src/constants/assets.dart';
-import '../../../../../../../src/constants/consts.dart';
-import '../../../../../../../src/utils/components/circle_avatar_image.dart';
+import '../../../../../../../constants/assets.dart';
+import '../../../../../../../constants/consts.dart';
 import '../../../../../../../theme/colors.dart';
+import '../../../../../../../utils/components/circle_avatar_image.dart';
 
 Widget landLordAgentBidCupertinoCard(
   ColorScheme colorScheme,

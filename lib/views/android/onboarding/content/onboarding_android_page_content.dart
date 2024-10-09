@@ -2,11 +2,11 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:suitess/src/utils/buttons/android/android_elevated_button.dart';
-import 'package:suitess/src/utils/components/responsive_constants.dart';
+import 'package:suitess/utils/buttons/android/android_elevated_button.dart';
+import 'package:suitess/utils/components/responsive_constants.dart';
 
-import '../../../../src/constants/consts.dart';
-import '../../../../src/controllers/others/onboarding_controller.dart';
+import '../../../../constants/consts.dart';
+import '../../../../controllers/others/onboarding_controller.dart';
 import '../../../../theme/colors.dart';
 
 onboardingAndroidPageContent({

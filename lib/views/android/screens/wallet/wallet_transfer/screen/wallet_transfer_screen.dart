@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../../../src/controllers/app/wallet_transfer_controller.dart';
+import '../../../../../../controllers/app/wallet_transfer_controller.dart';
 import '../platform/android/wallet_transfer_scaffold.dart';
 
 class WalletTransferScreen extends StatelessWidget {

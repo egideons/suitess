@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:suitess/src/constants/consts.dart';
-import 'package:suitess/src/utils/buttons/android/android_elevated_button.dart';
-import 'package:suitess/src/utils/components/my_app_bar.dart';
+import 'package:suitess/constants/consts.dart';
+import 'package:suitess/utils/buttons/android/android_elevated_button.dart';
+import 'package:suitess/utils/components/my_app_bar.dart';
 
-import '../../../../../../../../src/controllers/app/wallet_information_controller.dart';
+import '../../../../../../../../controllers/app/wallet_information_controller.dart';
 import '../../../../../../../../theme/colors.dart';
 import '../../content/personal_wallet_info.dart';
 import '../../content/wallet_tier_info.dart';

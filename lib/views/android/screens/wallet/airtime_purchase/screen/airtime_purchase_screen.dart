@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../../../src/controllers/app/airtime_controller.dart';
+import '../../../../../../controllers/app/airtime_controller.dart';
 import '../platform/android/airtime_purchase_scaffold.dart';
 
 class AirtimePurchaseScreen extends StatelessWidget {

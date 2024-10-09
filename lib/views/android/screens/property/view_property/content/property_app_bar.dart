@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../../../src/controllers/app/view_property_controller.dart';
+import '../../../../../../controllers/app/view_property_controller.dart';
 import 'propert_carousel.dart';
 import 'property_carousel_indicator.dart';
 

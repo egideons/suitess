@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:suitess/app/android/onboarding/content/onboard_content.dart';
+import 'package:suitess/views/android/onboarding/content/onboard_content.dart';
 
-import '../../../app/android/auth/signup/screen/android_signup_screen.dart';
 import '../../../main.dart';
+import '../../../views/android/auth/signup/screen/android_signup_screen.dart';
 
 class OnboardingController extends GetxController {
   static OnboardingController get instance {

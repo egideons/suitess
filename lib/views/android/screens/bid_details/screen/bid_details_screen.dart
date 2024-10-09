@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../../src/controllers/app/bid_details_controller.dart';
+import '../../../../../controllers/app/bid_details_controller.dart';
 import '../platform/android/bid_details_scaffold.dart';
 import '../platform/ios/bid_details_cupertino_scaffold.dart';
 

@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../../src/controllers/app/chat_controller.dart';
+import '../../../../../controllers/app/chat_controller.dart';
 import '../platform/android/chat_screen_scaffold.dart';
 
 class ChatScreen extends StatelessWidget {

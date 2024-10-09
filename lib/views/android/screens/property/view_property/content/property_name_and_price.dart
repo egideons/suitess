@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../../src/constants/consts.dart';
+import '../../../../../../constants/consts.dart';
 import '../../../../../../theme/colors.dart';
 
 propertyNameAndPrice({String? propertyName, int? propertyPrice}) {

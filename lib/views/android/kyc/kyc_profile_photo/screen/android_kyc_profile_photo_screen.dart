@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../../src/controllers/kyc/kyc_profile_photo_controller.dart';
+import '../../../../../controllers/kyc/kyc_profile_photo_controller.dart';
 import '../content/kyc_profile_photo_scaffold.dart';
 
 class AndroidKycProfilePhotoScreen extends StatelessWidget {

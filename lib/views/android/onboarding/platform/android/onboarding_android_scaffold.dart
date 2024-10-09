@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../../src/controllers/others/onboarding_controller.dart';
+import '../../../../../controllers/others/onboarding_controller.dart';
 import '../../content/onboarding_android_page_content.dart';
 
 class OnboardingAndroidScaffold extends GetView<OnboardingController> {

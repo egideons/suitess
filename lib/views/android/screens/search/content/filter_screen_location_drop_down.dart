@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../src/constants/consts.dart';
-import '../../../../../src/controllers/app/search_screen_controller.dart';
+import '../../../../../constants/consts.dart';
+import '../../../../../controllers/app/search_screen_controller.dart';
 import '../../../../../theme/colors.dart';
 
 filterScreenLocationDropDown(

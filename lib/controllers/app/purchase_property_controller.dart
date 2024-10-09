@@ -1,7 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-
-import '../../../app/android/screens/property/checkout_property/screen/checkout_property_screen.dart';
+import 'package:suitess/views/android/screens/property/checkout_property/screen/checkout_property_screen.dart';
 
 class PurchasePropertyController extends GetxController {
   static PurchasePropertyController get instance {

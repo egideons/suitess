@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../app/android/kyc/kyc_bvn_otp/screen/android_kyc_bvn_otp.dart';
+import '../../../views/android/kyc/kyc_bvn_otp/screen/android_kyc_bvn_otp.dart';
 
 class KycBvnController extends GetxController {
   static KycBvnController get instance {

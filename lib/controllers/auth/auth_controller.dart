@@ -2,13 +2,13 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:suitess/app/android/auth/signup/screen/android_signup_screen.dart';
+import 'package:suitess/views/android/auth/signup/screen/android_signup_screen.dart';
 
-import '../../../app/android/auth/email_otp/screen/android_email_otp.dart';
-import '../../../app/android/auth/login/screen/android_login.dart';
-import '../../../app/android/bottom_nav_view/screen/android_bottom_navigation_view.dart';
-import '../../../app/android/onboarding/screen/onboarding.dart';
 import '../../../main.dart';
+import '../../../views/android/auth/email_otp/screen/android_email_otp.dart';
+import '../../../views/android/auth/login/screen/android_login.dart';
+import '../../../views/android/bottom_nav_view/screen/android_bottom_navigation_view.dart';
+import '../../../views/android/onboarding/screen/onboarding.dart';
 import 'user_controller.dart';
 
 class AuthController extends GetxController {

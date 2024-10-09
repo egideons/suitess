@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../../../src/controllers/app/bank_transfer_controller.dart';
+import '../../../../../../controllers/app/bank_transfer_controller.dart';
 import '../platform/android/bank_transfer_scaffold.dart';
 
 class BankTransferScreen extends StatelessWidget {

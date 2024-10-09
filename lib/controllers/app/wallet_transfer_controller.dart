@@ -2,11 +2,11 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:suitess/src/routes/routes.dart';
+import 'package:suitess/routes/routes.dart';
 
-import '../../../app/android/screens/wallet/wallet_transfer/content/wallet_transfer_tx_details.dart';
-import '../../../app/android/screens/wallet/wallet_transfer/content/wallet_transfer_tx_pin.dart';
-import '../../../app/android/splash/successful/screen/success_screen.dart';
+import '../../../views/android/screens/wallet/wallet_transfer/content/wallet_transfer_tx_details.dart';
+import '../../../views/android/screens/wallet/wallet_transfer/content/wallet_transfer_tx_pin.dart';
+import '../../../views/android/splash/successful/screen/success_screen.dart';
 import '../../constants/consts.dart';
 import '../../models/wallet/source_account_model.dart';
 import '../others/api_processor_controller.dart';

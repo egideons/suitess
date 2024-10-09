@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:suitess/src/constants/assets.dart';
-import 'package:suitess/src/constants/consts.dart';
-import 'package:suitess/src/utils/components/my_app_bar.dart';
+import 'package:suitess/constants/assets.dart';
+import 'package:suitess/constants/consts.dart';
+import 'package:suitess/utils/components/my_app_bar.dart';
 
-import '../../../../../../../src/controllers/app/purchase_property_controller.dart';
+import '../../../../../../../controllers/app/purchase_property_controller.dart';
 import '../../../../../../../theme/colors.dart';
 import '../../content/atm_card_expansion_tile.dart';
 import '../../content/atm_card_option.dart';

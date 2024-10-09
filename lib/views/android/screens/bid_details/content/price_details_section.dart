@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 
-import '../../../../../src/constants/consts.dart';
+import '../../../../../constants/consts.dart';
 
 Widget priceDetailsSection(
   media,

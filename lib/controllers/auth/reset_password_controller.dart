@@ -4,9 +4,9 @@ import 'dart:developer';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:suitess/src/controllers/others/api_processor_controller.dart';
+import 'package:suitess/controllers/others/api_processor_controller.dart';
 
-import '../../../app/android/auth/login/screen/android_login.dart';
+import '../../../views/android/auth/login/screen/android_login.dart';
 import '../../constants/consts.dart';
 import '../../models/auth/reset_password_response_model.dart';
 import '../../services/api/api_url.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:suitess/src/controllers/auth/phone_otp_controller.dart';
+import 'package:suitess/controllers/auth/phone_otp_controller.dart';
 
 import '../content/android_phone_otp_scaffold.dart';
 

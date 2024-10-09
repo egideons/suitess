@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../../../src/constants/assets.dart';
-import '../../../../../../../src/constants/consts.dart';
-import '../../../../../../../src/controllers/app/wallet_information_controller.dart';
+import '../../../../../../../constants/assets.dart';
+import '../../../../../../../constants/consts.dart';
+import '../../../../../../../controllers/app/wallet_information_controller.dart';
 import '../../../../../../../theme/colors.dart';
 
 walletTierInfo(

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:suitess/src/constants/assets.dart';
+import 'package:suitess/constants/assets.dart';
 
-import '../../../../../../../src/constants/consts.dart';
+import '../../../../../../../constants/consts.dart';
 import '../../../../../../../theme/colors.dart';
 
 reviewsHeader(ColorScheme colorScheme,

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:suitess/src/constants/assets.dart';
-import 'package:suitess/src/utils/buttons/android/android_elevated_button.dart';
-import 'package:suitess/src/utils/components/my_app_bar.dart';
+import 'package:suitess/constants/assets.dart';
+import 'package:suitess/utils/buttons/android/android_elevated_button.dart';
+import 'package:suitess/utils/components/my_app_bar.dart';
 
-import '../../../../../../src/constants/consts.dart';
-import '../../../../../../src/controllers/app/checkout_property_controller.dart';
+import '../../../../../../constants/consts.dart';
+import '../../../../../../controllers/app/checkout_property_controller.dart';
 import '../../../../../../theme/colors.dart';
 
 class CheckoutPropertyCongratulationsModalSheet

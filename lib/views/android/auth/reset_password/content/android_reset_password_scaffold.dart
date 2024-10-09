@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:suitess/app/android/auth/reset_password/content/android_reset_password_page_header.dart';
-import 'package:suitess/src/utils/buttons/android/android_elevated_button.dart';
-import 'package:suitess/src/utils/components/responsive_constants.dart';
-import 'package:suitess/src/utils/text_form_fields/android/android_textformfield.dart';
+import 'package:suitess/utils/buttons/android/android_elevated_button.dart';
+import 'package:suitess/utils/components/responsive_constants.dart';
+import 'package:suitess/utils/text_form_fields/android/android_textformfield.dart';
+import 'package:suitess/views/android/auth/reset_password/content/android_reset_password_page_header.dart';
 
-import '../../../../../src/constants/assets.dart';
-import '../../../../../src/constants/consts.dart';
-import '../../../../../src/controllers/auth/reset_password_controller.dart';
-import '../../../../../src/utils/containers/form_field_container.dart';
+import '../../../../../constants/assets.dart';
+import '../../../../../constants/consts.dart';
+import '../../../../../controllers/auth/reset_password_controller.dart';
 import '../../../../../theme/colors.dart';
+import '../../../../../utils/containers/form_field_container.dart';
 
 class AndroidResetPasswordScaffold extends GetView<ResetPasswordController> {
   const AndroidResetPasswordScaffold({super.key});

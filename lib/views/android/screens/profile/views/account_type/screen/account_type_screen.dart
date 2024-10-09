@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../../../../src/controllers/app/account_type_controller.dart';
+import '../../../../../../../controllers/app/account_type_controller.dart';
 import '../platform/android/account_type_scaffold.dart';
 
 class AccountTypeScreen extends StatelessWidget {

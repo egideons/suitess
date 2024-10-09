@@ -2,9 +2,9 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:suitess/app/android/screens/messages/platform/android/messages_screen_scaffold.dart';
+import 'package:suitess/views/android/screens/messages/platform/android/messages_screen_scaffold.dart';
 
-import '../../../../../src/controllers/app/messages_controller.dart';
+import '../../../../../controllers/app/messages_controller.dart';
 
 class MessagesScreen extends StatelessWidget {
   const MessagesScreen({super.key});

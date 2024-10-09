@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../../src/constants/consts.dart';
-import '../../../../../../src/controllers/app/view_property_controller.dart';
-import '../../../../../../src/utils/buttons/android/android_outlined_button.dart';
+import '../../../../../../constants/consts.dart';
+import '../../../../../../controllers/app/view_property_controller.dart';
+import '../../../../../../utils/buttons/android/android_outlined_button.dart';
 import 'property_description.dart';
 import 'property_facilities.dart';
 import 'property_gallery.dart';

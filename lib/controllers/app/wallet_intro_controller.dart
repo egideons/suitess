@@ -4,10 +4,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:suitess/app/android/splash/loading/screen/loading_screen.dart';
+import 'package:suitess/controllers/others/api_processor_controller.dart';
+import 'package:suitess/controllers/others/loading_controller.dart';
 import 'package:suitess/main.dart';
-import 'package:suitess/src/controllers/others/api_processor_controller.dart';
-import 'package:suitess/src/controllers/others/loading_controller.dart';
+import 'package:suitess/views/android/splash/loading/screen/loading_screen.dart';
 
 import '../../constants/consts.dart';
 

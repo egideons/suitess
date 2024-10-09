@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:suitess/src/utils/components/my_app_bar.dart';
+import 'package:suitess/utils/components/my_app_bar.dart';
 
-import '../../../../../../../../src/controllers/app/contact_details_controller.dart';
-import '../../../../../../../../src/controllers/auth/user_controller.dart';
+import '../../../../../../../../controllers/auth/user_controller.dart';
+import '../../../../../../../../controllers/app/contact_details_controller.dart';
 import '../../content/edit_detail.dart';
 import '../../content/email_section.dart';
 

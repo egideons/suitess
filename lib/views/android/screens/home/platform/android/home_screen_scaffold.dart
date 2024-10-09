@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:skeletonizer/skeletonizer.dart';
-import 'package:suitess/src/constants/assets.dart';
+import 'package:suitess/constants/assets.dart';
 import 'package:suitess/theme/colors.dart';
 
-import '../../../../../../src/constants/consts.dart';
-import '../../../../../../src/controllers/app/home_screen_controller.dart';
-import '../../../../../../src/controllers/auth/user_controller.dart';
-import '../../../../../../src/routes/routes.dart';
+import '../../../../../../constants/consts.dart';
+import '../../../../../../controllers/auth/user_controller.dart';
+import '../../../../../../controllers/app/home_screen_controller.dart';
+import '../../../../../../routes/routes.dart';
 import '../../content/sliver_search_app_bar.dart';
 import '../../content/sliver_typewriter_app_bar.dart';
 import 'components/alert_message.dart';

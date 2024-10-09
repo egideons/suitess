@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:suitess/src/controllers/others/api_processor_controller.dart';
-import 'package:suitess/src/models/wallet/transaction_filter_categories_model.dart';
+import 'package:suitess/controllers/others/api_processor_controller.dart';
+import 'package:suitess/models/wallet/transaction_filter_categories_model.dart';
 
-import '../../../app/android/screens/wallet/wallet_screen/content/transactions_history_modal_sheet.dart';
 import '../../../main.dart';
+import '../../../views/android/screens/wallet/wallet_screen/content/transactions_history_modal_sheet.dart';
 import '../../models/wallet/transaction_filter_month_model.dart';
 import '../../models/wallet/transaction_filter_section_model.dart';
 import '../../routes/routes.dart';

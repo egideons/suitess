@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:table_calendar/table_calendar.dart';
 
-import '../../../../../../src/constants/consts.dart';
-import '../../../../../../src/controllers/app/book_appointment_controller.dart';
+import '../../../../../../constants/consts.dart';
+import '../../../../../../controllers/app/book_appointment_controller.dart';
 import '../../../../../../theme/colors.dart';
 
 bookAppointmentCalender(

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:suitess/src/utils/components/my_app_bar.dart';
+import 'package:suitess/utils/components/my_app_bar.dart';
 
-import '../../../../../../../../src/controllers/app/account_type_controller.dart';
+import '../../../../../../../../controllers/app/account_type_controller.dart';
 import '../../content/account_type_field.dart';
 
 class AccountTypeScaffold extends GetView<AccountTypeController> {

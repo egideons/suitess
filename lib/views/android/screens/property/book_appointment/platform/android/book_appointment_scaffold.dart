@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:suitess/app/android/splash/successful/screen/success_screen.dart';
-import 'package:suitess/src/constants/consts.dart';
-import 'package:suitess/src/utils/buttons/android/android_elevated_button.dart';
-import 'package:suitess/src/utils/components/circle_avatar_image.dart';
-import 'package:suitess/src/utils/components/my_app_bar.dart';
+import 'package:suitess/constants/consts.dart';
+import 'package:suitess/controllers/app/book_appointment_controller.dart';
 import 'package:suitess/theme/colors.dart';
+import 'package:suitess/utils/buttons/android/android_elevated_button.dart';
+import 'package:suitess/utils/components/circle_avatar_image.dart';
+import 'package:suitess/utils/components/my_app_bar.dart';
+import 'package:suitess/views/android/splash/successful/screen/success_screen.dart';
 
-import '../../../../../../../src/controllers/app/book_appointment_controller.dart';
 import '../../content/book_appointment_calendar.dart';
 import '../../content/reference_booking_apartment.dart';
 

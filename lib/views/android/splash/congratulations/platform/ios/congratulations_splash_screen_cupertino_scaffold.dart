@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:suitess/app/android/splash/congratulations/content/congratulations_splash_screen_content.dart';
+import 'package:suitess/views/android/splash/congratulations/content/congratulations_splash_screen_content.dart';
 
 class CongratulationsSplashScreenCupertinoScaffold extends StatelessWidget {
   const CongratulationsSplashScreenCupertinoScaffold({super.key});

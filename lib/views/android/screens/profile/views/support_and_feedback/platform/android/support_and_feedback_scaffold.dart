@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../../../../../src/controllers/app/support_and_feedback_controller.dart';
-import '../../../../../../../../src/utils/components/my_app_bar.dart';
+import '../../../../../../../../controllers/app/support_and_feedback_controller.dart';
 import '../../../../../../../../theme/colors.dart';
+import '../../../../../../../../utils/components/my_app_bar.dart';
 import '../../content/expansion_tile.dart';
 
 class SupportAndFeedbackScaffold extends GetView<SupportAndFeedbackController> {

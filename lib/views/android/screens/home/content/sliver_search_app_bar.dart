@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../src/controllers/app/home_screen_controller.dart';
+import '../../../../../controllers/app/home_screen_controller.dart';
 import 'home_search_bar.dart';
 
 sliverHomeSearchAppBar(

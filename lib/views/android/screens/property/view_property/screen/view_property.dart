@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../../../src/controllers/app/view_property_controller.dart';
+import '../../../../../../controllers/app/view_property_controller.dart';
 import '../platform/android/view_property_scaffold.dart';
 import '../platform/ios/landlord_view_property_cupertino_scaffold.dart';
 

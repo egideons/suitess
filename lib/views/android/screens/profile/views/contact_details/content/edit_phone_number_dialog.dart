@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:suitess/src/controllers/app/contact_details_controller.dart';
-import 'package:suitess/src/utils/buttons/android/android_elevated_button.dart';
-import 'package:suitess/src/utils/containers/form_field_container.dart';
-import 'package:suitess/src/utils/text_form_fields/android/android_textformfield.dart';
+import 'package:suitess/controllers/app/contact_details_controller.dart';
 import 'package:suitess/theme/colors.dart';
+import 'package:suitess/utils/buttons/android/android_elevated_button.dart';
+import 'package:suitess/utils/containers/form_field_container.dart';
+import 'package:suitess/utils/text_form_fields/android/android_textformfield.dart';
 
-import '../../../../../../../src/constants/consts.dart';
+import '../../../../../../../constants/consts.dart';
 
 editPhoneNumberDialog(
   Size media,

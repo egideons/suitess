@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:suitess/src/constants/consts.dart';
+import 'package:suitess/constants/consts.dart';
 
 resetTxPinPageHeader(ColorScheme colorScheme, Size media) {
   return Column(

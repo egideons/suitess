@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
-import '../../../../../../../src/constants/consts.dart';
+import '../../../../../../../constants/consts.dart';
 import '../../../../../../../theme/colors.dart';
 
 messageAlertAndroid(media, {onPressed, message}) {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-import '../../../../../../src/controllers/app/view_property_controller.dart';
+import '../../../../../../controllers/app/view_property_controller.dart';
 
 viewPropertyCarouselIndicator(
     Size media, ViewPropertyController controller, ColorScheme colorScheme) {

@@ -1,6 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:suitess/src/constants/consts.dart';
+import 'package:suitess/constants/consts.dart';
 
 resetTxPinOptionHeader(
   ColorScheme colorScheme,

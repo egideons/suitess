@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:suitess/views/android/screens/wallet/mobile_data/content/list_of_mobile_data_billers_modal.dart';
+import 'package:suitess/views/android/screens/wallet/mobile_data/content/list_of_mobile_data_plans_modal.dart';
+import 'package:suitess/views/android/screens/wallet/mobile_data/content/mobile_data_pin.dart';
+import 'package:suitess/views/android/splash/successful/screen/success_screen.dart';
 
-import '../../../app/android/screens/wallet/mobile_data/content/list_of_mobile_data_billers_modal.dart';
-import '../../../app/android/screens/wallet/mobile_data/content/list_of_mobile_data_plans_modal.dart';
-import '../../../app/android/screens/wallet/mobile_data/content/mobile_data_pin.dart';
-import '../../../app/android/splash/successful/screen/success_screen.dart';
 import '../../constants/consts.dart';
 import '../../models/network_providers/mobile_data_biller_model.dart';
 import '../../models/network_providers/mobile_data_plans_model.dart';

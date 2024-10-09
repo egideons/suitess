@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../../src/controllers/app/view_property_controller.dart';
+import '../../../../../../controllers/app/view_property_controller.dart';
 
 viewPropertyCarousel(ViewPropertyController controller) {
   return PageView.builder(

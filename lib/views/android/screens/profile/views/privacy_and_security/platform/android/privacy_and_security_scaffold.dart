@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:suitess/src/constants/consts.dart';
-import 'package:suitess/src/utils/components/my_app_bar.dart';
+import 'package:suitess/constants/consts.dart';
+import 'package:suitess/utils/components/my_app_bar.dart';
 
-import '../../../../../../../../src/controllers/app/privacy_and_security_controller.dart';
+import '../../../../../../../../controllers/app/privacy_and_security_controller.dart';
 import '../../../../../../../../theme/colors.dart';
 import '../../content/privacy_option.dart';
 import '../../content/toggle_option.dart';

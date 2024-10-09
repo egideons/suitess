@@ -2,9 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-import '../../../../src/constants/consts.dart';
-import '../../../../src/utils/buttons/ios/cupertino_elevated_button.dart';
+import '../../../../constants/consts.dart';
 import '../../../../theme/colors.dart';
+import '../../../../utils/buttons/ios/cupertino_elevated_button.dart';
 
 Widget onboardingCupertinoPageContent({controller, colorScheme, media}) {
   return Obx(

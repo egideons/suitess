@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:suitess/app/android/auth/phone_otp/content/android_phone_otp_page_header.dart';
-import 'package:suitess/src/constants/assets.dart';
-import 'package:suitess/src/constants/consts.dart';
-import 'package:suitess/src/utils/containers/form_field_container.dart';
-import 'package:suitess/src/utils/text_form_fields/ios/cupertino_text_field.dart';
+import 'package:suitess/constants/assets.dart';
+import 'package:suitess/constants/consts.dart';
 import 'package:suitess/theme/colors.dart';
+import 'package:suitess/utils/containers/form_field_container.dart';
+import 'package:suitess/utils/text_form_fields/ios/cupertino_text_field.dart';
+import 'package:suitess/views/android/auth/phone_otp/content/android_phone_otp_page_header.dart';
 
-import '../../../../../../../../../../src/controllers/auth/edit_contact_phone_otp_controller.dart';
-import '../../../../../../../../../../src/utils/buttons/ios/cupertino_elevated_button.dart';
+import '../../../../../../../../../../controllers/auth/edit_contact_phone_otp_controller.dart';
+import '../../../../../../../../../../utils/buttons/ios/cupertino_elevated_button.dart';
 
 class EditContactPhoneOtpCupertinoScaffold
     extends GetView<EditContactPhoneOtpController> {

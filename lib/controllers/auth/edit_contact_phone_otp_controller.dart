@@ -5,10 +5,10 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:suitess/app/android/kyc/kyc_add_location/screen/android_kyc_add_location.dart';
+import 'package:suitess/views/android/kyc/kyc_add_location/screen/android_kyc_add_location.dart';
 
-import '../../../app/android/auth/email_otp/screen/android_email_otp.dart';
 import '../../../main.dart';
+import '../../../views/android/auth/email_otp/screen/android_email_otp.dart';
 import '../../models/auth/login_response_model.dart';
 import '../../models/auth/verify_otp_response_model.dart';
 import '../../services/api/api_url.dart';

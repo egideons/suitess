@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:suitess/src/controllers/app/bid_details_controller.dart';
+import 'package:suitess/controllers/app/bid_details_controller.dart';
 
 class BidDetailsScaffold extends GetView<BidDetailsController> {
   const BidDetailsScaffold({super.key});

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../../../../src/controllers/app/notifications_settings_controller.dart';
+import '../../../../../../../controllers/app/notifications_settings_controller.dart';
 import 'toggle_option.dart';
 
 systemAndServiceSettings(

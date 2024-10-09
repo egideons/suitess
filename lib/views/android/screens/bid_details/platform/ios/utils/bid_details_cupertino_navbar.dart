@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:suitess/src/constants/consts.dart';
+import 'package:suitess/constants/consts.dart';
 
 bidDetailsCupertinoNavBar(
   colorScheme,

@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../../../src/controllers/app/purchase_property_controller.dart';
+import '../../../../../../controllers/app/purchase_property_controller.dart';
 import '../platform/android/purchase_property_scaffold.dart';
 
 class PurchasePropertyScreen extends StatelessWidget {

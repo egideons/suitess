@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:suitess/src/constants/consts.dart';
-import 'package:suitess/src/utils/components/my_app_bar.dart';
+import 'package:suitess/constants/consts.dart';
+import 'package:suitess/utils/components/my_app_bar.dart';
 
-import '../../../../../../../src/controllers/app/airtime_controller.dart';
-import '../../../../../../../src/utils/buttons/android/android_elevated_button.dart';
-import '../../../../../../../src/utils/containers/form_field_container.dart';
-import '../../../../../../../src/utils/text_form_fields/android/android_textformfield.dart';
+import '../../../../../../../controllers/app/airtime_controller.dart';
+import '../../../../../../../utils/buttons/android/android_elevated_button.dart';
+import '../../../../../../../utils/containers/form_field_container.dart';
+import '../../../../../../../utils/text_form_fields/android/android_textformfield.dart';
 
 class AirtimePurchaseScaffold extends GetView<AirtimePurchaseController> {
   const AirtimePurchaseScaffold({super.key});

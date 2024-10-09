@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:suitess/src/utils/components/my_app_bar.dart';
 import 'package:suitess/theme/colors.dart';
+import 'package:suitess/utils/components/my_app_bar.dart';
 
-import '../../../../../../src/constants/consts.dart';
-import '../../../../../../src/controllers/app/search_screen_controller.dart';
+import '../../../../../../constants/consts.dart';
+import '../../../../../../controllers/app/search_screen_controller.dart';
 import '../../../property/view_property/screen/view_property.dart';
 import '../../content/num_of_search_results_and_filter.dart';
 import '../../content/search_result_container.dart';

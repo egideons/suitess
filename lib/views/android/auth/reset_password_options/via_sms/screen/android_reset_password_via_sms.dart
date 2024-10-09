@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../../../src/controllers/auth/reset_password_via_sms_controller.dart';
+import '../../../../../../controllers/auth/reset_password_via_sms_controller.dart';
 import '../content/android_reset_password_via_sms_scaffold.dart';
 
 class AndroidResetPasswordViaSMS extends StatelessWidget {

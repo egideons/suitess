@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../../../../src/controllers/app/notifications_settings_controller.dart';
+import '../../../../../../../controllers/app/notifications_settings_controller.dart';
 import '../platform/android/notifications_settings_scaffold.dart';
 
 class NotificationsSettingsScreen extends StatelessWidget {

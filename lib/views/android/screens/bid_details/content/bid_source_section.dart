@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../src/constants/consts.dart';
-import '../../../../../src/controllers/app/bid_details_controller.dart';
-import '../../../../../src/utils/components/circle_avatar_image.dart';
+import '../../../../../constants/consts.dart';
+import '../../../../../controllers/app/bid_details_controller.dart';
 import '../../../../../theme/colors.dart';
+import '../../../../../utils/components/circle_avatar_image.dart';
 
 Widget bidSourceSection(
   colorScheme,

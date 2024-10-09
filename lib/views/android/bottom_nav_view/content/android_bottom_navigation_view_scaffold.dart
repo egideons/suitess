@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:suitess/src/constants/consts.dart';
-
-import '../../../../src/controllers/app/bottom_navigation_controller.dart';
+import 'package:suitess/constants/consts.dart';
+import 'package:suitess/controllers/app/bottom_navigation_controller.dart';
 
 class AndroidBottomNavigationViewScaffold
     extends GetView<BottomNavigationController> {

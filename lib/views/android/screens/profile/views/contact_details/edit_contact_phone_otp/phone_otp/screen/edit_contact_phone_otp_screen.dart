@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:suitess/src/controllers/auth/edit_contact_phone_otp_controller.dart';
+import 'package:suitess/controllers/auth/edit_contact_phone_otp_controller.dart';
 
 import '../platform/android/edit_contact_phone_otp_scaffold.dart';
 

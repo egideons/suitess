@@ -3,17 +3,17 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:suitess/constants/assets.dart';
+import 'package:suitess/constants/consts.dart';
 import 'package:suitess/main.dart';
-import 'package:suitess/src/constants/assets.dart';
-import 'package:suitess/src/constants/consts.dart';
-import 'package:suitess/src/routes/routes.dart';
-import 'package:suitess/src/services/api/api_url.dart';
-import 'package:suitess/src/utils/buttons/android/android_elevated_button.dart';
-import 'package:suitess/src/utils/components/circle_avatar_image.dart';
+import 'package:suitess/routes/routes.dart';
+import 'package:suitess/services/api/api_url.dart';
 import 'package:suitess/theme/colors.dart';
+import 'package:suitess/utils/buttons/android/android_elevated_button.dart';
+import 'package:suitess/utils/components/circle_avatar_image.dart';
 
-import '../../../../../../src/controllers/app/profile_screen_controller.dart';
-import '../../../../../../src/controllers/auth/user_controller.dart';
+import '../../../../../../controllers/auth/user_controller.dart';
+import '../../../../../../controllers/app/profile_screen_controller.dart';
 import '../../content/profile_nav_option.dart';
 import '../../content/profile_section_header.dart';
 

@@ -3,7 +3,7 @@ import 'dart:developer';
 
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:suitess/src/models/user/user_model.dart';
+import 'package:suitess/models/user/user_model.dart';
 
 import '../../../main.dart';
 import '../../models/user/user_signup_model.dart';

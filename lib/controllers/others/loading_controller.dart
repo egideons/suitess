@@ -1,10 +1,10 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:suitess/app/android/my%20_business/lands_and_properties/properties_home/screen/lands_and_properties_screen.dart';
+import 'package:suitess/views/android/screens/my%20_business/lands_and_properties/properties_home/screen/lands_and_properties_screen.dart';
 
-import '../../../app/android/auth/login/screen/android_login.dart';
-import '../../../app/android/bottom_nav_view/screen/android_bottom_navigation_view.dart';
 import '../../../main.dart';
+import '../../../views/android/auth/login/screen/android_login.dart';
+import '../../../views/android/bottom_nav_view/screen/android_bottom_navigation_view.dart';
 import '../auth/user_controller.dart';
 
 class LoadingController extends GetxController {

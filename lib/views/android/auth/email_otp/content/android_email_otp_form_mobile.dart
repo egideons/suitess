@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:suitess/src/constants/consts.dart';
+import 'package:suitess/constants/consts.dart';
 
-import '../../../../../src/controllers/auth/email_otp_controller.dart';
-import '../../../../../src/utils/text_form_fields/android/android_textformfield.dart';
+import '../../../../../controllers/auth/email_otp_controller.dart';
+import '../../../../../utils/text_form_fields/android/android_textformfield.dart';
 
 androidEmailOTPFormMobile(
   EmailOTPController controller,

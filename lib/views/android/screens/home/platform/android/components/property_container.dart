@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:suitess/src/constants/consts.dart';
+import 'package:suitess/constants/consts.dart';
 
-import '../../../../../../../src/constants/assets.dart';
+import '../../../../../../../constants/assets.dart';
 import '../../../../../../../theme/colors.dart';
 
 propertyContainer(

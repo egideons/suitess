@@ -1,7 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-
-import '../../../app/android/screens/chat/screen/chat_screen.dart';
+import 'package:suitess/views/android/screens/chat/screen/chat_screen.dart';
 
 class MessagesController extends GetxController {
   static MessagesController get instance {

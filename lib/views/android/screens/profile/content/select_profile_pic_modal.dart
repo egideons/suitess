@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:suitess/src/constants/consts.dart';
+import 'package:suitess/constants/consts.dart';
 
-import '../../../../../src/constants/assets.dart';
-import '../../../../../src/controllers/app/profile_screen_controller.dart';
+import '../../../../../constants/assets.dart';
+import '../../../../../controllers/app/profile_screen_controller.dart';
 import '../../../../../theme/colors.dart';
 import 'upload_profile_pic_option.dart';
 

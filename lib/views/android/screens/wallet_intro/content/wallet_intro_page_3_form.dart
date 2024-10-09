@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:suitess/src/controllers/app/wallet_intro_controller.dart';
-import 'package:suitess/src/utils/containers/form_field_container.dart';
-import 'package:suitess/src/utils/text_form_fields/android/android_textformfield.dart';
+import 'package:suitess/controllers/app/wallet_intro_controller.dart';
+import 'package:suitess/utils/containers/form_field_container.dart';
+import 'package:suitess/utils/text_form_fields/android/android_textformfield.dart';
 
 walletIntroPage3Form(WalletIntroController controller, ColorScheme colorScheme,
     Size media, BuildContext context) {

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:suitess/src/constants/assets.dart';
-import 'package:suitess/src/constants/consts.dart';
-import 'package:suitess/src/utils/components/circle_avatar_image.dart';
-import 'package:suitess/src/utils/components/my_app_bar.dart';
+import 'package:suitess/constants/assets.dart';
+import 'package:suitess/constants/consts.dart';
+import 'package:suitess/utils/components/circle_avatar_image.dart';
+import 'package:suitess/utils/components/my_app_bar.dart';
 
-import '../../../../../../../src/controllers/app/wallet_screen_controller.dart';
-import '../../../../../../../src/utils/components/notification_bell_icon.dart';
+import '../../../../../../../controllers/app/wallet_screen_controller.dart';
 import '../../../../../../../theme/colors.dart';
+import '../../../../../../../utils/components/notification_bell_icon.dart';
 import '../../content/add_ink_well.dart';
 import '../../content/income_debit_card.dart';
 import '../../content/quick_action_card.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:suitess/app/android/kyc/kyc_profile_photo/screen/android_kyc_profile_photo_screen.dart';
+import 'package:suitess/views/android/kyc/kyc_profile_photo/screen/android_kyc_profile_photo_screen.dart';
 
 class KycNINController extends GetxController {
   static KycNINController get instance {

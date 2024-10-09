@@ -6,11 +6,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:suitess/controllers/others/api_processor_controller.dart';
 import 'package:suitess/main.dart';
-import 'package:suitess/src/controllers/others/api_processor_controller.dart';
 
-import '../../../app/android/auth/email_otp/screen/android_email_otp.dart';
-import '../../../app/android/auth/login/screen/android_login.dart';
+import '../../../views/android/auth/email_otp/screen/android_email_otp.dart';
+import '../../../views/android/auth/login/screen/android_login.dart';
 import '../../constants/consts.dart';
 import '../../models/auth/signup_response_model.dart';
 import '../../services/api/api_url.dart';

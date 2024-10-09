@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../../../../src/controllers/app/password_settings_controller.dart';
+import '../../../../../../../controllers/app/password_settings_controller.dart';
 import '../platform/android/password_settings_scaffold.dart';
 
 class PasswordSettingsScreen extends StatelessWidget {

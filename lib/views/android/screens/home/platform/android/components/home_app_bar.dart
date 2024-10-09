@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:suitess/src/utils/components/responsive_constants.dart';
+import 'package:suitess/utils/components/responsive_constants.dart';
 
-import '../../../../../../../src/constants/assets.dart';
-import '../../../../../../../src/constants/consts.dart';
-import '../../../../../../../src/controllers/app/home_screen_controller.dart';
-import '../../../../../../../src/utils/components/notification_bell_icon.dart';
+import '../../../../../../../constants/assets.dart';
+import '../../../../../../../constants/consts.dart';
+import '../../../../../../../controllers/app/home_screen_controller.dart';
+import '../../../../../../../utils/components/notification_bell_icon.dart';
 
 homeAppBar(
   ColorScheme colorScheme,

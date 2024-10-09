@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../../src/controllers/app/wallet_intro_controller.dart';
+import '../../../../../controllers/app/wallet_intro_controller.dart';
 import '../platform/android/wallet_intro_scaffold.dart';
 
 class WalletIntroScreen extends StatelessWidget {

@@ -6,9 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
-import '../../../app/android/auth/phone_otp/screen/android_phone_otp.dart';
-import '../../../app/android/kyc/kyc_add_location/screen/android_kyc_add_location.dart';
 import '../../../main.dart';
+import '../../../views/android/auth/phone_otp/screen/android_phone_otp.dart';
+import '../../../views/android/kyc/kyc_add_location/screen/android_kyc_add_location.dart';
 import '../../models/auth/login_response_model.dart';
 import '../../models/auth/verify_otp_response_model.dart';
 import '../../services/api/api_url.dart';

@@ -3,10 +3,10 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:suitess/src/constants/consts.dart';
-import 'package:suitess/src/utils/buttons/android/android_elevated_button.dart';
-import 'package:suitess/src/utils/buttons/ios/cupertino_elevated_button.dart';
+import 'package:suitess/constants/consts.dart';
 import 'package:suitess/theme/colors.dart';
+import 'package:suitess/utils/buttons/android/android_elevated_button.dart';
+import 'package:suitess/utils/buttons/ios/cupertino_elevated_button.dart';
 
 class AppErrorWidget extends StatelessWidget {
   final Function()? onPressed;

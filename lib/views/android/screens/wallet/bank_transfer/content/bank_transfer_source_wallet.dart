@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-import '../../../../../../src/constants/assets.dart';
-import '../../../../../../src/constants/consts.dart';
-import '../../../../../../src/controllers/app/bank_transfer_controller.dart';
+import '../../../../../../constants/assets.dart';
+import '../../../../../../constants/consts.dart';
+import '../../../../../../controllers/app/bank_transfer_controller.dart';
 import '../../../../../../theme/colors.dart';
 
 bankTransferSourceWallet(

@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../../../../src/controllers/app/faqs_controller.dart';
+import '../../../../../../../controllers/app/faqs_controller.dart';
 import '../platform/android/faqs_scaffold.dart';
 
 class FaqsScreen extends StatelessWidget {

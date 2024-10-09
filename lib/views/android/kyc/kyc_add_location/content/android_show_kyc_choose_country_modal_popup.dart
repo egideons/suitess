@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:suitess/src/controllers/kyc/kyc_choose_location_controller.dart';
-import 'package:suitess/src/utils/components/responsive_constants.dart';
+import 'package:suitess/controllers/kyc/kyc_choose_location_controller.dart';
+import 'package:suitess/utils/components/responsive_constants.dart';
 
-import '../../../../../src/constants/consts.dart';
+import '../../../../../constants/consts.dart';
 
 void androidShowKYCChooseCountryModalPopup(
   BuildContext context,

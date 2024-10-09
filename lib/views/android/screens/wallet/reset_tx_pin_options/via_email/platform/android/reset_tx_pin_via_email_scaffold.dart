@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:suitess/app/android/screens/wallet/reset_tx_pin_options/content/reset_tx_pin_option_header.dart';
-import 'package:suitess/src/constants/assets.dart';
-import 'package:suitess/src/constants/consts.dart';
-import 'package:suitess/src/controllers/app/reset_tx_pin_via_email_controller.dart';
-import 'package:suitess/src/utils/buttons/android/android_elevated_button.dart';
-import 'package:suitess/src/utils/components/responsive_constants.dart';
-import 'package:suitess/src/utils/containers/form_field_container.dart';
-import 'package:suitess/src/utils/text_form_fields/android/android_textformfield.dart';
+import 'package:suitess/constants/assets.dart';
+import 'package:suitess/constants/consts.dart';
+import 'package:suitess/controllers/app/reset_tx_pin_via_email_controller.dart';
+import 'package:suitess/utils/buttons/android/android_elevated_button.dart';
+import 'package:suitess/utils/components/responsive_constants.dart';
+import 'package:suitess/utils/containers/form_field_container.dart';
+import 'package:suitess/utils/text_form_fields/android/android_textformfield.dart';
+import 'package:suitess/views/android/screens/wallet/reset_tx_pin_options/content/reset_tx_pin_option_header.dart';
 
 class ResetTxPinViaEmailScaffold extends GetView<ResetTxPinViaEmailController> {
   const ResetTxPinViaEmailScaffold({super.key});

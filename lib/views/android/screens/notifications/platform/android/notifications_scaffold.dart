@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../../../src/controllers/app/notifications_controller.dart';
+import '../../../../../../controllers/app/notifications_controller.dart';
 import '../../../../../../theme/colors.dart';
 import '../../content/notification_widget.dart';
 import 'components/empty_notification.dart';

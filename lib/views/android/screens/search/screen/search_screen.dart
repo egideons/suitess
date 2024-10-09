@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../../src/controllers/app/search_screen_controller.dart';
+import '../../../../../controllers/app/search_screen_controller.dart';
 import '../platform/android/search_screen_scaffold.dart';
 
 class SearchScreen extends StatelessWidget {

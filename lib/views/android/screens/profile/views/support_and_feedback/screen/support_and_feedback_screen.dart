@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../../../../src/controllers/app/support_and_feedback_controller.dart';
+import '../../../../../../../controllers/app/support_and_feedback_controller.dart';
 import '../platform/android/support_and_feedback_scaffold.dart';
 
 class SupportAndFeedbackScreen extends StatelessWidget {

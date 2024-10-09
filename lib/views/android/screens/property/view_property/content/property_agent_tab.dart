@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:suitess/app/android/screens/property/view_property/content/agent_statement.dart';
-import 'package:suitess/app/android/screens/property/view_property/content/section_header.dart';
-import 'package:suitess/app/android/screens/property/view_property/content/user_review.dart';
+import 'package:suitess/controllers/app/view_property_controller.dart';
+import 'package:suitess/views/android/screens/property/view_property/content/agent_statement.dart';
+import 'package:suitess/views/android/screens/property/view_property/content/section_header.dart';
+import 'package:suitess/views/android/screens/property/view_property/content/user_review.dart';
 
-import '../../../../../../src/constants/assets.dart';
-import '../../../../../../src/constants/consts.dart';
-import '../../../../../../src/controllers/app/view_property_controller.dart';
-import '../../../../../../src/utils/components/circle_avatar_image.dart';
+import '../../../../../../constants/assets.dart';
+import '../../../../../../constants/consts.dart';
 import '../../../../../../theme/colors.dart';
+import '../../../../../../utils/components/circle_avatar_image.dart';
 import 'reviews_header.dart';
 
 agentTab(

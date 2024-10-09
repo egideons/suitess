@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:suitess/app/android/screens/search/content/filter_screen_advert_category_drop_down.dart';
-import 'package:suitess/src/utils/buttons/android/android_elevated_button.dart';
-import 'package:suitess/src/utils/buttons/android/android_outlined_button.dart';
-import 'package:suitess/src/utils/components/my_app_bar.dart';
-import 'package:suitess/src/utils/containers/form_field_container.dart';
-import 'package:suitess/src/utils/text_form_fields/android/android_textformfield.dart';
+import 'package:suitess/utils/buttons/android/android_elevated_button.dart';
+import 'package:suitess/utils/buttons/android/android_outlined_button.dart';
+import 'package:suitess/utils/components/my_app_bar.dart';
+import 'package:suitess/utils/containers/form_field_container.dart';
+import 'package:suitess/utils/text_form_fields/android/android_textformfield.dart';
+import 'package:suitess/views/android/screens/search/content/filter_screen_advert_category_drop_down.dart';
 
-import '../../../../../src/constants/consts.dart';
-import '../../../../../src/controllers/app/search_screen_controller.dart';
+import '../../../../../constants/consts.dart';
+import '../../../../../controllers/app/search_screen_controller.dart';
 import '../../../../../theme/colors.dart';
 import 'filter_screen_location_drop_down.dart';
 import 'filter_screen_section_header.dart';
