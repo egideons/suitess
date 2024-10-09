@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:suitess/views/android/splash/loading/screen/loading_screen.dart';
+import 'package:suitess/views/android/splash/loading/screen/android_loading_screen.dart';
 
 import '../others/loading_controller.dart';
 
@@ -55,7 +55,7 @@ class SuccessScreenController extends GetxController {
 
   goHome() async {
     await Get.offAll(
-      () => LoadingScreen(
+      () => AndroidLoadingScreen(
         loadData: LoadingController.instance.loadHome,
       ),
       routeName: "/bottom-navigation-view",
@@ -69,7 +69,7 @@ class SuccessScreenController extends GetxController {
 
   goToWalletTab() async {
     await Get.offAll(
-      () => LoadingScreen(
+      () => AndroidLoadingScreen(
         loadData: LoadingController.instance.loadWalletTab,
       ),
       routeName: "/bottom-navigation-view",

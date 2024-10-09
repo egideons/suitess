@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:suitess/views/android/screens/profile/content/select_profile_pic_modal.dart';
-import 'package:suitess/views/android/splash/loading/screen/loading_screen.dart';
+import 'package:suitess/views/android/splash/loading/screen/android_loading_screen.dart';
 
 import '../../../main.dart';
 import '../../constants/consts.dart';
@@ -219,7 +219,7 @@ class ProfileScreenController extends GetxController {
     prefs.setBool("isLoggedOut", true);
 
     await Get.offAll(
-      () => LoadingScreen(
+      () => AndroidLoadingScreen(
         loadData: LoadingController.instance.logout,
       ),
       routeName: "/loading-screen",

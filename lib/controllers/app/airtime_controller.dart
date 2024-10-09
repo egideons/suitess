@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:suitess/views/android/screens/wallet/airtime_purchase/content/airtime_purchase_pin.dart';
 import 'package:suitess/views/android/screens/wallet/airtime_purchase/content/list_of_airtime_billers_modal.dart';
-import 'package:suitess/views/android/splash/successful/screen/success_screen.dart';
+import 'package:suitess/views/android/splash/successful/screen/android_success_screen.dart';
 
 import '../../constants/consts.dart';
 import '../../models/network_providers/airtime_biller_model.dart';
@@ -238,7 +238,7 @@ class AirtimePurchaseController extends GetxController {
     await await Future.delayed(const Duration(milliseconds: 300));
 
     await Get.off(
-      () => const SuccessScreen(
+      () => const AndroidSuccessScreen(
         subtitle: "Your transaction was successful",
         isWalletTab: true,
       ),

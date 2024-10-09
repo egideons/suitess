@@ -5,7 +5,7 @@ import 'package:lottie/lottie.dart';
 import '../../../../../constants/assets.dart';
 import '../../../../../constants/consts.dart';
 
-Widget congratulationsSplashScreenContent({media, colorScheme}) {
+androidCongratulationsSplashScreenContent(Size media, ColorScheme colorScheme) {
   return Container(
     height: media.height,
     width: media.width,

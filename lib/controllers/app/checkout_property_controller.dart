@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:suitess/views/android/screens/property/checkout_property/content/checkout_property_congratulations_modal_sheet.dart';
 import 'package:suitess/views/android/screens/property/checkout_property/content/schedule_move_in_congratulations_modal_sheet.dart';
 import 'package:suitess/views/android/screens/property/checkout_property/content/schedule_move_in_modal_sheet.dart';
-import 'package:suitess/views/android/splash/loading/screen/loading_screen.dart';
+import 'package:suitess/views/android/splash/loading/screen/android_loading_screen.dart';
 
 import '../../models/property/time_appointment_model.dart';
 import '../others/loading_controller.dart';
@@ -60,7 +60,7 @@ class CheckoutPropertyController extends GetxController {
 //====================== Go Home =======================\\
   goHome() async {
     await Get.offAll(
-      () => LoadingScreen(
+      () => AndroidLoadingScreen(
         loadData: LoadingController.instance.loadHome,
       ),
       routeName: "/bottom-navigation-view",

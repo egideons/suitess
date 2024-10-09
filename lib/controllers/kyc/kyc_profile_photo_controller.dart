@@ -65,7 +65,7 @@ class KycProfilePhotoController extends GetxController {
     await Future.delayed(const Duration(seconds: 3));
 
     // Get.to(
-    //   () => const CongratulationsSplashScreen(),
+    //   () => const AndroidCongratulationsSplashScreen(),
     //   routeName: "/congratulations-splash-screen",
     //   fullscreenDialog: true,
     //   curve: Curves.easeInOut,

@@ -7,7 +7,7 @@ import 'package:intl/intl.dart';
 import 'package:suitess/controllers/others/api_processor_controller.dart';
 import 'package:suitess/controllers/others/loading_controller.dart';
 import 'package:suitess/main.dart';
-import 'package:suitess/views/android/splash/loading/screen/loading_screen.dart';
+import 'package:suitess/views/android/splash/loading/screen/android_loading_screen.dart';
 
 import '../../constants/consts.dart';
 
@@ -281,7 +281,7 @@ class WalletIntroController extends GetxController {
       prefs.setBool("hasViewedWalletIntro", true);
 
       await Get.offAll(
-        () => LoadingScreen(
+        () => AndroidLoadingScreen(
           loadData: LoadingController.instance.loadWalletTab,
         ),
         routeName: "/loading-screen",

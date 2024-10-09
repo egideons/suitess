@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:suitess/controllers/others/loading_controller.dart';
-import 'package:suitess/views/android/splash/loading/screen/loading_screen.dart';
+import 'package:suitess/views/android/splash/loading/screen/android_loading_screen.dart';
 
 class ChooseExperienceController extends GetxController {
   static ChooseExperienceController get instance {
@@ -23,7 +23,7 @@ class ChooseExperienceController extends GetxController {
     update();
 
     await Get.offAll(
-      () => LoadingScreen(
+      () => AndroidLoadingScreen(
         loadData: LoadingController.instance.loadHome,
       ),
       routeName: "/loading-screen",
@@ -39,7 +39,7 @@ class ChooseExperienceController extends GetxController {
     items.value = [false, true, false];
     update();
     // await Get.offAll(
-    //   () => LoadingScreen(
+    //   () => AndroidLoadingScreen(
     //     loadData: LoadingController.instance.loadLandLordDashboard,
     //   ),
     //   routeName: "/loading-screen",
@@ -55,7 +55,7 @@ class ChooseExperienceController extends GetxController {
     items.value = [false, false, true];
     update();
     // await Get.offAll(
-    //   () => LoadingScreen(
+    //   () => AndroidLoadingScreen(
     //     loadData: LoadingController.instance.loadLandLordDashboard,
     //   ),
     //   routeName: "/loading-screen",

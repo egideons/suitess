@@ -1,22 +1,25 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../content/splash_page_content.dart';
+import 'android_startup_page_content.dart';
 
-class SplashCupertinoScaffold extends StatelessWidget {
-  const SplashCupertinoScaffold({super.key});
+class AndroidStartupScaffold extends StatelessWidget {
+  const AndroidStartupScaffold({super.key});
 
   @override
   Widget build(BuildContext context) {
     var media = MediaQuery.of(context).size;
     var colorScheme = Theme.of(context).colorScheme;
 
-    return CupertinoPageScaffold(
-      child: SafeArea(
+    return Scaffold(
+      backgroundColor: colorScheme.surface,
+      body: SafeArea(
         child: ListView(
           physics: const NeverScrollableScrollPhysics(),
           children: [
-            startupSplashScreen(media, colorScheme),
+            androidStartupSplashScreen(
+              media,
+              colorScheme,
+            ),
           ],
         ),
       ),

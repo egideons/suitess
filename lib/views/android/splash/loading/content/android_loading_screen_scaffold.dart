@@ -2,13 +2,13 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:suitess/views/android/splash/loading/content/loading_screen_content.dart';
+import 'package:suitess/views/android/splash/loading/content/android_loading_screen_content.dart';
 
-import '../../../../../../controllers/others/loading_controller.dart';
+import '../../../../../controllers/others/loading_controller.dart';
 
-class LoadingScreenScaffold extends GetView<LoadingController> {
+class AndroidLoadingScreenScaffold extends GetView<LoadingController> {
   final void Function()? loadData;
-  const LoadingScreenScaffold({super.key, this.loadData});
+  const AndroidLoadingScreenScaffold({super.key, this.loadData});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class LoadingScreenScaffold extends GetView<LoadingController> {
         child: ListView(
           physics: const NeverScrollableScrollPhysics(),
           children: [
-            loadingScreenContent(media: media, colorScheme: colorScheme),
+            androidLoadingScreenContent(media, colorScheme),
           ],
         ),
       ),

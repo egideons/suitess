@@ -5,12 +5,13 @@ import 'package:suitess/theme/colors.dart';
 import 'package:suitess/utils/buttons/android/android_elevated_button.dart';
 import 'package:suitess/utils/components/my_app_bar.dart';
 
-import '../../../../../../controllers/app/success_screen_controller.dart';
+import '../../../../../controllers/app/success_screen_controller.dart';
 
-class SuccessScaffold extends GetView<SuccessScreenController> {
+class AndroidSuccessScaffold extends GetView<SuccessScreenController> {
   final String? subtitle;
   final bool isWalletTab;
-  const SuccessScaffold({this.isWalletTab = false, this.subtitle, super.key});
+  const AndroidSuccessScaffold(
+      {this.isWalletTab = false, this.subtitle, super.key});
 
   @override
   Widget build(BuildContext context) {

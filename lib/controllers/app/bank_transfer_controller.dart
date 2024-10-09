@@ -5,7 +5,7 @@ import 'package:suitess/views/android/screens/wallet/bank_transfer/content/bank_
 import 'package:suitess/views/android/screens/wallet/bank_transfer/content/bank_transfer_tx_pin.dart';
 import 'package:suitess/views/android/screens/wallet/bank_transfer/content/list_of_banks_modal.dart';
 import 'package:suitess/views/android/screens/wallet/bank_transfer/content/list_of_beneficiaries_modal.dart';
-import 'package:suitess/views/android/splash/successful/screen/success_screen.dart';
+import 'package:suitess/views/android/splash/successful/screen/android_success_screen.dart';
 
 import '../../models/bank/beneficiary_model.dart';
 import '../../models/wallet/source_account_model.dart';
@@ -335,7 +335,7 @@ class BankTransferController extends GetxController {
     Get.close(0);
     await await Future.delayed(const Duration(milliseconds: 300));
     await Get.off(
-      () => const SuccessScreen(
+      () => const AndroidSuccessScreen(
         subtitle: "Your transaction was successful",
         isWalletTab: true,
       ),

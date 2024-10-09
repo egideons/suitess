@@ -50,9 +50,9 @@ import 'package:suitess/views/android/screens/wallet/wallet_screen/screen/wallet
 import 'package:suitess/views/android/screens/wallet/wallet_transfer/screen/wallet_transfer_screen.dart';
 import 'package:suitess/views/android/screens/wallet_intro/screen/wallet_intro_screen.dart';
 import 'package:suitess/views/android/splash/congratulations/screen/congratulations_screen.dart';
-import 'package:suitess/views/android/splash/loading/screen/loading_screen.dart';
-import 'package:suitess/views/android/splash/startup/screen/startup_splash.dart';
-import 'package:suitess/views/android/splash/successful/screen/success_screen.dart';
+import 'package:suitess/views/android/splash/loading/screen/android_loading_screen.dart';
+import 'package:suitess/views/android/splash/startup/screen/android_startup_screen.dart';
+import 'package:suitess/views/android/splash/successful/screen/android_success_screen.dart';
 
 class Routes {
   //Splash screens
@@ -144,13 +144,14 @@ class Routes {
   //========================= GET PAGES ==========================\\
   static final getPages = [
     //Splash Screens
-    GetPage(name: startupSplashscreen, page: () => const StartupSplashscreen()),
+    GetPage(
+        name: startupSplashscreen, page: () => const AndroidStartupScreen()),
     GetPage(
       name: congratulationsSplashScreen,
-      page: () => const CongratulationsSplashScreen(),
+      page: () => const AndroidCongratulationsSplashScreen(),
     ),
     // GetPage(name: successSplashScreen, page: () => const SuccesssSplashscreen()),
-    GetPage(name: loadingScreen, page: () => const LoadingScreen()),
+    GetPage(name: loadingScreen, page: () => const AndroidLoadingScreen()),
 
     //Auth Pages
     GetPage(name: onboarding, page: () => const AndroidOnboardingScreen()),
@@ -188,7 +189,7 @@ class Routes {
     GetPage(name: bookAppointment, page: () => const BookAppointmentScreen()),
     GetPage(name: purchaseProperty, page: () => const PurchasePropertyScreen()),
     GetPage(name: checkoutProperty, page: () => const CheckoutPropertyScreen()),
-    GetPage(name: successScreen, page: () => const SuccessScreen()),
+    GetPage(name: successScreen, page: () => const AndroidSuccessScreen()),
     GetPage(name: searchScreen, page: () => const SearchScreen()),
 
     //Messages Section

@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../main.dart';
-import '../../../views/android/splash/loading/screen/loading_screen.dart';
 import '../../constants/consts.dart';
+import '../../views/android/splash/loading/screen/android_loading_screen.dart';
 import '../others/api_processor_controller.dart';
 import '../others/loading_controller.dart';
 
@@ -381,7 +381,7 @@ class KycAddLocationController extends GetxController {
       // );
 
       await Get.offAll(
-        () => LoadingScreen(
+        () => AndroidLoadingScreen(
           loadData: LoadingController.instance.loadHome,
         ),
         routeName: "/loading-screen",
@@ -398,7 +398,7 @@ class KycAddLocationController extends GetxController {
 
   skipPage() async {
     await Get.offAll(
-      () => LoadingScreen(
+      () => AndroidLoadingScreen(
         loadData: LoadingController.instance.loadHome,
       ),
       routeName: "/loading-screen",

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:suitess/views/android/splash/congratulations/content/congratulations_splash_screen_content.dart';
+import 'package:suitess/views/android/splash/congratulations/content/android_congratulations_splash_screen_content.dart';
 
-class CongratulationsSplashScreenAndroidScaffold extends StatelessWidget {
-  const CongratulationsSplashScreenAndroidScaffold({super.key});
+class AndroidCongratulationsSplashScaffold extends StatelessWidget {
+  const AndroidCongratulationsSplashScaffold({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,10 +15,7 @@ class CongratulationsSplashScreenAndroidScaffold extends StatelessWidget {
         child: ListView(
           physics: const NeverScrollableScrollPhysics(),
           children: [
-            congratulationsSplashScreenContent(
-              media: media,
-              colorScheme: colorScheme,
-            ),
+            androidCongratulationsSplashScreenContent(media, colorScheme),
           ],
         ),
       ),

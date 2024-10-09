@@ -9,12 +9,12 @@ import 'package:http/http.dart' as http;
 
 import '../../../main.dart';
 import '../../../views/android/auth/signup/screen/android_signup_screen.dart';
-import '../../../views/android/splash/loading/screen/loading_screen.dart';
 import '../../constants/consts.dart';
 import '../../models/auth/login_response_model.dart';
 import '../../routes/routes.dart';
 import '../../services/api/api_url.dart';
 import '../../services/client/http_client_service.dart';
+import '../../views/android/splash/loading/screen/android_loading_screen.dart';
 import '../others/api_processor_controller.dart';
 import '../others/loading_controller.dart';
 
@@ -176,7 +176,7 @@ class LoginController extends GetxController {
           ApiProcessorController.successSnack("Login successful");
 
           await Get.offAll(
-            () => LoadingScreen(
+            () => AndroidLoadingScreen(
               loadData: LoadingController.instance.loadHome,
             ),
             routeName: "/loading-screen",
@@ -244,7 +244,7 @@ class LoginController extends GetxController {
       // ApiProcessorController.successSnack("Login successful");
 
       // await Get.offAll(
-      //   () => LoadingScreen(
+      //   () => AndroidLoadingScreen(
       //     loadData: LoadingController.instance.loadHome,
       //   ),
       //   routeName: "/loading-screen",
@@ -297,7 +297,7 @@ class LoginController extends GetxController {
       prefs.setBool("hasBeenVerifiedEmailOnSignup", true);
 
       await Get.offAll(
-        () => LoadingScreen(
+        () => AndroidLoadingScreen(
           loadData: LoadingController.instance.loadHome,
         ),
         routeName: "/loading-screen",

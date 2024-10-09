@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:suitess/controllers/others/loading_controller.dart';
 import 'package:suitess/main.dart';
-import 'package:suitess/views/android/splash/loading/screen/loading_screen.dart';
+import 'package:suitess/views/android/splash/loading/screen/android_loading_screen.dart';
 
 import '../others/api_processor_controller.dart';
 
@@ -106,7 +106,7 @@ class ResetTxPinController extends GetxController {
       Get.close(3);
 
       await Get.offAll(
-        () => LoadingScreen(
+        () => AndroidLoadingScreen(
           loadData: LoadingController.instance.loadWalletTab,
         ),
         routeName: "/loading-screen",

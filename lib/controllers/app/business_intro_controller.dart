@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:suitess/controllers/others/loading_controller.dart';
 import 'package:suitess/main.dart';
-import 'package:suitess/views/android/splash/loading/screen/loading_screen.dart';
+import 'package:suitess/views/android/splash/loading/screen/android_loading_screen.dart';
 
 import '../others/api_processor_controller.dart';
 
@@ -196,7 +196,7 @@ class BusinessIntroController extends GetxController {
     prefs.setString("nameOfBusiness", businessNameEC.text);
 
     await Get.off(
-      () => LoadingScreen(
+      () => AndroidLoadingScreen(
         loadData: LoadingController.instance.loadLandsAndProperties,
       ),
       routeName: "/loading-screen",
@@ -217,7 +217,7 @@ class BusinessIntroController extends GetxController {
     // prefs.setString("nameOfBusiness", businessNameEC.text);
 
     // await Get.off(
-    //   () => LoadingScreen(
+    //   () => AndroidLoadingScreen(
     //     loadData: LoadingController.instance.loadHotelManagement,
     //   ),
     //   routeName: "/loading-screen",
