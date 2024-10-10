@@ -6,7 +6,7 @@ import '../../../../../../../../theme/colors.dart';
 Widget viewPropertyCupertinoShowNewBidsAlert(
   colorScheme,
   media, {
-  numberOfBids,
+  androidNumberOfBids,
   viewDetailsOfNewBids,
 }) {
   return Container(
@@ -47,7 +47,7 @@ Widget viewPropertyCupertinoShowNewBidsAlert(
             SizedBox(
               width: media.width - 150,
               child: Text(
-                "$numberOfBids new bids",
+                "$androidNumberOfBids new bids",
                 overflow: TextOverflow.ellipsis,
                 textAlign: TextAlign.start,
                 style: defaultTextStyle(

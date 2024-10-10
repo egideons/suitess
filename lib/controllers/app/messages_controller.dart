@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:suitess/views/android/screens/chat/screen/chat_screen.dart';
+import 'package:suitess/views/android/screens/chat/screen/android_chat_screen.dart';
 
 class MessagesController extends GetxController {
   static MessagesController get instance {
@@ -68,7 +68,7 @@ class MessagesController extends GetxController {
 
   goToChat() async {
     await Get.to(
-      () => ChatScreen(userName: userName),
+      () => AndroidChatScreen(userName: userName),
       routeName: "/chat",
       fullscreenDialog: true,
       curve: Curves.easeInOut,

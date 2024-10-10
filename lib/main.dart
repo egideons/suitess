@@ -93,7 +93,7 @@ class SuitessApp extends StatelessWidget {
         scrollbars: true,
       ),
       // This is the home route
-      // home: const HomeScreen(),
+      // home: const AndroidHomeScreen(),
     );
   }
 }

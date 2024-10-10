@@ -15,10 +15,10 @@ import 'package:suitess/views/android/kyc/kyc_bvn_otp/screen/android_kyc_bvn_otp
 import 'package:suitess/views/android/kyc/kyc_nin/screen/android_kyc_nin_screen.dart';
 import 'package:suitess/views/android/kyc/kyc_profile_photo/screen/android_kyc_profile_photo_screen.dart';
 import 'package:suitess/views/android/onboarding/screen/onboarding_screen.dart';
-import 'package:suitess/views/android/screens/bid_details/screen/bid_details_screen.dart';
-import 'package:suitess/views/android/screens/chat/screen/chat_screen.dart';
-import 'package:suitess/views/android/screens/home/screen/home_screen.dart';
-import 'package:suitess/views/android/screens/messages/screen/messages_screen.dart';
+import 'package:suitess/views/android/screens/bid_details/screen/android_bid_details_screen.dart';
+import 'package:suitess/views/android/screens/chat/screen/android_chat_screen.dart';
+import 'package:suitess/views/android/screens/home/screen/android_home_screen.dart';
+import 'package:suitess/views/android/screens/messages/screen/android_messages_screen.dart';
 import 'package:suitess/views/android/screens/my%20_business/business_intro/screen/android_business_intro_screen.dart';
 import 'package:suitess/views/android/screens/my%20_business/lands_and_properties/add_property/screen/add_property_screen.dart';
 import 'package:suitess/views/android/screens/my%20_business/lands_and_properties/properties_home/screen/lands_and_properties_screen.dart';
@@ -182,10 +182,11 @@ class Routes {
     //Home Section
     GetPage(
         name: bottomNavView, page: () => const AndroidBottomNavigationView()),
-    GetPage(name: homeScreen, page: () => const HomeScreen()),
+    GetPage(name: homeScreen, page: () => const AndroidHomeScreen()),
     GetPage(name: notificationsScreen, page: () => const NotificationsScreen()),
     GetPage(name: viewProperty, page: () => const ViewProperty()),
-    GetPage(name: bidDetailsScreen, page: () => const BidDetailsScreen()),
+    GetPage(
+        name: bidDetailsScreen, page: () => const AndroidBidDetailsScreen()),
     GetPage(name: bookAppointment, page: () => const BookAppointmentScreen()),
     GetPage(name: purchaseProperty, page: () => const PurchasePropertyScreen()),
     GetPage(name: checkoutProperty, page: () => const CheckoutPropertyScreen()),
@@ -193,8 +194,8 @@ class Routes {
     GetPage(name: searchScreen, page: () => const SearchScreen()),
 
     //Messages Section
-    GetPage(name: messagesScreen, page: () => const MessagesScreen()),
-    GetPage(name: chatScreen, page: () => const ChatScreen()),
+    GetPage(name: messagesScreen, page: () => const AndroidMessagesScreen()),
+    GetPage(name: chatScreen, page: () => const AndroidChatScreen()),
     // GetPage(name: callScreen, page: () => const CallScreen()),
 
     //Wallet Section
