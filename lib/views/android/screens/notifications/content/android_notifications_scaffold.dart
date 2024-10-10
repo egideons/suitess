@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../../../controllers/app/notifications_controller.dart';
-import '../../../../../../theme/colors.dart';
-import '../../content/notification_widget.dart';
-import 'components/empty_notification.dart';
-import 'components/notifications_app_bar.dart';
+import '../../../../../controllers/app/notifications_controller.dart';
+import '../../../../../theme/colors.dart';
+import 'android_empty_notification.dart';
+import 'android_notification_widget.dart';
+import 'android_notifications_app_bar.dart';
 
-class NotificationsScaffold extends GetView<NotificationsController> {
-  const NotificationsScaffold({super.key});
+class AndroidNotificationsScaffold extends GetView<NotificationsController> {
+  const AndroidNotificationsScaffold({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class NotificationsScaffold extends GetView<NotificationsController> {
 
     return Scaffold(
       backgroundColor: colorScheme.surface,
-      appBar: notificationsAppBar(colorScheme, media),
+      appBar: androidNotificationsScreenAppBar(colorScheme, media),
       floatingActionButton: Obx(
         () => controller.isScrollToTopBtnVisible.value
             ? FloatingActionButton.small(
@@ -41,7 +41,7 @@ class NotificationsScaffold extends GetView<NotificationsController> {
               init: NotificationsController(),
               builder: (controller) {
                 return controller.hasNoNotifications.value
-                    ? emptyNotifications(media, colorScheme)
+                    ? androidEmptyNotifications(media, colorScheme)
                     : Container(
                         margin: const EdgeInsets.all(10),
                         decoration: ShapeDecoration(
@@ -66,7 +66,7 @@ class NotificationsScaffold extends GetView<NotificationsController> {
                           separatorBuilder: (context, index) =>
                               const SizedBox(height: 2),
                           itemBuilder: (context, index) {
-                            return notificationWidget(
+                            return androidNotificationWidget(
                               colorScheme,
                               media,
                               notificationTitle: "Appointment",

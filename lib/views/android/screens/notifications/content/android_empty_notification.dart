@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../../../../../constants/assets.dart';
-import '../../../../../../../constants/consts.dart';
+import '../../../../../constants/assets.dart';
+import '../../../../../constants/consts.dart';
 
-emptyNotifications(
+androidEmptyNotifications(
   Size media,
   ColorScheme colorScheme, {
   String? title,

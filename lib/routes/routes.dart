@@ -23,7 +23,7 @@ import 'package:suitess/views/android/screens/my%20_business/business_intro/scre
 import 'package:suitess/views/android/screens/my%20_business/lands_and_properties/add_property/screen/android_add_property_screen.dart';
 import 'package:suitess/views/android/screens/my%20_business/lands_and_properties/properties_home/screen/android_lands_and_properties_screen.dart';
 import 'package:suitess/views/android/screens/my%20_business/lands_and_properties/upload_property_images/screen/android_upload_property_images_screen.dart';
-import 'package:suitess/views/android/screens/notifications/screen/notifications.dart';
+import 'package:suitess/views/android/screens/notifications/screen/android_notifications_screen.dart';
 import 'package:suitess/views/android/screens/profile/screen/android_profile_screen.dart';
 import 'package:suitess/views/android/screens/profile/views/account_type/screen/account_type_screen.dart';
 import 'package:suitess/views/android/screens/profile/views/contact_details/screen/contact_details.dart';
@@ -183,7 +183,9 @@ class Routes {
     GetPage(
         name: bottomNavView, page: () => const AndroidBottomNavigationView()),
     GetPage(name: homeScreen, page: () => const AndroidHomeScreen()),
-    GetPage(name: notificationsScreen, page: () => const NotificationsScreen()),
+    GetPage(
+        name: notificationsScreen,
+        page: () => const AndroidNotificationsScreen()),
     GetPage(name: viewProperty, page: () => const ViewProperty()),
     GetPage(
         name: bidDetailsScreen, page: () => const AndroidBidDetailsScreen()),

@@ -3,7 +3,7 @@ import 'package:readmore/readmore.dart';
 import 'package:suitess/constants/consts.dart';
 import 'package:suitess/utils/components/responsive_constants.dart';
 
-notificationWidget(
+androidNotificationWidget(
   ColorScheme colorScheme,
   Size media, {
   String? notificationTitle,

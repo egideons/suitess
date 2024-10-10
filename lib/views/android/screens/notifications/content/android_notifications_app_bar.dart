@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
-import '../../../../../../../constants/assets.dart';
-import '../../../../../../../constants/consts.dart';
+import '../../../../../constants/assets.dart';
+import '../../../../../constants/consts.dart';
 
-notificationsAppBar(ColorScheme colorScheme, Size media,
-    {Function()? goToSettings}) {
+androidNotificationsScreenAppBar(
+  ColorScheme colorScheme,
+  Size media, {
+  Function()? goToSettings,
+}) {
   return AppBar(
     backgroundColor: colorScheme.surface,
     centerTitle: true,
