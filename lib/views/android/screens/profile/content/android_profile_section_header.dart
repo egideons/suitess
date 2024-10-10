@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../../constants/consts.dart';
 import '../../../../../theme/colors.dart';
 
-profileSectionHeader({String? title}) {
+androidProfileSectionHeader({String? title}) {
   return Text(
     title ?? "",
     textAlign: TextAlign.start,

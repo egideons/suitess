@@ -7,7 +7,7 @@ import '../../../../../../../../constants/assets.dart';
 import '../../../../../../../../constants/consts.dart';
 import '../../../../../../../../utils/components/notification_bell_icon.dart';
 
-landsAndPropertiesAppBar(
+androidLandsAndPropertiesAppBar(
   ColorScheme colorScheme,
   Size media,
   String location,

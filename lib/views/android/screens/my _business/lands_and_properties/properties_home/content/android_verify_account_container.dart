@@ -4,7 +4,7 @@ import '../../../../../../../constants/consts.dart';
 import '../../../../../../../controllers/app/lands_and_properties_controller.dart';
 import '../../../../../../../theme/colors.dart';
 
-verifyAccountContainer(
+androidVerifyAccountContainer(
   LandsAndPropertiesController controller,
   ColorScheme colorScheme,
 ) {

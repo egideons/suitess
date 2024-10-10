@@ -2,17 +2,17 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:suitess/controllers/app/add_property_controller.dart';
 
-import '../platform/android/add_property_scaffold.dart';
+import '../../../../../controllers/app/profile_screen_controller.dart';
+import '../content/android_profile_scaffold.dart';
 
-class AddPropertyScreen extends StatelessWidget {
-  const AddPropertyScreen({super.key});
+class AndroidProfileScreen extends StatelessWidget {
+  const AndroidProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     //Initialize the controller
-    Get.put(AddPropertyController());
+    Get.put(ProfileScreenController());
 
     if (Platform.isIOS) {
       return GestureDetector(
@@ -22,7 +22,7 @@ class AddPropertyScreen extends StatelessWidget {
     }
     return GestureDetector(
       onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
-      child: const AddPropertyScaffold(),
+      child: const AndroidProfileScreenScaffold(),
     );
   }
 }

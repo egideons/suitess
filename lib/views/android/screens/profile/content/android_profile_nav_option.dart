@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../../../../constants/consts.dart';
 
-profileNavOption(ColorScheme colorScheme, {String? title, Function()? nav}) {
+androidProfileNavOption(ColorScheme colorScheme,
+    {String? title, Function()? nav}) {
   return InkWell(
     onTap: nav ?? () {},
     borderRadius: BorderRadius.circular(10),

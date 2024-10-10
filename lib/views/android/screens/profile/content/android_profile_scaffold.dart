@@ -12,13 +12,13 @@ import 'package:suitess/theme/colors.dart';
 import 'package:suitess/utils/buttons/android/android_elevated_button.dart';
 import 'package:suitess/utils/components/circle_avatar_image.dart';
 
-import '../../../../../../controllers/auth/user_controller.dart';
-import '../../../../../../controllers/app/profile_screen_controller.dart';
-import '../../content/profile_nav_option.dart';
-import '../../content/profile_section_header.dart';
+import '../../../../../controllers/app/profile_screen_controller.dart';
+import '../../../../../controllers/auth/user_controller.dart';
+import 'android_profile_nav_option.dart';
+import 'android_profile_section_header.dart';
 
-class ProfileScreenScaffold extends GetView<ProfileScreenController> {
-  const ProfileScreenScaffold({super.key});
+class AndroidProfileScreenScaffold extends GetView<ProfileScreenController> {
+  const AndroidProfileScreenScaffold({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -198,7 +198,7 @@ class ProfileScreenScaffold extends GetView<ProfileScreenController> {
                       ],
                     ),
                     kSizedBox,
-                    profileSectionHeader(title: "Account Information"),
+                    androidProfileSectionHeader(title: "Account Information"),
                     kHalfSizedBox,
                     Container(
                       decoration: ShapeDecoration(
@@ -214,7 +214,7 @@ class ProfileScreenScaffold extends GetView<ProfileScreenController> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const SizedBox(height: 5),
-                          profileNavOption(
+                          androidProfileNavOption(
                             colorScheme,
                             title: "Contact Details",
                             nav: () {
@@ -228,7 +228,7 @@ class ProfileScreenScaffold extends GetView<ProfileScreenController> {
                             color: colorScheme.inversePrimary.withOpacity(.4),
                           ),
                           const SizedBox(height: 5),
-                          profileNavOption(
+                          androidProfileNavOption(
                             colorScheme,
                             title: "Password",
                             nav: () {
@@ -242,7 +242,7 @@ class ProfileScreenScaffold extends GetView<ProfileScreenController> {
                             color: colorScheme.inversePrimary.withOpacity(.4),
                           ),
                           const SizedBox(height: 5),
-                          profileNavOption(
+                          androidProfileNavOption(
                             colorScheme,
                             title: "Wallet Information",
                             nav: () {
@@ -256,7 +256,7 @@ class ProfileScreenScaffold extends GetView<ProfileScreenController> {
                       ),
                     ),
                     kSizedBox,
-                    profileSectionHeader(title: "My Properties"),
+                    androidProfileSectionHeader(title: "My Properties"),
                     kHalfSizedBox,
                     Container(
                       decoration: ShapeDecoration(
@@ -272,7 +272,7 @@ class ProfileScreenScaffold extends GetView<ProfileScreenController> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const SizedBox(height: 5),
-                          profileNavOption(
+                          androidProfileNavOption(
                             colorScheme,
                             title: "My Business",
                             nav: () {
@@ -303,7 +303,7 @@ class ProfileScreenScaffold extends GetView<ProfileScreenController> {
                             color: colorScheme.inversePrimary.withOpacity(.4),
                           ),
                           const SizedBox(height: 5),
-                          profileNavOption(
+                          androidProfileNavOption(
                             colorScheme,
                             title: "Recently Viewed",
                             nav: () {
@@ -317,7 +317,7 @@ class ProfileScreenScaffold extends GetView<ProfileScreenController> {
                             color: colorScheme.inversePrimary.withOpacity(.4),
                           ),
                           const SizedBox(height: 5),
-                          profileNavOption(
+                          androidProfileNavOption(
                             colorScheme,
                             title: "Scheduled Appointments",
                             nav: () {
@@ -331,7 +331,7 @@ class ProfileScreenScaffold extends GetView<ProfileScreenController> {
                             color: colorScheme.inversePrimary.withOpacity(.4),
                           ),
                           const SizedBox(height: 5),
-                          profileNavOption(
+                          androidProfileNavOption(
                             colorScheme,
                             title: "Transactions and Offers",
                             nav: () {
@@ -345,7 +345,8 @@ class ProfileScreenScaffold extends GetView<ProfileScreenController> {
                       ),
                     ),
                     kSizedBox,
-                    profileSectionHeader(title: "Preferences and Settings"),
+                    androidProfileSectionHeader(
+                        title: "Preferences and Settings"),
                     kHalfSizedBox,
                     Container(
                       decoration: ShapeDecoration(
@@ -361,7 +362,7 @@ class ProfileScreenScaffold extends GetView<ProfileScreenController> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const SizedBox(height: 5),
-                          profileNavOption(
+                          androidProfileNavOption(
                             colorScheme,
                             title: "Notifications",
                             nav: () {
@@ -375,7 +376,7 @@ class ProfileScreenScaffold extends GetView<ProfileScreenController> {
                             color: colorScheme.inversePrimary.withOpacity(.4),
                           ),
                           const SizedBox(height: 5),
-                          profileNavOption(
+                          androidProfileNavOption(
                             colorScheme,
                             title: "Privacy and Security",
                             nav: () {
@@ -389,7 +390,7 @@ class ProfileScreenScaffold extends GetView<ProfileScreenController> {
                       ),
                     ),
                     kSizedBox,
-                    profileSectionHeader(title: "System"),
+                    androidProfileSectionHeader(title: "System"),
                     kHalfSizedBox,
                     Container(
                       decoration: ShapeDecoration(
@@ -405,7 +406,7 @@ class ProfileScreenScaffold extends GetView<ProfileScreenController> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const SizedBox(height: 5),
-                          profileNavOption(
+                          androidProfileNavOption(
                             colorScheme,
                             title: "FAQs",
                             nav: () {
@@ -419,7 +420,7 @@ class ProfileScreenScaffold extends GetView<ProfileScreenController> {
                             color: colorScheme.inversePrimary.withOpacity(.4),
                           ),
                           const SizedBox(height: 5),
-                          profileNavOption(
+                          androidProfileNavOption(
                             colorScheme,
                             title: "Support and Feedback",
                             nav: () {

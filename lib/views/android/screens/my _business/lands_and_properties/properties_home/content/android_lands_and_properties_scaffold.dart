@@ -5,13 +5,14 @@ import 'package:suitess/constants/assets.dart';
 import 'package:suitess/constants/consts.dart';
 import 'package:suitess/controllers/app/lands_and_properties_controller.dart';
 import 'package:suitess/utils/buttons/android/android_elevated_button.dart';
-import 'package:suitess/views/android/screens/my%20_business/lands_and_properties/properties_home/content/lands_and_properties_app_bar.dart';
+import 'package:suitess/views/android/screens/my%20_business/lands_and_properties/properties_home/content/android_lands_and_properties_app_bar.dart';
 
-import '../../../../../../../../theme/colors.dart';
-import '../../content/verify_account_container.dart';
+import '../../../../../../../theme/colors.dart';
+import 'android_verify_account_container.dart';
 
-class LandsAndPropertiesScaffold extends GetView<LandsAndPropertiesController> {
-  const LandsAndPropertiesScaffold({super.key});
+class AndroidLandsAndPropertiesScaffold
+    extends GetView<LandsAndPropertiesController> {
+  const AndroidLandsAndPropertiesScaffold({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,7 @@ class LandsAndPropertiesScaffold extends GetView<LandsAndPropertiesController> {
     var colorScheme = Theme.of(context).colorScheme;
     return Scaffold(
       backgroundColor: colorScheme.surface,
-      appBar: landsAndPropertiesAppBar(
+      appBar: androidLandsAndPropertiesAppBar(
         colorScheme,
         media,
         "Enugu, Nigeria",
@@ -50,7 +51,8 @@ class LandsAndPropertiesScaffold extends GetView<LandsAndPropertiesController> {
                         ? Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              verifyAccountContainer(controller, colorScheme),
+                              androidVerifyAccountContainer(
+                                  controller, colorScheme),
                               kBigSizedBox,
                             ],
                           )

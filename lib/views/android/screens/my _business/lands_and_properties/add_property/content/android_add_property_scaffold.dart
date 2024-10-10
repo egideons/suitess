@@ -5,12 +5,12 @@ import 'package:suitess/theme/colors.dart';
 import 'package:suitess/utils/buttons/android/android_elevated_button.dart';
 import 'package:suitess/utils/buttons/android/android_outlined_button.dart';
 import 'package:suitess/utils/components/my_app_bar.dart';
-import 'package:suitess/views/android/screens/my%20_business/lands_and_properties/add_property/content/add_property_form.dart';
+import 'package:suitess/views/android/screens/my%20_business/lands_and_properties/add_property/content/android_add_property_form.dart';
 
-import '../../../../../../../../constants/consts.dart';
+import '../../../../../../../constants/consts.dart';
 
-class AddPropertyScaffold extends GetView<AddPropertyController> {
-  const AddPropertyScaffold({super.key});
+class AndroidAddPropertyScaffold extends GetView<AddPropertyController> {
+  const AndroidAddPropertyScaffold({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +35,7 @@ class AddPropertyScaffold extends GetView<AddPropertyController> {
             controller: controller.scrollController,
             padding: const EdgeInsets.all(10),
             children: [
-              addPropertyForm(colorScheme, media, controller),
+              androidAddPropertyForm(colorScheme, media, controller),
               kSizedBox,
               AndroidOutlinedButton(
                   title: "Cancel",

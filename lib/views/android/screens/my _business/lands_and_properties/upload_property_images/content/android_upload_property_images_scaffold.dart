@@ -11,12 +11,12 @@ import 'package:suitess/controllers/app/upload_property_images_controller.dart';
 import 'package:suitess/utils/buttons/android/android_elevated_button.dart';
 import 'package:suitess/utils/buttons/android/android_outlined_button.dart';
 
-import '../../../../../../../../theme/colors.dart';
-import '../../../../../../../../utils/components/my_app_bar.dart';
+import '../../../../../../../theme/colors.dart';
+import '../../../../../../../utils/components/my_app_bar.dart';
 
-class UploadPropertyImagesScaffold
+class AndroidUploadPropertyImagesScaffold
     extends GetView<UploadPropertyImagesController> {
-  const UploadPropertyImagesScaffold({super.key});
+  const AndroidUploadPropertyImagesScaffold({super.key});
 
   @override
   Widget build(BuildContext context) {

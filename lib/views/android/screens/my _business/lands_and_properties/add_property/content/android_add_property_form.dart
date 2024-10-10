@@ -6,11 +6,11 @@ import 'package:suitess/controllers/app/add_property_controller.dart';
 import 'package:suitess/theme/colors.dart';
 import 'package:suitess/utils/containers/form_field_container.dart';
 import 'package:suitess/utils/text_form_fields/android/android_textformfield.dart';
-import 'package:suitess/views/android/screens/my%20_business/lands_and_properties/add_property/content/select_property_category_dropdown_menu.dart';
-import 'package:suitess/views/android/screens/my%20_business/lands_and_properties/add_property/content/select_property_state_dropdown_menu.dart';
-import 'package:suitess/views/android/screens/my%20_business/lands_and_properties/add_property/content/select_property_type_dropdown_menu.dart';
+import 'package:suitess/views/android/screens/my%20_business/lands_and_properties/add_property/content/android_select_property_category_dropdown_menu.dart';
+import 'package:suitess/views/android/screens/my%20_business/lands_and_properties/add_property/content/android_select_property_state_dropdown_menu.dart';
+import 'package:suitess/views/android/screens/my%20_business/lands_and_properties/add_property/content/android_select_property_type_dropdown_menu.dart';
 
-addPropertyForm(
+androidAddPropertyForm(
   ColorScheme colorScheme,
   Size media,
   AddPropertyController controller,
@@ -46,7 +46,7 @@ addPropertyForm(
           ),
         ),
         kSizedBox,
-        selectPropertyTypeDropdownMenu(
+        androidSelectPropertyTypeDropdownMenu(
           media,
           colorScheme,
           controller,
@@ -73,7 +73,7 @@ addPropertyForm(
         Row(
           children: [
             Expanded(
-              child: selectPropertyCategoryDropdownMenu(
+              child: androidSelectPropertyCategoryDropdownMenu(
                 media,
                 colorScheme,
                 controller,
@@ -201,7 +201,7 @@ addPropertyForm(
         Row(
           children: [
             Expanded(
-              child: selectPropertyStateDropdownMenu(
+              child: androidSelectPropertyStateDropdownMenu(
                 media,
                 colorScheme,
                 controller,

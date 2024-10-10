@@ -20,11 +20,11 @@ import 'package:suitess/views/android/screens/chat/screen/android_chat_screen.da
 import 'package:suitess/views/android/screens/home/screen/android_home_screen.dart';
 import 'package:suitess/views/android/screens/messages/screen/android_messages_screen.dart';
 import 'package:suitess/views/android/screens/my%20_business/business_intro/screen/android_business_intro_screen.dart';
-import 'package:suitess/views/android/screens/my%20_business/lands_and_properties/add_property/screen/add_property_screen.dart';
-import 'package:suitess/views/android/screens/my%20_business/lands_and_properties/properties_home/screen/lands_and_properties_screen.dart';
-import 'package:suitess/views/android/screens/my%20_business/lands_and_properties/upload_property_images/screen/upload_property_images_screen.dart';
+import 'package:suitess/views/android/screens/my%20_business/lands_and_properties/add_property/screen/android_add_property_screen.dart';
+import 'package:suitess/views/android/screens/my%20_business/lands_and_properties/properties_home/screen/android_lands_and_properties_screen.dart';
+import 'package:suitess/views/android/screens/my%20_business/lands_and_properties/upload_property_images/screen/android_upload_property_images_screen.dart';
 import 'package:suitess/views/android/screens/notifications/screen/notifications.dart';
-import 'package:suitess/views/android/screens/profile/screen/profile_screen.dart';
+import 'package:suitess/views/android/screens/profile/screen/android_profile_screen.dart';
 import 'package:suitess/views/android/screens/profile/views/account_type/screen/account_type_screen.dart';
 import 'package:suitess/views/android/screens/profile/views/contact_details/screen/contact_details.dart';
 import 'package:suitess/views/android/screens/profile/views/faqs/screen/faqs_screen.dart';
@@ -213,7 +213,7 @@ class Routes {
     GetPage(name: resetTxPin, page: () => const MobileDataScreen()),
 
     //Profile Section
-    GetPage(name: profileScreen, page: () => const ProfileScreen()),
+    GetPage(name: profileScreen, page: () => const AndroidProfileScreen()),
     GetPage(name: contactDetails, page: () => const ContactDetails()),
     GetPage(name: passwordSettings, page: () => const PasswordSettingsScreen()),
     GetPage(
@@ -241,12 +241,12 @@ class Routes {
         name: businessIntro, page: () => const AndroidBusinessIntroScreen()),
     GetPage(
       name: landsAndProperties,
-      page: () => const LandsAndPropertiesScreen(),
+      page: () => const AndroidLandsAndPropertiesScreen(),
     ),
-    GetPage(name: addProperty, page: () => const AddPropertyScreen()),
+    GetPage(name: addProperty, page: () => const AndroidAddPropertyScreen()),
     GetPage(
       name: uploadPropertyImages,
-      page: () => const UploadPropertyImagesScreen(),
+      page: () => const AndroidUploadPropertyImagesScreen(),
     ),
     // GetPage(name: updateProperty, page: () => const UpdatePropertyScreen()),
     // GetPage(name: hotelManagement, page: () => const HotelManagementScreen()),

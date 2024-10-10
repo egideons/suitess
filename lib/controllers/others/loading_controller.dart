@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:suitess/views/android/screens/my%20_business/lands_and_properties/properties_home/screen/lands_and_properties_screen.dart';
+import 'package:suitess/views/android/screens/my%20_business/lands_and_properties/properties_home/screen/android_lands_and_properties_screen.dart';
 
 import '../../../main.dart';
 import '../../../views/android/auth/login/screen/android_login.dart';
@@ -59,7 +59,7 @@ class LoadingController extends GetxController {
     update();
 
     await Get.off(
-      () => const LandsAndPropertiesScreen(),
+      () => const AndroidLandsAndPropertiesScreen(),
       routeName: "/lands-and-properties",
       fullscreenDialog: true,
       curve: Curves.easeInOut,

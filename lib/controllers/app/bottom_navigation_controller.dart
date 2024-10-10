@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:suitess/views/android/screens/home/screen/android_home_screen.dart';
 import 'package:suitess/views/android/screens/messages/screen/android_messages_screen.dart';
-import 'package:suitess/views/android/screens/profile/screen/profile_screen.dart';
+import 'package:suitess/views/android/screens/profile/screen/android_profile_screen.dart';
 import 'package:suitess/views/android/screens/wallet/wallet_screen/screen/wallet_screen.dart';
 import 'package:suitess/views/android/screens/wallet_intro/screen/wallet_intro_screen.dart';
 
@@ -36,7 +36,7 @@ class BottomNavigationController extends GetxController {
             ? const WalletScreen()
             : const WalletIntroScreen(),
         const AndroidMessagesScreen(),
-        const ProfileScreen(),
+        const AndroidProfileScreen(),
       ];
 
   //=============== BOTTOMNAV ITEMS ================\\

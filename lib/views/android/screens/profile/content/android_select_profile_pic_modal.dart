@@ -5,10 +5,10 @@ import 'package:suitess/constants/consts.dart';
 import '../../../../../constants/assets.dart';
 import '../../../../../controllers/app/profile_screen_controller.dart';
 import '../../../../../theme/colors.dart';
-import 'upload_profile_pic_option.dart';
+import 'android_upload_profile_pic_option.dart';
 
-class SelectProfilePicModal extends GetView<ProfileScreenController> {
-  const SelectProfilePicModal({super.key});
+class AndroidSelectProfilePicModal extends GetView<ProfileScreenController> {
+  const AndroidSelectProfilePicModal({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -42,14 +42,14 @@ class SelectProfilePicModal extends GetView<ProfileScreenController> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              uploadProfilePicOption(
+              androidUploadProfilePicOption(
                 colorScheme,
                 onTap: controller.requestCameraPermission,
                 icon: Assets.cameraOutlineSvg,
                 label: "Camera",
               ),
               kWidthSizedBox,
-              uploadProfilePicOption(
+              androidUploadProfilePicOption(
                 colorScheme,
                 onTap: controller.requestGalleryPermission,
                 icon: Assets.imageOutlineSvg,

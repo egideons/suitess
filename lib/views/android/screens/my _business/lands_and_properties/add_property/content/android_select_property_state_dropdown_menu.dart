@@ -4,18 +4,18 @@ import 'package:suitess/theme/colors.dart';
 
 import '../../../../../../../constants/consts.dart';
 
-selectPropertyCategoryDropdownMenu(
+androidSelectPropertyStateDropdownMenu(
   Size media,
   ColorScheme colorScheme,
   AddPropertyController controller,
 ) {
   return DropdownMenu(
-    controller: controller.propertyCategoryEC,
-    hintText: "Category",
+    controller: controller.propertyStateEC,
+    hintText: "State",
     menuHeight: media.height * .6,
     width: media.width,
     expandedInsets: const EdgeInsets.all(0),
-    onSelected: controller.setSelectedPropertyCategory,
+    onSelected: controller.setSelectedPropertyState,
     inputDecorationTheme: InputDecorationTheme(
       hintStyle: defaultTextStyle(
         color: kFormFieldLabelTextColor,
@@ -41,12 +41,12 @@ selectPropertyCategoryDropdownMenu(
       color: kTextGreyColor,
       fontWeight: FontWeight.w400,
     ),
-    dropdownMenuEntries: controller.propertyCategories.map((String category) {
+    dropdownMenuEntries: controller.propertyStates.map((String state) {
       return DropdownMenuEntry<String>(
-        value: category,
-        label: category,
+        value: state,
+        label: state,
         labelWidget: Text(
-          category,
+          state,
           style: defaultTextStyle(
             fontSize: 14,
             color: kTextGreyColor,

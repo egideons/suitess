@@ -4,7 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../../../../constants/consts.dart';
 import '../../../../../theme/colors.dart';
 
-uploadProfilePicOption(
+androidUploadProfilePicOption(
   ColorScheme colorScheme, {
   void Function()? onTap,
   String? icon,
