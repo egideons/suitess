@@ -13,7 +13,7 @@ import 'package:suitess/controllers/others/loading_controller.dart';
 import 'package:suitess/controllers/others/theme_controller.dart';
 import 'package:suitess/utils/components/app_error_widget.dart';
 
-import 'src/routes/routes.dart';
+import 'routes/routes.dart';
 import 'theme/app_theme.dart';
 import 'theme/colors.dart';
 
