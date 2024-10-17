@@ -37,7 +37,7 @@ import 'package:suitess/views/android/screens/property/book_appointment/screen/a
 import 'package:suitess/views/android/screens/property/checkout_property/screen/android_checkout_property_screen.dart';
 import 'package:suitess/views/android/screens/property/purchase_property/screen/android_purchase_property_screen.dart';
 import 'package:suitess/views/android/screens/property/view_property/screen/android_view_property_screen.dart';
-import 'package:suitess/views/android/screens/search/screen/search_screen.dart';
+import 'package:suitess/views/android/screens/search/screen/android_search_screen.dart';
 import 'package:suitess/views/android/screens/wallet/airtime_purchase/screen/airtime_purchase_screen.dart';
 import 'package:suitess/views/android/screens/wallet/bank_transfer/screen/bank_transfer_screen.dart';
 import 'package:suitess/views/android/screens/wallet/mobile_data/screen/mobile_data_screen.dart';
@@ -199,7 +199,7 @@ class Routes {
         name: checkoutProperty,
         page: () => const AndroidCheckoutPropertyScreen()),
     GetPage(name: successScreen, page: () => const AndroidSuccessScreen()),
-    GetPage(name: searchScreen, page: () => const SearchScreen()),
+    GetPage(name: searchScreen, page: () => const AndroidSearchScreen()),
 
     //Messages Section
     GetPage(name: messagesScreen, page: () => const AndroidMessagesScreen()),

@@ -5,7 +5,7 @@ import '../../../../../constants/assets.dart';
 import '../../../../../constants/consts.dart';
 import '../../../../../theme/colors.dart';
 
-searchResultContainer(
+androidSearchResultContainer(
   ColorScheme colorScheme,
   Size media, {
   void Function()? onTap,

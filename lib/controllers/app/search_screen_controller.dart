@@ -3,8 +3,8 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../views/android/screens/search/content/search_filter_bottom_modal_sheet.dart';
 import '../../models/property/property_category_model.dart';
+import '../../views/android/screens/search/content/android_search_filter_bottom_modal_sheet.dart';
 
 class SearchScreenController extends GetxController {
   static SearchScreenController get instance {
@@ -94,7 +94,7 @@ class SearchScreenController extends GetxController {
       builder: (context) {
         return GestureDetector(
           onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
-          child: const SearchFilterBottomModalSheet(),
+          child: const AndroidSearchFilterBottomModalSheet(),
         );
       },
     );

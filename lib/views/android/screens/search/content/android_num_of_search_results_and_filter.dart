@@ -5,7 +5,7 @@ import '../../../../../constants/assets.dart';
 import '../../../../../constants/consts.dart';
 import '../../../../../theme/colors.dart';
 
-searchResultsAndFilter(
+androidSearchResultsAndFilter(
   ColorScheme colorScheme,
   int? numOfResults,
   void Function()? filter,

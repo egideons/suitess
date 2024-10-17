@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../../constants/consts.dart';
 import '../../../../../theme/colors.dart';
 
-filterScreenSectionHeader(String title) {
+androidFilterScreenSectionHeader(String title) {
   return Text(
     title,
     textAlign: TextAlign.start,

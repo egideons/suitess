@@ -6,16 +6,17 @@ import 'package:suitess/utils/buttons/android/android_outlined_button.dart';
 import 'package:suitess/utils/components/my_app_bar.dart';
 import 'package:suitess/utils/containers/form_field_container.dart';
 import 'package:suitess/utils/text_form_fields/android/android_textformfield.dart';
-import 'package:suitess/views/android/screens/search/content/filter_screen_advert_category_drop_down.dart';
+import 'package:suitess/views/android/screens/search/content/android_filter_screen_advert_category_drop_down.dart';
 
 import '../../../../../constants/consts.dart';
 import '../../../../../controllers/app/search_screen_controller.dart';
 import '../../../../../theme/colors.dart';
-import 'filter_screen_location_drop_down.dart';
-import 'filter_screen_section_header.dart';
+import 'android_filter_screen_location_drop_down.dart';
+import 'android_filter_screen_section_header.dart';
 
-class SearchFilterBottomModalSheet extends GetView<SearchScreenController> {
-  const SearchFilterBottomModalSheet({super.key});
+class AndroidSearchFilterBottomModalSheet
+    extends GetView<SearchScreenController> {
+  const AndroidSearchFilterBottomModalSheet({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -39,11 +40,12 @@ class SearchFilterBottomModalSheet extends GetView<SearchScreenController> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  filterScreenSectionHeader("Location"),
+                  androidFilterScreenSectionHeader("Location"),
                   kHalfSizedBox,
-                  filterScreenLocationDropDown(media, colorScheme, controller),
+                  androidFilterScreenLocationDropDown(
+                      media, colorScheme, controller),
                   kSizedBox,
-                  filterScreenSectionHeader("Property Type"),
+                  androidFilterScreenSectionHeader("Property Type"),
                   kHalfSizedBox,
                   SizedBox(
                     height: 30,
@@ -91,8 +93,8 @@ class SearchFilterBottomModalSheet extends GetView<SearchScreenController> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      filterScreenSectionHeader("Advert category"),
-                      filterScreenSectionHeader("Bedrooms"),
+                      androidFilterScreenSectionHeader("Advert category"),
+                      androidFilterScreenSectionHeader("Bedrooms"),
                       kWidthSizedBox,
                     ],
                   ),
@@ -102,7 +104,7 @@ class SearchFilterBottomModalSheet extends GetView<SearchScreenController> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Expanded(
-                        child: filterScreenAdvertCategoryDropDown(
+                        child: androidFilterScreenAdvertCategoryDropDown(
                           media,
                           colorScheme,
                           controller,
@@ -137,7 +139,7 @@ class SearchFilterBottomModalSheet extends GetView<SearchScreenController> {
                     ],
                   ),
                   kSizedBox,
-                  filterScreenSectionHeader("Price range"),
+                  androidFilterScreenSectionHeader("Price range"),
                   kHalfSizedBox,
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -197,7 +199,8 @@ class SearchFilterBottomModalSheet extends GetView<SearchScreenController> {
                     ],
                   ),
                   kSizedBox,
-                  filterScreenSectionHeader("Realtors Verification Status"),
+                  androidFilterScreenSectionHeader(
+                      "Realtors Verification Status"),
                   kHalfSizedBox,
                   ListView.separated(
                     itemCount: FilterOption.values.length,
@@ -233,7 +236,7 @@ class SearchFilterBottomModalSheet extends GetView<SearchScreenController> {
                     },
                   ),
                   kSizedBox,
-                  filterScreenSectionHeader("Furnishing"),
+                  androidFilterScreenSectionHeader("Furnishing"),
                   kHalfSizedBox,
                   ListView.separated(
                     padding: const EdgeInsets.all(0),
@@ -273,7 +276,7 @@ class SearchFilterBottomModalSheet extends GetView<SearchScreenController> {
                     },
                   ),
                   kSizedBox,
-                  filterScreenSectionHeader("Condition"),
+                  androidFilterScreenSectionHeader("Condition"),
                   kHalfSizedBox,
                   ListView.separated(
                     padding: const EdgeInsets.all(0),

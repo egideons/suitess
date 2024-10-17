@@ -4,7 +4,7 @@ import '../../../../../constants/consts.dart';
 import '../../../../../controllers/app/search_screen_controller.dart';
 import '../../../../../theme/colors.dart';
 
-filterScreenAdvertCategoryDropDown(
+androidFilterScreenAdvertCategoryDropDown(
   Size media,
   ColorScheme colorScheme,
   SearchScreenController controller,

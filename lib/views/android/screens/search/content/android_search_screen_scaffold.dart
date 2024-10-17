@@ -4,14 +4,14 @@ import 'package:get/get.dart';
 import 'package:suitess/theme/colors.dart';
 import 'package:suitess/utils/components/my_app_bar.dart';
 
-import '../../../../../../constants/consts.dart';
-import '../../../../../../controllers/app/search_screen_controller.dart';
-import '../../../property/view_property/screen/android_view_property_screen.dart';
-import '../../content/num_of_search_results_and_filter.dart';
-import '../../content/search_result_container.dart';
+import '../../../../../constants/consts.dart';
+import '../../../../../controllers/app/search_screen_controller.dart';
+import '../../property/view_property/screen/android_view_property_screen.dart';
+import 'android_num_of_search_results_and_filter.dart';
+import 'android_search_result_container.dart';
 
-class SearchScreenScaffold extends GetView<SearchScreenController> {
-  const SearchScreenScaffold({super.key});
+class AndroidSearchScreenScaffold extends GetView<SearchScreenController> {
+  const AndroidSearchScreenScaffold({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -80,7 +80,7 @@ class SearchScreenScaffold extends GetView<SearchScreenController> {
                           preferredSize: Size.fromHeight(-10.0),
                           child: SizedBox(),
                         ),
-                        title: searchResultsAndFilter(
+                        title: androidSearchResultsAndFilter(
                           colorScheme,
                           492,
                           () {
@@ -99,7 +99,7 @@ class SearchScreenScaffold extends GetView<SearchScreenController> {
                           padding: const EdgeInsets.all(10),
                           separatorBuilder: (context, index) => kHalfSizedBox,
                           itemBuilder: (context, index) {
-                            return searchResultContainer(
+                            return androidSearchResultContainer(
                               colorScheme,
                               media,
                               onTap: () async {
