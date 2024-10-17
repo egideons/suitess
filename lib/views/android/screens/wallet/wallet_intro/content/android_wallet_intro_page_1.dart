@@ -8,7 +8,8 @@ import '../../../../../../controllers/app/wallet_intro_controller.dart';
 import '../../../../../../theme/colors.dart';
 import '../../../../../../utils/buttons/android/android_elevated_button.dart';
 
-walletIntroPage1(ColorScheme colorScheme, WalletIntroController controller) {
+androidWalletIntroPage1(
+    ColorScheme colorScheme, WalletIntroController controller) {
   return Column(
     children: [
       Expanded(

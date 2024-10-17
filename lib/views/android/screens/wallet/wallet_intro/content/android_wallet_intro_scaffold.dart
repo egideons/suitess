@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../../../../controllers/app/wallet_intro_controller.dart';
-import '../../content/wallet_intro_page_1.dart';
-import '../../content/wallet_intro_page_2.dart';
-import '../../content/wallet_intro_page_3.dart';
+import '../../../../../../controllers/app/wallet_intro_controller.dart';
+import 'android_wallet_intro_page_1.dart';
+import 'android_wallet_intro_page_2.dart';
+import 'android_wallet_intro_page_3.dart';
 
-class WalletIntroScaffold extends GetView<WalletIntroController> {
-  const WalletIntroScaffold({super.key});
+class AndroidWalletIntroScaffold extends GetView<WalletIntroController> {
+  const AndroidWalletIntroScaffold({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +21,9 @@ class WalletIntroScaffold extends GetView<WalletIntroController> {
           controller: controller.pageController,
           physics: const NeverScrollableScrollPhysics(),
           children: [
-            walletIntroPage1(colorScheme, controller),
-            walletIntroPage2(colorScheme, media, controller),
-            walletIntroPage3(context, colorScheme, media, controller),
+            androidWalletIntroPage1(colorScheme, controller),
+            androidWalletIntroPage2(colorScheme, media, controller),
+            androidWalletIntroPage3(context, colorScheme, media, controller),
           ],
         ),
       ),

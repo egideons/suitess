@@ -6,7 +6,7 @@ import '../../../../../../controllers/app/wallet_intro_controller.dart';
 import '../../../../../../utils/containers/form_field_container.dart';
 import '../../../../../../utils/text_form_fields/android/android_textformfield.dart';
 
-walletIntroPage2Form(
+androidWalletIntroPage2Form(
   ColorScheme colorScheme,
   Size media,
   WalletIntroController controller,

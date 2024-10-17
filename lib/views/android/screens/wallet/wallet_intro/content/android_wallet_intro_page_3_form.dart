@@ -4,8 +4,8 @@ import 'package:suitess/controllers/app/wallet_intro_controller.dart';
 import 'package:suitess/utils/containers/form_field_container.dart';
 import 'package:suitess/utils/text_form_fields/android/android_textformfield.dart';
 
-walletIntroPage3Form(WalletIntroController controller, ColorScheme colorScheme,
-    Size media, BuildContext context) {
+androidWalletIntroPage3Form(WalletIntroController controller,
+    ColorScheme colorScheme, Size media, BuildContext context) {
   return Form(
     key: controller.form2Key,
     child: Row(

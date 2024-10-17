@@ -1,15 +1,16 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:suitess/controllers/app/wallet_intro_controller.dart';
-import 'package:suitess/views/android/screens/wallet/wallet_intro/content/wallet_intro_page_3_form.dart';
 
+import '../../../../../../constants/assets.dart';
 import '../../../../../../constants/consts.dart';
+import '../../../../../../controllers/app/wallet_intro_controller.dart';
 import '../../../../../../theme/colors.dart';
 import '../../../../../../utils/buttons/android/android_elevated_button.dart';
+import 'android_wallet_intro_page_2_form.dart';
 
-walletIntroPage3(
-  BuildContext context,
+androidWalletIntroPage2(
   ColorScheme colorScheme,
   Size media,
   WalletIntroController controller,
@@ -23,9 +24,9 @@ walletIntroPage3(
           Align(
             alignment: Alignment.topLeft,
             child: IconButton(
-              onPressed: controller.goBackToPage1,
-              icon: const Icon(Icons.chevron_left),
+              onPressed: controller.goBackToPage0,
               tooltip: "Go back",
+              icon: const Icon(Icons.chevron_left),
             ),
           ),
           Expanded(
@@ -36,7 +37,7 @@ walletIntroPage3(
                   child: Column(
                     children: [
                       Text(
-                        "Setup Transaction Pin",
+                        "Welcome to",
                         textAlign: TextAlign.center,
                         style: defaultTextStyle(
                           color: kTextBoldHeadingColor,
@@ -44,7 +45,19 @@ walletIntroPage3(
                           fontWeight: FontWeight.w600,
                         ),
                       ),
-                      kHalfSizedBox,
+                      kSizedBox,
+                      SvgPicture.asset(Assets.walletIntro2Svg),
+                      kSizedBox,
+                      Text(
+                        "Suitess Wallet",
+                        textAlign: TextAlign.center,
+                        style: defaultTextStyle(
+                          color: kTextBoldHeadingColor,
+                          fontSize: 24,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      kSizedBox,
                       Text(
                         "To activate your wallet and manage your funds, provide details below.",
                         textAlign: TextAlign.center,
@@ -58,22 +71,17 @@ walletIntroPage3(
                     ],
                   ),
                 ),
-                SizedBox(height: media.height * .12),
+                kBigSizedBox,
                 FadeInUp(
-                  child: walletIntroPage3Form(
-                    controller,
-                    colorScheme,
-                    media,
-                    context,
-                  ),
+                  child: androidWalletIntroPage2Form(
+                      colorScheme, media, controller),
                 ),
-                kSizedBox,
                 FadeIn(
                   child: Obx(
                     () => AndroidElevatedButton(
-                      title: "Submit",
+                      title: "Next",
                       isLoading: controller.isLoading.value,
-                      onPressed: controller.submitTXPIN,
+                      onPressed: controller.submitKYCForm,
                     ),
                   ),
                 ),

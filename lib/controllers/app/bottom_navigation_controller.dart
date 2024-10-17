@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:suitess/views/android/screens/home/screen/android_home_screen.dart';
 import 'package:suitess/views/android/screens/messages/screen/android_messages_screen.dart';
 import 'package:suitess/views/android/screens/profile/screen/android_profile_screen.dart';
-import 'package:suitess/views/android/screens/wallet/wallet_intro/screen/wallet_intro_screen.dart';
+import 'package:suitess/views/android/screens/wallet/wallet_intro/screen/android_wallet_intro_screen.dart';
 import 'package:suitess/views/android/screens/wallet/wallet_screen/screen/wallet_screen.dart';
 
 import '../../../main.dart';
@@ -34,7 +34,7 @@ class BottomNavigationController extends GetxController {
         const AndroidHomeScreen(),
         userHasViewedWalletIntro
             ? const WalletScreen()
-            : const WalletIntroScreen(),
+            : const AndroidWalletIntroScreen(),
         const AndroidMessagesScreen(),
         const AndroidProfileScreen(),
       ];

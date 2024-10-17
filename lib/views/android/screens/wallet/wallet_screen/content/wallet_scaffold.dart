@@ -5,14 +5,14 @@ import 'package:suitess/constants/consts.dart';
 import 'package:suitess/utils/components/circle_avatar_image.dart';
 import 'package:suitess/utils/components/my_app_bar.dart';
 
-import '../../../../../../../controllers/app/wallet_screen_controller.dart';
-import '../../../../../../../theme/colors.dart';
-import '../../../../../../../utils/components/notification_bell_icon.dart';
-import '../../content/add_ink_well.dart';
-import '../../content/income_debit_card.dart';
-import '../../content/quick_action_card.dart';
-import '../../content/recent_transaction.dart';
-import '../../content/wallet_card.dart';
+import '../../../../../../controllers/app/wallet_screen_controller.dart';
+import '../../../../../../theme/colors.dart';
+import '../../../../../../utils/components/notification_bell_icon.dart';
+import 'add_ink_well.dart';
+import 'income_debit_card.dart';
+import 'quick_action_card.dart';
+import 'recent_transaction.dart';
+import 'wallet_card.dart';
 
 class WalletScaffold extends GetView<WalletScreenController> {
   const WalletScaffold({super.key});
