@@ -27,7 +27,7 @@ import 'package:suitess/views/android/screens/notifications/screen/android_notif
 import 'package:suitess/views/android/screens/profile/screen/android_profile_screen.dart';
 import 'package:suitess/views/android/screens/profile/views/account_type/screen/android_account_type_screen.dart';
 import 'package:suitess/views/android/screens/profile/views/contact_details/screen/android_contact_details.dart';
-import 'package:suitess/views/android/screens/profile/views/faqs/screen/faqs_screen.dart';
+import 'package:suitess/views/android/screens/profile/views/faqs/screen/android_faqs_screen.dart';
 import 'package:suitess/views/android/screens/profile/views/notifications_settings/screen/notifications_settings_screen.dart';
 import 'package:suitess/views/android/screens/profile/views/password_settings/screen/password_settings_screen.dart';
 import 'package:suitess/views/android/screens/profile/views/privacy_and_security/screen/privacy_and_security_screen.dart';
@@ -232,7 +232,7 @@ class Routes {
     ),
     GetPage(
       name: faqs,
-      page: () => const FaqsScreen(),
+      page: () => const AndroidFaqsScreen(),
     ),
     GetPage(
       name: supportAndFeedback,

@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../../../../controllers/app/faqs_controller.dart';
-import '../platform/android/faqs_scaffold.dart';
+import '../content/android_faqs_scaffold.dart';
 
-class FaqsScreen extends StatelessWidget {
-  const FaqsScreen({super.key});
+class AndroidFaqsScreen extends StatelessWidget {
+  const AndroidFaqsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class FaqsScreen extends StatelessWidget {
     }
     return GestureDetector(
       onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
-      child: const FaqsScaffold(),
+      child: const AndroidFaqsScaffold(),
     );
   }
 }
