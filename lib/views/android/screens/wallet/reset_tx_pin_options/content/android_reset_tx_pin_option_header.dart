@@ -2,7 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:suitess/constants/consts.dart';
 
-resetTxPinOptionHeader(
+androidResetTxPinOptionHeader(
   ColorScheme colorScheme,
   controller, {
   registeredOption,

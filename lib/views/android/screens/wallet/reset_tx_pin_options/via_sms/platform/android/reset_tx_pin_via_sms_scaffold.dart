@@ -10,7 +10,7 @@ import '../../../../../../../../constants/consts.dart';
 import '../../../../../../../../utils/buttons/android/android_elevated_button.dart';
 import '../../../../../../../../utils/containers/form_field_container.dart';
 import '../../../../../../../../utils/text_form_fields/android/android_textformfield.dart';
-import '../../../content/reset_tx_pin_option_header.dart';
+import '../../../content/android_reset_tx_pin_option_header.dart';
 
 class ResetTxPinViaSmsScaffold extends GetView<ResetTxPinViaSmsController> {
   const ResetTxPinViaSmsScaffold({super.key});
@@ -56,7 +56,7 @@ class ResetTxPinViaSmsScaffold extends GetView<ResetTxPinViaSmsController> {
                             : media.height * .2,
                       ),
                       kSizedBox,
-                      resetTxPinOptionHeader(
+                      androidResetTxPinOptionHeader(
                         colorScheme,
                         controller,
                         registeredOption: "phone number",
@@ -170,7 +170,7 @@ class ResetTxPinViaSmsScaffold extends GetView<ResetTxPinViaSmsController> {
               height: media.height * .24,
             ),
             kSizedBox,
-            resetTxPinOptionHeader(
+            androidResetTxPinOptionHeader(
               colorScheme,
               controller,
               registeredOption: "mobile number",

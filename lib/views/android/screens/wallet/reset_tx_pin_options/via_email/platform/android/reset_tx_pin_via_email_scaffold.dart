@@ -9,7 +9,7 @@ import 'package:suitess/utils/buttons/android/android_elevated_button.dart';
 import 'package:suitess/utils/components/responsive_constants.dart';
 import 'package:suitess/utils/containers/form_field_container.dart';
 import 'package:suitess/utils/text_form_fields/android/android_textformfield.dart';
-import 'package:suitess/views/android/screens/wallet/reset_tx_pin_options/content/reset_tx_pin_option_header.dart';
+import 'package:suitess/views/android/screens/wallet/reset_tx_pin_options/content/android_reset_tx_pin_option_header.dart';
 
 class ResetTxPinViaEmailScaffold extends GetView<ResetTxPinViaEmailController> {
   const ResetTxPinViaEmailScaffold({super.key});
@@ -55,7 +55,7 @@ class ResetTxPinViaEmailScaffold extends GetView<ResetTxPinViaEmailController> {
                             : media.height * .2,
                       ),
                       kSizedBox,
-                      resetTxPinOptionHeader(
+                      androidResetTxPinOptionHeader(
                         colorScheme,
                         controller,
                         registeredOption: "email address",
@@ -169,7 +169,7 @@ class ResetTxPinViaEmailScaffold extends GetView<ResetTxPinViaEmailController> {
               height: media.height * .24,
             ),
             kSizedBox,
-            resetTxPinOptionHeader(
+            androidResetTxPinOptionHeader(
               colorScheme,
               controller,
               registeredOption: "email address",
