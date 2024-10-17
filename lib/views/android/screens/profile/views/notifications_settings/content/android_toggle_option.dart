@@ -4,7 +4,7 @@ import '../../../../../../../constants/consts.dart';
 import '../../../../../../../controllers/app/notifications_settings_controller.dart';
 import '../../../../../../../theme/colors.dart';
 
-toggleOption(
+androidToggleOption(
     NotificationsSettingsController controller, ColorScheme colorScheme,
     {String? title, bool? value, void Function(bool)? onChanged}) {
   return Padding(

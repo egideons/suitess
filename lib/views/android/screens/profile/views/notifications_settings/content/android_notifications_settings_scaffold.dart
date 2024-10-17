@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:suitess/utils/components/my_app_bar.dart';
 
-import '../../../../../../../../constants/consts.dart';
-import '../../../../../../../../controllers/app/notifications_settings_controller.dart';
-import '../../../../../../../../theme/colors.dart';
-import '../../content/common_settings.dart';
-import '../../content/system_and_service_settings.dart';
+import '../../../../../../../constants/consts.dart';
+import '../../../../../../../controllers/app/notifications_settings_controller.dart';
+import '../../../../../../../theme/colors.dart';
+import 'android_common_settings.dart';
+import 'android_system_and_service_settings.dart';
 
-class NotificationsSettingsScaffold
+class AndroidNotificationsSettingsScaffold
     extends GetView<NotificationsSettingsController> {
-  const NotificationsSettingsScaffold({super.key});
+  const AndroidNotificationsSettingsScaffold({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +40,7 @@ class NotificationsSettingsScaffold
                     ),
                   ),
                   kHalfSizedBox,
-                  commonSettings(colorScheme, controller),
+                  androidCommonSettings(colorScheme, controller),
                   kSizedBox,
                   kSizedBox,
                   Text(
@@ -53,7 +53,7 @@ class NotificationsSettingsScaffold
                     ),
                   ),
                   kHalfSizedBox,
-                  systemAndServiceSettings(colorScheme, controller),
+                  androidSystemAndServiceSettings(colorScheme, controller),
                   kSizedBox,
                 ],
               );

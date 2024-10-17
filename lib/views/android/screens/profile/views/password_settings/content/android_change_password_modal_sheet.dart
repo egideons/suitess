@@ -10,8 +10,9 @@ import '../../../../../../../utils/buttons/android/android_elevated_button.dart'
 import '../../../../../../../utils/containers/form_field_container.dart';
 import '../../../../../../../utils/text_form_fields/android/android_textformfield.dart';
 
-class ChangePasswordModalSheet extends GetView<PasswordSettingsController> {
-  const ChangePasswordModalSheet({super.key});
+class AndroidChangePasswordModalSheet
+    extends GetView<PasswordSettingsController> {
+  const AndroidChangePasswordModalSheet({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -136,7 +136,7 @@ class PrivacyAndSecurityScaffold extends GetView<PrivacyAndSecurityController> {
                           ),
                   ),
                   kBigSizedBox,
-                  toggleOption(
+                  androidToggleOption(
                     colorScheme,
                     title: "Third Party Sharing",
                     value: controller.thirdPartySharingIsEnabled.value,

@@ -28,8 +28,8 @@ import 'package:suitess/views/android/screens/profile/screen/android_profile_scr
 import 'package:suitess/views/android/screens/profile/views/account_type/screen/android_account_type_screen.dart';
 import 'package:suitess/views/android/screens/profile/views/contact_details/screen/android_contact_details.dart';
 import 'package:suitess/views/android/screens/profile/views/faqs/screen/android_faqs_screen.dart';
-import 'package:suitess/views/android/screens/profile/views/notifications_settings/screen/notifications_settings_screen.dart';
-import 'package:suitess/views/android/screens/profile/views/password_settings/screen/password_settings_screen.dart';
+import 'package:suitess/views/android/screens/profile/views/notifications_settings/screen/android_notifications_settings_screen.dart';
+import 'package:suitess/views/android/screens/profile/views/password_settings/screen/android_password_settings_screen.dart';
 import 'package:suitess/views/android/screens/profile/views/privacy_and_security/screen/privacy_and_security_screen.dart';
 import 'package:suitess/views/android/screens/profile/views/support_and_feedback/screen/support_and_feedback_screen.dart';
 import 'package:suitess/views/android/screens/profile/views/wallet_information/screen/wallet_information_screen.dart';
@@ -75,7 +75,7 @@ class Routes {
   static const emailOTP = "/email-otp";
   static const phoneOTP = "/phone-otp";
   static const resetPassword = "/reset-password";
-  static const changePassword = "/change-password";
+  static const androidChangePassword = "/change-password";
   static const resetPasswordViaEmail = "/reset-password-via-email";
   static const resetPasswordViaEmailOTP = "/reset-password-via-email-otp";
   static const resetPasswordViaSms = "/reset-password-via-sms";
@@ -218,13 +218,15 @@ class Routes {
     GetPage(name: profileScreen, page: () => const AndroidProfileScreen()),
     GetPage(
         name: contactDetails, page: () => const AndroidContactDetailsScreen()),
-    GetPage(name: passwordSettings, page: () => const PasswordSettingsScreen()),
+    GetPage(
+        name: passwordSettings,
+        page: () => const AndroidPasswordSettingsScreen()),
     GetPage(
         name: walletInformation, page: () => const WalletInformationScreen()),
     GetPage(name: accountType, page: () => const AndroidAccountTypeScreen()),
     GetPage(
       name: notificationsSettings,
-      page: () => const NotificationsSettingsScreen(),
+      page: () => const AndroidNotificationsSettingsScreen(),
     ),
     GetPage(
       name: privacyAndSecurity,

@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../../../../controllers/app/notifications_settings_controller.dart';
-import 'toggle_option.dart';
+import 'android_toggle_option.dart';
 
-systemAndServiceSettings(
-    ColorScheme colorScheme, NotificationsSettingsController controller) {
+androidSystemAndServiceSettings(
+  ColorScheme colorScheme,
+  NotificationsSettingsController controller,
+) {
   return Container(
     decoration: ShapeDecoration(
       shape: RoundedRectangleBorder(
@@ -19,7 +21,7 @@ systemAndServiceSettings(
     child: Column(
       children: [
         Obx(
-          () => toggleOption(
+          () => androidToggleOption(
             controller,
             colorScheme,
             title: "App updates",
@@ -32,7 +34,7 @@ systemAndServiceSettings(
           height: 10,
         ),
         Obx(
-          () => toggleOption(
+          () => androidToggleOption(
             controller,
             colorScheme,
             title: "Bill Reminder",
@@ -44,7 +46,7 @@ systemAndServiceSettings(
           color: colorScheme.inversePrimary.withOpacity(.4),
         ),
         Obx(
-          () => toggleOption(
+          () => androidToggleOption(
             controller,
             colorScheme,
             title: "Promotion",
@@ -56,7 +58,7 @@ systemAndServiceSettings(
           color: colorScheme.inversePrimary.withOpacity(.4),
         ),
         Obx(
-          () => toggleOption(
+          () => androidToggleOption(
             controller,
             colorScheme,
             title: "Discount Available",
@@ -68,7 +70,7 @@ systemAndServiceSettings(
           color: colorScheme.inversePrimary.withOpacity(.4),
         ),
         Obx(
-          () => toggleOption(
+          () => androidToggleOption(
             controller,
             colorScheme,
             title: "New Service Available",
@@ -80,7 +82,7 @@ systemAndServiceSettings(
           color: colorScheme.inversePrimary.withOpacity(.4),
         ),
         Obx(
-          () => toggleOption(
+          () => androidToggleOption(
             controller,
             colorScheme,
             title: "New Tips Available",

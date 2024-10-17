@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:suitess/utils/components/my_app_bar.dart';
 
-import '../../../../../../../../controllers/app/password_settings_controller.dart';
-import '../../content/change_password_field.dart';
+import '../../../../../../../controllers/app/password_settings_controller.dart';
+import 'android_change_password_field.dart';
 
-class PasswordSettingsScaffold extends GetView<PasswordSettingsController> {
-  const PasswordSettingsScaffold({super.key});
+class AndroidPasswordSettingsScaffold
+    extends GetView<PasswordSettingsController> {
+  const AndroidPasswordSettingsScaffold({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +37,7 @@ class PasswordSettingsScaffold extends GetView<PasswordSettingsController> {
                         ),
                       ),
                     ),
-                    child: changePassword(
+                    child: androidChangePassword(
                       colorScheme,
                       changePasswordFunc:
                           controller.showChangePasswordModalSheet,

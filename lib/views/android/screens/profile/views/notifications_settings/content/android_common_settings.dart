@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../../../../controllers/app/notifications_settings_controller.dart';
-import 'toggle_option.dart';
+import 'android_toggle_option.dart';
 
-commonSettings(
-    ColorScheme colorScheme, NotificationsSettingsController controller) {
+androidCommonSettings(
+  ColorScheme colorScheme,
+  NotificationsSettingsController controller,
+) {
   return Container(
     decoration: ShapeDecoration(
       shape: RoundedRectangleBorder(
@@ -20,7 +22,7 @@ commonSettings(
       children: [
         // kHalfSizedBox,
         Obx(
-          () => toggleOption(
+          () => androidToggleOption(
             controller,
             colorScheme,
             title: "General Notification",
@@ -33,7 +35,7 @@ commonSettings(
           height: 10,
         ),
         Obx(
-          () => toggleOption(
+          () => androidToggleOption(
             controller,
             colorScheme,
             title: "Sound",
@@ -45,7 +47,7 @@ commonSettings(
           color: colorScheme.inversePrimary.withOpacity(.4),
         ),
         Obx(
-          () => toggleOption(
+          () => androidToggleOption(
             controller,
             colorScheme,
             title: "Vibrate",
@@ -57,7 +59,7 @@ commonSettings(
           color: colorScheme.inversePrimary.withOpacity(.4),
         ),
         Obx(
-          () => toggleOption(
+          () => androidToggleOption(
             controller,
             colorScheme,
             title: "New house listing",
@@ -69,7 +71,7 @@ commonSettings(
           color: colorScheme.inversePrimary.withOpacity(.4),
         ),
         Obx(
-          () => toggleOption(
+          () => androidToggleOption(
             controller,
             colorScheme,
             title: "Nearby houses",

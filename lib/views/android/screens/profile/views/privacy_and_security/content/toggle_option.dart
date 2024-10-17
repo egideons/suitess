@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../../../../constants/consts.dart';
 import '../../../../../../../theme/colors.dart';
 
-toggleOption(ColorScheme colorScheme,
+androidToggleOption(ColorScheme colorScheme,
     {String? title, bool? value, void Function(bool)? onChanged}) {
   return Container(
       decoration: ShapeDecoration(

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../../../../constants/consts.dart';
 import '../../../../../../../theme/colors.dart';
 
-changePassword(
+androidChangePassword(
   ColorScheme colorScheme, {
   String? password,
   Function()? changePasswordFunc,

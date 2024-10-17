@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:suitess/views/android/auth/login/screen/android_login.dart';
-import 'package:suitess/views/android/screens/profile/views/password_settings/content/change_password_modal_sheet.dart';
+import 'package:suitess/views/android/screens/profile/views/password_settings/content/android_change_password_modal_sheet.dart';
 
 import '../../../main.dart';
 import '../../constants/consts.dart';
@@ -56,7 +56,7 @@ class PasswordSettingsController extends GetxController {
       builder: (context) {
         return GestureDetector(
           onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
-          child: const ChangePasswordModalSheet(),
+          child: const AndroidChangePasswordModalSheet(),
         );
       },
     );
