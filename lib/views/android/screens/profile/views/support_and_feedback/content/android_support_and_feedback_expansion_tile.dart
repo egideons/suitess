@@ -4,7 +4,7 @@ import 'package:readmore/readmore.dart';
 import '../../../../../../../constants/consts.dart';
 import '../../../../../../../theme/colors.dart';
 
-supportAndFeedbackExpansionTile(ColorScheme colorScheme,
+androidSupportAndFeedbackExpansionTile(ColorScheme colorScheme,
     {String? title, String? content}) {
   return ExpansionTile(
     iconColor: colorScheme.inversePrimary.withOpacity(.6),

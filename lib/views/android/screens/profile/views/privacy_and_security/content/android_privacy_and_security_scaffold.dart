@@ -3,13 +3,14 @@ import 'package:get/get.dart';
 import 'package:suitess/constants/consts.dart';
 import 'package:suitess/utils/components/my_app_bar.dart';
 
-import '../../../../../../../../controllers/app/privacy_and_security_controller.dart';
-import '../../../../../../../../theme/colors.dart';
-import '../../content/privacy_option.dart';
-import '../../content/toggle_option.dart';
+import '../../../../../../../controllers/app/privacy_and_security_controller.dart';
+import '../../../../../../../theme/colors.dart';
+import 'android_privacy_option.dart';
+import 'android_toggle_option.dart';
 
-class PrivacyAndSecurityScaffold extends GetView<PrivacyAndSecurityController> {
-  const PrivacyAndSecurityScaffold({super.key});
+class AndroidPrivacyAndSecurityScaffold
+    extends GetView<PrivacyAndSecurityController> {
+  const AndroidPrivacyAndSecurityScaffold({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +43,7 @@ class PrivacyAndSecurityScaffold extends GetView<PrivacyAndSecurityController> {
                     child: Column(
                       children: [
                         Obx(
-                          () => privacyOption(
+                          () => androidPrivacyOption(
                             colorScheme,
                             context,
                             controller,
@@ -60,7 +61,7 @@ class PrivacyAndSecurityScaffold extends GetView<PrivacyAndSecurityController> {
                           height: 0,
                         ),
                         Obx(
-                          () => privacyOption(
+                          () => androidPrivacyOption(
                             colorScheme,
                             context,
                             controller,
@@ -75,7 +76,7 @@ class PrivacyAndSecurityScaffold extends GetView<PrivacyAndSecurityController> {
                           ),
                         ),
                         Obx(
-                          () => privacyOption(
+                          () => androidPrivacyOption(
                             colorScheme,
                             context,
                             controller,
@@ -103,7 +104,7 @@ class PrivacyAndSecurityScaffold extends GetView<PrivacyAndSecurityController> {
                       ),
                     ),
                     child: Obx(
-                      () => privacyOption(
+                      () => androidPrivacyOption(
                         colorScheme,
                         context,
                         controller,

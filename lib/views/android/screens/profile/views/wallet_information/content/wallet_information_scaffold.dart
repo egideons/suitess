@@ -4,10 +4,10 @@ import 'package:suitess/constants/consts.dart';
 import 'package:suitess/utils/buttons/android/android_elevated_button.dart';
 import 'package:suitess/utils/components/my_app_bar.dart';
 
-import '../../../../../../../../controllers/app/wallet_information_controller.dart';
-import '../../../../../../../../theme/colors.dart';
-import '../../content/personal_wallet_info.dart';
-import '../../content/wallet_tier_info.dart';
+import '../../../../../../../controllers/app/wallet_information_controller.dart';
+import '../../../../../../../theme/colors.dart';
+import 'personal_wallet_info.dart';
+import 'wallet_tier_info.dart';
 
 class WalletInformationScaffold extends GetView<WalletInformationController> {
   const WalletInformationScaffold({super.key});

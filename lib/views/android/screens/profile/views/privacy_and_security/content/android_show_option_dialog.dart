@@ -4,7 +4,7 @@ import '../../../../../../../constants/consts.dart';
 import '../../../../../../../controllers/app/privacy_and_security_controller.dart';
 import '../../../../../../../theme/colors.dart';
 
-showOptionDialog(
+androidShowOptionDialog(
   ColorScheme colorScheme,
   BuildContext context, {
   void Function()? onTapPublic,

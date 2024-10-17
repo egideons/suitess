@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import '../../../../../../../constants/consts.dart';
 import '../../../../../../../controllers/app/privacy_and_security_controller.dart';
 import '../../../../../../../theme/colors.dart';
-import 'show_option_dialog.dart';
+import 'android_show_option_dialog.dart';
 
-privacyOption(
+androidPrivacyOption(
   ColorScheme colorScheme,
   BuildContext context,
   PrivacyAndSecurityController controller, {
@@ -17,7 +17,7 @@ privacyOption(
 }) {
   return ListTile(
     onTap: () {
-      showOptionDialog(
+      androidShowOptionDialog(
         colorScheme,
         context,
         controller: controller,

@@ -3,16 +3,16 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../../../../controllers/app/privacy_and_security_controller.dart';
-import '../platform/android/privacy_and_security_scaffold.dart';
+import '../../../../../../../controllers/app/support_and_feedback_controller.dart';
+import '../content/android_support_and_feedback_scaffold.dart';
 
-class PrivacyAndSecurityScreen extends StatelessWidget {
-  const PrivacyAndSecurityScreen({super.key});
+class AndroidSupportAndFeedbackScreen extends StatelessWidget {
+  const AndroidSupportAndFeedbackScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     //Initialize the controller
-    Get.put(PrivacyAndSecurityController());
+    Get.put(SupportAndFeedbackController());
 
     if (Platform.isIOS) {
       return GestureDetector(
@@ -22,7 +22,7 @@ class PrivacyAndSecurityScreen extends StatelessWidget {
     }
     return GestureDetector(
       onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
-      child: const PrivacyAndSecurityScaffold(),
+      child: const AndroidSupportAndFeedbackScaffold(),
     );
   }
 }

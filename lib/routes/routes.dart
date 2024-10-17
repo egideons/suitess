@@ -30,8 +30,8 @@ import 'package:suitess/views/android/screens/profile/views/contact_details/scre
 import 'package:suitess/views/android/screens/profile/views/faqs/screen/android_faqs_screen.dart';
 import 'package:suitess/views/android/screens/profile/views/notifications_settings/screen/android_notifications_settings_screen.dart';
 import 'package:suitess/views/android/screens/profile/views/password_settings/screen/android_password_settings_screen.dart';
-import 'package:suitess/views/android/screens/profile/views/privacy_and_security/screen/privacy_and_security_screen.dart';
-import 'package:suitess/views/android/screens/profile/views/support_and_feedback/screen/support_and_feedback_screen.dart';
+import 'package:suitess/views/android/screens/profile/views/privacy_and_security/screen/android_privacy_and_security_screen.dart';
+import 'package:suitess/views/android/screens/profile/views/support_and_feedback/screen/android_support_and_feedback_screen.dart';
 import 'package:suitess/views/android/screens/profile/views/wallet_information/screen/wallet_information_screen.dart';
 import 'package:suitess/views/android/screens/property/book_appointment/screen/book_appointment_screen.dart';
 import 'package:suitess/views/android/screens/property/checkout_property/screen/checkout_property_screen.dart';
@@ -230,7 +230,7 @@ class Routes {
     ),
     GetPage(
       name: privacyAndSecurity,
-      page: () => const PrivacyAndSecurityScreen(),
+      page: () => const AndroidPrivacyAndSecurityScreen(),
     ),
     GetPage(
       name: faqs,
@@ -238,7 +238,7 @@ class Routes {
     ),
     GetPage(
       name: supportAndFeedback,
-      page: () => const SupportAndFeedbackScreen(),
+      page: () => const AndroidSupportAndFeedbackScreen(),
     ),
 
     //Business Section
