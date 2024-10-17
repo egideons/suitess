@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
-import '../../../../../../../constants/assets.dart';
-import '../../../../../../../constants/consts.dart';
-import '../../../../../../../routes/routes.dart';
-import '../../../../../../../theme/colors.dart';
-import '../../../../../../../utils/components/my_app_bar.dart';
-import '../../content/transfer_option.dart';
+import '../../../../../../constants/assets.dart';
+import '../../../../../../constants/consts.dart';
+import '../../../../../../routes/routes.dart';
+import '../../../../../../theme/colors.dart';
+import '../../../../../../utils/components/my_app_bar.dart';
+import 'android_transfer_option.dart';
 
-class TransferOptionsScaffold extends StatelessWidget {
-  const TransferOptionsScaffold({super.key});
+class AndroidTransferOptionsScaffold extends StatelessWidget {
+  const AndroidTransferOptionsScaffold({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +39,7 @@ class TransferOptionsScaffold extends StatelessWidget {
               ),
             ),
             kBigSizedBox,
-            transferOption(
+            androidTransferOption(
               colorScheme,
               icon: Assets.walletFilledIconSvg,
               title: "Wallet",
@@ -51,7 +51,7 @@ class TransferOptionsScaffold extends StatelessWidget {
               },
             ),
             kSizedBox,
-            transferOption(
+            androidTransferOption(
               colorScheme,
               icon: Assets.bankBuildingSvg,
               title: "Bank Transfer",

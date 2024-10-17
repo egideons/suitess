@@ -138,7 +138,7 @@ class WalletScreenController extends GetxController {
       preventDuplicates: true,
     );
     //     await Get.to(
-    //   () => const TransferOptions(),
+    //   () => const AndroidTransferOptionsScreen(),
     //   routeName: "/transfer-options",
     //   fullscreenDialog: true,
     //   curve: Curves.easeInOut,
