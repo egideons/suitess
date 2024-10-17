@@ -40,7 +40,7 @@ class ViewPropertyController extends GetxController {
     Assets.indoorKitchenPng,
     Assets.indoorKitchenPng,
   ];
-  var propertyImages = <String>[
+  var androidViewPropertyImages = <String>[
     Assets.indoorSittingRoomPng,
     Assets.indoorBedroomPng,
     Assets.indoorKitchen2Png,

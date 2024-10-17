@@ -33,10 +33,10 @@ import 'package:suitess/views/android/screens/profile/views/password_settings/sc
 import 'package:suitess/views/android/screens/profile/views/privacy_and_security/screen/android_privacy_and_security_screen.dart';
 import 'package:suitess/views/android/screens/profile/views/support_and_feedback/screen/android_support_and_feedback_screen.dart';
 import 'package:suitess/views/android/screens/profile/views/wallet_information/screen/android_wallet_information_screen.dart';
-import 'package:suitess/views/android/screens/property/book_appointment/screen/book_appointment_screen.dart';
-import 'package:suitess/views/android/screens/property/checkout_property/screen/checkout_property_screen.dart';
-import 'package:suitess/views/android/screens/property/purchase_property/screen/purchase_property_screen.dart';
-import 'package:suitess/views/android/screens/property/view_property/screen/view_property.dart';
+import 'package:suitess/views/android/screens/property/book_appointment/screen/android_book_appointment_screen.dart';
+import 'package:suitess/views/android/screens/property/checkout_property/screen/android_checkout_property_screen.dart';
+import 'package:suitess/views/android/screens/property/purchase_property/screen/android_purchase_property_screen.dart';
+import 'package:suitess/views/android/screens/property/view_property/screen/android_view_property_screen.dart';
 import 'package:suitess/views/android/screens/search/screen/search_screen.dart';
 import 'package:suitess/views/android/screens/wallet/airtime_purchase/screen/airtime_purchase_screen.dart';
 import 'package:suitess/views/android/screens/wallet/bank_transfer/screen/bank_transfer_screen.dart';
@@ -186,12 +186,18 @@ class Routes {
     GetPage(
         name: notificationsScreen,
         page: () => const AndroidNotificationsScreen()),
-    GetPage(name: viewProperty, page: () => const ViewProperty()),
+    GetPage(name: viewProperty, page: () => const AndroidViewPropertyScreen()),
     GetPage(
         name: bidDetailsScreen, page: () => const AndroidBidDetailsScreen()),
-    GetPage(name: bookAppointment, page: () => const BookAppointmentScreen()),
-    GetPage(name: purchaseProperty, page: () => const PurchasePropertyScreen()),
-    GetPage(name: checkoutProperty, page: () => const CheckoutPropertyScreen()),
+    GetPage(
+        name: bookAppointment,
+        page: () => const AndroidBookAppointmentScreen()),
+    GetPage(
+        name: purchaseProperty,
+        page: () => const AndroidPurchasePropertyScreen()),
+    GetPage(
+        name: checkoutProperty,
+        page: () => const AndroidCheckoutPropertyScreen()),
     GetPage(name: successScreen, page: () => const AndroidSuccessScreen()),
     GetPage(name: searchScreen, page: () => const SearchScreen()),
 

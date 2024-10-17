@@ -115,7 +115,7 @@ class Assets {
   static const indoorBedroomSvg = "assets/images/svg/indoor-bedroom.svg";
   static const indoorSittingRoomSvg =
       "assets/images/svg/indoor-sitting-room.svg";
-  static const paymentMethod = "assets/images/svg/payment_method.svg";
+  static const androidPaymentMethod = "assets/images/svg/payment_method.svg";
   static const bankBuildingSvg = "assets/images/svg/bank-building.svg";
   static const visaSvg = "assets/images/svg/visa.svg";
   static const mastercardSvg = "assets/images/svg/mastercard.svg";

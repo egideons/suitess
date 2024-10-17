@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:suitess/views/android/screens/property/checkout_property/screen/checkout_property_screen.dart';
+import 'package:suitess/views/android/screens/property/checkout_property/screen/android_checkout_property_screen.dart';
 
 class PurchasePropertyController extends GetxController {
   static PurchasePropertyController get instance {
@@ -65,7 +65,7 @@ class PurchasePropertyController extends GetxController {
 
   payWithWallet() async {
     await Get.to(
-      () => const CheckoutPropertyScreen(paymentMethod: "Wallet"),
+      () => const AndroidCheckoutPropertyScreen(androidPaymentMethod: "Wallet"),
       routeName: "/checkout-property",
       fullscreenDialog: true,
       curve: Curves.easeInOut,
@@ -77,7 +77,8 @@ class PurchasePropertyController extends GetxController {
 
   payWithATMCard() async {
     await Get.to(
-      () => const CheckoutPropertyScreen(paymentMethod: "ATM Card"),
+      () =>
+          const AndroidCheckoutPropertyScreen(androidPaymentMethod: "ATM Card"),
       routeName: "/checkout-property",
       fullscreenDialog: true,
       curve: Curves.easeInOut,
@@ -89,7 +90,8 @@ class PurchasePropertyController extends GetxController {
 
   payWithBankTransfer() async {
     await Get.to(
-      () => const CheckoutPropertyScreen(paymentMethod: "Bank Transfer"),
+      () => const AndroidCheckoutPropertyScreen(
+          androidPaymentMethod: "Bank Transfer"),
       routeName: "/checkout-property",
       fullscreenDialog: true,
       curve: Curves.easeInOut,

@@ -6,7 +6,7 @@ import 'package:suitess/utils/components/my_app_bar.dart';
 
 import '../../../../../../constants/consts.dart';
 import '../../../../../../controllers/app/search_screen_controller.dart';
-import '../../../property/view_property/screen/view_property.dart';
+import '../../../property/view_property/screen/android_view_property_screen.dart';
 import '../../content/num_of_search_results_and_filter.dart';
 import '../../content/search_result_container.dart';
 
@@ -108,7 +108,7 @@ class SearchScreenScaffold extends GetView<SearchScreenController> {
                                 //   preventDuplicates: true,
                                 // );
                                 await Get.to(
-                                  () => const ViewProperty(),
+                                  () => const AndroidViewPropertyScreen(),
                                   routeName: "/view-property",
                                   fullscreenDialog: true,
                                   curve: Curves.easeInOut,

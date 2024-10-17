@@ -27,7 +27,7 @@ class TransferOptionsScaffold extends StatelessWidget {
         child: ListView(
           padding: const EdgeInsets.all(10),
           children: [
-            SvgPicture.asset(Assets.paymentMethod),
+            SvgPicture.asset(Assets.androidPaymentMethod),
             kHalfSizedBox,
             Text(
               "Select a Destination bank",

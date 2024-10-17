@@ -2,9 +2,9 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:suitess/views/android/screens/property/checkout_property/content/checkout_property_congratulations_modal_sheet.dart';
-import 'package:suitess/views/android/screens/property/checkout_property/content/schedule_move_in_congratulations_modal_sheet.dart';
-import 'package:suitess/views/android/screens/property/checkout_property/content/schedule_move_in_modal_sheet.dart';
+import 'package:suitess/views/android/screens/property/checkout_property/content/android_checkout_property_congratulations_modal_sheet.dart';
+import 'package:suitess/views/android/screens/property/checkout_property/content/android_schedule_move_in_congratulations_modal_sheet.dart';
+import 'package:suitess/views/android/screens/property/checkout_property/content/android_schedule_move_in_modal_sheet.dart';
 import 'package:suitess/views/android/splash/loading/screen/android_loading_screen.dart';
 
 import '../../models/property/time_appointment_model.dart';
@@ -132,7 +132,7 @@ class CheckoutPropertyController extends GetxController {
       builder: (context) {
         return GestureDetector(
           onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
-          child: const CheckoutPropertyCongratulationsModalSheet(),
+          child: const AndroidCheckoutPropertyCongratulationsModalSheet(),
         );
       },
     );
@@ -153,7 +153,7 @@ class CheckoutPropertyController extends GetxController {
       builder: (context) {
         return GestureDetector(
           onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
-          child: const ScheduleMoveInCongratulationsModalSheet(),
+          child: const AndroidScheduleMoveInCongratulationsModalSheet(),
         );
       },
     );
@@ -173,7 +173,7 @@ class CheckoutPropertyController extends GetxController {
       builder: (context) {
         return GestureDetector(
           onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
-          child: const ScheduleMoveInModalSheet(),
+          child: const AndroidScheduleMoveInModalSheet(),
         );
       },
     );
