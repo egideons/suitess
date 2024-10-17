@@ -5,7 +5,7 @@ import 'package:suitess/theme/colors.dart';
 
 import '../../../../../../../controllers/app/contact_details_controller.dart';
 
-addressSuggestion(
+androidAddressSuggestion(
   Size media,
   ColorScheme colorScheme,
   ContactDetailsScreenController controller,

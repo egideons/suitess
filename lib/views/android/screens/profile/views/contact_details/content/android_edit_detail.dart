@@ -4,8 +4,12 @@ import 'package:iconsax/iconsax.dart';
 import '../../../../../../../constants/consts.dart';
 import '../../../../../../../theme/colors.dart';
 
-editDetail(ColorScheme colorScheme,
-    {String? title, String? detail, Function()? editFunction}) {
+androidEditAddressDialog(
+  ColorScheme colorScheme, {
+  String? title,
+  String? detail,
+  Function()? editFunction,
+}) {
   return Padding(
     padding: const EdgeInsets.symmetric(horizontal: 8.0),
     child: Column(

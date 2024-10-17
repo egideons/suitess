@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../../../../controllers/app/contact_details_controller.dart';
-import '../platform/android/contact_details_scaffold.dart';
+import '../content/android_contact_details_scaffold.dart';
 
-class ContactDetails extends StatelessWidget {
-  const ContactDetails({super.key});
+class AndroidContactDetailsScreen extends StatelessWidget {
+  const AndroidContactDetailsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class ContactDetails extends StatelessWidget {
     }
     return GestureDetector(
       onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
-      child: const ContactDetailsScaffold(),
+      child: const AndroidContactDetailsScaffold(),
     );
   }
 }

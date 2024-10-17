@@ -25,8 +25,8 @@ import 'package:suitess/views/android/screens/my%20_business/lands_and_propertie
 import 'package:suitess/views/android/screens/my%20_business/lands_and_properties/upload_property_images/screen/android_upload_property_images_screen.dart';
 import 'package:suitess/views/android/screens/notifications/screen/android_notifications_screen.dart';
 import 'package:suitess/views/android/screens/profile/screen/android_profile_screen.dart';
-import 'package:suitess/views/android/screens/profile/views/account_type/screen/account_type_screen.dart';
-import 'package:suitess/views/android/screens/profile/views/contact_details/screen/contact_details.dart';
+import 'package:suitess/views/android/screens/profile/views/account_type/screen/android_account_type_screen.dart';
+import 'package:suitess/views/android/screens/profile/views/contact_details/screen/android_contact_details.dart';
 import 'package:suitess/views/android/screens/profile/views/faqs/screen/faqs_screen.dart';
 import 'package:suitess/views/android/screens/profile/views/notifications_settings/screen/notifications_settings_screen.dart';
 import 'package:suitess/views/android/screens/profile/views/password_settings/screen/password_settings_screen.dart';
@@ -216,11 +216,12 @@ class Routes {
 
     //Profile Section
     GetPage(name: profileScreen, page: () => const AndroidProfileScreen()),
-    GetPage(name: contactDetails, page: () => const ContactDetails()),
+    GetPage(
+        name: contactDetails, page: () => const AndroidContactDetailsScreen()),
     GetPage(name: passwordSettings, page: () => const PasswordSettingsScreen()),
     GetPage(
         name: walletInformation, page: () => const WalletInformationScreen()),
-    GetPage(name: accountType, page: () => const AccountTypeScreen()),
+    GetPage(name: accountType, page: () => const AndroidAccountTypeScreen()),
     GetPage(
       name: notificationsSettings,
       page: () => const NotificationsSettingsScreen(),

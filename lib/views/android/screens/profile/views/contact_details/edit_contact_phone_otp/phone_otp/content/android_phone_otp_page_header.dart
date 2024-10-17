@@ -4,7 +4,7 @@ import 'package:suitess/theme/colors.dart';
 
 import '../../../../../../../../../constants/consts.dart';
 
-editContactPhoneOTPPageHeader({
+androidEditContactPhoneOTPPageHeader({
   ColorScheme? colorScheme,
   Size? media,
   String? title,

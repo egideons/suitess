@@ -8,7 +8,7 @@ import 'package:suitess/utils/text_form_fields/android/android_textformfield.dar
 
 import '../../../../../../../constants/consts.dart';
 
-editPhoneNumberDialog(
+androidEditPhoneNumberDialog(
   Size media,
   ColorScheme colorScheme,
   ContactDetailsScreenController controller,

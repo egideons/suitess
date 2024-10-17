@@ -8,8 +8,8 @@ import 'package:suitess/controllers/others/api_processor_controller.dart';
 import 'package:suitess/main.dart';
 import 'package:suitess/services/api/api_url.dart';
 import 'package:suitess/services/client/http_client_service.dart';
-import 'package:suitess/views/android/screens/profile/views/contact_details/content/edit_address_dialog.dart';
-import 'package:suitess/views/android/screens/profile/views/contact_details/content/edit_user_name_dialog.dart';
+import 'package:suitess/views/android/screens/profile/views/contact_details/content/android_edit_address_dialog.dart';
+import 'package:suitess/views/android/screens/profile/views/contact_details/content/android_edit_user_name_dialog.dart';
 
 import '../../constants/consts.dart';
 import '../auth/user_controller.dart';
@@ -102,7 +102,7 @@ class ContactDetailsScreenController extends GetxController {
     //   builder: (context) {
     //     return GestureDetector(
     //       onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
-    //       child: editPhoneNumberDialog(media, colorScheme, controller),
+    //       child: androidEditPhoneNumberDialog(media, colorScheme, controller),
     //     );
     //   },
     // );
@@ -146,7 +146,7 @@ class ContactDetailsScreenController extends GetxController {
       builder: (context) {
         return GestureDetector(
           onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
-          child: editAddressDialog(media, colorScheme, controller),
+          child: androidEditAddressDialog(media, colorScheme, controller),
         );
       },
     );
@@ -211,7 +211,7 @@ class ContactDetailsScreenController extends GetxController {
       builder: (context) {
         return GestureDetector(
           onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
-          child: editUserNameDialog(media, colorScheme, controller),
+          child: androidEditUserNameDialog(media, colorScheme, controller),
         );
       },
     );

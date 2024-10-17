@@ -5,22 +5,22 @@ import '../../../../../../../../../constants/consts.dart';
 import '../../../../../../../../../controllers/auth/edit_contact_phone_otp_controller.dart';
 import '../../../../../../../../../utils/text_form_fields/android/android_textformfield.dart';
 
-editContactPhoneOTPFormLandscape(
-  EditContactPhoneOtpController otpController,
+androidEditContactPhoneOTPFormMobile(
+  EditContactPhoneOtpController controller,
   Size media,
   BuildContext context,
 ) {
   return Form(
-    key: otpController.formKey,
+    key: controller.formKey,
     autovalidateMode: AutovalidateMode.onUserInteraction,
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
-      crossAxisAlignment: CrossAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Flexible(
           child: AndroidTextFormField(
-            controller: otpController.pin1EC,
-            focusNode: otpController.pin1FN,
+            controller: controller.pin1EC,
+            focusNode: controller.pin1FN,
             textInputAction: TextInputAction.next,
             textCapitalization: TextCapitalization.none,
             keyboardType: TextInputType.number,
@@ -28,7 +28,7 @@ editContactPhoneOTPFormLandscape(
             enabledBorder: const UnderlineInputBorder(),
             focusedBorder: const UnderlineInputBorder(),
             onChanged: (value) {
-              otpController.pin1Onchanged(value, context);
+              controller.pin1Onchanged(value, context);
             },
             inputFormatters: [
               LengthLimitingTextInputFormatter(1),
@@ -42,8 +42,8 @@ editContactPhoneOTPFormLandscape(
         kSmallWidthSizedBox,
         Flexible(
           child: AndroidTextFormField(
-            controller: otpController.pin2EC,
-            focusNode: otpController.pin2FN,
+            controller: controller.pin2EC,
+            focusNode: controller.pin2FN,
             textInputAction: TextInputAction.next,
             textCapitalization: TextCapitalization.none,
             keyboardType: TextInputType.number,
@@ -55,7 +55,7 @@ editContactPhoneOTPFormLandscape(
               FilteringTextInputFormatter.digitsOnly,
             ],
             onChanged: (value) {
-              otpController.pin2Onchanged(value, context);
+              controller.pin2Onchanged(value, context);
             },
             validator: (value) {
               return null;
@@ -65,8 +65,8 @@ editContactPhoneOTPFormLandscape(
         kSmallWidthSizedBox,
         Flexible(
           child: AndroidTextFormField(
-            controller: otpController.pin3EC,
-            focusNode: otpController.pin3FN,
+            controller: controller.pin3EC,
+            focusNode: controller.pin3FN,
             textInputAction: TextInputAction.next,
             textCapitalization: TextCapitalization.none,
             keyboardType: TextInputType.number,
@@ -78,7 +78,7 @@ editContactPhoneOTPFormLandscape(
               FilteringTextInputFormatter.digitsOnly,
             ],
             onChanged: (value) {
-              otpController.pin3Onchanged(value, context);
+              controller.pin3Onchanged(value, context);
             },
             validator: (value) {
               return null;
@@ -88,32 +88,8 @@ editContactPhoneOTPFormLandscape(
         kSmallWidthSizedBox,
         Flexible(
           child: AndroidTextFormField(
-            controller: otpController.pin4EC,
-            focusNode: otpController.pin4FN,
-            textInputAction: TextInputAction.next,
-            textCapitalization: TextCapitalization.none,
-            keyboardType: TextInputType.number,
-            inputBorder: const UnderlineInputBorder(),
-            enabledBorder: const UnderlineInputBorder(),
-            focusedBorder: const UnderlineInputBorder(),
-            onFieldSubmitted: otpController.onSubmitted,
-            inputFormatters: [
-              LengthLimitingTextInputFormatter(1),
-              FilteringTextInputFormatter.digitsOnly,
-            ],
-            onChanged: (value) {
-              otpController.pin4Onchanged(value, context);
-            },
-            validator: (value) {
-              return null;
-            },
-          ),
-        ),
-        kSmallWidthSizedBox,
-        Flexible(
-          child: AndroidTextFormField(
-            controller: otpController.pin5EC,
-            focusNode: otpController.pin5FN,
+            controller: controller.pin4EC,
+            focusNode: controller.pin4FN,
             textInputAction: TextInputAction.next,
             textCapitalization: TextCapitalization.none,
             keyboardType: TextInputType.number,
@@ -125,7 +101,7 @@ editContactPhoneOTPFormLandscape(
               FilteringTextInputFormatter.digitsOnly,
             ],
             onChanged: (value) {
-              otpController.pin5Onchanged(value, context);
+              controller.pin4Onchanged(value, context);
             },
             validator: (value) {
               return null;
@@ -135,21 +111,44 @@ editContactPhoneOTPFormLandscape(
         kSmallWidthSizedBox,
         Flexible(
           child: AndroidTextFormField(
-            controller: otpController.pin6EC,
-            focusNode: otpController.pin6FN,
+            controller: controller.pin5EC,
+            focusNode: controller.pin5FN,
+            textInputAction: TextInputAction.next,
+            textCapitalization: TextCapitalization.none,
+            keyboardType: TextInputType.number,
+            inputBorder: const UnderlineInputBorder(),
+            enabledBorder: const UnderlineInputBorder(),
+            focusedBorder: const UnderlineInputBorder(),
+            inputFormatters: [
+              LengthLimitingTextInputFormatter(1),
+              FilteringTextInputFormatter.digitsOnly,
+            ],
+            onChanged: (value) {
+              controller.pin5Onchanged(value, context);
+            },
+            validator: (value) {
+              return null;
+            },
+          ),
+        ),
+        kSmallWidthSizedBox,
+        Flexible(
+          child: AndroidTextFormField(
+            controller: controller.pin6EC,
+            focusNode: controller.pin6FN,
             textInputAction: TextInputAction.done,
             textCapitalization: TextCapitalization.none,
             keyboardType: TextInputType.number,
             inputBorder: const UnderlineInputBorder(),
             enabledBorder: const UnderlineInputBorder(),
             focusedBorder: const UnderlineInputBorder(),
-            onFieldSubmitted: otpController.onSubmitted,
+            onFieldSubmitted: controller.onSubmitted,
             inputFormatters: [
               LengthLimitingTextInputFormatter(1),
               FilteringTextInputFormatter.digitsOnly,
             ],
             onChanged: (value) {
-              otpController.pin6Onchanged(value, context);
+              controller.pin6Onchanged(value, context);
             },
             validator: (value) {
               return null;

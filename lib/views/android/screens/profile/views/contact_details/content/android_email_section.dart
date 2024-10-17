@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../../../../constants/consts.dart';
 import '../../../../../../../theme/colors.dart';
 
-emailSection(ColorScheme colorScheme, {String? userEmail}) {
+androidEmailSection(ColorScheme colorScheme, {String? userEmail}) {
   return Padding(
     padding: const EdgeInsets.all(8.0),
     child: Column(

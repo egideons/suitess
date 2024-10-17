@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:suitess/utils/components/my_app_bar.dart';
 
-import '../../../../../../../../controllers/app/account_type_controller.dart';
-import '../../content/account_type_field.dart';
+import '../../../../../../../controllers/app/account_type_controller.dart';
+import 'android_account_type_field.dart';
 
-class AccountTypeScaffold extends GetView<AccountTypeController> {
-  const AccountTypeScaffold({super.key});
+class AndroidAccountTypeScaffold extends GetView<AccountTypeController> {
+  const AndroidAccountTypeScaffold({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +39,7 @@ class AccountTypeScaffold extends GetView<AccountTypeController> {
                         ),
                       ),
                     ),
-                    child: accountTypeField(
+                    child: androidAccountTypeField(
                       colorScheme,
                       changeAccountTypeFunc: () {},
                       changeAccountType: "Go Pro",

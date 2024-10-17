@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:suitess/controllers/auth/edit_contact_phone_otp_controller.dart';
 
-import '../platform/android/edit_contact_phone_otp_scaffold.dart';
+import '../content/android_edit_contact_phone_otp_scaffold.dart';
 
-class EditContactPhoneOtpScreen extends StatelessWidget {
+class AndroidEditContactPhoneOtpScreen extends StatelessWidget {
   final String? userPhoneNumber, userEmail;
-  const EditContactPhoneOtpScreen(
+  const AndroidEditContactPhoneOtpScreen(
       {super.key, this.userPhoneNumber, this.userEmail});
 
   @override
@@ -24,7 +24,7 @@ class EditContactPhoneOtpScreen extends StatelessWidget {
     }
     return GestureDetector(
       onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
-      child: EditContactPhoneOtpScaffold(
+      child: AndroidEditContactPhoneOtpScaffold(
         userPhoneNumber: userPhoneNumber!,
         userEmail: userEmail!,
       ),

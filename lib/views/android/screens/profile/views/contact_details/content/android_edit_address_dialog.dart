@@ -6,11 +6,11 @@ import 'package:suitess/theme/colors.dart';
 import 'package:suitess/utils/buttons/android/android_elevated_button.dart';
 import 'package:suitess/utils/containers/form_field_container.dart';
 import 'package:suitess/utils/text_form_fields/android/android_textformfield.dart';
-import 'package:suitess/views/android/screens/profile/views/contact_details/content/address_suggestion.dart';
+import 'package:suitess/views/android/screens/profile/views/contact_details/content/anroid_address_suggestion.dart';
 
 import '../../../../../../../constants/consts.dart';
 
-editAddressDialog(
+androidEditAddressDialog(
   Size media,
   ColorScheme colorScheme,
   ContactDetailsScreenController controller,
@@ -137,7 +137,7 @@ editAddressDialog(
                                         separatorBuilder: (context, index) =>
                                             kHalfSizedBox,
                                         itemBuilder: (context, index) {
-                                          return addressSuggestion(
+                                          return androidAddressSuggestion(
                                             media,
                                             colorScheme,
                                             controller,

@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:suitess/utils/components/my_app_bar.dart';
 
-import '../../../../../../../../controllers/auth/user_controller.dart';
-import '../../../../../../../../controllers/app/contact_details_controller.dart';
-import '../../content/edit_detail.dart';
-import '../../content/email_section.dart';
+import '../../../../../../../controllers/app/contact_details_controller.dart';
+import '../../../../../../../controllers/auth/user_controller.dart';
+import 'android_edit_detail.dart';
+import 'android_email_section.dart';
 
-class ContactDetailsScaffold extends GetView<ContactDetailsScreenController> {
-  const ContactDetailsScaffold({super.key});
+class AndroidContactDetailsScaffold
+    extends GetView<ContactDetailsScreenController> {
+  const AndroidContactDetailsScaffold({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -43,14 +44,14 @@ class ContactDetailsScaffold extends GetView<ContactDetailsScreenController> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        emailSection(
+                        androidEmailSection(
                           colorScheme,
                           userEmail: user!.email,
                         ),
                         Divider(
                           color: colorScheme.inversePrimary.withOpacity(.4),
                         ),
-                        editDetail(
+                        androidEditAddressDialog(
                           colorScheme,
                           title: "Phone",
                           detail: user.phone,
@@ -59,7 +60,7 @@ class ContactDetailsScaffold extends GetView<ContactDetailsScreenController> {
                         Divider(
                           color: colorScheme.inversePrimary.withOpacity(.4),
                         ),
-                        editDetail(
+                        androidEditAddressDialog(
                           colorScheme,
                           title: "Address",
                           detail: user.settings!.address,
@@ -68,7 +69,7 @@ class ContactDetailsScaffold extends GetView<ContactDetailsScreenController> {
                         Divider(
                           color: colorScheme.inversePrimary.withOpacity(.4),
                         ),
-                        editDetail(
+                        androidEditAddressDialog(
                           colorScheme,
                           title: "Username",
                           detail: user.settings!.username,

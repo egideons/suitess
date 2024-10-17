@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../../../../constants/consts.dart';
 import '../../../../../../../theme/colors.dart';
 
-accountTypeField(
+androidAccountTypeField(
   ColorScheme colorScheme, {
   String? accountyType,
   String? changeAccountType,

@@ -4,18 +4,18 @@ import 'package:get/get.dart';
 import 'package:suitess/utils/buttons/android/android_elevated_button.dart';
 import 'package:suitess/utils/components/responsive_constants.dart';
 import 'package:suitess/views/android/auth/phone_otp/content/android_phone_otp_page_header.dart';
-import 'package:suitess/views/android/screens/profile/views/contact_details/edit_contact_phone_otp/phone_otp/content/phone_otp_form_landscape.dart';
-import 'package:suitess/views/android/screens/profile/views/contact_details/edit_contact_phone_otp/phone_otp/content/phone_otp_form_mobile.dart';
+import 'package:suitess/views/android/screens/profile/views/contact_details/edit_contact_phone_otp/phone_otp/content/android_phone_otp_form_landscape.dart';
+import 'package:suitess/views/android/screens/profile/views/contact_details/edit_contact_phone_otp/phone_otp/content/android_phone_otp_form_mobile.dart';
 
-import '../../../../../../../../../../constants/assets.dart';
-import '../../../../../../../../../../constants/consts.dart';
-import '../../../../../../../../../../controllers/auth/edit_contact_phone_otp_controller.dart';
-import '../../../../../../../../../../theme/colors.dart';
+import '../../../../../../../../../constants/assets.dart';
+import '../../../../../../../../../constants/consts.dart';
+import '../../../../../../../../../controllers/auth/edit_contact_phone_otp_controller.dart';
+import '../../../../../../../../../theme/colors.dart';
 
-class EditContactPhoneOtpScaffold
+class AndroidEditContactPhoneOtpScaffold
     extends GetView<EditContactPhoneOtpController> {
   final String userPhoneNumber, userEmail;
-  const EditContactPhoneOtpScaffold({
+  const AndroidEditContactPhoneOtpScaffold({
     required this.userPhoneNumber,
     required this.userEmail,
     super.key,
@@ -79,7 +79,7 @@ class EditContactPhoneOtpScaffold
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       const SizedBox(height: kDefaultPadding * 4),
-                      editContactPhoneOTPFormLandscape(
+                      androidEditContactPhoneOTPFormLandscape(
                           controller, media, context),
                       const SizedBox(height: kDefaultPadding * 2),
                       GetBuilder<EditContactPhoneOtpController>(
@@ -168,7 +168,7 @@ class EditContactPhoneOtpScaffold
               signupVia: controller.sendToEmail,
             ),
             const SizedBox(height: kDefaultPadding * 2),
-            editContactPhoneOTPFormMobile(controller, media, context),
+            androidEditContactPhoneOTPFormMobile(controller, media, context),
             kBigSizedBox,
             Row(
               mainAxisAlignment: MainAxisAlignment.center,

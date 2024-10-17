@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../../../../controllers/app/account_type_controller.dart';
-import '../platform/android/account_type_scaffold.dart';
+import '../content/android_account_type_scaffold.dart';
 
-class AccountTypeScreen extends StatelessWidget {
-  const AccountTypeScreen({super.key});
+class AndroidAccountTypeScreen extends StatelessWidget {
+  const AndroidAccountTypeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class AccountTypeScreen extends StatelessWidget {
     }
     return GestureDetector(
       onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
-      child: const AccountTypeScaffold(),
+      child: const AndroidAccountTypeScaffold(),
     );
   }
 }
