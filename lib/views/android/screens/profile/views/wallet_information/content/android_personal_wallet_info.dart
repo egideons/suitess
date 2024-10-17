@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../../../../constants/consts.dart';
 import '../../../../../../../theme/colors.dart';
 
-personalWalletInfo(Size media, ColorScheme colorScheme) {
+androidPersonalWalletInfo(Size media, ColorScheme colorScheme) {
   return Container(
     width: media.width,
     padding: const EdgeInsets.all(10),

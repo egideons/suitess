@@ -6,11 +6,12 @@ import 'package:suitess/utils/components/my_app_bar.dart';
 
 import '../../../../../../../controllers/app/wallet_information_controller.dart';
 import '../../../../../../../theme/colors.dart';
-import 'personal_wallet_info.dart';
-import 'wallet_tier_info.dart';
+import 'android_personal_wallet_info.dart';
+import 'android_wallet_tier_info.dart';
 
-class WalletInformationScaffold extends GetView<WalletInformationController> {
-  const WalletInformationScaffold({super.key});
+class AndroidWalletInformationScaffold
+    extends GetView<WalletInformationController> {
+  const AndroidWalletInformationScaffold({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -41,9 +42,9 @@ class WalletInformationScaffold extends GetView<WalletInformationController> {
                 controller: controller.scrollController,
                 padding: const EdgeInsets.all(10),
                 children: [
-                  personalWalletInfo(media, colorScheme),
+                  androidPersonalWalletInfo(media, colorScheme),
                   kSizedBox,
-                  walletTierInfo(
+                  androidWalletTierInfo(
                     colorScheme,
                     controller,
                     isCurrentTier: true,
@@ -53,7 +54,7 @@ class WalletInformationScaffold extends GetView<WalletInformationController> {
                     maximumAccountBalance: "1m",
                   ),
                   kSizedBox,
-                  walletTierInfo(
+                  androidWalletTierInfo(
                     colorScheme,
                     controller,
                     isCurrentTier: false,
@@ -63,7 +64,7 @@ class WalletInformationScaffold extends GetView<WalletInformationController> {
                     maximumAccountBalance: "20m",
                   ),
                   kSizedBox,
-                  walletTierInfo(
+                  androidWalletTierInfo(
                     colorScheme,
                     controller,
                     isCurrentTier: false,
@@ -73,7 +74,7 @@ class WalletInformationScaffold extends GetView<WalletInformationController> {
                     maximumAccountBalance: "Unlimited",
                   ),
                   kSizedBox,
-                  walletTierInfo(
+                  androidWalletTierInfo(
                     colorScheme,
                     controller,
                     isCurrentTier: false,

@@ -32,7 +32,7 @@ import 'package:suitess/views/android/screens/profile/views/notifications_settin
 import 'package:suitess/views/android/screens/profile/views/password_settings/screen/android_password_settings_screen.dart';
 import 'package:suitess/views/android/screens/profile/views/privacy_and_security/screen/android_privacy_and_security_screen.dart';
 import 'package:suitess/views/android/screens/profile/views/support_and_feedback/screen/android_support_and_feedback_screen.dart';
-import 'package:suitess/views/android/screens/profile/views/wallet_information/screen/wallet_information_screen.dart';
+import 'package:suitess/views/android/screens/profile/views/wallet_information/screen/android_wallet_information_screen.dart';
 import 'package:suitess/views/android/screens/property/book_appointment/screen/book_appointment_screen.dart';
 import 'package:suitess/views/android/screens/property/checkout_property/screen/checkout_property_screen.dart';
 import 'package:suitess/views/android/screens/property/purchase_property/screen/purchase_property_screen.dart';
@@ -222,7 +222,8 @@ class Routes {
         name: passwordSettings,
         page: () => const AndroidPasswordSettingsScreen()),
     GetPage(
-        name: walletInformation, page: () => const WalletInformationScreen()),
+        name: walletInformation,
+        page: () => const AndroidWalletInformationScreen()),
     GetPage(name: accountType, page: () => const AndroidAccountTypeScreen()),
     GetPage(
       name: notificationsSettings,

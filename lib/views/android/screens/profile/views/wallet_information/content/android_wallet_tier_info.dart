@@ -5,7 +5,7 @@ import '../../../../../../../constants/consts.dart';
 import '../../../../../../../controllers/app/wallet_information_controller.dart';
 import '../../../../../../../theme/colors.dart';
 
-walletTierInfo(
+androidWalletTierInfo(
   ColorScheme colorScheme,
   WalletInformationController controller, {
   bool? isCurrentTier,

@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../../../../controllers/app/wallet_information_controller.dart';
-import '../platform/android/wallet_information_scaffold.dart';
+import '../content/android_wallet_information_scaffold.dart';
 
-class WalletInformationScreen extends StatelessWidget {
-  const WalletInformationScreen({super.key});
+class AndroidWalletInformationScreen extends StatelessWidget {
+  const AndroidWalletInformationScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class WalletInformationScreen extends StatelessWidget {
     }
     return GestureDetector(
       onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
-      child: const WalletInformationScaffold(),
+      child: const AndroidWalletInformationScaffold(),
     );
   }
 }
