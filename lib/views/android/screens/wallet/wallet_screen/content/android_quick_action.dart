@@ -4,7 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import '../../../../../../constants/consts.dart';
 import '../../../../../../theme/colors.dart';
 
-quickActionCard(
+androidQuickAction(
   ColorScheme colorScheme,
   void Function()? onTap, {
   String? svgIcon,

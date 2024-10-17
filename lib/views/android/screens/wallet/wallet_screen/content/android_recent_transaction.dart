@@ -5,7 +5,7 @@ import '../../../../../../constants/assets.dart';
 import '../../../../../../constants/consts.dart';
 import '../../../../../../theme/colors.dart';
 
-recentTransaction(
+androidRecentTransaction(
   Size media,
   ColorScheme colorScheme,
   void Function()? onTap, {

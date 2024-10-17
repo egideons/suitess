@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:suitess/routes/routes.dart';
 
-import '../../../views/android/screens/wallet/wallet_transfer/content/wallet_transfer_tx_details.dart';
-import '../../../views/android/screens/wallet/wallet_transfer/content/wallet_transfer_tx_pin.dart';
-import '../../views/android/splash/successful/screen/android_success_screen.dart';
 import '../../constants/consts.dart';
 import '../../models/wallet/source_account_model.dart';
+import '../../views/android/screens/wallet/wallet_transfer/content/android_wallet_transfer_tx_details.dart';
+import '../../views/android/screens/wallet/wallet_transfer/content/android_wallet_transfer_tx_pin.dart';
+import '../../views/android/splash/successful/screen/android_success_screen.dart';
 import '../others/api_processor_controller.dart';
 
 class WalletTransferController extends GetxController {
@@ -187,7 +187,7 @@ class WalletTransferController extends GetxController {
       builder: (context) {
         return GestureDetector(
           onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
-          child: WalletTransferTxDetails(
+          child: AndroidWalletTransferTxDetails(
             accountNumber: walletNumberEC.text,
             beneficiaryName: beneficiaryName.value,
             transactionAmount: transactionAmount,
@@ -212,7 +212,7 @@ class WalletTransferController extends GetxController {
       builder: (context) {
         return GestureDetector(
           onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
-          child: const WalletTransferTxPin(),
+          child: const AndroidWalletTransferTxPin(),
         );
       },
     );

@@ -8,14 +8,14 @@ import 'package:suitess/utils/components/my_app_bar.dart';
 import '../../../../../../controllers/app/wallet_screen_controller.dart';
 import '../../../../../../theme/colors.dart';
 import '../../../../../../utils/components/notification_bell_icon.dart';
-import 'add_ink_well.dart';
-import 'income_debit_card.dart';
-import 'quick_action_card.dart';
-import 'recent_transaction.dart';
-import 'wallet_card.dart';
+import 'android_add_ink_well.dart';
+import 'android_income_debit_card.dart';
+import 'android_quick_action.dart';
+import 'android_recent_transaction.dart';
+import 'android_wallet_card.dart';
 
-class WalletScaffold extends GetView<WalletScreenController> {
-  const WalletScaffold({super.key});
+class AndroidWalletScaffold extends GetView<WalletScreenController> {
+  const AndroidWalletScaffold({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +52,7 @@ class WalletScaffold extends GetView<WalletScreenController> {
             children: [
               Row(
                 children: [
-                  walletCard(
+                  androidWalletCard(
                     colorScheme,
                     controller,
                     walletBalance: "2,372,054.02",
@@ -60,11 +60,11 @@ class WalletScaffold extends GetView<WalletScreenController> {
                     bvn: "22239350048",
                   ),
                   kSmallWidthSizedBox,
-                  addInkWell(colorScheme, () {}),
+                  androidAddInkWell(colorScheme, () {}),
                 ],
               ),
               kBigSizedBox,
-              incomeDebitCard(
+              androidIncomeDebitCard(
                 media,
                 colorScheme,
                 income: 20000000000,
@@ -84,25 +84,25 @@ class WalletScaffold extends GetView<WalletScreenController> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  quickActionCard(
+                  androidQuickAction(
                     colorScheme,
                     controller.goToTransferOptions,
                     svgIcon: Assets.transferSvg,
                     title: "Transfer",
                   ),
-                  quickActionCard(
+                  androidQuickAction(
                     colorScheme,
                     controller.goToAirtime,
                     svgIcon: Assets.mobileOutlineSvg,
                     title: "Airtime",
                   ),
-                  quickActionCard(
+                  androidQuickAction(
                     colorScheme,
                     controller.gotToMobileData,
                     svgIcon: Assets.wifiOutlineSvg,
                     title: "Data",
                   ),
-                  quickActionCard(
+                  androidQuickAction(
                     colorScheme,
                     controller.goToElectricity,
                     svgIcon: Assets.electricBoltOutlineSvg,
@@ -160,7 +160,7 @@ class WalletScaffold extends GetView<WalletScreenController> {
                   itemCount: 20,
                   separatorBuilder: (context, index) => kHalfSizedBox,
                   itemBuilder: (context, index) {
-                    return recentTransaction(
+                    return androidRecentTransaction(
                       media,
                       colorScheme,
                       () {},

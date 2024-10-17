@@ -47,8 +47,8 @@ import 'package:suitess/views/android/screens/wallet/reset_tx_pin_options/via_em
 import 'package:suitess/views/android/screens/wallet/reset_tx_pin_options/via_sms/screen/reset_tx_pin_via_sms.dart';
 import 'package:suitess/views/android/screens/wallet/transfer_options/screen/android_transfer_options.dart';
 import 'package:suitess/views/android/screens/wallet/wallet_intro/screen/android_wallet_intro_screen.dart';
-import 'package:suitess/views/android/screens/wallet/wallet_screen/screen/wallet_screen.dart';
-import 'package:suitess/views/android/screens/wallet/wallet_transfer/screen/wallet_transfer_screen.dart';
+import 'package:suitess/views/android/screens/wallet/wallet_screen/screen/android_wallet_screen.dart';
+import 'package:suitess/views/android/screens/wallet/wallet_transfer/screen/android_wallet_transfer_screen.dart';
 import 'package:suitess/views/android/splash/congratulations/screen/congratulations_screen.dart';
 import 'package:suitess/views/android/splash/loading/screen/android_loading_screen.dart';
 import 'package:suitess/views/android/splash/startup/screen/android_startup_screen.dart';
@@ -209,11 +209,12 @@ class Routes {
     //Wallet Section
     GetPage(
         name: walletIntroScreen, page: () => const AndroidWalletIntroScreen()),
-    GetPage(name: walletScreen, page: () => const WalletScreen()),
+    GetPage(name: walletScreen, page: () => const AndroidWalletScreen()),
     GetPage(
         name: transferOptions,
         page: () => const AndroidTransferOptionsScreen()),
-    GetPage(name: walletTransfer, page: () => const WalletTransferScreen()),
+    GetPage(
+        name: walletTransfer, page: () => const AndroidWalletTransferScreen()),
     GetPage(name: bankTransfer, page: () => const AndroidBankTransferScreen()),
     GetPage(name: airtimePurchase, page: () => const AirtimePurchaseScreen()),
     GetPage(name: mobileData, page: () => const AndroidMobileDataScreen()),

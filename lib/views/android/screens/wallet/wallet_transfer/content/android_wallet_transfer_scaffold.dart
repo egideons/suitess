@@ -3,16 +3,16 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:suitess/utils/containers/form_field_container.dart';
 
-import '../../../../../../../constants/consts.dart';
-import '../../../../../../../controllers/app/wallet_transfer_controller.dart';
-import '../../../../../../../theme/colors.dart';
-import '../../../../../../../utils/buttons/android/android_elevated_button.dart';
-import '../../../../../../../utils/components/my_app_bar.dart';
-import '../../../../../../../utils/text_form_fields/android/android_textformfield.dart';
-import '../../content/wallet_transfer_source_wallet.dart';
+import '../../../../../../constants/consts.dart';
+import '../../../../../../controllers/app/wallet_transfer_controller.dart';
+import '../../../../../../theme/colors.dart';
+import '../../../../../../utils/buttons/android/android_elevated_button.dart';
+import '../../../../../../utils/components/my_app_bar.dart';
+import '../../../../../../utils/text_form_fields/android/android_textformfield.dart';
+import 'android_wallet_transfer_source_wallet.dart';
 
-class WalletTransferScaffold extends GetView<WalletTransferController> {
-  const WalletTransferScaffold({super.key});
+class AndroidWalletTransferScaffold extends GetView<WalletTransferController> {
+  const AndroidWalletTransferScaffold({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +54,7 @@ class WalletTransferScaffold extends GetView<WalletTransferController> {
                 ),
               ),
               kHalfSizedBox,
-              walletTransferSourceWallet(media, colorScheme, controller),
+              androidWalletTransferSourceWallet(media, colorScheme, controller),
               kBigSizedBox,
               Text(
                 "Transfer to",

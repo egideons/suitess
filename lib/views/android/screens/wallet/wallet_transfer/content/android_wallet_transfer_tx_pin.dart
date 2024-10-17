@@ -9,8 +9,8 @@ import '../../../../../../utils/buttons/android/android_elevated_button.dart';
 import '../../../../../../utils/containers/form_field_container.dart';
 import '../../../../../../utils/text_form_fields/android/android_textformfield.dart';
 
-class WalletTransferTxPin extends GetView<WalletTransferController> {
-  const WalletTransferTxPin({super.key});
+class AndroidWalletTransferTxPin extends GetView<WalletTransferController> {
+  const AndroidWalletTransferTxPin({super.key});
 
   @override
   Widget build(BuildContext context) {

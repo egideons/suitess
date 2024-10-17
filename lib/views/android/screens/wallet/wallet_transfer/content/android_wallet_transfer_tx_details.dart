@@ -6,10 +6,10 @@ import '../../../../../../controllers/app/wallet_transfer_controller.dart';
 import '../../../../../../theme/colors.dart';
 import '../../../../../../utils/buttons/android/android_elevated_button.dart';
 import '../../../../../../utils/buttons/android/android_outlined_button.dart';
-import 'wallet_transfer_tx_detail.dart';
+import 'android_wallet_transfer_tx_detail.dart';
 
-class WalletTransferTxDetails extends GetView<WalletTransferController> {
-  const WalletTransferTxDetails({
+class AndroidWalletTransferTxDetails extends GetView<WalletTransferController> {
+  const AndroidWalletTransferTxDetails({
     this.beneficiaryName,
     this.accountNumber,
     this.transactionAmount,
@@ -78,7 +78,7 @@ class WalletTransferTxDetails extends GetView<WalletTransferController> {
                       ),
                       child: Column(
                         children: [
-                          walletTransferTxDetail(
+                          androidWalletTransferTxDetail(
                             title: "Source account",
                             child: Text(
                               "093710254",
@@ -91,7 +91,7 @@ class WalletTransferTxDetails extends GetView<WalletTransferController> {
                             ),
                           ),
                           kSizedBox,
-                          walletTransferTxDetail(
+                          androidWalletTransferTxDetail(
                             title: "Benificiary Bank",
                             child: Text(
                               "Suitess Wallet",
@@ -104,7 +104,7 @@ class WalletTransferTxDetails extends GetView<WalletTransferController> {
                             ),
                           ),
                           kSizedBox,
-                          walletTransferTxDetail(
+                          androidWalletTransferTxDetail(
                             title: "Account Number",
                             child: Text(
                               accountNumber ?? "",
@@ -117,7 +117,7 @@ class WalletTransferTxDetails extends GetView<WalletTransferController> {
                             ),
                           ),
                           kSizedBox,
-                          walletTransferTxDetail(
+                          androidWalletTransferTxDetail(
                             title: "Benificiary's Name",
                             child: Text(
                               beneficiaryName ?? "",
@@ -131,7 +131,7 @@ class WalletTransferTxDetails extends GetView<WalletTransferController> {
                             ),
                           ),
                           kSizedBox,
-                          walletTransferTxDetail(
+                          androidWalletTransferTxDetail(
                             title: "Transaction Amount",
                             child: Text.rich(
                               softWrap: true,
@@ -158,7 +158,7 @@ class WalletTransferTxDetails extends GetView<WalletTransferController> {
                             ),
                           ),
                           kSizedBox,
-                          walletTransferTxDetail(
+                          androidWalletTransferTxDetail(
                             title: "Transaction Charges",
                             child: Text.rich(
                               softWrap: true,

@@ -4,10 +4,10 @@ import 'package:suitess/controllers/others/api_processor_controller.dart';
 import 'package:suitess/models/wallet/transaction_filter_categories_model.dart';
 
 import '../../../main.dart';
-import '../../../views/android/screens/wallet/wallet_screen/content/transactions_history_modal_sheet.dart';
 import '../../models/wallet/transaction_filter_month_model.dart';
 import '../../models/wallet/transaction_filter_section_model.dart';
 import '../../routes/routes.dart';
+import '../../views/android/screens/wallet/wallet_screen/content/android_transactions_history_modal_sheet.dart';
 
 class WalletScreenController extends GetxController {
   static WalletScreenController get instance {
@@ -175,7 +175,7 @@ class WalletScreenController extends GetxController {
       builder: (context) {
         return GestureDetector(
           onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
-          child: const TransactionsHistoryModalSheet(),
+          child: const AndroidTransactionsHistoryModalSheet(),
         );
       },
     );

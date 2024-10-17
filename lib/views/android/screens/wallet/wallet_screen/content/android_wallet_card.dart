@@ -7,7 +7,7 @@ import '../../../../../../constants/consts.dart';
 import '../../../../../../controllers/app/wallet_screen_controller.dart';
 import '../../../../../../theme/colors.dart';
 
-walletCard(
+androidWalletCard(
   ColorScheme colorScheme,
   WalletScreenController controller, {
   String? walletBalance,

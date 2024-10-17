@@ -1,7 +1,7 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 
-addInkWell(ColorScheme colorScheme, void Function()? addFunc) {
+androidAddInkWell(ColorScheme colorScheme, void Function()? addFunc) {
   return InkWell(
     onTap: addFunc ?? () {},
     borderRadius: BorderRadius.circular(6),

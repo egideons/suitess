@@ -8,10 +8,11 @@ import '../../../../../../constants/assets.dart';
 import '../../../../../../constants/consts.dart';
 import '../../../../../../controllers/app/wallet_screen_controller.dart';
 import '../../../../../../theme/colors.dart';
-import 'recent_transaction.dart';
+import 'android_recent_transaction.dart';
 
-class TransactionsHistoryModalSheet extends GetView<WalletScreenController> {
-  const TransactionsHistoryModalSheet({super.key});
+class AndroidTransactionsHistoryModalSheet
+    extends GetView<WalletScreenController> {
+  const AndroidTransactionsHistoryModalSheet({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -92,7 +93,7 @@ class TransactionsHistoryModalSheet extends GetView<WalletScreenController> {
                         physics: const ScrollPhysics(),
                         separatorBuilder: (context, index) => kHalfSizedBox,
                         itemBuilder: (context, index) {
-                          return recentTransaction(
+                          return androidRecentTransaction(
                             media,
                             colorScheme,
                             () {},

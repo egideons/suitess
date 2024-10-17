@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../../../controllers/app/airtime_controller.dart';
-import '../content/airtime_purchase_scaffold.dart';
+import '../content/android_airtime_purchase_scaffold.dart';
 
 class AirtimePurchaseScreen extends StatelessWidget {
   const AirtimePurchaseScreen({super.key});

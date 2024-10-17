@@ -5,7 +5,7 @@ import '../../../../../../constants/assets.dart';
 import '../../../../../../constants/consts.dart';
 import '../../../../../../theme/colors.dart';
 
-incomeDebitCard(
+androidIncomeDebitCard(
   Size media,
   ColorScheme colorScheme, {
   int? income,
