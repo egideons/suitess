@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../../../constants/consts.dart';
 import '../../../../../../theme/colors.dart';
 
-bankTransferTxDetail({String? title, Widget? child}) {
+androidBankTransferTxDetail({String? title, Widget? child}) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [

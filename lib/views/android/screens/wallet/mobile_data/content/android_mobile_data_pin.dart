@@ -9,8 +9,8 @@ import '../../../../../../utils/buttons/android/android_elevated_button.dart';
 import '../../../../../../utils/containers/form_field_container.dart';
 import '../../../../../../utils/text_form_fields/android/android_textformfield.dart';
 
-class MobileDataPin extends GetView<MobileDataController> {
-  const MobileDataPin({super.key});
+class AndroidMobileDataPin extends GetView<MobileDataController> {
+  const AndroidMobileDataPin({super.key});
 
   @override
   Widget build(BuildContext context) {

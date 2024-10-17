@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:suitess/views/android/screens/wallet/airtime_purchase/content/airtime_purchase_pin.dart';
-import 'package:suitess/views/android/screens/wallet/airtime_purchase/content/list_of_airtime_billers_modal.dart';
+import 'package:suitess/views/android/screens/wallet/airtime_purchase/content/android_airtime_purchase_pin.dart';
+import 'package:suitess/views/android/screens/wallet/airtime_purchase/content/android_list_of_airtime_billers_modal.dart';
 import 'package:suitess/views/android/splash/successful/screen/android_success_screen.dart';
 
 import '../../constants/consts.dart';
@@ -112,7 +112,7 @@ class AirtimePurchaseController extends GetxController {
       builder: (context) {
         return GestureDetector(
           onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
-          child: const ListOfAirtimeBillersModal(),
+          child: const AndroidListOfAirtimeBillersModal(),
         );
       },
     );
@@ -144,7 +144,7 @@ class AirtimePurchaseController extends GetxController {
       builder: (context) {
         return GestureDetector(
           onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
-          child: const AirtimePurchasePin(),
+          child: const AndroidAirtimePurchasePin(),
         );
       },
     );

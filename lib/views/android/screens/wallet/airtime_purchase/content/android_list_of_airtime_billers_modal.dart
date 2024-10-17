@@ -1,15 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:suitess/controllers/app/airtime_controller.dart';
 import 'package:suitess/utils/components/my_app_bar.dart';
 
 import '../../../../../../constants/assets.dart';
 import '../../../../../../constants/consts.dart';
-import '../../../../../../controllers/app/mobile_data_controller.dart';
 import '../../../../../../theme/colors.dart';
 
-class ListOfMobileDataPlansModal extends GetView<MobileDataController> {
-  const ListOfMobileDataPlansModal({super.key});
+class AndroidListOfAirtimeBillersModal
+    extends GetView<AirtimePurchaseController> {
+  const AndroidListOfAirtimeBillersModal({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +22,7 @@ class ListOfMobileDataPlansModal extends GetView<MobileDataController> {
       appBar: myAppBar(
         colorScheme,
         media,
-        title: "Select Data Plan",
+        title: "Select Biller",
         leading: Padding(
           padding: const EdgeInsets.only(left: 4.0),
           child: IconButton(
@@ -51,8 +52,8 @@ class ListOfMobileDataPlansModal extends GetView<MobileDataController> {
                 suffixMode: OverlayVisibilityMode.editing,
                 autofocus: true,
                 enableIMEPersonalizedLearning: true,
-                controller: controller.mobileDataPlanSearchEC,
-                focusNode: controller.mobileDataPlanSearchFN,
+                controller: controller.billerSearchEC,
+                focusNode: controller.billerSearchFN,
                 placeholder: "Search",
                 style: defaultTextStyle(
                   color: kTextGreyColor,
@@ -70,8 +71,9 @@ class ListOfMobileDataPlansModal extends GetView<MobileDataController> {
             Expanded(
               child: Scrollbar(
                 child: ListView.separated(
-                  itemCount: 10,
-                  separatorBuilder: (context, index) => Padding(
+                  itemCount: controller.airtimeBillers.length,
+                  separatorBuilder: (BuildContext context, int index) =>
+                      Padding(
                     padding: const EdgeInsets.all(4),
                     child: Divider(
                       color: kLightGreyColor,
@@ -82,48 +84,18 @@ class ListOfMobileDataPlansModal extends GetView<MobileDataController> {
                   itemBuilder: (context, index) {
                     return ListTile(
                       onTap: () {
-                        controller.selectMobileDataPlan(index);
+                        controller.selectBiller(index);
                       },
                       leading: Image.asset(
                         Assets.yellowAppLogo,
                         height: 32,
                       ),
                       title: Text(
-                        controller.mobileDataPlan.name,
+                        controller.airtimeBillers[index].name,
                         style: defaultTextStyle(
                           fontSize: 12,
                           color: kTextBoldHeadingColor,
                           fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                      subtitle: RichText(
-                        text: TextSpan(
-                          text: "PRICE: ",
-                          style: defaultTextStyle(
-                            fontWeight: FontWeight.w800,
-                            fontSize: 10,
-                            color: kTextBoldHeadingColor,
-                          ),
-                          children: [
-                            TextSpan(
-                              text: "$nairaSign ",
-                              style: defaultTextStyle(
-                                fontWeight: FontWeight.w800,
-                                fontSize: 10,
-                                fontFamily: "",
-                                color: kTextBoldHeadingColor,
-                              ),
-                            ),
-                            TextSpan(
-                              text: intFormattedText(
-                                  controller.mobileDataPlan.price),
-                              style: defaultTextStyle(
-                                fontWeight: FontWeight.w800,
-                                fontSize: 10,
-                                color: kTextBoldHeadingColor,
-                              ),
-                            ),
-                          ],
                         ),
                       ),
                     );

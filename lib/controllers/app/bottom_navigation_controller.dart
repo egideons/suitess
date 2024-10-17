@@ -4,8 +4,8 @@ import 'package:get/get.dart';
 import 'package:suitess/views/android/screens/home/screen/android_home_screen.dart';
 import 'package:suitess/views/android/screens/messages/screen/android_messages_screen.dart';
 import 'package:suitess/views/android/screens/profile/screen/android_profile_screen.dart';
+import 'package:suitess/views/android/screens/wallet/wallet_intro/screen/wallet_intro_screen.dart';
 import 'package:suitess/views/android/screens/wallet/wallet_screen/screen/wallet_screen.dart';
-import 'package:suitess/views/android/screens/wallet_intro/screen/wallet_intro_screen.dart';
 
 import '../../../main.dart';
 import '../../constants/assets.dart';

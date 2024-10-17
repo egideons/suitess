@@ -3,16 +3,16 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../../../controllers/app/mobile_data_controller.dart';
-import '../platform/android/mobile_data_scaffold.dart';
+import '../../../../../../controllers/app/bank_transfer_controller.dart';
+import '../content/android_bank_transfer_scaffold.dart';
 
-class MobileDataScreen extends StatelessWidget {
-  const MobileDataScreen({super.key});
+class AndroidBankTransferScreen extends StatelessWidget {
+  const AndroidBankTransferScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     //Initialize the controller
-    Get.put(MobileDataController());
+    Get.put(BankTransferController());
 
     if (Platform.isIOS) {
       return GestureDetector(
@@ -22,7 +22,7 @@ class MobileDataScreen extends StatelessWidget {
     }
     return GestureDetector(
       onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
-      child: const MobileDataScaffold(),
+      child: const AndroidBankTransferScaffold(),
     );
   }
 }

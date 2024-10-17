@@ -2,11 +2,11 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:suitess/controllers/app/wallet_intro_controller.dart';
-import 'package:suitess/views/android/screens/wallet_intro/content/wallet_intro_page_3_form.dart';
+import 'package:suitess/views/android/screens/wallet/wallet_intro/content/wallet_intro_page_3_form.dart';
 
-import '../../../../../constants/consts.dart';
-import '../../../../../theme/colors.dart';
-import '../../../../../utils/buttons/android/android_elevated_button.dart';
+import '../../../../../../constants/consts.dart';
+import '../../../../../../theme/colors.dart';
+import '../../../../../../utils/buttons/android/android_elevated_button.dart';
 
 walletIntroPage3(
   BuildContext context,

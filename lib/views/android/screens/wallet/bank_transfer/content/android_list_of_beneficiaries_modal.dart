@@ -8,8 +8,8 @@ import '../../../../../../controllers/app/bank_transfer_controller.dart';
 import '../../../../../../theme/colors.dart';
 import '../../../../../../utils/components/circle_avatar_image.dart';
 
-class ListOfBeneficiariesModal extends GetView<BankTransferController> {
-  const ListOfBeneficiariesModal({super.key});
+class AndroidListOfBeneficiariesModal extends GetView<BankTransferController> {
+  const AndroidListOfBeneficiariesModal({super.key});
 
   @override
   Widget build(BuildContext context) {

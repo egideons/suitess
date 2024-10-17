@@ -39,16 +39,16 @@ import 'package:suitess/views/android/screens/property/purchase_property/screen/
 import 'package:suitess/views/android/screens/property/view_property/screen/android_view_property_screen.dart';
 import 'package:suitess/views/android/screens/search/screen/android_search_screen.dart';
 import 'package:suitess/views/android/screens/wallet/airtime_purchase/screen/airtime_purchase_screen.dart';
-import 'package:suitess/views/android/screens/wallet/bank_transfer/screen/bank_transfer_screen.dart';
-import 'package:suitess/views/android/screens/wallet/mobile_data/screen/mobile_data_screen.dart';
+import 'package:suitess/views/android/screens/wallet/bank_transfer/screen/android_bank_transfer_screen.dart';
+import 'package:suitess/views/android/screens/wallet/mobile_data/screen/android_mobile_data_screen.dart';
 import 'package:suitess/views/android/screens/wallet/reset_tx_pin_options/reset_tx_pin/screen/reset_tx_pin.dart';
 import 'package:suitess/views/android/screens/wallet/reset_tx_pin_options/reset_tx_pin_otp/screen/reset_tx_pin_otp.dart';
 import 'package:suitess/views/android/screens/wallet/reset_tx_pin_options/via_email/screen/reset_tx_pin_via_email.dart';
 import 'package:suitess/views/android/screens/wallet/reset_tx_pin_options/via_sms/screen/reset_tx_pin_via_sms.dart';
 import 'package:suitess/views/android/screens/wallet/transfer_options/screen/transfer_options.dart';
+import 'package:suitess/views/android/screens/wallet/wallet_intro/screen/wallet_intro_screen.dart';
 import 'package:suitess/views/android/screens/wallet/wallet_screen/screen/wallet_screen.dart';
 import 'package:suitess/views/android/screens/wallet/wallet_transfer/screen/wallet_transfer_screen.dart';
-import 'package:suitess/views/android/screens/wallet_intro/screen/wallet_intro_screen.dart';
 import 'package:suitess/views/android/splash/congratulations/screen/congratulations_screen.dart';
 import 'package:suitess/views/android/splash/loading/screen/android_loading_screen.dart';
 import 'package:suitess/views/android/splash/startup/screen/android_startup_screen.dart';
@@ -211,14 +211,14 @@ class Routes {
     GetPage(name: walletScreen, page: () => const WalletScreen()),
     GetPage(name: transferOptions, page: () => const TransferOptions()),
     GetPage(name: walletTransfer, page: () => const WalletTransferScreen()),
-    GetPage(name: bankTransfer, page: () => const BankTransferScreen()),
+    GetPage(name: bankTransfer, page: () => const AndroidBankTransferScreen()),
     GetPage(name: airtimePurchase, page: () => const AirtimePurchaseScreen()),
-    GetPage(name: mobileData, page: () => const MobileDataScreen()),
+    GetPage(name: mobileData, page: () => const AndroidMobileDataScreen()),
     GetPage(name: resetTxPinViaEmail, page: () => const ResetTxPinViaEmail()),
     GetPage(name: resetTxPinViaSms, page: () => const ResetTxPinViaSms()),
     GetPage(name: resetTxPinOTP, page: () => const ResetTxPinOTP()),
     GetPage(name: resetTxPin, page: () => const ResetTxPin()),
-    GetPage(name: resetTxPin, page: () => const MobileDataScreen()),
+    GetPage(name: resetTxPin, page: () => const AndroidMobileDataScreen()),
 
     //Profile Section
     GetPage(name: profileScreen, page: () => const AndroidProfileScreen()),

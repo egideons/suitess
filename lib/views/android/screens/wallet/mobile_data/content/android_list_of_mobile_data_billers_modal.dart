@@ -5,11 +5,12 @@ import 'package:suitess/utils/components/my_app_bar.dart';
 
 import '../../../../../../constants/assets.dart';
 import '../../../../../../constants/consts.dart';
-import '../../../../../../controllers/app/bank_transfer_controller.dart';
+import '../../../../../../controllers/app/mobile_data_controller.dart';
 import '../../../../../../theme/colors.dart';
 
-class ListOfBanksModal extends GetView<BankTransferController> {
-  const ListOfBanksModal({super.key});
+class AndroidListOfMobileDataBillersModal
+    extends GetView<MobileDataController> {
+  const AndroidListOfMobileDataBillersModal({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,11 +22,11 @@ class ListOfBanksModal extends GetView<BankTransferController> {
       appBar: myAppBar(
         colorScheme,
         media,
-        title: "Select Bank",
+        title: "Select Biller",
         leading: Padding(
           padding: const EdgeInsets.only(left: 4.0),
           child: IconButton(
-            tooltip: "Go back",
+            tooltip: "Cancel",
             onPressed: () {
               Get.back();
             },
@@ -51,8 +52,8 @@ class ListOfBanksModal extends GetView<BankTransferController> {
                 suffixMode: OverlayVisibilityMode.editing,
                 autofocus: true,
                 enableIMEPersonalizedLearning: true,
-                controller: controller.bankSearchEC,
-                focusNode: controller.bankSearchFN,
+                controller: controller.billerSearchEC,
+                focusNode: controller.billerSearchFN,
                 placeholder: "Search",
                 style: defaultTextStyle(
                   color: kTextGreyColor,
@@ -70,9 +71,8 @@ class ListOfBanksModal extends GetView<BankTransferController> {
             Expanded(
               child: Scrollbar(
                 child: ListView.separated(
-                  itemCount: 20,
-                  separatorBuilder: (BuildContext context, int index) =>
-                      Padding(
+                  itemCount: controller.mobileDataBillers.length,
+                  separatorBuilder: (context, index) => Padding(
                     padding: const EdgeInsets.all(4),
                     child: Divider(
                       color: kLightGreyColor,
@@ -83,14 +83,14 @@ class ListOfBanksModal extends GetView<BankTransferController> {
                   itemBuilder: (context, index) {
                     return ListTile(
                       onTap: () {
-                        controller.selectBank(index);
+                        controller.selectBiller(index);
                       },
                       leading: Image.asset(
                         Assets.yellowAppLogo,
                         height: 32,
                       ),
                       title: Text(
-                        controller.bankModel.name,
+                        controller.mobileDataBillers[index].name,
                         style: defaultTextStyle(
                           fontSize: 12,
                           color: kTextBoldHeadingColor,

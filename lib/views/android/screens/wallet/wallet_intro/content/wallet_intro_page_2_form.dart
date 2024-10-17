@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../../../../../constants/consts.dart';
-import '../../../../../controllers/app/wallet_intro_controller.dart';
-import '../../../../../utils/containers/form_field_container.dart';
-import '../../../../../utils/text_form_fields/android/android_textformfield.dart';
+import '../../../../../../constants/consts.dart';
+import '../../../../../../controllers/app/wallet_intro_controller.dart';
+import '../../../../../../utils/containers/form_field_container.dart';
+import '../../../../../../utils/text_form_fields/android/android_textformfield.dart';
 
 walletIntroPage2Form(
   ColorScheme colorScheme,

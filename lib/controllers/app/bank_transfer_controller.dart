@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:suitess/models/bank/bank_model.dart';
-import 'package:suitess/views/android/screens/wallet/bank_transfer/content/bank_transfer_tx_details.dart';
-import 'package:suitess/views/android/screens/wallet/bank_transfer/content/bank_transfer_tx_pin.dart';
-import 'package:suitess/views/android/screens/wallet/bank_transfer/content/list_of_banks_modal.dart';
-import 'package:suitess/views/android/screens/wallet/bank_transfer/content/list_of_beneficiaries_modal.dart';
+import 'package:suitess/views/android/screens/wallet/bank_transfer/content/android_bank_transfer_tx_details.dart';
+import 'package:suitess/views/android/screens/wallet/bank_transfer/content/android_bank_transfer_tx_pin.dart';
+import 'package:suitess/views/android/screens/wallet/bank_transfer/content/android_list_of_banks_modal.dart';
+import 'package:suitess/views/android/screens/wallet/bank_transfer/content/android_list_of_beneficiaries_modal.dart';
 import 'package:suitess/views/android/splash/successful/screen/android_success_screen.dart';
 
 import '../../models/bank/beneficiary_model.dart';
@@ -205,7 +205,7 @@ class BankTransferController extends GetxController {
       builder: (context) {
         return GestureDetector(
           onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
-          child: const ListOfBanksModal(),
+          child: const AndroidListOfBanksModal(),
         );
       },
     );
@@ -242,7 +242,7 @@ class BankTransferController extends GetxController {
       builder: (context) {
         return GestureDetector(
           onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
-          child: const ListOfBeneficiariesModal(),
+          child: const AndroidListOfBeneficiariesModal(),
         );
       },
     );
@@ -264,7 +264,7 @@ class BankTransferController extends GetxController {
       builder: (context) {
         return GestureDetector(
           onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
-          child: BankTransferTxDetails(
+          child: AndroidBankTransferTxDetails(
             accountNumber: accountNumberEC.text,
             beneficiaryBank: selectedBank.value,
             beneficiaryName: selectedAccountName.value,
@@ -292,7 +292,7 @@ class BankTransferController extends GetxController {
       builder: (context) {
         return GestureDetector(
           onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
-          child: const BankTransferTxPin(),
+          child: const AndroidBankTransferTxPin(),
         );
       },
     );

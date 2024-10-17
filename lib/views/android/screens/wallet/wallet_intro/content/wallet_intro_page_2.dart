@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
-import '../../../../../constants/assets.dart';
-import '../../../../../constants/consts.dart';
-import '../../../../../controllers/app/wallet_intro_controller.dart';
-import '../../../../../theme/colors.dart';
-import '../../../../../utils/buttons/android/android_elevated_button.dart';
+import '../../../../../../constants/assets.dart';
+import '../../../../../../constants/consts.dart';
+import '../../../../../../controllers/app/wallet_intro_controller.dart';
+import '../../../../../../theme/colors.dart';
+import '../../../../../../utils/buttons/android/android_elevated_button.dart';
 import 'wallet_intro_page_2_form.dart';
 
 walletIntroPage2(

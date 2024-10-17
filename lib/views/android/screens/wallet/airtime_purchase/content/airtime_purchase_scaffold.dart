@@ -4,13 +4,14 @@ import 'package:get/get.dart';
 import 'package:suitess/constants/consts.dart';
 import 'package:suitess/utils/components/my_app_bar.dart';
 
-import '../../../../../../../controllers/app/airtime_controller.dart';
-import '../../../../../../../utils/buttons/android/android_elevated_button.dart';
-import '../../../../../../../utils/containers/form_field_container.dart';
-import '../../../../../../../utils/text_form_fields/android/android_textformfield.dart';
+import '../../../../../../controllers/app/airtime_controller.dart';
+import '../../../../../../utils/buttons/android/android_elevated_button.dart';
+import '../../../../../../utils/containers/form_field_container.dart';
+import '../../../../../../utils/text_form_fields/android/android_textformfield.dart';
 
-class AirtimePurchaseScaffold extends GetView<AirtimePurchaseController> {
-  const AirtimePurchaseScaffold({super.key});
+class AndroidAirtimePurchaseScaffold
+    extends GetView<AirtimePurchaseController> {
+  const AndroidAirtimePurchaseScaffold({super.key});
 
   @override
   Widget build(BuildContext context) {

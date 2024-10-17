@@ -3,14 +3,14 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 import '../../../../../../constants/consts.dart';
-import '../../../../../../controllers/app/bank_transfer_controller.dart';
+import '../../../../../../controllers/app/airtime_controller.dart';
 import '../../../../../../theme/colors.dart';
 import '../../../../../../utils/buttons/android/android_elevated_button.dart';
 import '../../../../../../utils/containers/form_field_container.dart';
 import '../../../../../../utils/text_form_fields/android/android_textformfield.dart';
 
-class BankTransferTxPin extends GetView<BankTransferController> {
-  const BankTransferTxPin({super.key});
+class AndroidAirtimePurchasePin extends GetView<AirtimePurchaseController> {
+  const AndroidAirtimePurchasePin({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,8 +22,8 @@ class BankTransferTxPin extends GetView<BankTransferController> {
       body: SafeArea(
         child: Scrollbar(
           controller: controller.scrollController,
-          child: GetBuilder<BankTransferController>(
-            init: BankTransferController(),
+          child: GetBuilder<AirtimePurchaseController>(
+            init: AirtimePurchaseController(),
             builder: (controller) {
               return SingleChildScrollView(
                 padding: const EdgeInsets.all(10),

@@ -7,7 +7,7 @@ import '../../../../../../constants/consts.dart';
 import '../../../../../../controllers/app/bank_transfer_controller.dart';
 import '../../../../../../theme/colors.dart';
 
-bankTransferSourceWallet(
+androidBankTransferSourceWallet(
   Size media,
   ColorScheme colorScheme,
   BankTransferController controller,

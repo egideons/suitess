@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../../../controllers/app/wallet_intro_controller.dart';
+import '../../../../../../../controllers/app/wallet_intro_controller.dart';
 import '../../content/wallet_intro_page_1.dart';
 import '../../content/wallet_intro_page_2.dart';
 import '../../content/wallet_intro_page_3.dart';

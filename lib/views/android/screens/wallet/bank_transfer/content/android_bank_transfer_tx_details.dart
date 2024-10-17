@@ -6,10 +6,10 @@ import '../../../../../../controllers/app/bank_transfer_controller.dart';
 import '../../../../../../theme/colors.dart';
 import '../../../../../../utils/buttons/android/android_elevated_button.dart';
 import '../../../../../../utils/buttons/android/android_outlined_button.dart';
-import 'bank_transfer_tx_detail.dart';
+import 'android_bank_transfer_tx_detail.dart';
 
-class BankTransferTxDetails extends GetView<BankTransferController> {
-  const BankTransferTxDetails({
+class AndroidBankTransferTxDetails extends GetView<BankTransferController> {
+  const AndroidBankTransferTxDetails({
     this.transactionAmount,
     this.transactionCharge,
     this.accountNumber,
@@ -78,7 +78,7 @@ class BankTransferTxDetails extends GetView<BankTransferController> {
                       ),
                       child: Column(
                         children: [
-                          bankTransferTxDetail(
+                          androidBankTransferTxDetail(
                             title: "Source account",
                             child: Text(
                               "093710254",
@@ -91,7 +91,7 @@ class BankTransferTxDetails extends GetView<BankTransferController> {
                             ),
                           ),
                           kSizedBox,
-                          bankTransferTxDetail(
+                          androidBankTransferTxDetail(
                             title: "Benificiary Bank",
                             child: Text(
                               beneficiaryBank ?? "",
@@ -104,7 +104,7 @@ class BankTransferTxDetails extends GetView<BankTransferController> {
                             ),
                           ),
                           kSizedBox,
-                          bankTransferTxDetail(
+                          androidBankTransferTxDetail(
                             title: "Account Number",
                             child: Text(
                               accountNumber ?? "",
@@ -117,7 +117,7 @@ class BankTransferTxDetails extends GetView<BankTransferController> {
                             ),
                           ),
                           kSizedBox,
-                          bankTransferTxDetail(
+                          androidBankTransferTxDetail(
                             title: "Benificiary's Name",
                             child: Text(
                               beneficiaryName ?? "",
@@ -131,7 +131,7 @@ class BankTransferTxDetails extends GetView<BankTransferController> {
                             ),
                           ),
                           kSizedBox,
-                          bankTransferTxDetail(
+                          androidBankTransferTxDetail(
                             title: "Transaction Amount",
                             child: Text.rich(
                               softWrap: true,
@@ -158,7 +158,7 @@ class BankTransferTxDetails extends GetView<BankTransferController> {
                             ),
                           ),
                           kSizedBox,
-                          bankTransferTxDetail(
+                          androidBankTransferTxDetail(
                             title: "Transaction Charges",
                             child: Text.rich(
                               softWrap: true,

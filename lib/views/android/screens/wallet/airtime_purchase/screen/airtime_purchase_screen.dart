@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../../../controllers/app/airtime_controller.dart';
-import '../platform/android/airtime_purchase_scaffold.dart';
+import '../content/airtime_purchase_scaffold.dart';
 
 class AirtimePurchaseScreen extends StatelessWidget {
   const AirtimePurchaseScreen({super.key});
@@ -22,7 +22,7 @@ class AirtimePurchaseScreen extends StatelessWidget {
     }
     return GestureDetector(
       onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
-      child: const AirtimePurchaseScaffold(),
+      child: const AndroidAirtimePurchaseScaffold(),
     );
   }
 }

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:suitess/views/android/screens/wallet/mobile_data/content/list_of_mobile_data_billers_modal.dart';
-import 'package:suitess/views/android/screens/wallet/mobile_data/content/list_of_mobile_data_plans_modal.dart';
-import 'package:suitess/views/android/screens/wallet/mobile_data/content/mobile_data_pin.dart';
+import 'package:suitess/views/android/screens/wallet/mobile_data/content/android_list_of_mobile_data_billers_modal.dart';
+import 'package:suitess/views/android/screens/wallet/mobile_data/content/android_list_of_mobile_data_plans_modal.dart';
+import 'package:suitess/views/android/screens/wallet/mobile_data/content/android_mobile_data_pin.dart';
 import 'package:suitess/views/android/splash/successful/screen/android_success_screen.dart';
 
 import '../../constants/consts.dart';
@@ -114,7 +114,7 @@ class MobileDataController extends GetxController {
       builder: (context) {
         return GestureDetector(
           onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
-          child: const ListOfMobileDataBillersModal(),
+          child: const AndroidListOfMobileDataBillersModal(),
         );
       },
     );
@@ -143,7 +143,7 @@ class MobileDataController extends GetxController {
       builder: (context) {
         return GestureDetector(
           onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
-          child: const ListOfMobileDataPlansModal(),
+          child: const AndroidListOfMobileDataPlansModal(),
         );
       },
     );
@@ -175,7 +175,7 @@ class MobileDataController extends GetxController {
       builder: (context) {
         return GestureDetector(
           onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
-          child: const MobileDataPin(),
+          child: const AndroidMobileDataPin(),
         );
       },
     );
