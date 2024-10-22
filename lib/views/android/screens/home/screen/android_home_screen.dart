@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:suitess/controllers/app/home_screen_controller.dart';
@@ -13,12 +11,6 @@ class AndroidHomeScreen extends StatelessWidget {
     //Initialize the controller
     Get.put(HomeScreenController());
 
-    if (Platform.isIOS) {
-      return GestureDetector(
-        onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
-        // child: const HomeScreenCupertinoScaffold(),
-      );
-    }
     return GestureDetector(
       onTap: (() => FocusManager.instance.primaryFocus?.unfocus()),
       child: const AndroidHomeScreenScaffold(),
