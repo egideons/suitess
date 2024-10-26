@@ -111,7 +111,7 @@ class UserData {
 
 class Settings {
   int? id;
-  String? userId;
+  int? userId;
   String? language;
   String? address;
   String? geoLocation;
@@ -134,7 +134,7 @@ class Settings {
     json ??= {};
     return Settings(
       id: json['id'] ?? 0,
-      userId: json['user_id'] ?? "n/A",
+      userId: json['user_id'] ?? 0,
       language: json['language'] ?? "n/A",
       address: json['address'] ?? "n/A",
       geoLocation: json['geo_location'] ?? "n/A",

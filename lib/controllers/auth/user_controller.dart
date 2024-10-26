@@ -21,7 +21,7 @@ class UserController extends GetxController {
 
     var url = ApiUrl.authBaseUrl + ApiUrl.auth + ApiUrl.profile;
     var userToken = prefs.getString("userToken");
-    log("This is the user token: $userToken");
+    // log("This is the user token: $userToken");
 
     //HTTP Client Service
     http.Response? response =
@@ -44,8 +44,8 @@ class UserController extends GetxController {
       var responseJson = jsonDecode(response.body);
 
       if (response.statusCode == 200) {
-        userModel.value = UserModel.fromJson(responseJson);
         // log("This is the user model ====> $responseJson");
+        userModel.value = UserModel.fromJson(responseJson);
         log("This is the user model ====> ${jsonEncode(userModel.value)}");
       } else {
         log("Request failed with status: ${response.statusCode}");
@@ -64,7 +64,7 @@ class UserController extends GetxController {
 
     String userJson = jsonEncode(user.toJson());
 
-    log("This is the user signup data model:$userJson");
+    // log("This is the user signup data model:$userJson");
 
     // Save the JSON string to shared preferences
     await prefs.setString('user', userJson);
