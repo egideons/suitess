@@ -11,7 +11,7 @@ class AndroidBusinessIntroScaffold extends GetView<BusinessIntroController> {
 
   @override
   Widget build(BuildContext context) {
-    var media = MediaQuery.of(context).size;
+    var media = MediaQuery.sizeOf(context);
     var colorScheme = Theme.of(context).colorScheme;
     return WillPopScope(
       onWillPop: controller.handleBackNavigation,

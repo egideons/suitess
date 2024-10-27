@@ -12,7 +12,7 @@ class AndroidLoadingScreenScaffold extends GetView<LoadingController> {
 
   @override
   Widget build(BuildContext context) {
-    var media = MediaQuery.of(context).size;
+    var media = MediaQuery.sizeOf(context);
     var colorScheme = Theme.of(context).colorScheme;
 
     Timer(Duration.zero, loadData ?? () {});

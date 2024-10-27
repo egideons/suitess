@@ -15,7 +15,7 @@ class ResetTxPinScaffold extends GetView<ResetTxPinController> {
 
   @override
   Widget build(BuildContext context) {
-    var media = MediaQuery.of(context).size;
+    var media = MediaQuery.sizeOf(context);
     var colorScheme = Theme.of(context).colorScheme;
 
     //Large screens or Mobile Landscape mode

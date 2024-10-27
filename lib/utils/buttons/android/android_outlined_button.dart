@@ -54,7 +54,7 @@ class AndroidOutlinedButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var media = MediaQuery.of(context).size;
+    var media = MediaQuery.sizeOf(context);
     var colorScheme = Theme.of(context).colorScheme;
     return OutlinedButton(
       onPressed: disable

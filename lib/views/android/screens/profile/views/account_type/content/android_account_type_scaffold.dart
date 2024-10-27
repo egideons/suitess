@@ -10,7 +10,7 @@ class AndroidAccountTypeScaffold extends GetView<AccountTypeController> {
 
   @override
   Widget build(BuildContext context) {
-    var media = MediaQuery.of(context).size;
+    var media = MediaQuery.sizeOf(context);
     var colorScheme = Theme.of(context).colorScheme;
 
     // var controller = AccountTypeController.instance;

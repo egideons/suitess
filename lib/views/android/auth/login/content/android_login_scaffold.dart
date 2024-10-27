@@ -21,7 +21,7 @@ class AndroidLoginScaffold extends GetView<LoginController> {
 
   @override
   Widget build(BuildContext context) {
-    var media = MediaQuery.of(context).size;
+    var media = MediaQuery.sizeOf(context);
     var colorScheme = Theme.of(context).colorScheme;
 
     final loginController = LoginController.instance;

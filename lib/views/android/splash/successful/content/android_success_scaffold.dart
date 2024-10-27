@@ -16,7 +16,7 @@ class AndroidSuccessScaffold extends GetView<SuccessScreenController> {
   @override
   Widget build(BuildContext context) {
     var colorScheme = Theme.of(context).colorScheme;
-    var media = MediaQuery.of(context).size;
+    var media = MediaQuery.sizeOf(context);
     return Scaffold(
       backgroundColor: colorScheme.surface,
       appBar: myAppBar(
